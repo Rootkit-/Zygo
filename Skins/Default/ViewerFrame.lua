@@ -1164,8 +1164,8 @@ end
 
 		-- Progress Bar
 		local ProgressBar = CreateProgressBar(self)
-		ProgressBar:SetPoint("TOPLEFT", self.Scroll,"BOTTOMLEFT",0,22)
-		ProgressBar:SetPoint("TOPRIGHT", self.Scroll.Child , "BOTTOMRIGHT",0,22)
+		ProgressBar:SetPoint("TOPLEFT", self.Scroll,"BOTTOMLEFT",0,35)
+		ProgressBar:SetPoint("TOPRIGHT", self.Scroll.Child , "BOTTOMRIGHT",0,35)
 		ProgressBar:SetFrameLevel(self:GetFrameLevel()+5)
 		ProgressBar:SetTextOnMouse(true)
 
@@ -1264,11 +1264,13 @@ end
 			NextButton = Border.Guides.NextButton,
 			NextButtonSpecial = Border.Guides.NextButtonSpecial,
 			GuideShareButton = Border.Guides.GuideShareButton,
+			ReportStep = Border.Guides.ReportStep,
 			--MiniButton = Border.Guides.MiniButton,
 			StepNum = Border.Guides.StepNum,
 			Logo = Border.TitleBar.Logo,
 			DevLabel = Border.TitleBar.DevLabel,
 			Scroll = self.Scroll,
+			DefaultStateButton = self.DefaultStateButton,
 
 			TabsAddButton = Border.TabsAddButton,
 			TabsMoreButton = Border.TabsMoreButton,
@@ -1276,7 +1278,8 @@ end
 			MenuSettings = self.MenuSettings,
 			MenuAdditional =self.MenuAdditional,
 			MenuGuides =self.MenuGuides,
-			MenuNotifications = Border.TitleBar.MenuNotifications
+			MenuNotifications = Border.TitleBar.MenuNotifications,
+
 		}
 
 		-- make stuff drag me
@@ -1305,6 +1308,7 @@ end
 
 		self.oldxPos,self.oldyPos = 0,0
 
+		self:ShowSpecialState("loading")
 	end
 
 	function ZGV_DefaultSkin_Frame_Mixin:CreateStepPools()
@@ -1659,7 +1663,71 @@ end
 		--]]
 	end
 
-	
+	function ZGV_DefaultSkin_Frame_Mixin:ShowSpecialState(state)
+		if state=="loading" then
+			self.Controls.Notifications:Hide()
+			self.Controls.MenuSettingsButton:Hide()
+			self.Controls.MenuAdditionalButton:Hide()
+			self.Controls.PrevButton:Hide()
+			self.Controls.NextButton:Hide()
+			self.Controls.NextButtonSpecial:Hide()
+			self.Controls.GuideShareButton:Hide()
+			self.Controls.ReportStep:Hide()
+			self.Controls.StepNum:Hide()
+			self.Controls.TabsAddButton:Hide()
+			self.Controls.TabsMoreButton:Hide()
+
+			self.Controls.DefaultStateButton:SetScript("OnClick",nil)
+
+			self.Controls.DefaultStateButton:Show()
+			self.Controls.DefaultStateButton:SetText(L["viewer_special_loading"])
+		end
+
+		if state=="select" then
+			self.Controls.Notifications:Show()
+			self.Controls.MenuSettingsButton:Show()
+			self.Controls.MenuAdditionalButton:Hide()
+
+			self.Controls.PrevButton:Hide()
+			self.Controls.NextButton:Hide()
+			self.Controls.NextButtonSpecial:Hide()
+			self.Controls.GuideShareButton:Hide()
+			self.Controls.ReportStep:Hide()
+			self.Controls.StepNum:Hide()
+			self.Controls.TabsAddButton:Hide()
+			self.Controls.TabsMoreButton:Hide()
+
+			ZGV.ActionBar.Frame:Hide()
+
+			self.Controls.DefaultStateButton:SetScript("OnClick",function() ZGV.GuideMenu:Show() end)
+
+			self.Controls.DefaultStateButton:Show()
+			self.Controls.DefaultStateButton:SetText(L["viewer_special_select"])
+
+		end
+
+		if state=="normal" then
+			self.Controls.Notifications:Show()
+			self.Controls.MenuSettingsButton:Show()
+			self.Controls.MenuAdditionalButton:Show()
+			self.Controls.PrevButton:Show()
+			self.Controls.NextButton:Show()
+			self.Controls.NextButtonSpecial:Show()
+			self.Controls.GuideShareButton:Hide()
+			self.Controls.ReportStep:Hide()
+			self.Controls.StepNum:Show()
+			self.Controls.TabsAddButton:Show()
+			self.Controls.TabsMoreButton:Show()
+
+			ZGV.Tabs:ReanchorTabs()
+			ZGV.QuestDB:MaybeShowButton()
+
+			self.Controls.DefaultStateButton:SetScript("OnClick",nil)
+
+			self.Controls.DefaultStateButton:Hide()
+		end
+		
+	end
 --
 
 --border showing delay

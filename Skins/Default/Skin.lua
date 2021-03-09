@@ -116,6 +116,20 @@ function FrameProto:ApplySkin()
 	frame:UpdateLocking()
 	frame:AlignFrame()
 
+	frame.Controls.DefaultStateButton.backdropInfo=SkinData("ButtonBackdrop1")
+	CHAIN(frame.Controls.DefaultStateButton)
+		:ApplyBackdrop()
+		:SetBackdropColor(unpack(SkinData("StepBackdropColor")))
+		:SetBackdropBorderColor(unpack(SkinData("StepBackdropColor")))
+		:SetFrameStrata("MEDIUM")
+		:SetPoint("TOP",ZGV.Frame.Controls.Logo,"BOTTOM",0,0)
+		:SetPoint("LEFT",ZGV.Frame)
+		:SetPoint("RIGHT",ZGV.Frame)
+		:SetPoint("BOTTOM",ZGV.Frame.Controls.Scroll,0,17)
+	CHAIN(frame.Controls.DefaultStateButton:GetFontString())
+		:SetFont(ZGV.Font,12)
+		:SetTextColor(1,1,1,1)
+
 	ZGV:UpdateFrame()
 
 	-- other components now listed for SKIN_UPDATED
@@ -214,7 +228,7 @@ function FrameProto:AlignFrame()  -- mixed into Frame, never called on Skin!!
 		frame.Border.Back.TopRightCorner:SetColorTexture(1,1,1,1)
 	else
 		CHAIN(frame.Controls.Scroll)
-			:SetPoint("TOPLEFT",ZGV.Frame.Border,"TOPLEFT",SkinData("ViewerMargin"),-14) -- -10-SkinData("TabsTopOffset"))
+			:SetPoint("TOPLEFT",ZGV.Frame.Border,"TOPLEFT",SkinData("ViewerMargin"),-5) -- -10-SkinData("TabsTopOffset"))
 			:SetPoint("BOTTOMRIGHT",ZGV.Frame.Border.Guides,"TOPRIGHT",0,0) -- 8-SkinData("TabsTopOffset"))
 		CHAIN(frame.Border.Guides)
 			:SetPoint("BOTTOMLEFT",ZGV.Frame.Border.TitleBar,"TOPLEFT",0,-2)

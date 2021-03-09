@@ -275,7 +275,7 @@ STYLE.GoldguideHeaderFooterColor=STYLE.GuideMenuHeaderFooterBackground
 STYLE.WorldQuestBackdrop=STYLE.MainBackdrop
 STYLE.WorldQuestBackdropColor=STYLE.MainBackdropColor
 STYLE.WorldQuestBackdropBorderColor=STYLE.MainBackdropBorderColor
-STYLE.WorldQuestMargin = 10
+STYLE.WorldQuestMargin = 5
 
 -- Tabs
 STYLE.TabsMargin = 10
