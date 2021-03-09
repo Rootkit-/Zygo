@@ -141,7 +141,7 @@ local function SkinData(parm)
 end
 
 
-ZGV.MIN_STEP_HEIGHT=12
+ZGV.MIN_STEP_HEIGHT=15
 ZGV.MIN_SPOT_HEIGHT=40
 
 local MIN_WIDTH = 260
@@ -240,7 +240,7 @@ function ZGV:OnInitialize()
 	self:WarnAboutDebugSettings()
 
 	ZGV:Print("Loading...")
-	
+
 	
 	if IsShiftKeyDown() then
 		self:Debug ("MAINTENANCE MODE!")
@@ -315,6 +315,8 @@ function ZGV:OnInitialize()
 	
 	ZygorGuidesViewerFrame = self.Frame
 
+	ZGV.Frame:ShowSpecialState("loading")
+
 	self.frameNeedsResizing = 0
 
 	self.Frame:SetScale(self.db.profile.framescale)
@@ -354,6 +356,7 @@ function ZGV:OnInitialize()
 
 	ZGV.db.char.questrewards=ZGV.db.char.questrewards or {}
 	if not ZGV.Expansion_Shadowlands then hooksecurefunc("SendQuestChoiceResponse",function(...) ZGV:QuestRewardSelect(...) end) end
+	hooksecurefunc("SendPlayerChoiceResponse",function(...) ZGV:PlayerChoiceResponce(...) end)
 
 	if self.DEV then
 		ZGV.DebugFrame = ZGV.ChainCall(CreateFrame("FRAME","ZygorDebugFrame",UIParent)) :SetPoint("TOPLEFT") :SetSize(1,1) .__END
@@ -409,6 +412,9 @@ function ZGV:OnEnable()
 	self:AddEventHandler("TAXIMAP_OPENED")
 
 	self:AddEventHandler("GET_ITEM_INFO_RECEIVED")
+
+	self:AddEventHandler("PLAYER_CHOICE_UPDATE")
+	self:AddEventHandler("PLAYER_CHOICE_CLOSE")
 
 	--self:AddEventHandler("PLAYER_LEVEL_UP") -- legion popups
 
@@ -510,7 +516,7 @@ function ZGV:Startup_LoadGuides_Threaded()
 		local guides_this_tick=0
 		for i,guide in ipairs(self.registeredguides) do repeat
 			guide:ParseHeader()
-			if full_load then guide:Parse(full_load) end
+			if full_load then guide:Parse(full_load) end  -- may yield, caught by @coro_startup
 			--if guide.type=="pet" or guide.type=="mount" then
 			--	guide:Parse(true) -- Those guys are useful for detector
 			--end
@@ -1056,7 +1062,7 @@ function UpdateCentral_Mixin:OnUpdate(elapsed)
 end
 
 function UpdateCentral_Mixin:OnEvent(event)
-	if event=="GLOBAL_MOUSE_UP" then --
+	if event=="GLOBAL_MOUSE_UP" then -- special handler for GMU
 		for i,object in ipairs(self.HideObjects) do
 			if object and object:IsVisible() and not object:IsMouseOver() then object:Hide() end
 		end
@@ -1068,7 +1074,7 @@ function UpdateCentral_Mixin:Init()
 	self.HideObjects = {}
 	self:SetScript("OnUpdate",self.OnUpdate)
 	self:SetScript("OnEvent",self.OnEvent)
-	self:RegisterEvent("GLOBAL_MOUSE_UP")
+	self:RegisterEvent("GLOBAL_MOUSE_UP") -- we always track GMU to handle frame hiding. 
 end
 
 ZGV.UpdateCentral = Mixin(CreateFrame("FRAME"),UpdateCentral_Mixin)
@@ -1088,7 +1094,10 @@ end
 
 function ZGV:LoadInitialGuide(fastload)
 	--if not self.guidesloaded then self:ErrorThrow("Guides failed to load! Cannot load initial guide.") return end
-	if self.CurrentGuide then return end
+	if self.CurrentGuide then 
+		ZGV.Frame:ShowSpecialState("normal")
+		return 
+	end
 
 	--if self.db.char["starting"] then
 	if ZGV.db.char.maint_startup_startguide then
@@ -1108,7 +1117,9 @@ function ZGV:LoadInitialGuide(fastload)
 			self:SetGuide(self.db.char.guidename,self.db.char.step)
 		end
 
-		if not self.CurrentGuide and not fastload then
+		if ZGV.db.char.unloadedguide then 
+			ZGV.Frame:ShowSpecialState("select")
+		elseif not self.CurrentGuide and not fastload then
 			if self.db.char.tabguides and next(self.db.char.tabguides) then -- try loading one of existing tabs first
 				local _,guidedata = next(self.db.char.tabguides)
 				self:SetGuide(guidedata.title,guidedata.step)
@@ -1117,6 +1128,7 @@ function ZGV:LoadInitialGuide(fastload)
 				local gs = self:FindSuggestedGuides()
 				if gs['LEVELING'] then gs=gs['LEVELING'] end
 				if not gs or #gs==0 then
+					ZGV.Frame:ShowSpecialState("select")
 					self:Print("No guides suggested for your char. Please open guide menu and select the guide you want to use.")
 				elseif #gs==1 then
 					self:SetGuide(gs[1])
@@ -1637,7 +1649,14 @@ function ZGV:FocusStep(num,forcefocus)
 
 	-- if user changed guide/step, he may need to equip/dequip quest gear
 	if not self.skipping then
-		ZGV.ItemScore.Upgrades:ScanBagsForUpgrades()
+		local goto_count = 0
+		for gi,goal in ipairs(cs.goals) do
+			if goal.map then goto_count=goto_count+1 end
+		end
+		if not (goto_count>0 and ZGV.db.profile.pathfinding) then
+		-- no travel lines, or travel disabled, librover will not trigger, so finalise step
+			self:SendMessage("ZGV_STEP_FINALISED")
+		end
 	end
 
 	ZGV.QuestDB:MaybeShowButton()
@@ -1661,7 +1680,7 @@ function ZGV:FocusStepUnquiet()
 	self:ShowWaypoints()
 
 	--[[
-	-- Stickies don't get waypoints now.
+	-- Stickies don't get waypoints now, as of 2015-06-18.
 	local stickies = self:GetStickiesAt(nil)
 	for _,sticky in ipairs(stickies) do
 		if not sticky:IsComplete() or self.CurrentStep:IsComplete() then self:ShowWaypoints("sticky",sticky) end
@@ -3079,10 +3098,13 @@ end
 function ZGV:ZONE_CHANGED_NEW_AREA()
 	-- if not WorldMapFrame:IsVisible() then ZGV.WMU_Suspend() SetMapToCurrentZone() ZGV.WMU_Resume() end   -- TODO: reimplement with C_Map? maybe? maybe not?
 	self:CacheCurrentMapID()
+
+	-- clean up scenario based choices if player is not on a scenario map
+	ZGV:PlayerChoiceCleanUp()
 end
 
 function ZGV:TAXIMAP_OPENED()
-	if self.db.profile.autotaxi and self.CurrentStep then
+	if self.db.profile.autotaxi and self.CurrentStep and ZGV.Frame:IsVisible() then
 		local destination
 		for gi,goal in ipairs(self.CurrentStep.goals) do
 			--if goal.action=="fly" and goal.map==ZGV.CurrentMapID then
@@ -3931,7 +3953,7 @@ local function split(str,sep)
 	return fields
 end
 
-function ZGV:FindOrCreateGroup(group,title)
+function ZGV:FindOrCreateGroup(group,title,onlyfind)
 	local path = split(title,"\\")
 
 	-- create one
@@ -3946,13 +3968,17 @@ function ZGV:FindOrCreateGroup(group,title)
 		end
 		partialpath = (partialpath and partialpath.."\\" or "") .. path[i]
 		if not found then
-			local gr = {name=path[i],fullpath=partialpath,groups={},guides={},ord=#group.groups+1}
-			tinsert(group.groups,gr)
-			if i==1 then  -- we're at top level
-				SortGroups(group, false and "no recurse")
-				self:SendMessage("ZGV_LOADING_TOPLEVEL_GROUPS_UPDATED")
+			if onlyfind then 
+				return false
+			else
+				local gr = {name=path[i],fullpath=partialpath,groups={},guides={},ord=#group.groups+1}
+				tinsert(group.groups,gr)
+				if i==1 then  -- we're at top level
+					SortGroups(group, false and "no recurse")
+					self:SendMessage("ZGV_LOADING_TOPLEVEL_GROUPS_UPDATED")
+				end
+				group=gr
 			end
-			group=gr
 		end
 	end
 	return group
@@ -4929,6 +4955,72 @@ function ZGV.Surrogate_SendQuestChoiceResponse(choice)
 	local id = C_QuestChoice.GetQuestChoiceInfo()
 	ZGV:SendMessage("ZGV__QUEST_CHOICE_SENT",id,choice)
 end
+
+
+-- player choices made in Blizzard_PlayerChoiceUI
+function ZGV.PLAYER_CHOICE_UPDATE()
+	ZGV.db.char.playerchoices = ZGV.db.char.playerchoices or {}
+	local playerchoices = ZGV.db.char.playerchoices 
+
+	local choice = C_PlayerChoice.GetPlayerChoiceInfo()
+
+	if not choice then
+		ZGV.db.char.playerchoicegroup=nil
+		return 
+	end
+
+	ZGV.db.char.playerchoicegroup = choice.choiceID
+
+	playerchoices[choice.choiceID] = playerchoices[choice.choiceID] or {}
+
+	for i=1,choice.numOptions do
+		local c = C_PlayerChoice.GetPlayerChoiceOptionInfo(i)
+		playerchoices[choice.choiceID][i] = playerchoices[choice.choiceID][i] or {selected=false,name=(c.header or "").." "..(c.subheader or "")}
+		playerchoices[choice.choiceID][i].responseIdentifier=c.responseIdentifier -- each time we open the dialog window, buttons are getting new ids, so we need to update
+	end
+	playerchoices[choice.choiceID].scenario = C_Scenario.IsInScenario()
+end
+
+function ZGV.PLAYER_CHOICE_CLOSE()
+	local playerchoices = ZGV.db.char.playerchoices 
+	if not playerchoices then return end
+
+	for iset,set in pairs(ZGV.db.char.playerchoices) do
+		local selected = false
+		for ichoice,choice in ipairs(set) do
+			selected = selected or choice.selected
+		end
+		if not selected then
+			ZGV.db.char.playerchoices[iset]=nil
+		end
+	end
+end
+
+function ZGV:PlayerChoiceCleanUp()
+	if not ZGV.db.char.playerchoices then return end
+	local inscenario = C_Scenario.IsInScenario()
+	for i,v in pairs(ZGV.db.char.playerchoices) do
+		if v.scenario and not inscenario then
+			ZGV.db.char.playerchoices[i]=nil
+		end
+	end
+end
+
+function ZGV:PlayerChoiceResponce(buttonID)
+	if not ZGV.db.char.playerchoicegroup then return end
+	local currentplayerchoices = ZGV.db.char.playerchoices and ZGV.db.char.playerchoices[ZGV.db.char.playerchoicegroup]
+
+	if not currentplayerchoices then return end
+
+	for i,v in ipairs(currentplayerchoices) do
+		if v.responseIdentifier==buttonID then
+			v.selected = true
+		else
+			v.selected = false
+		end
+	end
+end
+
 
 function ZGV:QuestRewardSelect(choice)
 	local id = C_QuestChoice.GetQuestChoiceInfo()

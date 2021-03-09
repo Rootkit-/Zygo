@@ -163,7 +163,7 @@ function Pointer:HighlightTaxiDestination()
 
 	-- hop on automatically?
 	self:Debug("Would TakeTaxiNode(%d) #%d to %s (tag %s)",id,taxislot,TaxiNodeName(taxislot),taxinode.taxitag)
-	if ZGV.db.profile.autotaxi and id and not IsAltKeyDown() then
+	if ZGV.db.profile.autotaxi and id and ZGV.Frame:IsVisible() and not IsAltKeyDown() then
 		Dismount()
 		GetNumRoutes(id) -- dummy call! but needed in 6.1 for TakeTaxiNode to work. WTF Blizzard...
 		TakeTaxiNode(id)
@@ -216,21 +216,22 @@ function Pointer:HighlightFlightMapDestination()
 	end)()
 
 	-- zoom out if target is in a different zone
+	self:Debug("Taxizoom: starting")
 	if taxinodestart then
+		self:Debug("Taxizoom: nodestart found")
 		local pinstart = getpin(taxinodestart.taxinodeID)
 		if pinstart then
 			local mapID = GetTaxiMapID()
 			local sx,sy = pinstart.normalizedX,pinstart.normalizedY
 			local ex,ey = pin.normalizedX,pin.normalizedY
-			local esubMapInfo = ex and C_Map.GetMapInfoAtPosition(mapID, ex,ey)
-			local ssubMapInfo = sx and C_Map.GetMapInfoAtPosition(mapID, sx,sy)
-			if esubMapInfo and ssubMapInfo and (ssubMapInfo.mapID ~= esubMapInfo.mapID) --[[and FlagsUtil.IsSet(subMapInfo.flags, Enum.UIMapFlag.FlightMapAutoZoom) --]] then
-				FlightMapFrame:ZoomOut()
-				local centerX, centerY = MapUtil.GetMapCenterOnMap(esubMapInfo.mapID, mapID);
-				local ignoreScaleRatio = true;
-				--FlightMapFrame:InstantPanAndZoom(FlightMapFrame:GetScaleForMaxZoom(), centerX, centerY, ignoreScaleRatio);
-				FlightMapFrame:PanAndZoomTo(centerX, centerY)
-				ZGV:ScheduleTimer(function() FlightMapFrame:ZoomIn() end, 0.1)
+			local smapid = sx and (C_Map.GetMapInfoAtPosition(mapID, sx,sy) or {}).mapID or taxinodestart.m
+			local emapid = ex and (C_Map.GetMapInfoAtPosition(mapID, ex,ey) or {}).mapID or taxinode.m
+			self:Debug(("Taxizoom: Zooming from map %d (%d,%d) to %d (%d,%d)"):format(smapid or 0,sx*100,sy*100,emapid or 0,ex*100,ey*100))
+			if smapid and emapid and smapid~=emapid --[[and FlagsUtil.IsSet(subMapInfo.flags, Enum.UIMapFlag.FlightMapAutoZoom) --]] then
+				local centerX, centerY = MapUtil.GetMapCenterOnMap(emapid, mapID);
+				if centerX==0 then centerX,centerY=ex,ey end
+
+				self:ZoomFlightMapToCoords(centerX,centerY)
 			end
 		end
 	end
@@ -243,7 +244,7 @@ function Pointer:HighlightFlightMapDestination()
 	end,0.5)
 	
 	-- take auto taxi
-	if ZGV.db.profile.autotaxi and pin.taxiNodeData.slotIndex and not IsAltKeyDown() then
+	if ZGV.db.profile.autotaxi and pin.taxiNodeData.slotIndex and ZGV.Frame:IsVisible() and not IsAltKeyDown() then
 		Dismount()
 		--GetNumRoutes(index) -- dummy call! but needed in 6.1 for TakeTaxiNode to work. WTF Blizzard...
 		TakeTaxiNode(pin.taxiNodeData.slotIndex)
@@ -251,7 +252,14 @@ function Pointer:HighlightFlightMapDestination()
 
 end
 
-
+function Pointer:ZoomFlightMapToCoords(x,y)
+	ZGV:Print(("Zooming map to %d %d"):format(x*100,y*100))
+	FlightMapFrame:ZoomOut()
+	local ignoreScaleRatio = true;
+	--FlightMapFrame:InstantPanAndZoom(FlightMapFrame:GetScaleForMaxZoom(), x, y, ignoreScaleRatio);
+	ZGV:ScheduleTimer(function() FlightMapFrame:PanAndZoomTo(x, y) end, 0.2)
+	ZGV:ScheduleTimer(function() FlightMapFrame:ZoomIn() end, 0.4) -- in case PanAndZoomTo didn't start zooming
+end
 
 function Pointer:Startup()
 
@@ -1006,7 +1014,7 @@ function Pointer:MakeMarkerFrames(marker,markertype)
 		:SetScript("OnEnter",ZGV.Pointer.frame_minimap_functions.OnEnter)
 		:SetScript("OnLeave",ZGV.Pointer.frame_minimap_functions.OnLeave)
 		:SetScript("OnClick",ZGV.Pointer.frame_minimap_functions.OnClick)
-		:RegisterForClicks("LeftButtonUp")
+		:RegisterForClicks("RightButtonUp","LeftButtonUp")
 		:SetFrameLevel(4)
 		--:SetScript("OnEvent",ZGV.Pointer.frame_minimap_functions.OnEvent)
 	end
@@ -1524,7 +1532,7 @@ local function ShowTooltip(button,tooltip)
 			if line.indent then tooltip:AddTexture(ZGV.DIR .. "\\Skins\\blank") end
 		end end
 	else
-		tooltip:SetText((button.waypoint:GetTitle():gsub("(|c........%[my t)","\n%1")))
+		tooltip:SetText(button.waypoint:GetTitle())
 	end
 	if button.waypoint.OnEnter then
 		local r = button.waypoint:OnEnter(tooltip)
@@ -2413,17 +2421,17 @@ local were_in_unknown_location
 function Pointer.ArrowFrame_HideSpellArrow(self)
 	local icon = Pointer.ArrowFrame.ArrowIcon
 
+	--[[ itemscore upgrades handles requipping item in place of travel one
 	if icon.item then
-		local name,link,_,_,_,_,_,_,equipslot,texture = ZGV:GetItemInfo(icon.item or 0)
+		local name,link,_,_,_,_,_,_,equiptype,texture = ZGV:GetItemInfo(icon.item or 0)
 
-		if equipslot and equipslot:find("^INV") then
-			local slot = GetInventorySlotInfo(ZGV.ItemScore:GetItemSlot(equipslot))
-			local curItemlinkInSlot = ZGV.ItemScore:GetItemInSlot(equipslot) or 0
-			local oldCurItem = icon.curItemInSlot -- 0 means the slot was empty
+		if equiptype and equiptype:find("^INV") then
+			local slot = ZGV.ItemScore.TypeToSlot[equiptype]
+			local equipped = ZGV.ItemScore:GetItemInSlot(slot) or 0
+			local previous = icon.curItemInSlot -- 0 means the slot was empty
 
-			if curItemlinkInSlot:find(":"..icon.item..":") then -- They have the item to teleport equipped.
-				if oldCurItem == 0 then --They had no item equipped before the tp. So take off their item.
-
+			if equipped:find(":"..icon.item..":") then -- They have the item to teleport equipped.
+				if previous == 0 then --They had no item equipped before the tp. So take off their item.
 					local RemoveItem = function(slot) --functioned so that we can just return once a open slot is found instead of break break breaking
 						local bag,bagslot
 						for bag=0, NUM_BAG_SLOTS do
@@ -2440,13 +2448,15 @@ function Pointer.ArrowFrame_HideSpellArrow(self)
 
 					RemoveItem(slot)
 
-				elseif oldCurItem ~= curItemlinkInSlot then -- They had a different item equipped. Equip that one.
-					ZGV:Print(L['pointer_reequip_item']:format(link))
-					EquipItemByName(oldCurItem)
+				elseif previous ~= equipped then -- They had a different item equipped. Equip that one.
+					local previouslink = ZGV:GetItemInfo(previous)
+					ZGV:Print(L['pointer_reequip_item']:format(previouslink))
+					--EquipItemByName(previous)
 				end --else they had the tp item equipped. So leave it.
 			end
 		end
 	end
+	--]]
 
 	icon.item = nil
 	icon.curItemInSlot = nil
@@ -2457,7 +2467,7 @@ end
 function Pointer.ArrowFrame_ShowSpellArrow(self,waypoint)
 	local icon = Pointer.ArrowFrame.ArrowIcon
 	local safe =  not InCombatLockdown() and not UnitIsDeadOrGhost("player")
-	local found,name,_,texture,equipslot
+	local found,name,_,texture,equiptype
 
 	local node = waypoint.pathnode
 	local link = node and node.parentlink
@@ -2472,11 +2482,12 @@ function Pointer.ArrowFrame_ShowSpellArrow(self,waypoint)
 	local cooltime,cooldur,coolcharges = LibRover:GetCooldownWithoutGCD((spell and "spell") or (item and "item"),item or spell)
 
 	if safe then
-		if mode=="hearth" then
-				name,_,_,_,_,_,_,_,_,texture = ZGV:GetItemInfo(6948) --Yes, get local name for hearthstone then cast it by item name. Casting by spell doesn't work
-				icon:SetAttribute("type","item")
-				icon:SetAttribute("item",name)
-		elseif spell then
+		--if mode=="hearth" then
+		--		name,_,_,_,_,_,_,_,_,texture = ZGV:GetItemInfo(6948) --Yes, get local name for hearthstone then cast it by item name. Casting by spell doesn't work
+		--		icon:SetAttribute("type","item")
+		--		icon:SetAttribute("item",name)
+		--else
+		if spell then
 				name,_,texture = GetSpellInfo(spell)
 				icon:SetAttribute("type","spell")
 				icon:SetAttribute("spell",name)
@@ -2485,7 +2496,7 @@ function Pointer.ArrowFrame_ShowSpellArrow(self,waypoint)
 				icon:SetAttribute("type","toy")
 				icon:SetAttribute("toy",name) -- item attribute no longer supported for toys
 		elseif item and GetItemCount(item or 0)>0 then
-				name,_,_,_,_,_,_,_,equipslot,texture = ZGV:GetItemInfo(item)
+				name,_,_,_,_,_,_,_,equiptype,texture = ZGV:GetItemInfo(item)
 				icon:SetAttribute("type","item")
 				icon:SetAttribute("item",name)
 		end
@@ -2493,17 +2504,14 @@ function Pointer.ArrowFrame_ShowSpellArrow(self,waypoint)
 	end
 	if texture then
 		icon:Show()
-		icon.item = node.item or nil
+		icon.item = item
+		if equiptype then -- We need to equip this item to use it
+			local curItemlink,curItemID = ZGV.ItemScore:GetItemInSlot(ZGV.ItemScore.TypeToSlot[equiptype])
 
-		if equipslot then -- We need to equip this item to use it
-			local curItemlink = ZGV.ItemScore:GetItemInSlot(equipslot) or 0
-
-			if not icon.curItemInSlot or --nothing set.
-			 (icon.curItemInSlot ~= curItemlink and curItemlink ~= icon.item)
-			 then
-				icon.curItemInSlot = curItemlink
+			if not icon.curItemInSlot or (icon.curItemInSlot ~= curItemID and curItemID ~= icon.item) then
+			-- nothing equipped, or something else is equipped
+				icon.curItemInSlot = curItemID
 			end
-
 		end
 		icon.texture:SetAllPoints(true)
 		icon.texture:SetTexture(texture)
@@ -3645,7 +3653,7 @@ function Pointer.Overlay_OnUpdate(frame,but,...)
 			local fmt = ZGV.db.profile.debug_display and "%s %.2f,%.2f" or "%s %d,%d"
 
 			if Pointer.debug_patheditmode then
-				Pointer:Debug_AddPointToPath(map,nil,x,y)
+				Pointer:Debug_AddPointToPath(map,x,y)
 				ZGV:ShowWaypoints()
 				return
 			end

@@ -19,11 +19,11 @@ STYLE.Accent  = ACCENT
 ------------------- Global config
 STYLE.ButtonHighlight = {HTMLColor("#444444ff")}
 
-STYLE.ViewerMargin = 10
+STYLE.ViewerMargin = 0
 
 STYLE.TitleButtons = STYLEDIR.."titlebuttons-thick"
 STYLE.TitleLogo = STYLEDIR.."zygorlogo"
-STYLE.TitleLogoSize = {110,110/4}
+STYLE.TitleLogoSize = {0, 0}
 
 STYLE.TitleButtonSize = 16
 STYLE.TitleButtonInset = 0
@@ -77,8 +77,8 @@ STYLE.StepBackdropColor=STYLE.SecBackdropColor
 STYLE.StepBackdropBorderColor=STYLE.DarkBorder
 STYLE.StepBackdropPersistentBorder=true
 
-STYLE.StepSpacing = 2
-STYLE.StepStickyBarSpace = 5
+STYLE.StepSpacing = 1
+STYLE.StepStickyBarSpace = 1
 STYLE.StepStickyBarHeight = 1
 STYLE.StepStickySeparatorColor = {ZGV.F.HTMLColor("#222222ff")}
 STYLE.StepPaddingTop = 0
@@ -92,7 +92,7 @@ STYLE.StepLineBackBackdropColor={0,0,0,0}
 STYLE.StepLineBackBackdropBorderColor=STYLE.StepLineBackBackdropColor
 STYLE.StepLineClickerBackdrop=STYLE.StepLineBackBackdrop
 STYLE.StepLinePaddingWidth=3  --between line area and content
-STYLE.StepLinePaddingHeight=3
+STYLE.StepLinePaddingHeight=1
 STYLE.StepLineIconOffset=0
 STYLE.StepLineTextOffset=0
 STYLE.StepLineIcons = STYLEDIR.."stepicons"
@@ -159,7 +159,7 @@ STYLE.ProgressBarHeight = 7
 STYLE.ProgressBarInset = 0
 STYLE.ProgressBarColor = {0.0,0.8,0.0,1.0}
 STYLE.ProgressBarColor2 = {1/255,162/255,253/255,1.0}
-STYLE.ProgressBarSpaceHeight = 12
+STYLE.ProgressBarSpaceHeight = 0
 
 
 ------------------- Specific objects
@@ -262,8 +262,8 @@ STYLE.WorldQuestBackdropBorderColor=STYLE.MainBackdropBorderColor
 STYLE.WorldQuestMargin = 10
 
 -- Tabs
-STYLE.TabsMargin = 10
-STYLE.TabsHeight = 20
+STYLE.TabsMargin = 0
+STYLE.TabsHeight = 10
 STYLE.TabsIconSize = 12
 STYLE.TabsIcons = ZGV.DIR.."\\Skins\\guideicons-big"
 STYLE.TabsBackdrop=STYLE.MainBackdrop
@@ -279,7 +279,7 @@ STYLE.TabsTextColorOver={ZGV.F.HTMLColor("#ffffff77")}
 STYLE.TabsBusyIcon = ZGV.DIR.."\\Skins\\loading"
 STYLE.TabsDecor = false
 STYLE.TabsDecorWidth = 0
-STYLE.TabsTopOffset = 0
+STYLE.TabsTopOffset = -5
 STYLE.TabsFirstOffset = 0
 
 -- Auction tools
