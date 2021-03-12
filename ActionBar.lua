@@ -36,6 +36,8 @@ end
 function ActionBar:SetActionButtons()
 	-- Hide disabled oveerlay
 
+	if not ZGV.CurrentStep then return end
+	
 	if ActionBar.SetTimer then ZGV:CancelTimer(ActionBar.SetTimer) end
 	if InCombatLockdown() then
 		ActionBar.SetTimer = ZGV:ScheduleTimer(function() 
@@ -264,8 +266,8 @@ function ActionBar:ToggleFrame()
 	end
 	
 	if ZGV.db.profile.enable_actionbar and ZGV.db.profile.enable_actionbuttons and ZGV.db.profile.enable_viewer then
-		ActionBar:SetActionButtons()
 		ActionBar.Frame:Show()
+		ActionBar:SetActionButtons()
 	else
 		ActionBar.Frame:Hide()
 	end

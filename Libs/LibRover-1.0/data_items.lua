@@ -93,7 +93,12 @@ data.portkeys = { -- smile if you're a muggle
 	{item=63378, destination="Tol Barad Peninsula 73.7,60.9", cost=otheritem, cooldown=14400}, -- Baradin's Wardens Tabard  Alliance -- TODO only approx coords
 	{item=63379, destination="Tol Barad Peninsula 55.8,80.1", cost=otheritem, cooldown=14400}, -- Hellscream's Reach Tabard  Horde
 
-
+	--Wormhole Generator: Northrend
+	{item=48933, toy=true, destination="Borean Tundra 51.78,45.03", cost=15, cooldown=4*60*60, title="Use Wormhole Generator: Northrend and select Borean Tundra", cond=function() return ZGV.Parser.ConditionEnv.skill('Northrend Engineering')>=40 end}, 
+	{item=48933, toy=true, destination="Howling Fjord 58.53,48.63", cost=15, cooldown=4*60*60, title="Use Wormhole Generator: Northrend and select Howling Fjord", cond=function() return ZGV.Parser.ConditionEnv.skill('Northrend Engineering')>=40 end},  
+	{item=48933, toy=true, destination="Sholazar Basin 49.21,39.62", cost=15, cooldown=4*60*60, title="Use Wormhole Generator: Northrend and select Sholazar Basin", cond=function() return ZGV.Parser.ConditionEnv.skill('Northrend Engineering')>=40 end},  
+	{item=48933, toy=true, destination="Icecrown 62.87,26.92", cost=15, cooldown=4*60*60, title="Use Wormhole Generator: Northrend and select Icecrown", cond=function() return ZGV.Parser.ConditionEnv.skill('Northrend Engineering')>=40 end}, 
+	{item=48933, toy=true, destination="The Storm Peaks 43.90,25.80", cost=15, cooldown=4*60*60, title="Use Wormhole Generator: Northrend and select Storm Peaks", cond=function() return ZGV.Parser.ConditionEnv.skill('Northrend Engineering')>=40 end}, 
 
 	--------------
 	--- LEGION ---
@@ -173,4 +178,12 @@ data.portkeys = { -- smile if you're a muggle
 	-------------------
 	-- Cypher of Relocation
 		{item=180817, destination="The Maw/0 46.22,41.25", cost=30, cooldown=1200, cond=function() local m=ZGV.CurrentMapID return m==1543 or m==1823 or m==1822 or m==1821 or m==1820 end},
+
+	-- Wormhole Generator: Shadowlands
+	{item=172924, toy=true, destination="Oribos 52.08,26.13", cost=15, cooldown=900, title="Use Wormhole Generator: Shadowlands and select Oribos", cond=function() return ZGV.Parser.ConditionEnv.skill('Shadowlands Engineering')>0 end},
+	{item=172924, toy=true, destination="Bastion 51.85,87.76", cost=15, cooldown=900, title="Use Wormhole Generator: Shadowlands and select Bastion", cond=function() return ZGV.Parser.ConditionEnv.skill('Shadowlands Engineering')>0 end},
+	{item=172924, toy=true, destination="Maldraxxus 42.44,43.99", cost=15, cooldown=900, title="Use Wormhole Generator: Shadowlands and select Maldraxxus", cond=function() return ZGV.Parser.ConditionEnv.skill('Shadowlands Engineering')>0 end},
+	{item=172924, toy=true, destination="Ardenweald 54.42,60.32", cost=15, cooldown=900, title="Use Wormhole Generator: Shadowlands and select Ardenweald", cond=function() return ZGV.Parser.ConditionEnv.skill('Shadowlands Engineering')>0 end},
+	{item=172924, toy=true, destination="Revendreth 37.50,76.55", cost=15, cooldown=900, title="Use Wormhole Generator: Shadowlands and select Revendreth", cond=function() return ZGV.Parser.ConditionEnv.skill('Shadowlands Engineering')>0 end},
+	{item=172924, toy=true, destination="The Maw 22.45,28.15", cost=15, cooldown=900, title="Use Wormhole Generator: Shadowlands and select The Maw", cond=function() return ZGV.Parser.ConditionEnv.skill('Shadowlands Engineering')>0 end},
 }

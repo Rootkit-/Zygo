@@ -19,17 +19,19 @@ STYLE.Accent  = ACCENT
 ------------------- Global config
 STYLE.ButtonHighlight = {HTMLColor("#444444ff")}
 
-STYLE.ViewerMargin = 0
+STYLE.ViewerMargin = 10
 
 STYLE.TitleButtons = STYLEDIR.."titlebuttons-thick"
 STYLE.TitleLogo = STYLEDIR.."zygorlogo"
-STYLE.TitleLogoSize = {0, 0}
+STYLE.TitleLogoSize = {110,110/4}
 
 STYLE.TitleButtonSize = 16
 STYLE.TitleButtonInset = 0
 STYLE.TitleButtonStepPrevNextSize = 14
 STYLE.TitleButtonInsetHighlight = 0
 STYLE.TitleButtonHighlightAlpha = 0.6
+
+STYLE.TopHeight = 60.0
 
 STYLE.StepNumFontSize = 14
 STYLE.StepNumWidth = 40
@@ -77,8 +79,8 @@ STYLE.StepBackdropColor=STYLE.SecBackdropColor
 STYLE.StepBackdropBorderColor=STYLE.DarkBorder
 STYLE.StepBackdropPersistentBorder=true
 
-STYLE.StepSpacing = 1
-STYLE.StepStickyBarSpace = 1
+STYLE.StepSpacing = 2
+STYLE.StepStickyBarSpace = 5
 STYLE.StepStickyBarHeight = 1
 STYLE.StepStickySeparatorColor = {ZGV.F.HTMLColor("#222222ff")}
 STYLE.StepPaddingTop = 0
@@ -92,7 +94,7 @@ STYLE.StepLineBackBackdropColor={0,0,0,0}
 STYLE.StepLineBackBackdropBorderColor=STYLE.StepLineBackBackdropColor
 STYLE.StepLineClickerBackdrop=STYLE.StepLineBackBackdrop
 STYLE.StepLinePaddingWidth=3  --between line area and content
-STYLE.StepLinePaddingHeight=1
+STYLE.StepLinePaddingHeight=3
 STYLE.StepLineIconOffset=0
 STYLE.StepLineTextOffset=0
 STYLE.StepLineIcons = STYLEDIR.."stepicons"
@@ -151,6 +153,7 @@ STYLE.ProgressBarCaps = STYLEDIR.."progressbarcaps"
 STYLE.ProgressBarWidth = 0
 STYLE.ProgressBarCapsColor = {0,0,0,0}
 STYLE.ProgressBarOffsetX = 0
+STYLE.ProgressBarOffsetY = 0
 
 -- Progress bar legacy, still used in some places. 
 STYLE.ProgressBarTexture = {1.0,1.0,1.0,1.0}
@@ -159,19 +162,14 @@ STYLE.ProgressBarHeight = 7
 STYLE.ProgressBarInset = 0
 STYLE.ProgressBarColor = {0.0,0.8,0.0,1.0}
 STYLE.ProgressBarColor2 = {1/255,162/255,253/255,1.0}
-STYLE.ProgressBarSpaceHeight = 0
+STYLE.ProgressBarSpaceHeight = 12
 
 
 ------------------- Specific objects
 -- Main viewer frame, bottom part decoration
-STYLE.WindowBottomBackdrop=STYLE.MainBackdrop
-STYLE.WindowBottomBackdropColor=TRANSPARENT
-STYLE.WindowBottomBBackdropBorderColor=TRANSPARENT
-
--- Main viewer frame, bottom part decoration
 STYLE.WindowBottomBackdrop={bgFile=SKINSDIR.."white",edgeFile=SKINSDIR.."white",tile = true, edgeSize=1, tileSize = 32, insets = { left = 0, right = 0, top = 0, bottom = 0 }}
 STYLE.WindowBottomBackdropColor=TRANSPARENT
-STYLE.WindowBottomBBackdropBorderColor=TRANSPARENT
+STYLE.WindowBottomBackdropBorderColor=TRANSPARENT
 
 -- Bar with step navigation
 STYLE.SystemBarBackdropColor = {ZGV.F.HTMLColor("#222222ff")}
@@ -262,8 +260,8 @@ STYLE.WorldQuestBackdropBorderColor=STYLE.MainBackdropBorderColor
 STYLE.WorldQuestMargin = 10
 
 -- Tabs
-STYLE.TabsMargin = 0
-STYLE.TabsHeight = 10
+STYLE.TabsMargin = 10
+STYLE.TabsHeight = 20
 STYLE.TabsIconSize = 12
 STYLE.TabsIcons = ZGV.DIR.."\\Skins\\guideicons-big"
 STYLE.TabsBackdrop=STYLE.MainBackdrop
@@ -279,7 +277,7 @@ STYLE.TabsTextColorOver={ZGV.F.HTMLColor("#ffffff77")}
 STYLE.TabsBusyIcon = ZGV.DIR.."\\Skins\\loading"
 STYLE.TabsDecor = false
 STYLE.TabsDecorWidth = 0
-STYLE.TabsTopOffset = -5
+STYLE.TabsTopOffset = 0
 STYLE.TabsFirstOffset = 0
 
 -- Auction tools

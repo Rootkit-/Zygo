@@ -2026,7 +2026,7 @@ author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the introductory Demon Hunter quests and unlocking the Havoc and Vengeance artifacts.",
 condition_suggested=function() return raceclass('DemonHunter') and level >= 8 and level <= 50 and not intutorial end,
 condition_suggested_exclusive=true,
-condition_valid=function() return raceclass('DemonHunter') and level >= 10 end,
+condition_valid=function() return raceclass('DemonHunter') and level >= 8 end,
 condition_valid_msg="You must be a Demon Hunter and at least level 8 to complete this guide!",
 image=ZGV.DIR.."\\Guides\\Images\\Mardum",
 startlevel=8.0,
@@ -38569,7 +38569,7 @@ Click here to continue |confirm
 step
 You have now completed A Dark Place scenario!
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Legion (100-110)\\Uuna World Tour",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Legion (10-50)\\Uuna World Tour",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through the Uuna World Tour.",
 },[[
@@ -38638,7 +38638,7 @@ step
 _Congratulations!_
 You Completed the "Uuna World Tour" Hidden Quest.
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Legion (100-110)\\The Hunt For Illidan Stormrage",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Legion (10-50)\\The Hunt For Illidan Stormrage",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the \"The Hunt For Illidan Stormrage\" questline.",
 },[[

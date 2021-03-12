@@ -273,6 +273,8 @@ function Node:GetText(prevnode,nextnode,dir)
 		return ("%s/%s border"):format(MapName(self),MapName(self.border or self.ms and next(self.ms)))
 	elseif self.taxioperator=="ferry" then
 		return ("%s ferry dock"):format(self.name)
+	elseif self.taxioperator=="eternalgateway" then
+		return ("%s Eternal Gateway"):format(self.name)
 	elseif self.type=="taxi" then
 		return ("%s flight point"):format(self.name)
 	elseif self.type=="ship" then
@@ -321,15 +323,16 @@ local modecolors = {
 	["?"] = "|cff888888",
 }
 function Node:IsTaxiKnown()
-	if self.known==true and not self.recheck then return true,"|cff00ff00known|r",true
-	elseif self.known==false and not self.recheck then return false,"|cffff0000unknown|r",true
-	elseif (self.quest and not IsQuestFlaggedCompleted(self.quest)) then return false,"|cffff0000assumed unknown (quest incomp)|r",false
-	elseif (self.factionid and ZGV:GetReputation(self.factionid).standing<(self.factionstanding or 3)) then return false,"|cffff0000assumed unknown (faction rep)|r",false
-	elseif (self.cond_fun and not self.cond_fun()) then return false,"|cffff0000assumed unknown (cond fail)|r",false
-	elseif (self.level and ZGV:GetPlayerPreciseLevel()<self.level) or (not C_Map.GetMapLevels(self.m) or C_Map.GetMapLevels(self.m)>ZGV:GetPlayerPreciseLevel()+5) then return false,"|cffff0000assumed unknown (high lvl)|r",false
-	elseif self.known==true then return true,"|cff00ff00known|r",true
-	elseif self.known==false then return false,"|cffff0000unknown|r",true
-	else return nil,"|cffffaa00maybe?|r",true end
+	if self.known_fun then self.known=not not self.known_fun()  return self.known,(self.known and "|cff00ff00known (func)|r" or "|cffff0000unavailable (func)|r"),self.known  end
+
+	    if self.known==true then return true,"|cff00ff00known|r",true
+	elseif (self.quest and not IsQuestFlaggedCompleted(self.quest)) then return false,"|cffff0000unavailable (quest incomp)|r",false
+	elseif (self.factionid and ZGV:GetReputation(self.factionid).standing<(self.factionstanding or 3)) then return false,"|cffff0000unavailable (faction rep)|r",false
+	elseif (self.cond_fun and not self.cond_fun()) then return false,"|cffff0000unavailable (cond fail)|r",false
+	elseif (self.level and ZGV:GetPlayerPreciseLevel()<self.level) or (not C_Map.GetMapLevels(self.m) or C_Map.GetMapLevels(self.m)>ZGV:GetPlayerPreciseLevel()+5) then return false,"|cffff0000unavailable (high lvl)|r",false
+	elseif self.known==false then return false,"|cffff0000unknown|r",true  -- discoverable
+	else   return nil,"|cffffaa00maybe?|r",true
+	end
 end
 
 function Node:tostring(withneighs)
@@ -338,13 +341,15 @@ function Node:tostring(withneighs)
 		if self.taxioperator then stype=stype.."-"..self.taxioperator end
 		if self.taxinodeID then stype=stype.."#"..self.taxinodeID end
 	end
-	local ret = ("[%d] %s\"%s\" = %s %d /%d %.1f,%.1f [%s]"):format(self.num, (self.id and "@"..self.id.." " or ""), self:GetText() or "\"#"..self.num.."\"", Lib.MapName(self.m), self.m, self.f, self.x*100,self.y*100, stype)
-	if self.is_arrival then  ret = ret .. " (arrival)" end
-	ret = ret .. (" (%s)"):format(self.status or "untouched")
-	if self.border_optimization then local bo=self.border_optimization  ret = ret .. (" (b/o:%s)"):format((bo=="border" and "|cffff4400bd|r") or (bo=="taxi" and "|cff88ff00tx|r") or (bo=="ignore" and "|cff0088ffig|r"))  end
+	-- static data first
+	local ret = ("[%d] %s\"|cffddddee%s|r\" = |cffddeedd%s|r/%d (%d) |cffddeedd%.1f|r,|cffddeedd%.1f|r [|cffeedddd%s|r]"):format(self.num, (self.id and "@"..self.id.." " or ""), self:GetText() or "\"#"..self.num.."\"", Lib.MapName(self.m), self.f, self.m, self.x*100,self.y*100, stype)
 	if self.region then  ret = ret .. (" (REG:|cff0088ff%s|r)"):format(self.region)  end
-	if self.type=="taxi" then ret = ret .. (" |cff8899aa(taxi %s|cff8899aa)|r"):format(select(2,self:IsTaxiKnown()))  end
-	if self.parentlink then  ret = ret .. (" |cff8899aa(mode:|cffffffff%s|r from [|cffffffff%d|r])|r"):format(self.parentlink.mode,self.parent.num)  end
+	if self.type=="taxi" then ret = ret .. (" |cff8899aa(taxi|r %s|cff8899aa)|r"):format(select(2,self:IsTaxiKnown()))  end
+	if self.is_arrival then  ret = ret .. " (arrival)" end
+	-- dynamic data
+	ret = ret .. (" (state:%s)"):format(self.status or "untouched")
+	if self.border_optimization then local bo=self.border_optimization  ret = ret .. (" (b/o:%s)"):format((bo=="border" and "|cffff4400bd|r") or (bo=="taxi" and "|cff88ff00tx|r") or (bo=="ignore" and "|cff0088ffig|r"))  end
+	if self.parentlink then  ret = ret .. (" |cff8899aa(mode:|cffffffff%s|r from [|cffffffff%s|r])|r"):format(self.parentlink.mode,self.parent.type=="start" and "start" or self.parent.num)  end
 	if (self.a_b__c_d and self.a_b__c_d~="") then ret = ret .. (" |cff888888(context:|cff00aa55%s|r)|r"):format(self.a_b__c_d)
 	elseif (self.a_b and self.a_b~="") then ret = ret .. (" |cff888888(context:|cff00aa55%s|r)|r"):format(self.a_b) end
 	if self.mytime then ret = ret .. (" |cff888888[my t=|cff55aa00%.1f|r/|cff77ee00%.1f|r]|r"):format(self.mytime or -1,self.mycost or -1) end

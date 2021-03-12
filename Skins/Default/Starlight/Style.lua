@@ -41,6 +41,8 @@ STYLE.StepNumFontSize = 14
 STYLE.StepNumWidth = 40
 STYLE.StepFontSizeMod = 1
 
+STYLE.TopHeight = 55.5  -- hate this! This should be calculated from titlebar+tabs+toolbar heights!
+
 STYLE.StyleAceGUI = true
 
 STYLE.UseOpacity = false
@@ -158,6 +160,7 @@ STYLE.ProgressBarCaps = STYLEDIR.."progressbarcaps"
 STYLE.ProgressBarWidth = 4
 STYLE.ProgressBarCapsColor = STEPBACK
 STYLE.ProgressBarOffsetX = 5
+STYLE.ProgressBarOffsetY = -4
 
 -- Progress bar legacy, still used in some places. 
 STYLE.ProgressBarTexture = {1.0,1.0,1.0,1.0}
@@ -166,7 +169,7 @@ STYLE.ProgressBarHeight = 7
 STYLE.ProgressBarInset = 0
 STYLE.ProgressBarColor = {0.0,0.8,0.0,1.0}
 STYLE.ProgressBarColor2 = {1/255,162/255,253/255,1.0}
-STYLE.ProgressBarSpaceHeight = 12
+STYLE.ProgressBarSpaceHeight = 16
 
 
 
@@ -177,9 +180,9 @@ STYLE.WindowBackdropColor=TRANSPARENT --{ZGV.F.HTMLColor("#111111FF")}
 STYLE.WindowBackdropBorderColor={ZGV.F.HTMLColor("#111111FF")} --or TRANSPARENT
 
 -- Main viewer frame, bottom part decoration
-STYLE.WindowBottomBackdrop={bgFile=SKINSDIR.."white",edgeFile=STYLEDIR.."backdrop-opaque-small",tile = true, edgeSize=32, tileSize = 32, insets = { left = 32, right = 32, top = 32, bottom = 32 }}
+STYLE.WindowBottomBackdrop={bgFile=SKINSDIR.."white",edgeFile=STYLEDIR.."backdrop-opaque-small",tile = true, edgeSize=32, tileSize = 32, insets = { left = 31, right = 31, top = 31, bottom = 31 }}
 STYLE.WindowBottomBackdropColor=STEPBACK
-STYLE.WindowBottomBBackdropBorderColor=STEPBACK
+STYLE.WindowBottomBackdropBorderColor=STEPBACK
 
 -- Bar with step navigation
 STYLE.SystemBarBackdropColor = CONTROLBAR

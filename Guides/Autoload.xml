@@ -1,11 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-	<!-- Autoloading of included guides. Add your Guide##.lua files here as you please. -->
-
-		<Script>
-		___TG = debugprofilestop()
-		</Script>
-
 		<Script file="Images\Images.lua"/>
 	
 	<!-- INCLUDES -->
@@ -281,6 +275,9 @@
 		<Script file="Professions\ZygorProfessionsAllianceBFATrial.lua"/>
 
 		<!-- SHADOWLANDS -->
+		<Script file="Professions\ZygorProfessionsCommonSHADOW.lua"/>
+		<Script file="Professions\ZygorProfessionsCommonSHADOWTrial.lua"/>
+
 		<Script file="Professions\ZygorProfessionsHordeSHADOW.lua"/>
 		<Script file="Professions\ZygorProfessionsHordeSHADOWTrial.lua"/>
 
@@ -331,6 +328,9 @@
 
 		<Script file="Achievements\ZygorAchievementsHordeSHADOW.lua"/>
 		<Script file="Achievements\ZygorAchievementsHordeSHADOWTrial.lua"/>
+
+		<Script file="Achievements\ZygorAchievementsCommonSHADOW.lua"/>
+		<Script file="Achievements\ZygorAchievementsCommonSHADOWTrial.lua"/>
 	
 
 	<!-- PETS AND MOUNTS -->
@@ -496,6 +496,9 @@
 
 		<Script file="PetsMounts\ZygorMountsAllianceSHADOW.lua"/>
 		<Script file="PetsMounts\ZygorMountsAllianceSHADOWTrial.lua"/>
+
+		<Script file="PetsMounts\ZygorMountsCommonSHADOW.lua"/>
+		<Script file="PetsMounts\ZygorMountsCommonSHADOWTrial.lua"/>
 
 		<Script file="PetsMounts\ZygorBattlePetQuestsHordeSHADOW.lua"/>
 		<Script file="PetsMounts\ZygorBattlePetQuestsHordeSHADOWTrial.lua"/>
@@ -671,9 +674,4 @@
 	<!-- user guides -->
 	<!-- bfa alpha change
 	-->
-
-		<Script>
-		ZGV.loading_time_guides = debugprofilestop()-___TG
-		___TG=nil
-		</Script>
 </Ui>

@@ -270,7 +270,10 @@ function Appraiser:ActivateSellItem(item,automatic)
 
 	self.SellManualUnselect = false
 
-	ZGV.Gold.Scan:ListenByName(item.name,item.itemid)
+	local location = ItemLocation:CreateFromBagAndSlot(item.bag, item.slot)
+	local itemkey = C_AuctionHouse.GetItemKeyFromItem(location)
+
+	ZGV.Gold.Scan:ListenByKey(itemkey)
 
 	PickupContainerItem(item.bag, item.slot)
 	AuctionHouseFrame.CommoditiesSellFrame:OnOverlayClick()

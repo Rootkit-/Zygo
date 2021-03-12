@@ -205,15 +205,6 @@ function Appraiser:CreateMainFrame()
 		.__END
 		ZGV.ButtonSets.TitleButtons.SETTINGS:AssignToButton(MF.FooterSettingsButton)
 
-		MF.progressFrame = CHAIN(ui:Create("ProgressBar",MF.FooterFrame))
-			:SetSize(MF:GetWidth()-20,7)
-			:SetFrameStrata("HIGH")
-			:SetFrameLevel(self.MainFrame:GetFrameLevel()+3)
-			:SetPoint("TOP",MF.FooterFrame,"BOTTOM",0,-1)
-			:SetDecor(SkinData("ProgressBarDecorUse"))
-			:SetAnim(true)
-		.__END
-
 	MF.ScanButton = CHAIN(ui:Create("Button",MF.FooterFrame ))
 		:SetSize(95,20)
 		:SetPoint("BOTTOMRIGHT",MF.FooterFrame ,"TOPRIGHT", -10, 7)
@@ -227,6 +218,17 @@ function Appraiser:CreateMainFrame()
 			end)
 		:SetScript("OnLeave",function(self) GameTooltip:Hide() end)
 		:SetPushedBackdropColor(unpack(SkinData("Accent")))
+	.__END
+
+	MF.progressFrame = CHAIN(ui:Create("ProgressBar",MF.FooterFrame))
+		:SetSize(MF:GetWidth()-20,7)
+		:SetFrameStrata("HIGH")
+		:SetFrameLevel(self.MainFrame:GetFrameLevel()+3)
+		:ClearAllPoints()
+		:SetPoint("BOTTOMLEFT",MF.FooterFrame,"TOPLEFT",7,13)
+		:SetPoint("RIGHT",MF.ScanButton,"LEFT",-7,0    )
+		:SetDecor(SkinData("ProgressBarDecorUse"))
+		:SetAnim(true)
 	.__END
 
 	Appraiser.Inventory_Frame = self:MakeInventoryTable()
@@ -483,6 +485,7 @@ local locale_hourly_intervals = {
 function Appraiser:UpdateTimeStamp()
 	if not self.MainFrame then return end
 	if not self.lastScanTime then self.lastScanTime = time() end
+	if not ZGVG.Scan.db then return end
 
 	local timestamptext,updateTitletext,lastScanStr
 
@@ -606,6 +609,12 @@ local last_pages=0
 function Appraiser:UpdateProgressBar()
 	local pf = self.MainFrame.progressFrame
 
+	if Scan.state=="SS_IDLE" then
+		pf:Hide()
+	else
+		pf:Show()
+	end
+
 	local scanprogress
 	local Scan = ZGV.Gold.Scan
 	if Scan.state=="SS_QUERYING" then
@@ -614,7 +623,7 @@ function Appraiser:UpdateProgressBar()
 			scanprogress=0.1
 	elseif Scan.state=="SS_RECEIVING" then
 		scanprogress=0.1
-	elseif Scan.state=="SS_SCANNING" then
+	elseif Scan.state=="SS_SCANNING" or Scan.state=="SS_SCANSINGLE" then
 		scanprogress=0.1+0.8*(Scan.scan_progress or 0) -- 10 to 90
 		--[[
 		local total_pages = math.ceil((Scan.total_count or 0)/50)

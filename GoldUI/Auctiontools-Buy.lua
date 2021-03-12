@@ -37,8 +37,10 @@ end
 function Appraiser:AddGuideItemsToBuy()
 	self.GuideBuyItems = {}
 
-	ZGV.NotificationCenter:RemoveEntry("GoldBuyItem")
-	ZGV.NotificationCenter:UpdateCounter()
+	if ZGV.NotificationCenter:EntryExists("GoldBuyItem") then
+		ZGV.NotificationCenter:RemoveEntry("GoldBuyItem")
+		ZGV.NotificationCenter:UpdateCounter()
+	end
 
 	for i=1,#ZGV.CurrentStep.goals do
 		local goal = ZGV.CurrentStep.goals[i]

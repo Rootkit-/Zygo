@@ -16,7 +16,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Alchemy\\Leveling Guides\\Pa
 	step
 		talk Ni Gentlepaw##56777
 		Train Pandaria Alchemy |skillmax Pandaria Alchemy,75 |goto The Jade Forest/0 46.55,46.02
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		talk Ni Gentlepaw##56777
 		buy 100 Crystal Vial##3371 |goto 46.55,46.02
@@ -87,7 +87,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Cooking\\Leveling Guides\\Pa
 	step
 		talk Sungshin Ironpaw##64231
 		Train Pandaria Cooking |skillmax Pandaria Cooking,75 |goto Valley of the Four Winds/0 53.58,51.24
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		Complete the Intro Quests for the Farm |condition completedq(31945)
 		|tip Use the Tillers guides to accomplish this.
@@ -214,7 +214,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Cooking\\Leveling Guides\\Pa
 	step
 		talk Sungshin Ironpaw##64231
 		Train Pandaria Cooking |skillmax Pandaria Cooking,75 |goto Valley of the Four Winds/0 53.58,51.24
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		Complete the Intro Quests for the Farm |condition completedq(31945)
 		|tip Use the Tillers guides to accomplish this.
@@ -352,7 +352,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Cooking\\Leveling Guides\\Pa
 	step
 		talk Sungshin Ironpaw##64231
 		Train Pandaria Cooking |skillmax Pandaria Cooking,75 |goto Valley of the Four Winds/0 53.58,51.24
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		Complete the Intro Quests for the Farm |condition completedq(31945)
 		|tip Use the Tillers guides to accomplish this.
@@ -488,7 +488,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Cooking\\Leveling Guides\\Pa
 	step
 		talk Sungshin Ironpaw##64231
 		Train Pandaria Cooking |skillmax Pandaria Cooking,75 |goto Valley of the Four Winds/0 53.58,51.24
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		Complete the Intro Quests for the Farm |condition completedq(31945)
 		|tip Use the Tillers guides to accomplish this.
@@ -622,7 +622,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Cooking\\Leveling Guides\\Pa
 	step
 		talk Sungshin Ironpaw##64231
 		Train Pandaria Cooking |skillmax Pandaria Cooking,75 |goto Valley of the Four Winds/0 53.58,51.24
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		Complete the Intro Quests for the Farm |condition completedq(31945)
 		|tip Use the Tillers guides to accomplish this.
@@ -757,7 +757,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Cooking\\Leveling Guides\\Pa
 	step
 		talk Sungshin Ironpaw##64231
 		Train Pandaria Cooking |skillmax Pandaria Cooking,75 |goto Valley of the Four Winds/0 53.58,51.24
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		Complete the Intro Quests for the Farm |condition completedq(31945)
 		|tip Use the Tillers guides to accomplish this.
@@ -902,7 +902,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Enchanting\\Leveling Guides\
 		talk Lai the Spellpaw##65127
 		|tip Inside the building.
 		Train Pandaria Enchanting |skillmax Pandaria Enchanting,75 |goto 46.85,42.94
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		collect 208 Spirit Dust##74249
 		|tip You can get these by Disenchanting Uncommon (green) items from any Pandaria zone.
@@ -961,7 +961,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Engineering\\Leveling Guides
 	step
 		talk Sally Fizzlefury##55143
 		Train Pandaria Engineering |skillmax Pandaria Engineering,75 |goto Valley of the Four Winds/0 16.06,83.14
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		collect 406 Ghost Iron Bar##72096
 		|tip Farm and Smelt them with Mining or purchase them from the Auction House.
@@ -1243,7 +1243,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Inscription\\Leveling Guides
 		talk Lorewalker Huynh##64691
 		|tip Inside the building.
 		Train Pandaria Inscription |skillmax Pandaria Inscription,75 |goto Vale of Eternal Blossoms/0 81.91,29.31
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		talk Lorewalker Huynh##64691
 		|tip Inside the building.
@@ -1284,7 +1284,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Jewelcrafting\\Leveling Guid
 	step
 		talk Mai the Jade Shaper##65098
 		Train Pandaria Jewelcrafting |skillmax Pandaria Jewelcrafting,75 |goto The Jade Forest/0 48.08,34.95
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		talk Mai the Jade Shaper##65098
 		learn Deadly Tiger Opal##107649 |goto 48.08,34.95
@@ -1336,7 +1336,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Leatherworking\\Leveling Gui
 	step
 		talk Clean Pelt##65121
 		Train Pandaria Leatherworking |skillmax Pandaria Leatherworking,75 |goto Kun-Lai Summit/0 64.66,60.86
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		collect 658 Exotic Leather##72120
 		|tip Farm them with Skinning or purchase them from the Auction House.
@@ -1524,7 +1524,7 @@ ZygorGuidesViewer:RegisterGuide("Profession Guides\\Skinning\\Leveling Guides\\P
 	step
 		talk Mr. Pleeb##63825
 		Train Pandaria Skinning |skillmax Pandaria Skinning,75 |goto Valley of the Four Winds/0 15.93,83.09
-		|tip You must be at least level 78.
+		|tip You must be at least level 5.
 	step
 		map Valley of the Four Winds/0
 		path follow smart; loop on; ants curved; dist 30

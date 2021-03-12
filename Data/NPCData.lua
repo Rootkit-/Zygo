@@ -7776,7 +7776,7 @@ ZGV._NPCData={
 		5150=sA|m87|x55.10|y58.26--Ironforge, Dun Morogh (Nissa Firestone)
 		2326=sA|m27|x54.29|y50.93--Kharanos, Dun Morogh (Thamner Pol)
 		3181=sA|m27|x10.50|y60.24--Deepwater Tavern, Wetlands (Fremal Doohickey)
-		50574=sA|m179|x36.86|y65.67|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Amelia Atherton)
+		50574=sA|m179|x36.86|y65.67|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Amelia Atherton)
 
 		--Horde--
 		4591=sH|m90|x73.16|y55.15|cZGV.InPhase("Old Undercity")--Undercity, Tirisfal Glades (Mary Edras)
@@ -7905,7 +7905,7 @@ ZGV._NPCData={
 		133322=sA|m84|x49.09|y12.36--Stormwind City, Elwynn Forest (Elya)
 		514=sA|m37|x41.71|y65.54--Goldshire, Elwynn Forest (Smith Argus)
 		47384=sA|m37|x41.95|y67.15--Goldshire, Elwynn Forest (Lien Farner)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 		142903=sA|m14|x13.48|y70.79|cZGV.InPhase("Old Arathi")--Stromgarde Keep, Arathi Highlands (Cain Tubal)
 
@@ -8069,7 +8069,7 @@ ZGV._NPCData={
 		3087=sA|m49|x22.85|y40.33--Lakeshire, Redridge Mountains (Crystal Boughman)
 		--34710=sA|m37|x33.6|y50.4|cisevent("Pilgrim's Bounty")--Gates of Stormwind, Elwynn Forest (Ellen Moore)
 		47384=sA|m37|x41.95|y67.15--Goldshire, Elwynn Forest (Lien Farner)
-		50567=sA|m179|x36.60|y65.72|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Fielding Chesterhill)
+		50567=sA|m179|x36.60|y65.72|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Fielding Chesterhill)
 
 		--Horde--
 		4552=sH|m90|x62.15|y44.91|cZGV.InPhase("Old Undercity")--Undercity, Tirisfal Glades (Eunice Burch)
@@ -8217,7 +8217,7 @@ ZGV._NPCData={
 		133394=sA|m84|x51.21|y12.69--Stormwind City, Elwynn Forest (Elestrae Dawnshard)
 		5157=sA|m87|x60.09|y45.31--Ironforge, Dun Morogh (Gimble Thistlefuzz)
 		47396=sA|m27|x53.81|y51.93--Kharanos, Dun Morogh (Wembil Taskwidget)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 		133771=sA|m14|x11.22|y70.49|cZGV.InPhase("Old Arathi")--Stromgarde Keep, Arathi Highlands (Nara Vel)
 
@@ -8359,7 +8359,7 @@ ZGV._NPCData={
 		5174=sA|m87|x68.48|y43.54--Ironforge, Dun Morogh (Springspindle Fizzlegear)
 		47396=sA|m27|x53.81|y51.93--Kharanos, Dun Morogh (Wembil Taskwidget)
 		1702=sA|m27|x57.34|y48.69--Kharanos, Dun Morogh (Bronk Guzzlegear)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 		142910=sA|m14|x13.02|y66.95|cZGV.InPhase("Old Arathi")--Stromgarde Keep, Arathi Highlands (Lily Gilbreath)
 
@@ -8647,7 +8647,7 @@ ZGV._NPCData={
 		1218=sA|m37|x39.96|y48.39--Hovel, Elwynn Forest (Herbalist Pomeroy)
 		47384=sA|m37|x41.95|y67.15--Goldshire, Elwynn Forest (Lien Farner)
 		1458=sA|m56|x11.25|y52.14--Menethil Harbor, Wetlands (Telurinon Moonshadow)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 
 		--Horde--
@@ -8794,7 +8794,7 @@ ZGV._NPCData={
 		30713=sA|m84|x49.83|y74.81--Stormwind City, Elwynn Forest (Catarina Stanford)
 		30717=sA|m87|x61.01|y45.19--Ironforge, Dun Morogh (Elise Brightletter)
 		47396=sA|m27|x53.81|y51.93--Kharanos, Dun Morogh (Wembil Taskwidget)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 
 		--Horde--
@@ -8931,7 +8931,7 @@ ZGV._NPCData={
 		47384=sA|m37|x41.95|y67.15--Goldshire, Elwynn Forest (Lien Farner)
 		52586=sA|m87|x50.17|y26.04--Ironforge, Dun Morogh (Hanner Gembold)
 		47396=sA|m27|x53.81|y51.93--Kharanos, Dun Morogh (Wembil Taskwidget)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 
 		--Horde--
@@ -9064,7 +9064,7 @@ ZGV._NPCData={
 		151287=sA|m84|x42.58|y60.44--Stormwind City, Elwynn Forest (Telonis)
 		1632=sA|m37|x46.38|y62.04--Goldshire, Elwynn Forest (Adele Fielder)
 		47384=sA|m37|x41.95|y67.15--Goldshire, Elwynn Forest (Lien Farner)
-		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
+		50247=sA|m179|x37.34|y63.16|ccompletedq(14320) and not (havequest(14465) or completedq(14465)) and not completedq(14434)--Duskhaven, Gilneas (Jack "All-Trades" Derrington)
 		50247=sA|m179|x59.24|y63.16|c(readyq(24438) or completedq(24438)) and not (havequest(24680) or completedq(24680)) and not completedq(14434)--Stormglen Village, Gilneas (Jack "All-Trades" Derrington)
 		11097=sA|m26|x13.39|y43.49--Wildhammer Keep, The Hinterlands (Drakk Stonehand)
 

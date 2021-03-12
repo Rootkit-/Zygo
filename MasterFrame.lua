@@ -8,3 +8,7 @@ function ZygorGuidesViewerFrameMaster_OnUpdate(self,elapsed)
 		ZGV:UpdateFrame(true)
 	end
 end
+
+function ZygorGuidesViewerFrameMaster_OnLoad(self)
+	ZGV.MasterFrame = self
+end

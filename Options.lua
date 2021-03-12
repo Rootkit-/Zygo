@@ -494,12 +494,26 @@ function ZGV:Options_DefineOptionTables()
 			type = 'toggle',
 			set = function(i,v)
 				Setter_Simple(i,v)
-				self:ReanchorFrame()
 				self:Debug("size up? %s",tostring(self.db.profile.resizeup))
+				if not v then  -- right side up
+					ZGV.MasterFrame:ClearAllPoints()
+					ZGV.MasterFrame:SetPoint("TOPLEFT",UIParent,"BOTTOMLEFT",ZGV.Frame:GetLeft()*ZGV.Frame:GetScale(),ZGV.Frame:GetTop()*ZGV.Frame:GetScale())
+				else  -- upside-down
+					ZGV.MasterFrame:ClearAllPoints()
+					ZGV.MasterFrame:SetPoint("BOTTOMLEFT",UIParent,"BOTTOMLEFT",ZGV.Frame:GetLeft()*ZGV.Frame:GetScale(),ZGV.Frame:GetBottom()*ZGV.Frame:GetScale())
+				end
+				self:ReanchorFrame()
 				--self.frameNeedsResizing = self.frameNeedsResizing + 1
-				self:AlignFrame()
+				self:UpdateFrame(true)
+				self.Frame:ApplySkin()
+
+				C_Timer.After(0.001,function()
+					--self.frameNeedsResizing = self.frameNeedsResizing + 1
+					self:UpdateFrame(true)
+				end)
+				--self:AlignFrame()
 				-- THIS SUCKS.
-			      end,
+			end,
 			width=200, 
 		})
 		AddOption('hideincombat',{ type = 'toggle', width="double", _default = false, })
@@ -525,6 +539,8 @@ function ZGV:Options_DefineOptionTables()
 			marginTop=-6,
 		})
 
+		AddOption('fixedheight',{ type = 'toggle', width = "full", _default=false, set = function(i,v) Setter_Simple(i,v) ZGV:UpdateFrame() end })
+		
 		AddOptionSpace()
 			AddOption('showinlinetravel',{ type = 'toggle', width = "full", _default=false, set = function(i,v) Setter_Simple(i,v) ZGV:ShowWaypoints() ZGV:UpdateFrame() end })
 			
@@ -1967,82 +1983,102 @@ function ZGV:Options_DefineOptionTables()
 			})
 			AddOptionSep()
 
-			local skills={"Blacksmithing","Tailoring", "Leatherworking", "Inscription",  "Jewelcrafting",  "Mining",  "Herbalism",  "Enchanting",  "Engineering",  "Alchemy",  "Skinning",  "Fishing",  "Cooking", "Way of the Grill", "Way of the Wok", "Way of the Pot", "Way of the Steamer", "Way of the Oven", "Way of the Brew", "First Aid",  "Archaeology" }
-			local skillvalues={}  for i,v in ipairs(skills) do skillvalues[v]=v end
-			AddOption('fakeskill',{
-				name = "Fake profession",
-				desc = "Check to simulate skill levels.",
-				type = 'select',
-				values=skillvalues,
-				set = function(i,v)
-					Setter_Simple(i,v)
+			do -- Fake skills
+				local skills={"Alchemy","Archaeology","Blacksmithing","Cooking","Enchanting","Engineering","First Aid","Fishing","Herbalism","Inscription","Jewelcrafting","Leatherworking","Mining","Skinning","Tailoring"}
+				local skillvalues={}  for i,v in ipairs(skills) do skillvalues[v]=v end
 
-					local fs = ZGV.db.profile.fakeskills[v]
+				AddOption('fakeskilltype',{
+					name = "Fake profession",
+					desc = "Check to simulate skill levels.",
+					type = 'select',
+					values=skillvalues,
+					set = Setter_Simple,
+					_default = "Alchemy",
+					_inline=true,
+					width=120,
+				})
 
-					self:SetOption("DebugFake","fakeskillcheck " .. (fs and "on" or "off"))
-
-					if fs then
-						local fsl = ZGV.optiontables.debugfake.args.fakeskilllevel
-						if not fsl then return end
-						fsl.min=max(0,tonumber(fs and fs.max or 0)-100)
-						fsl.max=tonumber(fs and fs.max or 0)
-						self:SetOption("DebugFake","fakeskilllevel ".. (fs and fs.level or 0))
-						self:SetOption("DebugFake","fakeskillmax ".. (fs and fs.max or 0))
-					end
-					  end,
-				_default = "Alchemy",
-				_inline=true,
-			})
-			AddOption('fakeskillcheck',{
-				name = "Fake",
-				desc = "",
-				type = 'toggle',
-				set = function(i,v)
-					Setter_Simple(i,v)
-					if v then
-						if not ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill] then
-							self:SetOption("DebugFake","fakeskilllevel 0")
-							self:SetOption("DebugFake","fakeskillmax 75")
+				AddOption('fakeskill',{
+					name = "",
+					type = 'select',
+					values=function() 
+						local arr = {}
+						for i,skillgroup in pairs(ZGV.Professions.tradeskills) do
+							if skillgroup.name==ZGV.db.profile.fakeskilltype then
+								for j,skill in pairs(skillgroup.subs) do
+									arr[skill.name]=skill.name
+								end
+							end
 						end
-					else
-						ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]=nil
-					end
-					  end,
-				get = function(i)
-					local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]
-					return not not skill
-					  end,
-				width = "half",
-			})
-			AddOption('fakeskilllevel',{
-				name = "Skill",
-				desc = "Skill level.",
-				type = 'range',
-				min = 0,
-				max = 800, -- EXPANSION: update
-				step = 1,
-				bigStep = 1,
-				set = function(i,v)
-					Setter_Simple(i,v)
-					if ZGV.db.profile.fakeskillcheck then
-						local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill] or {active=true,level=0,max=0}
-						skill.level = tonumber(v)
-						ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]=skill
-					end
-					  end,
-				get = function(i)
-					local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]
-					return skill and skill.level or 0
-					  end,
-				disabled = function() return not ZGV.db.profile.fakeskillcheck end,
-				width="half",
-				_default = 0,
-			})
-			AddOption('fakeskillmax',{
-				name = "Skill max",
-				desc = "Max skill level.",
-				type = 'select',
-				values={
+						return arr
+					end,
+					set = function(i,v)
+						Setter_Simple(i,v)
+
+						local fs = ZGV.db.profile.fakeskills[v]
+
+						self:SetOption("DebugFake","fakeskillcheck " .. (fs and "on" or "off"))
+
+						if fs then
+							local fsl = ZGV.optiontables.debugfake.args.fakeskilllevel
+							if not fsl then return end
+							fsl.min=max(0,tonumber(fs and fs.max or 0)-100)
+							fsl.max=tonumber(fs and fs.max or 0)
+							self:SetOption("DebugFake","fakeskilllevel ".. (fs and fs.level or 0))
+							self:SetOption("DebugFake","fakeskillmax ".. (fs and fs.max or 0))
+						end
+						end,
+					_default = "",
+					_inline=true,
+					width=140,
+				})
+				AddOption('fakeskillcheck',{
+					name = "Fake",
+					desc = "",
+					type = 'toggle',
+					set = function(i,v)
+						Setter_Simple(i,v)
+						if v then
+							if not ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill] then
+								self:SetOption("DebugFake","fakeskilllevel 0")
+								self:SetOption("DebugFake","fakeskillmax 75")
+							end
+						else
+							ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]=nil
+						end
+						end,
+					get = function(i)
+						local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]
+						return not not skill
+						end,
+					width = 80,
+				})
+				AddOption('fakeskilllevel',{
+					name = "Skill",
+					desc = "Skill level.",
+					type = 'range',
+					min = 0,
+					max = 800, -- EXPANSION: update
+					step = 1,
+					bigStep = 1,
+					set = function(i,v)
+						Setter_Simple(i,v)
+						if ZGV.db.profile.fakeskillcheck then
+							local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill] or {active=true,level=0,max=0}
+							skill.level = tonumber(v)
+							ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]=skill
+						end
+						end,
+					get = function(i)
+						local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]
+						return skill and skill.level or 0
+						end,
+					disabled = function() return not ZGV.db.profile.fakeskillcheck end,
+					width="half",
+					_default = 0,
+				})
+
+				local levels_alchemy = {
 					[0]="none",
 					[75]="75 Apprentice",
 					[150]="150 Journeyman",
@@ -2053,353 +2089,417 @@ function ZGV:Options_DefineOptionTables()
 					[525]="525 Illustrious G. M.",
 					[600]="600 Zen Master",
 					[700]="700 Draenor Master",				
-					[800]="800 Legion", -- EXPANSION: add more
-				},
-				set = function(i,v)
-					Setter_Simple(i,v)
-					if ZGV.db.profile.fakeskillcheck then
-						local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill] or {active=true,level=0,max=0}
-						skill.max = tonumber(v)
-						skill.level = min(skill.max,max(0,skill.level,skill.max-100))
-						ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]=skill
+					[800]="800 Legion Master",
+					[950]="950 Battle for Azeroth Master",
+				}
+				local levels_core = {
+					[0]="none",
+					[75]="75 Apprentice",
+					[150]="150 Journeyman",
+					[225]="225 Expert",
+					[300]="300 Artisan",
+				}
 
-						local fsl = ZGV.optiontables.debugfake.args.fakeskilllevel
-						if not fsl then return end
-						fsl.min=max(0,tonumber(skill.max)-100)
-						fsl.max=tonumber(skill.max)
-						self:SetOption("DebugFake","fakeskilllevel ".. skill.level)
-					end
-				end,
-				get = function(i)
-					local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]
-					return skill and skill.max or 0
-					  end,
-				disabled = function() return not ZGV.db.profile.fakeskillcheck end,
-				--width=140,
-				_default = 0,
-				_inline = true
-			})
-			AddOption('fakeskilllist',{
-				name = function()
-					local s = "Faked skills:"
-					for fsn,fs in pairs(ZGV.db.profile.fakeskills) do
-						s = s .. "\n" .. fsn .." = " .. fs.level .. "/" .. fs.max
-					end
-					if not next(ZGV.db.profile.fakeskills) then s = s .. "  none" end
-					return s
-					   end,
-				desc = "",
-				type = "description",
-				width = "full",
-			})
-			AddOption('fakeskillclear',{
-				type = "execute",
-				name = "Clear all skills",
-				func = function()
-					ZGV.db.profile.fakeskills={}
-					self:SetOption("DebugFake","fakeskillcheck off")
-					self:SetOption("DebugFake","fakeskilllevel ".. ZGV.db.profile.fakeskilllevel)
-					   end,
-			})
-			AddOptionSep()
-			AddOption('fakerep',{
-				name = "Fake reputation",
-				desc = "Simulate reputations.",
-				type = 'select',
-				values = function() return self.factions_mentioned end,
-				set = function(i,v)
-					Setter_Simple(i,v)
+				local levels_sub_75 = {
+					[0]="none",
+					[75]="75 learned",
+				}
 
-					local fr = ZGV.db.profile.fakereps[v]
+				local levels_sub_100 = {
+					[0]="none",
+					[100]="100 learned",
+				}
 
-					self:SetOption("DebugFake","fakerepcheck " .. (fr and "on" or "off"))
+				local levels_sub_175 = {
+					[0]="none",
+					[175]="175 learned",
+				}
 
-					if fr then
-						self:SetOption("DebugFake","fakerepstanding ".. (fr or 4))
-					end
-					  end,
-				_default = "",
-				_inline=true,
-			})
-			AddOption('fakerepcheck',{
-				name = "Fake",
-				desc = "",
-				type = 'toggle',
-				set = function(i,v)
-					Setter_Simple(i,v)
-					if v then
-						if not ZGV.db.profile.fakereps[ZGV.db.profile.fakerep] then
-							self:SetOption("DebugFake","fakerepstanding 4")
+				local levels_shadowlands = {
+					[0]="none",
+					[75]="75",
+					[100]="100",
+					[115]="115",
+					[150]="150",
+					[175]="175",
+					[200]="200",
+				}
+
+				AddOption('fakeskillmax',{
+					name = "Skill max",
+					desc = "Max skill level.",
+					type = 'select',
+					values=function() 
+						local fakeskill = ZGV.db.profile.fakeskill
+						if not fakeskill then return {} end
+
+						if fakeskill=="Alchemy" then 
+							return levels_alchemy
+						elseif fakeskill:find("Outland") or fakeskill:find("Northrend") or fakeskill:find("Cataclysm") or fakeskill:find("Pandaren") or fakeskill:find("Way of") then
+							return levels_sub_75
+						elseif fakeskill:find("Draenor") or fakeskill:find("Legion") then
+							return levels_sub_100
+						elseif fakeskill:find("Shadowlands") then
+							return levels_shadowlands
+						elseif fakeskill:find("Tiran") or fakeskill:find("Zandalari") then
+							return levels_sub_175
+						else
+							return levels_core
 						end
-					else
-						ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]=nil
-					end
-					  end,
-				get = function(i)
-					local rep = ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]
-					return not not rep
-					  end,
-				width = "half",
-				_default = false,
-			})
-			AddOption('fakerepstanding',{
-				name = "Standing",
-				desc = "Pick your rep level.",
-				type = 'select',
-				values = function() local standings=ZGV:GetReputation(ZGV.db.profile.fakerep).reptypemeta.standings  local ret={}  for i,v in ipairs(standings) do ret[i]=v.name end  return ret  end,
-				set = function(i,v)
-					Setter_Simple(i,v)
-					if ZGV.db.profile.fakerepcheck then
-						ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]=v
-					end
-					  end,
-				get = function(i)
-					return ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]
-					  end,
-				disabled = function() return not ZGV.db.profile.fakerepcheck end,
-				_default = 4,
-				_inline = true,
-			})
-			AddOption('fakereplist',{
-				name = function()
-					local s = "Faked reputations:"
-					for frn,fr in pairs(ZGV.db.profile.fakereps) do
-						local rep = ZGV:GetReputation(frn)
-						s = s .. "\n" .. frn .." = " .. rep:GetStandingName(fr)
-					end
-					if not next(ZGV.db.profile.fakereps) then s = s .. "  none" end
-					return s
-					   end,
-				desc = "",
-				type = "description",
-				width = "full",
-			})
-			AddOption('fakerepclear',{
-				type = "execute",
-				name = "Clear all reps",
-				func = function()
-					ZGV.db.profile.fakereps={}
-					self:SetOption("DebugFake","fakerepcheck off")
-					self:SetOption("DebugFake","fakerepstanding ".. ZGV.db.profile.fakerepstanding)
-					   end,
-			})
+					end,
+					set = function(i,v)
+						Setter_Simple(i,v)
+						if ZGV.db.profile.fakeskillcheck then
+							local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill] or {active=true,level=0,max=0}
+							skill.max = tonumber(v)
+							skill.level = min(skill.max,max(0,skill.level,skill.max-100))
+							ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]=skill
 
-			AddOption('sep00pathf',{ type="header", name="Travel" })
-
-			AddOption('debug_librover_maxspeed',{
-				name = "Riding skill:",
-				desc = "Reload after changing to/from flying to load proper baked map data!",
-				type = 'select',
-				values={
-					[0]="unset",
-					[0.01]="No skill (0)",
-					[0.6]="Apprentice (75) [slow ride]",
-					[1.0]="Journeyman (150) [fast ride]",
-					[1.5]="Expert (225) [slow flight]",
-					[2.8]="Artisan (300) [fast flight]",
-					[3.1]="Master (375) [epic flight]",
-				},
-				set = function(i,v)
-					if v==0 then v=nil end
-					Setter_Simple(i,v)
-					LibRover:CheckMaxSpeeds()
-					LibRover:UpdateNow()
-				end,
-			})
-			AddOptionSep()
-			AddOption('debug_librover_flightdraenor',{
-				name = "Draenor Flight",
-				desc = "",
-				type = 'toggle',
-				tristate = true,
-				set = function(i,v) Setter_Simple(i,v) LibRover:CheckMaxSpeeds() LibRover:UpdateNow() end,
-			})
-			AddOption('debug_librover_flightlegion',{
-				name = "Legion Flight",
-				desc = "",
-				type = 'toggle',
-				tristate = true,
-				set = function(i,v) Setter_Simple(i,v) LibRover:CheckMaxSpeeds() LibRover:UpdateNow() end,
-			})
-			AddOption('debug_librover_flightbfa',{
-				name = "BfA Flight",
-				desc = "",
-				type = 'toggle',
-				tristate = true,
-				set = function(i,v) Setter_Simple(i,v) LibRover:CheckMaxSpeeds() LibRover:UpdateNow() end,
-			})
-
-			AddOptionSep()
-
-			local OriginalIsFlying = IsFlying
-			AddOption('debug_librover_fakenofly',{
-				name = "Force walking",
-				desc = "Travel will treat player as if on ground all the time",
-				type = 'toggle',
-				set = function(i,v) Setter_Simple(i,v) 
-					if v then
-						IsFlying = function() return false end
-					else
-						IsFlying = OriginalIsFlying
-					end
-				end,
-			})
-			if ZGV.db.profile.debug_librover_fakenofly then
-				IsFlying = function() return false end
+							local fsl = ZGV.optiontables.debugfake.args.fakeskilllevel
+							if not fsl then return end
+							fsl.min=max(0,tonumber(skill.max)-100)
+							fsl.max=tonumber(skill.max)
+							self:SetOption("DebugFake","fakeskilllevel ".. skill.level)
+						end
+					end,
+					get = function(i)
+						local skill = ZGV.db.profile.fakeskills[ZGV.db.profile.fakeskill]
+						return skill and skill.max or 0
+						end,
+					disabled = function() return not ZGV.db.profile.fakeskillcheck end,
+					width=100,
+					_default = 0,
+					_inline = true
+				})
+				AddOption('fakeskilllist',{
+					name = function()
+						local s = "Faked skills:"
+						for fsn,fs in pairs(ZGV.db.profile.fakeskills) do
+							s = s .. "\n" .. fsn .." = " .. fs.level .. "/" .. fs.max
+						end
+						if not next(ZGV.db.profile.fakeskills) then s = s .. "  none" end
+						return s
+						end,
+					desc = "",
+					type = "description",
+					width = "full",
+				})
+				AddOption('fakeskillclear',{
+					type = "execute",
+					name = "Clear all skills",
+					func = function()
+						ZGV.db.profile.fakeskills={}
+						self:SetOption("DebugFake","fakeskillcheck off")
+						self:SetOption("DebugFake","fakeskilllevel ".. ZGV.db.profile.fakeskilllevel)
+						end,
+				})
 			end
 
+			AddOptionSep()
+
+			do -- Fake Reputation
+				AddOption('fakerep',{
+					name = "Fake reputation",
+					desc = "Simulate reputations.",
+					type = 'select',
+					values = function() return self.factions_mentioned end,
+					set = function(i,v)
+						Setter_Simple(i,v)
+
+						local fr = ZGV.db.profile.fakereps[v]
+
+						self:SetOption("DebugFake","fakerepcheck " .. (fr and "on" or "off"))
+
+						if fr then
+							self:SetOption("DebugFake","fakerepstanding ".. (fr or 4))
+						end
+						end,
+					_default = "",
+					_inline=true,
+				})
+				AddOption('fakerepcheck',{
+					name = "Fake",
+					desc = "",
+					type = 'toggle',
+					set = function(i,v)
+						Setter_Simple(i,v)
+						if v then
+							if not ZGV.db.profile.fakereps[ZGV.db.profile.fakerep] then
+								self:SetOption("DebugFake","fakerepstanding 4")
+							end
+						else
+							ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]=nil
+						end
+						end,
+					get = function(i)
+						local rep = ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]
+						return not not rep
+						end,
+					width = "half",
+					_default = false,
+				})
+				AddOption('fakerepstanding',{
+					name = "Standing",
+					desc = "Pick your rep level.",
+					type = 'select',
+					values = function() local standings=ZGV:GetReputation(ZGV.db.profile.fakerep).reptypemeta.standings  local ret={}  for i,v in ipairs(standings) do ret[i]=v.name end  return ret  end,
+					set = function(i,v)
+						Setter_Simple(i,v)
+						if ZGV.db.profile.fakerepcheck then
+							ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]=v
+						end
+						end,
+					get = function(i)
+						return ZGV.db.profile.fakereps[ZGV.db.profile.fakerep]
+						end,
+					disabled = function() return not ZGV.db.profile.fakerepcheck end,
+					_default = 4,
+					_inline = true,
+				})
+				AddOption('fakereplist',{
+					name = function()
+						local s = "Faked reputations:"
+						for frn,fr in pairs(ZGV.db.profile.fakereps) do
+							local rep = ZGV:GetReputation(frn)
+							s = s .. "\n" .. frn .." = " .. rep:GetStandingName(fr)
+						end
+						if not next(ZGV.db.profile.fakereps) then s = s .. "  none" end
+						return s
+						end,
+					desc = "",
+					type = "description",
+					width = "full",
+				})
+				AddOption('fakerepclear',{
+					type = "execute",
+					name = "Clear all reps",
+					func = function()
+						ZGV.db.profile.fakereps={}
+						self:SetOption("DebugFake","fakerepcheck off")
+						self:SetOption("DebugFake","fakerepstanding ".. ZGV.db.profile.fakerepstanding)
+						end,
+				})
+			end
+
+			do -- Travel fakes
+				AddOption('sep00pathf',{ type="header", name="Travel" })
+
+				AddOption('debug_librover_maxspeed',{
+					name = "Riding skill:",
+					desc = "Reload after changing to/from flying to load proper baked map data!",
+					type = 'select',
+					values={
+						[0]="unset",
+						[0.01]="No skill (0)",
+						[0.6]="Apprentice (75) [slow ride]",
+						[1.0]="Journeyman (150) [fast ride]",
+						[1.5]="Expert (225) [slow flight]",
+						[2.8]="Artisan (300) [fast flight]",
+						[3.1]="Master (375) [epic flight]",
+					},
+					set = function(i,v)
+						if v==0 then v=nil end
+						Setter_Simple(i,v)
+						LibRover:CheckMaxSpeeds()
+						LibRover:UpdateNow()
+					end,
+				})
+				AddOptionSep()
+				AddOption('debug_librover_flightdraenor',{
+					name = "Draenor Flight",
+					desc = "",
+					type = 'toggle',
+					tristate = true,
+					set = function(i,v) Setter_Simple(i,v) LibRover:CheckMaxSpeeds() LibRover:UpdateNow() end,
+				})
+				AddOption('debug_librover_flightlegion',{
+					name = "Legion Flight",
+					desc = "",
+					type = 'toggle',
+					tristate = true,
+					set = function(i,v) Setter_Simple(i,v) LibRover:CheckMaxSpeeds() LibRover:UpdateNow() end,
+				})
+				AddOption('debug_librover_flightbfa',{
+					name = "BfA Flight",
+					desc = "",
+					type = 'toggle',
+					tristate = true,
+					set = function(i,v) Setter_Simple(i,v) LibRover:CheckMaxSpeeds() LibRover:UpdateNow() end,
+				})
+
+				AddOptionSep()
+
+				local OriginalIsFlying = IsFlying
+				AddOption('debug_librover_fakenofly',{
+					name = "Force walking",
+					desc = "Travel will treat player as if on ground all the time",
+					type = 'toggle',
+					set = function(i,v) Setter_Simple(i,v) 
+						if v then
+							IsFlying = function() return false end
+						else
+							IsFlying = OriginalIsFlying
+						end
+					end,
+				})
+				if ZGV.db.profile.debug_librover_fakenofly then
+					IsFlying = function() return false end
+				end
 			
-			-- EXPANSION: add more
-			AddOptionSep()
+				-- EXPANSION: add more
+				AddOptionSep()
 
-			--[[
-			AddOption('debug_librover_steps',{
-				name = "Verbose pathfinding",
-				desc = "",
-				type = 'toggle',
-				set = function(i,v)
-					Setter_Simple(i,v)
-					LibRover.debug_cnodes = v
-					--LibRover.debug_onodes = v
-					if (v) then LibRover:GoSlow() end
-				end,
-			})
-			AddOption('debug_librover_updating',{
-				name = "Realtime",
-				desc = "",
-				type = 'toggle',
-				set = function(i,v) Setter_Simple(i,v) LibRover.do_updating = v end,
-			})
-			--]]
+				--[[
+				AddOption('debug_librover_steps',{
+					name = "Verbose pathfinding",
+					desc = "",
+					type = 'toggle',
+					set = function(i,v)
+						Setter_Simple(i,v)
+						LibRover.debug_cnodes = v
+						--LibRover.debug_onodes = v
+						if (v) then LibRover:GoSlow() end
+					end,
+				})
+				AddOption('debug_librover_updating',{
+					name = "Realtime",
+					desc = "",
+					type = 'toggle',
+					set = function(i,v) Setter_Simple(i,v) LibRover.do_updating = v end,
+				})
+				--]]
+			end
 
-			
-			AddOption('sep00fakepopups',{ type="header", name="Popups" })
-			AddOption('fakepopup_1', { type = 'execute', width=140, 
-				name="Quest cleanup", 
-				func=function(info,val) ZGV:ShowQuestCleanup() end
-			})
-			AddOption('fakepopup_11', { type = 'execute', width=140, 
-				name="Boosted", 
-				func=function(info,val) ZGV:IsBoosted(100,true) end
-			})
-			AddOption('fakepopup_7', { type = 'execute', width=140, 
-				name="Sell useless", 
-				func=function(info,val) ZGV.Loot:SellUnusableItems() end
-			})
-			AddOption('fakepopup_6', { type = 'execute', width=140, 
-				name="Suggest dungeon", 
-				func=function(info,val) ZGV.GuideFuncs:SuggestDungeonGuide(ZGV:GetGuideByTitle("Zygor's Dungeon Guides\\Classic Dungeons\\The Stormwind Stockade")) end
-			})
-			AddOptionSep()
+			do -- Fake Popups			
+				AddOption('sep00fakepopups',{ type="header", name="Popups" })
+				AddOption('fakepopup_1', { type = 'execute', width=140, 
+					name="Quest cleanup", 
+					func=function(info,val) ZGV:ShowQuestCleanup() end
+				})
+				AddOption('fakepopup_11', { type = 'execute', width=140, 
+					name="Boosted", 
+					func=function(info,val) ZGV:IsBoosted(100,true) end
+				})
+				AddOption('fakepopup_7', { type = 'execute', width=140, 
+					name="Sell useless", 
+					func=function(info,val) ZGV.Loot:SellUnusableItems() end
+				})
+				AddOption('fakepopup_6', { type = 'execute', width=140, 
+					name="Suggest dungeon", 
+					func=function(info,val) ZGV.GuideFuncs:SuggestDungeonGuide(ZGV:GetGuideByTitle("Zygor's Dungeon Guides\\Classic Dungeons\\The Stormwind Stockade")) end
+				})
+				AddOptionSep()
 
-			AddOption('fakepopup_2', { type = 'execute', width=140,
-				name="Legion quests", 
-				func=function(info,val) ZGV:PLAYER_LEVEL_UP(nil,ZGV.FakeLevelForPopup or 101) end
-			})
-				AddOption('fakepopup_2_dropdown',{
-					name="Level",
+				AddOption('fakepopup_2', { type = 'execute', width=140,
+					name="Legion quests", 
+					func=function(info,val) ZGV:PLAYER_LEVEL_UP(nil,ZGV.FakeLevelForPopup or 101) end
+				})
+					AddOption('fakepopup_2_dropdown',{
+						name="Level",
+						type = 'select',
+						values={ [101]=101, [102]=102, [103]=103, [110]=110 },
+						set = function(i,v) ZGV.FakeLevelForPopup = v end,
+						get = function() return ZGV.FakeLevelForPopup or 101 end,
+						_inline=true
+					})
+				AddOptionSep()
+
+				AddOption('fakepopup_3', { type = 'execute', width=140, 
+					name="Riding training", 
+					func=function(info,val) ZGV.GuideFuncs:LearnMountGuideSuggestion(ZGV.FakeLevelForRiding or 20) end
+				})
+					AddOption('fakepopup_3_dropdown',{
+						name="Level",
+						type = 'select',
+						values={ [20]=20, [40]=40, [60]=60, [80]=80, [90]=90,  },
+						set = function(i,v) ZGV.FakeLevelForRiding = v end,
+						get = function() return ZGV.FakeLevelForRiding or 20 end,
+						_inline=true
+					})
+				AddOptionSep()
+
+				AddOption('fakepopup_4', { type = 'execute', width=140, 
+					name="Monk quests", 
+					func=function(info,val) ZGV.GuideFuncs:MonkQuest(ZGV.FakeLevelForMonk or 1) end
+				})
+					AddOption('fakepopup_4_dropdown',{
+						name="Level",
+						type = 'select',
+						values={ [1]=1, [20]=20, [30]=30, [40]=40, [50]=50, [60]=60, [70]=70, [80]=80, [90]=90,  },
+						set = function(i,v) ZGV.FakeLevelForMonk = v end,
+						get = function() return ZGV.FakeLevelForMonk or 1 end,
+						_inline=true
+					})
+				AddOptionSep()
+
+				AddOption('fakepopup_5', { type = 'execute', width=140, 
+					name="Monk reload", 
+					func=function(info,val) ZGV.GuideFuncs:AskReload() end
+				})
+				AddOption('fakepopup_8', { type = 'execute', width=140, 
+					name="Bad guide popup", 
+					func=function(info,val) ZGV:SetGuide(ZGV.CurrentGuide,nil,"forcebad") end
+				})
+				AddOption('fakepopup_9', { type = 'execute', width=140, 
+					name="End of guide", 
+					func=function(info,val) ZGV:SkipStep(false,true) end
+				})
+				AddOption('fakepopup_10', { type = 'execute', width=140, 
+					name="Next guide", 
+					func=function(info,val) ZGV.CurrentGuide:AdvertiseWithPopup(true,true) end
+				})
+			end
+
+			do -- Fake goal status
+				AddOption('sep00fakegoals',{ type="header", name="Goals" })
+				AddOption('fakegoal_list',{
+					name="Current goal steps",
 					type = 'select',
-					values={ [101]=101, [102]=102, [103]=103, [110]=110 },
-					set = function(i,v) ZGV.FakeLevelForPopup = v end,
-					get = function() return ZGV.FakeLevelForPopup or 101 end,
+					values = function()
+						if not ZGV.CurrentStep then return end
+						local t={}
+						for goalnum,goaldata in pairs(ZGV.CurrentStep.goals) do
+							t[goalnum] = goaldata:GetText()
+						end
+						return t
+					end,
+					set = function(i,v) ZGV.FakeStepNum = v end,
+					get = function() return ZGV.FakeStepNum or 1 end,
 					_inline=true
 				})
-			AddOptionSep()
 
-			AddOption('fakepopup_3', { type = 'execute', width=140, 
-				name="Riding training", 
-				func=function(info,val) ZGV.GuideFuncs:LearnMountGuideSuggestion(ZGV.FakeLevelForRiding or 20) end
-			})
-				AddOption('fakepopup_3_dropdown',{
-					name="Level",
+				local goal_status = { "--default--", "hidden","passive","complete","warning","impossible","incomplete" }
+				AddOption('fakegoal_list',{
+					name="Status",
 					type = 'select',
-					values={ [20]=20, [40]=40, [60]=60, [80]=80, [90]=90,  },
-					set = function(i,v) ZGV.FakeLevelForRiding = v end,
-					get = function() return ZGV.FakeLevelForRiding or 20 end,
+					values = goal_status,
+					set = function(i,v) 
+						if not ZGV.CurrentStep then return end
+						local goal = ZGV.CurrentStep.goals[ZGV.FakeStepNum] 
+						if goal_status[v]=="--default--" then 
+							goal.fakestatus = nil
+						else
+							goal.fakestatus = goal_status[v]
+						end
+						ZGV:UpdateFrame()
+					end,
+					get = function() 
+						if not ZGV.CurrentStep then return end
+						local status = ZGV.CurrentStep.goals[ZGV.FakeStepNum or 1]:GetStatus() 
+						for i,v in pairs(goal_status) do
+							if v==status then return i end
+						end
+					end,
 					_inline=true
 				})
-			AddOptionSep()
-
-			AddOption('fakepopup_4', { type = 'execute', width=140, 
-				name="Monk quests", 
-				func=function(info,val) ZGV.GuideFuncs:MonkQuest(ZGV.FakeLevelForMonk or 1) end
-			})
-				AddOption('fakepopup_4_dropdown',{
-					name="Level",
-					type = 'select',
-					values={ [1]=1, [20]=20, [30]=30, [40]=40, [50]=50, [60]=60, [70]=70, [80]=80, [90]=90,  },
-					set = function(i,v) ZGV.FakeLevelForMonk = v end,
-					get = function() return ZGV.FakeLevelForMonk or 1 end,
-					_inline=true
+				AddOption('fakegoal_refresh', { type = 'execute', width=140, 
+					name="refresh", 
+					func=function() ZGV:RefreshOptions() end
 				})
-			AddOptionSep()
+				AddOption('dontprogress',{ type = 'toggle', width = "full" })
+			end
 
-			AddOption('fakepopup_5', { type = 'execute', width=140, 
-				name="Monk reload", 
-				func=function(info,val) ZGV.GuideFuncs:AskReload() end
-			})
-			AddOption('fakepopup_8', { type = 'execute', width=140, 
-				name="Bad guide popup", 
-				func=function(info,val) ZGV:SetGuide(ZGV.CurrentGuide,nil,"forcebad") end
-			})
-			AddOption('fakepopup_9', { type = 'execute', width=140, 
-				name="End of guide", 
-				func=function(info,val) ZGV:SkipStep(false,true) end
-			})
-			AddOption('fakepopup_10', { type = 'execute', width=140, 
-				name="Next guide", 
-				func=function(info,val) ZGV.CurrentGuide:AdvertiseWithPopup(true,true) end
-			})
-
-
-			AddOption('sep00fakepopups',{ type="header", name="Goals" })
-			AddOption('fakegoal_list',{
-				name="Current goal steps",
-				type = 'select',
-				values = function()
-					if not ZGV.CurrentStep then return end
-					local t={}
-					for goalnum,goaldata in pairs(ZGV.CurrentStep.goals) do
-						t[goalnum] = goaldata:GetText()
-					end
-					return t
-				end,
-				set = function(i,v) ZGV.FakeStepNum = v end,
-				get = function() return ZGV.FakeStepNum or 1 end,
-				_inline=true
-			})
-
-			local goal_status = { "--default--", "hidden","passive","complete","warning","impossible","incomplete" }
-			AddOption('fakegoal_list',{
-				name="Status",
-				type = 'select',
-				values = goal_status,
-				set = function(i,v) 
-					if not ZGV.CurrentStep then return end
-					local goal = ZGV.CurrentStep.goals[ZGV.FakeStepNum] 
-					if goal_status[v]=="--default--" then 
-						goal.fakestatus = nil
-					else
-						goal.fakestatus = goal_status[v]
-					end
-					ZGV:UpdateFrame()
-				end,
-				get = function() 
-					if not ZGV.CurrentStep then return end
-					local status = ZGV.CurrentStep.goals[ZGV.FakeStepNum or 1]:GetStatus() 
-					for i,v in pairs(goal_status) do
-						if v==status then return i end
-					end
-				end,
-				_inline=true
-			})
-			AddOption('fakegoal_refresh', { type = 'execute', width=140, 
-				name="refresh", 
-				func=function() ZGV:RefreshOptions() end
-			})
-			AddOption('dontprogress',{ type = 'toggle', width = "full" })
-		
-			AddOption('sep00fakepopups',{ type="header", name="Garrison" })
+			AddOption('sep00fakegarrison',{ type="header", name="Garrison" })
 			AddOption('fake_garrison', { 
 				name="Garrison level",
 				type = 'select',
@@ -2409,6 +2509,32 @@ function ZGV:Options_DefineOptionTables()
 				_default = -1
 			})
 
+			AddOption('sep00fakecovenant',{ type="header", name="Shadowlands Covenants" })
+			AddOption('fake_covenant', {
+				name="Covenant",
+				type = 'select',
+				values = function()
+					local val = { [-1] = "--not set: "..(C_Covenants.GetCovenantData(C_Covenants.GetActiveCovenantID()) or {textureKit="none"}).textureKit.."--", [0]="None" }
+					for i,v in pairs(C_Covenants.GetCovenantIDs()) do
+						val[v]=C_Covenants.GetCovenantData(v).textureKit
+					end
+					return val
+				end,
+				set = function(i,v)  if v==-1 then v=false end  Setter_Simple(i,v)  end,
+				get = function(i)  return Getter_Simple(i) or -1  end,
+				_default = false
+			})
+			AddOption('fake_covenant_feature_transport', {
+				name="Feature: Transport Network",
+				type = 'select',
+				values = function()
+					local val = { [-1] = "--not set: "..ZGV.Parser.ConditionEnv.covenantnetwork().."--", [0]=0, [1]=1, [2]=2, [3]=3 }
+					return val
+				end,
+				set = function(i,v)  if v==-1 then v=false end  Setter_Simple(i,v)  end,
+				get = function(i)  return Getter_Simple(i) or -1  end,
+				_default = false
+			})
 		end
 
 		AddOptionGroup("debugdig","DebugDig","zgdebugdig", { name="Debug: data digging", guiHidden = not self.DEV or self.db.profile.hide_dev_once, })
@@ -3535,6 +3661,9 @@ function ZGV:Options_RegisterDefaults()
 	self.db.profile.gold_profitlevel = 0.25
 
 	self.db.profile.n_nc_enabled = true
+
+	if self.db.profile.fake_covenant==-1 then self.db.profile.fake_covenant=false end
+	if self.db.profile.fake_covenant_feature_transport==-1 then self.db.profile.fake_covenant_feature_transport=false end
 
 	-- self.db.profile.auction_autoshow_tab = true
 

@@ -81,6 +81,16 @@ data.basenodes.transit = {
 			--"{cond:PlayerCompletedQuest(59874)}",
 
 
+		-- Oribos to Bastion (pre-taxi)
+		"Oribos/1 60.86,68.36 -to- Bastion/0 37.85,76.52    {mode:PORTAL} {cost:53} {title:Talk to Pathscribe Roh-Avonavi\nTell him 'I need to get back to Bastion.'}    {cond:PlayerCompletedQuest(60156) and not ZGV.Parser.ConditionEnv.achieved(14281)}", -- went to Bas, not completed it yet
+		-- Oribos to Revendreth (pre-taxi)
+		"Oribos/1 60.86,68.36 -to- Revendreth/0 70.00,84.00 {mode:PORTAL} {cost:53} {title:Talk to Pathscribe Roh-Avonavi\nTell him 'I need to get back to Revendreth.'} {cond:PlayerCompletedQuest(57025) and not ZGV.Parser.ConditionEnv.achieved(13878)}", -- went to Rev, not completed it yet
+		-- Oribos to Ardenweald (pre-taxi)
+		"Oribos/1 60.86,68.36 -to- Ardenweald/0 68.00,18.00 {mode:PORTAL} {cost:53} {title:Talk to Pathscribe Roh-Avonavi\nTell him 'I need to get back to Ardenweald.'} {cond:PlayerCompletedQuest(60338) and not ZGV.Parser.ConditionEnv.achieved(14164)}", -- went to Ard, not completed it yet
+		-- Oribos to Maldraxxus (pre-taxi)
+		"Oribos/1 60.86,68.36 -to- Maldraxxus/0 50.00,41.00 {mode:PORTAL} {cost:53} {title:Talk to Pathscribe Roh-Avonavi\nTell him 'I need to get back to Maldraxxus.'} {cond:PlayerCompletedQuest(57386) and not ZGV.Parser.ConditionEnv.achieved(14206)}", -- went to Mal, not completed it yet
+
+
 	-------------
 	-- BASTION --
 	-------------
@@ -132,9 +142,29 @@ data.basenodes.transit = {
 	------------------
 	--## Neutral ##--
 
-		-- Elysian Hold -to- Oribos --
+		-- Elysian Hold, Bastion -to- Oribos, The Shadowlands --
 		"Elysian Hold/0 48.82,64.79 -to- Oribos/0 20.34,50.31 {mode:PORTAL} "..
 			"{cond:covenant('Kyrian') and covenantnetwork() == 3}",
+
+		-- Elysian Hold (Tamed Larion), Bastion -x- Oribos, The Shadowlands --
+		"Elysian Hold/0 41.17,71.10 -x- Bastion/0 58.73,28.96 {mode:PORTAL} {title:Click the |cfff0e081\"Tamed Larion\"|r} "..
+			"{cond:covenant('Kyrian') and PlayerLevel() >= 60}",
+
+		-- Elysian Hold (Tamed Larion), Bastion -x- Everdrawn Commons (Tamed Larion), Bastion --
+		"Elysian Hold/0 63.00,93.81 -x- Bastion/0 67.90,27.34 {mode:PORTAL} {title:Click the |cfff0e081\"Tamed Larion\"|r} "..
+			"{cond:covenant('Kyrian') and PlayerLevel() >= 60}",
+
+		-- Elysian Hold (Tamed Larion), Bastion -x- Fate's Precipice (Tamed Larion), Bastion --
+		"Elysian Hold/0 22.38,29.10 -x- Bastion/0 59.00,11.63 {mode:PORTAL} {title:Click the |cfff0e081\"Tamed Larion\"|r} "..
+			"{cond:covenant('Kyrian') and PlayerLevel() >= 60}",
+
+		-- Elysian Hold , Bastion -x- Ascension Coliseum, Bastion --
+		"Elysian Hold/0 28.18,42.34 -to- Ascension Coliseum/0 70.08,23.15 {mode:PORTAL} {title:Talk to |cfff0e081Artemede|r and tell her\n|cfff0e081\"We are ready to Challenge the\nPath of Ascension.\"|r} "..
+			"{cond:covenant('Kyrian') and PlayerCompletedQuest(60496) or PlayerIsOnQuest(60496)}",
+
+		-- Ascension Coliseum, Bastion -x- Elysian Hold , Bastion --
+		"Ascension Coliseum/0 69.86,17.87 -to- Elysian Hold/0 29.79,41.85 {mode:PORTAL} {title:Talk to |cfff0e081Adrianos|r and tell him\n|cfff0e081\"Return me to Elysian Hold.\"|r} "..
+			"{cond:covenant('Kyrian') and PlayerCompletedQuest(60496) or PlayerIsOnQuest(60496)}",
 
 
 
@@ -304,6 +334,14 @@ data.basenodes.transit = {
 		"Heart of the Forest/1 59.90,28.47 -to- Oribos/0 19.24,50.31 {mode:PORTAL}"..
 			"{cond:covenantnetwork() == 3 and covenant('NightFae') and PlayerCompletedQuest(57583)}",
 
+		-- Heart of the Forest, Ardenweald -to- Queen's Conservatory, Heart of the Forest
+		"Heart of the Forest/1 57.33,65.57 -to- Queen's Conservatory/0 73.47,48.05 {mode:PORTAL} {title:Use the |cfff0e081\"Traverse to the Queen's Conservatory\"|r ability on-screen} "..
+			"{cond:covenant('NightFae') and PlayerCompletedQuest(63046)}",
+
+		-- Queen's Conservatory, Heart of the Forest -to- Heart of the Forest, Ardenweald
+		"Queen's Conservatory/0 73.47,48.05 -to- Heart of the Forest/1 57.33,65.57 {mode:PORTAL} {title:Use the |cfff0e081\"Traverse from the Queen's Conservatory\"|r ability on-screen} "..
+			"{cond:covenant('NightFae') and PlayerCompletedQuest(63046)}",
+
 	----------------
 	-- REVENDRETH --
 	----------------
@@ -328,6 +366,10 @@ data.basenodes.transit = {
 		-- Redelav Tower (Leaving)
 		"Revendreth/0 57.38,28.67 <region:redelav_tower> -to- Revendreth/0 58.91,30.34 {mode:PORTAL} {title:Walk into the Red Swirling Portal\nInside the Building to\nLeave Redelav Tower} "..
 			"{cond:PlayerCompletedQuest(57885)}",
+
+		-- Spire of the Unseen Guests (Ember Court) (Entering)
+		"Revendreth/0 27.93,43.05 -to- Ember Court/0 33.76,47.29 {mode:PORTAL} {title:Talk to Temel and say\n|cfff0e081\"Open the Ember Court.\"|r} "..
+			"{cond:covenant('Venthyr')}",
 
 
 
@@ -397,14 +439,6 @@ data.basenodes.transit = {
 		-- Sinfall Surface Flyer (Bat to fly out of Sinfall)
 		"Sinfall/1 67.24,47.29 -to- Revendreth/0 29.62,42.51 {mode:PORTAL} {title:Click the Sinfall Surface Flyer\nto Fly Out of Sinfall} "..
 			"{cond:PlayerCompletedQuest(59321)}",
-
-		-- Sinfall to Veiled Enclave (Bastion)
-		"Sinfall/0 46.17,49.41 -to- Bastion/0 49.42,30.34 {mode:PORTAL} {title:Walk into the Red Portal\nInside Sinfall to\nTeleport to Bastion} "..
-			"{cond:PlayerCompletedQuest(58530)}",
-
-		-- Veiled Enclave (Bastion) to Sinfall
-		"Bastion/0 49.38,30.35 -to- Sinfall/0 43.53,49.11 {mode:PORTAL} {title:Walk into the Red Portal\nInside the Cave to\nTeleport to Sinfall} "..
-			"{cond:PlayerCompletedQuest(58530)}",
 
 		-- Sinfall, Revendreth -x- The Eternal Palace, Revendreth --
 		"Sinfall/0 46.18,49.50 -x- Revendreth/0 56.74,32.46 {mode:PORTAL} {title:Walk into the Red Swirling Portal\nInside the Building} "..
@@ -532,8 +566,14 @@ data.basenodes.transit = {
 				"{cond:not ZGV.InPhase('Old Undercity')}",
 
 		-- Orgrimmar - Durotar, Kalimdor -to- The Dark Portal - Blasted Lands, Eastern Kingdoms
+		"Orgrimmar/1 56.93,88.34 -to- Blasted Lands/0 55.00,50.00 {fac:H} {mode:PORTAL} "..
+			"{title:Talk to the Thrallmar Mage in the Portal Room\nTell him |cfff0e081\"I must report to the Dark Portal.\"|r}"..
+			"{cond:not PlayerCompletedQuest(60123) and UnitChromieTimeID('player')==6}",
+
+		-- Orgrimmar - Durotar, Kalimdor -to- The Dark Portal - Blasted Lands, Eastern Kingdoms
 		"Orgrimmar/1 56.93,88.34 -to- Hellfire Peninsula/0 89.39,50.22 {fac:H} {mode:PORTAL} "..
-			"{title:Talk to the Thrallmar Mage in the Portal Room\nTell him |cfff0e081\"I must report to the Dark Portal.\"|r}",
+			"{title:Talk to the Thrallmar Mage in the Portal Room\nTell him |cfff0e081\"I must report to the Dark Portal.\"|r}"..
+			"{cond:not (not PlayerCompletedQuest(60123) and UnitChromieTimeID('player')==6)}",
 
 		-- Orgrimmar - Durotar, Kalimdor -to- Crumbling Palace - Azsuna, Broken Isles --CHECKED
 		"Orgrimmar/1 58.89,89.53 -to- Azsuna/0 47.00,40.89 {fac:H} {mode:PORTAL} {title:Click the Portal to Azsuna in the Portal Room} "..
@@ -674,7 +714,13 @@ data.basenodes.transit = {
 
 		-- Stormwind - Elwynn Forest, Eastern Kingdoms -to- The Dark Portal - Blasted Lands, Eastern Kingdoms
 		"Stormwind City/0 49.12,87.34 -to- Blasted Lands/0 54.89,50.11 {fac:A} {mode:PORTAL} "..
-			"{title:Talk to the Honor Hold Mage\nInside the Mage Tower\nTell him |cfff0e081\"I must report to the Dark Portal.\"|r}",
+			"{title:Talk to the Honor Hold Mage\nInside the Mage Tower\nTell him |cfff0e081\"I must report to the Dark Portal.\"|r}"..
+			"{cond:not PlayerCompletedQuest(60123) and UnitChromieTimeID('player')==6}",
+
+		-- Stormwind - Elwynn Forest, Eastern Kingdoms -to- The Dark Portal - Blasted Lands, Eastern Kingdoms
+		"Stormwind City/0 49.12,87.34 -to- Hellfire Peninsula/0 90.00,50.00 {fac:A} {mode:PORTAL} "..
+			"{title:Talk to the Honor Hold Mage\nInside the Mage Tower\nTell him |cfff0e081\"I must report to the Dark Portal.\"|r}"..
+			"{cond:not (not PlayerCompletedQuest(60123) and UnitChromieTimeID('player')==6)}",
 
 		-- Stormwind - Elwynn Forest, Eastern Kingdoms -to- Kelp'thar Forest - Vashj'ir, Eastern Kingdoms --
 		"Stormwind City/0 73.30,16.87 -to- Kelp'thar Forest/0 45.14,23.33 {fac:A} {mode:PORTAL} "..
@@ -922,7 +968,7 @@ data.basenodes.transit = {
 				"{cond:PlayerCompletedQuest(32644)} {template:portal}",
 
 		-- Shrine of Seven Stars - Vale of Eternal Blossoms, Pandaria -to- Stormwind - Elwynn Forest, Eastern Kingdoms --
-		"Shrine of Seven Stars/2 71.66,35.94 -to- Stormwind City/0 46.35,90.23 {fac:A} {mode:PORTAL}",
+		"Shrine of Seven Stars/2 71.66,35.94 <region:shrine7star_east> -to- Stormwind City/0 46.35,90.23 {fac:A} {mode:PORTAL}",
 
 		-- Shrine of Seven Stars - Vale of Eternal Blossoms, Pandaria -to- Stormwind - Elwynn Forest, Eastern Kingdoms -- Patch 8.3
 		"Vale of Eternal Blossoms New/0 91.59,64.30 -to- Stormwind City/0 46.35,90.23 {fac:A} {mode:PORTAL} {cond:not ZGV.InPhase('OldVale')}",
@@ -965,7 +1011,7 @@ data.basenodes.transit = {
 				"{cond:PlayerCompletedQuest(32212) and not PlayerCompletedQuest(32212)}",
 
 		-- Shrine of Two Moons - Vale of Eternal Blossoms, Pandaria -to- Orgrimmar - Durotar, Kalimdor --
-		"Shrine of Two Moons/2 73.35,42.69 -to- Orgrimmar/1 57.10,89.81 {fac:H} {mode:PORTAL}",
+		"Shrine of Two Moons/2 73.35,42.69 <region:shrine2moon_east> -to- Orgrimmar/1 57.10,89.81 {fac:H} {mode:PORTAL}",
 
 		-- Shrine of Two Moons - Vale of Eternal Blossoms, Pandaria -to- Orgrimmar - Durotar, Kalimdor -- Patch 8.3
 		"Vale of Eternal Blossoms New/0 63.72,9.89 -to- Orgrimmar/1 57.10,89.81 {fac:H} {mode:PORTAL} {cond:not ZGV.InPhase('OldVale')}",

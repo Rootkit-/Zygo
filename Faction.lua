@@ -95,7 +95,21 @@ local reptypes = {
 		check = function(id,fid,ftex)
 			return fid==2398
 		end
-	}
+	},
+	['venari'] = {
+		standings = {
+			{ name="Dubious", from=0, color="ffff00"},
+			{ name="Apprehensive", from=1000, color="00ff00"},			
+			{ name="Tentative", from=7000, color="00ff88" },
+			{ name="Ambivalent", from=14000, color="00ffff" },
+			{ name="Cordial", from=21000, color="44ddff" },
+			{ name="Appreciative", from=42000, color="cc88ff" },
+		},
+		check = function(id,fid,ftex)
+			return fid==2432
+		end
+	},
+
 }
 ZGV.ReputationTypes = reptypes
 
@@ -109,6 +123,7 @@ local defaultReps = {
 	["Sho"]=5,
 	["The Aldor"]=3, -- The Aldor: unfriendly
 	["The Scryers"]=3, -- The Scryers: unfriendly
+	["Ve'nari"]=1, -- Dubious
 }
 
 

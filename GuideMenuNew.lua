@@ -34,7 +34,7 @@ function GuideMenu:ShowHome()
 		GuideMenu:CreateHome()
 	end
 	
-	GuideMenu:SetWideSectionHeader("What's new | January 5th, 2021 Release 8.0.24035")
+	GuideMenu:SetWideSectionHeader("What's new | March 9th, 2021, Release 8.0.24358")
 
 	GuideMenu.GuideCategory=nil
 end
@@ -84,7 +84,7 @@ function GuideMenu:Search()
 			else
 				tinsert(GuideMenu.Guides,{header=true})
 			end
-			tinsert(GuideMenu.Guides,{header=true,header_name=group.name})
+			tinsert(GuideMenu.Guides,{header=true,header_name=ZGV.IconSets.TabsIcons[group.name].label})
 
 			-- Sort guides in category folders by name
 			table.sort(temp_structure[group.name],function(a,b)

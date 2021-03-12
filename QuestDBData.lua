@@ -62,53 +62,33 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["PETSMOUNTS\\Hunter Pets\\Beast Mastery Exotic Pets\\Shale Spiders\\Green Shale Spider (Rare Spawn)"] = {
 		{ids="27727,27203,27123,26245,27136,26244,26409,26410,27135,26411,26413,26484,26246,26247,26248,26249,26427,26251,26250,26254,26255,26258,26259,26256,26261,26260,27007,27010,27100,27061,27101,27102,26766,26768,26771,26857,26861,26876,27931,27932,27933,27934,27935,26499,26500,26502,26501,26537,26564,26591,26625,27126,26632,26755,26762,26770,26834,26791,26792,26835,26836,27937,27938,26326,26312,26314,26313,26315,26328,26376,26377,26375,26426,26869,26871,26436,26438,26437,26439,26440,26441,26507,26575,26576,26577,26656,26657,26658,26659,26578,26579,26580,26581,26582,26584,26585,26583,26750,26752,26827,27004,27006,27042,27040,27058,28292,26828,26829,26832,26831,26833,26875,26971,26709,27048"},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Orcslayer"] = {
-		{ids="36964"},
+	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
-		{ids="37082", cond_if=[[Horde ]]},
-		{ids="37082", cond_if=[[Alliance ]]},
-		{ids="37083"},
+	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
+		{ids="29100,29102,29103,29104,29105,29114,29115,29116,29120,29213,29121,29267,33137"},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Slayer of Sin'dorei"] = {
-		{ids="36958"},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
+		{ids="31439", cond_if=[[not completedq(31439) ]]},
+		{ids="31179", cond_if=[[not completedq(31179) ]]},
+		{ids="31354", cond_if=[[not completedq(31354) ]]},
+		{ids="31085", cond_if=[[not completedq(31085) ]]},
+		{ids="31211", cond_if=[[not completedq(31211) ]]},
+		{ids="31606", cond_if=[[not completedq(31606) ]]},
+		{ids="31009,31010", cond_if=[[not completedq(31010) ]]},
+		{ids="31026", cond_if=[[not completedq(31026) ]]},
+		{ids="31006", cond_if=[[not completedq(31006) ]]},
+		{ids="31398", cond_if=[[not completedq(31398) ]]},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
-		{ids="37082,37083"},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Commandojack"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Huojin's Fall"] = {
-		{ids="36968"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Butcher"] = {
-		{ids="36962"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Death Stalker"] = {
-		{ids="36960"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Killer of Kezan"] = {
-		{ids="36970"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Reputations\\Conservationist"] = {
-		{ids="37125", cond_if=[[itemcount(118100) >= 1 ]]},
-		{ids="37222", cond_if=[[itemcount(118657) >= 1 ]]},
-		{ids="37225", cond_if=[[itemcount(118660) >= 1 ]]},
-		{ids="37221", cond_if=[[itemcount(118656) >= 1 ]]},
-		{ids="37520", cond_if=[[itemcount(120172) >= 1 ]]},
-		{ids="37226", cond_if=[[itemcount(118661) >= 1 ]]},
-		{ids="37224", cond_if=[[itemcount(118659) >= 1 ]]},
-		{ids="37210", cond_if=[[itemcount(118654) >= 1 ]]},
-		{ids="37223", cond_if=[[itemcount(37223) >= 1 ]]},
-		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
-		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Troll Hunter"] = {
-		{ids="36966"},
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
+		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
+		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
+		{ids="30523", cond_if=[[completedq(30516) and rep('The Tillers')>=Revered ]]},
+		{ids="30526", cond_if=[[repval('The Tillers','Revered')>=13000 ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30475,30471,30477,30478,30472,30470,30474,30476,30473,30479,30327,30319,30323,30324,30326,30317,30325,30321,30318,30322,30260,30516,31936,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
 	},
 	["DUNGEONS\\Pandaria Scenarios\\Brewmoon Festival"] = {
 		{ids="31611"},
@@ -248,35 +228,8 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	},
 	["GOLD\\Horde Daily Runs\\Imperial Leather Set Transmog"] = {
 	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-Chi, Hatchling of Chi-Ji"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Rascal-Bot"] = {
-		{ids="32630"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Dragonkin Pets\\Yu'la, Broodling of Yu'lon"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Xu-Fu, Cub of Xuen"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Zao, Calfling of Niuzao"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Pierre"] = {
-		{ids="32630"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
-		{ids="31752"},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Fel Pup"] = {
+		{ids="38428"},
 	},
 	["REPUTATIONS\\Burning Crusade Reputations\\Netherwing\\Netherwing Reputation (Friendly) - Pre-Quests"] = {
 		{ids="11053,11075,11054,11083,11081,11082"},
@@ -535,50 +488,60 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["ACHIEVEMENTS\\Quests\\Legion\\Crate Expectations"] = {
 		{ids="45542"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
-		{ids="31001,31002,31003,31004,31005,31676,31006,31007,31660,31009,31008,31010,31661,31066,31108,31689,31107,31087,31019,31023,31020,31021,31022,31026,31088,31090,31089,31091,31359,31092,31398,31727,31730,31067,31068,31072,31069,31070,31071,31129,31077,31074,31073,31133,31078,31075,31080,31079,31081,31082,31084,31085,31086,31265,31181,31182,31183,31185,31184,31187,31188,31186,31189,31190,31354,32030,31782,31605,31175,31176,31177,31178,31179,31606"},
+	["LEVELING\\Draenor (10-50)\\Tanaan Jungle (40-50)"] = {
+		{ids="39176,39177", cond_if=[[skill("Jewelcrafting") >= 1 ]]},
+		{ids="38253,38257,37921,38254,38255,38256,38258,38259,39082,39054,39276,39055,38435,38436,38444,38445,39313,39432,38581,39422,38446,38578"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
-		{ids="30079,30080,30082,30091,30081,30083,30084,30088,30089,30090,30178,30352,30353,30274,30344,30384,30350,31262,31260,30346,30349,30351,30347,30348,30363,30269,30270,30694,30268,30695,30272,30271,30273,30667,30666,30668,30669,30671,30691,30672,30674,30675,30168,30169,30354,30356,30355,30361,30357,30359,30445,30360,30623,30622,30624,30625,30626,30627,30628"},
+	["LEVELING\\Draenor (10-50)\\Draenor Intro"] = {
+		{ids="36881,34398,35933,34392,34393,34420,34422,35242,35240,34423,34425,34478,34429,34432,34431,34434,34436,35019,34439,34442,34987,34958,34925,34437,35747,34445,35884,34575,34582,34583,34584,34616,34585,34586"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
-		{ids="31857", cond_if=[[not completedq(31835) ]]},
-		{ids="31835,31842"},
+	["LEVELING\\Draenor (10-50)\\Shadowmoon Valley (10-50)"] = {
+		{ids="35345", cond_if=[[havequest(35344) or completedq(35344) ]]},
+		{ids="36313", cond_if=[[havequest(36310) or completedq(36310) ]]},
+		{ids="35342", cond_if=[[itemcount(113103) > 0 or havequest(35342) ]]},
+		{ids="36266", cond_if=[[havequest(36262) or completedq(36262) ]]},
+		{ids="36310", cond_if=[[havequest(36308) or completedq(36308) ]]},
+		{ids="36177", cond_if=[[havequest(36176) or completedq(36176) ]]},
+		{ids="35343", cond_if=[[havequest(35342) or completedq(35342) ]]},
+		{ids="36262", cond_if=[[havequest(36236) or completedq(36236) ]]},
+		{ids="35344", cond_if=[[havequest(35343) or completedq(35343) ]]},
+		{ids="36409", cond_if=[[havequest(36408) or completedq(36408) ]]},
+		{ids="36100", cond_if=[[skill("Jewelcrafting") >= 1 or skill("Engineering") >= 1 or skill("Alchemy") >= 1 or skill("Leatherworking") >= 1 or skill("Inscription") >= 1 or skill("Tailoring") >= 1 or skill("Blacksmithing") >= 1 or skill("Enchanting") >= 1 ]]},
+		{ids="36269", cond_if=[[havequest(36266) or completedq(36266) ]]},
+		{ids="36311", cond_if=[[havequest(36309) or completedq(36309) ]]},
+		{ids="36287", cond_if=[[havequest(36286) or completedq(36286) ]]},
+		{ids="36176", cond_if=[[itemcount(114877) > 0 or havequest(36176) ]]},
+		{ids="36408", cond_if=[[itemcount(115507) > 0 or havequest(36408) ]]},
+		{ids="36309", cond_if=[[itemcount(115343) > 0 or havequest(36309) ]]},
+		{ids="34496,34076,34728", cond_if=[[level < 50 ]]},
+		{ids="36315", cond_if=[[havequest(36313) or completedq(36313) ]]},
+		{ids="36308", cond_if=[[itemcount(115281) > 0 or havequest(36308) ]]},
+		{ids="36239", cond_if=[[itemcount(114984) > 0 or havequest(36239) ]]},
+		{ids="35556", cond_if=[[(not havequest(33533) or completedq(33533)) or (not havequest(36632) or completedq(36632)) or (not havequest(49564) or completedq(49564)) ]]},
+		{ids="36236", cond_if=[[itemcount(114972) > 0 or havequest(36236) ]]},
+		{ids="36241", cond_if=[[havequest(36240) or completedq(36240) ]]},
+		{ids="36185", cond_if=[[havequest(36177) or completedq(36177) ]]},
+		{ids="36240", cond_if=[[havequest(36239) or completedq(36239) ]]},
+		{ids="36286", cond_if=[[itemcount(115278) > 0 or havequest(36286) ]]},
+		{ids="35176,35166,35174,34587,34646,34504,33419,34692,36624,33075,36626,36629,36630,36633,33765,33070,33905,33813,34019,33072,35444,34778,34779,34780,34781,34782,34783,34785,35070,34786,33084,34784,34790,34787,35552,34791,34789,34792,34788,35905,33076,33080,34876,33077,34897,33059,33081,33586,33814,33078,33786,33787,33808,34996,33788,35006,34995,35014,34994,34997,35015,35617,33082,34847,34836,34043,35631,33461,36592,34820,33263,33271,34806,33331,35625,35032,33083,33793,33794,33795,34054,33837,33255,33256,33359,33062,33113,33115,33120,33112,33066,33269,33168,33114,33116"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
-		{ids="30814,30769,30770,30771,30773,30772,30774,30775,30776,30777,30778,30779,30780,30781,30827,30783,30782,30784,30785,31894,30786,30787,30788,30789,30815,30790,30791,30792,30793,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30897,30896,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30977,31032,30978,30979,30980,31065,30981,31063,31064,31687,31688,30968,30922,30963,30964,30921,30923,30924,30931,30932,30925,30929,30930,30926,30928,30927"},
+	["LEVELING\\Draenor (10-50)\\Spires of Arak (30-50)"] = {
+		{ids="36660,35649,36792,36590", cond_if=[[level < 50 ]]},
+		{ids="35649", cond_if=[[havequest(35649) or completedq(35649) ]]},
+		{ids="34653,34655,34656,34657,34658,34659,34756,35636,34805,35668,35671,35274,35276,35286,37327,35293,35293,35699,35611,35329,35339,35353,35380,35407,35408,35482,35549,36353,35619,35079,35077,36179,35080,35082,35081,35285,35090,35089,36384,35091,35211,36428,35298,36062,34998,34884,34827,34885,34838,34886,34828,34829,36425,34830,34882,34883,34942,35257,35260,35258,35259,35261,35273,35634,35733,35734,34898,35000,34999,35001,35002,35011,35004,35003,35013,35012,35245,35897,35895,36059,35896,37296,37329,35915,35926,35959,36023,36029,36048,36165,37281,37296,37331,35713,35716,35878,35719,35739,35782,35835,34921,34991,35010,35007,34923,34922,34938,34924,34939,36790,35009,36085,35704,37141,36601"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
-		{ids="29907,29908,29877,29909,30086,29873,29871,29874,29872,29940,29910,29911,29912,29913,29914,29915,29916,29917,29918,29919,29944,29945,29947,29946,29948,29949,29950,29951,29577,29757,30267,30275,29600,29581,29758,32045,32035,30072,30059,30058,29952,30046,30053,30048,30049,30051,30172,30050,30056,30054,30057,30052,30055,30031,30029,30030,30032,30028,30047,30073,30074,30076,30077,30075,30078,30117,29981,29982,29983,29984,29985,29986,29992,29987,29988,29989,29990,30183,30181,30182,30184,32038,30185,30186"},
+	["LEVELING\\Draenor (10-50)\\Nagrand (35-50)"] = {
+		{ids="35379,37280,34723", cond_if=[[level < 50 ]]},
+		{ids="37184,34675,34678,34682,34716,34717,34718,34719,34746,34769,35148,34952,34951,35337,35338,35356,35357,35350,34593,34572,34597,34596,34877,34662,34869,34810,34598,34512,35146,36273,34663,34664,34665,34666,34513,34515,34514,34516,34819,34809,34811,35663,35632,34900,34954,34955,34956,34957,35059,35332,34747,35060,35061,35067,35068,35069,35062,35140,35141,35169,35331,35333,34943,34881,34893,34894,33928,37318,36275,36284,36285,34932,34941,35330,35372,35393,35397,35398,35084,35083,35395,35396,35386,35085,35087,35086,35088,35022,35023,35024"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 35"] = {
-		{ids="31844"},
-		{ids="31889", cond_if=[[not completedq(31844) ]]},
+	["LEVELING\\Draenor (10-50)\\Talador (20-50)"] = {
+		{ids="35236,37422,34639,34660,34667,35236,37421,34639,34660,34667", cond_if=[[level < 50 ]]},
+		{ids="34558,34563,35045,34571,34573,34624,34578,36801,34773,34804,34087,34088,34089,34090,34091,34095,34959,34094,33973,34096,34097,34098,34963,34099,34777,36519,34976,34977,34979,34978,34980,34981,34982,34685,34701,33740,33734,33761,33578,33579,33580,33581,33582,33871,34761,35239,33872,33873,33874,34709,34407,34458,33920,33917,34351,33530,34452,33958,33967,33969,34240,34508,34013,34234,33988,33976,34326,34092,35227,35254,34157,34163,34164,34154,36512,34707,33882,33884,33944,34399,34400,34403,34406,34415,34448,35554,34631,34815,34609,34612,34619,34875,34908,36801,34773,34804,34087,34088,34089,34090,34091,34095,34959,34094,33973,34096,34097,34098,34963,34099,34777,36519,34913,34909,34910,34911,34912,34711,34993,34685,34701,33740,33734,33761,33578,33579,33580,33581,33582,33871,34761,35239,33872,33873,33874,34709,34407,34458,33920,33917,34351,33530,34452,33958,33967,33969,34240,34508,34013,34234,33988,33976,34326,34092,35227,35254,34157,34163,34164,34154,36512,34707,33882,33884,33944,34399,34400,34403,34406,34415,34448,35554"},
+		{ids="37183", cond_if=[[completedq(36576) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 30"] = {
-		{ids="31861", cond_if=[[not completedq(31839) ]]},
-		{ids="31839,31846"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 25"] = {
-		{ids="31838,31845"},
-		{ids="31860", cond_if=[[not completedq(31838) ]]},
-	},
-	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
-		{ids="31286,31287,31285,30460,30457,30459,30508,30512,30469,30467,30468,30496,30967,30834,30480,30828,30855,30514,30575,30583,30619,30569,30593,30571,30581,31252,30595,30650,30651,30652,30660,31695,31455,31460,31456,30488,30489,30491,30587,30804,30582,30492,30614,30616,30808,30617,30999,30601,30618,30621,30487,30683,30684,31306,30829,30795,30796,30797,30799,30798,30800,30801,30802,30935,31394,31512,30944,30816,30943,30945,30942,31011,30946,31228,30794,30805,30806,30807,30819,30820,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30742,30743,30744,30745,30746,30747,30670,30665,30682,30690,30699,30723,30715,31847,30724,30750,30751,30994,30991,30992,30993,30752"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 20"] = {
-		{ids="31859", cond_if=[[not completedq(31837) ]]},
-		{ids="31837,31844"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 15"] = {
-		{ids="31858", cond_if=[[not completedq(31836) ]]},
-		{ids="31836,31843"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
-		{ids="31840,31841,31842,31843,31844,31845,31846"},
-	},
-	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
-		{ids="31732,31733,30069,31734,31735,31736,31737,31738,31739,29552,31740,31741,31744,31742,31743,30070,31745,29555,29556,29553,29558,29559,29560,29759,29562,29883,29885,29887,29762,29894,29733,29725,29726,29727,29903,29888,29904,29905,29906,29889,31130,29891,29892,29893,29890,29898,29899,29900,29901,29922,31230,31392,31254,32018,29576,29617,29716,29865,29866,29717,29723,29925,29993,29995,29881,29882,30134,29920,29928,29926,29927,29745,29747,29748,29749,29751,29750,29752,29753,29756,29754,29755,29618,29619,29929,29930,29931,29620,29622,29626,29632,29633,29634,29635,29636,29627,29628,29629,29630,29637,29631,29623,29624,29639,30135,30136,30137,30138,30139,30140,30141,30142,30495,29932,29997,29998,29999,30005,30001,30002,30004,30011,30000,30498,30565,30568,31362,31303,30500,30502,31319,30648,29578,29579,29585,29580,29586,29587,29670"},
+	["LEVELING\\Draenor (10-50)\\Gorgrond (15-50)"] = {
+		{ids="36571,36563,34724,35881,36520,36566,36473,36603,36476,36480,36603,36480,36563,36500,36564,34724,35881,36520,36504", cond_if=[[level < 50 ]]},
+		{ids="35033,35065,35834,36595,35055,35050,35063,35708,35212,35666,36432,35652,36368,35654,35651,35650,35640,35633,35642,35644,35645,35647,35656,35659,36828,35213,35214,35215,35216,35208,35206,35204,35205,36523,35207,35209,35225,35234,35229,35233,35235,35255,35262,36436,36437,36439,36440,36441,36442,36443,36575,36495,34704,35686,35666,36432,35664,35693,35665,35730,35026,35870,34699,34698,34700,34702,34012,34703,35137,35883,36508,36208,36210,35037,35934,35925,36209,36436,36437,36438,36440,36441,36442,36443,36223,35128,35210,35139,35702,36833,35640,35633,35642,35644,35645,35647,35656,35659,36576,36495"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Miniwing"] = {
 		{ids="10898"},
@@ -635,6 +598,16 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Anima Conductor Daily Quests"] = {
 		{ids="62160,62188,61875,61985,62224,61968,62081,61950,62057,62155", cond_if=[[questpossible ]]},
 	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
+		{ids="60463", cond_if=[[questactive(60463) or completedq(60463) ]]},
+		{ids="60389,60394,60397,60399", cond_if=[[anyquestactive(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
+		{ids="60441,60444,60446,60448", cond_if=[[anyquestactive(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
+		{ids="60422,60427,60431,60432", cond_if=[[anyquestactive(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
+		{ids="61334,62867,62868,62869,60456,60460", cond_if=[[anyquestactive(61334,62867,62868,62869,60456,60460) or completedanyq(61334,62867,62868,62869,60456,60460) ]]},
+		{ids="60417,60370,60378,60358,60375", cond_if=[[anyquestactive(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
+		{ids="60401,60409,60406,60410", cond_if=[[anyquestactive(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
+		{ids="61981"},
+	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Kyrian Daily Quests"] = {
 		{ids="60424,60434,60430,60425", cond_if=[[anyquestactive(60424,60434,60430,60425) or completedanyq(60424,60434,60430,60425) ]]},
 		{ids="60439,60442,60447,60450", cond_if=[[anyquestactive(60439,60442,60447,60450) or completedanyq(60439,60442,60447,60450) ]]},
@@ -648,6 +621,21 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["DAILIES\\Shadowlands (50-60)\\Ardenweald World Quests"] = {
 		{ids="60872,60950,60899,60649,61948,61595,61949,61435,61596,61631,61440,61597,61598,60855,62068,61717,62051,61394,61543,61599,61303,61601,61602,61947,61530,61946,61815,61411,58975,60337,59600,59825,60476,60574,61603,60585,60770,58993,60786,61604,60533,60564,60842,60739,60597,60475,60609,60837"},
 	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolords Abomination Factory Weekly Quests"] = {
+		{ids="62213,62256,59126", cond_if=[[completedq(58410) ]]},
+		{ids="57634", cond_if=[[completedq(58411) ]]},
+		{ids="62294,58515,58525", cond_if=[[completedq(57601) ]]},
+		{ids="60765,62041", cond_if=[[completedq(57605) ]]},
+		{ids="60342,62261,60340", cond_if=[[completedq(58416) ]]},
+		{ids="62407,59293", cond_if=[[completedq(57608) ]]},
+		{ids="62232,62217,62216", cond_if=[[completedq(57611) ]]},
+		{ids="56470,58992", cond_if=[[completedq(60216) ]]},
+		{ids="60291,61522,61523", cond_if=[[completedq(57597) ]]},
+		{ids="62194,61996,62195", cond_if=[[completedq(57600) ]]},
+		{ids="62244,60237", cond_if=[[completedq(58414) ]]},
+		{ids="62276", cond_if=[[completedq(58413) ]]},
+		{ids="58432,61510,61509,61511", cond_if=[[completedq(60041) ]]},
+	},
 	["DAILIES\\Shadowlands (50-60)\\Revendreth World Quests"] = {
 		{ids="61619,59904,59905,59902,60655,60657,60658,61879,58144,61620,61621,60601,60532,57443,57465,61630,61622,61885,61623,59803,61544,61624,59643,61625,61626,60659,62203,62204,59855,61538,60653,59808,61814,59718,61883,59599,60602,61627,58084,59617,60656,60654,61628,59852,59853,59848,59850,61886,59581,59789,57328"},
 	},
@@ -658,20 +646,14 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor Daily Quests"] = {
 		{ids="62403,62390,62362,58260,62363,62364,62563,57964,60482,60505,58211", cond_if=[[questpossible ]]},
-		{ids="58454", cond_if=[[questactive(58454) or completedq(58454) ]]},
+		{ids="58454", cond_if=[[covenantfeature("Anima Conductor") >= 3 ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Kyrian Anima Conductor Daily Quests"] = {
 		{ids="61156,61159,61157,61199,61166,61193,61182,61146,61196,61209", cond_if=[[questpossible ]]},
 	},
-	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
-		{ids="60463", cond_if=[[questactive(60463) or completedq(60463) ]]},
-		{ids="60389,60394,60397,60399", cond_if=[[anyquestactive(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
-		{ids="60441,60444,60446,60448", cond_if=[[anyquestactive(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
-		{ids="60422,60427,60431,60432", cond_if=[[anyquestactive(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
-		{ids="61334,62867,62868,62869,60456,60460", cond_if=[[anyquestactive(61334,62867,62868,62869,60456,60460) or completedanyq(61334,62867,62868,62869,60456,60460) ]]},
-		{ids="60417,60370,60378,60358,60375", cond_if=[[anyquestactive(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
-		{ids="60401,60409,60406,60410", cond_if=[[anyquestactive(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
-		{ids="61981"},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory Daily Quests"] = {
+		{ids="62444,62442,62443", cond_if=[[covenantfeature("Covenant Unique") >= 2 ]]},
+		{ids="62441"},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Anima Conductor Daily Quests"] = {
 		{ids="61735,61845,61848,61846,61734,61732,61847,61707,61849,61733", cond_if=[[questpossible ]]},
@@ -704,20 +686,21 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="63040,63038", cond_if=[[anyquestactive(63040,63038) ]]},
 		{ids="63166", cond_if=[[questactive(63166) ]]},
 		{ids="63050", cond_if=[[questactive(63050) ]]},
-		{ids="60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214", cond_if=[[anyquestactive(60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214) or completedanyq(60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214) ]]},
-		{ids="63069", cond_if=[[questactive(63069) ]]},
+		{ids="60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206", cond_if=[[anyquestactive(60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206) or completedanyq(60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206) ]]},
 		{ids="63062", cond_if=[[questactive(63062) ]]},
-		{ids="63047", cond_if=[[questactive(63047) ]]},
+		{ids="63069", cond_if=[[questactive(63069) ]]},
 		{ids="63039", cond_if=[[questactive(63039) ]]},
-		{ids="63179", cond_if=[[questactive(63179) ]]},
+		{ids="63047", cond_if=[[questactive(63047) ]]},
+		{ids="63031", cond_if=[[questactive(63031) ]]},
+		{ids="60732", cond_if=[[questactive(60732) ]]},
 		{ids="63045", cond_if=[[questactive(63045) ]]},
 		{ids="63100", cond_if=[[questactive(63100) ]]},
-		{ids="63031", cond_if=[[questactive(63031) ]]},
 		{ids="63043", cond_if=[[questactive(63043) ]]},
-		{ids="60732", cond_if=[[questactive(60732) ]]},
+		{ids="62239", cond_if=[[questactive(62239) ]]},
+		{ids="63179", cond_if=[[questactive(63179) ]]},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\Elder\\Lunar Festival Achievements"] = {
-		{ids="29737,29736,29738,29739,29740,29741,29742,29735,29734,8649,8675,8674,8716,8647,8636,8683,8651,8653,8642,8643,8688,8650,8722,8714,8652,8645,8715,8721,8723,8725,8726,8672,8720,8670,8680,8717,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8713,8644,8619,8727,8635,8676,13021,13022,13023,13066,13065,13017,13067,13012,13029,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868,8868"},
+		{ids="29737,29736,29738,29739,29740,29741,29742,29735,29734,8649,8675,8674,8716,8647,8636,8683,8651,8653,8642,8643,8688,8650,8722,8714,8652,8645,8715,8721,8723,8725,8726,8672,8720,8670,8680,8717,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8713,8644,8619,8727,8635,8676,13021,13022,13023,13066,13065,13017,13067,13012,13029,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868"},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\The Pilgrim"] = {
 		{ids="14022,14064,14023,14024,14028,14030,14033,14035,14055,14053,14051,14048,14054"},
@@ -1024,7 +1007,7 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="8646,8649,8675,8674,8716,8647,8713,8636,8683,8644"},
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\Elune's Blessing"] = {
-		{ids="8868,8868"},
+		{ids="8868"},
 	},
 	["EVENTS\\Midsummer Fire Festival\\Midsummer Fire Festival Achievements\\The Fires of Azeroth\\Extinguishing Northrend"] = {
 		{ids="13485,13441,13486,13450,13451,13487,13491,13457,13455,13490,13492,13458,13454,13489,13453,13488"},
@@ -1048,7 +1031,7 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="29737,29736,29738,29739,29740,29741,29742,29735,29734"},
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\To Honor One's Elders"] = {
-		{ids="29737,29736,29738,29739,29740,29741,29742,29735,29734,8649,8675,8674,8716,8647,8636,8683,8651,8653,8642,8643,8688,8650,8722,8714,8652,8645,8715,8721,8723,8725,8726,8672,8720,8670,8680,8717,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8713,8644,8619,8727,8635,8676,13021,13022,13023,13066,13065,13017,13067,13012,13029,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868,8868"},
+		{ids="29737,29736,29738,29739,29740,29741,29742,29735,29734,8649,8675,8674,8716,8647,8636,8683,8651,8653,8642,8643,8688,8650,8722,8714,8652,8645,8715,8721,8723,8725,8726,8672,8720,8670,8680,8717,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8713,8644,8619,8727,8635,8676,13021,13022,13023,13066,13065,13017,13067,13012,13029,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868"},
 	},
 	["EVENTS\\Feast of Winter Veil\\Feast of Winter Veil Quests"] = {
 		{ids="7043", cond_if=[[level >= 30 and not completedq(7045) ]]},
@@ -2295,11 +2278,17 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="25671", cond_if=[[rep ('Darnassus') < Revered ]]},
 		{ids="25607,13979,13913,25613,25614,25615,25616,25621,25622,25640,25642,25646,25647,25649,25650,25652,25662,25673,25729,25669,25739,25741,25766,25767,25728,25765,25769,25768,25875,25878,25879,25876,25877,25880,25889,25891,25925,25913,25914,25912,25930,25934,25935,25931,25793,25811,25809,25806,25808,25821,25834,25837,25844,25845,25822,25823,25846,25847,25848,25851,25852"},
 	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
-		{ids="59262,59263,60660,59348,59351,59311"},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Plagueborn Slime"] = {
+		{ids="59130,58011,58016,58027"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Glimr"] = {
 		{ids="60605,60606,60614,60615,60616,60617,60619,60620"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Renny"] = {
+		{ids="59087,59120"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
+		{ids="59262,59263,60660,59348,59351,59311"},
 	},
 	["PROFESSIONS\\Skinning\\Quest Guides\\Kul Tiran Skinning Quest Guide"] = {
 		{ids="52223,52225,52227,52226,52228,52224"},
@@ -3087,33 +3076,173 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	},
 	["GOLD\\Farming\\Righteous Orb, Mageweave Cloth"] = {
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Hand of the Prophet"] = {
-		{ids="39443", cond_if=[[not completedq(39574,1) and not completedq(38046) ]]},
-		{ids="39448", cond_if=[[not completedq(39574,1) and not completedq(38250) ]]},
-		{ids="39449", cond_if=[[not completedq(39574,1) and not completedq(37968) ]]},
-		{ids="37891,38045,38046,38250,38440,37968,38585,39581,39586,39574,39573,39571,39570,39569,39568,39567"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Emperor Shaohao"] = {
+		{ids="33229,33231,33160,33161,33228,33336,33332,33335,33340,33341,33333"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Order of the Awakened"] = {
-		{ids="39433"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Fish Fellreed"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Wrynn's Vanguard"] = {
-		{ids="36119,36130,36127,36125,36133,36123"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Ella"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,31534,31537,31538"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\The Saberstalkers"] = {
-		{ids="39582,39565"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Klaxxi"] = {
+		{ids="31599", cond_if=[[havequest(31109) ]]},
+		{ids="31598", cond_if=[[havequest(31111) or havequest(31508) or havequest(31506) or havequest(31111) or havequest(31510) ]]},
+		{ids="31271,31502,31503,31234,31508,31509", cond_if=[[completedq(31606) ]]},
+		{ids="31677", cond_if=[[havequest(31237) or havequest(31677) ]]},
+		{ids="31237,31510,31272,31504", cond_if=[[completedq(31439) ]]},
+		{ids="31216", cond_if=[[completedq(31211) ]]},
+		{ids="31959", cond_if=[[rep("The Klaxxi")>=Exalted ]]},
+		{ids="31231,31235,31109,31267,31111,31505,31232,31233,31496,31270,31269,31507,31238,31487,31494,31268,31024,31808,31506,31018,31208,31209,31210,31211,31439,31441,31458,31465,31609,31612"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Steamwheedle Preservation Society"] = {
-		{ids="37125", cond_if=[[itemcount(118100) >= 1 ]]},
-		{ids="37222", cond_if=[[itemcount(118657) >= 1 ]]},
-		{ids="37225", cond_if=[[itemcount(118660) >= 1 ]]},
-		{ids="37221", cond_if=[[itemcount(118656) >= 1 ]]},
-		{ids="37520", cond_if=[[itemcount(120172) >= 1 ]]},
-		{ids="37226", cond_if=[[itemcount(118661) >= 1 ]]},
-		{ids="37224", cond_if=[[itemcount(118659) >= 1 ]]},
-		{ids="37210", cond_if=[[itemcount(118654) >= 1 ]]},
-		{ids="37223", cond_if=[[itemcount(37223) >= 1 ]]},
-		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
-		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Kirin Tor Offensive"] = {
+		{ids="32733,32731,32574,32575,32571,32732,32572,32573", cond_if=[[completedq(32644) ]]},
+		{ids="32549", cond_if=[[not completedq(32549) ]]},
+		{ids="32547,32546,32548", cond_if=[[completedq(32732) and completedq(32644) ]]},
+		{ids="32526,32527,32532,32525,32533,32528,32529,32530,32531", cond_if=[[havequest(32731) or completedq(32731) ]]},
+		{ids="32550,32551,32554", cond_if=[[havequest(32567) or completedq(32567) ]]},
+		{ids="32545", cond_if=[[completedq(32732) ]]},
+		{ids="32578,32568,32581,32580,32567,32579", cond_if=[[havequest(32732) or completedq(32732) ]]},
+		{ids="32553,32552", cond_if=[[completedq(32567) or completedq(32567) ]]},
+		{ids="32560,32557,32559", cond_if=[[havequest(32568) or completedq(32568) ]]},
+		{ids="32587,32587", cond_if=[[havequest(32586) or completedq(32586) or havequest(32588) or completedq(32588) ]]},
+		{ids="32567,32581,32577,32580,32568,32578,32579", cond_if=[[completedq(32572) or completedq(32573) or completedq(32571) or completedq(32574) or completedq(32575) ]]},
+		{ids="32607,32608", cond_if=[[completedq(32587) and thunderstage()>=5 ]]},
+		{ids="32540,32543,32542", cond_if=[[completedq(32644) and (havequest(32733) or completedq(32733)) ]]},
+		{ids="32556,32555,32558,32582,32585", cond_if=[[completedq(32568) ]]},
+		{ids="32578,32568,32580,32567", cond_if=[[havequest(32733) or completedq(32733) ]]},
+		{ids="32586,32588", cond_if=[[completedq(32560) or completedq(32557) or completedq(32559) ]]},
+		{ids="32586,32588", cond_if=[[havequest(32552) or havequest(32553) or completedq(32552) or completedq(32553) ]]},
+		{ids="32567,32581", cond_if=[[completedq(32731) ]]},
+		{ids="32539,32538,32544,32541", cond_if=[[completedq(32733) ]]},
+		{ids="32606,32537,32536,32535", cond_if=[[completedq(32644) and (havequest(32732) or completedq(32732)) ]]},
+		{ids="32578,32568,32584", cond_if=[[completedq(32567) ]]},
+		{ids="32679,32681,32644,32654,32652,32655,32656"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Operation: Shieldwall"] = {
+		{ids="32377,32371", cond_if=[[not completedq(32371) ]]},
+		{ids="32121,32115,32347,32346,32122,32119", cond_if=[[havequest(32116) or completedq(32116) ]]},
+		{ids="32382", cond_if=[[repval('Operation: Shieldwall','Friendly')>=4500 and not completedq(32383) ]]},
+		{ids="32355", cond_if=[[repval('Operation: Shieldwall','Revered')>=15500 and not completedq(32335) ]]},
+		{ids="32362", cond_if=[[not completedq(32362) ]]},
+		{ids="32383,32397", cond_if=[[not completedq(32383) or not completedq(32397) ]]},
+		{ids="32455", cond_if=[[not completedq(32455) ]]},
+		{ids="32145", cond_if=[[havequest(32143) or completedq(32143) ]]},
+		{ids="32381,32426", cond_if=[[not completedq(32426) ]]},
+		{ids="32401", cond_if=[[havequest(32400) and not completedq(32401) and not completedq(32455) ]]},
+		{ids="32400", cond_if=[[repval('Operation: Shieldwall','Exalted')>=1 and not completedq(32455) ]]},
+		{ids="32336,32337,32338", cond_if=[[repval('Operation: Shieldwall','Revered')>=18500 and not completedq(32338) ]]},
+		{ids="32315", cond_if=[[repval('Operation: Shieldwall','Honored')>=10750 and not completedq(32316) ]]},
+		{ids="32316", cond_if=[[not completedq(32316) ]]},
+		{ids="32321,32332,32333,32334,32335", cond_if=[[not completedq(32335) ]]},
+		{ids="32393", cond_if=[[repval('Operation: Shieldwall','Revered')>=6650 and not completedq(32393) ]]},
+		{ids="32414", cond_if=[[repval('Operation: Shieldwall','Revered')>=8665 and not completedq(32423) ]]},
+		{ids="32460,32421,32419,32417,32418,32420,32423", cond_if=[[not completedq(32423) ]]},
+		{ids="32380", cond_if=[[repval('Operation: Shieldwall','Friendly')>=950 and not completedq(32426) ]]},
+		{ids="32394", cond_if=[[havequest(32393) or not completedq(32394) ]]},
+		{ids="32416", cond_if=[[havequest(32460) or not completedq(32416) ]]},
+		{ids="32243,32194", cond_if=[[not completedq(32243) ]]},
+		{ids="32331", cond_if=[[repval('Operation: Shieldwall','Honored')>=2850 and not completedq(32362) ]]},
+		{ids="32370", cond_if=[[repval('Operation: Shieldwall','Revered')>=2700 and not completedq(32371) ]]},
+		{ids="32193", cond_if=[[repval('Operation: Shieldwall','Honored')>=6800 and not completedq(32243) ]]},
+		{ids="32246,32247,32109,32116,32451,32452,32149,32150,32148,32151,32153,32152,32146,32142,32157,32143,32144,32156,32158,32433,32154,32446,32159"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Golden Lotus"] = {
+		{ids="31394,31512,31511,30243,30266,30280,30277,30306,30242,30240,30261"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Lorewalkers"] = {
+		{ids="31103,31095,31100,31093,31097,31102,31096,31094,31055,31055"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Tillers"] = {
+		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
+		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
+		{ids="30523", cond_if=[[completedq(30516) and rep('The Tillers')>=Revered ]]},
+		{ids="30526", cond_if=[[repval('The Tillers','Revered')>=13000 ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30475,30471,30477,30478,30472,30470,30474,30476,30473,30479,30327,30319,30323,30324,30326,30317,30325,30321,30318,30322,30260,30516,31936,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Shado-Pan Assault"] = {
+		{ids="31127,31038,31220", cond_if=[[rep('Shado-Pan')>=Honored ]]},
+		{ids="31277", cond_if=[[rep('Shado-Pan')==Exalted and not completedq(31277) ]]},
+		{ids="31110", cond_if=[[not completedq(31110) ]]},
+		{ids="30933", cond_if=[[not completedq(30933) ]]},
+		{ids="31266", cond_if=[[rep('Shado-Pan')==Exalted and not completedq(31266) ]]},
+		{ids="31062,31061,31049", cond_if=[[completedq(31104) ]]},
+		{ids="31062,31061,31049", cond_if=[[not completedq(31104) ]]},
+		{ids="31128,31104,31221", cond_if=[[rep('Shado-Pan')>=Revered ]]},
+		{ids="31113,31114,31119,31116,31118,31117,31120,31047,31105,31106,31039,31044,31045,31048,31043,31042,31040,31041,31046,31196,31197,31198,31199,31200,31201,31204,31203"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Beastmaster Dailies"] = {
+		{ids="32247,32109,32164,32184,32165,32185,32166,32186,32170,32171,32172"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Order of the Cloud Serpent"] = {
+		{ids="31705", cond_if=[[completedq(30151) ]]},
+		{ids="30146", cond_if=[[skill("Fishing")>=1 ]]},
+		{ids="30149", cond_if=[[skill("Cooking")>=525 ]]},
+		{ids="30151,31704,30156,30154,30150", cond_if=[[not completedq(30143) ]]},
+		{ids="30151,31704,31716,30156,30154,30150", cond_if=[[completedq(30143) ]]},
+		{ids="30147", cond_if=[[skill("Archaeology")>=525 ]]},
+		{ids="30148", cond_if=[[skill("Pandaria Tailoring") >= 1 ]]},
+		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142,30155,30158,31698,31706,31707,31712,31194,31703,31701,31702,31711,31721,31717,31720,31718,31715,31699,31700,30159,30157,31709,31708,31714,30152,31713,30143,30144,30145,30187,31811,31810"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Jogu the Drunk"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,31320,31321"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Chee Chee"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,31338,31339,31340"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The August Celestials"] = {
+		{ids="31376", cond_if=[[not completedq(31377) ]]},
+		{ids="31378", cond_if=[[not completedq(31378) ]]},
+		{ids="30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
+		{ids="31380", cond_if=[[not completedq(31380) ]]},
+		{ids="31382", cond_if=[[not completedq(31382) ]]},
+		{ids="30740", cond_if=[[achieved(7287) ]]},
+		{ids="30718,30717,30716,30065,30066,30006,30063,30064,30068,30067,30879,30880,31517,30881,30882,30883,30885,30907,30902,31492,30956,30952,30959,30954,30953,30957,30958,30955"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Sho"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Tina Mudclaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Haohan Mudclaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Old Hillpaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Farmer Fung"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Anglers"] = {
+		{ids="30584,30586,30700,30588,30754,30753,30613,30658,30585,30598,30763,30701,30678,30698"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Gina Mudclaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Nat Pagle"] = {
+		{ids="31443,31444,31446"},
 	},
 	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wriggling Parasite"] = {
 	},
@@ -3199,112 +3328,6 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="56053", cond_if=[[not havequest(55816) and completedq(56142) ]]},
 		{ids="56306,56301", cond_if=[[havequest(56184) ]]},
 		{ids="56082,56532,56049,56334,56373,56380,55695"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Red Panda"] = {
-		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31951", cond_if=[[not completedq(31951) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31970", cond_if=[[not completedq(31970) ]]},
-		{ids="31920", cond_if=[[not completedq(31920) ]]},
-		{ids="31928", cond_if=[[not completedq(31928) ]]},
-		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Jade Owl"] = {
-		{ids="31394,31512,31511"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Sunfur Panda"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31951", cond_if=[[not completedq(31951) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31970", cond_if=[[not completedq(31970) ]]},
-		{ids="31920", cond_if=[[not completedq(31920) ]]},
-		{ids="31928", cond_if=[[not completedq(31928) ]]},
-		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603,32604,32868,32869"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Tiny Goldfish"] = {
-		{ids="31369", cond_if=[[not completedq(31369) ]]},
-		{ids="30584,30586,30678,30698,30700,30588,30754,30753,30613,30658,30585,30598,30763,30701"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Water Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32439"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Earth Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32441"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-ji Kite"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Fire Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32434"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Air Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32440"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Yu'lon Kite"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Mountain Panda"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31951", cond_if=[[not completedq(31951) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31970", cond_if=[[not completedq(31970) ]]},
-		{ids="31920", cond_if=[[not completedq(31920) ]]},
-		{ids="31928", cond_if=[[not completedq(31928) ]]},
-		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603,32604,32868,32869"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Snowy Panda"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31951", cond_if=[[not completedq(31951) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31970", cond_if=[[not completedq(31970) ]]},
-		{ids="31920", cond_if=[[not completedq(31920) ]]},
-		{ids="31928", cond_if=[[not completedq(31928) ]]},
-		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603,32604,32868,32869"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Fishy"] = {
-		{ids="29903,29904,29905"},
-	},
-	["DUNGEONS\\Legion Dungeons\\Halls of Valor"] = {
-		{ids="43349", cond_if=[[havequest(40072) or completedq(40072) or havequest(43349) or completedq(43349) ]]},
-	},
-	["DUNGEONS\\Legion Dungeons\\Vault of the Wardens"] = {
-		{ids="44486"},
-	},
-	["DUNGEONS\\Legion Dungeons\\Karazhan\\Karazhan Attunement"] = {
-		{ids="45422,44886,44887,44944,44556,44557,44683,44684,44686,44685,44764,44733,44735,44734"},
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Vendor Mounts\\Crimson Water Strider"] = {
 	},
@@ -3611,348 +3634,6 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["ACHIEVEMENTS\\Quests\\Northrend\\D.E.H.T.A's Little P.I.T.A."] = {
 		{ids="11864,11866,11876,11869,11884,11865,11878,11870,11868,11879,11871,11872,11892"},
 	},
-	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
-		{ids="37644", cond_if=[[hasbuilding(168) ]]},
-		{ids="36483", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
-		{ids="37201,37203,37207,37205,37208,37206,38299"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep: Utgarde Pinnacle"] = {
-		{ids="29864", cond_if=[[not completedq(29864) ]]},
-		{ids="13131,13132", cond_if=[[not completedq(13131) or not completedq(13132) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Azjol-Nerub"] = {
-		{ids="29807,29808,29811", cond_if=[[not completedq(29807) or not completedq(29808) or not completedq(29811) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Lost City of the Tol'vir"] = {
-		{ids="28783,28781"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Zul Gurub"] = {
-		{ids="29154,29241,29242,29172,29175,29173"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: The Blood Furnace"] = {
-		{ids="29538,29539,29540", cond_if=[[not completedq(29538) or not completedq(29539) or not completedq(29540) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Ragefire Chasm"] = {
-		{ids="30995", cond_if=[[not completedq(30995) ]]},
-		{ids="30998,30996", cond_if=[[not completedq(30998) and not completedq(30996) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Vortex Pinnacle"] = {
-		{ids="28779,28760"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Maraudon: Earth Song Falls"] = {
-		{ids="27692", cond_if=[[not completedq(27692) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Scarlet Monastery"] = {
-		{ids="31515,31516"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Mogu'shan Palace"] = {
-		{ids="31357,31360"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Drak'Tharon Keep"] = {
-		{ids="30120", cond_if=[[not completedq(30120) ]]},
-		{ids="13129,29828", cond_if=[[not completedq(13129) or not completedq(29828) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Halls of Stone"] = {
-		{ids="13207", cond_if=[[not completedq(13207) ]]},
-		{ids="29848,29850", cond_if=[[not completedq(29848) or not completedq(29850) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Dire Maul: Capital Gardens"] = {
-		{ids="27110,27111", cond_if=[[not completedq(27111) ]]},
-		{ids="27112,27113,27109"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Razorfen Kraul"] = {
-		{ids="26905", cond_if=[[not completedq(26905) ]]},
-		{ids="26901,26906,26907", cond_if=[[not completedq(26901) and not completedq(26906) and not completedq(26907) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Uldaman"] = {
-		{ids="27676", cond_if=[[not completedq(27676) ]]},
-		{ids="2278", cond_if=[[not completedq(2278) ]]},
-		{ids="27673", cond_if=[[not completedq(27673) ]]},
-		{ids="27672", cond_if=[[not completedq(27672) ]]},
-		{ids="27677", cond_if=[[not completedq(27677) ]]},
-		{ids="2280", cond_if=[[not completedq(2280) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Gnomeregan"] = {
-		{ids="26942", cond_if=[[not completedq(26942) ]]},
-		{ids="26939,26941"},
-	},
-	["DUNGEONS\\Classic Raids\\Ruins of Ahn'Qiraj"] = {
-		{ids="8557,8558,8556", cond=[[Warrior]]},
-		{ids="8695,8711,8703", cond=[[Paladin]]},
-		{ids="8690,8706,8698", cond=[[Shaman]]},
-		{ids="8693,8709,8701", cond=[[Rogue]]},
-		{ids="8691,8707,8699", cond=[[Mage]]},
-		{ids="8692,8708,8700", cond=[[Druid]]},
-		{ids="8689,8705,8697", cond=[[Priest]]},
-		{ids="8696,8712,8704", cond=[[Hunter]]},
-		{ids="8791", cond_if=[[not completedq(8791) ]]},
-		{ids="8694,8710,8702", cond=[[Warlock]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Sunken Temple"] = {
-		{ids="27604,27605,27633"},
-	},
-	["DUNGEONS\\Classic Dungeons\\The Stormwind Stockade"] = {
-		{ids="27733", cond_if=[[not completedq(27733) ]]},
-		{ids="27739", cond_if=[[not completedq(27739) ]]},
-		{ids="27737", cond_if=[[not completedq(27737) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Ahn'kahet: The Old Kingdom"] = {
-		{ids="29825", cond_if=[[not completedq(29825) ]]},
-		{ids="29826", cond_if=[[not completedq(29826) ]]},
-		{ids="13187", cond_if=[[not completedq(13187) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Arcatraz"] = {
-		{ids="29674,29675,29681"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Gate of the Setting Sun"] = {
-		{ids="31363,31364"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Deadmines"] = {
-		{ids="27758", cond_if=[[not completedq(27758) ]]},
-		{ids="27781", cond_if=[[not completedq(27781) ]]},
-		{ids="27790", cond_if=[[not completedq(27790) ]]},
-		{ids="27756", cond_if=[[not completedq(27756) ]]},
-		{ids="27785", cond_if=[[not completedq(27785) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\The Oculus"] = {
-		{ids="13127", cond_if=[[not completedq(13127) ]]},
-		{ids="13124", cond_if=[[not completedq(13124) ]]},
-		{ids="13128", cond_if=[[not completedq(13128) ]]},
-		{ids="13126", cond_if=[[not completedq(13126) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\The Nexus"] = {
-		{ids="11905", cond_if=[[not completedq(11905) ]]},
-		{ids="11973", cond_if=[[not completedq(11973) ]]},
-		{ids="11911", cond_if=[[not completedq(11911) ]]},
-		{ids="13094", cond_if=[[not completedq(13094) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Shattered Halls"] = {
-		{ids="29649,29656,29654", cond_if=[[not completedq(29649) or not completedq(29656) or not completedq(29654) ]]},
-		{ids="29652", cond_if=[[not completedq(29652) ]]},
-	},
-	["DUNGEONS\\Classic Raids\\Temple of Ahn'Qiraj"] = {
-		{ids="8560,8559,8562,8561,8544", cond=[[Warrior]]},
-		{ids="8629,8655,8627,8628,8630", cond=[[Paladin]]},
-		{ids="8624,8621,8622,8623,8602", cond=[[Shaman]]},
-		{ids="8640,8637,8638,8639,8641", cond=[[Rogue]]},
-		{ids="8631,8634,8633,8632,8625", cond=[[Mage]]},
-		{ids="8801", cond_if=[[not completedq(8801) ]]},
-		{ids="8663,8660,8661,8662,8664", cond=[[Warlock]]},
-		{ids="8593,8596,8603,8592,8594", cond=[[Priest]]},
-		{ids="8658,8626,8656,8657,8659", cond=[[Hunter]]},
-		{ids="8668,8665,8666,8667,8669", cond=[[Druid]]},
-		{ids="8784"},
-	},
-	["DUNGEONS\\Outland Raids\\The Eye"] = {
-		{ids="11007", cond_if=[[not completedq(11007) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Slave Pens"] = {
-		{ids="29563,29565", cond_if=[[not completedq(29563) or not completedq(29565) ]]},
-		{ids="29564", cond_if=[[not completedq(29564) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Auchenai Crypts"] = {
-		{ids="29590,29596,29591"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Blackfathom Deeps"] = {
-		{ids="34672", cond_if=[[not completedq(34672) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Maraudon: Foulspore Cavern"] = {
-		{ids="27698", cond_if=[[not completedq(27698) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Shadowfang Keep"] = {
-		{ids="27968", cond_if=[[not completedq(27968) ]]},
-		{ids="27917", cond_if=[[not completedq(27917) ]]},
-		{ids="27921", cond_if=[[not completedq(27921) ]]},
-		{ids="27920", cond_if=[[not completedq(27920) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Stratholme: Main Gate"] = {
-		{ids="27185", cond_if=[[not completedq(27185) ]]},
-		{ids="27208,27305,27223", cond_if=[[not completedq(27208) and not completedq(27305) and not completedq(27223) ]]},
-		{ids="27192", cond_if=[[not completedq(27192) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Lower Blackrock Spire"] = {
-		{ids="27440", cond_if=[[not completedq(27440) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Scholomance"] = {
-		{ids="31442,31448"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Caverns of Time: The Culling of Stratholme"] = {
-		{ids="13151", cond_if=[[not completedq(13151) ]]},
-		{ids="13149", cond_if=[[not completedq(13149) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Stratholme: Service Entrance"] = {
-		{ids="27352,27359,27228,27227,27230"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Blackrock Depths: Detention Block"] = {
-		{ids="27567", cond_if=[[not completedq(27567) ]]},
-		{ids="27571", cond_if=[[not completedq(27571) ]]},
-		{ids="27578", cond_if=[[not completedq(27578) ]]},
-		{ids="27573", cond_if=[[not completedq(27573) ]]},
-		{ids="27569", cond_if=[[not completedq(27569) ]]},
-		{ids="27568", cond_if=[[not completedq(27568) ]]},
-		{ids="4295", cond_if=[[itemcount(11325) > 0 ]]},
-		{ids="27565", cond_if=[[not completedq(27565) ]]},
-		{ids="27603", cond_if=[[not completedq(27603) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Well of Eternity"] = {
-		{ids="30099,30104,30100,30101,30102"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Scarlet Halls"] = {
-		{ids="31497", cond_if=[[not completedq(31497) and heroic_dung() ]]},
-		{ids="31490", cond_if=[[not completedq(31490) and not heroic_dung() ]]},
-		{ids="31495", cond_if=[[not completedq(31495) and heroic_dung() ]]},
-		{ids="31493", cond_if=[[not completedq(31493) and not heroic_dung() ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Forge of Souls"] = {
-		{ids="24683", cond_if=[[not completedq(24683) ]]},
-		{ids="24499", cond_if=[[not completedq(24499) ]]},
-	},
-	["DUNGEONS\\Outland Raids\\Magtheridon's Lair"] = {
-		{ids="11002", cond_if=[[not completedq(11002) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Dire Maul: Gordock Commons"] = {
-		{ids="27119", cond_if=[[not completedq(27119) ]]},
-		{ids="27125", cond_if=[[not completedq(27125) ]]},
-		{ids="27125,27118,27119,27124,27114"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Throne of the Tides"] = {
-		{ids="28834,28836"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Razorfen Downs"] = {
-		{ids="33513,33514"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Temple of the Jade Serpent"] = {
-		{ids="31355,31356"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Stormstout Brewery"] = {
-		{ids="31324,31327"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Shadow Labyrinth"] = {
-		{ids="29641", cond_if=[[not completedq(29641) ]]},
-		{ids="29640", cond_if=[[not completedq(29640) ]]},
-		{ids="29644", cond_if=[[not completedq(29644) ]]},
-		{ids="29643,29645", cond_if=[[not completedq(29643) or not completedq(29645) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Mechanar"] = {
-		{ids="29657,29659,29658"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Mana-Tombs"] = {
-		{ids="29573,29575", cond_if=[[not completedq(29573) or not completedq(29575) ]]},
-		{ids="29574", cond_if=[[not completedq(29574) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Siege of Niuzao Temple"] = {
-		{ids="31365,31366"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Zul'Aman"] = {
-		{ids="29186,11196"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Scarlet Halls"] = {
-		{ids="31495,31497"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Dire Maul: Warpwood Quarter"] = {
-		{ids="27107,27108", cond_if=[[not completedq(27107) and not completedq(27108) ]]},
-		{ids="27103,27104,27105", cond_if=[[not completedq(27103) and not completedq(27104) and not completedq(27105) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Shado-Pan Monastery"] = {
-		{ids="30757,31342"},
-	},
-	["DUNGEONS\\Pandaria Raids\\Siege of Orgrimmar"] = {
-		{ids="33138", cond_if=[[not completedq(33138) ]]},
-		{ids="33147", cond_if=[[not completedq(33147) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Caverns of Time: Escape from Durnholde Keep"] = {
-		{ids="29599", cond_if=[[not completedq(29599) ]]},
-		{ids="29598", cond_if=[[not completedq(29598) ]]},
-	},
-	["DUNGEONS\\Classic Raids\\Blackwing Lair"] = {
-		{ids="7782", cond_if=[[completedq(7781) ]]},
-		{ids="7781", cond_if=[[not completedq(7781) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\End Time"] = {
-		{ids="30097,30096,30098"},
-	},
-	["DUNGEONS\\Outland Raids\\Hyjal Summit (Battle for Mount Hyjal)"] = {
-		{ids="10277", cond_if=[[not completedq(10277) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Hour of Twilight"] = {
-		{ids="30103,30105"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Grim Batol"] = {
-		{ids="28853,28852,28854"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Blackrock Caverns"] = {
-		{ids="28735,28737,28738,28740,28741"},
-	},
-	["DUNGEONS\\Northrend Raids\\Naxxramas"] = {
-		{ids="13372,13375"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\The Violet Hold"] = {
-		{ids="29830", cond_if=[[not completedq(29830) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep"] = {
-		{ids="29763,29764,29803", cond_if=[[not completedq(29763) or not completedq(29764) or not completedq(29803) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Trial of the Champion"] = {
-		{ids="29851", cond_if=[[not completedq(29851) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Pit of Saron"] = {
-		{ids="24710", cond_if=[[not completedq(24710) ]]},
-		{ids="24711", cond_if=[[not completedq(24711) ]]},
-		{ids="24498", cond_if=[[not completedq(24498) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Halls of Reflection"] = {
-		{ids="24500"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Halls of Lightning"] = {
-		{ids="29860,29861,29862", cond_if=[[not completedq(29860) or not completedq(29861) or not completedq(29862) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Underbog"] = {
-		{ids="29568,29570,29567,29691"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Gundrak"] = {
-		{ids="29834,29839,29844", cond_if=[[not completedq(29834) or not completedq(29839) or not completedq(29844) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Hellfire Ramparts"] = {
-		{ids="29528,29529,29594", cond_if=[[not completedallq(29528,29529,29594) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: The Steamvault"] = {
-		{ids="29613,29614,29615"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Magister's Terrace"] = {
-		{ids="29684,29686,29687", cond_if=[[not completedq(29684) or not completedq(29686) or not completedq(29687) ]]},
-		{ids="11490", cond_if=[[not completedq(11490) ]]},
-		{ids="29685", cond_if=[[not completedq(29685) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Tempest Keep: Botanica"] = {
-		{ids="29660,29667,29669"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\The Stonecore"] = {
-		{ids="28815,28814"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Caverns of Time: The Black Morass"] = {
-		{ids="10297"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Sethekk Halls"] = {
-		{ids="29607", cond_if=[[not completedq(29607) ]]},
-		{ids="29605,29606", cond_if=[[not completedq(29605) or not completedq(29606) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Maraudon: The Wicked Grotto"] = {
-		{ids="27697", cond_if=[[not completedq(27697) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Zul'Farrak"] = {
-		{ids="27068,27071,27070,27076"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Scarlet Monastery"] = {
-		{ids="31513,31515", cond_if=[[not completedq(31513) and not completedq(31515) ]]},
-		{ids="31514,31516", cond_if=[[not completedq(31514) and not completedq(31516) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Scholomance"] = {
-		{ids="31440,31447", cond_if=[[not completedq(31440) and not completedq(31447) and not heroic_dung() ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Wailing Caverns"] = {
-		{ids="26870", cond_if=[[not completedq(26870) ]]},
-		{ids="26872,26873", cond_if=[[not completedq(26872) ]]},
-	},
 	["DAILIES\\Legion\\Antoran Wastes World Quests"] = {
 		{ids="48832,48837,48931,47561,49054,48867,48637,48831,48777,49055,47566,48780,48835,48640,48830,48828,48983,49057,47552,48875,48783,49058,49056,48467,48958,48833,48526,48662,48514,48691,48358,48360,48374,48952,48827,48466,48866,48465,49053,48836,48624,48349,48359,48834,48829"},
 	},
@@ -3993,6 +3674,41 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="48285,49043,47724,47496,47624,48511,48509,48510,48286,49045,47712,47720,49042,49046,48287,48592,48282,47507,47551,47707,48502,48284,49044,47625,47646,49041,47542,48512,47563,48338,47728,48192,47953,48091,48615,48614,48337"},
 	},
 	["DAILIES\\Legion\\Broken Shore Rares"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-Chi, Hatchling of Chi-Ji"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Rascal-Bot"] = {
+		{ids="32630"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Dragonkin Pets\\Yu'la, Broodling of Yu'lon"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Xu-Fu, Cub of Xuen"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Zao, Calfling of Niuzao"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Pierre"] = {
+		{ids="32630"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
+		{ids="31752"},
+	},
+	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
+		{ids="37644", cond_if=[[hasbuilding(168) ]]},
+		{ids="36483", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
+		{ids="37201,37203,37207,37205,37208,37206,38299"},
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Reputation Mounts\\Regal Riding Crane"] = {
 		{ids="30243,30266,30280,30277,30306,30242,30240,30261"},
@@ -4057,168 +3773,6 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\Onyx Cloud Serpent"] = {
 		{ids="31266,31277"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
-		{ids="51142,51145,50901,50444,50332,50381"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
-		{ids="55983,56211"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Long Con"] = {
-		{ids="49223"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Pet Battle Challenge: Blackrock Depths"] = {
-		{ids="58455,58457"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
-		{ids="57009,54088,55040,54945,54087,54946,54947,54992,55645,55729,55730,55731,55995,55734,55096,55736,55609"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Everything Old Is New Again"] = {
-		{ids="53430,53433,53432,53431"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\It's Really Getting Out of Hand"] = {
-		{ids="50559"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Let's Bee Friends"] = {
-		{ids="50343,50070,50359,50064,50161,50168,50162,50504,50264,50493,50165,50534,50553,53347,53371"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\7th Legion Spycatcher"] = {
-		{ids="50717"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Hungry, Hungry Ranishu"] = {
-		{ids="52798"},
-	},
-	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
-		{ids="53168", cond_if=[[not achieved(13127,14) ]]},
-		{ids="53171", cond_if=[[not achieved(13127,11) ]]},
-		{ids="53169", cond_if=[[not achieved(13127,13) ]]},
-		{ids="53184", cond_if=[[not achieved(13127,1) ]]},
-		{ids="53167", cond_if=[[not achieved(13127,15) ]]},
-		{ids="53155", cond_if=[[not achieved(13127,20) ]]},
-		{ids="53170", cond_if=[[not achieved(13127,12) ]]},
-		{ids="53181", cond_if=[[not achieved(13127,4) ]]},
-		{ids="53178", cond_if=[[not achieved(13127,6) ]]},
-		{ids="53163", cond_if=[[not achieved(13127,17) ]]},
-		{ids="53164", cond_if=[[not achieved(13127,16) ]]},
-		{ids="53177", cond_if=[[not achieved(13127,7) ]]},
-		{ids="53161", cond_if=[[not achieved(13127,18) ]]},
-		{ids="53174", cond_if=[[not achieved(13127,9) ]]},
-		{ids="53172", cond_if=[[not achieved(13127,10) ]]},
-		{ids="53160", cond_if=[[not achieved(13127,19) ]]},
-		{ids="53183", cond_if=[[not achieved(13127,2) ]]},
-		{ids="53180", cond_if=[[not achieved(13127,5) ]]},
-		{ids="53176", cond_if=[[not achieved(13127,8) ]]},
-		{ids="53182", cond_if=[[not achieved(13127,3) ]]},
-	},
-	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
-		{ids="53992"},
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\In Teldrassil's Shadow"] = {
-		{ids="53847,53849,53988,54041,53989,53990,54871"},
-	},
-	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
-		{ids="57249,57298"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
-		{ids="56181,56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Unbound Monstrosities"] = {
-		{ids="52166,52157,52181,52169,52196,52163"},
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
-	},
-	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
-		{ids="55517,55452,55455,55456,55454,55451,55463,55457"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
-		{ids="55064,55534,56515,56516,56517,56518,56519"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Pride of Kul Tiras"] = {
-		{ids="50639", cond_if=[[not havequest(50639) or completedq(50639) ]]},
-		{ids="52194,52246,52762,52252,52253,52311,52445,52449,52453,52509,52508,52510,52511,52512,52513,52481,52482,52483,52484,52485,52486,52487,52488,51445,52153"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Deadliest Cache"] = {
-		{ids="50376,50391,50418,52130"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\By de Power of de Loa!"] = {
-		{ids="51232"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Adventurer of Stormsong Valley"] = {
-		{ids="52299"},
-	},
-	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
-		{ids="57249,57300"},
-	},
-	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
-		{ids="52462"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
-		{ids="54090"},
-	},
-	["ACHIEVEMENTS\\Player vs. Player\\Battle for Azeroth\\Azerfighter"] = {
-		{ids="53768"},
-	},
-	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Kul Tiran Curator"] = {
-		{ids="51950", cond_if=[[not completedq(51950) ]]},
-		{ids="51952", cond_if=[[not completedq(51952) ]]},
-		{ids="51936", cond_if=[[not completedq(51936) ]]},
-		{ids="51932", cond_if=[[not completedq(51932) ]]},
-		{ids="51953", cond_if=[[not completedq(51953) ]]},
-		{ids="51934", cond_if=[[not completedq(51934) ]]},
-		{ids="51937", cond_if=[[not completedq(51937) ]]},
-		{ids="51926", cond_if=[[not completedq(51926) ]]},
-		{ids="51929", cond_if=[[not completedq(51929) ]]},
-		{ids="51955", cond_if=[[not completedq(51955) ]]},
-		{ids="51951", cond_if=[[not completedq(51951) ]]},
-		{ids="51954", cond_if=[[not completedq(51954) ]]},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
-		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\About To Break"] = {
-		{ids="53108"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Upright Citizens"] = {
-		{ids="53704"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Nation United"] = {
-		{ids="52153,52151"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Drag Race"] = {
-		{ids="53346"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Come On and Slam"] = {
-		{ids="54512"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Sabertron Assemble"] = {
-		{ids="51974"},
-	},
-	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
-		{ids="55309,55299,55310,55306,55307,55313,55308,55305,55311,55312"},
-	},
-	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Mechagnome"] = {
-		{ids="57486,57487,57488,57490,57491,57492,57493,57494,57496,57495,57497"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bless the Rains Down in Freehold"] = {
-		{ids="53196"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
-		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Pushing the Payload"] = {
-		{ids="54498"},
-	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Transport Network"] = {
 		{ids="63055,63059,60184"},
 	},
@@ -4250,7 +3804,7 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Questline"] = {
 		{ids="62693", cond_if=[[not completedq(62890) ]]},
-		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,57661,60061,60062,60063,60064,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58669,58647,59008,58704,58871,59725,59063,59068,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60192,60191,60193,60194,60108,62422,62560,62561"},
+		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,60136,61099,60267,62932,60268,60269,60270,60271,60272,57661,60061,60062,60063,60064,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58669,58647,59008,58704,58871,59725,59063,59068,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60192,60191,60193,60194,60108,62422,62560,62561"},
 		{ids="63214", cond_if=[[not havequest(63214) or completedq(63214) ]]},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Story Only)"] = {
@@ -4258,6 +3812,9 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Transport Network"] = {
 		{ids="63052,63053"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory"] = {
+		{ids="62624,63046,59862,59872,59873,59999,59871,62447,62467,60640,60641,60642"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Revendreth"] = {
 		{ids="57177,59211", cond_if=[[level < 60 ]]},
@@ -4289,14 +3846,23 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["LEVELING\\Shadowlands (50-60)\\Maldraxxus (Story Only)"] = {
 		{ids="57390,60020,60021,57425,57511,57512,60179,60181,57515,57514,58351,58617,60451,57516,58616,58618,58726,60428,60453,60461,60886,58751,59130,57912,58011,58016,58027,58036,58045,58031,59223,60831,59231,58821,59171,59172,59185,59210,59188,59190,59025,59009,57976,60557,58268,57979,59616,57983,57984,57985,57987,57986,57982,57993,57994,60733,59202,59874,59897,60972,59960,59959,59962,59966,59973,61190,62654,59974,59011,60737,59206"},
 	},
+	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
+		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Command Table"] = {
 		{ids="63054,59603,62309,62312,62313,62314,62315,62316"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Abomination Factory"] = {
+		{ids="63058,58665,58668,58680,58677,58686,59042,58670,58671,58727,60048,60041,60049,60042,60195"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor"] = {
 		{ids="63057,60722"},
 	},
-	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
-		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Path of Ascension"] = {
+		{ids="60489,60493,60494,60495,60496,60497,61473,60498,60946"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr The Ember Court"] = {
+		{ids="63065,59660,59661,61705,61706,61704,57919,57920,57921,57922,57923,57924,57925,57926,60127,57928,57927,60128,60236,61880,57929,57531,57532,57571,57533,57534,57535,59427,57536,61404,61884,61407,61882,61616"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Threads of Fate)"] = {
 		{ids="62737,62705,62732,62735,62736", cond_if=[[completedq(62716) ]]},
@@ -4311,17 +3877,17 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Questline"] = {
 		{ids="62694", cond_if=[[not completedq(62840) ]]},
 		{ids="63212", cond_if=[[not havequest(58609) or completedq(58609) ]]},
-		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,58665,62448,59555,58007,57649,59265,61226,61227,61230,61335,57644,61252,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,60184,59648,59650,59645,59653,59659,59678,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,60043,59916,61396,61180,60510,61412,60050,60044,61567,60114,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58472,58599,58608,58624,62388,61739,61740,61741,62414,61742,61743,61744,61745,62297,61746,61747,61748,61749,62317,61750,61751,62320,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
+		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,58665,60136,61099,60267,62932,60268,60269,60270,60271,60272,62448,59555,58007,57649,59265,61226,61227,61230,61335,57644,61252,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,60184,59648,59650,59645,59653,59659,59678,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,60043,59916,61396,61180,60510,61412,60050,60044,61567,60114,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58472,58599,58608,58624,62388,61739,61740,61741,62414,61742,61743,61744,61745,62297,61746,61747,61748,61749,62317,61750,61751,62320,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr Questline"] = {
 		{ids="63215", cond_if=[[not havequest(59314) or completedq(59314) ]]},
 		{ids="62691", cond_if=[[not completedq(62902) ]]},
-		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,60500,59701,61492,59706,59707,59708,59720,59711,59676,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,58428,58424,60673,58440,58444,61050,58530,58555,58584,58585,58586,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58392,58393,58394,58395,57727,57772,57771,60145,60265,60183,57729,57646,57531,57532,57571,57533,57534,57535,59427,57536,58406,58407,59325"},
+		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,60500,60136,61099,60267,62932,60268,60269,60270,60271,60272,59701,61492,59706,59707,59708,59720,59711,59676,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,58428,58424,60673,58440,58444,61050,58530,58555,58584,58585,58586,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58392,58393,58394,58395,57727,57772,57771,60145,60265,60183,57729,57646,57531,57532,57571,57533,57534,57535,59427,57536,58406,58407,59325"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Questline"] = {
 		{ids="62692", cond_if=[[not completedq(62791) ]]},
 		{ids="63211", cond_if=[[not havequest(63211) or completedq(63211) ]]},
-		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,58787,58788,58789,58790,58791,58948,58949,58950,58951,58792,58793,58795,58796,58797,58798,58175,58177,58179,58176,58180,58178,58182,58183,58181,61785,61767,61768,61769,61771,61770,61772,61774,61773,61775,61776,61777,61779,61778,61780,61781,61782,61876,61877,61878,58557,58558,58559,58560,58562,58561,58563,58564,58565,58567,58568,58566,58569,58570,58571,58775,58856,58832,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57115,57116,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919,62557"},
+		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,60136,61099,60267,62932,60268,60269,60270,60271,60272,58787,58788,58789,58790,58791,58948,58949,58950,58951,58792,58793,58795,58796,58797,58798,58175,58177,58179,58176,58180,58178,58182,58183,58181,61785,61767,61768,61769,61771,61770,61772,61774,61773,61775,61776,61777,61779,61778,61780,61781,61782,61876,61877,61878,58557,58558,58559,58560,58562,58561,58563,58564,58565,58567,58568,58566,58569,58570,58571,58775,58856,58832,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57115,57116,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919,62557"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Maldraxxus (Threads of Fate)"] = {
 		{ids="59430,59520,58431,60831,59231,62785,59781,59750,58068,58088,58090,58575,59800,58947,59879,59203,59837,58900,58785,58750,58794,57245,62605,58619,58621,59917,58620,58622,60900,59994,58623"},
@@ -4331,17 +3897,22 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="57026,57007,56829,57381,56942,56955,58433,56978,57174,58654,57178,57179,57161,57173,58931,58932,59021,57175,59023,57176,57180,57182,59232,57098,58916,58941,59014,57131,57136,57164,60506,57159,60313,57189,57190,59209,59256,57240,57380,57405,57426,57428,57427,57442,57460,57461,60566,57724,59327,57689,57690,57691,57693,57694,59644,58086,57876"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Shadowlands Intro & Main Story Questline"] = {
-		{ids="63209,62277,62739", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
-		{ids="61874,59751", cond_if=[[Horde ]]},
-		{ids="62761", cond_if=[[covenant() ~= Necrolord ]]},
-		{ids="63210,62279,63037", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
-		{ids="62275", cond_if=[[not havequest(62723) and not completedq(62723) ]]},
-		{ids="62776", cond_if=[[covenant() ~= NightFae ]]},
-		{ids="62776", cond_if=[[covenant() == NightFae ]]},
-		{ids="63208,62278,62738", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
-		{ids="62761", cond_if=[[covenant() == Necrolord ]]},
+		{ids="63034,62723,62729", cond_if=[[covenant() == Kyrian ]]},
+		{ids="62778", cond_if=[[covenant() ~= Venthyr ]]},
+		{ids="63209,62277,63036,62739", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
+		{ids="63210,62279,63037,62740", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
+		{ids="62707,62723,62729", cond_if=[[covenant() ~= Kyrian ]]},
 		{ids="60545,59751", cond_if=[[Alliance ]]},
-		{ids="59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,62716,60129,62000,62159,62707,62723,62729,62748,62763,62778,60148,60149,60150,60151,60152,60154,60156,59773,61096,61107,57386,61715,61716,60338,57025,57877,57878"},
+		{ids="62748,62761", cond_if=[[covenant() ~= Necrolord ]]},
+		{ids="62778", cond_if=[[covenant() == Venthyr ]]},
+		{ids="62716", cond_if=[[not havequest(60129) or completedq(60129) ]]},
+		{ids="62275", cond_if=[[not havequest(62723) and not completedq(62723) ]]},
+		{ids="62763,62776", cond_if=[[covenant() ~= NightFae ]]},
+		{ids="62763,62776", cond_if=[[covenant() == NightFae ]]},
+		{ids="63208,62278,63035,62738", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
+		{ids="62748,62761", cond_if=[[covenant() == Necrolord ]]},
+		{ids="61874,59751", cond_if=[[Horde ]]},
+		{ids="59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,60129,62000,62159,60148,60149,60150,60151,60152,60154,60156,59773,61096,61107,57386,61715,61716,60338,57025,57877,57878"},
 	},
 	["LEVELING\\Starter Guides\\Lightforged Draenei Starter"] = {
 		{ids="49772,50313"},
@@ -4828,173 +4399,50 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["LEVELING\\Legion (10-50)\\Paladin\\Paladin 7.2 Order Hall Quests"] = {
 		{ids="46765,47000,44782,44821,47022,45413,45414,45415,45843,45863,47052,45486,45522,45523,45524,45525,46340,45862,47006,46079,46082,46106,46080,46107,46200,45864,47137,45143,45890,46259,45145,45146,45147,45148,45149,46045,46251,46069,46070,46071,46083,40012,40326,41702,41704,41760,41762,41834,41989,42079,46074,45770"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Emperor Shaohao"] = {
-		{ids="33229,33231,33160,33161,33228,33336,33332,33335,33340,33341,33333"},
+	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
+		{ids="31001,31002,31003,31004,31005,31676,31006,31007,31660,31009,31008,31010,31661,31066,31108,31689,31107,31087,31019,31023,31020,31021,31022,31026,31088,31090,31089,31091,31359,31092,31398,31727,31730,31067,31068,31072,31069,31070,31071,31129,31077,31074,31073,31133,31078,31075,31080,31079,31081,31082,31084,31085,31086,31265,31181,31182,31183,31185,31184,31187,31188,31186,31189,31190,31354,32030,31782,31605,31175,31176,31177,31178,31179,31606"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Fish Fellreed"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
+		{ids="30079,30080,30082,30091,30081,30083,30084,30088,30089,30090,30178,30352,30353,30274,30344,30384,30350,31262,31260,30346,30349,30351,30347,30348,30363,30269,30270,30694,30268,30695,30272,30271,30273,30667,30666,30668,30669,30671,30691,30672,30674,30675,30168,30169,30354,30356,30355,30361,30357,30359,30445,30360,30623,30622,30624,30625,30626,30627,30628"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Ella"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,31534,31537,31538"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
+		{ids="31857", cond_if=[[not completedq(31835) ]]},
+		{ids="31835,31842"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Klaxxi"] = {
-		{ids="31599", cond_if=[[havequest(31109) ]]},
-		{ids="31598", cond_if=[[havequest(31111) or havequest(31508) or havequest(31506) or havequest(31111) or havequest(31510) ]]},
-		{ids="31271,31502,31503,31234,31508,31509", cond_if=[[completedq(31606) ]]},
-		{ids="31677", cond_if=[[havequest(31237) or havequest(31677) ]]},
-		{ids="31237,31510,31272,31504", cond_if=[[completedq(31439) ]]},
-		{ids="31216", cond_if=[[completedq(31211) ]]},
-		{ids="31959", cond_if=[[rep("The Klaxxi")>=Exalted ]]},
-		{ids="31231,31235,31109,31267,31111,31505,31232,31233,31496,31270,31269,31507,31238,31487,31494,31268,31024,31808,31506,31018,31208,31209,31210,31211,31439,31441,31458,31465,31609,31612"},
+	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
+		{ids="30814,30769,30770,30771,30773,30772,30774,30775,30776,30777,30778,30779,30780,30781,30827,30783,30782,30784,30785,31894,30786,30787,30788,30789,30815,30790,30791,30792,30793,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30897,30896,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30977,31032,30978,30979,30980,31065,30981,31063,31064,31687,31688,30968,30922,30963,30964,30921,30923,30924,30931,30932,30925,30929,30930,30926,30928,30927"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Kirin Tor Offensive"] = {
-		{ids="32733,32731,32574,32575,32571,32732,32572,32573", cond_if=[[completedq(32644) ]]},
-		{ids="32549", cond_if=[[not completedq(32549) ]]},
-		{ids="32547,32546,32548", cond_if=[[completedq(32732) and completedq(32644) ]]},
-		{ids="32526,32527,32532,32525,32533,32528,32529,32530,32531", cond_if=[[havequest(32731) or completedq(32731) ]]},
-		{ids="32550,32551,32554", cond_if=[[havequest(32567) or completedq(32567) ]]},
-		{ids="32545", cond_if=[[completedq(32732) ]]},
-		{ids="32578,32568,32581,32580,32567,32579", cond_if=[[havequest(32732) or completedq(32732) ]]},
-		{ids="32553,32552", cond_if=[[completedq(32567) or completedq(32567) ]]},
-		{ids="32560,32557,32559", cond_if=[[havequest(32568) or completedq(32568) ]]},
-		{ids="32587,32587", cond_if=[[havequest(32586) or completedq(32586) or havequest(32588) or completedq(32588) ]]},
-		{ids="32567,32581,32577,32580,32568,32578,32579", cond_if=[[completedq(32572) or completedq(32573) or completedq(32571) or completedq(32574) or completedq(32575) ]]},
-		{ids="32607,32608", cond_if=[[completedq(32587) and thunderstage()>=5 ]]},
-		{ids="32540,32543,32542", cond_if=[[completedq(32644) and (havequest(32733) or completedq(32733)) ]]},
-		{ids="32556,32555,32558,32582,32585", cond_if=[[completedq(32568) ]]},
-		{ids="32578,32568,32580,32567", cond_if=[[havequest(32733) or completedq(32733) ]]},
-		{ids="32586,32588", cond_if=[[completedq(32560) or completedq(32557) or completedq(32559) ]]},
-		{ids="32586,32588", cond_if=[[havequest(32552) or havequest(32553) or completedq(32552) or completedq(32553) ]]},
-		{ids="32567,32581", cond_if=[[completedq(32731) ]]},
-		{ids="32539,32538,32544,32541", cond_if=[[completedq(32733) ]]},
-		{ids="32606,32537,32536,32535", cond_if=[[completedq(32644) and (havequest(32732) or completedq(32732)) ]]},
-		{ids="32578,32568,32584", cond_if=[[completedq(32567) ]]},
-		{ids="32679,32681,32644,32654,32652,32655,32656"},
+	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
+		{ids="29907,29908,29877,29909,30086,29873,29871,29874,29872,29940,29910,29911,29912,29913,29914,29915,29916,29917,29918,29919,29944,29945,29947,29946,29948,29949,29950,29951,29577,29757,30267,30275,29600,29581,29758,32045,32035,30072,30059,30058,29952,30046,30053,30048,30049,30051,30172,30050,30056,30054,30057,30052,30055,30031,30029,30030,30032,30028,30047,30073,30074,30076,30077,30075,30078,30117,29981,29982,29983,29984,29985,29986,29992,29987,29988,29989,29990,30183,30181,30182,30184,32038,30185,30186"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Operation: Shieldwall"] = {
-		{ids="32377,32371", cond_if=[[not completedq(32371) ]]},
-		{ids="32121,32115,32347,32346,32122,32119", cond_if=[[havequest(32116) or completedq(32116) ]]},
-		{ids="32382", cond_if=[[repval('Operation: Shieldwall','Friendly')>=4500 and not completedq(32383) ]]},
-		{ids="32355", cond_if=[[repval('Operation: Shieldwall','Revered')>=15500 and not completedq(32335) ]]},
-		{ids="32362", cond_if=[[not completedq(32362) ]]},
-		{ids="32383,32397", cond_if=[[not completedq(32383) or not completedq(32397) ]]},
-		{ids="32455", cond_if=[[not completedq(32455) ]]},
-		{ids="32145", cond_if=[[havequest(32143) or completedq(32143) ]]},
-		{ids="32381,32426", cond_if=[[not completedq(32426) ]]},
-		{ids="32401", cond_if=[[havequest(32400) and not completedq(32401) and not completedq(32455) ]]},
-		{ids="32400", cond_if=[[repval('Operation: Shieldwall','Exalted')>=1 and not completedq(32455) ]]},
-		{ids="32336,32337,32338", cond_if=[[repval('Operation: Shieldwall','Revered')>=18500 and not completedq(32338) ]]},
-		{ids="32315", cond_if=[[repval('Operation: Shieldwall','Honored')>=10750 and not completedq(32316) ]]},
-		{ids="32316", cond_if=[[not completedq(32316) ]]},
-		{ids="32321,32332,32333,32334,32335", cond_if=[[not completedq(32335) ]]},
-		{ids="32393", cond_if=[[repval('Operation: Shieldwall','Revered')>=6650 and not completedq(32393) ]]},
-		{ids="32414", cond_if=[[repval('Operation: Shieldwall','Revered')>=8665 and not completedq(32423) ]]},
-		{ids="32460,32421,32419,32417,32418,32420,32423", cond_if=[[not completedq(32423) ]]},
-		{ids="32380", cond_if=[[repval('Operation: Shieldwall','Friendly')>=950 and not completedq(32426) ]]},
-		{ids="32394", cond_if=[[havequest(32393) or not completedq(32394) ]]},
-		{ids="32416", cond_if=[[havequest(32460) or not completedq(32416) ]]},
-		{ids="32243,32194", cond_if=[[not completedq(32243) ]]},
-		{ids="32331", cond_if=[[repval('Operation: Shieldwall','Honored')>=2850 and not completedq(32362) ]]},
-		{ids="32370", cond_if=[[repval('Operation: Shieldwall','Revered')>=2700 and not completedq(32371) ]]},
-		{ids="32193", cond_if=[[repval('Operation: Shieldwall','Honored')>=6800 and not completedq(32243) ]]},
-		{ids="32246,32247,32109,32116,32451,32452,32149,32150,32148,32151,32153,32152,32146,32142,32157,32143,32144,32156,32158,32433,32154,32446,32159"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 35"] = {
+		{ids="31844"},
+		{ids="31889", cond_if=[[not completedq(31844) ]]},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Golden Lotus"] = {
-		{ids="31394,31512,31511,30243,30266,30280,30277,30306,30242,30240,30261"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 30"] = {
+		{ids="31861", cond_if=[[not completedq(31839) ]]},
+		{ids="31839,31846"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Lorewalkers"] = {
-		{ids="31103,31095,31100,31093,31097,31102,31096,31094,31055,31055"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 25"] = {
+		{ids="31838,31845"},
+		{ids="31860", cond_if=[[not completedq(31838) ]]},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Tillers"] = {
-		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
-		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
-		{ids="30523", cond_if=[[completedq(30516) and rep('The Tillers')>=Revered ]]},
-		{ids="30526", cond_if=[[repval('The Tillers','Revered')>=13000 ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30475,30471,30477,30478,30472,30470,30474,30476,30473,30479,30327,30319,30323,30324,30326,30317,30325,30321,30318,30322,30260,30516,31936,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
+		{ids="31286,31287,31285,30460,30457,30459,30508,30512,30469,30467,30468,30496,30967,30834,30480,30828,30855,30514,30575,30583,30619,30569,30593,30571,30581,31252,30595,30650,30651,30652,30660,31695,31455,31460,31456,30488,30489,30491,30587,30804,30582,30492,30614,30616,30808,30617,30999,30601,30618,30621,30487,30683,30684,31306,30829,30795,30796,30797,30799,30798,30800,30801,30802,30935,31394,31512,30944,30816,30943,30945,30942,31011,30946,31228,30794,30805,30806,30807,30819,30820,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30742,30743,30744,30745,30746,30747,30670,30665,30682,30690,30699,30723,30715,31847,30724,30750,30751,30994,30991,30992,30993,30752"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Shado-Pan Assault"] = {
-		{ids="31127,31038,31220", cond_if=[[rep('Shado-Pan')>=Honored ]]},
-		{ids="31277", cond_if=[[rep('Shado-Pan')==Exalted and not completedq(31277) ]]},
-		{ids="31110", cond_if=[[not completedq(31110) ]]},
-		{ids="30933", cond_if=[[not completedq(30933) ]]},
-		{ids="31266", cond_if=[[rep('Shado-Pan')==Exalted and not completedq(31266) ]]},
-		{ids="31062,31061,31049", cond_if=[[completedq(31104) ]]},
-		{ids="31062,31061,31049", cond_if=[[not completedq(31104) ]]},
-		{ids="31128,31104,31221", cond_if=[[rep('Shado-Pan')>=Revered ]]},
-		{ids="31113,31114,31119,31116,31118,31117,31120,31047,31105,31106,31039,31044,31045,31048,31043,31042,31040,31041,31046,31196,31197,31198,31199,31200,31201,31204,31203"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 20"] = {
+		{ids="31859", cond_if=[[not completedq(31837) ]]},
+		{ids="31837,31844"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Beastmaster Dailies"] = {
-		{ids="32247,32109,32164,32184,32165,32185,32166,32186,32170,32171,32172"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 15"] = {
+		{ids="31858", cond_if=[[not completedq(31836) ]]},
+		{ids="31836,31843"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Order of the Cloud Serpent"] = {
-		{ids="31705", cond_if=[[completedq(30151) ]]},
-		{ids="30146", cond_if=[[skill("Fishing")>=1 ]]},
-		{ids="30149", cond_if=[[skill("Cooking")>=525 ]]},
-		{ids="30151,31704,30156,30154,30150", cond_if=[[not completedq(30143) ]]},
-		{ids="30151,31704,31716,30156,30154,30150", cond_if=[[completedq(30143) ]]},
-		{ids="30147", cond_if=[[skill("Archaeology")>=525 ]]},
-		{ids="30148", cond_if=[[skill("Pandaria Tailoring") >= 1 ]]},
-		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142,30155,30158,31698,31706,31707,31712,31194,31703,31701,31702,31711,31721,31717,31720,31718,31715,31699,31700,30159,30157,31709,31708,31714,30152,31713,30143,30144,30145,30187,31811,31810"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
+		{ids="31840,31841,31842,31843,31844,31845,31846"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Jogu the Drunk"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,31320,31321"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Chee Chee"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,31338,31339,31340"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The August Celestials"] = {
-		{ids="31376", cond_if=[[not completedq(31377) ]]},
-		{ids="31378", cond_if=[[not completedq(31378) ]]},
-		{ids="30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
-		{ids="31380", cond_if=[[not completedq(31380) ]]},
-		{ids="31382", cond_if=[[not completedq(31382) ]]},
-		{ids="30740", cond_if=[[achieved(7287) ]]},
-		{ids="30718,30717,30716,30065,30066,30006,30063,30064,30068,30067,30879,30880,31517,30881,30882,30883,30885,30907,30902,31492,30956,30952,30959,30954,30953,30957,30958,30955"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Sho"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Tina Mudclaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Haohan Mudclaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Old Hillpaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Farmer Fung"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Anglers"] = {
-		{ids="30584,30586,30700,30588,30754,30753,30613,30658,30585,30598,30763,30701,30678,30698"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Gina Mudclaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Nat Pagle"] = {
-		{ids="31443,31444,31446"},
+	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
+		{ids="31732,31733,30069,31734,31735,31736,31737,31738,31739,29552,31740,31741,31744,31742,31743,30070,31745,29555,29556,29553,29558,29559,29560,29759,29562,29883,29885,29887,29762,29894,29733,29725,29726,29727,29903,29888,29904,29905,29906,29889,31130,29891,29892,29893,29890,29898,29899,29900,29901,29922,31230,31392,31254,32018,29576,29617,29716,29865,29866,29717,29723,29925,29993,29995,29881,29882,30134,29920,29928,29926,29927,29745,29747,29748,29749,29751,29750,29752,29753,29756,29754,29755,29618,29619,29929,29930,29931,29620,29622,29626,29632,29633,29634,29635,29636,29627,29628,29629,29630,29637,29631,29623,29624,29639,30135,30136,30137,30138,30139,30140,30141,30142,30495,29932,29997,29998,29999,30005,30001,30002,30004,30011,30000,30498,30565,30568,31362,31303,30500,30502,31319,30648,29578,29579,29585,29580,29586,29587,29670"},
 	},
 	["DAILIES\\Mists of Pandaria Dailies\\The August Celestials Dailies"] = {
 		{ids="31376", cond_if=[[not completedq(31377) ]]},
@@ -5120,6 +4568,15 @@ ZGV.Quest_Cache_Accept_Alliance = {
 		{ids="30147", cond_if=[[skill("Archaeology")>=525 ]]},
 		{ids="30149", cond_if=[[skill("Cooking")>=525 ]]},
 		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142,30155,30158,31698,31706,31707,31712,31194,31703,31701,31702,31711,31721,31717,31720,31718,31715,31699,31700,30159,30157,31709,31708,31714,30152,31713,30143,30144,30145,30187,31811,31810"},
+	},
+	["DUNGEONS\\Legion Dungeons\\Halls of Valor"] = {
+		{ids="43349", cond_if=[[havequest(40072) or completedq(40072) or havequest(43349) or completedq(43349) ]]},
+	},
+	["DUNGEONS\\Legion Dungeons\\Vault of the Wardens"] = {
+		{ids="44486"},
+	},
+	["DUNGEONS\\Legion Dungeons\\Karazhan\\Karazhan Attunement"] = {
+		{ids="45422,44886,44887,44944,44556,44557,44683,44684,44686,44685,44764,44733,44735,44734"},
 	},
 	["LEVELING\\Battle for Azeroth (10-50)\\Kul Tiras\\Mechagon Island\\Blueprints\\Blueprint: Advanced Adventurer Augment"] = {
 		{ids="56145"},
@@ -5443,63 +4900,571 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["LEVELING\\Battle for Azeroth (10-50)\\Boosted Characters\\Boosted Character Rogue Intro"] = {
 		{ids="51795"},
 	},
-	["LEVELING\\Draenor (10-50)\\Tanaan Jungle (40-50)"] = {
-		{ids="39176,39177", cond_if=[[skill("Jewelcrafting") >= 1 ]]},
-		{ids="38253,38257,37921,38254,38255,38256,38258,38259,39082,39054,39276,39055,38435,38436,38444,38445,39313,39432,38581,39422,38446,38578"},
+	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep: Utgarde Pinnacle"] = {
+		{ids="29864", cond_if=[[not completedq(29864) ]]},
+		{ids="13131,13132", cond_if=[[not completedq(13131) or not completedq(13132) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Draenor Intro"] = {
-		{ids="36881,34398,35933,34392,34393,34420,34422,35242,35240,34423,34425,34478,34429,34432,34431,34434,34436,35019,34439,34442,34987,34958,34925,34437,35747,34445,35884,34575,34582,34583,34584,34616,34585,34586"},
+	["DUNGEONS\\Northrend Dungeons\\Azjol-Nerub"] = {
+		{ids="29807,29808,29811", cond_if=[[not completedq(29807) or not completedq(29808) or not completedq(29811) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Shadowmoon Valley (10-50)"] = {
-		{ids="35345", cond_if=[[havequest(35344) or completedq(35344) ]]},
-		{ids="36313", cond_if=[[havequest(36310) or completedq(36310) ]]},
-		{ids="35342", cond_if=[[itemcount(113103) > 0 or havequest(35342) ]]},
-		{ids="36266", cond_if=[[havequest(36262) or completedq(36262) ]]},
-		{ids="36310", cond_if=[[havequest(36308) or completedq(36308) ]]},
-		{ids="36177", cond_if=[[havequest(36176) or completedq(36176) ]]},
-		{ids="35343", cond_if=[[havequest(35342) or completedq(35342) ]]},
-		{ids="36262", cond_if=[[havequest(36236) or completedq(36236) ]]},
-		{ids="35344", cond_if=[[havequest(35343) or completedq(35343) ]]},
-		{ids="36409", cond_if=[[havequest(36408) or completedq(36408) ]]},
-		{ids="36100", cond_if=[[skill("Jewelcrafting") >= 1 or skill("Engineering") >= 1 or skill("Alchemy") >= 1 or skill("Leatherworking") >= 1 or skill("Inscription") >= 1 or skill("Tailoring") >= 1 or skill("Blacksmithing") >= 1 or skill("Enchanting") >= 1 ]]},
-		{ids="36269", cond_if=[[havequest(36266) or completedq(36266) ]]},
-		{ids="36311", cond_if=[[havequest(36309) or completedq(36309) ]]},
-		{ids="36287", cond_if=[[havequest(36286) or completedq(36286) ]]},
-		{ids="36176", cond_if=[[itemcount(114877) > 0 or havequest(36176) ]]},
-		{ids="36408", cond_if=[[itemcount(115507) > 0 or havequest(36408) ]]},
-		{ids="36309", cond_if=[[itemcount(115343) > 0 or havequest(36309) ]]},
-		{ids="34496,34076,34728", cond_if=[[level < 50 ]]},
-		{ids="36315", cond_if=[[havequest(36313) or completedq(36313) ]]},
-		{ids="36308", cond_if=[[itemcount(115281) > 0 or havequest(36308) ]]},
-		{ids="36239", cond_if=[[itemcount(114984) > 0 or havequest(36239) ]]},
-		{ids="35556", cond_if=[[(not havequest(33533) or completedq(33533)) or (not havequest(36632) or completedq(36632)) or (not havequest(49564) or completedq(49564)) ]]},
-		{ids="36236", cond_if=[[itemcount(114972) > 0 or havequest(36236) ]]},
-		{ids="36241", cond_if=[[havequest(36240) or completedq(36240) ]]},
-		{ids="36185", cond_if=[[havequest(36177) or completedq(36177) ]]},
-		{ids="36240", cond_if=[[havequest(36239) or completedq(36239) ]]},
-		{ids="36286", cond_if=[[itemcount(115278) > 0 or havequest(36286) ]]},
-		{ids="35176,35166,35174,34587,34646,34504,33419,34692,36624,33075,36626,36629,36630,36633,33765,33070,33905,33813,34019,33072,35444,34778,34779,34780,34781,34782,34783,34785,35070,34786,33084,34784,34790,34787,35552,34791,34789,34792,34788,35905,33076,33080,34876,33077,34897,33059,33081,33586,33814,33078,33786,33787,33808,34996,33788,35006,34995,35014,34994,34997,35015,35617,33082,34847,34836,34043,35631,33461,36592,34820,33263,33271,34806,33331,35625,35032,33083,33793,33794,33795,34054,33837,33255,33256,33359,33062,33113,33115,33120,33112,33066,33269,33168,33114,33116"},
+	["DUNGEONS\\Cataclysm Dungeons\\Lost City of the Tol'vir"] = {
+		{ids="28783,28781"},
 	},
-	["LEVELING\\Draenor (10-50)\\Spires of Arak (30-50)"] = {
-		{ids="36660,35649,36792,36590", cond_if=[[level < 50 ]]},
-		{ids="35649", cond_if=[[havequest(35649) or completedq(35649) ]]},
-		{ids="34653,34655,34656,34657,34658,34659,34756,35636,34805,35668,35671,35274,35276,35286,37327,35293,35293,35699,35611,35329,35339,35353,35380,35407,35408,35482,35549,36353,35619,35079,35077,36179,35080,35082,35081,35285,35090,35089,36384,35091,35211,36428,35298,36062,34998,34884,34827,34885,34838,34886,34828,34829,36425,34830,34882,34883,34942,35257,35260,35258,35259,35261,35273,35634,35733,35734,34898,35000,34999,35001,35002,35011,35004,35003,35013,35012,35245,35897,35895,36059,35896,37296,37329,35915,35926,35959,36023,36029,36048,36165,37281,37296,37331,35713,35716,35878,35719,35739,35782,35835,34921,34991,35010,35007,34923,34922,34938,34924,34939,36790,35009,36085,35704,37141,36601"},
+	["DUNGEONS\\Cataclysm Dungeons\\Zul Gurub"] = {
+		{ids="29154,29241,29242,29172,29175,29173"},
 	},
-	["LEVELING\\Draenor (10-50)\\Nagrand (35-50)"] = {
-		{ids="35379,37280,34723", cond_if=[[level < 50 ]]},
-		{ids="37184,34675,34678,34682,34716,34717,34718,34719,34746,34769,35148,34952,34951,35337,35338,35356,35357,35350,34593,34572,34597,34596,34877,34662,34869,34810,34598,34512,35146,36273,34663,34664,34665,34666,34513,34515,34514,34516,34819,34809,34811,35663,35632,34900,34954,34955,34956,34957,35059,35332,34747,35060,35061,35067,35068,35069,35062,35140,35141,35169,35331,35333,34943,34881,34893,34894,33928,37318,36275,36284,36285,34932,34941,35330,35372,35393,35397,35398,35084,35083,35395,35396,35386,35085,35087,35086,35088,35022,35023,35024"},
+	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: The Blood Furnace"] = {
+		{ids="29538,29539,29540", cond_if=[[not completedq(29538) or not completedq(29539) or not completedq(29540) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Talador (20-50)"] = {
-		{ids="35236,37422,34639,34660,34667,35236,37421,34639,34660,34667", cond_if=[[level < 50 ]]},
-		{ids="34558,34563,35045,34571,34573,34624,34578,36801,34773,34804,34087,34088,34089,34090,34091,34095,34959,34094,33973,34096,34097,34098,34963,34099,34777,36519,34976,34977,34979,34978,34980,34981,34982,34685,34701,33740,33734,33761,33578,33579,33580,33581,33582,33871,34761,35239,33872,33873,33874,34709,34407,34458,33920,33917,34351,33530,34452,33958,33967,33969,34240,34508,34013,34234,33988,33976,34326,34092,35227,35254,34157,34163,34164,34154,36512,34707,33882,33884,33944,34399,34400,34403,34406,34415,34448,35554,34631,34815,34609,34612,34619,34875,34908,36801,34773,34804,34087,34088,34089,34090,34091,34095,34959,34094,33973,34096,34097,34098,34963,34099,34777,36519,34913,34909,34910,34911,34912,34711,34993,34685,34701,33740,33734,33761,33578,33579,33580,33581,33582,33871,34761,35239,33872,33873,33874,34709,34407,34458,33920,33917,34351,33530,34452,33958,33967,33969,34240,34508,34013,34234,33988,33976,34326,34092,35227,35254,34157,34163,34164,34154,36512,34707,33882,33884,33944,34399,34400,34403,34406,34415,34448,35554"},
-		{ids="37183", cond_if=[[completedq(36576) ]]},
+	["DUNGEONS\\Classic Dungeons\\Ragefire Chasm"] = {
+		{ids="30995", cond_if=[[not completedq(30995) ]]},
+		{ids="30998,30996", cond_if=[[not completedq(30998) and not completedq(30996) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Gorgrond (15-50)"] = {
-		{ids="36571,36563,34724,35881,36520,36566,36473,36603,36476,36480,36603,36480,36563,36500,36564,34724,35881,36520,36504", cond_if=[[level < 50 ]]},
-		{ids="35033,35065,35834,36595,35055,35050,35063,35708,35212,35666,36432,35652,36368,35654,35651,35650,35640,35633,35642,35644,35645,35647,35656,35659,36828,35213,35214,35215,35216,35208,35206,35204,35205,36523,35207,35209,35225,35234,35229,35233,35235,35255,35262,36436,36437,36439,36440,36441,36442,36443,36575,36495,34704,35686,35666,36432,35664,35693,35665,35730,35026,35870,34699,34698,34700,34702,34012,34703,35137,35883,36508,36208,36210,35037,35934,35925,36209,36436,36437,36438,36440,36441,36442,36443,36223,35128,35210,35139,35702,36833,35640,35633,35642,35644,35645,35647,35656,35659,36576,36495"},
+	["DUNGEONS\\Cataclysm Dungeons\\Vortex Pinnacle"] = {
+		{ids="28779,28760"},
 	},
-	["PROFESSIONS\\Fishing\\Leveling Guides\\Fishing 600-700 Leveling Guide"] = {
-		{ids="34194,36199,36201,36202"},
+	["DUNGEONS\\Classic Dungeons\\Maraudon: Earth Song Falls"] = {
+		{ids="27692", cond_if=[[not completedq(27692) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Scarlet Monastery"] = {
+		{ids="31515,31516"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Mogu'shan Palace"] = {
+		{ids="31357,31360"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Drak'Tharon Keep"] = {
+		{ids="30120", cond_if=[[not completedq(30120) ]]},
+		{ids="13129,29828", cond_if=[[not completedq(13129) or not completedq(29828) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Halls of Stone"] = {
+		{ids="13207", cond_if=[[not completedq(13207) ]]},
+		{ids="29848,29850", cond_if=[[not completedq(29848) or not completedq(29850) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Dire Maul: Capital Gardens"] = {
+		{ids="27110,27111", cond_if=[[not completedq(27111) ]]},
+		{ids="27112,27113,27109"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Razorfen Kraul"] = {
+		{ids="26905", cond_if=[[not completedq(26905) ]]},
+		{ids="26901,26906,26907", cond_if=[[not completedq(26901) and not completedq(26906) and not completedq(26907) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Uldaman"] = {
+		{ids="27676", cond_if=[[not completedq(27676) ]]},
+		{ids="2278", cond_if=[[not completedq(2278) ]]},
+		{ids="27673", cond_if=[[not completedq(27673) ]]},
+		{ids="27672", cond_if=[[not completedq(27672) ]]},
+		{ids="27677", cond_if=[[not completedq(27677) ]]},
+		{ids="2280", cond_if=[[not completedq(2280) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Gnomeregan"] = {
+		{ids="26942", cond_if=[[not completedq(26942) ]]},
+		{ids="26939,26941"},
+	},
+	["DUNGEONS\\Classic Raids\\Ruins of Ahn'Qiraj"] = {
+		{ids="8557,8558,8556", cond=[[Warrior]]},
+		{ids="8695,8711,8703", cond=[[Paladin]]},
+		{ids="8690,8706,8698", cond=[[Shaman]]},
+		{ids="8693,8709,8701", cond=[[Rogue]]},
+		{ids="8691,8707,8699", cond=[[Mage]]},
+		{ids="8692,8708,8700", cond=[[Druid]]},
+		{ids="8689,8705,8697", cond=[[Priest]]},
+		{ids="8696,8712,8704", cond=[[Hunter]]},
+		{ids="8791", cond_if=[[not completedq(8791) ]]},
+		{ids="8694,8710,8702", cond=[[Warlock]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Sunken Temple"] = {
+		{ids="27604,27605,27633"},
+	},
+	["DUNGEONS\\Classic Dungeons\\The Stormwind Stockade"] = {
+		{ids="27733", cond_if=[[not completedq(27733) ]]},
+		{ids="27739", cond_if=[[not completedq(27739) ]]},
+		{ids="27737", cond_if=[[not completedq(27737) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Ahn'kahet: The Old Kingdom"] = {
+		{ids="29825", cond_if=[[not completedq(29825) ]]},
+		{ids="29826", cond_if=[[not completedq(29826) ]]},
+		{ids="13187", cond_if=[[not completedq(13187) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Arcatraz"] = {
+		{ids="29674,29675,29681"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Gate of the Setting Sun"] = {
+		{ids="31363,31364"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Deadmines"] = {
+		{ids="27758", cond_if=[[not completedq(27758) ]]},
+		{ids="27781", cond_if=[[not completedq(27781) ]]},
+		{ids="27790", cond_if=[[not completedq(27790) ]]},
+		{ids="27756", cond_if=[[not completedq(27756) ]]},
+		{ids="27785", cond_if=[[not completedq(27785) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\The Oculus"] = {
+		{ids="13127", cond_if=[[not completedq(13127) ]]},
+		{ids="13124", cond_if=[[not completedq(13124) ]]},
+		{ids="13128", cond_if=[[not completedq(13128) ]]},
+		{ids="13126", cond_if=[[not completedq(13126) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\The Nexus"] = {
+		{ids="11905", cond_if=[[not completedq(11905) ]]},
+		{ids="11973", cond_if=[[not completedq(11973) ]]},
+		{ids="11911", cond_if=[[not completedq(11911) ]]},
+		{ids="13094", cond_if=[[not completedq(13094) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Shattered Halls"] = {
+		{ids="29649,29656,29654", cond_if=[[not completedq(29649) or not completedq(29656) or not completedq(29654) ]]},
+		{ids="29652", cond_if=[[not completedq(29652) ]]},
+	},
+	["DUNGEONS\\Classic Raids\\Temple of Ahn'Qiraj"] = {
+		{ids="8560,8559,8562,8561,8544", cond=[[Warrior]]},
+		{ids="8629,8655,8627,8628,8630", cond=[[Paladin]]},
+		{ids="8624,8621,8622,8623,8602", cond=[[Shaman]]},
+		{ids="8640,8637,8638,8639,8641", cond=[[Rogue]]},
+		{ids="8631,8634,8633,8632,8625", cond=[[Mage]]},
+		{ids="8801", cond_if=[[not completedq(8801) ]]},
+		{ids="8663,8660,8661,8662,8664", cond=[[Warlock]]},
+		{ids="8593,8596,8603,8592,8594", cond=[[Priest]]},
+		{ids="8658,8626,8656,8657,8659", cond=[[Hunter]]},
+		{ids="8668,8665,8666,8667,8669", cond=[[Druid]]},
+		{ids="8784"},
+	},
+	["DUNGEONS\\Outland Raids\\The Eye"] = {
+		{ids="11007", cond_if=[[not completedq(11007) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Slave Pens"] = {
+		{ids="29563,29565", cond_if=[[not completedq(29563) or not completedq(29565) ]]},
+		{ids="29564", cond_if=[[not completedq(29564) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Auchenai Crypts"] = {
+		{ids="29590,29596,29591"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Blackfathom Deeps"] = {
+		{ids="34672", cond_if=[[not completedq(34672) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Maraudon: Foulspore Cavern"] = {
+		{ids="27698", cond_if=[[not completedq(27698) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Shadowfang Keep"] = {
+		{ids="27968", cond_if=[[not completedq(27968) ]]},
+		{ids="27917", cond_if=[[not completedq(27917) ]]},
+		{ids="27921", cond_if=[[not completedq(27921) ]]},
+		{ids="27920", cond_if=[[not completedq(27920) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Stratholme: Main Gate"] = {
+		{ids="27185", cond_if=[[not completedq(27185) ]]},
+		{ids="27208,27305,27223", cond_if=[[not completedq(27208) and not completedq(27305) and not completedq(27223) ]]},
+		{ids="27192", cond_if=[[not completedq(27192) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Lower Blackrock Spire"] = {
+		{ids="27440", cond_if=[[not completedq(27440) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Scholomance"] = {
+		{ids="31442,31448"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Caverns of Time: The Culling of Stratholme"] = {
+		{ids="13151", cond_if=[[not completedq(13151) ]]},
+		{ids="13149", cond_if=[[not completedq(13149) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Stratholme: Service Entrance"] = {
+		{ids="27352,27359,27228,27227,27230"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Blackrock Depths: Detention Block"] = {
+		{ids="27567", cond_if=[[not completedq(27567) ]]},
+		{ids="27571", cond_if=[[not completedq(27571) ]]},
+		{ids="27578", cond_if=[[not completedq(27578) ]]},
+		{ids="27573", cond_if=[[not completedq(27573) ]]},
+		{ids="27569", cond_if=[[not completedq(27569) ]]},
+		{ids="27568", cond_if=[[not completedq(27568) ]]},
+		{ids="4295", cond_if=[[itemcount(11325) > 0 ]]},
+		{ids="27565", cond_if=[[not completedq(27565) ]]},
+		{ids="27603", cond_if=[[not completedq(27603) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Well of Eternity"] = {
+		{ids="30099,30104,30100,30101,30102"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Scarlet Halls"] = {
+		{ids="31497", cond_if=[[not completedq(31497) and heroic_dung() ]]},
+		{ids="31490", cond_if=[[not completedq(31490) and not heroic_dung() ]]},
+		{ids="31495", cond_if=[[not completedq(31495) and heroic_dung() ]]},
+		{ids="31493", cond_if=[[not completedq(31493) and not heroic_dung() ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Forge of Souls"] = {
+		{ids="24683", cond_if=[[not completedq(24683) ]]},
+		{ids="24499", cond_if=[[not completedq(24499) ]]},
+	},
+	["DUNGEONS\\Outland Raids\\Magtheridon's Lair"] = {
+		{ids="11002", cond_if=[[not completedq(11002) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Dire Maul: Gordock Commons"] = {
+		{ids="27119", cond_if=[[not completedq(27119) ]]},
+		{ids="27125", cond_if=[[not completedq(27125) ]]},
+		{ids="27125,27118,27119,27124,27114"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Throne of the Tides"] = {
+		{ids="28834,28836"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Razorfen Downs"] = {
+		{ids="33513,33514"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Temple of the Jade Serpent"] = {
+		{ids="31355,31356"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Stormstout Brewery"] = {
+		{ids="31324,31327"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Shadow Labyrinth"] = {
+		{ids="29641", cond_if=[[not completedq(29641) ]]},
+		{ids="29640", cond_if=[[not completedq(29640) ]]},
+		{ids="29644", cond_if=[[not completedq(29644) ]]},
+		{ids="29643,29645", cond_if=[[not completedq(29643) or not completedq(29645) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Mechanar"] = {
+		{ids="29657,29659,29658"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Mana-Tombs"] = {
+		{ids="29573,29575", cond_if=[[not completedq(29573) or not completedq(29575) ]]},
+		{ids="29574", cond_if=[[not completedq(29574) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Siege of Niuzao Temple"] = {
+		{ids="31365,31366"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Zul'Aman"] = {
+		{ids="29186,11196"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Scarlet Halls"] = {
+		{ids="31495,31497"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Dire Maul: Warpwood Quarter"] = {
+		{ids="27107,27108", cond_if=[[not completedq(27107) and not completedq(27108) ]]},
+		{ids="27103,27104,27105", cond_if=[[not completedq(27103) and not completedq(27104) and not completedq(27105) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Shado-Pan Monastery"] = {
+		{ids="30757,31342"},
+	},
+	["DUNGEONS\\Pandaria Raids\\Siege of Orgrimmar"] = {
+		{ids="33138", cond_if=[[not completedq(33138) ]]},
+		{ids="33147", cond_if=[[not completedq(33147) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Caverns of Time: Escape from Durnholde Keep"] = {
+		{ids="29599", cond_if=[[not completedq(29599) ]]},
+		{ids="29598", cond_if=[[not completedq(29598) ]]},
+	},
+	["DUNGEONS\\Classic Raids\\Blackwing Lair"] = {
+		{ids="7782", cond_if=[[completedq(7781) ]]},
+		{ids="7781", cond_if=[[not completedq(7781) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\End Time"] = {
+		{ids="30097,30096,30098"},
+	},
+	["DUNGEONS\\Outland Raids\\Hyjal Summit (Battle for Mount Hyjal)"] = {
+		{ids="10277", cond_if=[[not completedq(10277) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Hour of Twilight"] = {
+		{ids="30103,30105"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Grim Batol"] = {
+		{ids="28853,28852,28854"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Blackrock Caverns"] = {
+		{ids="28735,28737,28738,28740,28741"},
+	},
+	["DUNGEONS\\Northrend Raids\\Naxxramas"] = {
+		{ids="13372,13375"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\The Violet Hold"] = {
+		{ids="29830", cond_if=[[not completedq(29830) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep"] = {
+		{ids="29763,29764,29803", cond_if=[[not completedq(29763) or not completedq(29764) or not completedq(29803) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Trial of the Champion"] = {
+		{ids="29851", cond_if=[[not completedq(29851) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Pit of Saron"] = {
+		{ids="24710", cond_if=[[not completedq(24710) ]]},
+		{ids="24711", cond_if=[[not completedq(24711) ]]},
+		{ids="24498", cond_if=[[not completedq(24498) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Halls of Reflection"] = {
+		{ids="24500"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Halls of Lightning"] = {
+		{ids="29860,29861,29862", cond_if=[[not completedq(29860) or not completedq(29861) or not completedq(29862) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Underbog"] = {
+		{ids="29568,29570,29567,29691"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Gundrak"] = {
+		{ids="29834,29839,29844", cond_if=[[not completedq(29834) or not completedq(29839) or not completedq(29844) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Hellfire Ramparts"] = {
+		{ids="29528,29529,29594", cond_if=[[not completedallq(29528,29529,29594) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: The Steamvault"] = {
+		{ids="29613,29614,29615"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Magister's Terrace"] = {
+		{ids="29684,29686,29687", cond_if=[[not completedq(29684) or not completedq(29686) or not completedq(29687) ]]},
+		{ids="11490", cond_if=[[not completedq(11490) ]]},
+		{ids="29685", cond_if=[[not completedq(29685) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Tempest Keep: Botanica"] = {
+		{ids="29660,29667,29669"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\The Stonecore"] = {
+		{ids="28815,28814"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Caverns of Time: The Black Morass"] = {
+		{ids="10297"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Sethekk Halls"] = {
+		{ids="29607", cond_if=[[not completedq(29607) ]]},
+		{ids="29605,29606", cond_if=[[not completedq(29605) or not completedq(29606) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Maraudon: The Wicked Grotto"] = {
+		{ids="27697", cond_if=[[not completedq(27697) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Zul'Farrak"] = {
+		{ids="27068,27071,27070,27076"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Scarlet Monastery"] = {
+		{ids="31513,31515", cond_if=[[not completedq(31513) and not completedq(31515) ]]},
+		{ids="31514,31516", cond_if=[[not completedq(31514) and not completedq(31516) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Scholomance"] = {
+		{ids="31440,31447", cond_if=[[not completedq(31440) and not completedq(31447) and not heroic_dung() ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Wailing Caverns"] = {
+		{ids="26870", cond_if=[[not completedq(26870) ]]},
+		{ids="26872,26873", cond_if=[[not completedq(26872) ]]},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Hand of the Prophet"] = {
+		{ids="39443", cond_if=[[not completedq(39574,1) and not completedq(38046) ]]},
+		{ids="39448", cond_if=[[not completedq(39574,1) and not completedq(38250) ]]},
+		{ids="39449", cond_if=[[not completedq(39574,1) and not completedq(37968) ]]},
+		{ids="37891,38045,38046,38250,38440,37968,38585,39581,39586,39574,39573,39571,39570,39569,39568,39567"},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Order of the Awakened"] = {
+		{ids="39433"},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Wrynn's Vanguard"] = {
+		{ids="36119,36130,36127,36125,36133,36123"},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\The Saberstalkers"] = {
+		{ids="39582,39565"},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Steamwheedle Preservation Society"] = {
+		{ids="37125", cond_if=[[itemcount(118100) >= 1 ]]},
+		{ids="37222", cond_if=[[itemcount(118657) >= 1 ]]},
+		{ids="37225", cond_if=[[itemcount(118660) >= 1 ]]},
+		{ids="37221", cond_if=[[itemcount(118656) >= 1 ]]},
+		{ids="37520", cond_if=[[itemcount(120172) >= 1 ]]},
+		{ids="37226", cond_if=[[itemcount(118661) >= 1 ]]},
+		{ids="37224", cond_if=[[itemcount(118659) >= 1 ]]},
+		{ids="37210", cond_if=[[itemcount(118654) >= 1 ]]},
+		{ids="37223", cond_if=[[itemcount(37223) >= 1 ]]},
+		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
+		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
+	},
+	["ACHIEVEMENTS\\General\\Pandaren Delicacies"] = {
+		{ids="31535"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Celestial Family"] = {
+		{ids="33137"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Over Their Heads"] = {
+		{ids="31216"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\How to Strain Your Dragon"] = {
+		{ids="30152"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle\\Master of the Masters"] = {
+		{ids="33137"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Proven Strength"] = {
+		{ids="31038,31220", cond_if=[[rep('Shado-Pan')>=Honored ]]},
+		{ids="31104,31221", cond_if=[[rep('Shado-Pan')>=Revered ]]},
+		{ids="31127,31128"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Listen to the Drunk Fish"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle\\The Celestial Tournament"] = {
+		{ids="33137"},
+	},
+	["ACHIEVEMENTS\\World Events\\Brawler's Guild\\Collect Your Deck"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30747,31752,30252,30535,30254,30255,30256,30257,31945,29463,29436,29438,29434,36481,29455,37910,33756,37911,37868"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Shadow Hopper"] = {
+		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle\\Big City Pet Brawler"] = {
+	},
+	["ACHIEVEMENTS\\Scenarios\\Mists of Pandaria\\Arena of Annihilation"] = {
+		{ids="31207"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Defender of Gods"] = {
+		{ids="31266,31277"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Spreading the Warmth!"] = {
+		{ids="31394,31512,31511,30243"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Champion of Chi-Ji"] = {
+		{ids="30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
+		{ids="31378", cond_if=[[not completedq(31378) ]]},
+		{ids="30740", cond_if=[[achieved(7287) ]]},
+		{ids="30718,30717,30716"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Till the Break of Dawn"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Fabled Pandaren Tamer"] = {
+		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31951", cond_if=[[not completedq(31951) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31970", cond_if=[[not completedq(31970) ]]},
+		{ids="31920", cond_if=[[not completedq(31920) ]]},
+		{ids="31928", cond_if=[[not completedq(31928) ]]},
+		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ain't Lost No More"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,31312,31313,31314,31315"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Pandaria Scenario\\Arena of Annihilation"] = {
+		{ids="31207"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\I Choose You"] = {
+		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31951", cond_if=[[not completedq(31951) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31970", cond_if=[[not completedq(31970) ]]},
+		{ids="31920", cond_if=[[not completedq(31920) ]]},
+		{ids="31928", cond_if=[[not completedq(31928) ]]},
+		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\The Longest Day"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="31974,31971,31972,31973,31953,31955,31954,31956,31991,31957,31958", cond_if=[[completedq(31970) ]]},
+		{ids="31916", cond_if=[[completedq(31915) ]]},
+		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
+		{ids="31931,31934,31933,31933,31932,31935,31935", cond_if=[[completedq(31928) ]]},
+		{ids="31922,31923,31924,31925,31926", cond_if=[[completedq(31920) ]]},
+		{ids="31693,31780,31850,31851,31852,31913,31781,31914,31910,31911,31912,31909,32440,32441,32434,32439,32604,32868,32869"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Fire in the Yaung-hole!"] = {
+		{ids="31119"},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\The Pandaren Gourmet"] = {
+		{ids="31535"},
+	},
+	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Kirin Tor Offensive"] = {
+		{ids="32679,32681,32706"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Mists of Pandaria\\Rolo's Riddle"] = {
+		{ids="32974,32975,32976"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Crazy for Cats"] = {
+		{ids="29100,29102,29103,29104,29105,29114,29115,29116,29120,29213,29121,29267,33137"},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\Ironpaw Chef"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\The Crumble Bundle"] = {
+		{ids="32505,32505,32505,32505,32505,32505"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Savior of Stoneplow"] = {
+		{ids="30667,30666,30668,30669,30671,30691,30672,30674,30675,30168,30169,30274,30344,30384,30350,30175,30357,30174,30241,30653,30622,30623,30625,30626,30627,30628"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Test Drive"] = {
+		{ids="31808"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Cataclysm\\Pandaria Explorer"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Isle of Thunder"] = {
+		{ids="32654", cond_if=[[not completedq(32654) ]]},
+		{ids="32679,32681,32644,32652,32655,32656"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\A Taste of Things to Come"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Trainer Extraordinaire"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Roll Club"] = {
+		{ids="31394,31512,31511"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\Master of Pandaren Cooking"] = {
+		{ids="31281,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31535,31535"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Finish Them!"] = {
+		{ids="31381,30879,30880,31517,30881,30882,30883,30885,30907,30902,31492"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Dog Pile"] = {
+		{ids="30306"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Amber is the Color of My Energy"] = {
+		{ids="31439", cond_if=[[not completedq(31439) ]]},
+		{ids="31179", cond_if=[[not completedq(31179) ]]},
+		{ids="31354", cond_if=[[not completedq(31354) ]]},
+		{ids="31085", cond_if=[[not completedq(31085) ]]},
+		{ids="31211", cond_if=[[not completedq(31211) ]]},
+		{ids="31606", cond_if=[[not completedq(31606) ]]},
+		{ids="31009,31010", cond_if=[[not completedq(31010) ]]},
+		{ids="31026", cond_if=[[not completedq(31026) ]]},
+		{ids="31006", cond_if=[[not completedq(31006) ]]},
+		{ids="31398", cond_if=[[not completedq(31398) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Green Acres"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Tranquil Master"] = {
+		{ids="30269,30270,30694,30268,30695,30272,30271,30273,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30977,31032,30978,30979,30980,31065,30981,31063,31064,30968"},
+		{ids="30178,30133", cond_if=[[not achieved(6926,2) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Every Day I'm Pand-a-ren"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="31394,31512,31511,30252,30535,30254,30255,30256,30257,31945,30134,30135,30136,30137,30138,30139,30140,30141,30142,32246,32247,32109"},
+	},
+	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Operation: Shieldwall"] = {
+		{ids="32246,32247,32109"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ready for Raiding III"] = {
+		{ids="31394,31512,31511"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\One Step at a Time"] = {
+		{ids="30277,30280"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\In a Trail of Smoke"] = {
+		{ids="30152"},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\Now I Am the Master"] = {
+		{ids="31281,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31535,31535,31332,30330,30332,30328,30329,30331,31332,31333,31334,31335,31336"},
 	},
 	["DAILIES\\Wrath of the Lich King Dailies\\The Storm Peaks\\Brunnhildar, K-3 and Frosthold Dailies"] = {
 		{ids="13424,13423,13422,13425,12869,12833"},
@@ -5729,33 +5694,53 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["DAILIES\\Wrath of the Lich King Dailies\\Icecrown\\Crusader Title Guide (Unlocks More Dailies)\\Dwarf Champion Rank"] = {
 		{ids="13703,13714,13741,13742,13743,13744,13745,13851,13713"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Orcslayer"] = {
+		{ids="36964"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
-		{ids="29100,29102,29103,29104,29105,29114,29115,29116,29120,29213,29121,29267,33137"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
+		{ids="37082", cond_if=[[Horde ]]},
+		{ids="37082", cond_if=[[Alliance ]]},
+		{ids="37083"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Slayer of Sin'dorei"] = {
+		{ids="36958"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
-		{ids="31439", cond_if=[[not completedq(31439) ]]},
-		{ids="31179", cond_if=[[not completedq(31179) ]]},
-		{ids="31354", cond_if=[[not completedq(31354) ]]},
-		{ids="31085", cond_if=[[not completedq(31085) ]]},
-		{ids="31211", cond_if=[[not completedq(31211) ]]},
-		{ids="31606", cond_if=[[not completedq(31606) ]]},
-		{ids="31009,31010", cond_if=[[not completedq(31010) ]]},
-		{ids="31026", cond_if=[[not completedq(31026) ]]},
-		{ids="31006", cond_if=[[not completedq(31006) ]]},
-		{ids="31398", cond_if=[[not completedq(31398) ]]},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
+		{ids="37082,37083"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
-		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
-		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
-		{ids="30523", cond_if=[[completedq(30516) and rep('The Tillers')>=Revered ]]},
-		{ids="30526", cond_if=[[repval('The Tillers','Revered')>=13000 ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30475,30471,30477,30478,30472,30470,30474,30476,30473,30479,30327,30319,30323,30324,30326,30317,30325,30321,30318,30322,30260,30516,31936,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Commandojack"] = {
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Huojin's Fall"] = {
+		{ids="36968"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Butcher"] = {
+		{ids="36962"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Death Stalker"] = {
+		{ids="36960"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Killer of Kezan"] = {
+		{ids="36970"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Reputations\\Conservationist"] = {
+		{ids="37125", cond_if=[[itemcount(118100) >= 1 ]]},
+		{ids="37222", cond_if=[[itemcount(118657) >= 1 ]]},
+		{ids="37225", cond_if=[[itemcount(118660) >= 1 ]]},
+		{ids="37221", cond_if=[[itemcount(118656) >= 1 ]]},
+		{ids="37520", cond_if=[[itemcount(120172) >= 1 ]]},
+		{ids="37226", cond_if=[[itemcount(118661) >= 1 ]]},
+		{ids="37224", cond_if=[[itemcount(118659) >= 1 ]]},
+		{ids="37210", cond_if=[[itemcount(118654) >= 1 ]]},
+		{ids="37223", cond_if=[[itemcount(37223) >= 1 ]]},
+		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
+		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Troll Hunter"] = {
+		{ids="36966"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Undead Pets\\Ghastly Kid"] = {
 		{ids="37248,37645,37644"},
@@ -5810,206 +5795,167 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Iron Starlette"] = {
 		{ids="35460,35462,36379,35463,35464,36307,35486,35492,35494,35495,35488,35496,35500,36941"},
 	},
-	["ACHIEVEMENTS\\General\\Pandaren Delicacies"] = {
-		{ids="31535"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
+		{ids="51142,51145,50901,50444,50332,50381"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Celestial Family"] = {
-		{ids="33137"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
+		{ids="55983,56211"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Over Their Heads"] = {
-		{ids="31216"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Long Con"] = {
+		{ids="49223"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\How to Strain Your Dragon"] = {
-		{ids="30152"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle\\Master of the Masters"] = {
-		{ids="33137"},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Pet Battle Challenge: Blackrock Depths"] = {
+		{ids="58455,58457"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Proven Strength"] = {
-		{ids="31038,31220", cond_if=[[rep('Shado-Pan')>=Honored ]]},
-		{ids="31104,31221", cond_if=[[rep('Shado-Pan')>=Revered ]]},
-		{ids="31127,31128"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
+		{ids="57009,54088,55040,54945,54087,54946,54947,54992,55645,55729,55730,55731,55995,55734,55096,55736,55609"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Listen to the Drunk Fish"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Everything Old Is New Again"] = {
+		{ids="53430,53433,53432,53431"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle\\The Celestial Tournament"] = {
-		{ids="33137"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
 	},
-	["ACHIEVEMENTS\\World Events\\Brawler's Guild\\Collect Your Deck"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30747,31752,30252,30535,30254,30255,30256,30257,31945,29463,29436,29438,29434,36481,29455,37910,33756,37911,37868"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\It's Really Getting Out of Hand"] = {
+		{ids="50559"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Shadow Hopper"] = {
-		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Let's Bee Friends"] = {
+		{ids="50343,50070,50359,50064,50161,50168,50162,50504,50264,50493,50165,50534,50553,53347,53371"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle\\Big City Pet Brawler"] = {
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\7th Legion Spycatcher"] = {
+		{ids="50717"},
 	},
-	["ACHIEVEMENTS\\Scenarios\\Mists of Pandaria\\Arena of Annihilation"] = {
-		{ids="31207"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Hungry, Hungry Ranishu"] = {
+		{ids="52798"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Defender of Gods"] = {
-		{ids="31266,31277"},
+	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
+		{ids="53168", cond_if=[[not achieved(13127,14) ]]},
+		{ids="53171", cond_if=[[not achieved(13127,11) ]]},
+		{ids="53169", cond_if=[[not achieved(13127,13) ]]},
+		{ids="53184", cond_if=[[not achieved(13127,1) ]]},
+		{ids="53167", cond_if=[[not achieved(13127,15) ]]},
+		{ids="53155", cond_if=[[not achieved(13127,20) ]]},
+		{ids="53170", cond_if=[[not achieved(13127,12) ]]},
+		{ids="53181", cond_if=[[not achieved(13127,4) ]]},
+		{ids="53178", cond_if=[[not achieved(13127,6) ]]},
+		{ids="53163", cond_if=[[not achieved(13127,17) ]]},
+		{ids="53164", cond_if=[[not achieved(13127,16) ]]},
+		{ids="53177", cond_if=[[not achieved(13127,7) ]]},
+		{ids="53161", cond_if=[[not achieved(13127,18) ]]},
+		{ids="53174", cond_if=[[not achieved(13127,9) ]]},
+		{ids="53172", cond_if=[[not achieved(13127,10) ]]},
+		{ids="53160", cond_if=[[not achieved(13127,19) ]]},
+		{ids="53183", cond_if=[[not achieved(13127,2) ]]},
+		{ids="53180", cond_if=[[not achieved(13127,5) ]]},
+		{ids="53176", cond_if=[[not achieved(13127,8) ]]},
+		{ids="53182", cond_if=[[not achieved(13127,3) ]]},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Spreading the Warmth!"] = {
-		{ids="31394,31512,31511,30243"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
+		{ids="53992"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Champion of Chi-Ji"] = {
-		{ids="30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
-		{ids="31378", cond_if=[[not completedq(31378) ]]},
-		{ids="30740", cond_if=[[achieved(7287) ]]},
-		{ids="30718,30717,30716"},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Till the Break of Dawn"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\In Teldrassil's Shadow"] = {
+		{ids="53847,53849,53988,54041,53989,53990,54871"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Fabled Pandaren Tamer"] = {
-		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31951", cond_if=[[not completedq(31951) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31970", cond_if=[[not completedq(31970) ]]},
-		{ids="31920", cond_if=[[not completedq(31920) ]]},
-		{ids="31928", cond_if=[[not completedq(31928) ]]},
-		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603"},
+	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
+		{ids="57249,57298"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ain't Lost No More"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,31312,31313,31314,31315"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
+		{ids="56181,56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
 	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Pandaria Scenario\\Arena of Annihilation"] = {
-		{ids="31207"},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Unbound Monstrosities"] = {
+		{ids="52166,52157,52181,52169,52196,52163"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\I Choose You"] = {
-		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31951", cond_if=[[not completedq(31951) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31970", cond_if=[[not completedq(31970) ]]},
-		{ids="31920", cond_if=[[not completedq(31920) ]]},
-		{ids="31928", cond_if=[[not completedq(31928) ]]},
-		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930"},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
 	},
-	["ACHIEVEMENTS\\Pet Battles\\The Longest Day"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="31974,31971,31972,31973,31953,31955,31954,31956,31991,31957,31958", cond_if=[[completedq(31970) ]]},
-		{ids="31916", cond_if=[[completedq(31915) ]]},
-		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
-		{ids="31931,31934,31933,31933,31932,31935,31935", cond_if=[[completedq(31928) ]]},
-		{ids="31922,31923,31924,31925,31926", cond_if=[[completedq(31920) ]]},
-		{ids="31693,31780,31850,31851,31852,31913,31781,31914,31910,31911,31912,31909,32440,32441,32434,32439,32604,32868,32869"},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Fire in the Yaung-hole!"] = {
-		{ids="31119"},
+	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
+		{ids="55517,55452,55455,55456,55454,55451,55463,55457"},
 	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\The Pandaren Gourmet"] = {
-		{ids="31535"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
+		{ids="55064,55534,56515,56516,56517,56518,56519"},
 	},
-	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Kirin Tor Offensive"] = {
-		{ids="32679,32681,32706"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Pride of Kul Tiras"] = {
+		{ids="50639", cond_if=[[not havequest(50639) or completedq(50639) ]]},
+		{ids="52194,52246,52762,52252,52253,52311,52445,52449,52453,52509,52508,52510,52511,52512,52513,52481,52482,52483,52484,52485,52486,52487,52488,51445,52153"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Mists of Pandaria\\Rolo's Riddle"] = {
-		{ids="32974,32975,32976"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Deadliest Cache"] = {
+		{ids="50376,50391,50418,52130"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Crazy for Cats"] = {
-		{ids="29100,29102,29103,29104,29105,29114,29115,29116,29120,29213,29121,29267,33137"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\By de Power of de Loa!"] = {
+		{ids="51232"},
 	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\Ironpaw Chef"] = {
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Adventurer of Stormsong Valley"] = {
+		{ids="52299"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\The Crumble Bundle"] = {
-		{ids="32505,32505,32505,32505,32505,32505"},
+	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
+		{ids="57249,57300"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Savior of Stoneplow"] = {
-		{ids="30667,30666,30668,30669,30671,30691,30672,30674,30675,30168,30169,30274,30344,30384,30350,30175,30357,30174,30241,30653,30622,30623,30625,30626,30627,30628"},
+	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
+		{ids="52462"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Test Drive"] = {
-		{ids="31808"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
+		{ids="54090"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Cataclysm\\Pandaria Explorer"] = {
+	["ACHIEVEMENTS\\Player vs. Player\\Battle for Azeroth\\Azerfighter"] = {
+		{ids="53768"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Isle of Thunder"] = {
-		{ids="32654", cond_if=[[not completedq(32654) ]]},
-		{ids="32679,32681,32644,32652,32655,32656"},
+	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Kul Tiran Curator"] = {
+		{ids="51950", cond_if=[[not completedq(51950) ]]},
+		{ids="51952", cond_if=[[not completedq(51952) ]]},
+		{ids="51936", cond_if=[[not completedq(51936) ]]},
+		{ids="51932", cond_if=[[not completedq(51932) ]]},
+		{ids="51953", cond_if=[[not completedq(51953) ]]},
+		{ids="51934", cond_if=[[not completedq(51934) ]]},
+		{ids="51937", cond_if=[[not completedq(51937) ]]},
+		{ids="51926", cond_if=[[not completedq(51926) ]]},
+		{ids="51929", cond_if=[[not completedq(51929) ]]},
+		{ids="51955", cond_if=[[not completedq(51955) ]]},
+		{ids="51951", cond_if=[[not completedq(51951) ]]},
+		{ids="51954", cond_if=[[not completedq(51954) ]]},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\A Taste of Things to Come"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
+		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Trainer Extraordinaire"] = {
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\About To Break"] = {
+		{ids="53108"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Roll Club"] = {
-		{ids="31394,31512,31511"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Upright Citizens"] = {
+		{ids="53704"},
 	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\Master of Pandaren Cooking"] = {
-		{ids="31281,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31535,31535"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Nation United"] = {
+		{ids="52153,52151"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Finish Them!"] = {
-		{ids="31381,30879,30880,31517,30881,30882,30883,30885,30907,30902,31492"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Drag Race"] = {
+		{ids="53346"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Dog Pile"] = {
-		{ids="30306"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Come On and Slam"] = {
+		{ids="54512"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Amber is the Color of My Energy"] = {
-		{ids="31439", cond_if=[[not completedq(31439) ]]},
-		{ids="31179", cond_if=[[not completedq(31179) ]]},
-		{ids="31354", cond_if=[[not completedq(31354) ]]},
-		{ids="31085", cond_if=[[not completedq(31085) ]]},
-		{ids="31211", cond_if=[[not completedq(31211) ]]},
-		{ids="31606", cond_if=[[not completedq(31606) ]]},
-		{ids="31009,31010", cond_if=[[not completedq(31010) ]]},
-		{ids="31026", cond_if=[[not completedq(31026) ]]},
-		{ids="31006", cond_if=[[not completedq(31006) ]]},
-		{ids="31398", cond_if=[[not completedq(31398) ]]},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Sabertron Assemble"] = {
+		{ids="51974"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Green Acres"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
+		{ids="55309,55299,55310,55306,55307,55313,55308,55305,55311,55312"},
 	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Tranquil Master"] = {
-		{ids="30269,30270,30694,30268,30695,30272,30271,30273,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30977,31032,30978,30979,30980,31065,30981,31063,31064,30968"},
-		{ids="30178,30133", cond_if=[[not achieved(6926,2) ]]},
+	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Mechagnome"] = {
+		{ids="57486,57487,57488,57490,57491,57492,57493,57494,57496,57495,57497"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Every Day I'm Pand-a-ren"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="31394,31512,31511,30252,30535,30254,30255,30256,30257,31945,30134,30135,30136,30137,30138,30139,30140,30141,30142,32246,32247,32109"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bless the Rains Down in Freehold"] = {
+		{ids="53196"},
 	},
-	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Operation: Shieldwall"] = {
-		{ids="32246,32247,32109"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ready for Raiding III"] = {
-		{ids="31394,31512,31511"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
+		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\One Step at a Time"] = {
-		{ids="30277,30280"},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\In a Trail of Smoke"] = {
-		{ids="30152"},
-	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\Now I Am the Master"] = {
-		{ids="31281,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31535,31535,31332,30330,30332,30328,30329,30331,31332,31333,31334,31335,31336"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Pushing the Payload"] = {
+		{ids="54498"},
 	},
 	["PROFESSIONS\\Fishing\\Leveling Guides\\Fishing 525-600 Leveling Guide"] = {
 	},
@@ -6175,8 +6121,8 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	["PETSMOUNTS\\Mounts\\Flying Mounts\\Reputation Mounts\\Drake of the West Wind"] = {
 		{ids="28275,27987,27978,27991,27975,27973,28059,28063,28130,28137,28065,27948,27972,27970,27971,28050,27944,28046,27967,27992,27966,27949,28122,28162,28163,28165,28185,28186,28117,28120,28118,28232,28188,28223"},
 	},
-	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Fel Pup"] = {
-		{ids="38428"},
+	["PROFESSIONS\\Fishing\\Leveling Guides\\Fishing 600-700 Leveling Guide"] = {
+		{ids="34194,36199,36201,36202"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Tiny Flamefly"] = {
 		{ids="28416,28174,28172,28177,28178,28179,28180,28181,28182,28183,28184,28225,28226,28254,28202,28203,28204,28205,28239,28245,28246,28252,28253,28227,28265,28266,28278,28279,28286,28310,28415"},
@@ -6294,6 +6240,103 @@ ZGV.Quest_Cache_Accept_Alliance = {
 	},
 	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Brown Prairie Dog"] = {
 	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Red Panda"] = {
+		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31951", cond_if=[[not completedq(31951) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31970", cond_if=[[not completedq(31970) ]]},
+		{ids="31920", cond_if=[[not completedq(31920) ]]},
+		{ids="31928", cond_if=[[not completedq(31928) ]]},
+		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Jade Owl"] = {
+		{ids="31394,31512,31511"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Sunfur Panda"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31951", cond_if=[[not completedq(31951) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31970", cond_if=[[not completedq(31970) ]]},
+		{ids="31920", cond_if=[[not completedq(31920) ]]},
+		{ids="31928", cond_if=[[not completedq(31928) ]]},
+		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603,32604,32868,32869"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Tiny Goldfish"] = {
+		{ids="31369", cond_if=[[not completedq(31369) ]]},
+		{ids="30584,30586,30678,30698,30700,30588,30754,30753,30613,30658,30585,30598,30763,30701"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Water Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32439"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Earth Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32441"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-ji Kite"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Fire Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32434"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Air Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32440"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Yu'lon Kite"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Mountain Panda"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31951", cond_if=[[not completedq(31951) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31970", cond_if=[[not completedq(31970) ]]},
+		{ids="31920", cond_if=[[not completedq(31920) ]]},
+		{ids="31928", cond_if=[[not completedq(31928) ]]},
+		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603,32604,32868,32869"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Snowy Panda"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="31932,31932,31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="32439,32434,32441,32440", cond_if=[[completedq(32428) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31951", cond_if=[[not completedq(31951) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31970", cond_if=[[not completedq(31970) ]]},
+		{ids="31920", cond_if=[[not completedq(31920) ]]},
+		{ids="31928", cond_if=[[not completedq(31928) ]]},
+		{ids="31591,31592,31821,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31927,31966,31930,32603,32604,32868,32869"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Fishy"] = {
+		{ids="29903,29904,29905"},
+	},
 	["GOLD\\Farming\\Alabaster Pigment (Alliance)"] = {
 	},
 	["GOLD\\Farming\\Rain Poppy (Alliance)"] = {
@@ -6398,38 +6441,34 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["PETSMOUNTS\\Hunter Pets\\Beast Mastery Exotic Pets\\Shale Spiders\\Green Shale Spider (Rare Spawn)"] = {
 		{ids="27727,27203,27123,26409,26410,27135,26411,26413,27136,26245,26246,26244,26247,26249,26427,26248,26251,26250,26254,26255,26258,26256,26261,26260,27007,27010,27100,27101,27102,27061,26766,26768,26771,26861,26857,26876,26259,26484,27931,27932,27933,27934,27935,26500,26499,26501,26502,26537,26591,26564,26625,27126,26632,26755,26770,26762,26834,26791,26792,26835,26836,27937,27938,26326,26313,26312,26314,26315,26328,26375,26376,26377,26426,26869,26871,26436,26438,26437,26439,26440,26441,26507,26575,26576,26656,26657,26658,26659,26577,26580,26581,26578,26579,26582,26583,26584,26585,26750,26752,27004,27006,27040,27058,27042,26827,26828,26831,26829,26832,26833,26875,26971,26709"},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Orcslayer"] = {
-		{ids="36964"},
+	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
-		{ids="37082,37083"},
+	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
+		{ids="29102,29103,29104,29105,29114,29115,29116,29120,29213,29121"},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Slayer of Sin'dorei"] = {
-		{ids="36958"},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
+		{ids="31009", cond_if=[[not completedq(31010) ]]},
+		{ids="31006,31010,31085,31398,31026,31354,31606,31179,31211,31439"},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
-		{ids="37082,37083"},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Commandojack"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Huojin's Fall"] = {
-		{ids="36968"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Butcher"] = {
-		{ids="36962"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Death Stalker"] = {
-		{ids="36960"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Killer of Kezan"] = {
-		{ids="36970"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Troll Hunter"] = {
-		{ids="36966"},
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
+		{ids="30526", cond_if=[[havequest(30526) ]]},
+		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
+		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
+		{ids="30477", cond_if=[[havequest(30477) ]]},
+		{ids="30471", cond_if=[[havequest(30471) ]]},
+		{ids="30473", cond_if=[[havequest(30473) ]]},
+		{ids="30472", cond_if=[[havequest(30472) ]]},
+		{ids="30478", cond_if=[[havequest(30478) ]]},
+		{ids="30470", cond_if=[[havequest(30470) ]]},
+		{ids="30474", cond_if=[[havequest(30474) ]]},
+		{ids="30475", cond_if=[[havequest(30475) ]]},
+		{ids="30476", cond_if=[[havequest(30476) ]]},
+		{ids="30479", cond_if=[[havequest(30479) ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30317,30326,30327,30325,30322,30318,30323,30319,30321,30324,30260,30516,31936,30523,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
 	},
 	["DUNGEONS\\Pandaria Scenarios\\Brewmoon Festival"] = {
 		{ids="31611"},
@@ -6552,20 +6591,6 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["GOLD\\Farming\\Green Cabbage"] = {
 	},
 	["GOLD\\Horde Daily Runs\\Imperial Leather Set Transmog"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30408,30404"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Spectral Porcupette"] = {
-		{ids="32616"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
 	},
 	["REPUTATIONS\\Burning Crusade Reputations\\Netherwing\\Netherwing Reputation (Friendly) - Pre-Quests"] = {
 		{ids="11053,11075,11083,11081,11082,11054"},
@@ -6822,52 +6847,67 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["ACHIEVEMENTS\\Collections\\Appearances\\Legion\\Can I Get A Helya"] = {
 		{ids="44720,44771,44721,44729,44868,45088"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
-		{ids="31847", cond_if=[[havequest(31847) or completedq(31847) ]]},
-		{ids="31001,31002,31003,31004,31005,31676,31006,31009,31007,31660,31010,31008,31661,31066,31689,31107,31108,31019,31020,31021,31022,31026,31087,31088,31090,31089,31091,31359,31092,31398,31023,31730,31068,31067,31129,31072,31069,31070,31071,31077,31078,31133,31074,31073,31075,31079,31080,31081,31082,31084,31085,31086,31727,31265,31181,31182,31183,31186,31187,31188,31185,31184,31189,31190,31354,32030,31782,31175,31176,31177,31178,31605,31606,31179"},
+	["LEVELING\\Draenor (10-50)\\Tanaan Jungle (40-50)"] = {
+		{ids="39176,39177", cond_if=[[skill("Jewelcrafting") >= 1 ]]},
+		{ids="38253,38257,38254,38255,38256,38258,38259,39082,39054,39276,39055,38435,38436,38444,39313,38445,38581,39432,38446,38578"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
-		{ids="29873,30079,30080,30082,30091,30081,30083,30084,30088,30089,30090,29874,30274,30352,30353,31262,31260,30350,30384,30344,30346,30351,30349,30347,30348,30178,30269,30268,30270,30694,30695,30272,30271,30273,30667,30666,30668,30669,30691,30671,30675,30674,30672,30168,30169,30363,30355,30354,30356,30357,30361,30359,30445,30360,30624,30623,30622,30625,30626,30627,30628"},
+	["LEVELING\\Draenor (10-50)\\Draenor Intro"] = {
+		{ids="34398", cond_if=[[havequest(34398) or completedq(34398) ]]},
+		{ids="35933,34392,34393,34420,35242,34422,35240,34423,34425,34478,34429,34434,34432,34431,34436,35019,34439,34958,34987,34442,34925,34437,35747,34445,35884,34575,34582,34583,34584,34616,34585,34586"},
+		{ids="36881", cond_if=[[havequest(36881) or completedq(36881) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
-		{ids="31857,31835,31842"},
+	["LEVELING\\Draenor (10-50)\\Shadowmoon Valley (10-50)"] = {
+		{ids="35345", cond_if=[[havequest(35345) or completedq(35345) ]]},
+		{ids="36409", cond_if=[[havequest(36409) or completedq(36409) ]]},
+		{ids="36241", cond_if=[[havequest(36241) or completedq(36241) ]]},
+		{ids="36262", cond_if=[[havequest(36262) or completedq(36262) ]]},
+		{ids="36308", cond_if=[[havequest(36308) or completedq(36308) ]]},
+		{ids="36176", cond_if=[[havequest(36176) or completedq(36176) ]]},
+		{ids="35342", cond_if=[[havequest(35342) or completedq(35342) ]]},
+		{ids="36287", cond_if=[[havequest(36287) or completedq(36287) ]]},
+		{ids="36408", cond_if=[[havequest(36408) or completedq(36408) ]]},
+		{ids="36266", cond_if=[[havequest(36266) or completedq(36266) ]]},
+		{ids="36309", cond_if=[[havequest(36309) or completedq(36309) ]]},
+		{ids="36286", cond_if=[[havequest(36286) or completedq(36286) ]]},
+		{ids="36269", cond_if=[[havequest(36269) or completedq(36269) ]]},
+		{ids="36100", cond_if=[[havequest(36100) or completedq(36100) ]]},
+		{ids="36315", cond_if=[[havequest(36315) or completedq(36315) ]]},
+		{ids="36313", cond_if=[[havequest(36313) or completedq(36313) ]]},
+		{ids="36310", cond_if=[[havequest(36310) or completedq(36310) ]]},
+		{ids="36236", cond_if=[[havequest(36236) or completedq(36236) ]]},
+		{ids="36185", cond_if=[[havequest(36185) or completedq(36185) ]]},
+		{ids="36177", cond_if=[[havequest(36177) or completedq(36177) ]]},
+		{ids="35344", cond_if=[[havequest(35344) or completedq(35344) ]]},
+		{ids="36240", cond_if=[[havequest(36240) or completedq(36240) ]]},
+		{ids="36239", cond_if=[[havequest(36239) or completedq(36239) ]]},
+		{ids="35343", cond_if=[[havequest(35343) or completedq(35343) ]]},
+		{ids="36311", cond_if=[[havequest(36311) or completedq(36311) ]]},
+		{ids="35176,35166,35174,34587,33419,34646,34692,36624,36626,36629,36630,33075,33813,33070,33765,33905,34019,34778,34779,34780,34781,34782,34785,34786,35070,33084,34783,34790,34784,34787,35552,34791,34789,34792,34788,35905,33072,34897,34876,33077,33076,33059,33080,33081,33078,35444,33786,34996,33787,33808,33788,35014,35015,34997,34995,35006,34994,33586,33082,34836,34847,33814,33461,36592,34820,33263,33331,34806,33271,34043,35032,33083,33793,33795,34054,33794,33837,33255,33256,33359,33062,33113,33115,33120,33112,33066,33168,33114,33116,33269"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
-		{ids="30814,30769,30770,30771,30775,30773,30772,30774,30776,30777,30780,30778,30779,30781,30827,30782,30783,30784,31894,30786,30787,30788,30789,30815,30790,30791,30792,30793,30785,30884,30891,30887,30889,30888,30890,30960,30892,30894,30893,30896,30897,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30978,30979,31032,30977,30980,31065,30981,31063,31064,30968,31687,31688,30921,30923,30922,30963,30964,30931,30924,30929,30932,30930,30925,30926,30927,30928"},
-		{ids="31695", cond_if=[[havequest(31695) or completedq(31695) ]]},
+	["LEVELING\\Draenor (10-50)\\Spires of Arak (30-50)"] = {
+		{ids="34655,34656,34657,34658,34659,35636,34756,35668,34805,35671,35274,35276,35286,35286,35293,35329,35339,35353,35380,35407,35408,35482,35549,35619,35077,35079,36179,35080,35082,35081,35285,36384,35090,35089,35091,35211,36428,35298,35611,34838,34886,34827,36425,34828,34829,34830,34882,34883,35257,35259,35261,35260,35258,35273,34942,34884,34885,35733,35734,35634,34998,34999,35000,35002,35001,35004,35003,35011,35013,35012,35245,35897,35895,36059,35896,37327,37296,37329,35915,35926,35959,36023,36029,36048,36165,35699,37296,37331,35713,35716,35878,35719,35739,35782,35835,34921,34991,35010,35007,34923,34922,34938,34939,34924,36790,35009,36085,35704"},
+		{ids="36951", cond_if=[[havequest(36951) or completedq(36951) ]]},
+		{ids="34653", cond_if=[[havequest(34653) or completedq(34653) ]]},
+		{ids="35554", cond_if=[[havequest(35554) or completedq(35554) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
-		{ids="29907,29877,29908,30086,29909,29910,29940,29911,29912,29913,29914,29915,29916,29917,29918,29919,29945,29944,29947,29948,29946,29949,29871,30267,30275,29577,29600,29581,29757,29758,32035,30072,30059,30058,29950,29951,29952,30046,30049,30051,30172,32045,30050,30056,30057,30054,30053,30052,30055,30048,30031,30030,30029,30028,30032,30047,30073,30074,30077,30076,30075,30078,29872,30117,29981,29982,29983,29984,29992,29985,29986,29987,29988,29989,29990,30183,30181,30182,30184,32038,30185,30186"},
-		{ids="32018", cond_if=[[havequest(32018) or completedq(32018) ]]},
+	["LEVELING\\Draenor (10-50)\\Nagrand (35-50)"] = {
+		{ids="34674", cond_if=[[havequest(34674) or completedq(34674) ]]},
+		{ids="37184", cond_if=[[havequest(37184) or completedq(37184) ]]},
+		{ids="36601,34675,34678,34682,34716,34718,34719,34717,34746,34769,35338,35356,35337,35350,35357,35148,34593,34572,34597,34596,34877,34662,34663,34664,34665,34666,34598,34516,34869,34512,34513,34514,34515,34810,34811,34809,35663,35632,34819,34900,34951,34954,34955,34956,34957,34952,35059,35060,35061,35067,35068,35069,35140,35062,35141,35169,35332,35331,34943,37318,35146,36275,36284,36285,35333,33928,34881,34893,34894,34932,34941,35330,35372,35397,35398,35083,35084,35085,35087,35086,35088,35393,35023,35022,35024,35386,36273,35395,35396"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 35"] = {
-		{ids="31889,31844"},
+	["LEVELING\\Draenor (10-50)\\Talador (20-50)"] = {
+		{ids="37183", cond_if=[[havequest(37183) or completedq(37183) ]]},
+		{ids="49565", cond_if=[[havequest(49565) or completedq(49565) ]]},
+		{ids="34676", cond_if=[[havequest(34676) or completedq(34676) ]]},
+		{ids="34558,34563,35045,34571,34573,34624,34773,34804,36801,34087,34089,34088,34090,34091,33973,34094,34959,34095,34096,34097,34098,34963,34099,34777,34578,34976,34977,34979,34978,34980,34981,34685,33578,33579,34761,33871,33872,33873,33874,33734,33740,33761,33580,33581,33582,34701,33917,33920,34407,34458,33530,34351,34452,33969,33967,33958,34240,33988,34508,33976,34234,34013,34326,35227,34092,34163,34164,34157,35254,34154,33882,33884,33944,34709,34400,34399,34403,34406,34415,34448,34707,34631,34815,34619,34609,34612,34875,34773,34804,36801,34087,34089,34088,34090,34091,33973,34094,34959,34095,34096,34097,34098,34963,34099,34777,34908,34913,34911,34910,34909,34912,34711,34685,33578,33579,34761,33871,33872,33873,33874,33734,33740,33761,33580,33581,33582,34701,33917,33920,34407,34458,33530,34351,34452,33969,33967,33958,34240,33988,34508,33976,34234,34013,34326,35227,34092,34163,34164,34157,35254,34154,33882,33884,33944,34709,34400,34399,34403,34406,34415,34448,34707"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 30"] = {
-		{ids="31861,31839,31846"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 25"] = {
-		{ids="31860,31838,31845"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
-		{ids="30684", cond_if=[[havequest(30684) or completedq(30684) ]]},
-		{ids="31306", cond_if=[[havequest(31306) or completedq(31306) ]]},
-		{ids="31286,31287,31285,31254,30459,30457,30460,30508,30467,30496,30967,30469,30834,30468,30480,30828,30855,30512,30514,30583,30575,30569,30581,30571,30595,30619,30593,31252,30652,30650,30660,30651,31456,30488,30491,30489,30582,30804,30587,30492,30808,30614,30616,30617,31460,30999,30621,30601,30618,30487,30683,30829,30795,30796,30797,30799,30798,30800,30801,30802,31392,31394,30935,30942,30944,30943,30945,31011,30946,30816,30794,30805,30806,30807,30819,30820,31228,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30744,30746,30745,30742,30743,30747,31512,31455,30670,30665,30682,30690,30699,30715,30723,30724,30751,30750,30994,30991,30992,30993,30752"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 20"] = {
-		{ids="31859,31837,31844"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 15"] = {
-		{ids="31858,31836,31843"},
-	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
-		{ids="31840,31841,31842,31843,31844,31845,31846"},
-	},
-	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
-		{ids="30139", cond_if=[[havequest(30139) or completedq(30139) ]]},
-		{ids="30141", cond_if=[[havequest(30141) or completedq(30141) ]]},
-		{ids="30140", cond_if=[[havequest(30140) or completedq(30140) ]]},
-		{ids="31732,31733,30069,31734,31735,31737,31736,31739,29552,31738,31740,31744,31742,31743,31741,30070,31745,29555,29556,29553,29558,29559,29560,29759,29562,29883,29885,29762,29887,29894,29733,29725,29726,29727,29903,29904,29905,29906,29888,29889,31130,29891,29892,29893,29890,29898,29899,29900,29901,29922,31230,29716,29717,29865,29723,29866,29993,29881,29882,29995,29920,29925,29928,29745,29748,29747,29749,29751,29750,29752,29753,29756,29754,29755,29617,29618,29927,29929,29926,29930,29619,29620,29632,29633,29634,29635,29626,29627,29636,29637,29631,29628,29629,29630,29622,29623,29624,29639,30134,30135,30136,30137,30138,30142,29931,30495,29932,29998,30001,30002,29997,30011,30004,29999,30005,30000,30498,30565,30568,31362,31303,30500,30502,31319,29576,29578,29579,29585,29580,29586,29587,29670,30648"},
+	["LEVELING\\Draenor (10-50)\\Gorgrond (15-50)"] = {
+		{ids="36632", cond_if=[[havequest(36632) or completedq(36632) ]]},
+		{ids="49564", cond_if=[[havequest(49564) or completedq(49564) ]]},
+		{ids="36081", cond_if=[[havequest(36081) or completedq(36081) ]]},
+		{ids="35033,35065,35834,36595,35050,35055,35063,35708,36368,35652,35654,35651,35650,35666,35640,35633,35642,35644,35645,35656,35647,35659,35212,35214,35213,35215,35216,35208,36523,35205,35207,35204,35209,35206,35225,35234,35229,35233,35235,36432,36436,36437,36439,36440,36441,36442,36443,35255,36575,36495,35063,35686,35664,35693,35665,35730,34704,34699,34012,34702,34698,34700,34703,35026,35870,36508,35037,35934,35925,36208,36210,36432,36436,36437,36438,36440,36441,36442,36443,36209,36223,35128,35210,35139,35702,35137,35666,35640,35633,35642,35644,35645,35656,35647,35659,36084,36576,36495"},
+		{ids="35556", cond_if=[[havequest(35556) or completedq(35556) ]]},
+		{ids="33533", cond_if=[[havequest(33533) or completedq(33533) ]]},
 	},
 	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Miniwing"] = {
 		{ids="10898"},
@@ -6913,15 +6953,24 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="25067,25094"},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Bastion World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Anima Conductor Daily Quests"] = {
 		{ids="62160,62188,61875,61985,62224", cond_if=[[readyanyq(62160,62188,61875,61985,62224) or completedanyq(62160,62188,61875,61985,62224) ]]},
 		{ids="61968,62081,61950,62057,62155", cond_if=[[readyanyq(61968,62081,61950,62057,62155) or completedanyq(61968,62081,61950,62057,62155) ]]},
+	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
+		{ids="60463,60463", cond_if=[[readyq(60463) or completedq(60463) ]]},
+		{ids="60389,60394,60397,60399", cond_if=[[readyanyq(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
+		{ids="60441,60444,60446,60448", cond_if=[[readyanyq(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
+		{ids="60456,61334,62867,62868,62869,60460", cond_if=[[readyanyq(60456,61334,62867,62868,62869,60460) or completedanyq(60456,61334,62867,62868,62869,60460) ]]},
+		{ids="61981,61981", cond_if=[[readyq(61981) or completedq(61981) ]]},
+		{ids="60417,60370,60378,60358,60375", cond_if=[[readyanyq(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
+		{ids="60422,60427,60431,60432", cond_if=[[readyanyq(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
+		{ids="60401,60409,60406,60410", cond_if=[[readyanyq(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Kyrian Daily Quests"] = {
 		{ids="61982", cond_if=[[readyq(61982) or completedq(61982) ]]},
@@ -6934,17 +6983,20 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="60391,60392,60395,60400", cond_if=[[readyanyq(60391,60392,60395,60400) or completedanyq(60391,60392,60395,60400) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Ardenweald World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolords Abomination Factory Weekly Quests"] = {
+		{ids="62213", cond_if=[[havequest(62213) ]]},
+		{ids="62256", cond_if=[[havequest(62256) ]]},
+		{ids="58432,61510,61509,61511,60765,62041,59126,60291,61522,61523,62244,60237,62407,59293,56470,58992,62294,58515,58525,62232,62217,62216,62276,57634,62194,61996,62195,60342,62261,60340", cond_if=[[haveanyquest(58432,61510,61509,61511,60765,62041,59126,60291,61522,61523,62244,60237,62407,59293,56470,58992,62294,58515,58525,62232,62217,62216,62276,57634,62194,61996,62195,60342,62261,60340) ]]},
+	},
 	["DAILIES\\Shadowlands (50-60)\\Revendreth World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Fungal Terminus Daily Quests"] = {
@@ -6961,15 +7013,9 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="61199,61166,61193,61182", cond_if=[[readyanyq(61199,61166,61193,61182) or completedanyq(61199,61166,61193,61182) ]]},
 		{ids="61146,61196,61209", cond_if=[[readyanyq(61146,61196,61209) or completedanyq(61146,61196,61209) ]]},
 	},
-	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
-		{ids="60463,60463", cond_if=[[readyq(60463) or completedq(60463) ]]},
-		{ids="60389,60394,60397,60399", cond_if=[[readyanyq(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
-		{ids="60441,60444,60446,60448", cond_if=[[readyanyq(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
-		{ids="60456,61334,62867,62868,62869,60460", cond_if=[[readyanyq(60456,61334,62867,62868,62869,60460) or completedanyq(60456,61334,62867,62868,62869,60460) ]]},
-		{ids="61981,61981", cond_if=[[readyq(61981) or completedq(61981) ]]},
-		{ids="60417,60370,60378,60358,60375", cond_if=[[readyanyq(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
-		{ids="60422,60427,60431,60432", cond_if=[[readyanyq(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
-		{ids="60401,60409,60406,60410", cond_if=[[readyanyq(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory Daily Quests"] = {
+		{ids="62444,62442,62443", cond_if=[[haveanyquest(62444,62442,62443) ]]},
+		{ids="62441", cond_if=[[havequest(62441) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Anima Conductor Daily Quests"] = {
 		{ids="61734", cond_if=[[readyq(61734) or completedq(61734) ]]},
@@ -6992,10 +7038,9 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="60421,60418,60420,60419", cond_if=[[readyanyq(60421,60418,60420,60419) or completedanyq(60421,60418,60420,60419) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Maldraxxus World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolord Daily Quests"] = {
@@ -7011,13 +7056,14 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	},
 	["DAILIES\\Shadowlands (50-60)\\Ve'nari Daily Quests (The Maw)"] = {
 		{ids="63043", cond_if=[[readyq(63043) or completedq(63043) ]]},
+		{ids="60902,60775,62239,60646,60762,61088,61104,60732,60622,61079,61075,61103,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214,63206", cond_if=[[readyanyq(60902,60775,62239,60646,60762,61088,61104,60732,61103,60622,61079,61075,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214,63206) ]]},
 		{ids="63100", cond_if=[[readyq(63100) or completedq(63100) ]]},
 		{ids="63166", cond_if=[[readyq(63166) or completedq(63166) ]]},
-		{ids="60775,60646,60762,61088,61104,60732,60622,61079,61075,61103,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214", cond_if=[[readyanyq(60775,60646,60762,61088,61104,60732,61103,60622,61079,61075,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214) or completedanyq(61103,63050,63047,63031,63062,63040,63038,63045,62234,63069,63072,62214) ]]},
 		{ids="63039", cond_if=[[havequest(63039) or completedq(63039) ]]},
 		{ids="63179", cond_if=[[readyq(63179) or completedq(63179) ]]},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\Elder\\Lunar Festival Achievements"] = {
+		{ids="8868"},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\The Pilgrim"] = {
 		{ids="14022,14064,14023,14024,14028,14030,14033,14035,14054,14048,14051,14053,14055"},
@@ -7313,6 +7359,9 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\10 Coins of Ancestry"] = {
 	},
+	["EVENTS\\Lunar Festival\\Achievements\\Elune's Blessing"] = {
+		{ids="8868"},
+	},
 	["EVENTS\\Midsummer Fire Festival\\Midsummer Fire Festival Achievements\\The Fires of Azeroth\\Extinguishing Northrend"] = {
 	},
 	["EVENTS\\Hallow's End\\Achievements\\Rotten Hallow"] = {
@@ -7325,6 +7374,7 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["EVENTS\\Lunar Festival\\Achievements\\5 Coins of Ancestry"] = {
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\To Honor One's Elders"] = {
+		{ids="8868"},
 	},
 	["EVENTS\\Feast of Winter Veil\\Feast of Winter Veil Quests"] = {
 		{ids="7043", cond_if=[[not completedq(7045) ]]},
@@ -8538,11 +8588,17 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="25613", cond_if=[[havequest(25613) ]]},
 		{ids="13979,13913,25607,25614,25615,25621,25622,25616,25640,25646,25642,25647,25649,25650,25652,25729,25662,25669,25673,25728,25741,25739,25766,25767,25769,25768,25875,25876,25878,25879,25877,25880,25889,25891,25925,25930,25935,25931,25934,25913,25914,25912,25765,25793,25806,25811,25809,25808,25821,25834,25837,25844,25845,25822,25823,25846,25847,25848,25851"},
 	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
-		{ids="59262,59263,60660,59348,59351,59311"},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Plagueborn Slime"] = {
+		{ids="59130,58011,58016,58027"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Glimr"] = {
 		{ids="60605,60606,60614,60615,60616,60617,60619,60620"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Renny"] = {
+		{ids="59087,59120"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
+		{ids="59262,59263,60660,59348,59351,59311"},
 	},
 	["PROFESSIONS\\Skinning\\Quest Guides\\Kul Tiran Skinning Quest Guide"] = {
 		{ids="52223,52225,52227,52224,52226,52228"},
@@ -9603,32 +9659,203 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	},
 	["GOLD\\Farming\\Righteous Orb, Mageweave Cloth"] = {
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Hand of the Prophet"] = {
-		{ids="38045", cond_if=[[havequest(38045) or completedq(38045) ]]},
-		{ids="39573", cond_if=[[havequest(39573) or completedq(39573) ]]},
-		{ids="39586", cond_if=[[havequest(39586) or completedq(39586) ]]},
-		{ids="38250", cond_if=[[havequest(38250) or completedq(38250) ]]},
-		{ids="38046", cond_if=[[havequest(38046) or completedq(38046) ]]},
-		{ids="39581", cond_if=[[havequest(39581) or completedq(39581) ]]},
-		{ids="39567", cond_if=[[havequest(39567) or completedq(39567) ]]},
-		{ids="38585", cond_if=[[havequest(38585) or completedq(38585) ]]},
-		{ids="37891", cond_if=[[havequest(37891) or completedq(37891) ]]},
-		{ids="39568", cond_if=[[havequest(39568) or completedq(39568) ]]},
-		{ids="39571", cond_if=[[havequest(39571) or completedq(39571) ]]},
-		{ids="39570", cond_if=[[havequest(39570) or completedq(39570) ]]},
-		{ids="39569", cond_if=[[havequest(39569) or completedq(39569) ]]},
-		{ids="38440", cond_if=[[havequest(38440) or completedq(38440) ]]},
-		{ids="39574"},
-		{ids="37968", cond_if=[[havequest(37968) or completedq(37968) ]]},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Emperor Shaohao"] = {
+		{ids="33229", cond_if=[[havequest(33229) ]]},
+		{ids="33231,33160,33161,33336,33228,33335,33340,33341,33332,33333"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Order of the Awakened"] = {
-		{ids="39433"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Fish Fellreed"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30427,30424"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\Wrynn's Vanguard"] = {
-		{ids="36119,36130,36127,36133,36125,36123"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Ella"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30386,30381,31534,31537,31538"},
 	},
-	["REPUTATIONS\\Warlords of Draenor\\The Saberstalkers"] = {
-		{ids="39582,39565"},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Klaxxi"] = {
+		{ids="31598,31599", cond_if=[[havequest(31598) or havequest(31599) ]]},
+		{ids="31231,31235,31109,31267,31111,31505,31677,31216,31237,31510,31272,31504,31232,31233,31496,31270,31269,31507,31271,31502,31503,31234,31508,31509,31238,31487,31494,31268,31024,31808,31506,31018,31208,31209,31210,31211,31439,31441,31458,31465,31959,31609,31612"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Kirin Tor Offensive"] = {
+		{ids="32568", cond_if=[[havequest(32568) or completedq(32568) ]]},
+		{ids="32733", cond_if=[[completedq(32644) and (havequest(32733) or completedq(32733)) ]]},
+		{ids="32586,32588,32586,32588", cond_if=[[havequest(32586) or completedq(32586) or havequest(32588) or completedq(32588) ]]},
+		{ids="32560,32557,32559,32585,32582", cond_if=[[completedq(32568) ]]},
+		{ids="32731", cond_if=[[havequest(32731) or completedq(32731) ]]},
+		{ids="32732", cond_if=[[completedq(32644) and (havequest(32732) or completedq(32732)) ]]},
+		{ids="32551,32550,32554", cond_if=[[havequest(32551) or completedq(32551) or havequest(32550) or completedq(32550) ]]},
+		{ids="32540,32543,32542", cond_if=[[havequest(32733) or completedq(32733) ]]},
+		{ids="32556,32558,32555", cond_if=[[completedq(32560) or completedq(32557) or completedq(32559) ]]},
+		{ids="32553,32552", cond_if=[[havequest(32552) or havequest(32553) or completedq(32552) or completedq(32553) ]]},
+		{ids="32606,32535,32537,32536", cond_if=[[havequest(32732) or completedq(32732) ]]},
+		{ids="32567", cond_if=[[havequest(32567) or completedq(32567) ]]},
+		{ids="32549", cond_if=[[havequest(32549) ]]},
+		{ids="32547,32546,32548,32545", cond_if=[[completedq(32732) ]]},
+		{ids="32679,32681,32644,32654,32652,32655,32656,32529,32530,32531,32532,32528,32525,32533,32526,32527,32544,32541,32539,32538,32572,32573,32571,32574,32575,32587,32578,32580,32584,32608,32581,32607,32576,32579"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Operation: Shieldwall"] = {
+		{ids="32370,32377", cond_if=[[not completedq(32371) ]]},
+		{ids="32116", cond_if=[[havequest(32116) or completedq(32116) ]]},
+		{ids="32193", cond_if=[[havequest(32193) ]]},
+		{ids="32455", cond_if=[[havequest(32455) ]]},
+		{ids="32401", cond_if=[[not completedq(32455) ]]},
+		{ids="32331", cond_if=[[not completedq(32362) ]]},
+		{ids="32400", cond_if=[[havequest(32400) and not completedq(32401) and not completedq(32455) ]]},
+		{ids="32382", cond_if=[[not completedq(32383) or not completedq(32397) ]]},
+		{ids="32383,32397", cond_if=[[havequest(32383) or havequest(32397) ]]},
+		{ids="32143", cond_if=[[havequest(32143) or completedq(32143) ]]},
+		{ids="32380,32381", cond_if=[[not completedq(32426) ]]},
+		{ids="32337,32338", cond_if=[[havequest(32337) or havequest(32338) ]]},
+		{ids="32336", cond_if=[[not completedq(32337) and not completedq(32338) and not completedq(32336) ]]},
+		{ids="32335", cond_if=[[havequest(32335) ]]},
+		{ids="32316", cond_if=[[havequest(32316) ]]},
+		{ids="32315", cond_if=[[not completedq(32316) ]]},
+		{ids="32355,32321,32332,32333,32334", cond_if=[[not completedq(32335) ]]},
+		{ids="32423", cond_if=[[havequest(32423) ]]},
+		{ids="32460", cond_if=[[havequest(32460) or not completedq(32416) ]]},
+		{ids="32414,32416,32421,32419,32417,32418,32420", cond_if=[[not completedq(32423) ]]},
+		{ids="32194", cond_if=[[havequest(32194) ]]},
+		{ids="32394", cond_if=[[havequest(32394) ]]},
+		{ids="32426", cond_if=[[havequest(32426) ]]},
+		{ids="32243", cond_if=[[havequest(32243) ]]},
+		{ids="32371", cond_if=[[havequest(32371) ]]},
+		{ids="32393", cond_if=[[havequest(32393) or not completedq(32394) ]]},
+		{ids="32362", cond_if=[[havequest(32362) ]]},
+		{ids="32246,32247,32109,32149,32150,32148,32151,32153,32152,32451,32452,32144,32156,32158,32433,32154,32446,32146,32142,32157,32143,32145,32121,32115,32347,32346,32122,32119"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Golden Lotus"] = {
+		{ids="30261", cond_if=[[havequest(30261) ]]},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+		{ids="31394,31511,31512,30242,30240,30306,30280,30277,30243,30266"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Lorewalkers"] = {
+		{ids="31096,31100,31102,31095,31103,31093,31097,31094,31055"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Tillers"] = {
+		{ids="30526", cond_if=[[havequest(30526) ]]},
+		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
+		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
+		{ids="30477", cond_if=[[havequest(30477) ]]},
+		{ids="30471", cond_if=[[havequest(30471) ]]},
+		{ids="30473", cond_if=[[havequest(30473) ]]},
+		{ids="30472", cond_if=[[havequest(30472) ]]},
+		{ids="30478", cond_if=[[havequest(30478) ]]},
+		{ids="30470", cond_if=[[havequest(30470) ]]},
+		{ids="30474", cond_if=[[havequest(30474) ]]},
+		{ids="30475", cond_if=[[havequest(30475) ]]},
+		{ids="30476", cond_if=[[havequest(30476) ]]},
+		{ids="30479", cond_if=[[havequest(30479) ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30317,30326,30327,30325,30322,30318,30323,30319,30321,30324,30260,30516,31936,30523,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Shado-Pan Assault"] = {
+		{ids="31266", cond_if=[[rep('Shado-Pan')==Exalted and not completedq(31277) ]]},
+		{ids="31038", cond_if=[[havequest(31038) ]]},
+		{ids="31113,31114,31119,31116,31118", cond_if=[[not completedq(31128) ]]},
+		{ids="31105,31106,31039,31044,31045,31048,31043,31042,31047,31040,31041,31046", cond_if=[[completedq(31104) ]]},
+		{ids="31220", cond_if=[[havequest(31220) ]]},
+		{ids="31128", cond_if=[[havequest(31128) ]]},
+		{ids="31104", cond_if=[[havequest(31104) ]]},
+		{ids="31113,31114,31119,31116,31118", cond_if=[[completedq(31128) ]]},
+		{ids="31221", cond_if=[[havequest(31221) ]]},
+		{ids="30933", cond_if=[[havequest(30933) ]]},
+		{ids="31196,31197,31198,31199,31200,31201", cond_if=[[completedq(31221) ]]},
+		{ids="31105,31106,31039,31044,31045,31048,31043,31042,31047,31040,31041,31046", cond_if=[[not completedq(31104) ]]},
+		{ids="31127", cond_if=[[havequest(31127) ]]},
+		{ids="31277", cond_if=[[havequest(31277) ]]},
+		{ids="31196,31197,31198,31199,31200,31201", cond_if=[[not completedq(31221) ]]},
+		{ids="31110", cond_if=[[havequest(31110) ]]},
+		{ids="31117,31120,31062,31061,31049,31204,31203"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Beastmaster Dailies"] = {
+		{ids="32246,32247,32109,32164,32184,32165,32185,32166,32186,32170,32171,32172"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Order of the Cloud Serpent"] = {
+		{ids="31713", cond_if=[[havequest(31713) ]]},
+		{ids="31710,30150,30156,31704,30154", cond_if=[[havequest(31710) or havequest(30150) or havequest(30156) or havequest(31704) or havequest(30154) ]]},
+		{ids="31716", cond_if=[[havequest(31716) ]]},
+		{ids="30148", cond_if=[[havequest(30148) ]]},
+		{ids="31704", cond_if=[[havequest(31704) ]]},
+		{ids="30151", cond_if=[[havequest(30151) ]]},
+		{ids="30150", cond_if=[[havequest(30150) ]]},
+		{ids="30149", cond_if=[[skill("Cooking")>=525 ]]},
+		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142,31194,31701,31702,30155,30158,31703,30154,31699,31698,31700,31706,31711,31707,30152,31721,31717,31720,31718,30159,31709,30157,31712,31715,31714,30147,30146,31705,30143,30144,30145,30187,31811,31810"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Jogu the Drunk"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30439,30435,31320,31321"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Chee Chee"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30402,30400"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The August Celestials"] = {
+		{ids="31378", cond_if=[[not completedq(31378) ]]},
+		{ids="30879", cond_if=[[havequest(30879) ]]},
+		{ids="31382", cond_if=[[havequest(31382) ]]},
+		{ids="30954", cond_if=[[havequest(30954) ]]},
+		{ids="30006", cond_if=[[havequest(30006) ]]},
+		{ids="31517", cond_if=[[havequest(31517) ]]},
+		{ids="30718,30740", cond_if=[[achieved(7287) ]]},
+		{ids="30718,30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
+		{ids="30065", cond_if=[[havequest(30065) ]]},
+		{ids="30066", cond_if=[[havequest(30066) ]]},
+		{ids="30881", cond_if=[[havequest(30881) ]]},
+		{ids="30955", cond_if=[[havequest(30955) ]]},
+		{ids="30885", cond_if=[[havequest(30885) ]]},
+		{ids="31492", cond_if=[[havequest(31492) ]]},
+		{ids="31376", cond_if=[[havequest(31376) ]]},
+		{ids="31380", cond_if=[[havequest(31380) ]]},
+		{ids="30957", cond_if=[[havequest(30957) ]]},
+		{ids="30958", cond_if=[[havequest(30958) ]]},
+		{ids="30953", cond_if=[[havequest(30953) ]]},
+		{ids="30959", cond_if=[[havequest(30959) ]]},
+		{ids="30952", cond_if=[[havequest(30952) ]]},
+		{ids="30956", cond_if=[[havequest(30956) ]]},
+		{ids="30883", cond_if=[[havequest(30883) ]]},
+		{ids="30063", cond_if=[[havequest(30063) ]]},
+		{ids="30064", cond_if=[[havequest(30064) ]]},
+		{ids="30882", cond_if=[[havequest(30882) ]]},
+		{ids="30880", cond_if=[[havequest(30880) ]]},
+		{ids="30716,30717,30067,30068,30907,30902"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Sho"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30408,30404"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Tina Mudclaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30433,30428"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Haohan Mudclaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30414,30409"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Old Hillpaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30396,30394"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Farmer Fung"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30421,30420"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\The Anglers"] = {
+		{ids="30585,30598,30678,30698,30700,30588,30613,30658,30584,30586,30754,30753,30763,30701"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Gina Mudclaw"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30390,30389"},
+	},
+	["REPUTATIONS\\Mists of Pandaria Reputations\\Nat Pagle"] = {
+		{ids="31444,31446,31443"},
 	},
 	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wriggling Parasite"] = {
 	},
@@ -9777,112 +10004,6 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="55463", cond_if=[[havequest(55463) ]]},
 		{ids="54965,56327", cond_if=[[haveanyquest(54965,56327) ]]},
 		{ids="56053", cond_if=[[not havequest(55816) and havequest(56053) ]]},
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Red Panda"] = {
-		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Jade Owl"] = {
-		{ids="31394,31511,31512"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Sunfur Panda"] = {
-		{ids="32439", cond_if=[[havequest(32439) ]]},
-		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32440", cond_if=[[havequest(32440) ]]},
-		{ids="32441", cond_if=[[havequest(32441) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="32434", cond_if=[[havequest(32434) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603,32604,32868,32869"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Tiny Goldfish"] = {
-		{ids="31369", cond_if=[[not completedq(31369) ]]},
-		{ids="30585,30598,30678,30698,30700,30588,30613,30658,30584,30586,30754,30753,30763,30701"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Water Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32439"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Earth Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32441"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-ji Kite"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Fire Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32434"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Air Spirit"] = {
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32440"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Yu'lon Kite"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Mountain Panda"] = {
-		{ids="32439", cond_if=[[havequest(32439) ]]},
-		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32440", cond_if=[[havequest(32440) ]]},
-		{ids="32441", cond_if=[[havequest(32441) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="32434", cond_if=[[havequest(32434) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603,32604,32868,32869"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Snowy Panda"] = {
-		{ids="32439", cond_if=[[havequest(32439) ]]},
-		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32440", cond_if=[[havequest(32440) ]]},
-		{ids="32441", cond_if=[[havequest(32441) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="32434", cond_if=[[havequest(32434) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603,32604,32868,32869"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Fishy"] = {
-		{ids="29903,29904,29905"},
-	},
-	["DUNGEONS\\Legion Dungeons\\Eye of Azshara"] = {
-		{ids="38286", cond_if=[[havequest(38286) or completedq(38286) ]]},
-	},
-	["DUNGEONS\\Legion Dungeons\\Halls of Valor"] = {
-		{ids="40072", cond_if=[[havequest(40072) or completedq(40072) or havequest(43349) or completedq(43349) ]]},
-		{ids="43349", cond_if=[[havequest(43349) or completedq(43349) ]]},
-	},
-	["DUNGEONS\\Legion Dungeons\\Vault of the Wardens"] = {
-		{ids="44486", cond_if=[[havequest(44486) or completedq(44486) ]]},
-	},
-	["DUNGEONS\\Legion Dungeons\\Karazhan\\Return to Karazhan"] = {
-		{ids="44735,44734", cond_if=[[havequest(44734) ]]},
-	},
-	["DUNGEONS\\Legion Dungeons\\Karazhan\\Karazhan Attunement"] = {
-		{ids="45422,44886,44887,44944,44556,44557,44683,44684,44685,44686,44764,44733"},
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Vendor Mounts\\Crimson Water Strider"] = {
 	},
@@ -10227,376 +10348,6 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["ACHIEVEMENTS\\Quests\\Northrend\\D.E.H.T.A's Little P.I.T.A."] = {
 		{ids="11866,11876,11869,11884,11865,11878,11879,11870,11871,11872,11892"},
 	},
-	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
-		{ids="36483", cond_if=[[havequest(36483) or hasbuilding(167) ]]},
-		{ids="37644", cond_if=[[havequest(37644) ]]},
-		{ids="37201,37203,37207,37205,37208,37206,38299"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep: Utgarde Pinnacle"] = {
-		{ids="13131,13132", cond_if=[[havequest(13131) or havequest(13132) ]]},
-		{ids="29864", cond_if=[[havequest(29864) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Azjol-Nerub"] = {
-		{ids="29807,29808,29811", cond_if=[[havequest(29807) or havequest(29808) or havequest(29811) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Lost City of the Tol'vir"] = {
-		{ids="28783,28781"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Zul Gurub"] = {
-		{ids="29154,29241,29172,29175,29173,29242"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: The Blood Furnace"] = {
-		{ids="29538,29539,29540", cond_if=[[not completedq(29538) or not completedq(29539) or not completedq(29540) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Ragefire Chasm"] = {
-		{ids="30995", cond_if=[[not completedq(30995) ]]},
-		{ids="30998,30996", cond_if=[[not completedq(30998) and not completedq(30996) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Vortex Pinnacle"] = {
-		{ids="28779,28760"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Maraudon: Earth Song Falls"] = {
-		{ids="27692", cond_if=[[not completedq(27692) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Scarlet Monastery"] = {
-		{ids="31515,31516"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Mogu'shan Palace"] = {
-		{ids="31357,31360"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Drak'Tharon Keep"] = {
-		{ids="30120", cond_if=[[havequest(30120) ]]},
-		{ids="13129,29828", cond_if=[[havequest(13129) or havequest(29828) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Halls of Stone"] = {
-		{ids="13207", cond_if=[[havequest(13207) ]]},
-		{ids="29848,29850", cond_if=[[havequest(29848) or havequest(29850) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Dire Maul: Capital Gardens"] = {
-		{ids="27109", cond_if=[[not completedq(27109) ]]},
-		{ids="27112", cond_if=[[not completedq(27112) ]]},
-		{ids="27113,27110,27111", cond_if=[[not completedq(27111) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Razorfen Kraul"] = {
-		{ids="26906", cond_if=[[not completedq(26905) ]]},
-		{ids="26905", cond_if=[[not completedq(26805) ]]},
-		{ids="26901,26907", cond_if=[[not completedq(26901) or not completedq(26907) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Uldaman"] = {
-		{ids="27672,27677", cond_if=[[not completedq(27677) ]]},
-		{ids="27673", cond_if=[[not completedq(27673) ]]},
-		{ids="27676", cond_if=[[not completedq(27676) ]]},
-		{ids="2278,2280", cond_if=[[not completedq(2280) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Gnomeregan"] = {
-		{ids="26941,26942", cond_if=[[not completedq(26942) ]]},
-		{ids="26939"},
-	},
-	["DUNGEONS\\Classic Raids\\Ruins of Ahn'Qiraj"] = {
-		{ids="8558", cond_if=[[havequest(8558) ]]},
-		{ids="8696", cond_if=[[havequest(8696) ]]},
-		{ids="8700", cond_if=[[havequest(8700) ]]},
-		{ids="8709", cond_if=[[havequest(8709) ]]},
-		{ids="8691", cond_if=[[havequest(8691) ]]},
-		{ids="8704", cond_if=[[havequest(8704) ]]},
-		{ids="8791", cond_if=[[havequest(8791) ]]},
-		{ids="8707", cond_if=[[havequest(8707) ]]},
-		{ids="8557", cond_if=[[havequest(8557) ]]},
-		{ids="8710", cond_if=[[havequest(8710) ]]},
-		{ids="8706", cond_if=[[havequest(8706) ]]},
-		{ids="8702", cond_if=[[havequest(8702) ]]},
-		{ids="8689", cond_if=[[havequest(8689) ]]},
-		{ids="8694", cond_if=[[havequest(8694) ]]},
-		{ids="8708", cond_if=[[havequest(8708) ]]},
-		{ids="8695", cond_if=[[havequest(8695) ]]},
-		{ids="8711", cond_if=[[havequest(8711) ]]},
-		{ids="8556", cond_if=[[havequest(8556) ]]},
-		{ids="8705", cond_if=[[havequest(8705) ]]},
-		{ids="8690", cond_if=[[havequest(8690) ]]},
-		{ids="8693", cond_if=[[havequest(8693) ]]},
-		{ids="8698", cond_if=[[havequest(8698) ]]},
-		{ids="8703", cond_if=[[havequest(8703) ]]},
-		{ids="8699", cond_if=[[havequest(8699) ]]},
-		{ids="8701", cond_if=[[havequest(8701) ]]},
-		{ids="8697", cond_if=[[havequest(8697) ]]},
-		{ids="8712", cond_if=[[havequest(8712) ]]},
-		{ids="8692", cond_if=[[havequest(8692) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Sunken Temple"] = {
-		{ids="27604,27605,27633"},
-	},
-	["DUNGEONS\\Classic Dungeons\\The Stormwind Stockade"] = {
-		{ids="27733", cond_if=[[not completedq(27733) ]]},
-		{ids="27737", cond_if=[[not completedq(27737) ]]},
-		{ids="27739", cond_if=[[not completedq(27739) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Ahn'kahet: The Old Kingdom"] = {
-		{ids="29826", cond_if=[[not completedq(13187) ]]},
-		{ids="29825", cond_if=[[not completedq(29826) ]]},
-		{ids="13187", cond_if=[[havequest(13187) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Arcatraz"] = {
-		{ids="29674,29675,29681"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Gate of the Setting Sun"] = {
-		{ids="31363,31364"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Deadmines"] = {
-		{ids="27785,27790", cond_if=[[not completedq(27790) ]]},
-		{ids="27756", cond_if=[[not completedq(27756) ]]},
-		{ids="27758", cond_if=[[not completedq(27758) ]]},
-		{ids="27781", cond_if=[[not completedq(27781) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\The Oculus"] = {
-		{ids="13126", cond_if=[[not completedq(13127) ]]},
-		{ids="13124", cond_if=[[havequest(13124) ]]},
-		{ids="13128", cond_if=[[havequest(13128) ]]},
-		{ids="13127", cond_if=[[not completedq(13128) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\The Nexus"] = {
-		{ids="11911", cond_if=[[havequest(11911) ]]},
-		{ids="11905", cond_if=[[havequest(11905) ]]},
-		{ids="11973", cond_if=[[havequest(11973) ]]},
-		{ids="13094", cond_if=[[havequest(13094) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Shattered Halls"] = {
-		{ids="29652,29649,29656,29654", cond_if=[[havequest(29652) or havequest(29649) or havequest(29656) or havequest(29654) ]]},
-	},
-	["DUNGEONS\\Classic Raids\\Temple of Ahn'Qiraj"] = {
-		{ids="8560,8559,8562,8561,8544", cond=[[Warrior]]},
-		{ids="8629,8655,8627,8628,8630", cond=[[Paladin]]},
-		{ids="8624,8621,8622,8623,8602", cond=[[Shaman]]},
-		{ids="8640,8637,8638,8639,8641", cond=[[Rogue]]},
-		{ids="8631,8634,8633,8632,8625", cond=[[Mage]]},
-		{ids="8801", cond_if=[[not completedq(8801) ]]},
-		{ids="8663,8660,8661,8662,8664", cond=[[Warlock]]},
-		{ids="8668,8665,8666,8667,8669", cond=[[Druid]]},
-		{ids="8593,8596,8603,8592,8594", cond=[[Priest]]},
-		{ids="8658,8626,8656,8657,8659", cond=[[Hunter]]},
-		{ids="8784", cond_if=[[havequest(8784) ]]},
-		{ids="8595,8579,8595,8579"},
-	},
-	["DUNGEONS\\Outland Raids\\The Eye"] = {
-		{ids="11007", cond_if=[[havequest(11007) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Slave Pens"] = {
-		{ids="29563,29565", cond_if=[[not completedq(29563) or not completedq(29565) ]]},
-		{ids="29564", cond_if=[[not completedq(29564) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Auchenai Crypts"] = {
-		{ids="29590,29596", cond_if=[[not completedq(29590) or not completedq(29596) ]]},
-		{ids="29591", cond_if=[[havequest(29591) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Blackfathom Deeps"] = {
-		{ids="34672", cond_if=[[not completedq(34672) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Maraudon: Foulspore Cavern"] = {
-		{ids="27698", cond_if=[[not completedq(27698) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Shadowfang Keep"] = {
-		{ids="27917", cond_if=[[not completedq(27920) ]]},
-		{ids="27920", cond_if=[[not completedq(27921) ]]},
-		{ids="27921,27968", cond_if=[[not completedq(27968) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Stratholme: Main Gate"] = {
-		{ids="27208", cond_if=[[not completedq(27208) ]]},
-		{ids="27305", cond_if=[[not completedq(27305) ]]},
-		{ids="27223", cond_if=[[not completedq(27223) ]]},
-		{ids="27192", cond_if=[[not completedq(27192) ]]},
-		{ids="27185", cond_if=[[not completedq(27185) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Lower Blackrock Spire"] = {
-		{ids="27440", cond_if=[[havequest(27440) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Scholomance"] = {
-		{ids="31442,31448"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Caverns of Time: The Culling of Stratholme"] = {
-		{ids="13151", cond_if=[[havequest(13151) ]]},
-		{ids="13149", cond_if=[[havequest(13149) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Stratholme: Service Entrance"] = {
-		{ids="27227,27228,27359,27230,27352"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Blackrock Depths: Detention Block"] = {
-		{ids="27565,27567", cond_if=[[not completedq(27567) ]]},
-		{ids="27568", cond_if=[[not completedq(27569) ]]},
-		{ids="27578", cond_if=[[havequest(27578) ]]},
-		{ids="27573", cond_if=[[not completedq(27578) ]]},
-		{ids="27571", cond_if=[[not completedq(27573) ]]},
-		{ids="27569", cond_if=[[not completedq(27571) ]]},
-		{ids="27603", cond_if=[[not completedq(27603) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Well of Eternity"] = {
-		{ids="30098,30099,30100,30104,30101"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Scarlet Halls"] = {
-		{ids="31497", cond_if=[[not completedq(31497) and heroic_dung() ]]},
-		{ids="31490", cond_if=[[not completedq(31490) and not heroic_dung() ]]},
-		{ids="31495", cond_if=[[not completedq(31495) and heroic_dung() ]]},
-		{ids="31493", cond_if=[[not completedq(31493) and not heroic_dung() ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Forge of Souls"] = {
-		{ids="24499", cond_if=[[not completedq(24683) ]]},
-		{ids="24510", cond_if=[[not completedq(24499) ]]},
-	},
-	["DUNGEONS\\Outland Raids\\Magtheridon's Lair"] = {
-		{ids="11002", cond_if=[[not completedq(11002) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Dire Maul: Gordock Commons"] = {
-		{ids="27119", cond_if=[[havequest(27119) ]]},
-		{ids="27124"},
-		{ids="27125,27125", cond_if=[[not completedq(27125) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Throne of the Tides"] = {
-		{ids="28836", cond_if=[[havequest(28836) ]]},
-		{ids="28834"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Razorfen Downs"] = {
-		{ids="33513,33514"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Temple of the Jade Serpent"] = {
-		{ids="31355,31356"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Stormstout Brewery"] = {
-		{ids="31324,31327"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Shadow Labyrinth"] = {
-		{ids="29640", cond_if=[[not completedq(29641) ]]},
-		{ids="29641", cond_if=[[havequest(29641) ]]},
-		{ids="29644,29645", cond_if=[[havequest(29644) or havequest(29645) ]]},
-		{ids="29643", cond_if=[[not completedq(29644) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Mechanar"] = {
-		{ids="29658", cond_if=[[havequest(29658) ]]},
-		{ids="29657,29659"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Mana-Tombs"] = {
-		{ids="29574", cond_if=[[not completedq(29574) ]]},
-		{ids="29573,29575", cond_if=[[not completedq(29573) or not completedq(29575) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Siege of Niuzao Temple"] = {
-		{ids="31365,31366"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Zul'Aman"] = {
-		{ids="29186,11196"},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Scarlet Halls"] = {
-		{ids="31495,31497"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Dire Maul: Warpwood Quarter"] = {
-		{ids="27108", cond_if=[[not completedq(27108) ]]},
-		{ids="27104", cond_if=[[not completedq(27104) ]]},
-		{ids="27105", cond_if=[[not completedq(27105) ]]},
-		{ids="27103", cond_if=[[not completedq(27103) ]]},
-		{ids="27107", cond_if=[[not completedq(27107) ]]},
-	},
-	["DUNGEONS\\Pandaria Dungeons\\Shado-Pan Monastery"] = {
-		{ids="31342", cond_if=[[havequest(31342) ]]},
-		{ids="30757", cond_if=[[havequest(30757) ]]},
-	},
-	["DUNGEONS\\Pandaria Raids\\Siege of Orgrimmar"] = {
-		{ids="33147,33138", cond_if=[[not completedq(33138) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Caverns of Time: Escape from Durnholde Keep"] = {
-		{ids="29599", cond_if=[[havequest(29599) ]]},
-		{ids="29598", cond_if=[[not completedq(29599) ]]},
-	},
-	["DUNGEONS\\Classic Raids\\Blackwing Lair"] = {
-		{ids="7782", cond_if=[[completedq(7781) ]]},
-		{ids="7781", cond_if=[[not completedq(7781) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\End Time"] = {
-		{ids="30097,30096"},
-	},
-	["DUNGEONS\\Outland Raids\\Hyjal Summit (Battle for Mount Hyjal)"] = {
-		{ids="10277", cond_if=[[havequest(10277) ]]},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Hour of Twilight"] = {
-		{ids="30102,30103,30105"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Grim Batol"] = {
-		{ids="28853,28852,28854"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\Blackrock Caverns"] = {
-		{ids="28741", cond_if=[[havequest(28741) ]]},
-		{ids="28735,28737,28738,28740"},
-	},
-	["DUNGEONS\\Northrend Raids\\Naxxramas"] = {
-		{ids="13372", cond_if=[[havequest(13372) ]]},
-		{ids="13375", cond_if=[[havequest(13375) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\The Violet Hold"] = {
-		{ids="29830", cond_if=[[havequest(29830) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep"] = {
-		{ids="29763,29764,29803", cond_if=[[havequest(29763) or havequest(29764) or havequest(29803) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Trial of the Champion"] = {
-		{ids="29851", cond_if=[[havequest(29851) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Pit of Saron"] = {
-		{ids="24498", cond_if=[[not completedq(24710) ]]},
-		{ids="24710", cond_if=[[not completedq(24711) ]]},
-		{ids="24683", cond_if=[[not completedq(24498) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Halls of Reflection"] = {
-		{ids="24711,24500", cond_if=[[not completedq(24500) ]]},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Halls of Lightning"] = {
-		{ids="29860,29861,29862", cond_if=[[havequest(29860) or havequest(29861) or havequest(29862) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Underbog"] = {
-		{ids="29568,29570,29567,29691"},
-	},
-	["DUNGEONS\\Northrend Dungeons\\Gundrak"] = {
-		{ids="29834,29839,29844", cond_if=[[havequest(29834) or havequest(29839) or havequest(29844) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Hellfire Ramparts"] = {
-		{ids="29528,29529,29594", cond_if=[[not completedallq(29528,29529,29594) and (havequest(29528) or havequest(29529) or havequest(29594)) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: The Steamvault"] = {
-		{ids="29614", cond_if=[[havequest(29614) ]]},
-		{ids="29613", cond_if=[[havequest(29613) ]]},
-		{ids="29615", cond_if=[[havequest(29615) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Magister's Terrace"] = {
-		{ids="29686,29687,29685", cond_if=[[havequest(29686) or havequest(29687) or havequest(29685) ]]},
-		{ids="29684", cond_if=[[not completedq(11490) ]]},
-		{ids="11490", cond_if=[[not completedq(29685) ]]},
-	},
-	["DUNGEONS\\Outland Dungeons\\Tempest Keep: Botanica"] = {
-		{ids="29660,29667,29669"},
-	},
-	["DUNGEONS\\Cataclysm Dungeons\\The Stonecore"] = {
-		{ids="28815,28814"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Caverns of Time: The Black Morass"] = {
-		{ids="10297"},
-	},
-	["DUNGEONS\\Outland Dungeons\\Auchindoun: Sethekk Halls"] = {
-		{ids="29607", cond_if=[[havequest(29607) ]]},
-		{ids="29605,29606", cond_if=[[havequest(29605) or havequest(29606) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Maraudon: The Wicked Grotto"] = {
-		{ids="27697", cond_if=[[havequest(27697) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Zul'Farrak"] = {
-		{ids="27068,27071,27070,27076"},
-	},
-	["DUNGEONS\\Classic Dungeons\\Scarlet Monastery"] = {
-		{ids="31513,31515,31514,31516", cond_if=[[not completedq(31514) and not completedq(31516) ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Scholomance"] = {
-		{ids="31447", cond_if=[[not completedq(31447) and not heroic_dung() ]]},
-		{ids="31448", cond_if=[[not completedq(31448) and heroic_dung() ]]},
-		{ids="31440", cond_if=[[not completedq(31440) and not heroic_dung() ]]},
-		{ids="31442", cond_if=[[not completedq(31442) and heroic_dung() ]]},
-	},
-	["DUNGEONS\\Classic Dungeons\\Wailing Caverns"] = {
-		{ids="26870", cond_if=[[not completedq(26870) ]]},
-		{ids="26872,26873", cond_if=[[not completedq(26872) or not completedq(26873) ]]},
-	},
 	["DAILIES\\Legion\\Antoran Wastes World Quests"] = {
 		{ids="42233", cond_if=[[readyq(42233) ]]},
 		{ids="46743", cond_if=[[havequest(46743) ]]},
@@ -10845,6 +10596,25 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="42234", cond_if=[[readyq(42234) ]]},
 		{ids="42170", cond_if=[[readyq(42170) ]]},
 	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30408,30404"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Spectral Porcupette"] = {
+		{ids="32616"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
+	},
+	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
+		{ids="36483", cond_if=[[havequest(36483) or hasbuilding(167) ]]},
+		{ids="37644", cond_if=[[havequest(37644) ]]},
+		{ids="37201,37203,37207,37205,37208,37206,38299"},
+	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Reputation Mounts\\Regal Riding Crane"] = {
 		{ids="30261", cond_if=[[havequest(30261) ]]},
 		{ids="30242,30240,30306,30280,30277,30243,30266"},
@@ -10929,93 +10699,6 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\Onyx Cloud Serpent"] = {
 		{ids="31266,31277"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
-		{ids="51142,51145,50901,50444,50332,50381"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
-		{ids="55983,56211"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Long Con"] = {
-		{ids="49223"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Pet Battle Challenge: Blackrock Depths"] = {
-		{ids="58455,58457"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
-		{ids="57009,54088,55040,54945,54087,54946,54947,54992,55645,55729,55730,55731,55995,55734,55096,55736,55609"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Let's Bee Friends"] = {
-		{ids="50343,50070,50359,50064,50161,50168,50162,50504,50534,50264,50493,50165,50553,53347,53371"},
-	},
-	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
-		{ids="53182,53181,53169,53172,53184,53176,53183,53171,53170,53168,53177,53180,53167,53155,53178,53164,53160,53174,53163,53161"},
-	},
-	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
-		{ids="53992"},
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\In Teldrassil's Shadow"] = {
-		{ids="53847,53849,53988,53989,54041,53990,54871"},
-	},
-	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
-		{ids="57249,57298"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
-		{ids="56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
-	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
-	},
-	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
-		{ids="55517,55452,55455,55456,55454,55451,55457"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
-		{ids="55064,55534,56515,56516,56517,56518,56519"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Pride of Kul Tiras"] = {
-		{ids="52194,52246,52762,52252,52253,52311,52445,52449,52453,52509,52508,52510,52511,52512,52513,52481,52482,52483,52484,52485,52486,52487,52488,51445"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Deadliest Cache"] = {
-		{ids="50376,50391,50418,52130"},
-	},
-	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
-		{ids="57300", cond_if=[[readyq(57300) or completedq(57300) ]]},
-		{ids="57249"},
-	},
-	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
-		{ids="52462"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
-		{ids="54090"},
-	},
-	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Kul Tiran Curator"] = {
-		{ids="51950,51951,51952,51953,51954,51955,51926,51929,51932,51934,51936,51937"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
-		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Nation United"] = {
-		{ids="52153,52151"},
-	},
-	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
-		{ids="55305,55311,55312,55309,55299,55306,55307,55308,55310,55313"},
-	},
-	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Mechagnome"] = {
-		{ids="57486,57487,57488,57490,57491,57492,57493,57494,57496,57495,57497"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
-		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
-	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Transport Network"] = {
 		{ids="63055,63059,60184"},
 	},
@@ -11054,7 +10737,7 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Questline"] = {
 		{ids="62693", cond_if=[[not completedq(62890) ]]},
-		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,57661,60062,60064,60063,60061,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58647,58669,59008,58704,58871,59725,59063,59068,60066,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60191,60192,60193,60194,60108,62422,62560,62561"},
+		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,60136,61099,60267,60268,60269,60270,60271,60272,57661,60062,60064,60063,60061,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58647,58669,59008,58704,58871,59725,59063,59068,60066,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60191,60192,60193,60194,60108,62422,62560,62561"},
 		{ids="63214", cond_if=[[not havequest(63214) or completedq(63214) ]]},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Story Only)"] = {
@@ -11074,6 +10757,9 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Transport Network"] = {
 		{ids="63052,63053"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory"] = {
+		{ids="62624,63046,59862,59872,59873,59999,59871,62467,62447,60640,60641,60642"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Revendreth"] = {
 		{ids="57025", cond_if=[[havequest(57025) or completedq(57025) ]]},
@@ -11118,14 +10804,23 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="57386", cond_if=[[havequest(57386) or completedq(57386) ]]},
 		{ids="57390,60020,60021,57425,60179,57511,57512,60181,57515,57514,58351,58617,60451,57516,58616,58618,58726,60428,60453,60461,60886,59130,58011,58016,58027,58036,58045,58031,59223,60831,58751,58821,59171,59172,59185,59210,59188,59190,59025,57912,57976,60557,58268,57979,59616,57983,57984,57986,57985,57987,57982,57993,57994,60733,59009,59231,59202,59874,59897,60972,59960,59959,59962,59966,59973,61190,62654,59974,59011,60737,59206"},
 	},
+	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
+		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Command Table"] = {
 		{ids="63054,59603"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Abomination Factory"] = {
+		{ids="63058,58665,58668,58677,58680,58686,59042,58670,58671,58727,60048,60041,60042,60195,60049"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor"] = {
 		{ids="63057,60722"},
 	},
-	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
-		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Path of Ascension"] = {
+		{ids="60489,60493,60494,60495,60496,60497,61473,60498,60946"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr The Ember Court"] = {
+		{ids="63065,59660,59661,57919,57920,57921,57922,57923,57924,57925,60127,57927,57928,61704,60236,57926,60128,57929,57531,57532,57571,57533,57534,59427,57535,57536,61705,61404,61706,61407,61882,61884,61880,61616"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Threads of Fate)"] = {
 		{ids="60466,57712,62714,57444,57529,57538,57545,57547,57568,59554,57549,57551,57552,57554,57553,57555,62715,59674,58037,58038,58039,57932,57931,57933,58040,58041,58042,57934,57935,57936,57937,58103,58103"},
@@ -11139,17 +10834,17 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Questline"] = {
 		{ids="62694", cond_if=[[not completedq(62840) ]]},
 		{ids="63212", cond_if=[[not havequest(58609) or completedq(58609) ]]},
-		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,62448,59555,58007,57649,59265,61227,61335,61226,61230,61230,57644,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,59650,59645,59648,59653,59678,59659,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,59916,60043,61396,61180,60510,61412,60050,60114,61567,60044,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58599,58472,58608,58624,62388,61739,61741,62414,61740,61742,61743,61744,62297,61745,61746,61747,61748,62317,61749,61751,62320,61750,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
+		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,60136,61099,60267,60268,60269,60270,60271,60272,62448,59555,58007,57649,59265,61227,61335,61226,61230,61230,57644,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,59650,59645,59648,59653,59678,59659,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,59916,60043,61396,61180,60510,61412,60050,60114,61567,60044,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58599,58472,58608,58624,62388,61739,61741,62414,61740,61742,61743,61744,62297,61745,61746,61747,61748,62317,61749,61751,62320,61750,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr Questline"] = {
 		{ids="63215", cond_if=[[not havequest(59314) or completedq(59314) ]]},
 		{ids="62691", cond_if=[[not completedq(62902) ]]},
-		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,61492,59701,59708,59707,59706,59676,59711,59720,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,60673,58428,58424,58440,58444,61050,58530,58555,58585,58586,58584,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58393,58392,58394,58395,57727,57771,60145,57772,60265,60183,57729,57646,57531,57532,57571,57533,57534,59427,57535,57536,58406,58407,59325"},
+		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,60136,61099,60267,60268,60269,60270,60271,60272,61492,59701,59708,59707,59706,59676,59711,59720,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,60673,58428,58424,58440,58444,61050,58530,58555,58585,58586,58584,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58393,58392,58394,58395,57727,57771,60145,57772,60265,60183,57729,57646,57531,57532,57571,57533,57534,59427,57535,57536,58406,58407,59325"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Questline"] = {
 		{ids="62692", cond_if=[[not completedq(62791) ]]},
 		{ids="63211", cond_if=[[not havequest(63211) or completedq(63211) ]]},
-		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,58787,58789,58788,58790,58791,58949,58948,58950,58951,58792,58793,58795,58796,58797,58798,58175,58176,58177,58179,58180,58178,58182,58183,58181,61785,61767,61768,61769,61770,61771,61772,61774,61773,61775,61776,61778,61779,61777,61780,61781,61782,61876,61877,61878,58557,58560,58559,58558,58562,58561,58563,58564,58565,58566,58567,58568,58569,58570,58571,58775,58832,58856,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57116,57115,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919"},
+		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,60136,61099,60267,60268,60269,60270,60271,60272,58787,58789,58788,58790,58791,58949,58948,58950,58951,58792,58793,58795,58796,58797,58798,58175,58176,58177,58179,58180,58178,58182,58183,58181,61785,61767,61768,61769,61770,61771,61772,61774,61773,61775,61776,61778,61779,61777,61780,61781,61782,61876,61877,61878,58557,58560,58559,58558,58562,58561,58563,58564,58565,58566,58567,58568,58569,58570,58571,58775,58832,58856,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57116,57115,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919,62557"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Maldraxxus (Threads of Fate)"] = {
 		{ids="59430,58431,59223,60831,62785,58068,58088,58090,59750,59781,58575,59800,58947,59879,59203,59837,58900,58750,58785,58794,57245,62605,58619,58621,59917,58620,58622,60900,59994,58623"},
@@ -11159,20 +10854,22 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="57026,57007,57381,56829,56942,56955,58433,56978,57174,58654,57178,57179,57161,57173,58931,58932,59021,57175,59023,57176,57180,57182,59232,57098,58916,58941,59014,57131,57136,57164,60506,57159,60313,59209,57189,57190,59256,57240,57380,57405,57426,57428,57427,57442,57460,57461,60566,57724,59327,57689,57690,57691,57693,57694,59644,58086,57876"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Shadowlands Intro & Main Story Questline"] = {
-		{ids="62778", cond_if=[[covenant() ~= Venthyr ]]},
-		{ids="63209,62277,62739", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
+		{ids="63034,62723", cond_if=[[covenant() == Kyrian ]]},
+		{ids="62740,62778", cond_if=[[covenant() ~= Venthyr ]]},
+		{ids="63209,62277", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
 		{ids="62159", cond_if=[[not completedq(62159) ]]},
-		{ids="61874", cond_if=[[Horde ]]},
-		{ids="62748", cond_if=[[covenant() ~= Necrolord ]]},
-		{ids="62778", cond_if=[[covenant() == Venthyr ]]},
-		{ids="62801", cond_if=[[havequest(62801) or completedq(62801) ]]},
-		{ids="63210,62279,63037", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
-		{ids="62763", cond_if=[[covenant() ~= NightFae ]]},
-		{ids="62763", cond_if=[[covenant() == NightFae ]]},
-		{ids="63208,62278,62738", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
+		{ids="62707,62723", cond_if=[[covenant() ~= Kyrian ]]},
 		{ids="60545", cond_if=[[Alliance ]]},
-		{ids="62748", cond_if=[[covenant() == Necrolord ]]},
-		{ids="59751,59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,62716,62000,62275,62707,62723,62729,62761,62776,60129,60148,60149,60150,60151,60152,60154,60156,61096,61107,61715,61716,57877,57878"},
+		{ids="62738,62748", cond_if=[[covenant() ~= Necrolord ]]},
+		{ids="63037,62778", cond_if=[[covenant() == Venthyr ]]},
+		{ids="62801", cond_if=[[havequest(62801) or completedq(62801) ]]},
+		{ids="63210,62279", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
+		{ids="62739,62763", cond_if=[[covenant() ~= NightFae ]]},
+		{ids="63036,62763", cond_if=[[covenant() == NightFae ]]},
+		{ids="63208,62278", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
+		{ids="63035,62748", cond_if=[[covenant() == Necrolord ]]},
+		{ids="61874", cond_if=[[Horde ]]},
+		{ids="59751,59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,62716,62000,62275,62729,62761,62776,60129,60148,60149,60150,60151,60152,60154,60156,61096,61107,61715,61716,57877,57878"},
 	},
 	["LEVELING\\Starter Guides\\Lightforged Draenei Starter"] = {
 		{ids="49772,50313"},
@@ -11673,203 +11370,52 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["LEVELING\\Legion (10-50)\\Paladin\\Paladin 7.2 Order Hall Quests"] = {
 		{ids="46765,47000,44782,44821,47022,45413,45414,45415,45843,45863,47052,45486,45522,45523,45524,45525,46340,45862,47006,46079,46082,46106,46080,46107,46200,45864,45143,45890,46259,45145,45146,45147,45148,45149,47137,46251,46069,46070,46071,40012,40326,41702,41704,41760,41762,41834,41989,42079,46083,46074,45770"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Emperor Shaohao"] = {
-		{ids="33229", cond_if=[[havequest(33229) ]]},
-		{ids="33231,33160,33161,33336,33228,33335,33340,33341,33332,33333"},
+	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
+		{ids="31847", cond_if=[[havequest(31847) or completedq(31847) ]]},
+		{ids="31001,31002,31003,31004,31005,31676,31006,31009,31007,31660,31010,31008,31661,31066,31689,31107,31108,31019,31020,31021,31022,31026,31087,31088,31090,31089,31091,31359,31092,31398,31023,31730,31068,31067,31129,31072,31069,31070,31071,31077,31078,31133,31074,31073,31075,31079,31080,31081,31082,31084,31085,31086,31727,31265,31181,31182,31183,31186,31187,31188,31185,31184,31189,31190,31354,32030,31782,31175,31176,31177,31178,31605,31606,31179"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Fish Fellreed"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30427,30424"},
+	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
+		{ids="29873,30079,30080,30082,30091,30081,30083,30084,30088,30089,30090,29874,30274,30352,30353,31262,31260,30350,30384,30344,30346,30351,30349,30347,30348,30178,30269,30268,30270,30694,30695,30272,30271,30273,30667,30666,30668,30669,30691,30671,30675,30674,30672,30168,30169,30363,30355,30354,30356,30357,30361,30359,30445,30360,30624,30623,30622,30625,30626,30627,30628"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Ella"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30386,30381,31534,31537,31538"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
+		{ids="31857,31835,31842"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Klaxxi"] = {
-		{ids="31598,31599", cond_if=[[havequest(31598) or havequest(31599) ]]},
-		{ids="31231,31235,31109,31267,31111,31505,31677,31216,31237,31510,31272,31504,31232,31233,31496,31270,31269,31507,31271,31502,31503,31234,31508,31509,31238,31487,31494,31268,31024,31808,31506,31018,31208,31209,31210,31211,31439,31441,31458,31465,31959,31609,31612"},
+	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
+		{ids="30814,30769,30770,30771,30775,30773,30772,30774,30776,30777,30780,30778,30779,30781,30827,30782,30783,30784,31894,30786,30787,30788,30789,30815,30790,30791,30792,30793,30785,30884,30891,30887,30889,30888,30890,30960,30892,30894,30893,30896,30897,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30978,30979,31032,30977,30980,31065,30981,31063,31064,30968,31687,31688,30921,30923,30922,30963,30964,30931,30924,30929,30932,30930,30925,30926,30927,30928"},
+		{ids="31695", cond_if=[[havequest(31695) or completedq(31695) ]]},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Kirin Tor Offensive"] = {
-		{ids="32568", cond_if=[[havequest(32568) or completedq(32568) ]]},
-		{ids="32733", cond_if=[[completedq(32644) and (havequest(32733) or completedq(32733)) ]]},
-		{ids="32586,32588,32586,32588", cond_if=[[havequest(32586) or completedq(32586) or havequest(32588) or completedq(32588) ]]},
-		{ids="32560,32557,32559,32585,32582", cond_if=[[completedq(32568) ]]},
-		{ids="32731", cond_if=[[havequest(32731) or completedq(32731) ]]},
-		{ids="32732", cond_if=[[completedq(32644) and (havequest(32732) or completedq(32732)) ]]},
-		{ids="32551,32550,32554", cond_if=[[havequest(32551) or completedq(32551) or havequest(32550) or completedq(32550) ]]},
-		{ids="32540,32543,32542", cond_if=[[havequest(32733) or completedq(32733) ]]},
-		{ids="32556,32558,32555", cond_if=[[completedq(32560) or completedq(32557) or completedq(32559) ]]},
-		{ids="32553,32552", cond_if=[[havequest(32552) or havequest(32553) or completedq(32552) or completedq(32553) ]]},
-		{ids="32606,32535,32537,32536", cond_if=[[havequest(32732) or completedq(32732) ]]},
-		{ids="32567", cond_if=[[havequest(32567) or completedq(32567) ]]},
-		{ids="32549", cond_if=[[havequest(32549) ]]},
-		{ids="32547,32546,32548,32545", cond_if=[[completedq(32732) ]]},
-		{ids="32679,32681,32644,32654,32652,32655,32656,32529,32530,32531,32532,32528,32525,32533,32526,32527,32544,32541,32539,32538,32572,32573,32571,32574,32575,32587,32578,32580,32584,32608,32581,32607,32576,32579"},
+	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
+		{ids="29907,29877,29908,30086,29909,29910,29940,29911,29912,29913,29914,29915,29916,29917,29918,29919,29945,29944,29947,29948,29946,29949,29871,30267,30275,29577,29600,29581,29757,29758,32035,30072,30059,30058,29950,29951,29952,30046,30049,30051,30172,32045,30050,30056,30057,30054,30053,30052,30055,30048,30031,30030,30029,30028,30032,30047,30073,30074,30077,30076,30075,30078,29872,30117,29981,29982,29983,29984,29992,29985,29986,29987,29988,29989,29990,30183,30181,30182,30184,32038,30185,30186"},
+		{ids="32018", cond_if=[[havequest(32018) or completedq(32018) ]]},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Operation: Shieldwall"] = {
-		{ids="32370,32377", cond_if=[[not completedq(32371) ]]},
-		{ids="32116", cond_if=[[havequest(32116) or completedq(32116) ]]},
-		{ids="32193", cond_if=[[havequest(32193) ]]},
-		{ids="32455", cond_if=[[havequest(32455) ]]},
-		{ids="32401", cond_if=[[not completedq(32455) ]]},
-		{ids="32331", cond_if=[[not completedq(32362) ]]},
-		{ids="32400", cond_if=[[havequest(32400) and not completedq(32401) and not completedq(32455) ]]},
-		{ids="32382", cond_if=[[not completedq(32383) or not completedq(32397) ]]},
-		{ids="32383,32397", cond_if=[[havequest(32383) or havequest(32397) ]]},
-		{ids="32143", cond_if=[[havequest(32143) or completedq(32143) ]]},
-		{ids="32380,32381", cond_if=[[not completedq(32426) ]]},
-		{ids="32337,32338", cond_if=[[havequest(32337) or havequest(32338) ]]},
-		{ids="32336", cond_if=[[not completedq(32337) and not completedq(32338) and not completedq(32336) ]]},
-		{ids="32335", cond_if=[[havequest(32335) ]]},
-		{ids="32316", cond_if=[[havequest(32316) ]]},
-		{ids="32315", cond_if=[[not completedq(32316) ]]},
-		{ids="32355,32321,32332,32333,32334", cond_if=[[not completedq(32335) ]]},
-		{ids="32423", cond_if=[[havequest(32423) ]]},
-		{ids="32460", cond_if=[[havequest(32460) or not completedq(32416) ]]},
-		{ids="32414,32416,32421,32419,32417,32418,32420", cond_if=[[not completedq(32423) ]]},
-		{ids="32194", cond_if=[[havequest(32194) ]]},
-		{ids="32394", cond_if=[[havequest(32394) ]]},
-		{ids="32426", cond_if=[[havequest(32426) ]]},
-		{ids="32243", cond_if=[[havequest(32243) ]]},
-		{ids="32371", cond_if=[[havequest(32371) ]]},
-		{ids="32393", cond_if=[[havequest(32393) or not completedq(32394) ]]},
-		{ids="32362", cond_if=[[havequest(32362) ]]},
-		{ids="32246,32247,32109,32149,32150,32148,32151,32153,32152,32451,32452,32144,32156,32158,32433,32154,32446,32146,32142,32157,32143,32145,32121,32115,32347,32346,32122,32119"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 35"] = {
+		{ids="31889,31844"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Golden Lotus"] = {
-		{ids="30261", cond_if=[[havequest(30261) ]]},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
-		{ids="31394,31511,31512,30242,30240,30306,30280,30277,30243,30266"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 30"] = {
+		{ids="31861,31839,31846"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Lorewalkers"] = {
-		{ids="31096,31100,31102,31095,31103,31093,31097,31094,31055"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 25"] = {
+		{ids="31860,31838,31845"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Tillers"] = {
-		{ids="30526", cond_if=[[havequest(30526) ]]},
-		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
-		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
-		{ids="30477", cond_if=[[havequest(30477) ]]},
-		{ids="30471", cond_if=[[havequest(30471) ]]},
-		{ids="30473", cond_if=[[havequest(30473) ]]},
-		{ids="30472", cond_if=[[havequest(30472) ]]},
-		{ids="30478", cond_if=[[havequest(30478) ]]},
-		{ids="30470", cond_if=[[havequest(30470) ]]},
-		{ids="30474", cond_if=[[havequest(30474) ]]},
-		{ids="30475", cond_if=[[havequest(30475) ]]},
-		{ids="30476", cond_if=[[havequest(30476) ]]},
-		{ids="30479", cond_if=[[havequest(30479) ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30317,30326,30327,30325,30322,30318,30323,30319,30321,30324,30260,30516,31936,30523,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
+		{ids="30684", cond_if=[[havequest(30684) or completedq(30684) ]]},
+		{ids="31306", cond_if=[[havequest(31306) or completedq(31306) ]]},
+		{ids="31286,31287,31285,31254,30459,30457,30460,30508,30467,30496,30967,30469,30834,30468,30480,30828,30855,30512,30514,30583,30575,30569,30581,30571,30595,30619,30593,31252,30652,30650,30660,30651,31456,30488,30491,30489,30582,30804,30587,30492,30808,30614,30616,30617,31460,30999,30621,30601,30618,30487,30683,30829,30795,30796,30797,30799,30798,30800,30801,30802,31392,31394,30935,30942,30944,30943,30945,31011,30946,30816,30794,30805,30806,30807,30819,30820,31228,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30744,30746,30745,30742,30743,30747,31512,31455,30670,30665,30682,30690,30699,30715,30723,30724,30751,30750,30994,30991,30992,30993,30752"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Shado-Pan Assault"] = {
-		{ids="31266", cond_if=[[rep('Shado-Pan')==Exalted and not completedq(31277) ]]},
-		{ids="31038", cond_if=[[havequest(31038) ]]},
-		{ids="31113,31114,31119,31116,31118", cond_if=[[not completedq(31128) ]]},
-		{ids="31105,31106,31039,31044,31045,31048,31043,31042,31047,31040,31041,31046", cond_if=[[completedq(31104) ]]},
-		{ids="31220", cond_if=[[havequest(31220) ]]},
-		{ids="31128", cond_if=[[havequest(31128) ]]},
-		{ids="31104", cond_if=[[havequest(31104) ]]},
-		{ids="31113,31114,31119,31116,31118", cond_if=[[completedq(31128) ]]},
-		{ids="31221", cond_if=[[havequest(31221) ]]},
-		{ids="30933", cond_if=[[havequest(30933) ]]},
-		{ids="31196,31197,31198,31199,31200,31201", cond_if=[[completedq(31221) ]]},
-		{ids="31105,31106,31039,31044,31045,31048,31043,31042,31047,31040,31041,31046", cond_if=[[not completedq(31104) ]]},
-		{ids="31127", cond_if=[[havequest(31127) ]]},
-		{ids="31277", cond_if=[[havequest(31277) ]]},
-		{ids="31196,31197,31198,31199,31200,31201", cond_if=[[not completedq(31221) ]]},
-		{ids="31110", cond_if=[[havequest(31110) ]]},
-		{ids="31117,31120,31062,31061,31049,31204,31203"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 20"] = {
+		{ids="31859,31837,31844"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Operation: Shieldwall\\Beastmaster Dailies"] = {
-		{ids="32246,32247,32109,32164,32184,32165,32185,32166,32186,32170,32171,32172"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 15"] = {
+		{ids="31858,31836,31843"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Order of the Cloud Serpent"] = {
-		{ids="31713", cond_if=[[havequest(31713) ]]},
-		{ids="31710,30150,30156,31704,30154", cond_if=[[havequest(31710) or havequest(30150) or havequest(30156) or havequest(31704) or havequest(30154) ]]},
-		{ids="31716", cond_if=[[havequest(31716) ]]},
-		{ids="30148", cond_if=[[havequest(30148) ]]},
-		{ids="31704", cond_if=[[havequest(31704) ]]},
-		{ids="30151", cond_if=[[havequest(30151) ]]},
-		{ids="30150", cond_if=[[havequest(30150) ]]},
-		{ids="30149", cond_if=[[skill("Cooking")>=525 ]]},
-		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142,31194,31701,31702,30155,30158,31703,30154,31699,31698,31700,31706,31711,31707,30152,31721,31717,31720,31718,30159,31709,30157,31712,31715,31714,30147,30146,31705,30143,30144,30145,30187,31811,31810"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
+		{ids="31840,31841,31842,31843,31844,31845,31846"},
 	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Jogu the Drunk"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30439,30435,31320,31321"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Chee Chee"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30402,30400"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The August Celestials"] = {
-		{ids="31378", cond_if=[[not completedq(31378) ]]},
-		{ids="30879", cond_if=[[havequest(30879) ]]},
-		{ids="31382", cond_if=[[havequest(31382) ]]},
-		{ids="30954", cond_if=[[havequest(30954) ]]},
-		{ids="30006", cond_if=[[havequest(30006) ]]},
-		{ids="31517", cond_if=[[havequest(31517) ]]},
-		{ids="30718,30740", cond_if=[[achieved(7287) ]]},
-		{ids="30718,30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
-		{ids="30065", cond_if=[[havequest(30065) ]]},
-		{ids="30066", cond_if=[[havequest(30066) ]]},
-		{ids="30881", cond_if=[[havequest(30881) ]]},
-		{ids="30955", cond_if=[[havequest(30955) ]]},
-		{ids="30885", cond_if=[[havequest(30885) ]]},
-		{ids="31492", cond_if=[[havequest(31492) ]]},
-		{ids="31376", cond_if=[[havequest(31376) ]]},
-		{ids="31380", cond_if=[[havequest(31380) ]]},
-		{ids="30957", cond_if=[[havequest(30957) ]]},
-		{ids="30958", cond_if=[[havequest(30958) ]]},
-		{ids="30953", cond_if=[[havequest(30953) ]]},
-		{ids="30959", cond_if=[[havequest(30959) ]]},
-		{ids="30952", cond_if=[[havequest(30952) ]]},
-		{ids="30956", cond_if=[[havequest(30956) ]]},
-		{ids="30883", cond_if=[[havequest(30883) ]]},
-		{ids="30063", cond_if=[[havequest(30063) ]]},
-		{ids="30064", cond_if=[[havequest(30064) ]]},
-		{ids="30882", cond_if=[[havequest(30882) ]]},
-		{ids="30880", cond_if=[[havequest(30880) ]]},
-		{ids="30716,30717,30067,30068,30907,30902"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Sho"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30408,30404"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Tina Mudclaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30433,30428"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Haohan Mudclaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30414,30409"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Old Hillpaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30396,30394"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Farmer Fung"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30421,30420"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\The Anglers"] = {
-		{ids="30585,30598,30678,30698,30700,30588,30613,30658,30584,30586,30754,30753,30763,30701"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Tiller's Union\\Gina Mudclaw"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30390,30389"},
-	},
-	["REPUTATIONS\\Mists of Pandaria Reputations\\Nat Pagle"] = {
-		{ids="31444,31446,31443"},
+	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
+		{ids="30139", cond_if=[[havequest(30139) or completedq(30139) ]]},
+		{ids="30141", cond_if=[[havequest(30141) or completedq(30141) ]]},
+		{ids="30140", cond_if=[[havequest(30140) or completedq(30140) ]]},
+		{ids="31732,31733,30069,31734,31735,31737,31736,31739,29552,31738,31740,31744,31742,31743,31741,30070,31745,29555,29556,29553,29558,29559,29560,29759,29562,29883,29885,29762,29887,29894,29733,29725,29726,29727,29903,29904,29905,29906,29888,29889,31130,29891,29892,29893,29890,29898,29899,29900,29901,29922,31230,29716,29717,29865,29723,29866,29993,29881,29882,29995,29920,29925,29928,29745,29748,29747,29749,29751,29750,29752,29753,29756,29754,29755,29617,29618,29927,29929,29926,29930,29619,29620,29632,29633,29634,29635,29626,29627,29636,29637,29631,29628,29629,29630,29622,29623,29624,29639,30134,30135,30136,30137,30138,30142,29931,30495,29932,29998,30001,30002,29997,30011,30004,29999,30005,30000,30498,30565,30568,31362,31303,30500,30502,31319,29576,29578,29579,29585,29580,29586,29587,29670,30648"},
 	},
 	["DAILIES\\Mists of Pandaria Dailies\\The August Celestials Dailies"] = {
 		{ids="31378", cond_if=[[not completedq(31378) ]]},
@@ -12073,6 +11619,22 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="30148", cond_if=[[skill("First Aid")>=525 ]]},
 		{ids="30149", cond_if=[[skill("Cooking")>=525 ]]},
 		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142,31194,31701,31702,30155,30158,31703,30154,31699,31698,31700,31706,31711,31707,30152,31721,31717,31720,31718,30159,31709,30157,31712,31715,31714,30147,30146,31705,30143,30144,30145,30187,31811,31810"},
+	},
+	["DUNGEONS\\Legion Dungeons\\Eye of Azshara"] = {
+		{ids="38286", cond_if=[[havequest(38286) or completedq(38286) ]]},
+	},
+	["DUNGEONS\\Legion Dungeons\\Halls of Valor"] = {
+		{ids="40072", cond_if=[[havequest(40072) or completedq(40072) or havequest(43349) or completedq(43349) ]]},
+		{ids="43349", cond_if=[[havequest(43349) or completedq(43349) ]]},
+	},
+	["DUNGEONS\\Legion Dungeons\\Vault of the Wardens"] = {
+		{ids="44486", cond_if=[[havequest(44486) or completedq(44486) ]]},
+	},
+	["DUNGEONS\\Legion Dungeons\\Karazhan\\Return to Karazhan"] = {
+		{ids="44735,44734", cond_if=[[havequest(44734) ]]},
+	},
+	["DUNGEONS\\Legion Dungeons\\Karazhan\\Karazhan Attunement"] = {
+		{ids="45422,44886,44887,44944,44556,44557,44683,44684,44685,44686,44764,44733"},
 	},
 	["LEVELING\\Battle for Azeroth (10-50)\\Kul Tiras\\Mechagon Island\\Blueprints\\Blueprint: Advanced Adventurer Augment"] = {
 		{ids="56145"},
@@ -12368,70 +11930,568 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 		{ids="56328", cond_if=[[not completedq(55707) ]]},
 		{ids="57009,54088,55040,54945,54087,54946,54947,54992,55645,55729,55730,55731,55995,55734,55096,55736,55101,55708,55608,55707,55210,56320,54086,54929,55373,55697,54922,56117,56168,54083,56175,55696,55753,55622,55153,56319,55211,55298,55339,55055,56305"},
 	},
-	["LEVELING\\Draenor (10-50)\\Tanaan Jungle (40-50)"] = {
-		{ids="39176,39177", cond_if=[[skill("Jewelcrafting") >= 1 ]]},
-		{ids="38253,38257,38254,38255,38256,38258,38259,39082,39054,39276,39055,38435,38436,38444,39313,38445,38581,39432,38446,38578"},
+	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep: Utgarde Pinnacle"] = {
+		{ids="13131,13132", cond_if=[[havequest(13131) or havequest(13132) ]]},
+		{ids="29864", cond_if=[[havequest(29864) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Draenor Intro"] = {
-		{ids="34398", cond_if=[[havequest(34398) or completedq(34398) ]]},
-		{ids="35933,34392,34393,34420,35242,34422,35240,34423,34425,34478,34429,34434,34432,34431,34436,35019,34439,34958,34987,34442,34925,34437,35747,34445,35884,34575,34582,34583,34584,34616,34585,34586"},
-		{ids="36881", cond_if=[[havequest(36881) or completedq(36881) ]]},
+	["DUNGEONS\\Northrend Dungeons\\Azjol-Nerub"] = {
+		{ids="29807,29808,29811", cond_if=[[havequest(29807) or havequest(29808) or havequest(29811) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Shadowmoon Valley (10-50)"] = {
-		{ids="35345", cond_if=[[havequest(35345) or completedq(35345) ]]},
-		{ids="36409", cond_if=[[havequest(36409) or completedq(36409) ]]},
-		{ids="36241", cond_if=[[havequest(36241) or completedq(36241) ]]},
-		{ids="36262", cond_if=[[havequest(36262) or completedq(36262) ]]},
-		{ids="36308", cond_if=[[havequest(36308) or completedq(36308) ]]},
-		{ids="36176", cond_if=[[havequest(36176) or completedq(36176) ]]},
-		{ids="35342", cond_if=[[havequest(35342) or completedq(35342) ]]},
-		{ids="36287", cond_if=[[havequest(36287) or completedq(36287) ]]},
-		{ids="36408", cond_if=[[havequest(36408) or completedq(36408) ]]},
-		{ids="36266", cond_if=[[havequest(36266) or completedq(36266) ]]},
-		{ids="36309", cond_if=[[havequest(36309) or completedq(36309) ]]},
-		{ids="36286", cond_if=[[havequest(36286) or completedq(36286) ]]},
-		{ids="36269", cond_if=[[havequest(36269) or completedq(36269) ]]},
-		{ids="36100", cond_if=[[havequest(36100) or completedq(36100) ]]},
-		{ids="36315", cond_if=[[havequest(36315) or completedq(36315) ]]},
-		{ids="36313", cond_if=[[havequest(36313) or completedq(36313) ]]},
-		{ids="36310", cond_if=[[havequest(36310) or completedq(36310) ]]},
-		{ids="36236", cond_if=[[havequest(36236) or completedq(36236) ]]},
-		{ids="36185", cond_if=[[havequest(36185) or completedq(36185) ]]},
-		{ids="36177", cond_if=[[havequest(36177) or completedq(36177) ]]},
-		{ids="35344", cond_if=[[havequest(35344) or completedq(35344) ]]},
-		{ids="36240", cond_if=[[havequest(36240) or completedq(36240) ]]},
-		{ids="36239", cond_if=[[havequest(36239) or completedq(36239) ]]},
-		{ids="35343", cond_if=[[havequest(35343) or completedq(35343) ]]},
-		{ids="36311", cond_if=[[havequest(36311) or completedq(36311) ]]},
-		{ids="35176,35166,35174,34587,33419,34646,34692,36624,36626,36629,36630,33075,33813,33070,33765,33905,34019,34778,34779,34780,34781,34782,34785,34786,35070,33084,34783,34790,34784,34787,35552,34791,34789,34792,34788,35905,33072,34897,34876,33077,33076,33059,33080,33081,33078,35444,33786,34996,33787,33808,33788,35014,35015,34997,34995,35006,34994,33586,33082,34836,34847,33814,33461,36592,34820,33263,33331,34806,33271,34043,35032,33083,33793,33795,34054,33794,33837,33255,33256,33359,33062,33113,33115,33120,33112,33066,33168,33114,33116,33269"},
+	["DUNGEONS\\Cataclysm Dungeons\\Lost City of the Tol'vir"] = {
+		{ids="28783,28781"},
 	},
-	["LEVELING\\Draenor (10-50)\\Spires of Arak (30-50)"] = {
-		{ids="34655,34656,34657,34658,34659,35636,34756,35668,34805,35671,35274,35276,35286,35286,35293,35329,35339,35353,35380,35407,35408,35482,35549,35619,35077,35079,36179,35080,35082,35081,35285,36384,35090,35089,35091,35211,36428,35298,35611,34838,34886,34827,36425,34828,34829,34830,34882,34883,35257,35259,35261,35260,35258,35273,34942,34884,34885,35733,35734,35634,34998,34999,35000,35002,35001,35004,35003,35011,35013,35012,35245,35897,35895,36059,35896,37327,37296,37329,35915,35926,35959,36023,36029,36048,36165,35699,37296,37331,35713,35716,35878,35719,35739,35782,35835,34921,34991,35010,35007,34923,34922,34938,34939,34924,36790,35009,36085,35704"},
-		{ids="36951", cond_if=[[havequest(36951) or completedq(36951) ]]},
-		{ids="34653", cond_if=[[havequest(34653) or completedq(34653) ]]},
-		{ids="35554", cond_if=[[havequest(35554) or completedq(35554) ]]},
+	["DUNGEONS\\Cataclysm Dungeons\\Zul Gurub"] = {
+		{ids="29154,29241,29172,29175,29173,29242"},
 	},
-	["LEVELING\\Draenor (10-50)\\Nagrand (35-50)"] = {
-		{ids="34674", cond_if=[[havequest(34674) or completedq(34674) ]]},
-		{ids="37184", cond_if=[[havequest(37184) or completedq(37184) ]]},
-		{ids="36601,34675,34678,34682,34716,34718,34719,34717,34746,34769,35338,35356,35337,35350,35357,35148,34593,34572,34597,34596,34877,34662,34663,34664,34665,34666,34598,34516,34869,34512,34513,34514,34515,34810,34811,34809,35663,35632,34819,34900,34951,34954,34955,34956,34957,34952,35059,35060,35061,35067,35068,35069,35140,35062,35141,35169,35332,35331,34943,37318,35146,36275,36284,36285,35333,33928,34881,34893,34894,34932,34941,35330,35372,35397,35398,35083,35084,35085,35087,35086,35088,35393,35023,35022,35024,35386,36273,35395,35396"},
+	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: The Blood Furnace"] = {
+		{ids="29538,29539,29540", cond_if=[[not completedq(29538) or not completedq(29539) or not completedq(29540) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Talador (20-50)"] = {
-		{ids="37183", cond_if=[[havequest(37183) or completedq(37183) ]]},
-		{ids="49565", cond_if=[[havequest(49565) or completedq(49565) ]]},
-		{ids="34676", cond_if=[[havequest(34676) or completedq(34676) ]]},
-		{ids="34558,34563,35045,34571,34573,34624,34773,34804,36801,34087,34089,34088,34090,34091,33973,34094,34959,34095,34096,34097,34098,34963,34099,34777,34578,34976,34977,34979,34978,34980,34981,34685,33578,33579,34761,33871,33872,33873,33874,33734,33740,33761,33580,33581,33582,34701,33917,33920,34407,34458,33530,34351,34452,33969,33967,33958,34240,33988,34508,33976,34234,34013,34326,35227,34092,34163,34164,34157,35254,34154,33882,33884,33944,34709,34400,34399,34403,34406,34415,34448,34707,34631,34815,34619,34609,34612,34875,34773,34804,36801,34087,34089,34088,34090,34091,33973,34094,34959,34095,34096,34097,34098,34963,34099,34777,34908,34913,34911,34910,34909,34912,34711,34685,33578,33579,34761,33871,33872,33873,33874,33734,33740,33761,33580,33581,33582,34701,33917,33920,34407,34458,33530,34351,34452,33969,33967,33958,34240,33988,34508,33976,34234,34013,34326,35227,34092,34163,34164,34157,35254,34154,33882,33884,33944,34709,34400,34399,34403,34406,34415,34448,34707"},
+	["DUNGEONS\\Classic Dungeons\\Ragefire Chasm"] = {
+		{ids="30995", cond_if=[[not completedq(30995) ]]},
+		{ids="30998,30996", cond_if=[[not completedq(30998) and not completedq(30996) ]]},
 	},
-	["LEVELING\\Draenor (10-50)\\Gorgrond (15-50)"] = {
-		{ids="36632", cond_if=[[havequest(36632) or completedq(36632) ]]},
-		{ids="49564", cond_if=[[havequest(49564) or completedq(49564) ]]},
-		{ids="36081", cond_if=[[havequest(36081) or completedq(36081) ]]},
-		{ids="35033,35065,35834,36595,35050,35055,35063,35708,36368,35652,35654,35651,35650,35666,35640,35633,35642,35644,35645,35656,35647,35659,35212,35214,35213,35215,35216,35208,36523,35205,35207,35204,35209,35206,35225,35234,35229,35233,35235,36432,36436,36437,36439,36440,36441,36442,36443,35255,36575,36495,35063,35686,35664,35693,35665,35730,34704,34699,34012,34702,34698,34700,34703,35026,35870,36508,35037,35934,35925,36208,36210,36432,36436,36437,36438,36440,36441,36442,36443,36209,36223,35128,35210,35139,35702,35137,35666,35640,35633,35642,35644,35645,35656,35647,35659,36084,36576,36495"},
-		{ids="35556", cond_if=[[havequest(35556) or completedq(35556) ]]},
-		{ids="33533", cond_if=[[havequest(33533) or completedq(33533) ]]},
+	["DUNGEONS\\Cataclysm Dungeons\\Vortex Pinnacle"] = {
+		{ids="28779,28760"},
 	},
-	["PROFESSIONS\\Fishing\\Leveling Guides\\Fishing 600-700 Leveling Guide"] = {
-		{ids="34194,36199,36201,36202"},
+	["DUNGEONS\\Classic Dungeons\\Maraudon: Earth Song Falls"] = {
+		{ids="27692", cond_if=[[not completedq(27692) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Scarlet Monastery"] = {
+		{ids="31515,31516"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Mogu'shan Palace"] = {
+		{ids="31357,31360"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Drak'Tharon Keep"] = {
+		{ids="30120", cond_if=[[havequest(30120) ]]},
+		{ids="13129,29828", cond_if=[[havequest(13129) or havequest(29828) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Halls of Stone"] = {
+		{ids="13207", cond_if=[[havequest(13207) ]]},
+		{ids="29848,29850", cond_if=[[havequest(29848) or havequest(29850) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Dire Maul: Capital Gardens"] = {
+		{ids="27109", cond_if=[[not completedq(27109) ]]},
+		{ids="27112", cond_if=[[not completedq(27112) ]]},
+		{ids="27113,27110,27111", cond_if=[[not completedq(27111) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Razorfen Kraul"] = {
+		{ids="26906", cond_if=[[not completedq(26905) ]]},
+		{ids="26905", cond_if=[[not completedq(26805) ]]},
+		{ids="26901,26907", cond_if=[[not completedq(26901) or not completedq(26907) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Uldaman"] = {
+		{ids="27672,27677", cond_if=[[not completedq(27677) ]]},
+		{ids="27673", cond_if=[[not completedq(27673) ]]},
+		{ids="27676", cond_if=[[not completedq(27676) ]]},
+		{ids="2278,2280", cond_if=[[not completedq(2280) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Gnomeregan"] = {
+		{ids="26941,26942", cond_if=[[not completedq(26942) ]]},
+		{ids="26939"},
+	},
+	["DUNGEONS\\Classic Raids\\Ruins of Ahn'Qiraj"] = {
+		{ids="8558", cond_if=[[havequest(8558) ]]},
+		{ids="8696", cond_if=[[havequest(8696) ]]},
+		{ids="8700", cond_if=[[havequest(8700) ]]},
+		{ids="8709", cond_if=[[havequest(8709) ]]},
+		{ids="8691", cond_if=[[havequest(8691) ]]},
+		{ids="8704", cond_if=[[havequest(8704) ]]},
+		{ids="8791", cond_if=[[havequest(8791) ]]},
+		{ids="8707", cond_if=[[havequest(8707) ]]},
+		{ids="8557", cond_if=[[havequest(8557) ]]},
+		{ids="8710", cond_if=[[havequest(8710) ]]},
+		{ids="8706", cond_if=[[havequest(8706) ]]},
+		{ids="8702", cond_if=[[havequest(8702) ]]},
+		{ids="8689", cond_if=[[havequest(8689) ]]},
+		{ids="8694", cond_if=[[havequest(8694) ]]},
+		{ids="8708", cond_if=[[havequest(8708) ]]},
+		{ids="8695", cond_if=[[havequest(8695) ]]},
+		{ids="8711", cond_if=[[havequest(8711) ]]},
+		{ids="8556", cond_if=[[havequest(8556) ]]},
+		{ids="8705", cond_if=[[havequest(8705) ]]},
+		{ids="8690", cond_if=[[havequest(8690) ]]},
+		{ids="8693", cond_if=[[havequest(8693) ]]},
+		{ids="8698", cond_if=[[havequest(8698) ]]},
+		{ids="8703", cond_if=[[havequest(8703) ]]},
+		{ids="8699", cond_if=[[havequest(8699) ]]},
+		{ids="8701", cond_if=[[havequest(8701) ]]},
+		{ids="8697", cond_if=[[havequest(8697) ]]},
+		{ids="8712", cond_if=[[havequest(8712) ]]},
+		{ids="8692", cond_if=[[havequest(8692) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Sunken Temple"] = {
+		{ids="27604,27605,27633"},
+	},
+	["DUNGEONS\\Classic Dungeons\\The Stormwind Stockade"] = {
+		{ids="27733", cond_if=[[not completedq(27733) ]]},
+		{ids="27737", cond_if=[[not completedq(27737) ]]},
+		{ids="27739", cond_if=[[not completedq(27739) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Ahn'kahet: The Old Kingdom"] = {
+		{ids="29826", cond_if=[[not completedq(13187) ]]},
+		{ids="29825", cond_if=[[not completedq(29826) ]]},
+		{ids="13187", cond_if=[[havequest(13187) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Arcatraz"] = {
+		{ids="29674,29675,29681"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Gate of the Setting Sun"] = {
+		{ids="31363,31364"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Deadmines"] = {
+		{ids="27785,27790", cond_if=[[not completedq(27790) ]]},
+		{ids="27756", cond_if=[[not completedq(27756) ]]},
+		{ids="27758", cond_if=[[not completedq(27758) ]]},
+		{ids="27781", cond_if=[[not completedq(27781) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\The Oculus"] = {
+		{ids="13126", cond_if=[[not completedq(13127) ]]},
+		{ids="13124", cond_if=[[havequest(13124) ]]},
+		{ids="13128", cond_if=[[havequest(13128) ]]},
+		{ids="13127", cond_if=[[not completedq(13128) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\The Nexus"] = {
+		{ids="11911", cond_if=[[havequest(11911) ]]},
+		{ids="11905", cond_if=[[havequest(11905) ]]},
+		{ids="11973", cond_if=[[havequest(11973) ]]},
+		{ids="13094", cond_if=[[havequest(13094) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Shattered Halls"] = {
+		{ids="29652,29649,29656,29654", cond_if=[[havequest(29652) or havequest(29649) or havequest(29656) or havequest(29654) ]]},
+	},
+	["DUNGEONS\\Classic Raids\\Temple of Ahn'Qiraj"] = {
+		{ids="8560,8559,8562,8561,8544", cond=[[Warrior]]},
+		{ids="8629,8655,8627,8628,8630", cond=[[Paladin]]},
+		{ids="8624,8621,8622,8623,8602", cond=[[Shaman]]},
+		{ids="8640,8637,8638,8639,8641", cond=[[Rogue]]},
+		{ids="8631,8634,8633,8632,8625", cond=[[Mage]]},
+		{ids="8801", cond_if=[[not completedq(8801) ]]},
+		{ids="8663,8660,8661,8662,8664", cond=[[Warlock]]},
+		{ids="8668,8665,8666,8667,8669", cond=[[Druid]]},
+		{ids="8593,8596,8603,8592,8594", cond=[[Priest]]},
+		{ids="8658,8626,8656,8657,8659", cond=[[Hunter]]},
+		{ids="8784", cond_if=[[havequest(8784) ]]},
+		{ids="8595,8579,8595,8579"},
+	},
+	["DUNGEONS\\Outland Raids\\The Eye"] = {
+		{ids="11007", cond_if=[[havequest(11007) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Slave Pens"] = {
+		{ids="29563,29565", cond_if=[[not completedq(29563) or not completedq(29565) ]]},
+		{ids="29564", cond_if=[[not completedq(29564) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Auchenai Crypts"] = {
+		{ids="29590,29596", cond_if=[[not completedq(29590) or not completedq(29596) ]]},
+		{ids="29591", cond_if=[[havequest(29591) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Blackfathom Deeps"] = {
+		{ids="34672", cond_if=[[not completedq(34672) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Maraudon: Foulspore Cavern"] = {
+		{ids="27698", cond_if=[[not completedq(27698) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Shadowfang Keep"] = {
+		{ids="27917", cond_if=[[not completedq(27920) ]]},
+		{ids="27920", cond_if=[[not completedq(27921) ]]},
+		{ids="27921,27968", cond_if=[[not completedq(27968) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Stratholme: Main Gate"] = {
+		{ids="27208", cond_if=[[not completedq(27208) ]]},
+		{ids="27305", cond_if=[[not completedq(27305) ]]},
+		{ids="27223", cond_if=[[not completedq(27223) ]]},
+		{ids="27192", cond_if=[[not completedq(27192) ]]},
+		{ids="27185", cond_if=[[not completedq(27185) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Lower Blackrock Spire"] = {
+		{ids="27440", cond_if=[[havequest(27440) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Scholomance"] = {
+		{ids="31442,31448"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Caverns of Time: The Culling of Stratholme"] = {
+		{ids="13151", cond_if=[[havequest(13151) ]]},
+		{ids="13149", cond_if=[[havequest(13149) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Stratholme: Service Entrance"] = {
+		{ids="27227,27228,27359,27230,27352"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Blackrock Depths: Detention Block"] = {
+		{ids="27565,27567", cond_if=[[not completedq(27567) ]]},
+		{ids="27568", cond_if=[[not completedq(27569) ]]},
+		{ids="27578", cond_if=[[havequest(27578) ]]},
+		{ids="27573", cond_if=[[not completedq(27578) ]]},
+		{ids="27571", cond_if=[[not completedq(27573) ]]},
+		{ids="27569", cond_if=[[not completedq(27571) ]]},
+		{ids="27603", cond_if=[[not completedq(27603) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Well of Eternity"] = {
+		{ids="30098,30099,30100,30104,30101"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Scarlet Halls"] = {
+		{ids="31497", cond_if=[[not completedq(31497) and heroic_dung() ]]},
+		{ids="31490", cond_if=[[not completedq(31490) and not heroic_dung() ]]},
+		{ids="31495", cond_if=[[not completedq(31495) and heroic_dung() ]]},
+		{ids="31493", cond_if=[[not completedq(31493) and not heroic_dung() ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Forge of Souls"] = {
+		{ids="24499", cond_if=[[not completedq(24683) ]]},
+		{ids="24510", cond_if=[[not completedq(24499) ]]},
+	},
+	["DUNGEONS\\Outland Raids\\Magtheridon's Lair"] = {
+		{ids="11002", cond_if=[[not completedq(11002) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Dire Maul: Gordock Commons"] = {
+		{ids="27119", cond_if=[[havequest(27119) ]]},
+		{ids="27124"},
+		{ids="27125,27125", cond_if=[[not completedq(27125) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Throne of the Tides"] = {
+		{ids="28836", cond_if=[[havequest(28836) ]]},
+		{ids="28834"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Razorfen Downs"] = {
+		{ids="33513,33514"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Temple of the Jade Serpent"] = {
+		{ids="31355,31356"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Stormstout Brewery"] = {
+		{ids="31324,31327"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Shadow Labyrinth"] = {
+		{ids="29640", cond_if=[[not completedq(29641) ]]},
+		{ids="29641", cond_if=[[havequest(29641) ]]},
+		{ids="29644,29645", cond_if=[[havequest(29644) or havequest(29645) ]]},
+		{ids="29643", cond_if=[[not completedq(29644) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Tempest Keep: The Mechanar"] = {
+		{ids="29658", cond_if=[[havequest(29658) ]]},
+		{ids="29657,29659"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Mana-Tombs"] = {
+		{ids="29574", cond_if=[[not completedq(29574) ]]},
+		{ids="29573,29575", cond_if=[[not completedq(29573) or not completedq(29575) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Siege of Niuzao Temple"] = {
+		{ids="31365,31366"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Zul'Aman"] = {
+		{ids="29186,11196"},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Scarlet Halls"] = {
+		{ids="31495,31497"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Dire Maul: Warpwood Quarter"] = {
+		{ids="27108", cond_if=[[not completedq(27108) ]]},
+		{ids="27104", cond_if=[[not completedq(27104) ]]},
+		{ids="27105", cond_if=[[not completedq(27105) ]]},
+		{ids="27103", cond_if=[[not completedq(27103) ]]},
+		{ids="27107", cond_if=[[not completedq(27107) ]]},
+	},
+	["DUNGEONS\\Pandaria Dungeons\\Shado-Pan Monastery"] = {
+		{ids="31342", cond_if=[[havequest(31342) ]]},
+		{ids="30757", cond_if=[[havequest(30757) ]]},
+	},
+	["DUNGEONS\\Pandaria Raids\\Siege of Orgrimmar"] = {
+		{ids="33147,33138", cond_if=[[not completedq(33138) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Caverns of Time: Escape from Durnholde Keep"] = {
+		{ids="29599", cond_if=[[havequest(29599) ]]},
+		{ids="29598", cond_if=[[not completedq(29599) ]]},
+	},
+	["DUNGEONS\\Classic Raids\\Blackwing Lair"] = {
+		{ids="7782", cond_if=[[completedq(7781) ]]},
+		{ids="7781", cond_if=[[not completedq(7781) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\End Time"] = {
+		{ids="30097,30096"},
+	},
+	["DUNGEONS\\Outland Raids\\Hyjal Summit (Battle for Mount Hyjal)"] = {
+		{ids="10277", cond_if=[[havequest(10277) ]]},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Hour of Twilight"] = {
+		{ids="30102,30103,30105"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Grim Batol"] = {
+		{ids="28853,28852,28854"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\Blackrock Caverns"] = {
+		{ids="28741", cond_if=[[havequest(28741) ]]},
+		{ids="28735,28737,28738,28740"},
+	},
+	["DUNGEONS\\Northrend Raids\\Naxxramas"] = {
+		{ids="13372", cond_if=[[havequest(13372) ]]},
+		{ids="13375", cond_if=[[havequest(13375) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\The Violet Hold"] = {
+		{ids="29830", cond_if=[[havequest(29830) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep"] = {
+		{ids="29763,29764,29803", cond_if=[[havequest(29763) or havequest(29764) or havequest(29803) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Trial of the Champion"] = {
+		{ids="29851", cond_if=[[havequest(29851) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Pit of Saron"] = {
+		{ids="24498", cond_if=[[not completedq(24710) ]]},
+		{ids="24710", cond_if=[[not completedq(24711) ]]},
+		{ids="24683", cond_if=[[not completedq(24498) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Halls of Reflection"] = {
+		{ids="24711,24500", cond_if=[[not completedq(24500) ]]},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Halls of Lightning"] = {
+		{ids="29860,29861,29862", cond_if=[[havequest(29860) or havequest(29861) or havequest(29862) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: Underbog"] = {
+		{ids="29568,29570,29567,29691"},
+	},
+	["DUNGEONS\\Northrend Dungeons\\Gundrak"] = {
+		{ids="29834,29839,29844", cond_if=[[havequest(29834) or havequest(29839) or havequest(29844) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Hellfire Citadel: Hellfire Ramparts"] = {
+		{ids="29528,29529,29594", cond_if=[[not completedallq(29528,29529,29594) and (havequest(29528) or havequest(29529) or havequest(29594)) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Coilfang Reservoir: The Steamvault"] = {
+		{ids="29614", cond_if=[[havequest(29614) ]]},
+		{ids="29613", cond_if=[[havequest(29613) ]]},
+		{ids="29615", cond_if=[[havequest(29615) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Magister's Terrace"] = {
+		{ids="29686,29687,29685", cond_if=[[havequest(29686) or havequest(29687) or havequest(29685) ]]},
+		{ids="29684", cond_if=[[not completedq(11490) ]]},
+		{ids="11490", cond_if=[[not completedq(29685) ]]},
+	},
+	["DUNGEONS\\Outland Dungeons\\Tempest Keep: Botanica"] = {
+		{ids="29660,29667,29669"},
+	},
+	["DUNGEONS\\Cataclysm Dungeons\\The Stonecore"] = {
+		{ids="28815,28814"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Caverns of Time: The Black Morass"] = {
+		{ids="10297"},
+	},
+	["DUNGEONS\\Outland Dungeons\\Auchindoun: Sethekk Halls"] = {
+		{ids="29607", cond_if=[[havequest(29607) ]]},
+		{ids="29605,29606", cond_if=[[havequest(29605) or havequest(29606) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Maraudon: The Wicked Grotto"] = {
+		{ids="27697", cond_if=[[havequest(27697) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Zul'Farrak"] = {
+		{ids="27068,27071,27070,27076"},
+	},
+	["DUNGEONS\\Classic Dungeons\\Scarlet Monastery"] = {
+		{ids="31513,31515,31514,31516", cond_if=[[not completedq(31514) and not completedq(31516) ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Scholomance"] = {
+		{ids="31447", cond_if=[[not completedq(31447) and not heroic_dung() ]]},
+		{ids="31448", cond_if=[[not completedq(31448) and heroic_dung() ]]},
+		{ids="31440", cond_if=[[not completedq(31440) and not heroic_dung() ]]},
+		{ids="31442", cond_if=[[not completedq(31442) and heroic_dung() ]]},
+	},
+	["DUNGEONS\\Classic Dungeons\\Wailing Caverns"] = {
+		{ids="26870", cond_if=[[not completedq(26870) ]]},
+		{ids="26872,26873", cond_if=[[not completedq(26872) or not completedq(26873) ]]},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Hand of the Prophet"] = {
+		{ids="38045", cond_if=[[havequest(38045) or completedq(38045) ]]},
+		{ids="39573", cond_if=[[havequest(39573) or completedq(39573) ]]},
+		{ids="39586", cond_if=[[havequest(39586) or completedq(39586) ]]},
+		{ids="38250", cond_if=[[havequest(38250) or completedq(38250) ]]},
+		{ids="38046", cond_if=[[havequest(38046) or completedq(38046) ]]},
+		{ids="39581", cond_if=[[havequest(39581) or completedq(39581) ]]},
+		{ids="39567", cond_if=[[havequest(39567) or completedq(39567) ]]},
+		{ids="38585", cond_if=[[havequest(38585) or completedq(38585) ]]},
+		{ids="37891", cond_if=[[havequest(37891) or completedq(37891) ]]},
+		{ids="39568", cond_if=[[havequest(39568) or completedq(39568) ]]},
+		{ids="39571", cond_if=[[havequest(39571) or completedq(39571) ]]},
+		{ids="39570", cond_if=[[havequest(39570) or completedq(39570) ]]},
+		{ids="39569", cond_if=[[havequest(39569) or completedq(39569) ]]},
+		{ids="38440", cond_if=[[havequest(38440) or completedq(38440) ]]},
+		{ids="39574"},
+		{ids="37968", cond_if=[[havequest(37968) or completedq(37968) ]]},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Order of the Awakened"] = {
+		{ids="39433"},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\Wrynn's Vanguard"] = {
+		{ids="36119,36130,36127,36133,36125,36123"},
+	},
+	["REPUTATIONS\\Warlords of Draenor\\The Saberstalkers"] = {
+		{ids="39582,39565"},
+	},
+	["ACHIEVEMENTS\\Feats of Strength\\Mounts\\I've Got 9999 Problems but a Bone-White Primal Raptor Ain't One"] = {
+		{ids="32617"},
+	},
+	["ACHIEVEMENTS\\General\\Pandaren Delicacies"] = {
+		{ids="31535"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ready for Raiding III"] = {
+		{ids="31394,31511,31512"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Proven Strength"] = {
+		{ids="31104", cond_if=[[havequest(31104) ]]},
+		{ids="31127", cond_if=[[havequest(31127) ]]},
+		{ids="31038", cond_if=[[havequest(31038) ]]},
+		{ids="31220", cond_if=[[havequest(31220) ]]},
+		{ids="31128", cond_if=[[havequest(31128) ]]},
+		{ids="31221", cond_if=[[havequest(31221) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Listen to the Drunk Fish"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\World Events\\Brawler's Guild\\Collect Your Deck"] = {
+		{ids="31372", cond=[[Alliance]]},
+		{ids="37910", cond_if=[[not completedq(37910) ]]},
+		{ids="31374", cond=[[Horde]]},
+		{ids="37911", cond_if=[[not completedq(37911) ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,29463,29436,29438,29434,36481,29455,33756,37868"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Shadow Hopper"] = {
+		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle\\Big City Pet Brawler"] = {
+	},
+	["ACHIEVEMENTS\\Scenarios\\Mists of Pandaria\\Arena of Annihilation"] = {
+		{ids="31207"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Defender of Gods"] = {
+		{ids="31266,31277"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Spreading the Warmth!"] = {
+		{ids="31394,31511,31512"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Champion of Chi-Ji"] = {
+		{ids="30718,30740", cond_if=[[achieved(7287) ]]},
+		{ids="31378", cond_if=[[not completedq(31378) ]]},
+		{ids="30718,30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
+		{ids="30716,30717"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Till the Break of Dawn"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Fabled Pandaren Tamer"] = {
+		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ain't Lost No More"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,31312,31313,31314,31315"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Pandaria Scenario\\Arena of Annihilation"] = {
+		{ids="31207"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\I Choose You"] = {
+		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\The Longest Day"] = {
+		{ids="32439", cond_if=[[havequest(32439) ]]},
+		{ids="31931,31934,31932", cond_if=[[completedq(31928) ]]},
+		{ids="31916", cond_if=[[completedq(31915) ]]},
+		{ids="31922,31923,31924,31925,31926", cond_if=[[completedq(31920) ]]},
+		{ids="32441", cond_if=[[havequest(32441) ]]},
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32440", cond_if=[[havequest(32440) ]]},
+		{ids="31974,31971,31972,31973,31953,31955,31954,31956,31991,31957,31958", cond_if=[[completedq(31970) ]]},
+		{ids="32434", cond_if=[[havequest(32434) ]]},
+		{ids="31693,31780,31850,31851,31852,31913,31781,31914,31910,31911,31912,31909,32440,32441,32434,32439,32604,32868,32869"},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\The Pandaren Gourmet"] = {
+		{ids="31535"},
+	},
+	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Kirin Tor Offensive"] = {
+		{ids="32679,32681"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Mists of Pandaria\\Rolo's Riddle"] = {
+		{ids="32974,32975,32976"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Crazy for Cats"] = {
+		{ids="29102,29103,29104,29105,29114,29115,29116,29120,29213,29121"},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\Ironpaw Chef"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Savior of Stoneplow"] = {
+		{ids="30667,30666,30668,30669,30691,30671,30674,30675,30672,30168,30169,30274,30230,30163,30229,30357,30175,30174,30241,30653,30623,30622,30625,30626,30627"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Test Drive"] = {
+		{ids="31808"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Cataclysm\\Pandaria Explorer"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Isle of Thunder"] = {
+		{ids="32654", cond_if=[[not completedq(32654) ]]},
+		{ids="32679,32681,32644,32652,32655,32656"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\A Taste of Things to Come"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Trainer Extraordinaire"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Roll Club"] = {
+		{ids="31394,31511,31512"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\Master of Pandaren Cooking"] = {
+		{ids="31281,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Finish Them!"] = {
+		{ids="30879,30880,31517,30881,30882,30883,30885,30907,30902,31492"},
+		{ids="31381", cond_if=[[havequest(31381) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Amber is the Color of My Energy"] = {
+		{ids="31009", cond_if=[[not completedq(31010) ]]},
+		{ids="31006,31010,31085,31398,31026,31354,31606,31179,31211,31439"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Green Acres"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Tranquil Master"] = {
+		{ids="30178", cond_if=[[Alliance ]]},
+		{ids="30133", cond_if=[[Horde ]]},
+		{ids="30269,30268,30270,30694,30695,30272,30271,30273,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,31032,30977,30899,30978,30979,30980,31065,30981,31063,31064,30968"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Every Day I'm Pand-a-ren"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="31394,31511,31512,30252,30535,30254,30255,30256,30257,31945,30134,30135,30136,30137,30138,30139,30140,30141,30142,32246,32247,32109"},
+	},
+	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Operation: Shieldwall"] = {
+		{ids="32246,32247,32109"},
+	},
+	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\One Step at a Time"] = {
+		{ids="30277,30280,30277,30280"},
+	},
+	["ACHIEVEMENTS\\Professions\\Cooking\\Now I Am the Master"] = {
+		{ids="31281,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31332,30329,30330,30328,30332,30331,31332,31333,31334,31335,31336"},
 	},
 	["DAILIES\\Wrath of the Lich King Dailies\\The Storm Peaks\\Brunnhildar, K-3 and Frosthold Dailies"] = {
 		{ids="13424,13423,13422,13425,12869,12833"},
@@ -12694,34 +12754,38 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["DAILIES\\Wrath of the Lich King Dailies\\Icecrown\\Crusader Title Guide (Unlocks More Dailies)\\Dwarf Champion Rank"] = {
 		{ids="13703,13741,13742,13743,13744,13745,13851,13714,13713"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Orcslayer"] = {
+		{ids="36964"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
-		{ids="29102,29103,29104,29105,29114,29115,29116,29120,29213,29121"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
+		{ids="37082,37083"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Slayer of Sin'dorei"] = {
+		{ids="36958"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
-		{ids="31009", cond_if=[[not completedq(31010) ]]},
-		{ids="31006,31010,31085,31398,31026,31354,31606,31179,31211,31439"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
+		{ids="37082,37083"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
-		{ids="30526", cond_if=[[havequest(30526) ]]},
-		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
-		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
-		{ids="30477", cond_if=[[havequest(30477) ]]},
-		{ids="30471", cond_if=[[havequest(30471) ]]},
-		{ids="30473", cond_if=[[havequest(30473) ]]},
-		{ids="30472", cond_if=[[havequest(30472) ]]},
-		{ids="30478", cond_if=[[havequest(30478) ]]},
-		{ids="30470", cond_if=[[havequest(30470) ]]},
-		{ids="30474", cond_if=[[havequest(30474) ]]},
-		{ids="30475", cond_if=[[havequest(30475) ]]},
-		{ids="30476", cond_if=[[havequest(30476) ]]},
-		{ids="30479", cond_if=[[havequest(30479) ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30317,30326,30327,30325,30322,30318,30323,30319,30321,30324,30260,30516,31936,30523,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Commandojack"] = {
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Huojin's Fall"] = {
+		{ids="36968"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Butcher"] = {
+		{ids="36962"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\The Death Stalker"] = {
+		{ids="36960"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Killer of Kezan"] = {
+		{ids="36970"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Troll Hunter"] = {
+		{ids="36966"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Young Talbuk"] = {
 		{ids="38299"},
@@ -12755,176 +12819,92 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Iron Starlette"] = {
 		{ids="35460,35462,36379,35464,35463,36307,35494,35486,35492,35496,35495,35488,35500,36941"},
 	},
-	["ACHIEVEMENTS\\Feats of Strength\\Mounts\\I've Got 9999 Problems but a Bone-White Primal Raptor Ain't One"] = {
-		{ids="32617"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
+		{ids="51142,51145,50901,50444,50332,50381"},
 	},
-	["ACHIEVEMENTS\\General\\Pandaren Delicacies"] = {
-		{ids="31535"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
+		{ids="55983,56211"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ready for Raiding III"] = {
-		{ids="31394,31511,31512"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Long Con"] = {
+		{ids="49223"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Proven Strength"] = {
-		{ids="31104", cond_if=[[havequest(31104) ]]},
-		{ids="31127", cond_if=[[havequest(31127) ]]},
-		{ids="31038", cond_if=[[havequest(31038) ]]},
-		{ids="31220", cond_if=[[havequest(31220) ]]},
-		{ids="31128", cond_if=[[havequest(31128) ]]},
-		{ids="31221", cond_if=[[havequest(31221) ]]},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Listen to the Drunk Fish"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Pet Battle Challenge: Blackrock Depths"] = {
+		{ids="58455,58457"},
 	},
-	["ACHIEVEMENTS\\World Events\\Brawler's Guild\\Collect Your Deck"] = {
-		{ids="31372", cond=[[Alliance]]},
-		{ids="37910", cond_if=[[not completedq(37910) ]]},
-		{ids="31374", cond=[[Horde]]},
-		{ids="37911", cond_if=[[not completedq(37911) ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,29463,29436,29438,29434,36481,29455,33756,37868"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
+		{ids="57009,54088,55040,54945,54087,54946,54947,54992,55645,55729,55730,55731,55995,55734,55096,55736,55609"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Shadow Hopper"] = {
-		{ids="30134,30135,30136,30137,30138,30139,30140,30141,30142"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle\\Big City Pet Brawler"] = {
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Let's Bee Friends"] = {
+		{ids="50343,50070,50359,50064,50161,50168,50162,50504,50534,50264,50493,50165,50553,53347,53371"},
 	},
-	["ACHIEVEMENTS\\Scenarios\\Mists of Pandaria\\Arena of Annihilation"] = {
-		{ids="31207"},
+	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
+		{ids="53182,53181,53169,53172,53184,53176,53183,53171,53170,53168,53177,53180,53167,53155,53178,53164,53160,53174,53163,53161"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Defender of Gods"] = {
-		{ids="31266,31277"},
+	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
+		{ids="53992"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Spreading the Warmth!"] = {
-		{ids="31394,31511,31512"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Champion of Chi-Ji"] = {
-		{ids="30718,30740", cond_if=[[achieved(7287) ]]},
-		{ids="31378", cond_if=[[not completedq(31378) ]]},
-		{ids="30718,30725,30726,30727,30728,30729,30730,30731,30732,30733,30734,30735,30736,30737,30738,30739", cond_if=[[not achieved(7287) ]]},
-		{ids="30716,30717"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\In Teldrassil's Shadow"] = {
+		{ids="53847,53849,53988,53989,54041,53990,54871"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Till the Break of Dawn"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
+		{ids="57249,57298"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Fabled Pandaren Tamer"] = {
-		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
+		{ids="56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Ain't Lost No More"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,31312,31313,31314,31315"},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
 	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Pandaria Scenario\\Arena of Annihilation"] = {
-		{ids="31207"},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
 	},
-	["ACHIEVEMENTS\\Pet Battles\\I Choose You"] = {
-		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
-		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
-		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
-		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
-		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
-		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
-		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
-		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
-		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951"},
+	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
+		{ids="55517,55452,55455,55456,55454,55451,55457"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\The Longest Day"] = {
-		{ids="32439", cond_if=[[havequest(32439) ]]},
-		{ids="31931,31934,31932", cond_if=[[completedq(31928) ]]},
-		{ids="31916", cond_if=[[completedq(31915) ]]},
-		{ids="31922,31923,31924,31925,31926", cond_if=[[completedq(31920) ]]},
-		{ids="32441", cond_if=[[havequest(32441) ]]},
-		{ids="32428", cond_if=[[not completedq(32428) ]]},
-		{ids="32440", cond_if=[[havequest(32440) ]]},
-		{ids="31974,31971,31972,31973,31953,31955,31954,31956,31991,31957,31958", cond_if=[[completedq(31970) ]]},
-		{ids="32434", cond_if=[[havequest(32434) ]]},
-		{ids="31693,31780,31850,31851,31852,31913,31781,31914,31910,31911,31912,31909,32440,32441,32434,32439,32604,32868,32869"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
+		{ids="55064,55534,56515,56516,56517,56518,56519"},
 	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\The Pandaren Gourmet"] = {
-		{ids="31535"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Pride of Kul Tiras"] = {
+		{ids="52194,52246,52762,52252,52253,52311,52445,52449,52453,52509,52508,52510,52511,52512,52513,52481,52482,52483,52484,52485,52486,52487,52488,51445"},
 	},
-	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Kirin Tor Offensive"] = {
-		{ids="32679,32681"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Deadliest Cache"] = {
+		{ids="50376,50391,50418,52130"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Mists of Pandaria\\Rolo's Riddle"] = {
-		{ids="32974,32975,32976"},
+	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
+		{ids="57300", cond_if=[[readyq(57300) or completedq(57300) ]]},
+		{ids="57249"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Crazy for Cats"] = {
-		{ids="29102,29103,29104,29105,29114,29115,29116,29120,29213,29121"},
+	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
+		{ids="52462"},
 	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\Ironpaw Chef"] = {
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
+		{ids="54090"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Savior of Stoneplow"] = {
-		{ids="30667,30666,30668,30669,30691,30671,30674,30675,30672,30168,30169,30274,30230,30163,30229,30357,30175,30174,30241,30653,30623,30622,30625,30626,30627"},
+	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Kul Tiran Curator"] = {
+		{ids="51950,51951,51952,51953,51954,51955,51926,51929,51932,51934,51936,51937"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Test Drive"] = {
-		{ids="31808"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
+		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Cataclysm\\Pandaria Explorer"] = {
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Nation United"] = {
+		{ids="52153,52151"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Isle of Thunder"] = {
-		{ids="32654", cond_if=[[not completedq(32654) ]]},
-		{ids="32679,32681,32644,32652,32655,32656"},
+	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
+		{ids="55305,55311,55312,55309,55299,55306,55307,55308,55310,55313"},
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\A Taste of Things to Come"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Mechagnome"] = {
+		{ids="57486,57487,57488,57490,57491,57492,57493,57494,57496,57495,57497"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Trainer Extraordinaire"] = {
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Roll Club"] = {
-		{ids="31394,31511,31512"},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
+		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
 	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\Master of Pandaren Cooking"] = {
-		{ids="31281,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536"},
-	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Finish Them!"] = {
-		{ids="30879,30880,31517,30881,30882,30883,30885,30907,30902,31492"},
-		{ids="31381", cond_if=[[havequest(31381) ]]},
-	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Amber is the Color of My Energy"] = {
-		{ids="31009", cond_if=[[not completedq(31010) ]]},
-		{ids="31006,31010,31085,31398,31026,31354,31606,31179,31211,31439"},
-	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Green Acres"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Tranquil Master"] = {
-		{ids="30178", cond_if=[[Alliance ]]},
-		{ids="30133", cond_if=[[Horde ]]},
-		{ids="30269,30268,30270,30694,30695,30272,30271,30273,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,31032,30977,30899,30978,30979,30980,31065,30981,31063,31064,30968"},
-	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\Every Day I'm Pand-a-ren"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31392", cond_if=[[not completedq(31394) ]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="31394,31511,31512,30252,30535,30254,30255,30256,30257,31945,30134,30135,30136,30137,30138,30139,30140,30141,30142,32246,32247,32109"},
-	},
-	["ACHIEVEMENTS\\Reputation\\Mists of Pandaria\\Operation: Shieldwall"] = {
-		{ids="32246,32247,32109"},
-	},
-	["ACHIEVEMENTS\\Quests\\Mists of Pandaria\\One Step at a Time"] = {
-		{ids="30277,30280,30277,30280"},
-	},
-	["ACHIEVEMENTS\\Professions\\Cooking\\Now I Am the Master"] = {
-		{ids="31281,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31332,30329,30330,30328,30332,30331,31332,31333,31334,31335,31336"},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
 	},
 	["PROFESSIONS\\Fishing\\Leveling Guides\\Fishing 525-600 Leveling Guide"] = {
 	},
@@ -13102,6 +13082,9 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	["PETSMOUNTS\\Mounts\\Flying Mounts\\Reputation Mounts\\Drake of the West Wind"] = {
 		{ids="28275,27987,27978,27991,27975,27973,28059,28063,28130,28137,28065,27948,27972,27970,27971,28050,27944,28046,27967,27992,27966,27949,28122,28162,28163,28165,28185,28186,28117,28120,28118,28232,28188,28223"},
 	},
+	["PROFESSIONS\\Fishing\\Leveling Guides\\Fishing 600-700 Leveling Guide"] = {
+		{ids="34194,36199,36201,36202"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Tiny Flamefly"] = {
 		{ids="28514,28416,28174,28172,28177,28178,28179,28180,28181,28182,28183,28184,28254,28202,28203,28204,28205,28239,28246,28245,28252,28253,28225,28226,28227,28265,28266,28279,28278,28286,28310"},
 	},
@@ -13226,6 +13209,96 @@ ZGV.Quest_Cache_Turnin_Alliance = {
 	},
 	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Brown Prairie Dog"] = {
 	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Red Panda"] = {
+		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Jade Owl"] = {
+		{ids="31394,31511,31512"},
+		{ids="31392", cond_if=[[not completedq(31394) ]]},
+	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Sunfur Panda"] = {
+		{ids="32439", cond_if=[[havequest(32439) ]]},
+		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32440", cond_if=[[havequest(32440) ]]},
+		{ids="32441", cond_if=[[havequest(32441) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="32434", cond_if=[[havequest(32434) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603,32604,32868,32869"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Tiny Goldfish"] = {
+		{ids="31369", cond_if=[[not completedq(31369) ]]},
+		{ids="30585,30598,30678,30698,30700,30588,30613,30658,30584,30586,30754,30753,30763,30701"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Water Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32439"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Earth Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32441"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-ji Kite"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Fire Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32434"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Elemental Pets\\Pandaren Air Spirit"] = {
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32440"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Yu'lon Kite"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Mountain Panda"] = {
+		{ids="32439", cond_if=[[havequest(32439) ]]},
+		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32440", cond_if=[[havequest(32440) ]]},
+		{ids="32441", cond_if=[[havequest(32441) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="32434", cond_if=[[havequest(32434) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603,32604,32868,32869"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Snowy Panda"] = {
+		{ids="32439", cond_if=[[havequest(32439) ]]},
+		{ids="31933,31931,31934", cond_if=[[completedq(31928) ]]},
+		{ids="31976", cond_if=[[not completedq(31977) and not completedq(31976) ]]},
+		{ids="31981", cond_if=[[not completedq(31981) and not completedq(31982) ]]},
+		{ids="32428", cond_if=[[not completedq(32428) ]]},
+		{ids="32440", cond_if=[[havequest(32440) ]]},
+		{ids="32441", cond_if=[[havequest(32441) ]]},
+		{ids="31972,31973,31974", cond_if=[[completedq(31970) ]]},
+		{ids="31984", cond_if=[[not completedq(31929) and not completedq(31927) ]]},
+		{ids="32434", cond_if=[[havequest(32434) ]]},
+		{ids="31953,31955,31954,31957,31991,31956", cond_if=[[completedq(31951) ]]},
+		{ids="31985", cond_if=[[not completedq(31985) and not completedq(31986) ]]},
+		{ids="31922,31923,31924,31925", cond_if=[[completedq(31920) ]]},
+		{ids="31591,31592,32008,31316,31724,31725,31726,31729,31728,31917,31902,31915,31889,31919,31920,31927,31928,31966,31970,31930,31951,32603,32604,32868,32869"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Aquatic Pets\\Fishy"] = {
+		{ids="29903,29904,29905"},
+	},
 	["GOLD\\Farming\\Alabaster Pigment (Alliance)"] = {
 	},
 	["GOLD\\Farming\\Rain Poppy (Alliance)"] = {
@@ -13309,46 +13382,185 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="36352,36594", cond_if=[[havequest(36314) or completedq(36314) ]]},
 		{ids="34824,34822,34823,34461,34861,34462,34960,34775,34379,34380,33816,33784,33526,33546,33408,33410,33622,33344,33527,33657,33468,33412,33119,33898,33483,33484,34732,33450,33454,33467,33807,33469,33470,33473,32783,32989,32791,32792,32929,32804,32794,32795,32796,36567,36706,36707,36708,36709,35243,32990,33013,32991,32992,32993,33826,33785,32994,33828,33493,37291,33010,34123,34346,34344,34345,32981,33462,35341,34348,34731,33125,33132,34124,34867,37563,34066,34069,34264,34072,34070,34073,34102,34075"},
 	},
-	["DAILIES\\Legion\\Antoran Wastes World Quests"] = {
-		{ids="48832,48837,48931,47561,49054,48867,48637,48831,48777,49055,47566,48780,48835,48640,48830,48828,48983,49057,47552,48875,48783,49058,49056,48467,48958,48833,48526,48662,48514,48691,48358,48360,48374,48952,48827,48466,48866,48465,49053,48836,48624,48349,48359,48834,48829"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
+		{ids="47441,47442,50332,50381,50901,50444"},
 	},
-	["DAILIES\\Legion\\Azsuna World Quests"] = {
-		{ids="42119,42024,43803,42014,44784,41545,41286,42652,43805,41290,42165,45069,45203,44894,41495,41481,41482,41483,42022,46146,41529,43193,41438,46168,43091,44189,43121,44187,43175,43059,43079,44190,44191,43798,44192,43098,43027,44193,43063,44194,43040,43072,42146,44287,44054,42276,46169,43328,42711,44049,42723,42755,42746,42713,42712,42027,42026,41323,46161,41563,41564,41562,44044,44050,41514,41513,41515,41437,41289,46166,41455,41434,43804,42624,44737,42154,41611,41610,41265,42277,42021,41528,46165,46167,42101,42211,43325,42172,41500,45046,41527,41598,41599,41264,41454,43327,46164,44786,42105,44048,42275,46116,41896,42623,41268,41266,42108,42123,45058,41324,42063,41259,41551,41552,41435,41582,45134,44847,46162,41288,41315,41327,43192,46170,46163,42018,42019,42506,42159,42511,42160,41322,41663,42926,42636,43605,42620,43606,43426,43607,43430,43608,43428,43609,43427,43610,42631,43611,43432,43612,41703,43613,43429,42633,43614,43431,43615,43802,46263,42148,42112,42274,41287,41651,41639,41675,41267,41657,41311,41633,41645,41326,41669,44788"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
+		{ids="55530,56211"},
 	},
-	["DAILIES\\Legion\\Stormheim World Quests"] = {
-		{ids="43964,42067,41948,45439,43951,41443,46006,41451,46008,42025,45072,41935,46010,41534,41489,41490,41336,41938,46011,46216,41984,46179,41950,43745,42820,42861,42864,42785,42806,42798,42964,42963,42991,42953,41444,43710,41459,44893,41794,41949,42173,43772,45786,46012,41568,41569,41570,41519,41521,41520,46013,41296,41547,41299,46014,41427,42004,42241,42243,42240,42239,43721,44923,42013,41275,41615,41614,46015,41944,43769,41506,41505,41507,45049,41274,41602,41603,46016,43771,42780,42757,42788,40278,44943,41958,43751,43752,41340,43786,41535,41460,41536,41925,42177,41926,42176,41276,41927,43722,42270,46017,42178,41300,41555,41556,41261,41278,41343,45390,42269,43827,41445,41442,41298,41317,41345,46264,46021,41342,42183,42182,41930,43963,41666,43454,43620,43434,43621,43436,43622,43453,43623,43452,43624,43438,43625,43437,43626,43450,43627,43451,43628,43598,43599,43600,43601,41297,41678,41313,41636,41654,41648,41660,41277,41344,41642,41672,41936"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Most Efficient Apocalypse"] = {
+		{ids="50665"},
 	},
-	["DAILIES\\Legion\\Dalaran World Quests"] = {
-		{ids="42442,40299,41881,41886,40298,42062,40277,46138,46137,46134,46139,46135,46136,41668,41662,41656,41680,41638,41650,41644,41674"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax"] = {
+		{ids="50860,51147", cond_if=[[not havequest(50930) and not havequest(50841) ]]},
+		{ids="50801,50798", cond_if=[[not havequest(50791) and not havequest(50796) ]]},
+		{ids="50838,51146,50842", cond_if=[[not havequest(52317) and not havequest(50839) ]]},
+		{ids="50394,50402,52305,50791,50796,50395,50401,50412,52447,52317,50839,50396,50886,50887,50900,52748,50930,50841,50397,50940,50942,50943,50944"},
 	},
-	["DAILIES\\Legion\\The Originals"] = {
-		{ids="47251,47254"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
 	},
-	["DAILIES\\Legion\\Broken Shore World Quests"] = {
-		{ids="45776,46308", cond=[[Rogue]]},
-		{ids="45653,46754", cond=[[Mage]]},
-		{ids="45929", cond=[[Shaman]]},
-		{ids="46209,45473,46932,45988,47061,45694,46105,46750,45520,45559,45542,46073,46761,46811,46947,46068,45805,46201,45035,46814,46865,46865,44846,45178,45358,46942,45837,45531,46821,45970,46829,46288,45878,45744,47132,46126,46933,45934,46197,46072,46198,46212,45985,45541,46066,46112,46113,46111,45472,46046,46948,46707,46756,46825,46833,44751,45792,45793,46752,45797,46180,46075,46076,46175,46001,45550,45549,45626,46160,46945,46360,46109,46236,46032,46866,45379,46325,45973,46063,45791,45930,45977,44748"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Scavenge like a Vulpera"] = {
+		{ids="54415"},
 	},
-	["DAILIES\\Legion\\Val'sharah World Quests"] = {
-		{ids="45924,45922,44033,45070,42080,43711,43712,43642,43762,43714,41961,42023,41955,42075,41484,41486,41487,41273,41532,42174,43738,43344,43346,43345,42870,43152,42927,43333,43347,41700,43101,41995,42745,42743,42714,42744,42742,41860,44884,41546,41291,41295,46763,43756,41439,46265,41567,41566,41565,41516,41518,41517,41294,41533,45928,45923,42087,43332,42124,41613,41612,41270,45804,42028,41271,41531,42150,43753,41504,45047,41530,41600,41601,44011,41965,43755,41440,41861,41334,45925,41862,42145,41956,42819,41964,41337,43336,41457,43324,44730,41496,41333,43709,42076,44895,41553,41554,41260,42779,41855,41293,41316,41339,41996,46261,41980,45921,40279,41992,46766,44759,41664,42077,44301,44305,44299,44304,44298,44303,43460,43629,43630,43458,44300,44302,43456,43631,43632,43457,43459,43633,43248,43247,42070,43183,43784,43759,43758,42190,41652,41292,41312,41634,41272,41676,41646,41338,41658,41640,41670,45927,45926"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
+		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55609"},
 	},
-	["DAILIES\\Legion\\Suramar World Quests"] = {
-		{ids="42859,42969,42111,43445,43512,44802,41283,43639,43640,43638,44769,44780,45068,43435,41493,41492,41491,41447,41990,45307,41914,42151,44067,44867,44816,42769,42781,42784,42783,42764,44856,44113,44118,44121,41697,44114,42799,42797,44122,44119,41446,44801,43778,41347,42089,41573,41572,41571,41508,41352,41522,41523,41524,43930,41304,40337,43932,42209,41448,44811,42071,41617,41616,41280,44805,41538,42169,44813,43774,43583,44744,45032,41279,41605,41604,41537,43777,41931,41895,42880,43513,41305,44934,44937,44935,44938,44939,44936,44857,42106,42830,41349,44812,44799,42962,42725,42082,44815,42090,41557,41558,41262,41539,41301,41548,43959,44817,42082,41318,41303,41351,42015,44002,43814,41667,41346,44017,44032,44186,42796,44016,44031,44013,44030,44021,44029,44019,44028,44018,44027,44015,44026,44010,44025,42795,44185,44022,44024,44012,44023,43943,44158,43807,44157,41643,41679,41314,41637,41655,41282,41649,41661,41302,41350,41673"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Final Seal"] = {
+		{ids="50954"},
 	},
-	["DAILIES\\Legion\\Mac'Aree World Quests"] = {
-		{ids="48729,48701,47705,49047,48101,47456,48727,48739,48096,49051,48095,48100,48722,47135,48098,48097,48103,49049,48731,48175,48099,48737,48733,48386,48698,49052,47828,48106,48734,48736,48735,48105,47844,48732,48102,48953,48959,48985,48957,48951,47858,49050,47833,48740,49048,48936,48694,48730,48726,48728,48725,48724,48723,48094,48696,48738"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
 	},
-	["DAILIES\\Legion\\World Quests Unlock Quest Line"] = {
-		{ids="45727,43341,44720,44771,44721"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\It's Really Getting Out of Hand"] = {
+		{ids="50559"},
 	},
-	["DAILIES\\Legion\\Highmountain World Quests"] = {
-		{ids="43985,41705,41026,46191,45071,40978,40951,40925,40980,41308,41310,46193,41208,41209,41210,41203,41706,41233,41526,41238,41623,46196,46183,41699,41622,41095,41202,41685,41695,41093,41696,41686,41816,41013,41024,43767,39424,41239,41561,41560,42086,41512,41511,41225,41432,41219,41544,41228,43448,41014,46184,41701,41127,44746,41609,41243,42064,46185,46186,46187,43764,41196,45048,41597,41596,41244,41089,41090,41091,43766,41433,41253,41122,41076,41077,41078,41866,41864,41865,41211,41857,46188,39462,41055,41057,40850,41416,41789,41144,41025,40966,41624,41200,46262,41691,41234,46189,41692,41242,41549,41550,41687,44892,40920,41207,41237,46195,41232,40896,44823,40282,40280,46190,41011,41428,41665,41824,44289,41836,43616,41828,44290,41826,44291,43455,43617,41819,43618,41818,44292,41844,41986,44294,41821,43619,41838,44293,41227,41257,41420,41421,41145,41321,41414,41525,41252,41766,46194,41677,41659,41641,41223,41240,41206,41635,41647,41653,41235,41671,46192,46279"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Hungry, Hungry Ranishu"] = {
+		{ids="52798"},
 	},
-	["DAILIES\\Legion\\Krokuun World Quests"] = {
-		{ids="48285,49043,47724,47496,47624,48511,48509,48510,48286,49045,47712,47720,49042,49046,48287,48592,48282,47507,47551,47707,48502,48284,49044,47625,47646,49041,47542,48512,47563,48338,47728,48192,47953,48091,48615,48614,48337"},
+	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
+		{ids="53168", cond_if=[[not achieved(13127,14) ]]},
+		{ids="53171", cond_if=[[not achieved(13127,11) ]]},
+		{ids="53169", cond_if=[[not achieved(13127,13) ]]},
+		{ids="53184", cond_if=[[not achieved(13127,1) ]]},
+		{ids="53167", cond_if=[[not achieved(13127,15) ]]},
+		{ids="53155", cond_if=[[not achieved(13127,20) ]]},
+		{ids="53170", cond_if=[[not achieved(13127,12) ]]},
+		{ids="53181", cond_if=[[not achieved(13127,4) ]]},
+		{ids="53178", cond_if=[[not achieved(13127,6) ]]},
+		{ids="53163", cond_if=[[not achieved(13127,17) ]]},
+		{ids="53164", cond_if=[[not achieved(13127,16) ]]},
+		{ids="53177", cond_if=[[not achieved(13127,7) ]]},
+		{ids="53161", cond_if=[[not achieved(13127,18) ]]},
+		{ids="53174", cond_if=[[not achieved(13127,9) ]]},
+		{ids="53172", cond_if=[[not achieved(13127,10) ]]},
+		{ids="53160", cond_if=[[not achieved(13127,19) ]]},
+		{ids="53183", cond_if=[[not achieved(13127,2) ]]},
+		{ids="53180", cond_if=[[not achieved(13127,5) ]]},
+		{ids="53176", cond_if=[[not achieved(13127,8) ]]},
+		{ids="53182", cond_if=[[not achieved(13127,3) ]]},
 	},
-	["DAILIES\\Legion\\Broken Shore Rares"] = {
+	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
+		{ids="53955"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
+	},
+	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Vulpera"] = {
+		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,54036,53906,53907,53908,57448"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for AzerothPet Battle Challenge: Blackrock Depths"] = {
+		{ids="58456,58457"},
+	},
+	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
+		{ids="57249,57298"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Zandalar Forever!"] = {
+		{ids="50954"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
+		{ids="56181,56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Unbound Monstrosities"] = {
+		{ids="52166,52157,52181,52169,52196,52163"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Spirits Be With You"] = {
+		{ids="51513,51514,51533,51515,52114,52113,51516,51517,51518,51519,51520,51521"},
+	},
+	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
+		{ids="55517,55452,55455,55456,55454,55451,55463,55457"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Bargain of Blood"] = {
+		{ids="47199,47200,47198,47201,47205,47204,47229,47258"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
+		{ids="55064,55534,56515,56516,56517,56518,56519"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\By de Power of de Loa!"] = {
+		{ids="51232"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Adventurer of Stormsong Valley"] = {
+		{ids="52299"},
+	},
+	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
+		{ids="57249,57300"},
+	},
+	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
+		{ids="51465"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
+		{ids="54090"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Zandalari Spycatcher"] = {
+		{ids="50717"},
+	},
+	["ACHIEVEMENTS\\Player vs. Player\\Battle for Azeroth\\Azerfighter"] = {
+		{ids="53769"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
+		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
+	},
+	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Zandalari Curator"] = {
+		{ids="51950", cond_if=[[not completedq(51950) ]]},
+		{ids="51952", cond_if=[[not completedq(51952) ]]},
+		{ids="51936", cond_if=[[not completedq(51936) ]]},
+		{ids="51932", cond_if=[[not completedq(51932) ]]},
+		{ids="51953", cond_if=[[not completedq(51953) ]]},
+		{ids="51934", cond_if=[[not completedq(51934) ]]},
+		{ids="51937", cond_if=[[not completedq(51937) ]]},
+		{ids="51926", cond_if=[[not completedq(51926) ]]},
+		{ids="51929", cond_if=[[not completedq(51929) ]]},
+		{ids="51955", cond_if=[[not completedq(51955) ]]},
+		{ids="51951", cond_if=[[not completedq(51951) ]]},
+		{ids="51954", cond_if=[[not completedq(51954) ]]},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\About To Break"] = {
+		{ids="53108"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Revenge is Best Served Speedily"] = {
+		{ids="50786"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Vorrik's Champion"] = {
+		{ids="51957,51995"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax (Part Two)"] = {
+		{ids="56205"},
+	},
+	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
+		{ids="55309,55299,55310,55306,55307,55313,55308,55305,55311,55312"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Phenomenal Cosmic Power"] = {
+		{ids="53435,53435,53435,53435", cond_if=[[not completedq(53435) ]]},
+		{ids="56500,56433,56148,55080,53435,56401"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bless the Rains Down in Freehold"] = {
+		{ids="53196"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
+		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Doomsoul Surprise"] = {
+		{ids="54689"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Shadow Hunter"] = {
+		{ids="53774,53775,53776,53778,54120,53777,53779,54145,53780,53781,54147,53782"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Sabertron Assemble"] = {
+		{ids="51974"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bow to Your Masters"] = {
+		{ids="47441"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Pushing the Payload"] = {
+		{ids="54505"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Adept Sandfisher"] = {
+		{ids="51173"},
 	},
 	["LEVELING\\Draenor (10-50)\\Garrisons\\Followers\\Follower Leorajh"] = {
 		{ids="37168"},
@@ -14045,35 +14257,8 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["GOLD\\Horde Daily Runs\\Imperial Leather Set Transmog"] = {
 	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-Chi, Hatchling of Chi-Ji"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Rascal-Bot"] = {
-		{ids="32630"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Dragonkin Pets\\Yu'la, Broodling of Yu'lon"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Xu-Fu, Cub of Xuen"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Zao, Calfling of Niuzao"] = {
-		{ids="33137"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Pierre"] = {
-		{ids="32630"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
-		{ids="31752"},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Fel Pup"] = {
+		{ids="38428"},
 	},
 	["DUNGEONS\\Pandaria Scenarios\\Brewmoon Festival"] = {
 		{ids="31611"},
@@ -14363,6 +14548,16 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Anima Conductor Daily Quests"] = {
 		{ids="62160,62188,61875,61985,62224,61968,62081,61950,62057,62155", cond_if=[[questpossible ]]},
 	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
+		{ids="60463", cond_if=[[questactive(60463) or completedq(60463) ]]},
+		{ids="60389,60394,60397,60399", cond_if=[[anyquestactive(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
+		{ids="60441,60444,60446,60448", cond_if=[[anyquestactive(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
+		{ids="60422,60427,60431,60432", cond_if=[[anyquestactive(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
+		{ids="61334,62867,62868,62869,60456,60460", cond_if=[[anyquestactive(61334,62867,62868,62869,60456,60460) or completedanyq(61334,62867,62868,62869,60456,60460) ]]},
+		{ids="60417,60370,60378,60358,60375", cond_if=[[anyquestactive(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
+		{ids="60401,60409,60406,60410", cond_if=[[anyquestactive(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
+		{ids="61981"},
+	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Kyrian Daily Quests"] = {
 		{ids="60424,60434,60430,60425", cond_if=[[anyquestactive(60424,60434,60430,60425) or completedanyq(60424,60434,60430,60425) ]]},
 		{ids="60439,60442,60447,60450", cond_if=[[anyquestactive(60439,60442,60447,60450) or completedanyq(60439,60442,60447,60450) ]]},
@@ -14376,6 +14571,21 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["DAILIES\\Shadowlands (50-60)\\Ardenweald World Quests"] = {
 		{ids="60872,60950,60899,60649,61948,61595,61949,61435,61596,61631,61440,61597,61598,60855,62068,61717,62051,61394,61543,61599,61303,61601,61602,61947,61530,61946,61815,61411,58975,60337,59600,59825,60476,60574,61603,60585,60770,58993,60786,61604,60533,60564,60842,60739,60597,60475,60609,60837"},
 	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolords Abomination Factory Weekly Quests"] = {
+		{ids="62213,62256,59126", cond_if=[[completedq(58410) ]]},
+		{ids="57634", cond_if=[[completedq(58411) ]]},
+		{ids="62294,58515,58525", cond_if=[[completedq(57601) ]]},
+		{ids="60765,62041", cond_if=[[completedq(57605) ]]},
+		{ids="60342,62261,60340", cond_if=[[completedq(58416) ]]},
+		{ids="62407,59293", cond_if=[[completedq(57608) ]]},
+		{ids="62232,62217,62216", cond_if=[[completedq(57611) ]]},
+		{ids="56470,58992", cond_if=[[completedq(60216) ]]},
+		{ids="60291,61522,61523", cond_if=[[completedq(57597) ]]},
+		{ids="62194,61996,62195", cond_if=[[completedq(57600) ]]},
+		{ids="62244,60237", cond_if=[[completedq(58414) ]]},
+		{ids="62276", cond_if=[[completedq(58413) ]]},
+		{ids="58432,61510,61509,61511", cond_if=[[completedq(60041) ]]},
+	},
 	["DAILIES\\Shadowlands (50-60)\\Revendreth World Quests"] = {
 		{ids="61619,59904,59905,59902,60655,60657,60658,61879,58144,61620,61621,60601,60532,57443,57465,61630,61622,61885,61623,59803,61544,61624,59643,61625,61626,60659,62203,62204,59855,61538,60653,59808,61814,59718,61883,59599,60602,61627,58084,59617,60656,60654,61628,59852,59853,59848,59850,61886,59581,59789,57328"},
 	},
@@ -14386,20 +14596,14 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor Daily Quests"] = {
 		{ids="62403,62390,62362,58260,62363,62364,62563,57964,60482,60505,58211", cond_if=[[questpossible ]]},
-		{ids="58454", cond_if=[[questactive(58454) or completedq(58454) ]]},
+		{ids="58454", cond_if=[[covenantfeature("Anima Conductor") >= 3 ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Kyrian Anima Conductor Daily Quests"] = {
 		{ids="61156,61159,61157,61199,61166,61193,61182,61146,61196,61209", cond_if=[[questpossible ]]},
 	},
-	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
-		{ids="60463", cond_if=[[questactive(60463) or completedq(60463) ]]},
-		{ids="60389,60394,60397,60399", cond_if=[[anyquestactive(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
-		{ids="60441,60444,60446,60448", cond_if=[[anyquestactive(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
-		{ids="60422,60427,60431,60432", cond_if=[[anyquestactive(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
-		{ids="61334,62867,62868,62869,60456,60460", cond_if=[[anyquestactive(61334,62867,62868,62869,60456,60460) or completedanyq(61334,62867,62868,62869,60456,60460) ]]},
-		{ids="60417,60370,60378,60358,60375", cond_if=[[anyquestactive(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
-		{ids="60401,60409,60406,60410", cond_if=[[anyquestactive(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
-		{ids="61981"},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory Daily Quests"] = {
+		{ids="62444,62442,62443", cond_if=[[covenantfeature("Covenant Unique") >= 2 ]]},
+		{ids="62441"},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Anima Conductor Daily Quests"] = {
 		{ids="61735,61845,61848,61846,61734,61732,61847,61707,61849,61733", cond_if=[[questpossible ]]},
@@ -14432,17 +14636,18 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="63040,63038", cond_if=[[anyquestactive(63040,63038) ]]},
 		{ids="63166", cond_if=[[questactive(63166) ]]},
 		{ids="63050", cond_if=[[questactive(63050) ]]},
-		{ids="60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214", cond_if=[[anyquestactive(60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214) or completedanyq(60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214) ]]},
-		{ids="63069", cond_if=[[questactive(63069) ]]},
+		{ids="60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206", cond_if=[[anyquestactive(60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206) or completedanyq(60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206) ]]},
 		{ids="63062", cond_if=[[questactive(63062) ]]},
-		{ids="63047", cond_if=[[questactive(63047) ]]},
+		{ids="63069", cond_if=[[questactive(63069) ]]},
 		{ids="63039", cond_if=[[questactive(63039) ]]},
-		{ids="63179", cond_if=[[questactive(63179) ]]},
+		{ids="63047", cond_if=[[questactive(63047) ]]},
+		{ids="63031", cond_if=[[questactive(63031) ]]},
+		{ids="60732", cond_if=[[questactive(60732) ]]},
 		{ids="63045", cond_if=[[questactive(63045) ]]},
 		{ids="63100", cond_if=[[questactive(63100) ]]},
-		{ids="63031", cond_if=[[questactive(63031) ]]},
 		{ids="63043", cond_if=[[questactive(63043) ]]},
-		{ids="60732", cond_if=[[questactive(60732) ]]},
+		{ids="62239", cond_if=[[questactive(62239) ]]},
+		{ids="63179", cond_if=[[questactive(63179) ]]},
 	},
 	["LEVELING\\Starter Guides\\Zandalari Troll Starter"] = {
 		{ids="55137,55138"},
@@ -14569,11 +14774,17 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["PROFESSIONS\\Inscription\\Leveling Guides\\Tools of the Trade - Inscription"] = {
 		{ids="49943,49944,49873,49874,49946,49877,49878,49879,49881,49882"},
 	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
-		{ids="59262,59263,60660,59348,59351,59311"},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Plagueborn Slime"] = {
+		{ids="59130,58011,58016,58027"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Glimr"] = {
 		{ids="60605,60606,60614,60615,60616,60617,60619,60620"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Renny"] = {
+		{ids="59087,59120"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
+		{ids="59262,59263,60660,59348,59351,59311"},
 	},
 	["REPUTATIONS\\Mists of Pandaria Reputations\\Emperor Shaohao"] = {
 		{ids="33230,33232,33156,33161,33228,33336,33332,33335,33340,33341,33333"},
@@ -14722,7 +14933,7 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="31443,31444,31446"},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\Elder\\Lunar Festival Achievements"] = {
-		{ids="29736,29737,29738,29740,29739,29741,29742,29735,29734,8645,8652,8722,8714,8650,8688,8643,8642,8653,8651,8683,8636,8649,8675,8647,8716,8674,8720,8672,8726,8723,8721,8715,8725,8717,8680,8670,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8727,8644,8619,8713,8635,8676,13021,13022,13023,13066,13065,13017,13067,13029,13012,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868,8868"},
+		{ids="29736,29737,29738,29740,29739,29741,29742,29735,29734,8645,8652,8722,8714,8650,8688,8643,8642,8653,8651,8683,8636,8649,8675,8647,8716,8674,8720,8672,8726,8723,8721,8715,8725,8717,8680,8670,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8727,8644,8619,8713,8635,8676,13021,13022,13023,13066,13065,13017,13067,13029,13012,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868"},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\The Pilgrim"] = {
 		{ids="14036,14065,14037,14040,14041,14043,14044,14047,14058,14059,14062,14061,14060"},
@@ -15012,7 +15223,7 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="8648,8645,8652,8722,8714,8727,8650,8688"},
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\Elune's Blessing"] = {
-		{ids="8868,8868"},
+		{ids="8868"},
 	},
 	["EVENTS\\Midsummer Fire Festival\\Midsummer Fire Festival Achievements\\The Fires of Azeroth\\Flame Keeper of Eastern Kingdoms"] = {
 		{ids="11837,11761,28924,28910,11737,28930,11857,28916,11743,11581,11745,11751,11739,11844,28912,11842,11749,11742,11757,11732,11840,11853,11584,11848,11850,11860,11755,11756,28931,11862"},
@@ -15048,7 +15259,7 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="29736,29737,29738,29740,29739,29741,29742,29735,29734"},
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\To Honor One's Elders"] = {
-		{ids="29736,29737,29738,29740,29739,29741,29742,29735,29734,8645,8652,8722,8714,8650,8688,8643,8642,8653,8651,8683,8636,8649,8675,8647,8716,8674,8720,8672,8726,8723,8721,8715,8725,8717,8680,8670,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8727,8644,8619,8713,8635,8676,13021,13022,13023,13066,13065,13017,13067,13029,13012,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868,8868"},
+		{ids="29736,29737,29738,29740,29739,29741,29742,29735,29734,8645,8652,8722,8714,8650,8688,8643,8642,8653,8651,8683,8636,8649,8675,8647,8716,8674,8720,8672,8726,8723,8721,8715,8725,8717,8680,8670,8686,8673,8685,8679,8682,8724,8684,8671,8681,8719,8654,8727,8644,8619,8713,8635,8676,13021,13022,13023,13066,13065,13017,13067,13029,13012,13033,13016,13018,13024,13026,13014,13031,13019,13028,13015,13020,13032,13027,13013,13030,13025,8646,8866,8718,8648,8677,8678,8868"},
 	},
 	["EVENTS\\Feast of Winter Veil\\Feast of Winter Veil Quests"] = {
 		{ids="6983", cond_if=[[level >= 30 and not completedq(6984) ]]},
@@ -15250,34 +15461,53 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["EVENTS\\Feast of Winter Veil\\Achievements\\'Tis the Season"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Timber Lord"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
-		{ids="29219,29220,29221,29222,29223,29226,29227,29228,29230,29231,29232,29268,33137"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Dwarfstalker"] = {
+		{ids="36924"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
+		{ids="37082", cond_if=[[Horde ]]},
+		{ids="37082", cond_if=[[Alliance ]]},
+		{ids="37083"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
-		{ids="31439", cond_if=[[not completedq(31439) ]]},
-		{ids="31179", cond_if=[[not completedq(31179) ]]},
-		{ids="31354", cond_if=[[not completedq(31354) ]]},
-		{ids="31085", cond_if=[[not completedq(31085) ]]},
-		{ids="31211", cond_if=[[not completedq(31211) ]]},
-		{ids="31606", cond_if=[[not completedq(31606) ]]},
-		{ids="31009,31010", cond_if=[[not completedq(31010) ]]},
-		{ids="31026", cond_if=[[not completedq(31026) ]]},
-		{ids="31006", cond_if=[[not completedq(31006) ]]},
-		{ids="31398", cond_if=[[not completedq(31398) ]]},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Scourge of the Kaldorei"] = {
+		{ids="36932"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
-		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
-		{ids="30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
-		{ids="30523", cond_if=[[completedq(30516) and rep('The Tillers')>=Revered ]]},
-		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337", cond_if=[[completedq(32682) ]]},
-		{ids="30526", cond_if=[[repval('The Tillers','Revered')>=13000 ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30475,30471,30477,30478,30472,30470,30474,30476,30473,30479,30327,30319,30323,30324,30326,30317,30325,30321,30318,30322,30260,30516,31936,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Draenei Destroyer"] = {
+		{ids="36930"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Manslayer"] = {
+		{ids="36921"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
+	},
+	["TITLES\\Warlords of Draenor Titles\\Reputations\\Conservationist"] = {
+		{ids="37125", cond_if=[[itemcount(118100) >= 1 ]]},
+		{ids="37222", cond_if=[[itemcount(118657) >= 1 ]]},
+		{ids="37225", cond_if=[[itemcount(118660) >= 1 ]]},
+		{ids="37221", cond_if=[[itemcount(118656) >= 1 ]]},
+		{ids="37520", cond_if=[[itemcount(120172) >= 1 ]]},
+		{ids="37226", cond_if=[[itemcount(118661) >= 1 ]]},
+		{ids="37224", cond_if=[[itemcount(118659) >= 1 ]]},
+		{ids="37210", cond_if=[[itemcount(118654) >= 1 ]]},
+		{ids="37223", cond_if=[[itemcount(37223) >= 1 ]]},
+		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
+		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Worgen Hunter"] = {
+		{ids="36928"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
+		{ids="37082,37083"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Gnomebane"] = {
+		{ids="36926"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Terror of the Tushui"] = {
+		{ids="36934"},
 	},
 	["GOLD\\Farming\\Gromsblood"] = {
 	},
@@ -16171,6 +16401,21 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["LEVELING\\Legion (10-50)\\Paladin\\Paladin 7.2 Order Hall Quests"] = {
 		{ids="46765,47000,44782,44821,47022,45413,45414,45415,45843,45863,47052,45486,45522,45523,45524,45525,46340,45862,47006,46079,46082,46106,46080,46107,46200,45864,47137,45143,45890,46259,45145,45146,45147,45148,45149,46045,46251,46069,46070,46071,46083,40012,40326,41702,41704,41760,41762,41834,41989,42079,46074,45770"},
 	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Bastion"] = {
+		{ids="59262,59263,60660,59348,59351,59311,59865,57860,59207,57861,57875,57914,57966,57989,57967"},
+	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Maldraxxus"] = {
+		{ids="57316,57301"},
+	},
+	["ACHIEVEMENTS\\Expansion Features\\Covenant Sanctums\\The Gang's All Here"] = {
+		{ids="58665,58668"},
+	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Ardenweald"] = {
+		{ids="57661,60061,60062,60063,60064,60065,60066"},
+	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Revendreth"] = {
+		{ids="57919,57920,57921,57922,57923,57924,57925,57926,60127,57928,57927,60128,57929,58092"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Tiny Flamefly"] = {
 		{ids="28418,28417,28419,28420,28421,28422,28423,28424,28425,28426,28225,28226,28227,28427,28428,28429,28430,28431,28432,28433,28434,28435,28436,28437,28438,28439,28440,28441,28442,28491"},
 	},
@@ -16201,47 +16446,46 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="56491", cond_if=[[not completedq(56491) ]]},
 		{ids="56492", cond_if=[[completedq(56491) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
-		{ids="31001,31002,31003,31004,31005,31676,31006,31007,31660,31009,31008,31010,31661,31066,31108,31689,31107,31087,31019,31023,31020,31021,31022,31026,31088,31090,31089,31091,31359,31092,31398,31727,31730,31067,31068,31072,31069,31070,31071,31129,31076,31077,31074,31073,31133,31078,31075,31079,31080,31081,31082,31084,31085,31086,31265,31181,31182,31183,31185,31184,31187,31188,31186,31189,31190,31354,32030,31782,31175,31605,31176,31177,31178,31179,31606"},
+	["DAILIES\\Legion\\Antoran Wastes World Quests"] = {
+		{ids="48832,48837,48931,47561,49054,48867,48637,48831,48777,49055,47566,48780,48835,48640,48830,48828,48983,49057,47552,48875,48783,49058,49056,48467,48958,48833,48526,48662,48514,48691,48358,48360,48374,48952,48827,48466,48866,48465,49053,48836,48624,48349,48359,48834,48829"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
-		{ids="30079,30080,30082,30091,30081,30083,30084,30088,30089,30090,30133,30179,30352,30353,31262,31260,30124,30123,30127,30130,30129,30128,30131,30132,30269,30270,30694,30268,30695,30272,30271,30273,30163,30229,30230,30666,30667,30668,30669,30671,30691,30672,30674,30675,30168,30169,30175,30164,30174,30241,30653,30622,30623,30625,30626,30627,30628"},
+	["DAILIES\\Legion\\Azsuna World Quests"] = {
+		{ids="42119,42024,43803,42014,44784,41545,41286,42652,43805,41290,42165,45069,45203,44894,41495,41481,41482,41483,42022,46146,41529,43193,41438,46168,43091,44189,43121,44187,43175,43059,43079,44190,44191,43798,44192,43098,43027,44193,43063,44194,43040,43072,42146,44287,44054,42276,46169,43328,42711,44049,42723,42755,42746,42713,42712,42027,42026,41323,46161,41563,41564,41562,44044,44050,41514,41513,41515,41437,41289,46166,41455,41434,43804,42624,44737,42154,41611,41610,41265,42277,42021,41528,46165,46167,42101,42211,43325,42172,41500,45046,41527,41598,41599,41264,41454,43327,46164,44786,42105,44048,42275,46116,41896,42623,41268,41266,42108,42123,45058,41324,42063,41259,41551,41552,41435,41582,45134,44847,46162,41288,41315,41327,43192,46170,46163,42018,42019,42506,42159,42511,42160,41322,41663,42926,42636,43605,42620,43606,43426,43607,43430,43608,43428,43609,43427,43610,42631,43611,43432,43612,41703,43613,43429,42633,43614,43431,43615,43802,46263,42148,42112,42274,41287,41651,41639,41675,41267,41657,41311,41633,41645,41326,41669,44788"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
-		{ids="31856,31834,31840"},
+	["DAILIES\\Legion\\Stormheim World Quests"] = {
+		{ids="43964,42067,41948,45439,43951,41443,46006,41451,46008,42025,45072,41935,46010,41534,41489,41490,41336,41938,46011,46216,41984,46179,41950,43745,42820,42861,42864,42785,42806,42798,42964,42963,42991,42953,41444,43710,41459,44893,41794,41949,42173,43772,45786,46012,41568,41569,41570,41519,41521,41520,46013,41296,41547,41299,46014,41427,42004,42241,42243,42240,42239,43721,44923,42013,41275,41615,41614,46015,41944,43769,41506,41505,41507,45049,41274,41602,41603,46016,43771,42780,42757,42788,40278,44943,41958,43751,43752,41340,43786,41535,41460,41536,41925,42177,41926,42176,41276,41927,43722,42270,46017,42178,41300,41555,41556,41261,41278,41343,45390,42269,43827,41445,41442,41298,41317,41345,46264,46021,41342,42183,42182,41930,43963,41666,43454,43620,43434,43621,43436,43622,43453,43623,43452,43624,43438,43625,43437,43626,43450,43627,43451,43628,43598,43599,43600,43601,41297,41678,41313,41636,41654,41648,41660,41277,41344,41642,41672,41936"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
-		{ids="30814,30769,30770,30771,30773,30772,30774,30775,30776,30777,30786,30787,30788,30789,30815,30790,30791,30792,30793,30778,30779,30780,30781,30827,30783,30782,30784,30785,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30896,30897,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30977,31032,30978,30979,30980,31065,30981,31063,31064,31687,31688,30968,31656,30921,30923,30922,30963,30964,30924,30931,30932,30925,30929,30930,30926,30928,30927"},
+	["DAILIES\\Legion\\Dalaran World Quests"] = {
+		{ids="42442,40299,41881,41886,40298,42062,40277,46138,46137,46134,46139,46135,46136,41668,41662,41656,41680,41638,41650,41644,41674"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
-		{ids="29907,29908,29877,29909,30086,29873,29871,29875,29872,29940,29910,29911,29912,29913,29914,29915,29916,29917,29918,29919,29944,29945,29947,29946,29948,29949,29950,29577,30267,29757,30275,29600,29581,29758,32045,32035,30072,30059,30058,29951,29952,30046,30053,30048,30049,30051,30172,30050,30056,30054,30057,30052,30055,30031,30030,30029,30032,30028,30047,30073,30074,30076,30077,30075,30078,30117,29981,29982,29983,29984,29985,29986,29992,29987,29988,29989,29990,30183,30181,30182,30184,32038,30185,30186"},
+	["DAILIES\\Legion\\The Originals"] = {
+		{ids="47251,47254"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 90"] = {
-		{ids="31889,31844"},
+	["DAILIES\\Legion\\Broken Shore World Quests"] = {
+		{ids="45776,46308", cond=[[Rogue]]},
+		{ids="45653,46754", cond=[[Mage]]},
+		{ids="45929", cond=[[Shaman]]},
+		{ids="46209,45473,46932,45988,47061,45694,46105,46750,45520,45559,45542,46073,46761,46811,46947,46068,45805,46201,45035,46814,46865,46865,44846,45178,45358,46942,45837,45531,46821,45970,46829,46288,45878,45744,47132,46126,46933,45934,46197,46072,46198,46212,45985,45541,46066,46112,46113,46111,45472,46046,46948,46707,46756,46825,46833,44751,45792,45793,46752,45797,46180,46075,46076,46175,46001,45550,45549,45626,46160,46945,46360,46109,46236,46032,46866,45379,46325,45973,46063,45791,45930,45977,44748"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 80"] = {
-		{ids="31861,31839,31846"},
+	["DAILIES\\Legion\\Val'sharah World Quests"] = {
+		{ids="45924,45922,44033,45070,42080,43711,43712,43642,43762,43714,41961,42023,41955,42075,41484,41486,41487,41273,41532,42174,43738,43344,43346,43345,42870,43152,42927,43333,43347,41700,43101,41995,42745,42743,42714,42744,42742,41860,44884,41546,41291,41295,46763,43756,41439,46265,41567,41566,41565,41516,41518,41517,41294,41533,45928,45923,42087,43332,42124,41613,41612,41270,45804,42028,41271,41531,42150,43753,41504,45047,41530,41600,41601,44011,41965,43755,41440,41861,41334,45925,41862,42145,41956,42819,41964,41337,43336,41457,43324,44730,41496,41333,43709,42076,44895,41553,41554,41260,42779,41855,41293,41316,41339,41996,46261,41980,45921,40279,41992,46766,44759,41664,42077,44301,44305,44299,44304,44298,44303,43460,43629,43630,43458,44300,44302,43456,43631,43632,43457,43459,43633,43248,43247,42070,43183,43784,43759,43758,42190,41652,41292,41312,41634,41272,41676,41646,41338,41658,41640,41670,45927,45926"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 70"] = {
-		{ids="31860,31838,31845"},
+	["DAILIES\\Legion\\Suramar World Quests"] = {
+		{ids="42859,42969,42111,43445,43512,44802,41283,43639,43640,43638,44769,44780,45068,43435,41493,41492,41491,41447,41990,45307,41914,42151,44067,44867,44816,42769,42781,42784,42783,42764,44856,44113,44118,44121,41697,44114,42799,42797,44122,44119,41446,44801,43778,41347,42089,41573,41572,41571,41508,41352,41522,41523,41524,43930,41304,40337,43932,42209,41448,44811,42071,41617,41616,41280,44805,41538,42169,44813,43774,43583,44744,45032,41279,41605,41604,41537,43777,41931,41895,42880,43513,41305,44934,44937,44935,44938,44939,44936,44857,42106,42830,41349,44812,44799,42962,42725,42082,44815,42090,41557,41558,41262,41539,41301,41548,43959,44817,42082,41318,41303,41351,42015,44002,43814,41667,41346,44017,44032,44186,42796,44016,44031,44013,44030,44021,44029,44019,44028,44018,44027,44015,44026,44010,44025,42795,44185,44022,44024,44012,44023,43943,44158,43807,44157,41643,41679,41314,41637,41655,41282,41649,41661,41302,41350,41673"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 60"] = {
-		{ids="31859,31837,31844"},
+	["DAILIES\\Legion\\Mac'Aree World Quests"] = {
+		{ids="48729,48701,47705,49047,48101,47456,48727,48739,48096,49051,48095,48100,48722,47135,48098,48097,48103,49049,48731,48175,48099,48737,48733,48386,48698,49052,47828,48106,48734,48736,48735,48105,47844,48732,48102,48953,48959,48985,48957,48951,47858,49050,47833,48740,49048,48936,48694,48730,48726,48728,48725,48724,48723,48094,48696,48738"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
-		{ids="31255,31286,31287,31285,30457,30460,30459,30511,30513,30469,30467,30468,30496,30967,30834,30480,30828,30855,31393,30515,31256,31251,30570,30620,30594,30571,30581,31253,30595,30655,30656,30657,30661,31453,31695,31457,31459,30488,30489,30491,30587,30582,30804,30492,30808,30614,30616,30617,30999,30601,30618,30621,30487,30683,30684,31306,30829,30795,30796,30797,30799,30798,30800,30801,30802,30935,31395,31511,30944,30816,30943,30942,30945,31011,30946,31228,30794,30805,30806,30807,30819,30820,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30744,30745,30742,30743,30746,30747,30670,30665,30682,30690,30699,30723,30715,30724,30750,30751,30994,30991,30992,30993,30752"},
+	["DAILIES\\Legion\\World Quests Unlock Quest Line"] = {
+		{ids="45727,43341,44720,44771,44721"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 50"] = {
-		{ids="31858,31836,31843"},
+	["DAILIES\\Legion\\Highmountain World Quests"] = {
+		{ids="43985,41705,41026,46191,45071,40978,40951,40925,40980,41308,41310,46193,41208,41209,41210,41203,41706,41233,41526,41238,41623,46196,46183,41699,41622,41095,41202,41685,41695,41093,41696,41686,41816,41013,41024,43767,39424,41239,41561,41560,42086,41512,41511,41225,41432,41219,41544,41228,43448,41014,46184,41701,41127,44746,41609,41243,42064,46185,46186,46187,43764,41196,45048,41597,41596,41244,41089,41090,41091,43766,41433,41253,41122,41076,41077,41078,41866,41864,41865,41211,41857,46188,39462,41055,41057,40850,41416,41789,41144,41025,40966,41624,41200,46262,41691,41234,46189,41692,41242,41549,41550,41687,44892,40920,41207,41237,46195,41232,40896,44823,40282,40280,46190,41011,41428,41665,41824,44289,41836,43616,41828,44290,41826,44291,43455,43617,41819,43618,41818,44292,41844,41986,44294,41821,43619,41838,44293,41227,41257,41420,41421,41145,41321,41414,41525,41252,41766,46194,41677,41659,41641,41223,41240,41206,41635,41647,41653,41235,41671,46192,46279"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 40"] = {
-		{ids="31857,31835,31842"},
+	["DAILIES\\Legion\\Krokuun World Quests"] = {
+		{ids="48285,49043,47724,47496,47624,48511,48509,48510,48286,49045,47712,47720,49042,49046,48287,48592,48282,47507,47551,47707,48502,48284,49044,47625,47646,49041,47542,48512,47563,48338,47728,48192,47953,48091,48615,48614,48337"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
-		{ids="31840,31841,31842,31843,31844,31845,31846"},
-	},
-	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
-		{ids="29611,31853,29690,31765,31766,31767,31768,31769,31770,29694,31771,31772,31773,31774,29765,29743,29804,31775,31776,31778,31777,31779,31999,29815,29821,31112,29827,29822,31121,31132,31134,31152,31167,29879,29935,29933,29924,31241,31261,29936,29941,29937,31239,29939,29942,29971,29730,29731,29823,29824,29943,29968,29966,29967,30015,31230,29716,29865,29866,29717,29723,29993,29925,29995,29881,29882,29920,29928,29926,29927,29745,29747,29748,29749,29751,29750,29752,29753,29756,29754,29755,29618,29619,29620,29622,29626,29632,29633,29634,29635,29636,29627,29628,29629,29630,29623,29624,29637,29631,29646,29929,29930,29931,30495,29932,29997,29998,29999,30005,30001,30002,30004,30011,30000,30499,30484,30466,30485,31303,30500,30502,30504,30648,29578,29579,29585,29580,29586,29587,29670"},
+	["DAILIES\\Legion\\Broken Shore Rares"] = {
 	},
 	["GOLD\\Farming\\Embersilk Cloth"] = {
 	},
@@ -16384,185 +16628,90 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["GOLD\\Farming\\Righteous Orb, Mageweave Cloth"] = {
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
-		{ids="47441,47442,50332,50381,50901,50444"},
+	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
+		{ids="31001,31002,31003,31004,31005,31676,31006,31007,31660,31009,31008,31010,31661,31066,31108,31689,31107,31087,31019,31023,31020,31021,31022,31026,31088,31090,31089,31091,31359,31092,31398,31727,31730,31067,31068,31072,31069,31070,31071,31129,31076,31077,31074,31073,31133,31078,31075,31079,31080,31081,31082,31084,31085,31086,31265,31181,31182,31183,31185,31184,31187,31188,31186,31189,31190,31354,32030,31782,31175,31605,31176,31177,31178,31179,31606"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
-		{ids="55530,56211"},
+	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
+		{ids="30079,30080,30082,30091,30081,30083,30084,30088,30089,30090,30133,30179,30352,30353,31262,31260,30124,30123,30127,30130,30129,30128,30131,30132,30269,30270,30694,30268,30695,30272,30271,30273,30163,30229,30230,30666,30667,30668,30669,30671,30691,30672,30674,30675,30168,30169,30175,30164,30174,30241,30653,30622,30623,30625,30626,30627,30628"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Most Efficient Apocalypse"] = {
-		{ids="50665"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
+		{ids="31856,31834,31840"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax"] = {
-		{ids="50860,51147", cond_if=[[not havequest(50930) and not havequest(50841) ]]},
-		{ids="50801,50798", cond_if=[[not havequest(50791) and not havequest(50796) ]]},
-		{ids="50838,51146,50842", cond_if=[[not havequest(52317) and not havequest(50839) ]]},
-		{ids="50394,50402,52305,50791,50796,50395,50401,50412,52447,52317,50839,50396,50886,50887,50900,52748,50930,50841,50397,50940,50942,50943,50944"},
+	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
+		{ids="30814,30769,30770,30771,30773,30772,30774,30775,30776,30777,30786,30787,30788,30789,30815,30790,30791,30792,30793,30778,30779,30780,30781,30827,30783,30782,30784,30785,30884,30891,30887,30888,30890,30889,30960,30893,30892,30894,30895,30896,30897,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30977,31032,30978,30979,30980,31065,30981,31063,31064,31687,31688,30968,31656,30921,30923,30922,30963,30964,30924,30931,30932,30925,30929,30930,30926,30928,30927"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
+	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
+		{ids="29907,29908,29877,29909,30086,29873,29871,29875,29872,29940,29910,29911,29912,29913,29914,29915,29916,29917,29918,29919,29944,29945,29947,29946,29948,29949,29950,29577,30267,29757,30275,29600,29581,29758,32045,32035,30072,30059,30058,29951,29952,30046,30053,30048,30049,30051,30172,30050,30056,30054,30057,30052,30055,30031,30030,30029,30032,30028,30047,30073,30074,30076,30077,30075,30078,30117,29981,29982,29983,29984,29985,29986,29992,29987,29988,29989,29990,30183,30181,30182,30184,32038,30185,30186"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Scavenge like a Vulpera"] = {
-		{ids="54415"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 90"] = {
+		{ids="31889,31844"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
-		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55609"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 80"] = {
+		{ids="31861,31839,31846"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Final Seal"] = {
-		{ids="50954"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 70"] = {
+		{ids="31860,31838,31845"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 60"] = {
+		{ids="31859,31837,31844"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\It's Really Getting Out of Hand"] = {
-		{ids="50559"},
+	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
+		{ids="31255,31286,31287,31285,30457,30460,30459,30511,30513,30469,30467,30468,30496,30967,30834,30480,30828,30855,31393,30515,31256,31251,30570,30620,30594,30571,30581,31253,30595,30655,30656,30657,30661,31453,31695,31457,31459,30488,30489,30491,30587,30582,30804,30492,30808,30614,30616,30617,30999,30601,30618,30621,30487,30683,30684,31306,30829,30795,30796,30797,30799,30798,30800,30801,30802,30935,31395,31511,30944,30816,30943,30942,30945,31011,30946,31228,30794,30805,30806,30807,30819,30820,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30744,30745,30742,30743,30746,30747,30670,30665,30682,30690,30699,30723,30715,30724,30750,30751,30994,30991,30992,30993,30752"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Hungry, Hungry Ranishu"] = {
-		{ids="52798"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 50"] = {
+		{ids="31858,31836,31843"},
 	},
-	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
-		{ids="53168", cond_if=[[not achieved(13127,14) ]]},
-		{ids="53171", cond_if=[[not achieved(13127,11) ]]},
-		{ids="53169", cond_if=[[not achieved(13127,13) ]]},
-		{ids="53184", cond_if=[[not achieved(13127,1) ]]},
-		{ids="53167", cond_if=[[not achieved(13127,15) ]]},
-		{ids="53155", cond_if=[[not achieved(13127,20) ]]},
-		{ids="53170", cond_if=[[not achieved(13127,12) ]]},
-		{ids="53181", cond_if=[[not achieved(13127,4) ]]},
-		{ids="53178", cond_if=[[not achieved(13127,6) ]]},
-		{ids="53163", cond_if=[[not achieved(13127,17) ]]},
-		{ids="53164", cond_if=[[not achieved(13127,16) ]]},
-		{ids="53177", cond_if=[[not achieved(13127,7) ]]},
-		{ids="53161", cond_if=[[not achieved(13127,18) ]]},
-		{ids="53174", cond_if=[[not achieved(13127,9) ]]},
-		{ids="53172", cond_if=[[not achieved(13127,10) ]]},
-		{ids="53160", cond_if=[[not achieved(13127,19) ]]},
-		{ids="53183", cond_if=[[not achieved(13127,2) ]]},
-		{ids="53180", cond_if=[[not achieved(13127,5) ]]},
-		{ids="53176", cond_if=[[not achieved(13127,8) ]]},
-		{ids="53182", cond_if=[[not achieved(13127,3) ]]},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 40"] = {
+		{ids="31857,31835,31842"},
 	},
-	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
-		{ids="53955"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
+		{ids="31840,31841,31842,31843,31844,31845,31846"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
+	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
+		{ids="29611,31853,29690,31765,31766,31767,31768,31769,31770,29694,31771,31772,31773,31774,29765,29743,29804,31775,31776,31778,31777,31779,31999,29815,29821,31112,29827,29822,31121,31132,31134,31152,31167,29879,29935,29933,29924,31241,31261,29936,29941,29937,31239,29939,29942,29971,29730,29731,29823,29824,29943,29968,29966,29967,30015,31230,29716,29865,29866,29717,29723,29993,29925,29995,29881,29882,29920,29928,29926,29927,29745,29747,29748,29749,29751,29750,29752,29753,29756,29754,29755,29618,29619,29620,29622,29626,29632,29633,29634,29635,29636,29627,29628,29629,29630,29623,29624,29637,29631,29646,29929,29930,29931,30495,29932,29997,29998,29999,30005,30001,30002,30004,30011,30000,30499,30484,30466,30485,31303,30500,30502,30504,30648,29578,29579,29585,29580,29586,29587,29670"},
 	},
-	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Vulpera"] = {
-		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,54036,53906,53907,53908,57448"},
+	["DAILIES\\Warlords of Draenor Dailies\\High Overlord Saurfang Dailies"] = {
+		{ids="37780,37781,37784,37785,37786,37787,37782,37783,37757,37765,37758,37764,37762,37763,37756,37780,37781,37784,37785,37786,37787,37782,37783,37757,37765,37758,37764,37762,37763,37756", cond_if=[[garrisonlvl(4) ]]},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for AzerothPet Battle Challenge: Blackrock Depths"] = {
-		{ids="58456,58457"},
+	["DAILIES\\Warlords of Draenor Dailies\\Garrison Building Dailies"] = {
+		{ids="36802,36803,36804,36805,39283,36800,36806,38406", cond_if=[[hasfollower(202) ]]},
+		{ids="35075,35074,35073,35072,35066,35071,37320,37321,37323,37324,37325", cond_if=[[garrisonlvl(5) ]]},
+		{ids="36662", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
+		{ids="37645", cond_if=[[hasbuilding(168) ]]},
+		{ids="37270,37043,38188,38300"},
 	},
-	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
-		{ids="57249,57298"},
+	["DAILIES\\Warlords of Draenor Dailies\\Garrison Assault Daily Quests"] = {
+		{ids="36695,36701,36696,36697,36669,36694,36693,36692,36689,36691,36690,36688,36807,36667,40941,40943,38187,38180,38181,38182,38183,38177,38176,38179,38178,38186,38185,38184"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Zandalar Forever!"] = {
-		{ids="50954"},
+	["DAILIES\\Warlords of Draenor Dailies\\Shadow Hunter Ty'jin Daily Quests"] = {
+		{ids="37813,37814,37817,37816,37818,37815,37949,37813,37814,37817,37816,37818,37815,37949", cond_if=[[garrisonlvl(4) ]]},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
-		{ids="56181,56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
+	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\The Saberstalkers"] = {
+		{ids="39529,39565"},
 	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Unbound Monstrosities"] = {
-		{ids="52166,52157,52181,52169,52196,52163"},
+	["DAILIES\\Warlords of Draenor Dailies\\Battle Pets Dailies"] = {
+		{ids="37645", cond_if=[[hasbuilding(168) ]]},
+		{ids="36662", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
+		{ids="37201,37203,37207,37205,37208,37206,38300"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
+	["DAILIES\\Warlords of Draenor Dailies\\Harrison Jones Treasure Contracts"] = {
+		{ids="37849,37850,37851,37993,37976,37977,37978,37997,37882,37883,37884,37994,37916,37917,37918,37995,37797,37798,37799,37992,37942,37943,37944,37996"},
+		{ids="37848,37973,37881,37914,37788,37941,37848,37973,37881,37914,37788,37941", cond_if=[[garrisonlvl(4) ]]},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
+	["DAILIES\\Warlords of Draenor Dailies\\Frostwall Tavern Dungeon Dailies"] = {
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Spirits Be With You"] = {
-		{ids="51513,51514,51533,51515,52114,52113,51516,51517,51518,51519,51520,51521"},
+	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Order of the Awakened Dailies"] = {
+		{ids="39433"},
 	},
-	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
-		{ids="55517,55452,55455,55456,55454,55451,55463,55457"},
+	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Vol'jin's Headhunters Dailies"] = {
+		{ids="39444", cond_if=[[not completedq(39526,1) and not completedq(38047) ]]},
+		{ids="39450", cond_if=[[not completedq(39526,1) and not completedq(38449) ]]},
+		{ids="39448", cond_if=[[not completedq(39526,1) and not completedq(38252) ]]},
+		{ids="37940,38044,38047,38252,38441,38449,38586,39526,39514,39513,39512,39511,39510,39509,39519,39532"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Bargain of Blood"] = {
-		{ids="47199,47200,47198,47201,47205,47204,47229,47258"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
-		{ids="55064,55534,56515,56516,56517,56518,56519"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\By de Power of de Loa!"] = {
-		{ids="51232"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Adventurer of Stormsong Valley"] = {
-		{ids="52299"},
-	},
-	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
-		{ids="57249,57300"},
-	},
-	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
-		{ids="51465"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
-		{ids="54090"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Zandalari Spycatcher"] = {
-		{ids="50717"},
-	},
-	["ACHIEVEMENTS\\Player vs. Player\\Battle for Azeroth\\Azerfighter"] = {
-		{ids="53769"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
-		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
-	},
-	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Zandalari Curator"] = {
-		{ids="51950", cond_if=[[not completedq(51950) ]]},
-		{ids="51952", cond_if=[[not completedq(51952) ]]},
-		{ids="51936", cond_if=[[not completedq(51936) ]]},
-		{ids="51932", cond_if=[[not completedq(51932) ]]},
-		{ids="51953", cond_if=[[not completedq(51953) ]]},
-		{ids="51934", cond_if=[[not completedq(51934) ]]},
-		{ids="51937", cond_if=[[not completedq(51937) ]]},
-		{ids="51926", cond_if=[[not completedq(51926) ]]},
-		{ids="51929", cond_if=[[not completedq(51929) ]]},
-		{ids="51955", cond_if=[[not completedq(51955) ]]},
-		{ids="51951", cond_if=[[not completedq(51951) ]]},
-		{ids="51954", cond_if=[[not completedq(51954) ]]},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\About To Break"] = {
-		{ids="53108"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Revenge is Best Served Speedily"] = {
-		{ids="50786"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Vorrik's Champion"] = {
-		{ids="51957,51995"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax (Part Two)"] = {
-		{ids="56205"},
-	},
-	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
-		{ids="55309,55299,55310,55306,55307,55313,55308,55305,55311,55312"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Phenomenal Cosmic Power"] = {
-		{ids="53435,53435,53435,53435", cond_if=[[not completedq(53435) ]]},
-		{ids="56500,56433,56148,55080,53435,56401"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bless the Rains Down in Freehold"] = {
-		{ids="53196"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
-		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Doomsoul Surprise"] = {
-		{ids="54689"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Shadow Hunter"] = {
-		{ids="53774,53775,53776,53778,54120,53777,53779,54145,53780,53781,54147,53782"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Sabertron Assemble"] = {
-		{ids="51974"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bow to Your Masters"] = {
-		{ids="47441"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Pushing the Payload"] = {
-		{ids="54505"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Adept Sandfisher"] = {
-		{ids="51173"},
+	["DAILIES\\Warlords of Draenor Dailies\\Fishing Dailies"] = {
+		{ids="36802,36803,36804,36805,39283,36800,36806,38406", cond_if=[[hasfollower(202) ]]},
+		{ids="35072,35066,35073,35075,35074,35071"},
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Vendor Mounts\\Crimson Water Strider"] = {
 	},
@@ -16659,60 +16808,6 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Garrison Mounts\\Giant Coldsnout"] = {
 		{ids="40941"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wriggling Parasite"] = {
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Highmountain Thunderhoof"] = {
-		{ids="50254", cond_if=[[completedq(49614) ]]},
-		{ids="49930,50242,48066,48067,49756,48079,41884,41764,48185,41799,48190,41800,48434,41815,41840,41882,41841,48403,48433"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\Undercity Plaguebat"] = {
-		{ids="50476,50642,50646,50647,50738,50740,50772,50800,50823,50837,50880,53604,53605,50878,50879,52436,53606,52437,53608,53609,53627,52438,52806,52967,52970,53610,52971,52981"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Quest Mounts\\Snapdragon Kelpstalker"] = {
-		{ids="56214"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Caravan Hyena"] = {
-		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,54036,53906,53907,53908,57448"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wonderwing 2.0"] = {
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\X-995 Mechanocat"] = {
-		{ids="55056"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Scrapforged Mechaspider"] = {
-		{ids="56328", cond_if=[[not completedq(55707) ]]},
-		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55101,56740,55708,55608,55707,55153,55210,56320,56320,54086,54929,55373,55697,54922,56168,56117,54083,56175,55696,55753,55622"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Nightborne Manasaber"] = {
-		{ids="50254", cond_if=[[completedq(48433) ]]},
-		{ids="49930,50242,49973,49613,49354,49614"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Quest Mounts\\Springfur Alpaca"] = {
-		{ids="58879,58887"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Frostwolf Snarler"] = {
-		{ids="57249,57300"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Child of Torcali"] = {
-		{ids="55250,55249", cond_if=[[not havequest(55251) and not havequest(55243) and not havequest(55248) ]]},
-		{ids="55245,55244", cond_if=[[not havequest(55243) and not havequest(55246) ]]},
-		{ids="47514,49615,50835,46926,46846,48452,48454,46929,46927,46928,50881,50538,47226,47259,48527,47311,47272,47312,51990,51998,47418,47261,48581,47310,47260,52855,52857,55254,55252,55253,55258,55251,55243,55248,55462,55504,55503,55506,55505,55507,55243,55246,55245,55247,55795,55796,55797,55798"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Obsidian Worldbreaker"] = {
-		{ids="57249,57298"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Dropped Mounts\\Uncorrupted Voidwing"] = {
-		{ids="58876"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Awakened Mindborer"] = {
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Blizzard Store Mounts\\Ensorcelled Everwyrm"] = {
-		{ids="57686"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Shadowbarb Drone (Beta)"] = {
-		{ids="58804,58808,58805,58806,58807,58804,58808,58805,58806,58807,58810,58812,58825,58818,58813,58858,58826,58817,58812,58825,58818,58813,58858,58826,58817,58829,58830,58860,58859,58861,58862,58831,58830,58860,58859,58861,58862,58831,58863", cond_if=[[questpossible ]]},
-		{ids="58802,58803,58811,58865,58866"},
 	},
 	["PETSMOUNTS\\Hunter Pets\\Legion Pets\\Mechanical Pets\\Mechanostriders\\Blue-Purple Mechanostrider"] = {
 		{ids="4601,4603"},
@@ -17006,6 +17101,60 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["TITLES\\Legion Titles\\PVP\\Talon's Vengeance"] = {
 		{ids="44990,44993,44996,44998,45000,45002,45004,45006,45008,45010,45012,45016,45018,45020,44989,44994,44995,44997,44999,45001,45003,45005,45007,45009,45011,45013,45015,45017,45019,44948,44971,44950,44953,44954,44956,44957,44958,44959,44960,44961,44962,44967,44968,44969,44973,44975,44976,44977,44978,44979,44980,44981,44982,44983,44984,44985,44986,44987,44988"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wriggling Parasite"] = {
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Highmountain Thunderhoof"] = {
+		{ids="50254", cond_if=[[completedq(49614) ]]},
+		{ids="49930,50242,48066,48067,49756,48079,41884,41764,48185,41799,48190,41800,48434,41815,41840,41882,41841,48403,48433"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\Undercity Plaguebat"] = {
+		{ids="50476,50642,50646,50647,50738,50740,50772,50800,50823,50837,50880,53604,53605,50878,50879,52436,53606,52437,53608,53609,53627,52438,52806,52967,52970,53610,52971,52981"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Quest Mounts\\Snapdragon Kelpstalker"] = {
+		{ids="56214"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Caravan Hyena"] = {
+		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,54036,53906,53907,53908,57448"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wonderwing 2.0"] = {
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\X-995 Mechanocat"] = {
+		{ids="55056"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Scrapforged Mechaspider"] = {
+		{ids="56328", cond_if=[[not completedq(55707) ]]},
+		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55101,56740,55708,55608,55707,55153,55210,56320,56320,54086,54929,55373,55697,54922,56168,56117,54083,56175,55696,55753,55622"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Nightborne Manasaber"] = {
+		{ids="50254", cond_if=[[completedq(48433) ]]},
+		{ids="49930,50242,49973,49613,49354,49614"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Quest Mounts\\Springfur Alpaca"] = {
+		{ids="58879,58887"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Frostwolf Snarler"] = {
+		{ids="57249,57300"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Child of Torcali"] = {
+		{ids="55250,55249", cond_if=[[not havequest(55251) and not havequest(55243) and not havequest(55248) ]]},
+		{ids="55245,55244", cond_if=[[not havequest(55243) and not havequest(55246) ]]},
+		{ids="47514,49615,50835,46926,46846,48452,48454,46929,46927,46928,50881,50538,47226,47259,48527,47311,47272,47312,51990,51998,47418,47261,48581,47310,47260,52855,52857,55254,55252,55253,55258,55251,55243,55248,55462,55504,55503,55506,55505,55507,55243,55246,55245,55247,55795,55796,55797,55798"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Obsidian Worldbreaker"] = {
+		{ids="57249,57298"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Dropped Mounts\\Uncorrupted Voidwing"] = {
+		{ids="58876"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Awakened Mindborer"] = {
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Blizzard Store Mounts\\Ensorcelled Everwyrm"] = {
+		{ids="57686"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Shadowbarb Drone (Beta)"] = {
+		{ids="58804,58808,58805,58806,58807,58804,58808,58805,58806,58807,58810,58812,58825,58818,58813,58858,58826,58817,58812,58825,58818,58813,58858,58826,58817,58829,58830,58860,58859,58861,58862,58831,58830,58860,58859,58861,58862,58831,58863", cond_if=[[questpossible ]]},
+		{ids="58802,58803,58811,58865,58866"},
 	},
 	["GOLD\\Farming\\Jawless Skulker Flesh/Crescent Saberfish Flesh (Garrison)"] = {
 	},
@@ -17402,54 +17551,6 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
 		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Timber Lord"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Dwarfstalker"] = {
-		{ids="36924"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
-		{ids="37082", cond_if=[[Horde ]]},
-		{ids="37082", cond_if=[[Alliance ]]},
-		{ids="37083"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Scourge of the Kaldorei"] = {
-		{ids="36932"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Draenei Destroyer"] = {
-		{ids="36930"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Manslayer"] = {
-		{ids="36921"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Reputations\\Conservationist"] = {
-		{ids="37125", cond_if=[[itemcount(118100) >= 1 ]]},
-		{ids="37222", cond_if=[[itemcount(118657) >= 1 ]]},
-		{ids="37225", cond_if=[[itemcount(118660) >= 1 ]]},
-		{ids="37221", cond_if=[[itemcount(118656) >= 1 ]]},
-		{ids="37520", cond_if=[[itemcount(120172) >= 1 ]]},
-		{ids="37226", cond_if=[[itemcount(118661) >= 1 ]]},
-		{ids="37224", cond_if=[[itemcount(118659) >= 1 ]]},
-		{ids="37210", cond_if=[[itemcount(118654) >= 1 ]]},
-		{ids="37223", cond_if=[[itemcount(37223) >= 1 ]]},
-		{ids="37211", cond_if=[[itemcount(118655) >= 1 ]]},
-		{ids="35147", cond_if=[[itemcount(118099) >= 20 ]]},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Worgen Hunter"] = {
-		{ids="36928"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
-		{ids="37082,37083"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Gnomebane"] = {
-		{ids="36926"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Terror of the Tushui"] = {
-		{ids="36934"},
-	},
 	["REPUTATIONS\\Burning Crusade Reputations\\Netherwing\\Netherwing Reputation (Friendly) - Pre-Quests"] = {
 		{ids="11053,11075,11054,11083,11081,11082"},
 	},
@@ -17648,6 +17749,41 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["REPUTATIONS\\Burning Crusade Reputations\\Netherwing\\Netherwing Reputation (Honored) - Pre-Quests"] = {
 		{ids="11084,11063,11064,11067,11068,11069,11070,11071"},
 	},
+	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
+	},
+	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
+		{ids="29219,29220,29221,29222,29223,29226,29227,29228,29230,29231,29232,29268,33137"},
+	},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
+	},
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
+		{ids="31439", cond_if=[[not completedq(31439) ]]},
+		{ids="31179", cond_if=[[not completedq(31179) ]]},
+		{ids="31354", cond_if=[[not completedq(31354) ]]},
+		{ids="31085", cond_if=[[not completedq(31085) ]]},
+		{ids="31211", cond_if=[[not completedq(31211) ]]},
+		{ids="31606", cond_if=[[not completedq(31606) ]]},
+		{ids="31009,31010", cond_if=[[not completedq(31010) ]]},
+		{ids="31026", cond_if=[[not completedq(31026) ]]},
+		{ids="31006", cond_if=[[not completedq(31006) ]]},
+		{ids="31398", cond_if=[[not completedq(31398) ]]},
+	},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
+	},
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
+		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
+		{ids="30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
+		{ids="30523", cond_if=[[completedq(30516) and rep('The Tillers')>=Revered ]]},
+		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,31675,31674,31943,31671,30337", cond_if=[[completedq(32682) ]]},
+		{ids="30526", cond_if=[[repval('The Tillers','Revered')>=13000 ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30475,30471,30477,30478,30472,30470,30474,30476,30473,30479,30327,30319,30323,30324,30326,30317,30325,30321,30318,30322,30260,30516,31936,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	},
+	["PROFESSIONS\\Mining\\Leveling Guides\\Mining 1-300"] = {
+		{ids="29518"},
+	},
+	["PROFESSIONS\\Cooking\\Leveling Guides\\Cooking 1-300"] = {
+		{ids="8307,8313"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Undead Pets\\Ghastly Kid"] = {
 		{ids="37248,37645,37644"},
 	},
@@ -17698,6 +17834,12 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Iron Starlette"] = {
 		{ids="35745,35746,36382,35748,35744,36292,35751,35750,35761,35760,35762,35764,35763,36940"},
 	},
+	["REPUTATIONS\\Battle for Azeroth\\Uldum Accord"] = {
+		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58991,58636,58638,58639,58646,58640,58641,58642,58643,58645,58645"},
+	},
+	["REPUTATIONS\\Battle for Azeroth\\Rajani"] = {
+		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58991,56377,56536,56537,56538,56539,56771,56540,56541,56542,58737,57067,57068,57069,57070,57071,57072,57074,57075,57076"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Battle Pet Dungeons\\Gnomeregan"] = {
 		{ids="54186", cond_if=[[completedq(54185) ]]},
 		{ids="54185", cond_if=[[not completedq(54185) ]]},
@@ -17712,23 +17854,6 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="56492", cond_if=[[completedq(56491) ]]},
 		{ids="56491", cond_if=[[not completedq(56491) ]]},
 		{ids="56490"},
-	},
-	["PROFESSIONS\\Mining\\Leveling Guides\\Mining 1-300"] = {
-		{ids="29518"},
-	},
-	["PROFESSIONS\\Cooking\\Leveling Guides\\Cooking 1-300"] = {
-		{ids="8307,8313"},
-	},
-	["REPUTATIONS\\Battle for Azeroth\\Uldum Accord"] = {
-		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58991,58636,58638,58639,58646,58640,58641,58642,58643,58645,58645"},
-	},
-	["REPUTATIONS\\Battle for Azeroth\\Rajani"] = {
-		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58991,56377,56536,56537,56538,56539,56771,56540,56541,56542,58737,57067,57068,57069,57070,57071,57072,57074,57075,57076"},
-	},
-	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
-		{ids="37645", cond_if=[[hasbuilding(168) ]]},
-		{ids="36662", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
-		{ids="37201,37203,37207,37205,37208,37206,38300"},
 	},
 	["PETSMOUNTS\\Battle Pet Quests\\Beasts of Fable"] = {
 		{ids="32603"},
@@ -18018,6 +18143,36 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["LEVELING\\Classic (1-50)\\Eastern Kingdoms\\Northern Stranglethorn (10-50)"] = {
 		{ids="26278,26317,26279,26280,26321,26407,26281,9436,26298,26323,26299,26325,9457,26340,26300,26330,26338,26343,583,194,190,26269,185,26344,186,191,187,26345,188,192,195,196,26332,26301,197,193,26302,26334,26350,208,26399,26404,26351,26303,26400,26403,26305,26359,26360,26405,26352,26304,26362,26386"},
 	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Chi-Chi, Hatchling of Chi-Ji"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Rascal-Bot"] = {
+		{ids="32630"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Dragonkin Pets\\Yu'la, Broodling of Yu'lon"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Xu-Fu, Cub of Xuen"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Zao, Calfling of Niuzao"] = {
+		{ids="33137"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Pierre"] = {
+		{ids="32630"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
+		{ids="31752"},
+	},
 	["ACHIEVEMENTS\\General\\Pandaren Delicacies"] = {
 		{ids="31535"},
 	},
@@ -18213,49 +18368,6 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["ACHIEVEMENTS\\Professions\\Cooking\\Now I Am the Master"] = {
 		{ids="31281,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31302,31311,31470,31472,31475,31478,31479,31467,31480,31471,31477,31476,31474,31536,31535,31535,31332,30330,30332,30328,30329,30331,31332,31333,31334,31335,31336"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\High Overlord Saurfang Dailies"] = {
-		{ids="37780,37781,37784,37785,37786,37787,37782,37783,37757,37765,37758,37764,37762,37763,37756,37780,37781,37784,37785,37786,37787,37782,37783,37757,37765,37758,37764,37762,37763,37756", cond_if=[[garrisonlvl(4) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Garrison Building Dailies"] = {
-		{ids="36802,36803,36804,36805,39283,36800,36806,38406", cond_if=[[hasfollower(202) ]]},
-		{ids="35075,35074,35073,35072,35066,35071,37320,37321,37323,37324,37325", cond_if=[[garrisonlvl(5) ]]},
-		{ids="36662", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
-		{ids="37645", cond_if=[[hasbuilding(168) ]]},
-		{ids="37270,37043,38188,38300"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Garrison Assault Daily Quests"] = {
-		{ids="36695,36701,36696,36697,36669,36694,36693,36692,36689,36691,36690,36688,36807,36667,40941,40943,38187,38180,38181,38182,38183,38177,38176,38179,38178,38186,38185,38184"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Shadow Hunter Ty'jin Daily Quests"] = {
-		{ids="37813,37814,37817,37816,37818,37815,37949,37813,37814,37817,37816,37818,37815,37949", cond_if=[[garrisonlvl(4) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\The Saberstalkers"] = {
-		{ids="39529,39565"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Battle Pets Dailies"] = {
-		{ids="37645", cond_if=[[hasbuilding(168) ]]},
-		{ids="36662", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
-		{ids="37201,37203,37207,37205,37208,37206,38300"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Harrison Jones Treasure Contracts"] = {
-		{ids="37849,37850,37851,37993,37976,37977,37978,37997,37882,37883,37884,37994,37916,37917,37918,37995,37797,37798,37799,37992,37942,37943,37944,37996"},
-		{ids="37848,37973,37881,37914,37788,37941,37848,37973,37881,37914,37788,37941", cond_if=[[garrisonlvl(4) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Frostwall Tavern Dungeon Dailies"] = {
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Order of the Awakened Dailies"] = {
-		{ids="39433"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Vol'jin's Headhunters Dailies"] = {
-		{ids="39444", cond_if=[[not completedq(39526,1) and not completedq(38047) ]]},
-		{ids="39450", cond_if=[[not completedq(39526,1) and not completedq(38449) ]]},
-		{ids="39448", cond_if=[[not completedq(39526,1) and not completedq(38252) ]]},
-		{ids="37940,38044,38047,38252,38441,38449,38586,39526,39514,39513,39512,39511,39510,39509,39519,39532"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Fishing Dailies"] = {
-		{ids="36802,36803,36804,36805,39283,36800,36806,38406", cond_if=[[hasfollower(202) ]]},
-		{ids="35072,35066,35073,35075,35074,35071"},
 	},
 	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep: Utgarde Pinnacle"] = {
 		{ids="29864", cond_if=[[not completedq(29864) ]]},
@@ -18586,6 +18698,11 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="26870", cond_if=[[not completedq(26870) ]]},
 		{ids="26872,26873", cond_if=[[not completedq(26872) ]]},
 	},
+	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
+		{ids="37645", cond_if=[[hasbuilding(168) ]]},
+		{ids="36662", cond_if=[[hasbuilding(42) or hasbuilding(167) ]]},
+		{ids="37201,37203,37207,37205,37208,37206,38300"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Battle Pet Dungeons\\Wailing Caverns"] = {
 		{ids="45539", cond_if=[[completedq(45423) ]]},
 		{ids="45423", cond_if=[[not completedq(45423) ]]},
@@ -18693,7 +18810,7 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Questline"] = {
 		{ids="62693", cond_if=[[not completedq(62890) ]]},
-		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,57661,60061,60062,60063,60064,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58669,58647,59008,58704,58871,59725,59063,59068,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60192,60191,60193,60194,60108,62422,62560,62561"},
+		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,60136,61099,60267,62932,60268,60269,60270,60271,60272,57661,60061,60062,60063,60064,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58669,58647,59008,58704,58871,59725,59063,59068,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60192,60191,60193,60194,60108,62422,62560,62561"},
 		{ids="63214", cond_if=[[not havequest(63214) or completedq(63214) ]]},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Story Only)"] = {
@@ -18701,6 +18818,9 @@ ZGV.Quest_Cache_Accept_Horde = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Transport Network"] = {
 		{ids="63052,63053"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory"] = {
+		{ids="62624,63046,59862,59872,59873,59999,59871,62447,62467,60640,60641,60642"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Revendreth"] = {
 		{ids="57177,59211", cond_if=[[level < 60 ]]},
@@ -18732,14 +18852,23 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["LEVELING\\Shadowlands (50-60)\\Maldraxxus (Story Only)"] = {
 		{ids="57390,60020,60021,57425,57511,57512,60179,60181,57515,57514,58351,58617,60451,57516,58616,58618,58726,60428,60453,60461,60886,58751,59130,57912,58011,58016,58027,58036,58045,58031,59223,60831,59231,58821,59171,59172,59185,59210,59188,59190,59025,59009,57976,60557,58268,57979,59616,57983,57984,57985,57987,57986,57982,57993,57994,60733,59202,59874,59897,60972,59960,59959,59962,59966,59973,61190,62654,59974,59011,60737,59206"},
 	},
+	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
+		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Command Table"] = {
 		{ids="63054,59603,62309,62312,62313,62314,62315,62316"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Abomination Factory"] = {
+		{ids="63058,58665,58668,58680,58677,58686,59042,58670,58671,58727,60048,60041,60049,60042,60195"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor"] = {
 		{ids="63057,60722"},
 	},
-	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
-		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Path of Ascension"] = {
+		{ids="60489,60493,60494,60495,60496,60497,61473,60498,60946"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr The Ember Court"] = {
+		{ids="63065,59660,59661,61705,61706,61704,57919,57920,57921,57922,57923,57924,57925,57926,60127,57928,57927,60128,60236,61880,57929,57531,57532,57571,57533,57534,57535,59427,57536,61404,61884,61407,61882,61616"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Threads of Fate)"] = {
 		{ids="62737,62705,62732,62735,62736", cond_if=[[completedq(62716) ]]},
@@ -18754,17 +18883,17 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Questline"] = {
 		{ids="62694", cond_if=[[not completedq(62840) ]]},
 		{ids="63212", cond_if=[[not havequest(58609) or completedq(58609) ]]},
-		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,58665,62448,59555,58007,57649,59265,61226,61227,61230,61335,57644,61252,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,60184,59648,59650,59645,59653,59659,59678,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,60043,59916,61396,61180,60510,61412,60050,60044,61567,60114,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58472,58599,58608,58624,62388,61739,61740,61741,62414,61742,61743,61744,61745,62297,61746,61747,61748,61749,62317,61750,61751,62320,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
+		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,58665,60136,61099,60267,62932,60268,60269,60270,60271,60272,62448,59555,58007,57649,59265,61226,61227,61230,61335,57644,61252,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,60184,59648,59650,59645,59653,59659,59678,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,60043,59916,61396,61180,60510,61412,60050,60044,61567,60114,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58472,58599,58608,58624,62388,61739,61740,61741,62414,61742,61743,61744,61745,62297,61746,61747,61748,61749,62317,61750,61751,62320,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr Questline"] = {
 		{ids="63215", cond_if=[[not havequest(59314) or completedq(59314) ]]},
 		{ids="62691", cond_if=[[not completedq(62902) ]]},
-		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,60500,59701,61492,59706,59707,59708,59720,59711,59676,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,58428,58424,60673,58440,58444,61050,58530,58555,58584,58585,58586,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58392,58393,58394,58395,57727,57772,57771,60145,60265,60183,57729,57646,57531,57532,57571,57533,57534,57535,59427,57536,58406,58407,59325"},
+		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,60500,60136,61099,60267,62932,60268,60269,60270,60271,60272,59701,61492,59706,59707,59708,59720,59711,59676,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,58428,58424,60673,58440,58444,61050,58530,58555,58584,58585,58586,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58392,58393,58394,58395,57727,57772,57771,60145,60265,60183,57729,57646,57531,57532,57571,57533,57534,57535,59427,57536,58406,58407,59325"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Questline"] = {
 		{ids="62692", cond_if=[[not completedq(62791) ]]},
 		{ids="63211", cond_if=[[not havequest(63211) or completedq(63211) ]]},
-		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,58787,58788,58789,58790,58791,58948,58949,58950,58951,58792,58793,58795,58796,58797,58798,58175,58177,58179,58176,58180,58178,58182,58183,58181,61785,61767,61768,61769,61771,61770,61772,61774,61773,61775,61776,61777,61779,61778,61780,61781,61782,61876,61877,61878,58557,58558,58559,58560,58562,58561,58563,58564,58565,58567,58568,58566,58569,58570,58571,58775,58856,58832,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57115,57116,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919,62557"},
+		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,60136,61099,60267,62932,60268,60269,60270,60271,60272,58787,58788,58789,58790,58791,58948,58949,58950,58951,58792,58793,58795,58796,58797,58798,58175,58177,58179,58176,58180,58178,58182,58183,58181,61785,61767,61768,61769,61771,61770,61772,61774,61773,61775,61776,61777,61779,61778,61780,61781,61782,61876,61877,61878,58557,58558,58559,58560,58562,58561,58563,58564,58565,58567,58568,58566,58569,58570,58571,58775,58856,58832,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57115,57116,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919,62557"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Maldraxxus (Threads of Fate)"] = {
 		{ids="59430,59520,58431,60831,59231,62785,59781,59750,58068,58088,58090,58575,59800,58947,59879,59203,59837,58900,58785,58750,58794,57245,62605,58619,58621,59917,58620,58622,60900,59994,58623"},
@@ -18774,17 +18903,22 @@ ZGV.Quest_Cache_Accept_Horde = {
 		{ids="57026,57007,56829,57381,56942,56955,58433,56978,57174,58654,57178,57179,57161,57173,58931,58932,59021,57175,59023,57176,57180,57182,59232,57098,58916,58941,59014,57131,57136,57164,60506,57159,60313,57189,57190,59209,59256,57240,57380,57405,57426,57428,57427,57442,57460,57461,60566,57724,59327,57689,57690,57691,57693,57694,59644,58086,57876"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Shadowlands Intro & Main Story Questline"] = {
-		{ids="63209,62277,62739", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
-		{ids="61874,59751", cond_if=[[Horde ]]},
-		{ids="62761", cond_if=[[covenant() ~= Necrolord ]]},
-		{ids="63210,62279,63037", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
-		{ids="62275", cond_if=[[not havequest(62723) and not completedq(62723) ]]},
-		{ids="62776", cond_if=[[covenant() ~= NightFae ]]},
-		{ids="62776", cond_if=[[covenant() == NightFae ]]},
-		{ids="63208,62278,62738", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
-		{ids="62761", cond_if=[[covenant() == Necrolord ]]},
+		{ids="63034,62723,62729", cond_if=[[covenant() == Kyrian ]]},
+		{ids="62778", cond_if=[[covenant() ~= Venthyr ]]},
+		{ids="63209,62277,63036,62739", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
+		{ids="63210,62279,63037,62740", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
+		{ids="62707,62723,62729", cond_if=[[covenant() ~= Kyrian ]]},
 		{ids="60545,59751", cond_if=[[Alliance ]]},
-		{ids="59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,62716,60129,62000,62159,62707,62723,62729,62748,62763,62778,60148,60149,60150,60151,60152,60154,60156,59773,61096,61107,57386,61715,61716,60338,57025,57877,57878"},
+		{ids="62748,62761", cond_if=[[covenant() ~= Necrolord ]]},
+		{ids="62778", cond_if=[[covenant() == Venthyr ]]},
+		{ids="62716", cond_if=[[not havequest(60129) or completedq(60129) ]]},
+		{ids="62275", cond_if=[[not havequest(62723) and not completedq(62723) ]]},
+		{ids="62763,62776", cond_if=[[covenant() ~= NightFae ]]},
+		{ids="62763,62776", cond_if=[[covenant() == NightFae ]]},
+		{ids="63208,62278,63035,62738", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
+		{ids="62748,62761", cond_if=[[covenant() == Necrolord ]]},
+		{ids="61874,59751", cond_if=[[Horde ]]},
+		{ids="59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,60129,62000,62159,60148,60149,60150,60151,60152,60154,60156,59773,61096,61107,57386,61715,61716,60338,57025,57877,57878"},
 	},
 	["ACHIEVEMENTS\\Professions\\Cooking\\Kickin' It Up a Notch"] = {
 		{ids="11381,11379,11380,11377"},
@@ -19415,9 +19549,6 @@ ZGV.Quest_Cache_Accept_Horde = {
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Profession Mounts\\Brinedeep Bottom-Feeder"] = {
 		{ids="42911"},
 	},
-	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Fel Pup"] = {
-		{ids="38428"},
-	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Reputation Mounts\\Regal Riding Crane"] = {
 		{ids="30243,30266,30280,30277,30306,30242,30240,30261"},
 	},
@@ -19532,253 +19663,113 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="36314,36589", cond_if=[[havequest(36314) or completedq(36314) ]]},
 		{ids="34824,34823,34822,34461,34861,34462,34775,34960,34379,33816,34380,33784,33526,33546,33408,33410,33622,33344,33527,33657,33119,33483,33898,33412,33450,33454,33467,33484,33807,33468,33469,33470,33473,32783,32791,32929,32792,32804,32794,32795,32796,36567,36706,36707,36708,36709,32989,32990,33013,32991,32992,32993,33826,33828,32994,33785,33493,37291,33010,34123,33462,32981,34344,34345,34346,34348,33132,33125,34124,37563,34066,34069,34264,34072,34070,34073,34102,34075"},
 	},
-	["DAILIES\\Legion\\Antoran Wastes World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="48358,48360,48374,48349,48359"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
+		{ids="47441,47442,50332,50381,50901,50444"},
 	},
-	["DAILIES\\Legion\\Azsuna World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="41288,41315,41327,41663,41287,41651,41639,41675,41267,41657,41311,41633,41645,41326,41669"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
+		{ids="55530,56211"},
 	},
-	["DAILIES\\Legion\\Stormheim World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="41298,41317,41345,41666,41297,41678,41313,41636,41654,41648,41660,41277,41344,41642,41672"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax"] = {
+		{ids="50796", cond_if=[[havequest(50796) ]]},
+		{ids="50839", cond_if=[[havequest(50839) ]]},
+		{ids="50791", cond_if=[[havequest(50791) ]]},
+		{ids="50860", cond_if=[[havequest(50860) ]]},
+		{ids="50838", cond_if=[[havequest(50838) ]]},
+		{ids="51146", cond_if=[[havequest(51146) ]]},
+		{ids="52317", cond_if=[[havequest(52317) ]]},
+		{ids="51147", cond_if=[[havequest(51147) ]]},
+		{ids="50841", cond_if=[[havequest(50841) ]]},
+		{ids="50930", cond_if=[[havequest(50930) ]]},
+		{ids="50842", cond_if=[[havequest(50842) ]]},
+		{ids="50801", cond_if=[[havequest(50801) ]]},
+		{ids="50393,50394,50402,52305,50395,50401,50412,52447,50396,50886,50887,50900,52748,50397,50940,50942,50943,50944"},
 	},
-	["DAILIES\\Legion\\Dalaran World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="41668,41662,41656,41680,41638,41650,41644,41674"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
 	},
-	["DAILIES\\Legion\\The Originals"] = {
-		{ids="47251,47254"},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
+		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55609"},
 	},
-	["DAILIES\\Legion\\Broken Shore World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Final Seal"] = {
+		{ids="50954"},
 	},
-	["DAILIES\\Legion\\Val'sharah World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="41293,41316,41339,41664,41652,41292,41312,41634,41272,41676,41646,41338,41658,41640,41670"},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
 	},
-	["DAILIES\\Legion\\Suramar World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="44176", cond_if=[[havequest(44176) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="41318,41303,41351,41667,43943,41643,41679,41314,41637,41655,41282,41649,41661,41302,41350,41673"},
+	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
+		{ids="53182,53181,53169,53172,53184,53176,53183,53171,53170,53168,53177,53180,53167,53155,53178,53164,53160,53174,53163,53161"},
 	},
-	["DAILIES\\Legion\\Mac'Aree World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
+	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
+		{ids="53955"},
 	},
-	["DAILIES\\Legion\\World Quests Unlock Quest Line"] = {
-		{ids="44720,44771,44721"},
-		{ids="45727", cond_if=[[havequest(45727) or completedq(45727) ]]},
-		{ids="43341", cond_if=[[havequest(43341) or completedq(43341) ]]},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
 	},
-	["DAILIES\\Legion\\Highmountain World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="41207,41237,41665,41677,41659,41641,41223,41240,41206,41635,41647,41653,41235,41671"},
+	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Vulpera"] = {
+		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,53905,54036,53906,53907,53908,57448"},
 	},
-	["DAILIES\\Legion\\Krokuun World Quests"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
-		{ids="48338,48337"},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for AzerothPet Battle Challenge: Blackrock Depths"] = {
+		{ids="58456,58457"},
 	},
-	["DAILIES\\Legion\\Broken Shore Rares"] = {
-		{ids="42233", cond_if=[[readyq(42233) ]]},
-		{ids="46743", cond_if=[[havequest(46743) ]]},
-		{ids="46777", cond_if=[[havequest(46777) ]]},
-		{ids="46749", cond_if=[[havequest(46749) ]]},
-		{ids="46745", cond_if=[[havequest(46745) ]]},
-		{ids="46746", cond_if=[[havequest(46746) ]]},
-		{ids="42422", cond_if=[[readyq(42422) ]]},
-		{ids="46747", cond_if=[[havequest(46747) ]]},
-		{ids="48641", cond_if=[[readyq(48641) ]]},
-		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
-		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
-		{ids="42421", cond_if=[[readyq(42421) ]]},
-		{ids="43179", cond_if=[[readyq(43179) ]]},
-		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
-		{ids="42420", cond_if=[[readyq(42420) ]]},
-		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
-		{ids="46748", cond_if=[[havequest(46748) ]]},
-		{ids="42234", cond_if=[[readyq(42234) ]]},
-		{ids="42170", cond_if=[[readyq(42170) ]]},
+	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
+		{ids="57249,57298"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Zandalar Forever!"] = {
+		{ids="50954"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
+		{ids="56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
+	},
+	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Spirits Be With You"] = {
+		{ids="51513,51533,51514,51515,52114,52113,51516,51517,51518,51519,51520,51521"},
+	},
+	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
+		{ids="55517,55452,55455,55456,55454,55451,55457"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Bargain of Blood"] = {
+		{ids="47199,47200,47198,47201,47205,47204,47229,47258"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
+		{ids="55064,55534,56515,56516,56517,56518,56519"},
+	},
+	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
+		{ids="57300", cond_if=[[readyq(57300) or completedq(57300) ]]},
+		{ids="57249"},
+	},
+	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
+		{ids="51465"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
+		{ids="54090"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
+		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
+	},
+	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Zandalari Curator"] = {
+		{ids="51950,51951,51952,51953,51954,51955,51926,51929,51932,51934,51936,51937"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax (Part Two)"] = {
+		{ids="56205"},
+	},
+	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
+		{ids="55305,55311,55312,55309,55299,55306,55307,55308,55310,55313"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Phenomenal Cosmic Power"] = {
+		{ids="56500,56433,56148,55080,53435,53435,53435,53435,53435,56401"},
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
+	},
+	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
+		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
+	},
+	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Shadow Hunter"] = {
+		{ids="53774,53775,53776,53778,54120,53777,53779,54145,53781,54147,53780,53782"},
+	},
+	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bow to Your Masters"] = {
+		{ids="47441"},
 	},
 	["LEVELING\\Draenor (10-50)\\Garrisons\\Garrison Leveling Guide"] = {
 		{ids="33815,34402,34364,34375,34592,34765,34378,34824,34823,34822,34461,34861,34462,34775,34379,33816,34380,33784,33526,33546,33408,33410,33622,33344,33527,33657,33468,33807,33469,33470,33473,32783,32791,32929,32792,32794,32795,32796,36567,36614"},
@@ -20509,20 +20500,6 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["GOLD\\Horde Daily Runs\\Imperial Leather Set Transmog"] = {
 	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
-		{ids="31374", cond=[[Horde]]},
-		{ids="31372", cond=[[Alliance]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30408,30404"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Spectral Porcupette"] = {
-		{ids="32616"},
-	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
-	},
-	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
-	},
 	["DUNGEONS\\Pandaria Scenarios\\Brewmoon Festival"] = {
 		{ids="31611"},
 	},
@@ -20911,15 +20888,24 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="11665"},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Bastion World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Anima Conductor Daily Quests"] = {
 		{ids="62160,62188,61875,61985,62224", cond_if=[[readyanyq(62160,62188,61875,61985,62224) or completedanyq(62160,62188,61875,61985,62224) ]]},
 		{ids="61968,62081,61950,62057,62155", cond_if=[[readyanyq(61968,62081,61950,62057,62155) or completedanyq(61968,62081,61950,62057,62155) ]]},
+	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
+		{ids="60463,60463", cond_if=[[readyq(60463) or completedq(60463) ]]},
+		{ids="60389,60394,60397,60399", cond_if=[[readyanyq(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
+		{ids="60441,60444,60446,60448", cond_if=[[readyanyq(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
+		{ids="60456,61334,62867,62868,62869,60460", cond_if=[[readyanyq(60456,61334,62867,62868,62869,60460) or completedanyq(60456,61334,62867,62868,62869,60460) ]]},
+		{ids="61981,61981", cond_if=[[readyq(61981) or completedq(61981) ]]},
+		{ids="60417,60370,60378,60358,60375", cond_if=[[readyanyq(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
+		{ids="60422,60427,60431,60432", cond_if=[[readyanyq(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
+		{ids="60401,60409,60406,60410", cond_if=[[readyanyq(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Kyrian Daily Quests"] = {
 		{ids="61982", cond_if=[[readyq(61982) or completedq(61982) ]]},
@@ -20932,17 +20918,20 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="60391,60392,60395,60400", cond_if=[[readyanyq(60391,60392,60395,60400) or completedanyq(60391,60392,60395,60400) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Ardenweald World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolords Abomination Factory Weekly Quests"] = {
+		{ids="62213", cond_if=[[havequest(62213) ]]},
+		{ids="62256", cond_if=[[havequest(62256) ]]},
+		{ids="58432,61510,61509,61511,60765,62041,59126,60291,61522,61523,62244,60237,62407,59293,56470,58992,62294,58515,58525,62232,62217,62216,62276,57634,62194,61996,62195,60342,62261,60340", cond_if=[[haveanyquest(58432,61510,61509,61511,60765,62041,59126,60291,61522,61523,62244,60237,62407,59293,56470,58992,62294,58515,58525,62232,62217,62216,62276,57634,62194,61996,62195,60342,62261,60340) ]]},
+	},
 	["DAILIES\\Shadowlands (50-60)\\Revendreth World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Fungal Terminus Daily Quests"] = {
@@ -20959,15 +20948,9 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="61199,61166,61193,61182", cond_if=[[readyanyq(61199,61166,61193,61182) or completedanyq(61199,61166,61193,61182) ]]},
 		{ids="61146,61196,61209", cond_if=[[readyanyq(61146,61196,61209) or completedanyq(61146,61196,61209) ]]},
 	},
-	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests"] = {
-		{ids="60463,60463", cond_if=[[readyq(60463) or completedq(60463) ]]},
-		{ids="60389,60394,60397,60399", cond_if=[[readyanyq(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399) ]]},
-		{ids="60441,60444,60446,60448", cond_if=[[readyanyq(60441,60444,60446,60448) or completedanyq(60441,60444,60446,60448) ]]},
-		{ids="60456,61334,62867,62868,62869,60460", cond_if=[[readyanyq(60456,61334,62867,62868,62869,60460) or completedanyq(60456,61334,62867,62868,62869,60460) ]]},
-		{ids="61981,61981", cond_if=[[readyq(61981) or completedq(61981) ]]},
-		{ids="60417,60370,60378,60358,60375", cond_if=[[readyanyq(60417,60370,60378,60358,60375) or completedanyq(60417,60370,60378,60358,60375) ]]},
-		{ids="60422,60427,60431,60432", cond_if=[[readyanyq(60422,60427,60431,60432) or completedanyq(60422,60427,60431,60432) ]]},
-		{ids="60401,60409,60406,60410", cond_if=[[readyanyq(60401,60409,60406,60410) or completedanyq(60401,60409,60406,60410) ]]},
+	["DAILIES\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory Daily Quests"] = {
+		{ids="62444,62442,62443", cond_if=[[haveanyquest(62444,62442,62443) ]]},
+		{ids="62441", cond_if=[[havequest(62441) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Venthyr Anima Conductor Daily Quests"] = {
 		{ids="61734", cond_if=[[readyq(61734) or completedq(61734) ]]},
@@ -20990,10 +20973,9 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="60421,60418,60420,60419", cond_if=[[readyanyq(60421,60418,60420,60419) or completedanyq(60421,60418,60420,60419) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Maldraxxus World Quests"] = {
-		{ids="61098", cond_if=[[readyq(61098) ]]},
-		{ids="61095", cond_if=[[readyq(61095) ]]},
-		{ids="60288", cond_if=[[readyq(60288) ]]},
 		{ids="61097", cond_if=[[readyq(61097) ]]},
+		{ids="61098,61098", cond_if=[[readyq(61098) ]]},
+		{ids="61095", cond_if=[[readyq(61095) ]]},
 		{ids="61100", cond_if=[[readyq(61100) ]]},
 	},
 	["DAILIES\\Shadowlands (50-60)\\Covenants\\Necrolord Daily Quests"] = {
@@ -21009,9 +20991,9 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["DAILIES\\Shadowlands (50-60)\\Ve'nari Daily Quests (The Maw)"] = {
 		{ids="63043", cond_if=[[readyq(63043) or completedq(63043) ]]},
+		{ids="60902,60775,62239,60646,60762,61088,61104,60732,60622,61079,61075,61103,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214,63206", cond_if=[[readyanyq(60902,60775,62239,60646,60762,61088,61104,60732,61103,60622,61079,61075,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214,63206) ]]},
 		{ids="63100", cond_if=[[readyq(63100) or completedq(63100) ]]},
 		{ids="63166", cond_if=[[readyq(63166) or completedq(63166) ]]},
-		{ids="60775,60646,60762,61088,61104,60732,60622,61079,61075,61103,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214", cond_if=[[readyanyq(60775,60646,60762,61088,61104,60732,61103,60622,61079,61075,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214) or completedanyq(61103,63050,63047,63031,63062,63040,63038,63045,62234,63069,63072,62214) ]]},
 		{ids="63039", cond_if=[[havequest(63039) or completedq(63039) ]]},
 		{ids="63179", cond_if=[[readyq(63179) or completedq(63179) ]]},
 	},
@@ -21141,11 +21123,17 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["PROFESSIONS\\Inscription\\Leveling Guides\\Tools of the Trade - Inscription"] = {
 		{ids="49943,49944,49873,49874,49946,49877,49878,49879,49881,49882"},
 	},
-	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
-		{ids="59262,59263,60660,59348,59351,59311"},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Plagueborn Slime"] = {
+		{ids="59130,58011,58016,58027"},
 	},
 	["PETSMOUNTS\\Battle Pets\\Humanoid Pets\\Glimr"] = {
 		{ids="60605,60606,60614,60615,60616,60617,60619,60620"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Renny"] = {
+		{ids="59087,59120"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Helpful Glimmerfly"] = {
+		{ids="59262,59263,60660,59348,59351,59311"},
 	},
 	["REPUTATIONS\\Mists of Pandaria Reputations\\Emperor Shaohao"] = {
 		{ids="33232,33160,33161,33336,33228,33335,33340,33341,33332,33333"},
@@ -21346,6 +21334,7 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="31444,31446,31443"},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\Elder\\Lunar Festival Achievements"] = {
+		{ids="8868"},
 	},
 	["TITLES\\Wrath of the Lich King Titles\\World Events\\The Pilgrim"] = {
 		{ids="14036,14065,14037,14040,14041,14043,14044,14047,14060,14061,14062,14059,14058"},
@@ -21631,6 +21620,9 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\10 Coins of Ancestry"] = {
 	},
+	["EVENTS\\Lunar Festival\\Achievements\\Elune's Blessing"] = {
+		{ids="8868"},
+	},
 	["EVENTS\\Children's Week\\Children's Week Zandalar Quests"] = {
 		{ids="53965,53966,53968,53967,53970,53969,53971"},
 	},
@@ -21652,6 +21644,7 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="54097,54099,54100,54101,54102,54103,54104,54105,54106,54107,54108,54109,54754"},
 	},
 	["EVENTS\\Lunar Festival\\Achievements\\To Honor One's Elders"] = {
+		{ids="8868"},
 	},
 	["EVENTS\\Feast of Winter Veil\\Feast of Winter Veil Quests"] = {
 		{ids="6983", cond_if=[[not completedq(6984) ]]},
@@ -21836,34 +21829,38 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["EVENTS\\Feast of Winter Veil\\Achievements\\'Tis the Season"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Timber Lord"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
-		{ids="29220,29221,29222,29223,29226,29227,29228,29230,29231,29232"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Dwarfstalker"] = {
+		{ids="36924"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
+		{ids="37082,37083"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
-		{ids="31009", cond_if=[[not completedq(31010) ]]},
-		{ids="31006,31010,31085,31398,31026,31354,31606,31179,31211,31439"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Scourge of the Kaldorei"] = {
+		{ids="36932"},
 	},
-	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
 	},
-	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
-		{ids="30526", cond_if=[[havequest(30526) ]]},
-		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,316,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
-		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
-		{ids="30477", cond_if=[[havequest(30477) ]]},
-		{ids="30471", cond_if=[[havequest(30471) ]]},
-		{ids="30473", cond_if=[[havequest(30473) ]]},
-		{ids="30472", cond_if=[[havequest(30472) ]]},
-		{ids="30478", cond_if=[[havequest(30478) ]]},
-		{ids="30470", cond_if=[[havequest(30470) ]]},
-		{ids="30474", cond_if=[[havequest(30474) ]]},
-		{ids="30475", cond_if=[[havequest(30475) ]]},
-		{ids="30476", cond_if=[[havequest(30476) ]]},
-		{ids="30479", cond_if=[[havequest(30479) ]]},
-		{ids="30252,30535,30254,30255,30256,30257,31945,30317,30326,30327,30325,30322,30318,30323,30319,30321,30324,30260,30516,31936,30523,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Draenei Destroyer"] = {
+		{ids="36930"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Manslayer"] = {
+		{ids="36921"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Worgen Hunter"] = {
+		{ids="36928"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
+		{ids="37082,37083"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Gnomebane"] = {
+		{ids="36926"},
+	},
+	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Terror of the Tushui"] = {
+		{ids="36934"},
 	},
 	["GOLD\\Farming\\Gromsblood"] = {
 	},
@@ -23004,6 +23001,21 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["LEVELING\\Legion (10-50)\\Paladin\\Paladin 7.2 Order Hall Quests"] = {
 		{ids="46765,47000,44782,44821,47022,45413,45414,45415,45843,45863,47052,45486,45522,45523,45524,45525,46340,45862,47006,46079,46082,46106,46080,46107,46200,45864,45143,45890,46259,45145,45146,45147,45148,45149,47137,46251,46069,46070,46071,40012,40326,41702,41704,41760,41762,41834,41989,42079,46083,46074,45770"},
 	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Bastion"] = {
+		{ids="59262,59263,60660,59348,59351,59311,59865,57860,59207,57861,57875,57914,57966,57989,57967"},
+	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Maldraxxus"] = {
+		{ids="57316,57301"},
+	},
+	["ACHIEVEMENTS\\Expansion Features\\Covenant Sanctums\\The Gang's All Here"] = {
+		{ids="58665"},
+	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Ardenweald"] = {
+		{ids="57661,60061,60062,60064,60063,60065,60066"},
+	},
+	["ACHIEVEMENTS\\Quests\\Shadowlands\\Sojourner of Revendreth"] = {
+		{ids="57919,57920,57921,57922,57923,57924,57925,60127,57927,57928,57926,60128,57929,58092"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Tiny Flamefly"] = {
 		{ids="28418,28417,28419,28420,28421,28422,28423,28424,28425,28426,28225,28226,28227,28427,28428,28429,28430,28431,28432,28434,28433,28435,28436,28437,28438,28440,28439,28441,28442,28491"},
 	},
@@ -23043,51 +23055,253 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="56491", cond_if=[[not completedq(56491) ]]},
 		{ids="56492", cond_if=[[completedq(56491) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
-		{ids="31129", cond_if=[[havequest(31129) or completedq(31129) ]]},
-		{ids="31076", cond_if=[[havequest(31076) or completedq(31076) ]]},
-		{ids="31656,31001,31002,31003,31004,31005,31676,31006,31009,31007,31660,31010,31008,31661,31066,31689,31107,31108,31019,31020,31021,31022,31026,31087,31088,31090,31089,31091,31092,31359,31398,31023,31730,31068,31067,31072,31069,31070,31071,31077,31078,31133,31074,31073,31075,31079,31080,31081,31082,31084,31085,31086,31727,31265,31181,31182,31183,31186,31187,31188,31185,31184,31189,31190,31354,32030,31782,31175,31176,31177,31178,31605,31606,31179"},
+	["DAILIES\\Legion\\Antoran Wastes World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="48358,48360,48374,48349,48359"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
-		{ids="29873,30079,30080,30082,30091,30081,30088,30089,30090,30083,30084,30352,30353,31262,31260,29875,30179,30123,30124,30129,30127,30130,30128,30131,30133,30269,30268,30270,30694,30695,30272,30271,30273,30132,30667,30666,30668,30669,30691,30671,30674,30675,30672,30168,30169,30230,30163,30229,30175,30164,30174,30241,30653,30623,30622,30625,30626,30627,30628"},
+	["DAILIES\\Legion\\Azsuna World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="41288,41315,41327,41663,41287,41651,41639,41675,41267,41657,41311,41633,41645,41326,41669"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
-		{ids="31856,31834,31840"},
+	["DAILIES\\Legion\\Stormheim World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="41298,41317,41345,41666,41297,41678,41313,41636,41654,41648,41660,41277,41344,41642,41672"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
-		{ids="31695,30814,30769,30770,30771,30775,30773,30772,30774,30776,30786,30787,30788,30789,30815,30790,30791,30792,30793,30777,30778,30779,30781,30780,30827,30783,30782,30784,30785,30884,30891,30887,30889,30888,30890,30960,30892,30894,30893,30896,30897,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30978,30979,31032,30977,30980,31065,30981,31063,31064,30968,31687,31688,30921,30923,30922,30963,30964,30931,30924,30929,30932,30930,30925,30926,30927,30928"},
+	["DAILIES\\Legion\\Dalaran World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="41668,41662,41656,41680,41638,41650,41644,41674"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
-		{ids="29907,29877,29908,30086,29909,29910,29940,29911,29912,29913,29914,29915,29916,29917,29918,29919,29945,29944,29948,29947,29946,29949,29871,30275,30267,29577,29600,29581,29757,29758,32035,30072,30059,30058,29950,29952,29951,30046,30049,30051,30050,30056,30054,30057,30053,30052,30055,30172,32045,30048,30031,30030,30029,30032,30028,30047,30073,30074,30077,30076,30075,30078,29872,30117,29981,29982,29983,29984,29992,29985,29986,29987,29988,29989,30183,30181,30184,32038,30182,30185,30186,29990"},
+	["DAILIES\\Legion\\The Originals"] = {
+		{ids="47251,47254"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 90"] = {
-		{ids="31889,31844"},
+	["DAILIES\\Legion\\Broken Shore World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 80"] = {
-		{ids="31861,31839,31846"},
+	["DAILIES\\Legion\\Val'sharah World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="41293,41316,41339,41664,41652,41292,41312,41634,41272,41676,41646,41338,41658,41640,41670"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 70"] = {
-		{ids="31860,31838,31845"},
+	["DAILIES\\Legion\\Suramar World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="44176", cond_if=[[havequest(44176) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="41318,41303,41351,41667,43943,41643,41679,41314,41637,41655,41282,41649,41661,41302,41350,41673"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 60"] = {
-		{ids="31859,31837,31844"},
+	["DAILIES\\Legion\\Mac'Aree World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
-		{ids="30684", cond_if=[[havequest(30684) or completedq(30684) ]]},
-		{ids="31306", cond_if=[[havequest(31306) or completedq(31306) ]]},
-		{ids="31286,31287,31285,31255,30459,30457,30460,30511,30467,30469,30834,30468,30496,30967,30480,30828,30855,30513,30515,31251,31256,30570,30581,30571,31253,30595,30620,30594,30657,30656,30655,30661,31457,30488,30491,30489,30587,30582,30804,30492,30808,30614,30616,30617,31459,30999,30621,30601,30618,30487,30683,30829,30795,30796,30797,30799,30798,30800,30801,30802,31393,31395,30935,30942,30945,30943,30944,31011,30946,30816,30794,30805,30806,30807,30819,30820,31228,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30744,30746,30742,30743,30745,30747,31511,31511,31453,30670,30665,30682,30690,30699,30715,30723,30724,30751,30750,30994,30991,30992,30993,30752"},
+	["DAILIES\\Legion\\World Quests Unlock Quest Line"] = {
+		{ids="44720,44771,44721"},
+		{ids="45727", cond_if=[[havequest(45727) or completedq(45727) ]]},
+		{ids="43341", cond_if=[[havequest(43341) or completedq(43341) ]]},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 50"] = {
-		{ids="31858,31836,31843"},
+	["DAILIES\\Legion\\Highmountain World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="41207,41237,41665,41677,41659,41641,41223,41240,41206,41635,41647,41653,41235,41671"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 40"] = {
-		{ids="31857,31835,31842"},
+	["DAILIES\\Legion\\Krokuun World Quests"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
+		{ids="48338,48337"},
 	},
-	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
-		{ids="31840,31841,31842,31843,31844,31845,31846"},
-	},
-	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
-		{ids="29611,31853,29690,31765,31766,31767,31768,31769,31772,29694,31770,31771,31773,31774,29743,29765,29804,31777,31778,31775,31776,31779,31999,29821,31112,29815,29827,29822,31121,31132,31134,31152,31167,29879,29924,29935,29933,31261,31241,29936,29941,31239,29937,29942,29939,29971,29730,29731,29823,29824,29943,29968,29967,29966,30015,31230,29716,29717,29866,29865,29723,29993,29881,29882,29995,29920,29925,29928,29745,29748,29747,29749,29751,29750,29752,29753,29756,29754,29755,29618,29619,29620,29632,29633,29634,29635,29626,29627,29622,29623,29624,29636,29637,29628,29631,29629,29630,29646,29927,29929,29926,29930,29931,30495,29932,29998,30001,30002,30004,29997,30011,29999,30005,30000,30499,30484,30466,30485,31303,30500,30502,30504,30648,29578,29579,29580,29585,29586,29587,29670"},
+	["DAILIES\\Legion\\Broken Shore Rares"] = {
+		{ids="42233", cond_if=[[readyq(42233) ]]},
+		{ids="46743", cond_if=[[havequest(46743) ]]},
+		{ids="46777", cond_if=[[havequest(46777) ]]},
+		{ids="46749", cond_if=[[havequest(46749) ]]},
+		{ids="46745", cond_if=[[havequest(46745) ]]},
+		{ids="46746", cond_if=[[havequest(46746) ]]},
+		{ids="42422", cond_if=[[readyq(42422) ]]},
+		{ids="46747", cond_if=[[havequest(46747) ]]},
+		{ids="48641", cond_if=[[readyq(48641) ]]},
+		{ids="48977,48977,48977", cond_if=[[havequest(48977) ]]},
+		{ids="48642,48642,48642", cond_if=[[readyq(48642) ]]},
+		{ids="42421", cond_if=[[readyq(42421) ]]},
+		{ids="43179", cond_if=[[readyq(43179) ]]},
+		{ids="48639,48639,48639", cond_if=[[readyq(48639) ]]},
+		{ids="42420", cond_if=[[readyq(42420) ]]},
+		{ids="48976,48976,48976", cond_if=[[havequest(48976) ]]},
+		{ids="46748", cond_if=[[havequest(46748) ]]},
+		{ids="42234", cond_if=[[readyq(42234) ]]},
+		{ids="42170", cond_if=[[readyq(42170) ]]},
 	},
 	["GOLD\\Farming\\Embersilk Cloth"] = {
 	},
@@ -23229,113 +23443,172 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["GOLD\\Farming\\Righteous Orb, Mageweave Cloth"] = {
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Get Hek'd"] = {
-		{ids="47441,47442,50332,50381,50901,50444"},
+	["LEVELING\\Pandaria (10-50)\\Dread Wastes (30-50)"] = {
+		{ids="31129", cond_if=[[havequest(31129) or completedq(31129) ]]},
+		{ids="31076", cond_if=[[havequest(31076) or completedq(31076) ]]},
+		{ids="31656,31001,31002,31003,31004,31005,31676,31006,31009,31007,31660,31010,31008,31661,31066,31689,31107,31108,31019,31020,31021,31022,31026,31087,31088,31090,31089,31091,31092,31359,31398,31023,31730,31068,31067,31072,31069,31070,31071,31077,31078,31133,31074,31073,31075,31079,31080,31081,31082,31084,31085,31086,31727,31265,31181,31182,31183,31186,31187,31188,31185,31184,31189,31190,31354,32030,31782,31175,31176,31177,31178,31605,31606,31179"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Tour of the Depths"] = {
-		{ids="55530,56211"},
+	["LEVELING\\Pandaria (10-50)\\Krasarang Wilds (15-50)"] = {
+		{ids="29873,30079,30080,30082,30091,30081,30088,30089,30090,30083,30084,30352,30353,31262,31260,29875,30179,30123,30124,30129,30127,30130,30128,30131,30133,30269,30268,30270,30694,30695,30272,30271,30273,30132,30667,30666,30668,30669,30691,30671,30674,30675,30672,30168,30169,30230,30163,30229,30175,30164,30174,30241,30653,30623,30622,30625,30626,30627,30628"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax"] = {
-		{ids="50796", cond_if=[[havequest(50796) ]]},
-		{ids="50839", cond_if=[[havequest(50839) ]]},
-		{ids="50791", cond_if=[[havequest(50791) ]]},
-		{ids="50860", cond_if=[[havequest(50860) ]]},
-		{ids="50838", cond_if=[[havequest(50838) ]]},
-		{ids="51146", cond_if=[[havequest(51146) ]]},
-		{ids="52317", cond_if=[[havequest(52317) ]]},
-		{ids="51147", cond_if=[[havequest(51147) ]]},
-		{ids="50841", cond_if=[[havequest(50841) ]]},
-		{ids="50930", cond_if=[[havequest(50930) ]]},
-		{ids="50842", cond_if=[[havequest(50842) ]]},
-		{ids="50801", cond_if=[[havequest(50801) ]]},
-		{ids="50393,50394,50402,52305,50395,50401,50412,52447,50396,50886,50887,50900,52748,50397,50940,50942,50943,50944"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 10"] = {
+		{ids="31856,31834,31840"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Explorer"] = {
+	["LEVELING\\Pandaria (10-50)\\Townlong Steppes (25-50)"] = {
+		{ids="31695,30814,30769,30770,30771,30775,30773,30772,30774,30776,30786,30787,30788,30789,30815,30790,30791,30792,30793,30777,30778,30779,30781,30780,30827,30783,30782,30784,30785,30884,30891,30887,30889,30888,30890,30960,30892,30894,30893,30896,30897,30895,30898,30900,30901,30970,30971,30972,30973,30975,30976,30899,30978,30979,31032,30977,30980,31065,30981,31063,31064,30968,31687,31688,30921,30923,30922,30963,30964,30931,30924,30929,30932,30930,30925,30926,30927,30928"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Mechagonian Threat"] = {
-		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55609"},
+	["LEVELING\\Pandaria (10-50)\\Valley of the Four Winds (15-50)"] = {
+		{ids="29907,29877,29908,30086,29909,29910,29940,29911,29912,29913,29914,29915,29916,29917,29918,29919,29945,29944,29948,29947,29946,29949,29871,30275,30267,29577,29600,29581,29757,29758,32035,30072,30059,30058,29950,29952,29951,30046,30049,30051,30050,30056,30054,30057,30053,30052,30055,30172,32045,30048,30031,30030,30029,30032,30028,30047,30073,30074,30077,30076,30075,30078,29872,30117,29981,29982,29983,29984,29992,29985,29986,29987,29988,29989,30183,30181,30184,32038,30182,30185,30186,29990"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Final Seal"] = {
-		{ids="50954"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 90"] = {
+		{ids="31889,31844"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Battle for Azeroth Pathfinder, Part Two"] = {
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 80"] = {
+		{ids="31861,31839,31846"},
 	},
-	["ACHIEVEMENTS\\Island Expeditions\\Battle for Azeroth\\Tell Me A Tale"] = {
-		{ids="53182,53181,53169,53172,53184,53176,53183,53171,53170,53168,53177,53180,53167,53155,53178,53164,53160,53174,53163,53161"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 70"] = {
+		{ids="31860,31838,31845"},
 	},
-	["ACHIEVEMENTS\\Collections\\Appearances\\Tall, Dark, and Sinister"] = {
-		{ids="53955"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 60"] = {
+		{ids="31859,31837,31844"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Mecha-Safari"] = {
+	["LEVELING\\Pandaria (10-50)\\Kun-Lai Summit (20-50)"] = {
+		{ids="30684", cond_if=[[havequest(30684) or completedq(30684) ]]},
+		{ids="31306", cond_if=[[havequest(31306) or completedq(31306) ]]},
+		{ids="31286,31287,31285,31255,30459,30457,30460,30511,30467,30469,30834,30468,30496,30967,30480,30828,30855,30513,30515,31251,31256,30570,30581,30571,31253,30595,30620,30594,30657,30656,30655,30661,31457,30488,30491,30489,30587,30582,30804,30492,30808,30614,30616,30617,31459,30999,30621,30601,30618,30487,30683,30829,30795,30796,30797,30799,30798,30800,30801,30802,31393,31395,30935,30942,30945,30943,30944,31011,30946,30816,30794,30805,30806,30807,30819,30820,31228,30592,30602,30603,30599,30600,30604,30605,30607,30608,30606,30610,30611,30612,30692,30744,30746,30742,30743,30745,30747,31511,31511,31453,30670,30665,30682,30690,30699,30715,30723,30724,30751,30750,30994,30991,30992,30993,30752"},
 	},
-	["ACHIEVEMENTS\\Reputations\\Battle for Azeroth\\Allied Races: Vulpera"] = {
-		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,53905,54036,53906,53907,53908,57448"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 50"] = {
+		{ids="31858,31836,31843"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for AzerothPet Battle Challenge: Blackrock Depths"] = {
-		{ids="58456,58457"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Quest 40"] = {
+		{ids="31857,31835,31842"},
 	},
-	["ACHIEVEMENTS\\Feats of Strength\\Events\\Memories of Fel, Frost and Fire"] = {
-		{ids="57249,57298"},
+	["LEVELING\\Pandaria (10-50)\\Peak of Serenity\\Monk Daily"] = {
+		{ids="31840,31841,31842,31843,31844,31845,31846"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Zandalar Forever!"] = {
-		{ids="50954"},
+	["LEVELING\\Pandaria (10-50)\\The Jade Forest (10-50)"] = {
+		{ids="29611,31853,29690,31765,31766,31767,31768,31769,31772,29694,31770,31771,31773,31774,29743,29765,29804,31777,31778,31775,31776,31779,31999,29821,31112,29815,29827,29822,31121,31132,31134,31152,31167,29879,29924,29935,29933,31261,31241,29936,29941,31239,29937,29942,29939,29971,29730,29731,29823,29824,29943,29968,29967,29966,30015,31230,29716,29717,29866,29865,29723,29993,29881,29882,29995,29920,29925,29928,29745,29748,29747,29749,29751,29750,29752,29753,29756,29754,29755,29618,29619,29620,29632,29633,29634,29635,29626,29627,29622,29623,29624,29636,29637,29628,29631,29629,29630,29646,29927,29929,29926,29930,29931,30495,29932,29998,30001,30002,30004,29997,30011,29999,30005,30000,30499,30484,30466,30485,31303,30500,30502,30504,30648,29578,29579,29580,29585,29586,29587,29670"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Architect"] = {
-		{ids="56145,56165,55072,55030,55057,55058,55059,55060,55071,55073,56086,55070,55079,55080,55067"},
+	["DAILIES\\Warlords of Draenor Dailies\\High Overlord Saurfang Dailies"] = {
+		{ids="37783,37783", cond_if=[[havequest(37783) ]]},
+		{ids="37756", cond_if=[[havequest(37756) ]]},
+		{ids="37765", cond_if=[[havequest(37765) ]]},
+		{ids="37786,37786", cond_if=[[havequest(37786) ]]},
+		{ids="37763", cond_if=[[havequest(37763) ]]},
+		{ids="37780,37780", cond_if=[[havequest(37780) ]]},
+		{ids="37762", cond_if=[[havequest(37762) ]]},
+		{ids="37764", cond_if=[[havequest(37764) ]]},
+		{ids="37782,37782", cond_if=[[havequest(37782) ]]},
+		{ids="37758", cond_if=[[havequest(37758) ]]},
+		{ids="37757", cond_if=[[havequest(37757) ]]},
+		{ids="37787,37787", cond_if=[[havequest(37787) ]]},
+		{ids="37785,37785", cond_if=[[havequest(37785) ]]},
+		{ids="37784,37784", cond_if=[[havequest(37784) ]]},
+		{ids="37781,37781", cond_if=[[havequest(37781) ]]},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Battle for Azeroth\\Team Aquashock"] = {
+	["DAILIES\\Warlords of Draenor Dailies\\Garrison Building Dailies"] = {
+		{ids="37320", cond_if=[[havequest(37320) ]]},
+		{ids="37325", cond_if=[[havequest(37325) ]]},
+		{ids="36662", cond_if=[[havequest(36662) ]]},
+		{ids="37645", cond_if=[[havequest(37645) ]]},
+		{ids="37321", cond_if=[[havequest(37321) ]]},
+		{ids="35072", cond_if=[[havequest(35072) ]]},
+		{ids="35071", cond_if=[[havequest(35071) ]]},
+		{ids="35066", cond_if=[[havequest(35066) ]]},
+		{ids="37324", cond_if=[[havequest(37324) ]]},
+		{ids="37323", cond_if=[[havequest(37323) ]]},
+		{ids="35075", cond_if=[[havequest(35075) ]]},
+		{ids="35074", cond_if=[[havequest(35074) ]]},
+		{ids="35073", cond_if=[[havequest(35073) ]]},
+		{ids="37043,38188,38300"},
 	},
-	["ACHIEVEMENTS\\Pet Battles\\Collect\\Battle for Azeroth\\Nazjatari Safari"] = {
+	["DAILIES\\Warlords of Draenor Dailies\\Garrison Assault Daily Quests"] = {
+		{ids="38202", cond_if=[[havequest(38202) or completedq(38202) ]]},
+		{ids="38178", cond_if=[[havequest(38178) or completedq(38178) ]]},
+		{ids="36695", cond_if=[[havequest(36695) or completedq(36695) ]]},
+		{ids="36688", cond_if=[[havequest(36688) or completedq(36688) ]]},
+		{ids="36694", cond_if=[[havequest(36694) or completedq(36694) ]]},
+		{ids="38182", cond_if=[[havequest(38182) or completedq(38182) ]]},
+		{ids="38187", cond_if=[[havequest(38187) or completedq(38187) ]]},
+		{ids="36691", cond_if=[[havequest(36691) or completedq(36691) ]]},
+		{ids="36689", cond_if=[[havequest(36689) or completedq(36689) ]]},
+		{ids="36693", cond_if=[[havequest(36693) or completedq(36693) ]]},
+		{ids="36701", cond_if=[[havequest(36701) or completedq(36701) ]]},
+		{ids="38184", cond_if=[[havequest(38184) or completedq(38184) ]]},
+		{ids="38185", cond_if=[[havequest(38185) or completedq(38185) ]]},
+		{ids="36807", cond_if=[[havequest(36807) or completedq(36807) ]]},
+		{ids="38186", cond_if=[[havequest(38186) or completedq(38186) ]]},
+		{ids="38176", cond_if=[[havequest(38176) or completedq(38176) ]]},
+		{ids="38179", cond_if=[[havequest(38179) or completedq(38179) ]]},
+		{ids="38183", cond_if=[[havequest(38183) or completedq(38183) ]]},
+		{ids="38177", cond_if=[[havequest(38177) or completedq(38177) ]]},
+		{ids="36667", cond_if=[[havequest(36667) or completedq(36667) ]]},
+		{ids="38180", cond_if=[[havequest(38180) or completedq(38180) ]]},
+		{ids="36669", cond_if=[[havequest(36669) or completedq(36669) ]]},
+		{ids="36696", cond_if=[[havequest(36696) or completedq(36696) ]]},
+		{ids="36690", cond_if=[[havequest(36681) or completedq(36681) ]]},
+		{ids="36692", cond_if=[[havequest(36692) or completedq(36692) ]]},
+		{ids="40941", cond_if=[[havequest(40941) or completedq(40941) ]]},
+		{ids="38181", cond_if=[[havequest(38181) or completedq(38181) ]]},
+		{ids="36697", cond_if=[[havequest(36697) or completedq(36697) ]]},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Spirits Be With You"] = {
-		{ids="51513,51533,51514,51515,52114,52113,51516,51517,51518,51519,51520,51521"},
+	["DAILIES\\Warlords of Draenor Dailies\\Shadow Hunter Ty'jin Daily Quests"] = {
+		{ids="37813", cond_if=[[havequest(37813) ]]},
+		{ids="37949", cond_if=[[havequest(37949) ]]},
+		{ids="37817", cond_if=[[havequest(37817) ]]},
+		{ids="37815", cond_if=[[havequest(37815) ]]},
+		{ids="37818", cond_if=[[havequest(37818) ]]},
+		{ids="37816", cond_if=[[havequest(37816) ]]},
+		{ids="37814", cond_if=[[havequest(37814) ]]},
 	},
-	["ACHIEVEMENTS\\Collections\\Mounts\\Available in Eight Colors"] = {
-		{ids="55517,55452,55455,55456,55454,55451,55457"},
+	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\The Saberstalkers"] = {
+		{ids="39529,39565"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\A Bargain of Blood"] = {
-		{ids="47199,47200,47198,47201,47205,47204,47229,47258"},
+	["DAILIES\\Warlords of Draenor Dailies\\Battle Pets Dailies"] = {
+		{ids="36662", cond_if=[[havequest(36662) ]]},
+		{ids="37645", cond_if=[[havequest(37645) ]]},
+		{ids="37201,37203,37207,37205,37208,37206,38300"},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Melomaniac"] = {
-		{ids="55064,55534,56515,56516,56517,56518,56519"},
+	["DAILIES\\Warlords of Draenor Dailies\\Harrison Jones Treasure Contracts"] = {
+		{ids="37993", cond_if=[[havequest(37993) ]]},
+		{ids="37997", cond_if=[[havequest(37997) ]]},
+		{ids="37995", cond_if=[[havequest(37995) ]]},
+		{ids="37994", cond_if=[[havequest(37994) ]]},
+		{ids="37992", cond_if=[[havequest(37992) ]]},
+		{ids="37996", cond_if=[[havequest(37996) ]]},
+		{ids="37848,37849,37850,37851,37973,37976,37977,37978,37881,37882,37883,37884,37914,37916,37917,37918,37788,37797,37798,37799,37941,37942,37943,37944"},
 	},
-	["ACHIEVEMENTS\\Player vs. Player\\Alterac Valley\\Alterac Valley of Olde"] = {
-		{ids="57300", cond_if=[[readyq(57300) or completedq(57300) ]]},
-		{ids="57249"},
+	["DAILIES\\Warlords of Draenor Dailies\\Frostwall Tavern Dungeon Dailies"] = {
+		{ids="37232,37233,37146,37142,37228,37229,37241,37240,37227,37242,37243,37209,37231,37230,37145,37238,37245,37239,37235,37234,37244,37236,37237"},
 	},
-	["ACHIEVEMENTS\\Professions\\Battle for Azeroth\\Scrapping\\Giving a Scrap"] = {
-		{ids="51465"},
+	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Order of the Awakened Dailies"] = {
+		{ids="39433"},
 	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Armed for Action"] = {
-		{ids="54090"},
+	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Vol'jin's Headhunters Dailies"] = {
+		{ids="38449", cond_if=[[havequest(38449) or completedq(38449) ]]},
+		{ids="38586", cond_if=[[havequest(38586) or completedq(38586) ]]},
+		{ids="39513", cond_if=[[havequest(39513) or completedq(39513) ]]},
+		{ids="39509", cond_if=[[havequest(39509) or completedq(39509) ]]},
+		{ids="39526"},
+		{ids="39519", cond_if=[[havequest(39519) or completedq(39519) ]]},
+		{ids="39510", cond_if=[[havequest(39510) or completedq(39510) ]]},
+		{ids="38047", cond_if=[[havequest(38047) or completedq(38047) ]]},
+		{ids="39511", cond_if=[[havequest(39511) or completedq(39511) ]]},
+		{ids="39512", cond_if=[[havequest(39512) or completedq(39512) ]]},
+		{ids="39514", cond_if=[[havequest(39514) or completedq(39514) ]]},
+		{ids="38441", cond_if=[[havequest(38441) or completedq(38441) ]]},
+		{ids="39532", cond_if=[[havequest(39532) or completedq(39532) ]]},
+		{ids="37940", cond_if=[[havequest(37940) or completedq(37940) ]]},
+		{ids="38252", cond_if=[[havequest(38252) or completedq(38252) ]]},
+		{ids="38044", cond_if=[[havequest(38044) or completedq(38044) ]]},
 	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Collector"] = {
-		{ids="55056,55061,55062,55063,55064,55065,55066,55068,55069,55074,56087,55075,55076,55077,55078,55081,55082"},
-	},
-	["ACHIEVEMENTS\\Professions\\Archaeology\\Battle for Azeroth\\Zandalari Curator"] = {
-		{ids="51950,51951,51952,51953,51954,51955,51926,51929,51932,51934,51936,51937"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\How to Ptrain Your Pterrordax (Part Two)"] = {
-		{ids="56205"},
-	},
-	["ACHIEVEMENTS\\Professions\\Fishing\\Battle for Azeroth\\Secret Fish of Mechagon"] = {
-		{ids="55305,55311,55312,55309,55299,55306,55307,55308,55310,55313"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Phenomenal Cosmic Power"] = {
-		{ids="56500,56433,56148,55080,53435,53435,53435,53435,53435,56401"},
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Junkyard Tinkmaster"] = {
-	},
-	["ACHIEVEMENTS\\Exploration\\Battle for Azeroth\\Periodic Destruction"] = {
-		{ids="55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121,55121"},
-	},
-	["ACHIEVEMENTS\\Dungeons & Raids\\Battle for Azeroth Raids\\Glory of the Ny'alotha Raider"] = {
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\The Shadow Hunter"] = {
-		{ids="53774,53775,53776,53778,54120,53777,53779,54145,53781,54147,53780,53782"},
-	},
-	["ACHIEVEMENTS\\Quests\\Battle for Azeroth\\Bow to Your Masters"] = {
-		{ids="47441"},
+	["DAILIES\\Warlords of Draenor Dailies\\Fishing Dailies"] = {
+		{ids="35071", cond_if=[[havequest(35071) ]]},
+		{ids="35066", cond_if=[[havequest(35066) ]]},
+		{ids="35075", cond_if=[[havequest(35075) ]]},
+		{ids="35074", cond_if=[[havequest(35074) ]]},
+		{ids="35073", cond_if=[[havequest(35073) ]]},
+		{ids="35072", cond_if=[[havequest(35072) ]]},
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Vendor Mounts\\Crimson Water Strider"] = {
 	},
@@ -23424,66 +23697,6 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["PETSMOUNTS\\Mounts\\Ground Mounts\\Garrison Mounts\\Giant Coldsnout"] = {
 		{ids="40941"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wriggling Parasite"] = {
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Highmountain Thunderhoof"] = {
-		{ids="50254", cond_if=[[completedq(49614) ]]},
-		{ids="49930,50242,48066,48067,49756,48079,41884,41764,48185,41799,48190,41800,48434,41815,41882,41840,41841,48403,48433"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\Undercity Plaguebat"] = {
-		{ids="50476,50642,50646,50647,50738,50740,50772,50800,50823,50837,50880,53604,53605,50878,50879,52436,53606,52437,53608,53609,53627,52438,52806,52967,52970,53610,52971,52981"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Quest Mounts\\Snapdragon Kelpstalker"] = {
-		{ids="56214"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Caravan Hyena"] = {
-		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,53905,54036,53906,53907,53908,57448"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wonderwing 2.0"] = {
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\X-995 Mechanocat"] = {
-		{ids="55056"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Scrapforged Mechaspider"] = {
-		{ids="56328", cond_if=[[not completedq(55707) ]]},
-		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55101,55708,55608,55707,55210,56320,54086,54929,55373,55697,54922,56117,56168,54083,56175,55696,55753"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Nightborne Manasaber"] = {
-		{ids="50254", cond_if=[[completedq(48433) ]]},
-		{ids="49930,50242,49973,49613,49354,49614"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Frostwolf Snarler"] = {
-		{ids="57300", cond_if=[[readyq(57300) or completedq(57300) ]]},
-		{ids="57249"},
-	},
-	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Child of Torcali"] = {
-		{ids="55251", cond_if=[[havequest(55251) ]]},
-		{ids="55245", cond_if=[[havequest(55245) ]]},
-		{ids="55249", cond_if=[[havequest(55249) ]]},
-		{ids="55250", cond_if=[[havequest(55250) ]]},
-		{ids="55248", cond_if=[[havequest(55248) ]]},
-		{ids="55244", cond_if=[[havequest(55244) ]]},
-		{ids="55246", cond_if=[[havequest(55246) ]]},
-		{ids="55243,55243", cond_if=[[havequest(55243) ]]},
-		{ids="47514,49615,50835,48452,46926,48454,46846,46927,46928,46929,50881,50538,47226,47259,48527,47312,47272,47311,51990,51998,47418,47261,48581,47310,47260,52855,52857,55254,55252,55253,55258,55462,55462,55504,55503,55506,55505,55507,55247,55795,55796,55797,55798"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Obsidian Worldbreaker"] = {
-		{ids="57249,57298"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Dropped Mounts\\Uncorrupted Voidwing"] = {
-		{ids="58876"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Awakened Mindborer"] = {
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Blizzard Store Mounts\\Ensorcelled Everwyrm"] = {
-		{ids="57686"},
-	},
-	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Shadowbarb Drone (Beta)"] = {
-		{ids="58804,58808,58805,58806,58807", cond_if=[[haveanyquest(58804,58808,58805,58806,58807) ]]},
-		{ids="58812,58825,58818,58813,58858,58826,58817", cond_if=[[haveanyquest(58812,58825,58818,58813,58858,58826,58817) ]]},
-		{ids="58830,58860,58859,58861,58862,58831", cond_if=[[haveanyquest(58830,58860,58859,58861,58862,58831) ]]},
-		{ids="58802,58803,58810,58811,58829,58863,58865,58866"},
 	},
 	["PETSMOUNTS\\Hunter Pets\\Legion Pets\\Mechanical Pets\\Mechanostriders\\Blue-Purple Mechanostrider"] = {
 		{ids="4601"},
@@ -23836,6 +24049,66 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["TITLES\\Legion Titles\\PVP\\Talon's Vengeance"] = {
 		{ids="44990,44993,44996,44998,45000,45002,45004,45006,45008,45010,45012,45016,45018,45020,44989,44994,44995,44997,44999,45001,45003,45005,45007,45009,45011,45013,45015,45017,45019,44948,44971,44950,44953,44954,44956,44957,44958,44959,44960,44961,44962,44967,44968,44969,44973,44975,44976,44977,44978,44979,44980,44981,44982,44983,44984,44985,44986,44987,44988"},
 	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wriggling Parasite"] = {
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Highmountain Thunderhoof"] = {
+		{ids="50254", cond_if=[[completedq(49614) ]]},
+		{ids="49930,50242,48066,48067,49756,48079,41884,41764,48185,41799,48190,41800,48434,41815,41882,41840,41841,48403,48433"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\Undercity Plaguebat"] = {
+		{ids="50476,50642,50646,50647,50738,50740,50772,50800,50823,50837,50880,53604,53605,50878,50879,52436,53606,52437,53608,53609,53627,52438,52806,52967,52970,53610,52971,52981"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Quest Mounts\\Snapdragon Kelpstalker"] = {
+		{ids="56214"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Caravan Hyena"] = {
+		{ids="53870,53889,53890,53891,53892,53893,53894,53895,53897,53898,54026,53899,53900,53901,58087,53902,54027,53903,53904,53905,53905,54036,53906,53907,53908,57448"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Wonderwing 2.0"] = {
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Miscellaneous Mounts\\X-995 Mechanocat"] = {
+		{ids="55056"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Scrapforged Mechaspider"] = {
+		{ids="56328", cond_if=[[not completedq(55707) ]]},
+		{ids="57024,55646,55647,55648,55630,55632,55649,55650,55651,55652,55685,55729,55730,55731,55995,55734,55096,55736,55101,55708,55608,55707,55210,56320,54086,54929,55373,55697,54922,56117,56168,54083,56175,55696,55753"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Nightborne Manasaber"] = {
+		{ids="50254", cond_if=[[completedq(48433) ]]},
+		{ids="49930,50242,49973,49613,49354,49614"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Frostwolf Snarler"] = {
+		{ids="57300", cond_if=[[readyq(57300) or completedq(57300) ]]},
+		{ids="57249"},
+	},
+	["PETSMOUNTS\\Mounts\\Ground Mounts\\Achievement Mounts\\Child of Torcali"] = {
+		{ids="55251", cond_if=[[havequest(55251) ]]},
+		{ids="55245", cond_if=[[havequest(55245) ]]},
+		{ids="55249", cond_if=[[havequest(55249) ]]},
+		{ids="55250", cond_if=[[havequest(55250) ]]},
+		{ids="55248", cond_if=[[havequest(55248) ]]},
+		{ids="55244", cond_if=[[havequest(55244) ]]},
+		{ids="55246", cond_if=[[havequest(55246) ]]},
+		{ids="55243,55243", cond_if=[[havequest(55243) ]]},
+		{ids="47514,49615,50835,48452,46926,48454,46846,46927,46928,46929,50881,50538,47226,47259,48527,47312,47272,47311,51990,51998,47418,47261,48581,47310,47260,52855,52857,55254,55252,55253,55258,55462,55462,55504,55503,55506,55505,55507,55247,55795,55796,55797,55798"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Obsidian Worldbreaker"] = {
+		{ids="57249,57298"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Dropped Mounts\\Uncorrupted Voidwing"] = {
+		{ids="58876"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Achievement Mounts\\Awakened Mindborer"] = {
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Blizzard Store Mounts\\Ensorcelled Everwyrm"] = {
+		{ids="57686"},
+	},
+	["PETSMOUNTS\\Mounts\\Flying Mounts\\Quest Mounts\\Shadowbarb Drone (Beta)"] = {
+		{ids="58804,58808,58805,58806,58807", cond_if=[[haveanyquest(58804,58808,58805,58806,58807) ]]},
+		{ids="58812,58825,58818,58813,58858,58826,58817", cond_if=[[haveanyquest(58812,58825,58818,58813,58858,58826,58817) ]]},
+		{ids="58830,58860,58859,58861,58862,58831", cond_if=[[haveanyquest(58830,58860,58859,58861,58862,58831) ]]},
+		{ids="58802,58803,58810,58811,58829,58863,58865,58866"},
+	},
 	["GOLD\\Farming\\Jawless Skulker Flesh/Crescent Saberfish Flesh (Garrison)"] = {
 	},
 	["GOLD\\Farming\\Rain Poppy (Horde)"] = {
@@ -24119,39 +24392,6 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="38252", cond_if=[[havequest(38252) or completedq(38252) ]]},
 		{ids="38044", cond_if=[[havequest(38044) or completedq(38044) ]]},
 	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Timber Lord"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Dwarfstalker"] = {
-		{ids="36924"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lord/Lady of War"] = {
-		{ids="37082,37083"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Scourge of the Kaldorei"] = {
-		{ids="36932"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Lumberjack"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Draenei Destroyer"] = {
-		{ids="36930"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Manslayer"] = {
-		{ids="36921"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Architect"] = {
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Worgen Hunter"] = {
-		{ids="36928"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Warlord of Draenor"] = {
-		{ids="37082,37083"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Gnomebane"] = {
-		{ids="36926"},
-	},
-	["TITLES\\Warlords of Draenor Titles\\Garrisons\\Terror of the Tushui"] = {
-		{ids="36934"},
-	},
 	["REPUTATIONS\\Burning Crusade Reputations\\Netherwing\\Netherwing Reputation (Friendly) - Pre-Quests"] = {
 		{ids="11053,11075,11083,11081,11082,11054"},
 	},
@@ -24342,6 +24582,41 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["REPUTATIONS\\Burning Crusade Reputations\\Netherwing\\Netherwing Reputation (Honored) - Pre-Quests"] = {
 		{ids="11084,11064,11067,11068,11069,11070,11071"},
 	},
+	["TITLES\\Mists of Pandaria Titles\\General\\The Relic Hunter"] = {
+	},
+	["TITLES\\Mists of Pandaria Titles\\Pet Battles\\Crazy Cat Lady/Man"] = {
+		{ids="29220,29221,29222,29223,29226,29227,29228,29230,29231,29232"},
+	},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\Delver of the Vaults"] = {
+	},
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\The Wakener"] = {
+		{ids="31009", cond_if=[[not completedq(31010) ]]},
+		{ids="31006,31010,31085,31398,31026,31354,31606,31179,31211,31439"},
+	},
+	["TITLES\\Mists of Pandaria Titles\\Dungeons & Raids\\The Fearless"] = {
+	},
+	["TITLES\\Mists of Pandaria Titles\\Reputations\\Farmer"] = {
+		{ids="30526", cond_if=[[havequest(30526) ]]},
+		{ids="30336,31670,30334,31669,31942,31672,30335,31673,31941,30333,316,31674,31943,31671,30337,30336,30334,30335,30333,30337", cond_if=[[not completedq(32682) ]]},
+		{ids="32682", cond_if=[[rep('The Tillers')==Exalted and not completedq(32682) ]]},
+		{ids="30477", cond_if=[[havequest(30477) ]]},
+		{ids="30471", cond_if=[[havequest(30471) ]]},
+		{ids="30473", cond_if=[[havequest(30473) ]]},
+		{ids="30472", cond_if=[[havequest(30472) ]]},
+		{ids="30478", cond_if=[[havequest(30478) ]]},
+		{ids="30470", cond_if=[[havequest(30470) ]]},
+		{ids="30474", cond_if=[[havequest(30474) ]]},
+		{ids="30475", cond_if=[[havequest(30475) ]]},
+		{ids="30476", cond_if=[[havequest(30476) ]]},
+		{ids="30479", cond_if=[[havequest(30479) ]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30317,30326,30327,30325,30322,30318,30323,30319,30321,30324,30260,30516,31936,30523,30524,31937,30258,30259,31946,30517,30518,31947,30519,31948,31949,30521,30522,30525,30527,30528,30529,31938,30534"},
+	},
+	["PROFESSIONS\\Mining\\Leveling Guides\\Mining 1-300"] = {
+		{ids="29518"},
+	},
+	["PROFESSIONS\\Cooking\\Leveling Guides\\Cooking 1-300"] = {
+		{ids="8307,8313"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Beast Pets\\Young Talbuk"] = {
 		{ids="38300"},
 	},
@@ -24371,6 +24646,12 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Iron Starlette"] = {
 		{ids="36382,35745,35746,35744,35748,36292,35761,35751,35750,35764,35760,35762,35763,36940"},
 	},
+	["REPUTATIONS\\Battle for Azeroth\\Uldum Accord"] = {
+		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58636,58638,58639,58646,58640,58641,58642,58643"},
+	},
+	["REPUTATIONS\\Battle for Azeroth\\Rajani"] = {
+		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58991,56377,56536,56537,56538,56539,56771,56540,56541,56542,58737,57067,57068,57071,57069,57070,57072,57074,57075,57076"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Battle Pet Dungeons\\Gnomeregan"] = {
 		{ids="54186", cond_if=[[completedq(54185) ]]},
 		{ids="54185", cond_if=[[not completedq(54185) ]]},
@@ -24385,23 +24666,6 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="56492", cond_if=[[completedq(56491) ]]},
 		{ids="56491", cond_if=[[not completedq(56491) ]]},
 		{ids="56490"},
-	},
-	["PROFESSIONS\\Mining\\Leveling Guides\\Mining 1-300"] = {
-		{ids="29518"},
-	},
-	["PROFESSIONS\\Cooking\\Leveling Guides\\Cooking 1-300"] = {
-		{ids="8307,8313"},
-	},
-	["REPUTATIONS\\Battle for Azeroth\\Uldum Accord"] = {
-		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58636,58638,58639,58646,58640,58641,58642,58643"},
-	},
-	["REPUTATIONS\\Battle for Azeroth\\Rajani"] = {
-		{ids="58582,58583,58506,56374,56209,56375,56472,56376,58991,56377,56536,56537,56538,56539,56771,56540,56541,56542,58737,57067,57068,57071,57069,57070,57072,57074,57075,57076"},
-	},
-	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
-		{ids="36662", cond_if=[[havequest(36662) ]]},
-		{ids="37645", cond_if=[[havequest(37645) ]]},
-		{ids="37201,37203,37207,37205,37208,37206,38300"},
 	},
 	["PETSMOUNTS\\Battle Pet Quests\\Beasts of Fable"] = {
 		{ids="32603"},
@@ -24727,6 +24991,20 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["LEVELING\\Classic (1-50)\\Eastern Kingdoms\\Northern Stranglethorn (10-50)"] = {
 		{ids="26278,26317,26279,26280,26321,26407,26298,26323,9436,26281,9457,26299,26325,26340,583,26343,185,26269,190,186,26344,187,191,194,188,195,26300,26330,26338,196,192,26332,26301,26334,26345,197,193,26350,26302,26399,26303,26351,26359,26400,26403,26352,26305,26360,26362,26386,26405,26304,208,26404"},
 	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Imperial Silkworm"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Critter Pets\\Red Cricket"] = {
+		{ids="31374", cond=[[Horde]]},
+		{ids="31372", cond=[[Alliance]]},
+		{ids="30252,30535,30254,30255,30256,30257,31945,30408,30404"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Magic Pets\\Spectral Porcupette"] = {
+		{ids="32616"},
+	},
+	["PETSMOUNTS\\Battle Pets\\Flying Pets\\Imperial Moth"] = {
+	},
+	["PETSMOUNTS\\Battle Pets\\Mechanical Pets\\Lil' Bling"] = {
+	},
 	["ACHIEVEMENTS\\Feats of Strength\\Mounts\\I've Got 9999 Problems but a Bone-White Primal Raptor Ain't One"] = {
 		{ids="32617"},
 	},
@@ -24892,127 +25170,6 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["ACHIEVEMENTS\\Professions\\Cooking\\Now I Am the Master"] = {
 		{ids="31281,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31302,31311,31467,31479,31480,31470,31471,31478,31477,31475,31476,31472,31474,31536,31332,30329,30330,30328,30332,30331,31332,31333,31334,31335,31336"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\High Overlord Saurfang Dailies"] = {
-		{ids="37783,37783", cond_if=[[havequest(37783) ]]},
-		{ids="37756", cond_if=[[havequest(37756) ]]},
-		{ids="37765", cond_if=[[havequest(37765) ]]},
-		{ids="37786,37786", cond_if=[[havequest(37786) ]]},
-		{ids="37763", cond_if=[[havequest(37763) ]]},
-		{ids="37780,37780", cond_if=[[havequest(37780) ]]},
-		{ids="37762", cond_if=[[havequest(37762) ]]},
-		{ids="37764", cond_if=[[havequest(37764) ]]},
-		{ids="37782,37782", cond_if=[[havequest(37782) ]]},
-		{ids="37758", cond_if=[[havequest(37758) ]]},
-		{ids="37757", cond_if=[[havequest(37757) ]]},
-		{ids="37787,37787", cond_if=[[havequest(37787) ]]},
-		{ids="37785,37785", cond_if=[[havequest(37785) ]]},
-		{ids="37784,37784", cond_if=[[havequest(37784) ]]},
-		{ids="37781,37781", cond_if=[[havequest(37781) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Garrison Building Dailies"] = {
-		{ids="37320", cond_if=[[havequest(37320) ]]},
-		{ids="37325", cond_if=[[havequest(37325) ]]},
-		{ids="36662", cond_if=[[havequest(36662) ]]},
-		{ids="37645", cond_if=[[havequest(37645) ]]},
-		{ids="37321", cond_if=[[havequest(37321) ]]},
-		{ids="35072", cond_if=[[havequest(35072) ]]},
-		{ids="35071", cond_if=[[havequest(35071) ]]},
-		{ids="35066", cond_if=[[havequest(35066) ]]},
-		{ids="37324", cond_if=[[havequest(37324) ]]},
-		{ids="37323", cond_if=[[havequest(37323) ]]},
-		{ids="35075", cond_if=[[havequest(35075) ]]},
-		{ids="35074", cond_if=[[havequest(35074) ]]},
-		{ids="35073", cond_if=[[havequest(35073) ]]},
-		{ids="37043,38188,38300"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Garrison Assault Daily Quests"] = {
-		{ids="38202", cond_if=[[havequest(38202) or completedq(38202) ]]},
-		{ids="38178", cond_if=[[havequest(38178) or completedq(38178) ]]},
-		{ids="36695", cond_if=[[havequest(36695) or completedq(36695) ]]},
-		{ids="36688", cond_if=[[havequest(36688) or completedq(36688) ]]},
-		{ids="36694", cond_if=[[havequest(36694) or completedq(36694) ]]},
-		{ids="38182", cond_if=[[havequest(38182) or completedq(38182) ]]},
-		{ids="38187", cond_if=[[havequest(38187) or completedq(38187) ]]},
-		{ids="36691", cond_if=[[havequest(36691) or completedq(36691) ]]},
-		{ids="36689", cond_if=[[havequest(36689) or completedq(36689) ]]},
-		{ids="36693", cond_if=[[havequest(36693) or completedq(36693) ]]},
-		{ids="36701", cond_if=[[havequest(36701) or completedq(36701) ]]},
-		{ids="38184", cond_if=[[havequest(38184) or completedq(38184) ]]},
-		{ids="38185", cond_if=[[havequest(38185) or completedq(38185) ]]},
-		{ids="36807", cond_if=[[havequest(36807) or completedq(36807) ]]},
-		{ids="38186", cond_if=[[havequest(38186) or completedq(38186) ]]},
-		{ids="38176", cond_if=[[havequest(38176) or completedq(38176) ]]},
-		{ids="38179", cond_if=[[havequest(38179) or completedq(38179) ]]},
-		{ids="38183", cond_if=[[havequest(38183) or completedq(38183) ]]},
-		{ids="38177", cond_if=[[havequest(38177) or completedq(38177) ]]},
-		{ids="36667", cond_if=[[havequest(36667) or completedq(36667) ]]},
-		{ids="38180", cond_if=[[havequest(38180) or completedq(38180) ]]},
-		{ids="36669", cond_if=[[havequest(36669) or completedq(36669) ]]},
-		{ids="36696", cond_if=[[havequest(36696) or completedq(36696) ]]},
-		{ids="36690", cond_if=[[havequest(36681) or completedq(36681) ]]},
-		{ids="36692", cond_if=[[havequest(36692) or completedq(36692) ]]},
-		{ids="40941", cond_if=[[havequest(40941) or completedq(40941) ]]},
-		{ids="38181", cond_if=[[havequest(38181) or completedq(38181) ]]},
-		{ids="36697", cond_if=[[havequest(36697) or completedq(36697) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Shadow Hunter Ty'jin Daily Quests"] = {
-		{ids="37813", cond_if=[[havequest(37813) ]]},
-		{ids="37949", cond_if=[[havequest(37949) ]]},
-		{ids="37817", cond_if=[[havequest(37817) ]]},
-		{ids="37815", cond_if=[[havequest(37815) ]]},
-		{ids="37818", cond_if=[[havequest(37818) ]]},
-		{ids="37816", cond_if=[[havequest(37816) ]]},
-		{ids="37814", cond_if=[[havequest(37814) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\The Saberstalkers"] = {
-		{ids="39529,39565"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Battle Pets Dailies"] = {
-		{ids="36662", cond_if=[[havequest(36662) ]]},
-		{ids="37645", cond_if=[[havequest(37645) ]]},
-		{ids="37201,37203,37207,37205,37208,37206,38300"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Harrison Jones Treasure Contracts"] = {
-		{ids="37993", cond_if=[[havequest(37993) ]]},
-		{ids="37997", cond_if=[[havequest(37997) ]]},
-		{ids="37995", cond_if=[[havequest(37995) ]]},
-		{ids="37994", cond_if=[[havequest(37994) ]]},
-		{ids="37992", cond_if=[[havequest(37992) ]]},
-		{ids="37996", cond_if=[[havequest(37996) ]]},
-		{ids="37848,37849,37850,37851,37973,37976,37977,37978,37881,37882,37883,37884,37914,37916,37917,37918,37788,37797,37798,37799,37941,37942,37943,37944"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Frostwall Tavern Dungeon Dailies"] = {
-		{ids="37232,37233,37146,37142,37228,37229,37241,37240,37227,37242,37243,37209,37231,37230,37145,37238,37245,37239,37235,37234,37244,37236,37237"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Order of the Awakened Dailies"] = {
-		{ids="39433"},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Tanaan Jungle (100)\\Vol'jin's Headhunters Dailies"] = {
-		{ids="38449", cond_if=[[havequest(38449) or completedq(38449) ]]},
-		{ids="38586", cond_if=[[havequest(38586) or completedq(38586) ]]},
-		{ids="39513", cond_if=[[havequest(39513) or completedq(39513) ]]},
-		{ids="39509", cond_if=[[havequest(39509) or completedq(39509) ]]},
-		{ids="39526"},
-		{ids="39519", cond_if=[[havequest(39519) or completedq(39519) ]]},
-		{ids="39510", cond_if=[[havequest(39510) or completedq(39510) ]]},
-		{ids="38047", cond_if=[[havequest(38047) or completedq(38047) ]]},
-		{ids="39511", cond_if=[[havequest(39511) or completedq(39511) ]]},
-		{ids="39512", cond_if=[[havequest(39512) or completedq(39512) ]]},
-		{ids="39514", cond_if=[[havequest(39514) or completedq(39514) ]]},
-		{ids="38441", cond_if=[[havequest(38441) or completedq(38441) ]]},
-		{ids="39532", cond_if=[[havequest(39532) or completedq(39532) ]]},
-		{ids="37940", cond_if=[[havequest(37940) or completedq(37940) ]]},
-		{ids="38252", cond_if=[[havequest(38252) or completedq(38252) ]]},
-		{ids="38044", cond_if=[[havequest(38044) or completedq(38044) ]]},
-	},
-	["DAILIES\\Warlords of Draenor Dailies\\Fishing Dailies"] = {
-		{ids="35071", cond_if=[[havequest(35071) ]]},
-		{ids="35066", cond_if=[[havequest(35066) ]]},
-		{ids="35075", cond_if=[[havequest(35075) ]]},
-		{ids="35074", cond_if=[[havequest(35074) ]]},
-		{ids="35073", cond_if=[[havequest(35073) ]]},
-		{ids="35072", cond_if=[[havequest(35072) ]]},
 	},
 	["DUNGEONS\\Northrend Dungeons\\Utgarde Keep: Utgarde Pinnacle"] = {
 		{ids="13131,13132", cond_if=[[havequest(13131) or havequest(13132) ]]},
@@ -25371,6 +25528,11 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="26870", cond_if=[[not completedq(26870) ]]},
 		{ids="26872,26873", cond_if=[[not completedq(26872) or not completedq(26873) ]]},
 	},
+	["PETSMOUNTS\\Battle Pet Quests\\Draenor Battle Pets Dailies"] = {
+		{ids="36662", cond_if=[[havequest(36662) ]]},
+		{ids="37645", cond_if=[[havequest(37645) ]]},
+		{ids="37201,37203,37207,37205,37208,37206,38300"},
+	},
 	["PETSMOUNTS\\Battle Pets\\Battle Pet Dungeons\\Wailing Caverns"] = {
 		{ids="45539", cond_if=[[completedq(45423) ]]},
 		{ids="45423", cond_if=[[not completedq(45423) ]]},
@@ -25473,7 +25635,7 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Questline"] = {
 		{ids="62693", cond_if=[[not completedq(62890) ]]},
-		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,57661,60062,60064,60063,60061,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58647,58669,59008,58704,58871,59725,59063,59068,60066,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60191,60192,60193,60194,60108,62422,62560,62561"},
+		{ids="61475,61479,58104,58157,58158,58159,58160,62883,62884,62697,62890,62891,62892,62893,62882,60287,61355,60289,62837,62894,62897,62898,61541,61542,61550,62900,62899,63030,60136,61099,60267,60268,60269,60270,60271,60272,57661,60062,60064,60063,60061,60065,60066,59179,59181,60508,60530,59189,59242,59809,59811,59812,59813,59815,59817,59818,59819,59821,58610,58647,58669,59008,58704,58871,59725,59063,59068,60066,59070,59069,59071,62428,61058,60898,60910,60928,60934,61061,61076,61102,61113,61701,58773,61702,61143,61703,61709,61710,61711,61171,58445,58446,59258,58706,58447,58449,58450,59721,58451,58452,59731,59732,59739,59741,59742,59749,59805,59822,59824,59856,59866,60189,60190,60191,60192,60193,60194,60108,62422,62560,62561"},
 		{ids="63214", cond_if=[[not havequest(63214) or completedq(63214) ]]},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Story Only)"] = {
@@ -25493,6 +25655,9 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Transport Network"] = {
 		{ids="63052,63053"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Night Fae Queen's Conservatory"] = {
+		{ids="62624,63046,59862,59872,59873,59999,59871,62467,62447,60640,60641,60642"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Revendreth"] = {
 		{ids="57025", cond_if=[[havequest(57025) or completedq(57025) ]]},
@@ -25537,14 +25702,23 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="57386", cond_if=[[havequest(57386) or completedq(57386) ]]},
 		{ids="57390,60020,60021,57425,60179,57511,57512,60181,57515,57514,58351,58617,60451,57516,58616,58618,58726,60428,60453,60461,60886,59130,58011,58016,58027,58036,58045,58031,59223,60831,58751,58821,59171,59172,59185,59210,59188,59190,59025,57912,57976,60557,58268,57979,59616,57983,57984,57986,57985,57987,57982,57993,57994,60733,59009,59231,59202,59874,59897,60972,59960,59959,59962,59966,59973,61190,62654,59974,59011,60737,59206"},
 	},
+	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
+		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Command Table"] = {
 		{ids="63054,59603"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Abomination Factory"] = {
+		{ids="63058,58665,58668,58677,58680,58686,59042,58670,58671,58727,60048,60041,60042,60195,60049"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor"] = {
 		{ids="63057,60722"},
 	},
-	["LEVELING\\Shadowlands (50-60)\\Torghast\\Torghast Questline"] = {
-		{ids="60136,61099,60267,62932,62935,62938,60139,62966,62969,60146,62836,61730"},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Path of Ascension"] = {
+		{ids="60489,60493,60494,60495,60496,60497,61473,60498,60946"},
+	},
+	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr The Ember Court"] = {
+		{ids="63065,59660,59661,57919,57920,57921,57922,57923,57924,57925,60127,57927,57928,61704,60236,57926,60128,57929,57531,57532,57571,57533,57534,59427,57535,57536,61705,61404,61706,61407,61882,61884,61880,61616"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Bastion (Threads of Fate)"] = {
 		{ids="60466,57712,62714,57444,57529,57538,57545,57547,57568,59554,57549,57551,57552,57554,57553,57555,62715,59674,58037,58038,58039,57932,57931,57933,58040,58041,58042,57934,57935,57936,57937,58103,58103"},
@@ -25558,17 +25732,17 @@ ZGV.Quest_Cache_Turnin_Horde = {
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Necrolord Questline"] = {
 		{ids="62694", cond_if=[[not completedq(62840) ]]},
 		{ids="63212", cond_if=[[not havequest(58609) or completedq(58609) ]]},
-		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,62448,59555,58007,57649,59265,61227,61335,61226,61230,61230,57644,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,59650,59645,59648,59653,59678,59659,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,59916,60043,61396,61180,60510,61412,60050,60114,61567,60044,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58599,58472,58608,58624,62388,61739,61741,62414,61740,61742,61743,61744,62297,61745,61746,61747,61748,62317,61749,61751,62320,61750,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
+		{ids="58609,59556,61359,62833,62834,62835,62839,62840,61397,62843,62882,60287,61355,60289,62837,62844,62845,62846,59596,59597,61388,62848,59609,63032,60136,61099,60267,60268,60269,60270,60271,60272,62448,59555,58007,57649,59265,61227,61335,61226,61230,61230,57644,61252,61323,57648,62169,57778,61485,61518,60112,61548,61551,61569,61594,59722,61869,58820,59625,59650,59645,59648,59653,59678,59659,59698,59700,59709,59748,59921,59922,59894,61586,61145,59910,59916,60043,61396,61180,60510,61412,60050,60114,61567,60044,61246,60098,60067,57470,57530,57473,57475,57636,62161,58504,58523,58599,58472,58608,58624,62388,61739,61741,62414,61740,61742,61743,61744,62297,61745,61746,61747,61748,62317,61749,61751,62320,61750,61752,61753,61754,61755,61756,61757,61758,61759,61760,61761,62391,58833,59020,62406,60111"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Venthyr Questline"] = {
 		{ids="63215", cond_if=[[not havequest(59314) or completedq(59314) ]]},
 		{ids="62691", cond_if=[[not completedq(62902) ]]},
-		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,61492,59701,59708,59707,59706,59676,59711,59720,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,60673,58428,58424,58440,58444,61050,58530,58555,58585,58586,58584,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58393,58392,58394,58395,57727,57771,60145,57772,60265,60183,57729,57646,57531,57532,57571,57533,57534,59427,57535,57536,58406,58407,59325"},
+		{ids="59314,59315,59321,59323,62856,62857,62695,62902,62903,62904,62905,62882,60287,61355,60289,62837,62870,62914,62915,62918,62919,62920,62921,63033,60136,61099,60267,60268,60269,60270,60271,60272,61492,59701,59708,59707,59706,59676,59711,59720,59719,59343,60904,57880,57881,57882,57884,57885,57886,57887,57888,57889,57890,57891,57892,57893,60935,58842,58325,58337,58326,58372,58421,60673,58428,58424,58440,58444,61050,58530,58555,58585,58586,58584,58600,58603,58630,58656,60993,60994,60995,60996,59233,61077,58382,58383,58426,58384,58385,58386,58387,58443,58388,58389,58518,58391,58393,58392,58394,58395,57727,57771,60145,57772,60265,60183,57729,57646,57531,57532,57571,57533,57534,59427,57535,57536,58406,58407,59325"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Covenants\\Kyrian Questline"] = {
 		{ids="62692", cond_if=[[not completedq(62791) ]]},
 		{ids="63211", cond_if=[[not havequest(63211) or completedq(63211) ]]},
-		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,58787,58789,58788,58790,58791,58949,58948,58950,58951,58792,58793,58795,58796,58797,58798,58175,58176,58177,58179,58180,58178,58182,58183,58181,61785,61767,61768,61769,61770,61771,61772,61774,61773,61775,61776,61778,61779,61777,61780,61781,61782,61876,61877,61878,58557,58560,58559,58558,58562,58561,58563,58564,58565,58566,58567,58568,58569,58570,58571,58775,58832,58856,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57116,57115,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919"},
+		{ids="60491,60492,57895,62789,62790,62698,62791,62792,57905,62832,62882,60287,61355,60289,62837,62796,62793,62794,57897,57898,60504,62795,57904,63029,60136,61099,60267,60268,60269,60270,60271,60272,58787,58789,58788,58790,58791,58949,58948,58950,58951,58792,58793,58795,58796,58797,58798,58175,58176,58177,58179,58180,58178,58182,58183,58181,61785,61767,61768,61769,61770,61771,61772,61774,61773,61775,61776,61778,61779,61777,61780,61781,61782,61876,61877,61878,58557,58560,58559,58558,58562,58561,58563,58564,58565,58566,58567,58568,58569,58570,58571,58775,58832,58856,58816,58905,58938,58937,58939,58857,58995,58997,61135,61697,57113,57114,57116,57115,57120,57118,57117,57207,57121,57122,57123,57124,57125,62555,58854,58844,58846,58847,59919,62557"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Maldraxxus (Threads of Fate)"] = {
 		{ids="59430,58431,59223,60831,62785,58068,58088,58090,59750,59781,58575,59800,58947,59879,59203,59837,58900,58750,58785,58794,57245,62605,58619,58621,59917,58620,58622,60900,59994,58623"},
@@ -25578,20 +25752,22 @@ ZGV.Quest_Cache_Turnin_Horde = {
 		{ids="57026,57007,57381,56829,56942,56955,58433,56978,57174,58654,57178,57179,57161,57173,58931,58932,59021,57175,59023,57176,57180,57182,59232,57098,58916,58941,59014,57131,57136,57164,60506,57159,60313,59209,57189,57190,59256,57240,57380,57405,57426,57428,57427,57442,57460,57461,60566,57724,59327,57689,57690,57691,57693,57694,59644,58086,57876"},
 	},
 	["LEVELING\\Shadowlands (50-60)\\Shadowlands Intro & Main Story Questline"] = {
-		{ids="62778", cond_if=[[covenant() ~= Venthyr ]]},
-		{ids="63209,62277,62739", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
+		{ids="63034,62723", cond_if=[[covenant() == Kyrian ]]},
+		{ids="62740,62778", cond_if=[[covenant() ~= Venthyr ]]},
+		{ids="63209,62277", cond_if=[[not havequest(62763) and not completedq(62763) ]]},
 		{ids="62159", cond_if=[[not completedq(62159) ]]},
-		{ids="61874", cond_if=[[Horde ]]},
-		{ids="62748", cond_if=[[covenant() ~= Necrolord ]]},
-		{ids="62778", cond_if=[[covenant() == Venthyr ]]},
-		{ids="62801", cond_if=[[havequest(62801) or completedq(62801) ]]},
-		{ids="63210,62279,63037", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
-		{ids="62763", cond_if=[[covenant() ~= NightFae ]]},
-		{ids="62763", cond_if=[[covenant() == NightFae ]]},
-		{ids="63208,62278,62738", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
+		{ids="62707,62723", cond_if=[[covenant() ~= Kyrian ]]},
 		{ids="60545", cond_if=[[Alliance ]]},
-		{ids="62748", cond_if=[[covenant() == Necrolord ]]},
-		{ids="59751,59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,62716,62000,62275,62707,62723,62729,62761,62776,60129,60148,60149,60150,60151,60152,60154,60156,61096,61107,61715,61716,57877,57878"},
+		{ids="62738,62748", cond_if=[[covenant() ~= Necrolord ]]},
+		{ids="63037,62778", cond_if=[[covenant() == Venthyr ]]},
+		{ids="62801", cond_if=[[havequest(62801) or completedq(62801) ]]},
+		{ids="63210,62279", cond_if=[[not havequest(62778) and not completedq(62778) ]]},
+		{ids="62739,62763", cond_if=[[covenant() ~= NightFae ]]},
+		{ids="63036,62763", cond_if=[[covenant() == NightFae ]]},
+		{ids="63208,62278", cond_if=[[not havequest(62748) and not completedq(62748) ]]},
+		{ids="63035,62748", cond_if=[[covenant() == Necrolord ]]},
+		{ids="61874", cond_if=[[Horde ]]},
+		{ids="59751,59752,59907,59753,59914,59754,59755,59756,59757,59758,59915,59759,59760,59761,59776,59762,59765,59766,60644,59767,59770,62704,62716,62000,62275,62729,62761,62776,60129,60148,60149,60150,60151,60152,60154,60156,61096,61107,61715,61716,57877,57878"},
 	},
 	["ACHIEVEMENTS\\Professions\\Cooking\\Kickin' It Up a Notch"] = {
 		{ids="11379", cond_if=[[havequest(11379) ]]},

@@ -4543,7 +4543,6 @@ ZygorGuidesViewer:RegisterInclude("Shadow_Choose_World_Quests",[[
 		|tip The guide will automatically load the steps for that world quest.
 		'|confirm |next "The_Ascended_WQ" |condition readyq(61097) and not ZGV.WorldQuests:QuestsQueued()
 		'|confirm |next "Court_of_Harvesters_WQ" |condition readyq(61100) and not ZGV.WorldQuests:QuestsQueued()
-		'|confirm |next "Necrolords_WQ" |condition readyq(60288) and not ZGV.WorldQuests:QuestsQueued()
 		'|confirm |next "The_Undying_Army_WQ" |condition readyq(61095) and not ZGV.WorldQuests:QuestsQueued()
 		'|confirm |next "The_Wild_Hunt_WQ" |condition readyq(61098) and not ZGV.WorldQuests:QuestsQueued()
 		|worldquestqueue
@@ -4555,27 +4554,23 @@ ZygorGuidesViewer:RegisterInclude("Shadow_World_Quest_Emissaries",[[
 	step
 	label "The_Ascended_WQ"
 		talk Adjutant Nikos##168820
-		turnin Supplies from The Ascended##61097 |goto Bastion/0 52.02,46.99
+		turnin Supplies from The Ascended##61097 |goto Bastion/0 52.24,47.10 |region heros_rest
 		|only if readyq(61097)
 	step
 	label "Court_of_Harvesters_WQ"
-		--talk 
-		turnin Supplies from the Court of Harvesters##61100
+		talk Mistress Mihaela##156822
+		turnin Supplies from the Court of Harvesters##61100 |goto Revendreth/0 61.31,63.78
 		|only if readyq(61100)
 	step
-	label "Necrolords_WQ"
-		talk Oyne Soulborn##168045
-		turnin Supplies from the Necrolords##60288
-		|only if readyq(60288)
-	step
 	label "The_Undying_Army_WQ"
-		--talk 
-		turnin Supplies from The Undying Army##61095
+		talk Nalcorn Talsen##173003
+		turnin Supplies from The Undying Army##61095 |goto Maldraxxus/0 50.76,53.38
 		|only if readyq(61095)
 	step
 	label "The_Wild_Hunt_WQ"
-		--talk 
-		turnin Supplies from The Wild Hunt##61098
+		talk Aithlyn##158556
+		turnin Supplies from The Wild Hunt##61098 |goto Ardenweald/0 48.48,50.42 |only if covenant() ~= NightFae
+		turnin Supplies from The Wild Hunt##61098 |goto Heart of the Forest/0 59.47,31.80 |only if covenant() == NightFae
 		|only if readyq(61098)
 	step
 		|next "Choose_World_Quest"

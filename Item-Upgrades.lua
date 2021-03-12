@@ -184,6 +184,18 @@ local function get_upgrade(newitem,olditem,secondnewitem)
 		new_item_score = new_item_score + (secondnewitem.score or 0)
 	end
 
+	local arrowframe = ZGV.Pointer and ZGV.Pointer.ArrowFrame 
+
+	if arrowframe then
+		if olditem then
+			pathnode = arrowframe.waypoint and arrowframe.waypoint.pathnode
+			if pathnode then 
+				local portkey = pathnode.item or (pathnode.link and pathnode.link.item)
+				if portkey and portkey==olditem.itemid then return 0 end -- original protected by travel system
+			end
+		end
+	end
+
 	if is_protected_item(newitem) then return 100 end -- item protected by id
 
 	if olditem then -- check if old item is protected
@@ -775,7 +787,7 @@ function Upgrades:ProcessPossibleUpgrades()
 			end
 		end
 	end
-	
+
 	if process_slot then
 		ZGV:Debug("&itemscore PPU process_slot ended up %d",process_slot)
 		if ZGV.db.profile.autogearauto then

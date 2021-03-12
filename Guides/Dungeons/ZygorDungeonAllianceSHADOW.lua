@@ -491,7 +491,7 @@ description="\nTo complete this dungeon, you will need to kill the following bos
 "\nGorechop\nXav the Unfallen\nKul'tharok\nMordretha, the Endless Empress",
 },[[
 step
-kill Dessia the Decapitator##164451 |goto Theater of Pain/4
+kill Dessia the Decapitator##164451 |goto Theater of Pain/4 50.58,91.96
 kill Paceran the Virulent##164463
 kill Sathel the Accursed##164461
 _EVERYONE:_ |grouprole EVERYONE
@@ -522,7 +522,7 @@ _TANK:_ |grouprole TANK
 |tip "Hateful Strike" inflicts heavy damage. |grouprole TANK
 Click Here to Continue |confirm
 step
-kill Xav the Unfallen##162329 |goto Theater of Pain/3
+kill Xav the Unfallen##162329 |goto Theater of Pain/3 52.63,76.63
 _EVERYONE:_ |grouprole EVERYONE
 |tip Don't stand in front of Xav during "Might of Maldraxxus" to avoid taking heavy damage. |grouprole EVERYONE
 |tip At 100 energy Xav will force players into the pit to fight. |grouprole EVERYONE
@@ -536,7 +536,7 @@ _TANK:_ |grouprole TANK
 |tip "Brutal Combo" will inflict heavy physical damage. |grouprole TANK
 Click Here to Continue |confirm
 step
-kill Kul'tharok##162309 |goto Theater of Pain/2
+kill Kul'tharok##162309 |goto Theater of Pain/2 71.40,68.71
 _EVERYONE:_ |grouprole EVERYONE
 |tip "Draw Soul" will cause you to suffer damage and make your soul move towards Kul'tharok. |grouprole EVERYONE
 |tip Reclaim your soul to gain a damage buff and eliminate the periodic damage debuff. |grouprole EVERYONE
@@ -549,7 +549,7 @@ _TANK:_ |grouprole TANK
 |tip Stay in melee range to avoid heavy damage from "Spectral Reach." |grouprole TANK
 Click Here to Continue |confirm
 step
-kill Mordretha, the Endless Empress##165946 |goto Theater of Pain/4
+kill Mordretha, the Endless Empress##165946 |goto Theater of Pain/4 46.67,36.24
 _EVERYONE:_ |grouprole EVERYONE
 |tip Spread out to avoid excess damage from "Manifest Death." |grouprole EVERYONE
 |tip Run away from "Grasping Rifts" to avoid being pulled in. |grouprole EVERYONE

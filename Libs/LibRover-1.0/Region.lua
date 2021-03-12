@@ -58,6 +58,8 @@ function Region:Contains(node,debug)
 	--Lib:Debug(getdist(self.centernode,node))
 	if self.name==node.region then
 		return true,debug and "already in"  -- that's a no-brainer
+	elseif node.region then
+		return false,debug and "already in diff region: "..node.region  -- in different region
 	else
 		local flyspeed_in_zone = LibRover.maxspeedinzone[node.m][3]
 		if flyspeed_in_zone>0 and not self.indoors and not self.in_flight then return false,debug and "player can fly" end

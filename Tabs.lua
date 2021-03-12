@@ -10,7 +10,8 @@ local L = ZGV.L
 local FONT=ZGV.Font
 
 local max_tabs_limit=30  -- hard limit on tab number, for sanity
-	
+local drag_sensitivity = 1 -- how far into the tab do we need to drag to trigger reposition, between 0 and 50 (edge to middle)
+
 Tabs.Pool = {}
 
 -- update tabs layout when main zygor frame is resized
@@ -21,6 +22,73 @@ end
 -- update tabs layout when main zygor frame is resized
 function Tabs:StopMovingOrSizing()
 	if Tabs.ResizeTimer then ZGV:CancelTimer(Tabs.ResizeTimer) end
+end
+
+function Tabs.OnUpdate(frame, elapsed)
+	if not Tabs.Dragging then return end
+	if InCombatLockdown() or UnitAffectingCombat("player") then 
+		Tabs.Dragging.Button:SetAlpha(1)
+		Tabs.Dragging = nil
+		return 
+	end
+
+
+	local x, y = GetCursorPosition();
+	local scale = UIParent:GetEffectiveScale()
+	local tx = x/scale
+
+	local after
+	local visible = 0
+	for i,tab in ipairs(Tabs.Pool) do
+		if tab.Button:IsVisible() then
+			visible = visible + 1
+			local mult = Tabs.Dragging.Num<tab.Num and (drag_sensitivity/100) or ((100-drag_sensitivity)/100)
+			if tx>(tab.Button:GetLeft() + tab.Button:GetWidth()*mult) then 
+				after = i 
+			else
+				break
+			end
+		end
+	end
+
+	if Tabs.Dragging.Num==1 and (not after or after==1) then
+		-- dragging first, hover before first tab
+		Tabs.DraggingTarget = 1
+	elseif after==Tabs.Dragging.Num then
+		-- hovering after dragged tab, show marker before it
+		Tabs.DraggingTarget = after
+	elseif after and after<visible then
+		-- moving before hovered tab
+		if after>Tabs.Dragging.Num then
+			Tabs.DraggingTarget = after
+		else
+			Tabs.DraggingTarget = after+1
+		end
+	elseif after then
+		-- move after last tab, show marker after it
+		Tabs.DraggingTarget = after
+	else
+		-- move before first tab
+		Tabs.DraggingTarget = 1
+	end
+
+	local source = Tabs.Dragging.Num
+	local destination = Tabs.DraggingTarget
+
+	if destination then 
+		-- reposition guide in history
+		local temphistory = table.remove(ZGV.db.char.tabguides,source)
+		table.insert(ZGV.db.char.tabguides,destination,temphistory)
+
+		-- reposition in tab pool
+		local temptab = table.remove(Tabs.Pool,source)
+		table.insert(Tabs.Pool,destination,temptab)
+
+		-- Refresh tab numbers
+		for i,tab in pairs(Tabs.Pool) do tab.Num=i end
+	end
+
+	Tabs:ReanchorTabs()
 end
 
 function Tabs.AddButtonOnClick(self,button)
@@ -76,6 +144,7 @@ function Tabs:Initialize()
 	.__END
 
 	ZGV:AddMessageHandler("SKIN_UPDATED",Tabs.ApplySkin)
+	ZGV.UpdateCentral:AddHandler(Tabs.OnUpdate)
  
 	Tabs:ApplySkin()
 
@@ -242,12 +311,6 @@ function Tabs:ReanchorTabs(force)
 			tab.Button:SetWidth(tab_width)
 			tab.Button:Show()
 
-			if count == 1 then
-				tab.Close.DoShow = false
-			else
-				tab.Close.DoShow = true
-			end
-
 			if ((tab_width*count) > frame_width) then
 				visible_limit = floor((frame_width-more_button_width)/tab_width)
 				visible_width = floor((frame_width-more_button_width) / visible_limit)
@@ -261,13 +324,14 @@ function Tabs:ReanchorTabs(force)
 
 			if tabcounter<=visible_limit then
 				tab:HideInteraction()
-				tab.Button:SetParent(ZGV.Frame)
+				tab.Button:SetParent(ZGV.Frame.Border.TabContainer)
 				tab.Hidden = false
 
+				tab.Button:ClearAllPoints()
 				if visible_prev then
 					tab.Button:SetPoint("TOPLEFT",visible_prev,"TOPRIGHT",1,0)
 				else
-					tab.Button:SetPoint("BOTTOMLEFT",ZGV.Frame.Border.Guides,"TOPLEFT",FIRST_OFFSET,0)
+					tab.Button:SetPoint("BOTTOMLEFT",ZGV.Frame.Border.TabContainer,"BOTTOMLEFT", FIRST_OFFSET,0)
 				end
 				visible_prev = tab.Button
 
@@ -285,7 +349,7 @@ end
 -- show/hide dropdown for additional tabs
 local RemainingMenuItems = {}
 function Tabs:ToggleRemainingMenu()	
-	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==Tabs.RemainingMenuFrame then CloseDropDownForks() return end
+	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==Tabs.RemainingMenuFrame then CloseDropDownForks() print("hide") return end
 
 	table.wipe(RemainingMenuItems)
 
@@ -359,7 +423,7 @@ end
 
 -- tab over/out are not as simple as they could be, since for nested buttons mouse out event sometimes does not trigger, so we need to keep track of over/out states by ourselves.
 function Tabs:HideInteraction()
-	if self.Button:IsMouseOver() then ZGV:ScheduleTimer(function() self:HideInteraction() end, 0.1) return end
+	if self.Button:IsMouseOver() and not Tabs.Dragging then ZGV:ScheduleTimer(function() self:HideInteraction() end, 0.1) return end
 
 	self.Close:Hide()
 	self.Change:Hide()
@@ -373,8 +437,10 @@ function Tabs:HideInteraction()
 	GameTooltip:Hide()
 end
 
-function Tabs:ShowInteraction(text)
-	if self.Close.DoShow then self.Close:Show() end
+function Tabs:ShowInteraction(tooltip)
+	if Tabs.Dragging then return end
+
+	self.Close:Show()
 	self.Change:Show()
 	--self.Text:SetTextColor(unpack(SkinData("TabsTextColorOver")))
 
@@ -387,12 +453,12 @@ function Tabs:ShowInteraction(text)
 	end
 	self.ButtonsContainer:Show()
 	
-	text = text or self.title_short
-	if text then
+	tooltip = tooltip or self.title_short
+	if tooltip then
 		GameTooltip:SetOwner(self.Button,"ANCHOR_BOTTOM")
 		GameTooltip:ClearAllPoints()
 		GameTooltip:ClearLines()
-		GameTooltip:SetText(text)
+		GameTooltip:SetText(tooltip)
 		GameTooltip:SetWidth(300)
 		GameTooltip:Show()
 	end
@@ -407,18 +473,22 @@ function Tabs:CreateTab()
 	local decorwidth = SkinData("TabsDecorWidth")
 	
 	local tab = {}
-	tab.Button = CHAIN(ui:Create("Button",ZGV.Frame,"ZGVTab"..#Tabs.Pool))
+	tab.Button = CHAIN(ui:Create("Button",ZGV.Frame.Border.TabContainer,"ZGVTab"..#Tabs.Pool))
 		:SetSize(100,tab_height)
 		:SetFont(FONT,12)
 		:SetText("Guide Title")
 		:SetTexture("") -- initialize texture, will tweak it later
-		:SetScript("OnClick",function() tab:ActivateGuide() end)
+		:SetScript("OnMouseDown",function() tab:ActivateGuide() end)
 		:SetScript("OnEnter",function() tab:ShowInteraction() end)
 		:SetScript("OnLeave",function() tab:HideInteraction() end)
+		:SetScript("OnDragStart",function() tab:OnDragStart() end)
+		:SetScript("OnDragStop",function() tab:OnDragStop() end)
 		:SetBackdropColor(unpack(SkinData("TabsBackdropInactive")))
 		:SetBackdropBorderColor(unpack(SkinData("TabsBorderColor")))
 		:SetNormalBackdropColor(unpack(SkinData("TabsBackdropInactive")))
 		:SetHighlightBackdropColor(unpack(SkinData("TabsBackdropActive")))
+		:SetMovable(true)
+		:RegisterForDrag("LeftButton")
 		:Hide()
 	.__END
 
@@ -608,6 +678,8 @@ function Tabs:ActivateGuide()
 
 		Tabs:ReanchorTabs()
 	end
+
+	self:ShowInteraction()
 end
 
 local MAX_GUIDES_HISTORY = 30
@@ -650,6 +722,7 @@ function Tabs:AssignGuide(guidetitle,step,shared)
 		ZGV.db.char.tabguides[self.Num] = {title=guidetitle, step=step}
 	end
 
+	ZGV.Frame:ShowSpecialState("normal")
 	Tabs:ReanchorTabs()
 
 	local headerdata = guide.headerdata
@@ -668,6 +741,8 @@ function Tabs:AssignGuide(guidetitle,step,shared)
 
 	while #history>=MAX_GUIDES_HISTORY do tremove(history) end
 	tinsert(history,1,{guidetitle,step,guide.headerdata.worldquestzone and "worldquest"})
+
+	ZGV.db.char.unloadedguide=false
 end
 
 function Tabs:RemoveTab()
@@ -713,6 +788,16 @@ function Tabs:RemoveTab()
 
 	self.isActive = false
 	Tabs:ReanchorTabs()
+
+	if not Tabs.Pool[1].guide then 
+		ZGV.CurrentGuide=nil
+		ZGV.CurrentStep=nil
+		ZGV.db.char.guidename=nil
+		ZGV.db.char.step=nil
+		ZGV.Frame:ShowSpecialState("select")
+		ZGV:ShowWaypoints()
+		ZGV.db.char.unloadedguide=true
+	end
 end
 
 function ZGV.Tabs:OptionalTab(params)
@@ -750,6 +835,17 @@ function ZGV.Tabs:OptionalTab(params)
 	false, --quiet
 	nil,--onopen
 	"tabguide")
+end
+
+function Tabs:OnDragStart()
+	Tabs.Dragging = self
+	self.Button:SetAlpha(0.5)
+	self:HideInteraction()
+end
+
+function Tabs:OnDragStop()
+	Tabs.Dragging = nil
+	self.Button:SetAlpha(1)
 end
 
 tinsert(ZGV.startups,{"Guide tabs",function(self)

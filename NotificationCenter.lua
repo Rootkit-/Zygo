@@ -34,7 +34,7 @@ function Notification.OnUpdate()
 		end
 	end
 
-	if not ZGV.Frame.Controls.MenuNotifications:IsVisible() then return end
+	if not ZGV.Frame.Controls.MenuHostNotifications:IsVisible() then return end
 
 	Notification.HideTiming = Notification.HideTiming or 0
 
@@ -75,6 +75,13 @@ function Notification:DoStartup()
 		title=L["notifcenter_no_entries"], 
 		text=L["notifcenter_no_entries"], 
 		notCheckable=1,
+	}
+
+	Notification.Reset ={
+		title=L["notifcenter_reset"], 
+		text=L["notifcenter_reset"], 
+		notCheckable=1,
+		func = Notification.RemoveAllEntries
 	}
 
 	ZGV:AddMessageHandler("SKIN_UPDATED",Notification.ApplySkin)
@@ -121,10 +128,11 @@ function Notification:AddEntry(ident, title, text, texture, texcoords, onClick, 
 		Notification:ShowOneNotification(ident)
 	end
 
-	if not (data.guide and not data.dontdelete) then
+	if not (data.guide and data.dontdelete) then
 		entry.dontSave = true
 	end
 
+	ZGV.db.char.NotificationsCounterHidden = false
 	Notification:UpdateCounter()
 
 	return button
@@ -167,12 +175,16 @@ function Notification:ShowNotifications()
 
 	if #Notification.Entries==0 then 
 		table.insert(Notification.MenuItems,Notification.Empty)
+	else
+		table.insert(Notification.MenuItems,UIDropDownFork_separatorInfo)
+		table.insert(Notification.MenuItems,Notification.Reset)
 	end
 
-	UIDropDownFork_SetAnchor(ZGV.Frame.Controls.MenuNotifications, 0, 0, "TOP", ZGV.Frame.Controls.Notifications, "BOTTOM")
-	EasyFork(Notification.MenuItems,ZGV.Frame.Controls.MenuNotifications,nil,0,0,"MENU",10)
+	UIDropDownFork_SetAnchor(ZGV.Frame.Controls.MenuHostNotifications, 0, 0, "TOP", ZGV.Frame.Controls.Notifications, "BOTTOM")
+	EasyFork(Notification.MenuItems,ZGV.Frame.Controls.MenuHostNotifications,nil,0,0,"MENU",10)
 	DropDownForkList1:SetPoint("RIGHT",ZGV.Frame,"RIGHT")
 
+	ZGV.db.char.NotificationsCounterHidden = true
 	ZGV.Frame.Controls.Notifications.Counter:Hide()
 end
 
@@ -205,19 +217,21 @@ function Notification:ShowOneNotification(ident)
 
 	table.insert(Notification.MenuItems,data)
 
-	UIDropDownFork_SetAnchor(ZGV.Frame.Controls.MenuNotifications, 0, 0, "TOPRIGHT", ZGV.Frame.Controls.Notifications, "BOTTOMRIGHT")
-	EasyFork(Notification.MenuItems,ZGV.Frame.Controls.MenuNotifications,nil,0,0,"MENU",10)
+	UIDropDownFork_SetAnchor(ZGV.Frame.Controls.MenuHostNotifications, 0, 0, "TOPRIGHT", ZGV.Frame.Controls.Notifications, "BOTTOMRIGHT")
+	EasyFork(Notification.MenuItems,ZGV.Frame.Controls.MenuHostNotifications,nil,0,0,"MENU",10)
 
 	ZGV:ScheduleTimer(Notification.HideNotifications, 2.0)
 
 end
 
 function Notification:HideNotifications()
-	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==ZGV.Frame.Controls.MenuNotifications then CloseDropDownForks() return end
+	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==ZGV.Frame.Controls.MenuHostNotifications then CloseDropDownForks() return end
 end
 
 function Notification:AddedSavedNotifications()
 	if not ZGV.db.char.notifications then return end
+
+	local hide_counter = ZGV.db.char.NotificationsCounterHidden
 
 	for id,info in pairs(ZGV.db.char.notifications) do
 		local myId,title,text,texture,texCoord,OnClick,OnEnter,priority,poptime,removetime,quiet,OnOpen,myType,addtime,guideData,data
@@ -236,14 +250,15 @@ function Notification:AddedSavedNotifications()
 
 		if info[1] == "pet" then
 			ZGV.CreatureDetector:AddGuideToDetectedGuides(guide)
-			OnClick = function(self) ZGV:SetGuide(ZGV.CreatureDetector.DetectedGuides[self.id]) end
-			OnEnter = function(self) local position,x,y = Notification:GetTooltipPosition() ZGV.CreatureDetector:ShowTooltip(ZGV.CreatureDetector.DetectedGuides[self.id],self,position,x,y) end
+			OnClick = function(self) ZGV.Tabs:LoadGuideToTab(guide) Notification:RemoveEntry(myId) Notification:UpdateCounter() end
+			OnEnter = function(self) local position,x,y = Notification:GetTooltipPosition() ZGV.CreatureDetector:ShowTooltip(guide,self,position,x,y) end
+			guideData = guide
 		elseif info[1] == "sis" or info[1] == "mount" or info[1] == "monk" then
 			guideData = guide
-			OnClick = function(self) ZGV:SetGuide(guide) end
+			OnClick = function(self) ZGV.Tabs:LoadGuideToTab(guide) Notification:RemoveEntry(myId) Notification:UpdateCounter() end
 		elseif info[1] == "legion" then
 			guideData = guide
-			OnClick = function(self) ZGV:PLAYER_LEVEL_UP(nil,data.level) end
+			OnClick = function(self) ZGV:PLAYER_LEVEL_UP(nil,data.level) Notification:RemoveEntry(myId) Notification:UpdateCounter() end
 		end
 
 		Notification:AddEntry(
@@ -262,7 +277,13 @@ function Notification:AddedSavedNotifications()
 			myType,
 			{time=addtime,guide=guideData,level=(data and data.level or nil),dontdelete=(data and data.dontdelete or nil)})
 	end
-	Notification:UpdateCounter()
+
+	if hide_counter then
+		ZGV.db.char.NotificationsCounterHidden = true -- need to set it back, since AddEntry defaults to showing the counter
+		ZGV.Frame.Controls.Notifications.Counter:Hide()
+	end
+
+	--Notification:UpdateCounter()
 end
 
 function Notification:SaveNotifications()
@@ -284,6 +305,7 @@ function Notification:SaveNotifications()
 				notif.addtime,
 				notif.texture,
 				notif.texcoords,
+				notif.data,
 			}
 		elseif notif.notiftype == "sis" or notif.notiftype == "mount" or notif.notiftype == "monk" or notif.notiftype == "legion" then
 			local guideTitle = notif.data.guide.title 
@@ -303,8 +325,8 @@ end
 
 function Notification:ApplySkin()
 	ZGV.Frame.Controls.Notifications.Counter.BG:SetVertexColor(unpack(SkinData("NotificationBubbleColor")))
-	if ZGV.Frame.Controls.MenuNotifications then
-		CHAIN(ZGV.Frame.Controls.MenuNotifications)
+	if ZGV.Frame.Controls.MenuHostNotifications then
+		CHAIN(ZGV.Frame.Controls.MenuHostNotifications)
 			:SetBackdrop(SkinData("NotificationBackdrop"))
 			:SetBackdropColor(unpack(SkinData("NotificationBackdropColor")))
 			:SetBackdropBorderColor(unpack(SkinData("NotificationBackdropBorderColor")))
@@ -320,6 +342,13 @@ function Notification:RemoveEntry(ident)
 		end
 	end
 end
+
+function Notification:RemoveAllEntries()
+	table.wipe(Notification.Entries)
+	Notification:HideNotifications()
+	Notification:UpdateCounter()
+end
+
 
 function Notification:EntryExists(ident)
 	for index,entry in ipairs(Notification.Entries) do

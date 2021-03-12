@@ -61,6 +61,9 @@ function ItemScore:Initialise()
 		:SetScript("OnEvent",function(self,event,...) ItemScore:OnEvent(event,...) end)
 		:Show()
 
+	ZGV:AddMessageHandler("ZGV_STEP_FINALISED",ItemScore.OnEvent)
+	ZGV:AddMessageHandler("LIBROVER_TRAVEL_REPORTED",ItemScore.OnEvent)
+
 	-- create item popup
 	ItemScore.Upgrades:CreatePopup()
 
@@ -81,7 +84,9 @@ function ItemScore:OnEvent(event,arg1,arg2,...)
 			ItemScore.Upgrades:ScoreEquippedItems()
 			ItemScore.Upgrades:ScanBagsForUpgrades()
 		end,0.5)
-	elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "BAG_UPDATE_DELAYED" then -- bags or equipment changed, see what upgrades we have
+	elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "BAG_UPDATE_DELAYED" -- bags or equipment changed, see what upgrades we have
+		or event=="ZGV_STEP_FINALISED"  or event=="LIBROVER_TRAVEL_REPORTED" -- step finished loading, or travel route updated, see if we have useless quest equip or portkey
+		then 
 		-- on timer to run it only once, since equip/unequip fires both events, and we would get spammed
 		ItemScore.EquipTimer = ItemScore.EquipTimer or ZGV:ScheduleTimer(function() 
 			ItemScore.Upgrades:ScoreEquippedItems()
@@ -674,20 +679,33 @@ function ItemScore:ScoreSocket(itemlevel)
 	return  bestScore, bestStat, bestValue
 end
 
--- returns items equipped in requested slots, used by pointer
+-- returns items equipped by requested type, used by items-quest
 -- params:
---	slot - int - numeric identificator of slot to check
+--	equiptype - int - invtype constant of type to check
 -- returns
 --	itemlink - string - itemlink of item in first possible slot
 --	itemlink2 - string, optional - itemlink of item in second possible slot
-function ItemScore:GetItemInSlot(itemslot)
-	local s1, s2 = get_slots_by_type(itemslot)
+function ItemScore:GetItemByType(equiptype)
+	local s1, s2 = get_slots_by_type(equiptype)
 
 	local itemlink1,itemlink2
 	if s1 then itemlink1 = GetInventoryItemLink("player",s1) end
 	if s2 then itemlink2 = GetInventoryItemLink("player",s2) end
 
 	return itemlink1 and itemlink1:match("item[:%d]+"),itemlink2 and itemlink2:match("item[:%d]+"), itemlink1,itemlink2
+end
+
+-- returns items equipped in requested type, used by pointer
+-- params:
+--	slotid - int - invslot constant
+-- returns
+--	itemlink - string - itemlink of item in given slot
+--	itemid - string - itemid of item in given slot
+function ItemScore:GetItemInSlot(slotid)
+	local itemlink = GetInventoryItemLink("player",slotid)
+	if itemlink then
+		return itemlink:match("item[:%d]+"), tonumber(itemlink:match("item:(%d+)"))
+	end
 end
 
 -- gets verbose list of azerite powers on given item

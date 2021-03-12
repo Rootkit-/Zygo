@@ -6,8 +6,6 @@ ZygorGuidesViewer:RegisterGuide("Zygor's Dailies Guides\\Shadowlands (50-60)\\Ar
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing world quests in Ardenweald.",
 condition_suggested=function() return level >= 50 end,
-condition_valid=function() return level >= 50 and completedanyq(62899,57904,59609,59324,62000) end,
-condition_valid_msg="Valid Message",
 startlevel=50.0,
 worldquestzone={1550,1565},
 patch='90001',
@@ -156,6 +154,7 @@ _<Create 3 Sliced Arden Apples>_
 |tip Stand next to the fire while cooking.
 collect 3 Sliced Arden Apples##181986 |goto 48.33,51.28 |q 61596
 step
+cast Cooking Fire##818
 Open Your Cooking Crafting Panel:
 _<Create 1 Arden Apple Pie>_
 |tip It is in the Quest Recipes category under Shadowlands Cooking.
@@ -219,7 +218,6 @@ step
 label quest-61598
 accept Fishing: Speckled Flametail##61598 |goto Ardenweald/0 56.61,54.80
 |tip You will accept this quest automatically.
-|polish
 step
 cast Fishing##131474
 |tip Fish in the water until you catch enough fish.
@@ -308,7 +306,6 @@ step
 label quest-61599
 accept Inscription: Hymnal of Reprise##61599 |goto Ardenweald/0 48.33,51.28
 |tip You will accept this quest automatically.
-|polish
 step
 click Crafter's Basket##356878
 collect 10 Twilight Parchment##182286 |goto 48.33,51.28 |q 61599
@@ -327,7 +324,7 @@ step
 Open Your Inscription Crafting Panel:
 _<Create 1 Hymnal of Respite>_
 |tip It is in the Quest Recipes category under Shadowlands Inscription.
-collect 1 Hymnal of Respite##181375 |goto 48.33,51.28 |q 61599
+collect 1 Hymnal of Respite##181397 |goto 48.33,51.28 |q 61599
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-61303
@@ -426,7 +423,7 @@ accept Oranomonos the Everbranching##61815 |goto Ardenweald/0 20.23,63.66
 |tip You will accept this quest automatically.
 step
 _EVERYONE:_ |grouprole EVERYONE
-|tip Run away whe "Seeds of Sorrow" is cast. |grouprole EVERYONE
+|tip Run away when "Seeds of Sorrow" is cast. |grouprole EVERYONE
 |tip Avoid tornados from "Withered Winds." |grouprole EVERYONE
 |tip Interrupt "Regrowth" whenever possible. |grouprole EVERYONE
 _HEALER:_ |grouprole HEALER
@@ -476,7 +473,7 @@ Slay #12# Mature Gorm |q 58975/2 |goto 54.66,49.10
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-60337
-accept Pupa Trooper##60337 |goto Ardenweald/0 54.51,64.01
+accept Pupa Trooper##60337 |goto Ardenweald/0 52.67,57.52
 |tip You will accept this quest automatically.
 step
 label "Borrow_a_Pair_of_Enchanted_Wings"
@@ -545,7 +542,6 @@ step
 label quest-61603
 accept Skinning: Thick Gormhide##61603 |goto Ardenweald/0 51.72,76.33
 |tip You will accept this quest automatically.
-|polish
 step
 Kill Gorm enemies around this area
 |tip Skin their corpses.
@@ -687,7 +683,35 @@ step
 click Modified Gormling Lure
 Take the Modified Gormling Lure |q 60597/1 |goto 48.01,24.26
 step
-Collect #8# Gormdaughters |havebuff 8 spell:309806 |goto 45.45,25.14 |q 60597
+Collect 8 Gormdaughters |havebuff 1 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 7 Gormdaughters |havebuff 2 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 6 Gormdaughters |havebuff 3 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 5 Gormdaughters |havebuff 4 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 4 Gormdaughters |havebuff 5 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 3 Gormdaughters |havebuff 6 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 2 Gormdaughters |havebuff 7 spell:309806 |goto 45.45,25.14 |q 60597
+|tip Walk near Gormdaughters.
+|tip They look like smaller neutral Gorms.
+step
+Collect 1 Gormdaughter |havebuff 8 spell:309806 |goto 45.45,25.14 |q 60597
 |tip Walk near Gormdaughters.
 |tip They look like smaller neutral Gorms.
 step
@@ -789,8 +813,6 @@ ZygorGuidesViewer:RegisterGuide("Zygor's Dailies Guides\\Shadowlands (50-60)\\Ba
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing world quests in Bastion.",
 condition_suggested=function() return level >= 50 end,
-condition_valid=function() return level >= 50 and completedanyq(62899,57904,59609,59324,62000) end,
-condition_valid_msg="Valid Message",
 startlevel=50.0,
 worldquestzone={1550,1533,1690},
 patch='90001',
@@ -803,6 +825,7 @@ label quest-61593
 accept A Crisis of Memory##61593 |goto Bastion/0 43.39,26.09
 |tip You will accept this quest automatically.
 step
+Enter the building |goto 42.18,25.53 < 15 |walk
 kill Iristia the Unburdened##172913 |q 61593/3 |goto 41.08,26.78
 |tip Inside the building.
 |tip Neutral mobs may become hostile if you approach too closely.
@@ -840,11 +863,12 @@ Ask it _"Can you help me with something?_"
 |tip This will cause it to follow you.
 Ask it _"Can you help with this problem?_"
 |tip You need to be standing near one of the various glowing NPCs around this area.
-|tip The steward with the basket catches the scrolls.
+|tip The steward with the empty basket catches the scrolls.
 |tip The steward with the hammer repairs the malfunctioning NPC.
 |tip The steward with the broom sweeps the glass.
 |tip The steward with the crate provides drink to the Thirsty Aspirant.
-|tip The steward with the basket catches the scrolls.
+|tip The steward with the basket of fruit feeds the Hungry Aspirant
+|tip The steward with the bundle of scrolls entertains the Bored Aspirant.
 Do #6# Chores |q 60565/1 |goto 52.66,46.81 |region heros_rest
 |next "Shadow_World_Quest_Emissaries"
 step
@@ -863,7 +887,6 @@ step
 label quest-61220
 accept AHHH! Real Monsters!##61220 |goto Bastion/0 66.63,31.43
 |tip You will accept this quest automatically.
-|polish
 step
 talk Aspirant Thetes##171834
 Tell her _"I will accompany you."_
@@ -890,7 +913,7 @@ Enter a Rift |q 61148/2
 step
 kill Visk the All-Consuming##171513 |q 61148/3 |goto 67.11,27.92
 |tip Running over orbs on the ground will grant you a stacking buff.
-|tip Each stack will increase your speed, damage, and healing.
+|tip Each stack will increase your speed, damage, and healing, up to 20 stacks.
 |tip Stacks will also increase your damage taken.
 step
 click Devourer Rift
@@ -1051,7 +1074,6 @@ step
 label quest-61439
 accept Cooking: Steward Stew##61439 |goto Bastion/0 52.43,46.53 |region heros_rest
 |tip You will accept this quest automatically.
-|polish
 step
 click Crafter's Crate##356553
 collect 1 Grazer Bones##182024 |goto 52.43,46.53 |region heros_rest |q 61439
@@ -1226,7 +1248,6 @@ step
 label quest-59804
 accept Gateways of Horror##59804 |goto Bastion/0 47.02,63.38
 |tip You will accept this quest automatically.
-|polish
 step
 click Vesper of History
 Ring the Vesper of History |q 59804/1 |goto 47.02,63.38
@@ -1320,12 +1341,12 @@ step
 click Crafter's Crate##356553
 collect 1 Thick Steelhide Leather##182193 |goto 52.43,46.53 |region heros_rest |q 61449
 collect 6 Steelhide Sinew##182194 |goto 52.43,46.53 |region heros_rest |q 61449
-collect 6 Fresh Steelhide##182009 |goto 52.43,46.53 |region heros_rest |q 61449
+collect 1 Fresh Steelhide##182009 |goto 52.43,46.53 |region heros_rest |q 61449
 step
 Open Your Leatherworking Crafting Panel:
-_<Create 6 Steelhide Leather Strap>_
+_<Create 1 Steelhide Leather Strap>_
 |tip It is in the Quest Recipes category under Shadowlands Leatherworking.
-collect 6 Steelhide Leather Strap##182008 |goto 52.43,46.53 |region heros_rest |q 61449
+collect 1 Steelhide Leather Strap##182008 |goto 52.43,46.53 |region heros_rest |q 61449
 step
 Open Your Leatherworking Crafting Panel:
 _<Create 3 Steelhide Leather Belt>_
@@ -1341,17 +1362,19 @@ step
 label quest-59578
 accept Let's Get Ready to Humble##59578 |goto Bastion/0 51.16,80.41
 |tip You will accept this quest automatically.
-step
-talk Sparring Aspirant##159505+
-Ask them _"Will you spar with me?"_
-|tip Defeat them in a sparring duel.
-Spar with #8# Aspirants |q 59578/1 |goto 51.16,80.41
+stickystart "Spar_With_Aspirants_59578"
 step
 kill Archilon##158867 |q 59578/2 |goto 50.52,82.20
 step
 kill Straticus##158870 |q 59578/4 |goto 50.07,80.52
 step
 kill Epilon##158869 |q 59578/3 |goto 50.53,78.83
+step
+label "Spar_With_Aspirants_59578"
+talk Sparring Aspirant##159505+
+Ask them _"Will you spar with me?"_
+|tip Defeat them in a sparring duel.
+Spar with #8# Aspirants |q 59578/1 |goto 51.16,80.41
 step
 kill Athanos##158891 |q 59578/5 |goto 51.26,80.48
 |next "Shadow_World_Quest_Emissaries"
@@ -1378,6 +1401,8 @@ accept March of the Eternal Protector##61337 |goto Bastion/0 57.14,54.23
 |tip You will accept this quest automatically.
 step
 Kill enemies around Heraclor
+|tip Search up and down this road for Heraclor.
+|tip Heraclor is a giant boss-level construct that patrols the road.
 |tip Waves of enemies will attack relentlessly.
 |tip You may need help with this.
 Defend Heraclor |q 61337/1 |goto 57.14,54.23
@@ -1445,7 +1470,6 @@ step
 label quest-61468
 accept Skinning: Plush Copperfur Pelts##61468 |goto Bastion/0 42.48,59.62
 |tip You will accept this quest automatically.
-|polish
 step
 kill Copperfur Vulpin##169390+
 |tip Skin their corpses.
@@ -1518,7 +1542,6 @@ step
 label quest-59705
 accept Things Remembered##59705 |goto Bastion/0 56.06,62.21
 |tip You will accept this quest automatically.
-|polish
 step
 click Forgotten Memorandum##349136+
 |tip They look like small scrolls on the ground around this area.
@@ -1538,10 +1561,10 @@ Use the _"Order Search"_ ability
 |tip Inside the building.
 |tip It appears as a button on-screen.
 |tip Follow Gatamatos to the gem.
-Retreive #6# Training Gems |q 62241/3 |goto 55.69,42.88
+Retreive #6# Training Gems |q 62241/3 |goto 56.32,40.81
 step
 label "Kill_Agitated_Etherwyrms_62241"
-kill 8 Agitated Etherwyrm##159610 |q 62241/2 |goto 55.69,42.88
+kill 8 Agitated Etherwyrm##159610 |q 62241/2 |goto 56.32,40.81
 |tip Inside the building.
 step
 Leave the building |goto 55.70,42.84 < 10 |walk
@@ -1550,13 +1573,25 @@ Tell him _"I'm ready for formation training."_
 Speak to Pelodis |q 62241/4 |goto 54.96,41.38
 step
 clicknpc Gatamatos##173806
+|tip Sometimes the formation is slightly different.
+|tip Look at the active Phalanx NPCs and pick one that completes the pattern.
 Complete the First Formation |q 62241/5 |goto 55.06,41.56
+Click Gatamatos At [55.40,42.06]
+|tip Gatamatos must be at your side to complete a formation.
 step
 clicknpc Gatamatos##173803
-Complete the Second Formation |q 62241/6 |goto 55.02,41.71
+|tip Sometimes the formation is slightly different.
+|tip Look at the active Phalanx NPCs and pick one that completes the pattern.
+Complete the Second Formation |q 62241/6 |goto 55.05,41.65
+Click Gatamatos At [55.40,42.06]
+|tip Gatamatos must be at your side to complete a formation.
 step
 clicknpc Gatamatos##173803
-Complete the Third Formation |q 62241/7 |goto 55.21,41.55
+|tip Sometimes the formation is slightly different.
+|tip Look at the active Phalanx NPCs and pick one that completes the pattern.
+Complete the Third Formation |q 62241/7 |goto 55.23,41.58
+Click Gatamatos At [55.40,42.06]
+|tip Gatamatos must be at your side to complete a formation.
 step
 clicknpc Gatamatos##159675
 Place Gatamatos |q 62241/8 |goto 55.39,42.06
@@ -1624,8 +1659,6 @@ ZygorGuidesViewer:RegisterGuide("Zygor's Dailies Guides\\Shadowlands (50-60)\\Ma
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing world quests in Maldraxxus.",
 condition_suggested=function() return level >= 50 end,
-condition_valid=function() return level >= 50 and completedanyq(62899,57904,59609,59324,62000) end,
-condition_valid_msg="Valid Message",
 startlevel=50.0,
 worldquestzone={1550,1536},
 patch='90001',
@@ -1714,7 +1747,6 @@ step
 label quest-61353
 accept All Will Be Consumed##61353 |goto Maldraxxus/0 44.27,29.86
 |tip You will accept this quest automatically.
-|polish
 step
 click Shimmering Rift+
 |tip They look like large blue and white portals around this area.
@@ -1774,7 +1806,6 @@ step
 label quest-57650
 accept Better Off Dead##57650 |goto Maldraxxus/0 50.39,63.04
 |tip You will accept this quest automatically.
-|polish
 stickystart "Destroy_Siege_Artillery_57650"
 stickystart "Slay_Enemy_Troops_57650"
 step
@@ -1981,7 +2012,7 @@ kill Arin'gore##161196 |q 61708/4 |goto 59.43,27.06
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-61608
-accept Unbreakable Crystal##61608 |goto Maldraxxus/0 50.26,53.26
+accept Enchanting: Unbreakable Crystal##61608 |goto Maldraxxus/0 50.26,53.26
 |tip You will accept this quest automatically.
 step
 click Crafter's Crate##356879
@@ -2039,13 +2070,12 @@ Defeat Gorgemouth in a Pet Battle |q 61870/1 |goto 54.07,28.06
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-61610
-accept Fishing: Skeletal Mudskipper##61610 |goto Maldraxxus/0 51.47,20.22
+accept Fishing: Skeletal Mudskipper##61610 |goto Maldraxxus/0 51.52,19.78
 |tip You will accept this quest automatically.
-|polish
 step
 cast Fishing##131474
 |tip Fish in the water until you catch enough fish.
-collect 5 Skeletal Mudskipper##181955 |q 61610/1 |goto 51.47,20.22
+collect 5 Skeletal Mudskipper##181955 |q 61610/1 |goto 51.52,19.78
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-61667
@@ -2069,7 +2099,7 @@ accept Further Gelatinous Research##61189 |goto Maldraxxus/0 65.38,54.92
 |tip You will accept this quest automatically.
 step
 talk Project Lead Allen##171747
-Tell him _"I will assit you."_
+Tell him _"I will assist you."_
 Acquire the Accumulator |q 61189/1 |goto 65.38,54.92
 step
 Kill enemies around this area
@@ -2087,7 +2117,7 @@ click Crate of Salvaged Explosives+
 |tip They look like crates encased in bone on the ground around this area.
 Pick Up Some Explosives |condition hasbuff("spell:346686") or not havequest(58221) |goto 51.10,19.12
 step
-kill Bonefused Hauler##164798+
+kill Salvage Hauler##164798+
 |tip They fly around this area.
 |tip Target one and use the "Throw Bomb" ability that appears on-screen.
 collect 3 Stolen Equipment##184576 |q 58221/2 |goto 50.26,21.38 |count 3
@@ -2096,7 +2126,7 @@ click Crate of Salvaged Explosives+
 |tip They look like crates encased in bone on the ground around this area.
 Pick Up Some Explosives |condition hasbuff("spell:346686") or not havequest(58221) |goto 51.10,19.12
 step
-kill Bonefused Hauler##164798+
+kill Salvage Hauler##164798+
 |tip They fly around this area.
 |tip Target one and use the "Throw Bomb" ability that appears on-screen.
 collect 6 Stolen Equipment##184576 |q 58221/2 |goto 50.26,21.38 |count 6
@@ -2105,7 +2135,7 @@ click Crate of Salvaged Explosives+
 |tip They look like crates encased in bone on the ground around this area.
 Pick Up Some Explosives |condition hasbuff("spell:346686") or not havequest(58221) |goto 51.10,19.12
 step
-kill Bonefused Hauler##164798+
+kill Salvage Hauler##164798+
 |tip They fly around this area.
 |tip Target one and use the "Throw Bomb" ability that appears on-screen.
 collect 9 Stolen Equipment##184576 |q 58221/2 |goto 50.26,21.38 |count 9
@@ -2114,7 +2144,7 @@ click Crate of Salvaged Explosives+
 |tip They look like crates encased in bone on the ground around this area.
 Pick Up Some Explosives |condition hasbuff("spell:346686") or not havequest(58221) |goto 51.10,19.12
 step
-kill Bonefused Hauler##164798+
+kill Salvage Hauler##164798+
 |tip They fly around this area.
 |tip Target one and use the "Throw Bomb" ability that appears on-screen.
 collect 12 Stolen Equipment##184576 |q 58221/2 |goto 50.26,21.38 |count 12
@@ -2123,7 +2153,7 @@ click Crate of Salvaged Explosives+
 |tip They look like crates encased in bone on the ground around this area.
 Pick Up Some Explosives |condition hasbuff("spell:346686") or not havequest(58221) |goto 51.10,19.12
 step
-kill Bonefused Hauler##164798+
+kill Salvage Hauler##164798+
 |tip They fly around this area.
 |tip Target one and use the "Throw Bomb" ability that appears on-screen.
 collect 15 Stolen Equipment##184576 |q 58221/2 |goto 50.26,21.38 |or
@@ -2374,7 +2404,6 @@ step
 label quest-61614
 accept Skinning: Rugged Carapace##61614 |goto Maldraxxus/0 54.00,58.99
 |tip You will accept this quest automatically.
-|polish
 step
 kill Virulent Pest##159856+
 |tip Skin their corpses.
@@ -2425,7 +2454,6 @@ step
 label quest-61615
 accept Tailoring: Haunting Hood##61615 |goto Maldraxxus/0 50.26,53.26
 |tip You will accept this quest automatically.
-|polish
 step
 click Crafter's Crate##356879
 collect 13 Bleakthread##182028 |goto 50.26,53.26 |q 61615
@@ -2505,8 +2533,6 @@ ZygorGuidesViewer:RegisterGuide("Zygor's Dailies Guides\\Shadowlands (50-60)\\Re
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing world quests in Revendreth.",
 condition_suggested=function() return level >= 50 end,
-condition_valid=function() return level >= 50 and completedanyq(62899,57904,59609,59324,62000) end,
-condition_valid_msg="Valid Message",
 startlevel=50.0,
 worldquestzone={1550,1525},
 patch='90001',
@@ -2542,7 +2568,6 @@ step
 label quest-59904
 accept A Curious Cache##59904 |goto Revendreth/0 45.21,67.20
 |tip You will accept this quest automatically.
-|polish
 step
 Kill enemies around this area
 Slay #10# Banewood Wildlife |q 59904/1 |goto 45.21,67.20
@@ -2606,6 +2631,7 @@ step
 Deliver #10# Supplies |q 60657/1 |goto 67.21,43.89
 |tip Use the "Deploy Supplier" ability on your action bar directly over the blue circles with arrows over them around this area.
 |tip You have to drop the supplier in the circles to get credit.
+|tip Facing your camera straight down can help.
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-60658
@@ -2694,7 +2720,6 @@ step
 label quest-61621
 accept Cooking: Skewered Meats##61621 |goto Revendreth/0 32.67,48.98
 |tip You will accept this quest automatically.
-|polish
 step
 click Crafter's Crate##356880
 collect 1 Ember Chilis##182096 |goto 32.67,48.98 |q 61621
@@ -2856,7 +2881,6 @@ step
 label quest-61624
 accept Inscription: Catalog of Sins##61624 |goto Revendreth/0 32.67,48.98
 |tip You will accept this quest automatically.
-|polish
 step
 click Crafter's Crate##356880
 collect 10 Rigid Vellum##182309 |goto 32.67,48.98 |q 61624
@@ -2961,7 +2985,7 @@ Kill enemies around this area
 |tip Use the abilities on your action bar to shine the light on them.
 |tip Carved Tricksters will appear and attempt to attack you.
 |tip Shine the light on the Carved Tricksters first.
-Slay #50# Enemies |q 60659/2 |goto 38.32,39.79 |or
+Slay the Enemies |q 60659/2 |goto 38.32,39.79 |or
 '|condition outvehicle() and not completedq(60659) and questactive(60659) |next "Secure_the_Mirror" |or
 |next "Shadow_World_Quest_Emissaries"
 step
@@ -3132,6 +3156,9 @@ kill Nurgash Muckformed##167526 |q 61814/1 |goto 26.98,14.32
 |next "Shadow_World_Quest_Emissaries"
 step
 label quest-59718
+Run up the stairs |goto Revendreth/0 58.76,50.75 < 20 |only if walking
+|tip This world quest is on a platform far up on a higher tier.
+Cross the bridge |goto 56.66,52.66 < 20 |only if walking
 accept Parasol Peril##59718 |goto Revendreth/0 57.65,55.64
 |tip You will accept this quest automatically.
 step
@@ -3255,7 +3282,6 @@ stickystart "Slay_Manifestations_60654"
 step
 clicknpc Lost Soul##169916+
 |tip They look like floating ghosts around this area.
-|tip You can only lead one to the ritualist at a time.
 talk Avowed Ritualist##169917
 Tell him _"I have a soul for you."_
 Recover #6# Lost Souls |q 60654/1 |goto 50.84,31.99
@@ -3365,7 +3391,7 @@ click Theotar's Parasol
 Recover the Stolen Parasol |q 59848/2 |goto 34.98,52.32 |or
 |tip Use the "Spot of Tea" ability out-of-combat to recover health and mana.
 |tip Use "Bolt of Madness" for single-target ranged attacking.
-|tip Use "Dude's Descent" for AoE damage and stuns.
+|tip Use "Duke's Descent" for AoE damage and stuns.
 |tip Try to stay close to objects out of bright light.
 '|condition outvehicle() and not completedq(59848) and questactive(59848) and havequest(59848) |next "Hear_Theotar's_Story" |or
 step
@@ -3373,7 +3399,7 @@ label "Kill_Scorched_Scavenger_59848"
 kill 5 Scorched Scavenger##157731 |q 59848/3 |goto 34.95,57.32 |or
 |tip Use the "Spot of Tea" ability out-of-combat to recover health and mana. |notinsticky
 |tip Use "Bolt of Madness" for single-target ranged attacking. |notinsticky
-|tip Use "Dude's Descent" for AoE damage and stuns. |notinsticky
+|tip Use "Duke's Descent" for AoE damage and stuns. |notinsticky
 |tip Use the "Raise Parasol" ability out-of-combat to shield yourself from the sun. |notinsticky
 '|condition outvehicle() and not completedq(59848) and questactive(59848) and havequest(59848) |next "Hear_Theotar's_Story" |or
 step
@@ -3381,7 +3407,7 @@ label "Slay_Very_Rude_Ash_Ghouls_59848"
 Slay #5# Very Rude Ash Ghouls |q 59848/4 |goto 34.95,57.32 |or
 |tip Use the "Spot of Tea" ability out-of-combat to recover health and mana. |notinsticky
 |tip Use "Bolt of Madness" for single-target ranged attacking. |notinsticky
-|tip Use "Dude's Descent" for AoE damage and stuns. |notinsticky
+|tip Use "Duke's Descent" for AoE damage and stuns. |notinsticky
 |tip Use the "Raise Parasol" ability out-of-combat to shield yourself from the sun. |notinsticky
 '|condition outvehicle() and not completedq(59848) and questactive(59848) and havequest(59848) |next "Hear_Theotar's_Story" |or
 step
@@ -3492,6 +3518,7 @@ patch='90001',
 step
 label "Begin_Dailies"
 talk Ve'nari##162804
+accept A Dark Song##60902 |goto The Maw/0 46.91,41.69 |only if questactive(60902) or completedq(60902)
 accept A Suitable Demise##60775 |goto The Maw/0 46.91,41.69 |only if questactive(60775) or completedq(60775)
 accept Misery Business##60646 |goto 46.91,41.69 |only if questactive(60646) or completedq(60646)
 accept Death Motes##60762 |goto 46.91,41.69 |only if questactive(60762) or completedq(60762)
@@ -3504,10 +3531,21 @@ accept A Spark of Light##61075 |goto 46.91,41.69 |only if questactive(61075) or 
 accept Power of the Colossus##62234 |goto 46.91,41.69 |only if questactive(62234) or completedq(62234)
 accept Words of Warding##61765 |goto 46.91,41.69 |only if questactive(61765) or completedq(61765)
 accept Forces of Perdition##62214 |goto 46.91,41.69 |only if questactive(62214) or completedq(62214)
-|only if anyquestactive(60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214) or completedanyq(60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214)
+accept Soulless Husks##63206 |goto 46.91,41.69 |only if questactive(63206) or completedq(63206)
+|only if anyquestactive(60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206) or completedanyq(60902,60775,60646,60762,61088,61104,61103,60622,61079,61075,62234,61765,62214,63206)
+step
+click Tormentor's Pike
+accept Rodent Removal##62239 |goto The Maw/0 60.33,72.13
+|only if questactive(62239)
+step
+use Tormentor's Rod##183105
+|tip Use it on weakened Mawrat enemies around this area.
+Explode #8# Mawrats |q 62239/1 |goto 61.43,72.06
+You can find more around [56.61,83.10]
+|only if havequest(62239) and not readyq(62239) and not completedq(62239)
 step
 click Broker Journal
-accept What They Know##63069 |goto The Maw/0 46.44,62.27
+accept What They Know##63069 |goto 46.44,62.27
 |only if questactive(63069)
 step
 click Torn Pages##364991+
@@ -3619,7 +3657,20 @@ step
 click Blazing Ingot
 accept Acquisiton: Blazing Ingots##63050 |goto 38.90,39.90
 |only if questactive(63050)
+stickystart "Collect_12_Blazing_Ingots"
 step
+Kill Stygian enemies around this area
+collect Stygian Hammer##184622 |q 63206/1 |goto 38.16,38.88
+|only if questactive(63206)
+step
+use the Stygian Hammer##184622
+|tip Use it on Armored Husks.
+|tip They look like Suits of Stygian armor on the ground around this area.
+Destroy #10# Armored Husks |q 63206/2 |goto 38.16,38.88
+You can find more around [34.71,41.69]
+|only if questactive(63206)
+step
+label "Collect_12_Blazing_Ingots"
 click Blazing Ingot+
 |tip They look like small flaming metal bars on the ground around this area.
 collect 12 Blazing Ingot##184556 |q 63050/1 |goto 40.69,42.30
@@ -3665,7 +3716,6 @@ talk Disciple Kimonas##176144
 turnin Drowned and Torn Asunder##63179 |goto 38.88,23.55
 |only if readyq(63179) or completedq(63179)
 stickystop "Collect_Essences_of_Misery"
-stickystart "Rescue_Half-Buried_Souls"
 stickystart "Kill_Mawsworn_Shacklers"
 stickystart "Kill_Mawsworn_Deadeyes"
 stickystart "Disable_Pain_Conduits"
@@ -3673,12 +3723,6 @@ step
 talk Trapped Soul##175813
 accept Sundered Souls##63043 |goto 28.11,14.68
 |only if questactive(63043)
-step
-label "Rescue_Half-Buried_Souls"
-click Dirt Pile+
-|tip They look like light brown piles of loose dirt on the ground around this area.
-Rescue #6# Half-Buried Souls |q 61088/1 |goto 29.68,15.18
-|only if havequest(61088)
 step
 label "Kill_Mawsworn_Shacklers"
 kill 8 Mawsworn Shackler##167322 |q 61103/1 |goto 29.68,15.18
@@ -3743,6 +3787,7 @@ step
 talk Tormented Soul##176029
 turnin A Shadowed Fate##63166 |goto 29.71,20.91
 |only if readyq(63166) or completedq(63166)
+stickystart "Rescue_Half-Buried_Souls"
 step
 click Stygia Conduit
 Place the Stygia Conduit |q 61079/1 |goto 26.98,31.73 |count 1
@@ -3768,6 +3813,12 @@ step
 click Crystallized Stygia##364900
 accept Acquisition: Crystallized Stygia##63031 |goto 21.17,34.12
 |only if questactive(63031)
+step
+label "Rescue_Half-Buried_Souls"
+click Dirt Pile+
+|tip They look like light brown piles of loose dirt on the ground around this area.
+Rescue #6# Half-Buried Souls |q 61088/1 |goto 21.85,34.76
+|only if havequest(61088)
 stickystart "Collect_10_Crystallized_Stygia"
 step
 click Stygia Conduit
@@ -3812,9 +3863,17 @@ label "Kill_8_Crucible_Soulseekers"
 kill 8 Crucible Soulseeker##171179 |q 61075/1 |goto 19.48,48.48
 |only if havequest(61075)
 step
+use the Cypher of Melody##180626
+Lure Souls East of the River |q 60902/2 |goto 19.80,54.35
+|only if havequest(60902)
+step
 click Twisted Mawstone
 turnin A Monument to Vengeance##63039 |goto 23.39,49.85
 |only if havequest(63039) or completedq(63039)
+step
+use the Cypher of Melody##180626
+Lure Souls West of the River |q 60902/1 |goto 18.27,50.44
+|only if havequest(60902)
 step
 click Phasic Siphoner
 accept Torment for the Taking##63062 |goto 27.99,46.98
@@ -3831,7 +3890,9 @@ collect 10 Essence of Misery##184614 |q 60646/1 |goto 33.24,29.93
 |only if havequest(60646)
 step
 talk Ve'nari##162804
+turnin A Dark Song##60902 |goto The Maw/0 46.91,41.69 |only if readyq(60902)
 turnin A Suitable Demise##60775 |goto The Maw/0 46.91,41.69 |only if readyq(60775)
+turnin Rodent Removal##62239 |goto The Maw/0 46.91,41.69 |only if readyq(62239)
 turnin Misery Business##60646 |goto 46.91,41.69 |only if readyq(60646)
 turnin Death Motes##60762 |goto 46.91,41.69 |only if readyq(60762)
 turnin Dust to Dust##61088 |goto 46.91,41.69 |only if readyq(61088)
@@ -3840,26 +3901,27 @@ turnin Disrupting the Flow##60732 |goto 46.91,41.69 |only if readyq(60732)
 turnin Eye of the Scryer##60622 |goto 46.91,41.69 |only if readyq(60622)
 turnin The Jailer's Share##61079 |goto 46.91,41.69 |only if readyq(61079)
 turnin A Spark of Light##61075 |goto 46.91,41.69 |only if readyq(61075)
-turnin Thin Their Numbers##61103 |goto 46.91,41.69 |only if readyq(61103) or completedq(61103)
-turnin Acquisiton: Blazing Ingots##63050 |goto 46.91,41.69 |only if readyq(63050) or completedq(63050)
-turnin Acquisiton: Runeforged Shackles##63047 |goto 46.91,41.69 |only if readyq(63047) or completedq(63047)
-turnin Acquisition: Crystallized Stygia##63031 |goto 46.91,41.69 |only if readyq(63031) or completedq(63031)
-turnin Torment for the Taking##63062 |goto 46.91,41.69 |only if readyq(63062) or completedq(63062)
-turnin Guaranteed Delivery##63040 |goto 46.91,41.69 |only if readyq(63040) or completedq(63040)
-turnin Guaranteed Delivery##63038 |goto 46.91,41.69 |only if readyq(63038) or completedq(63038)
-turnin Feed Your Soul##63045 |goto 46.91,41.69 |only if readyq(63045) or completedq(63045)
-turnin Power of the Colossus##62234 |goto 46.91,41.69 |only if readyq(62234) or completedq(62234)
-turnin Words of Warding##61765 |goto 46.91,41.69 |only if readyq(61765) or completedq(61765)
-turnin What They Know##63069 |goto 46.91,41.69 |only if readyq(63069) or completedq(63069)
-turnin Acquisition: Stygic Ore##63072 |goto 46.91,41.69 |only if readyq(63072) or completedq(63072)
+turnin Thin Their Numbers##61103 |goto 46.91,41.69 |only if readyq(61103)
+turnin Acquisiton: Blazing Ingots##63050 |goto 46.91,41.69 |only if readyq(63050)
+turnin Acquisiton: Runeforged Shackles##63047 |goto 46.91,41.69 |only if readyq(63047)
+turnin Acquisition: Crystallized Stygia##63031 |goto 46.91,41.69 |only if readyq(63031)
+turnin Torment for the Taking##63062 |goto 46.91,41.69 |only if readyq(63062)
+turnin Guaranteed Delivery##63040 |goto 46.91,41.69 |only if readyq(63040)
+turnin Guaranteed Delivery##63038 |goto 46.91,41.69 |only if readyq(63038)
+turnin Feed Your Soul##63045 |goto 46.91,41.69 |only if readyq(63045)
+turnin Power of the Colossus##62234 |goto 46.91,41.69 |only if readyq(62234)
+turnin Words of Warding##61765 |goto 46.91,41.69 |only if readyq(61765)
+turnin What They Know##63069 |goto 46.91,41.69 |only if readyq(63069)
+turnin Acquisition: Stygic Ore##63072 |goto 46.91,41.69 |only if readyq(63072)
 turnin Forces of Perdition##62214 |goto 46.91,41.69 |only if readyq(62214)
-|only if readyanyq(60775,60646,60762,61088,61104,60732,61103,60622,61079,61075,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214) or completedanyq(61103,63050,63047,63031,63062,63040,63038,63045,62234,63069,63072,62214)
+turnin Soulless Husks##63206 |goto 46.91,41.69 |only if readyq(63206)
+|only if readyanyq(60902,60775,62239,60646,60762,61088,61104,60732,61103,60622,61079,61075,63050,63047,63031,63062,63040,63038,63045,62234,61765,63069,63072,62214,63206)
 step
 You have completed all daily quests in The Maw
 |tip This guide will reset when more become available.
-'|condition not completedanyq(63062,63050,63179,63043,63047,63166,63031,63100,63040,63038,63045,63069,63072,60732,63039) |next "Begin_Dailies"
+'|condition not completedanyq(63062,62239,63050,63179,63043,63047,63166,63031,63100,63040,63038,63045,63069,63072,60732,63039) |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests for the Kyrian Covenant.",
 condition_suggested=function() return level >= 60 and completedq(57904) end,
@@ -4077,48 +4139,54 @@ stickystart "Defeat_3_Rare_or_Special_Encounter_Bosses"
 stickystart "Collect_150_Soul_Embers_from_Torghast"
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #5# Lost Souls in the Maw |q 61332/1 |goto The Maw/0 39.52,46.74
 |only if havequest(61332) or completedq(61332)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #10# Lost Souls in the Maw |q 62861/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62861) or completedq(62861)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #15# Lost Souls in the Maw |q 62862/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62862) or completedq(62862)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls in the Maw |q 62863/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62863) or completedq(62863)
 step
 label "Defeat_3_Rare_or_Special_Encounter_Bosses"
 Defeat #3# Rare or Special Encounter Bosses |q 60454/1
 |tip Encounters periodically show on the map in The Maw.
+|tip The Wrath of the Jailer and Hunt events don't count.
+|tip Any rare with a skull or star minimap icon counts.
 |only if havequest(60454) or completedq(60454)
 step
 label "Collect_150_Soul_Embers_from_Torghast"
@@ -4173,12 +4241,12 @@ turnin Aiding Bastion##60392 |goto Elysian Hold/0 40.95,40.90 |only if readyq(60
 turnin Aiding Maldraxxus##60395 |goto Elysian Hold/0 40.95,40.90 |only if readyq(60395) or completedq(60395)
 turnin Aiding Revendreth##60400 |goto Elysian Hold/0 40.95,40.90 |only if readyq(60400) or completedq(60400)
 |only if readyanyq(60391,60392,60395,60400) or completedanyq(60391,60392,60395,60400)
-stickystart "Deposit_1500_Anima_in_the_Reservoir"
+stickystart "Collect_1000_Anima"
 step
 talk Haephus##167745
 Tell him _"Show me the Sanctum."_
 |tip Click the "Deposit" button to deposit anima from your bags.
-Deposit #400# Anima in the Anima Reservoir |q 60465/1 |goto Elysian Hold/0 42.60,53.06 |or
+Deposit #600# Anima in the Anima Reservoir |q 60465/1 |goto Elysian Hold/0 42.60,53.06 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands.
 '|condition countcompletedq(60458,60415,60358,60439,60442,60447,60450,60403,60407,60412,60404,60424,60434,60377,60430,60425,60380,60372,60465,60391,60392,60395,60400,60454) < 3 |next "Begin_Dailies" |or
 |only if havequest(60465) or completedq(60465)
@@ -4187,11 +4255,8 @@ talk Haephus##167745
 turnin Anima Appeal##60465 |goto Elysian Hold/0 42.60,53.06
 |only if readyq(60465) or completedq(60465)
 step
-label "Deposit_1500_Anima_in_the_Reservoir"
-talk Haephus##167745 |notinsticky
-Tell him _"Show me the Sanctum."_ |notinsticky
-|tip Click the "Deposit" button to deposit anima from your bags. |notinsticky
-Deposit #1500# Anima in the Anima Reservoir |q 61982/1 |goto Elysian Hold/0 42.60,53.06 |or
+label "Collect_1000_Anima"
+Collect #1000# Anima |q 61982/1 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands. |notinsticky
 '|condition countcompletedq(60458,60415,60358,60439,60442,60447,60450,60403,60407,60412,60404,60424,60434,60377,60430,60425,60380,60372,60465,60391,60392,60395,60400,60454) < 3 |next "Begin_Dailies" |or
 |only if havequest(61982) or completedq(61982)
@@ -4204,7 +4269,7 @@ You have completed all covenant daily quests
 |tip This guide will reset when more become available.
 '|condition countcompletedq(60458,60415,60358,60439,60442,60447,60450,60403,60407,60412,60404,60424,60434,60377,60430,60425,60380,60372,60465,60391,60392,60395,60400,60454) < 3 |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Necrolord Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolord Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests for the Necrolord Covenant.",
 condition_suggested=function() return level >= 60 and completedq(59609) end,
@@ -4224,7 +4289,7 @@ accept Replenish the Reservoir##61983 |goto Seat of the Primus/0 52.74,38.28
 step
 talk Sabbath Nightshade##167207
 accept Storm the Maw##60455 |goto Seat of the Primus/0 43.18,47.80 |only if questactive(60455) or completedq(60455)
-accept Soul Salvage##60459 |goto Seat of the Primus/0 43.18,47.80 |only if questactive(60459) or completedq(60459)
+accept Anima Salvage##60459 |goto Seat of the Primus/0 43.18,47.80 |only if questactive(60459) or completedq(60459)
 |only if anyquestactive(60455,60459) or completedanyq(60455,60459)
 step
 talk Niall Kugal##167209
@@ -4422,48 +4487,54 @@ stickystart "Defeat_3_Rare_or_Special_Encounter_Bosses"
 stickystart "Collect_150_Soul_Embers_from_Torghast"
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #5# Lost Souls in the Maw |q 61333/1 |goto The Maw/0 39.52,46.74
 |only if havequest(61333) or completedq(61333)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #10# Lost Souls in the Maw |q 62864/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62864) or completedq(62864)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #15# Lost Souls in the Maw |q 62865/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62865) or completedq(62865)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls in the Maw |q 62866/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62866) or completedq(62866)
 step
 label "Defeat_3_Rare_or_Special_Encounter_Bosses"
 Defeat #3# Rare or Special Encounter Bosses |q 60455/1
 |tip Encounters periodically show on the map in The Maw.
+|tip The Wrath of the Jailer and Hunt events don't count.
+|tip Any rare with a skull or star minimap icon counts.
 |only if havequest(60455) or completedq(60455)
 step
 label "Collect_150_Soul_Embers_from_Torghast"
@@ -4473,7 +4544,7 @@ Gather #150# Anima Embers from Torghast, Tower of the Damned |q 60459/1
 step
 talk Sabbath Nightshade##167207
 turnin Storm the Maw##60455 |goto Seat of the Primus/0 43.18,47.80 |only if readyq(60455) or completedq(60455)
-turnin Soul Salvage##60459 |goto Seat of the Primus/0 43.18,47.80 |only if readyq(60459) or completedq(60459)
+turnin Anima Salvage##60459 |goto Seat of the Primus/0 43.18,47.80 |only if readyq(60459) or completedq(60459)
 |only if readyanyq(60455,60459) or completedanyq(60455,60459)
 step
 talk Osbourne Black##167748
@@ -4526,11 +4597,11 @@ step
 talk Yondare Hex##167205
 turnin Anima Appeal##60464 |goto Seat of the Primus/0 48.95,35.95
 |only if readyq(60464) or completedq(60464)
-stickystart "Deposit_1500_Anima_in_the_Reservoir"
+stickystart "Collect_1000_Anima"
 step
 talk Arkadia Moa##161909
 |tip Click the "Deposit" button to deposit anima from your bags.
-Deposit #400# Anima in the Anima Reservoir |q 60464/1 |goto Seat of the Primus/0 52.71,38.30 |or
+Deposit #600# Anima in the Anima Reservoir |q 60464/1 |goto Seat of the Primus/0 52.71,38.30 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands.
 '|condition countcompletedq(60459,60440,60443,60445,60449,60402,60405,60411,60408,60423,60426,60376,60433,60429,60371,60379,60416,60363,60390,60393,60396,60398,60464,60455) < 3 |next "Begin_Dailies" |or
 |only if havequest(60464) or completedq(60464)
@@ -4539,23 +4610,21 @@ talk Yondare Hex##167205
 turnin Anima Appeal##60464 |goto Seat of the Primus/0 48.95,35.95
 |only if readyq(60464) or completedq(60464)
 step
-label "Deposit_1500_Anima_in_the_Reservoir"
-talk Arkadia Moa##161909 |notinsticky
-|tip Click the "Deposit" button to deposit anima from your bags. |notinsticky
-Deposit #1500# Anima in the Anima Reservoir |q 61983/1 |goto Seat of the Primus/0 52.71,38.30 |or
+label "Collect_1000_Anima"
+Collect #1000# Anima |q 61983/1 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands. |notinsticky
 '|condition countcompletedq(60459,60440,60443,60445,60449,60402,60405,60411,60408,60423,60426,60376,60433,60429,60371,60379,60416,60363,60390,60393,60396,60398,60464,60455) < 3 |next "Begin_Dailies" |or
 |only if havequest(61983) or completedq(61983)
 step
-talk Osbourne Black##167748
-turnin Replenish the Reservoir##61983 |goto Seat of the Primus/0 46.66,42.38
+talk Arkadia Moa##161909
+turnin Replenish the Reservoir##61983 |goto Seat of the Primus/0 52.71,38.30
 |only if readyq(61983) or completedq(61983)
 step
 You have completed all covenant daily quests
 |tip This guide will reset when more become available.
 '|condition countcompletedq(60459,60440,60443,60445,60449,60402,60405,60411,60408,60423,60426,60376,60433,60429,60371,60379,60416,60363,60390,60393,60396,60398,60464,60455) < 3 |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests for the Night Fae Covenant.",
 condition_suggested=function() return level >= 60 and completedq(62899) end,
@@ -4771,42 +4840,46 @@ stickystart "Collect_150_Soul_Embers_from_Torghast"
 stickystart "Defeat_3_Rare_or_Special_Encounter_Bosses"
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls from the Maw |q 61331/1 |goto The Maw/0 39.52,46.74
 |only if havequest(61331) or completedq(61331)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls from the Maw |q 62858/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62858) or completedq(62858)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls from the Maw |q 62859/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62859) or completedq(62859)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls from the Maw |q 62860/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62860) or completedq(62860)
 step
@@ -4818,6 +4891,8 @@ step
 label "Defeat_3_Rare_or_Special_Encounter_Bosses"
 Defeat #3# Rare or Special Encounter Bosses |q 60452/1
 |tip Encounters periodically show on the map in The Maw.
+|tip The Wrath of the Jailer and Hunt events don't count.
+|tip Any rare with a skull or star minimap icon counts.
 |only if havequest(60452) or completedq(60452)
 step
 talk Blodwyn##167195
@@ -4871,12 +4946,12 @@ talk Sesselie##167196
 turnin Anima Appeal##60462 |goto Heart of the Forest/1 50.62,62.62 |only if readyq(60462) or completedq(60462)
 turnin Replenish the Reservoir##61984 |goto Heart of the Forest/1 50.60,62.63 |only if readyq(61984) or completedq(61984)
 |only if readyanyq(60462) or completedanyq(60462)
-stickystart "Deposit_1500_Anima_in_the_Reservoir"
+stickystart "Collect_1000_Anima"
 step
 talk Zayhad, The Builder##165702
 Tell it _"Show me the Sanctum."_
 |tip Click the "Deposit" button to deposit anima from your bags.
-Deposit #400# Anima in the Anima Reservoir |q 60462/1 |goto Heart of the Forest/1 38.93,54.72 |or
+Deposit #600# Anima in the Anima Reservoir |q 60462/1 |goto Heart of the Forest/1 38.93,54.72 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands.
 '|condition countcompletedq(60457,60369,60373,60414,60364,60438,60437,60436,60435,60387,60386,60374,60385,60388,60421,60418,60420,60419,60381,60384,60383,60382,60462,60452) < 3 |next "Begin_Dailies" |or
 |only if havequest(60462) or completedq(60462)
@@ -4886,11 +4961,8 @@ talk Sesselie##167196
 turnin Anima Appeal##60462 |goto Heart of the Forest/1 50.62,62.62
 |only if readyq(60462) or completedq(60462)
 step
-label "Deposit_1500_Anima_in_the_Reservoir"
-talk Zayhad, The Builder##165702 |notinsticky
-Tell it _"Show me the Sanctum."_ |notinsticky
-|tip Click the "Deposit" button to deposit anima from your bags. |notinsticky
-Deposit #1500# Anima in the Anima Reservoir |q 61984/1 |goto Heart of the Forest/1 38.93,54.72 |or
+label "Collect_1000_Anima"
+Collect #1000# Anima |q 61984/1 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands. |notinsticky
 '|condition countcompletedq(60457,60369,60373,60414,60364,60438,60437,60436,60435,60387,60386,60374,60385,60388,60421,60418,60420,60419,60381,60384,60383,60382,60462,60452) < 3 |next "Begin_Dailies" |or
 |only if havequest(61984) or completedq(61984)
@@ -4904,7 +4976,7 @@ You have completed all covenant daily quests
 |tip This guide will reset when more become available.
 '|condition countcompletedq(60457,60369,60373,60414,60364,60438,60437,60436,60435,60387,60386,60374,60385,60388,60421,60418,60420,60419,60381,60384,60383,60382,60462,60452) < 3 |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Fungal Terminus Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Fungal Terminus Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing Fungal Terminus daily quests unlocked "..
 "by upgrading your covenant transport network.",
@@ -5293,7 +5365,7 @@ You have completed all Fungal Terminus daily quests
 |tip This guide will reset when more become available.
 '|condition not completedanyq(62614,62615,62610,60153,62296,62382,62453,62611,62607,60175,62608,62606,62459,62400,62417,62466,60188,62263,62465) |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests for the Venthyr Covenant.",
 condition_suggested=function() return level >= 60 end,
@@ -5307,7 +5379,7 @@ accept Return Lost Souls##62867 |goto 45.41,28.47 |only if covenant() == Venthyr
 accept Return Lost Souls##62868 |goto 45.41,28.47 |only if covenant() == Venthyr and covenantrenown() >= 24 and covenantrenown() < 32 and not completedq(62867)
 accept Return Lost Souls##62869 |goto 45.41,28.47 |only if covenant() == Venthyr and covenantrenown() >= 32 and not completedq(62868)
 accept Storm the Maw##60456 |goto 45.41,28.47 |only if questactive(60456) or completedq(60456)
-accept Soul Salvage##60460 |goto 45.41,28.47 |only if questactive(60460) or completedq(60460)
+accept Anima Salvage##60460 |goto 45.41,28.47 |only if questactive(60460) or completedq(60460)
 |only if anyquestactive(61334,62867,62868,62869,60456,60460) or completedanyq(61334,62867,62868,62869,60456,60460)
 step
 talk Foreman Flatfinger##172605
@@ -5508,42 +5580,46 @@ stickystart "Collect_150_Soul_Embers_from_Torghast"
 stickystart "Defeat_3_Rare_or_Special_Encounter_Bosses"
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #5# Lost Souls in the Maw |q 61334/1 |goto The Maw/0 39.52,46.74
 |only if havequest(61334) or completedq(61334)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #10# Lost Souls in the Maw |q 62867/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62867) or completedq(62867)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #15# Lost Souls in the Maw |q 62868/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62868) or completedq(62868)
 step
 kill Stone Prison##176145+
+|tip They look like pyramids made of rocks on the ground around this area.
 click Soul Cage+
 |tip They look like tall grey metal cages on the ground around this area.
-|tip They will appear on your minimap.
-clicknpc Caged Soul##174182+
-|tip They look like white spirits that float out of the cages.
-|tip You can also click Caged Souls that come out of cages other players opened.
+|tip They will appear on your minimap as white ghost icons.
+click Soul+
+|tip They look like white spirits that float out of the cages and stone prisons.
+|tip You can also click Souls that other players free.
 Rescue #20# Lost Souls in the Maw |q 62869/1 |goto The Maw/0 39.52,46.74
 |only if havequest(62869) or completedq(62869)
 step
@@ -5555,6 +5631,8 @@ step
 label "Defeat_3_Rare_or_Special_Encounter_Bosses"
 Defeat #3# Rare or Special Encounter Bosses in the Maw |q 60456/1
 |tip Encounters periodically show on the map in The Maw.
+|tip The Wrath of the Jailer and Hunt events don't count.
+|tip Any rare with a skull or star minimap icon counts.
 |only if havequest(60456) or completedq(60456)
 step
 talk Tenaval##164738
@@ -5563,7 +5641,7 @@ turnin Return Lost Souls##61334 |goto 45.41,28.47 |only if readyq(61334) or comp
 turnin Return Lost Souls##62867 |goto 45.41,28.47 |only if readyq(62867) or completedq(62867)
 turnin Return Lost Souls##62868 |goto 45.41,28.47 |only if readyq(62868) or completedq(62868)
 turnin Return Lost Souls##62869 |goto 45.41,28.47 |only if readyq(62869) or completedq(62869)
-turnin Soul Salvage##60460 |goto 45.41,28.47 |only if readyq(60460) or completedq(60460)
+turnin Anima Salvage##60460 |goto 45.41,28.47 |only if readyq(60460) or completedq(60460)
 |only if readyanyq(60456,61334,62867,62868,62869,60460) or completedanyq(60456,61334,62867,62868,62869,60460)
 step
 talk Foreman Flatfinger##172605
@@ -5609,12 +5687,12 @@ turnin Aiding Bastion##60394 |goto 62.44,76.57 |only if readyq(60394) or complet
 turnin Aiding Maldraxxus##60397 |goto 62.44,76.57 |only if readyq(60397) or completedq(60397)
 turnin Aiding Revendreth##60399 |goto 62.44,76.57 |only if readyq(60399) or completedq(60399)
 |only if readyanyq(60389,60394,60397,60399) or completedanyq(60389,60394,60397,60399)
-stickystart "Deposit_1500_Anima_in_the_Reservoir"
+stickystart "Collect_1000_Anima"
 step
 talk Foreman Flatfinger##172605
 Tell him _"Show me the Sanctum."_
 |tip Click the "Deposit" button to deposit anima from your bags.
-Deposit #400# Anima in the Anima Reservoir |q 60463/1 |goto Sinfall/0 55.70,26.04 |or
+Deposit #600# Anima in the Anima Reservoir |q 60463/1 |goto Sinfall/0 55.70,26.04 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands.
 '|condition countcompletedq(60460,60401,60409,60406,60410,60422,60427,60431,60432,60463,60417,60370,60375,60378,60358,60441,60444,60446,60448,60389,60394,60397,60399,60456) < 3 |next "Begin_Dailies" |or
 |only if havequest(60463) or completedq(60463)
@@ -5623,11 +5701,8 @@ talk Devahia##164739
 turnin Anima Appeal##60463 |goto Sinfall/1 47.67,57.39
 |only if readyq(60463) or completedq(60463)
 step
-label "Deposit_1500_Anima_in_the_Reservoir"
-talk Foreman Flatfinger##172605 |notinsticky
-Tell him _"Show me the Sanctum."_ |notinsticky
-|tip Click the "Deposit" button to deposit anima from your bags. |notinsticky
-Deposit #1500# Anima in the Anima Reservoir |q 61981/1 |goto Sinfall/0 55.70,26.04 |or
+label "Collect_1000_Anima"
+Collect #1000# Anima |q 61981/1 |or
 |tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands. |notinsticky
 '|condition countcompletedq(60460,60401,60409,60406,60410,60422,60427,60431,60432,60463,60417,60370,60375,60378,60358,60441,60444,60446,60448,60389,60394,60397,60399,60456) < 3 |next "Begin_Dailies" |or
 |only if readyq(61981) or completedq(61981)
@@ -5640,10 +5715,12 @@ You have completed all covenant daily quests
 |tip This guide will reset when more become available.
 '|condition countcompletedq(60460,60401,60409,60406,60410,60422,60427,60431,60432,60463,60417,60370,60375,60378,60358,60441,60444,60446,60448,60389,60394,60397,60399,60456) < 3 |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Anima Conductor Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Anima Conductor Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests unlocked through the Kyrian Anima Conductor.",
 condition_suggested=function() return level >= 60 end,
+condition_valid=function() return covenantfeature("Anima Conductor") >= 1 end,
+condition_valid_msg="You must unlock the Anima Conductor using the \"Kyrian Anima Conductor\" guide first!",
 patch='90001',
 },[[
 step
@@ -5769,10 +5846,12 @@ You have completed all Anima Conductor daily quests
 |tip This guide will reset when more become available.
 '|condition not completedanyq(61156,61159,61157,61199,61166,61193,61182,61146,61196,61209) |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Anima Conductor Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests unlocked through the Necrolords Anima Conductor.",
 condition_suggested=function() return level >= 60 end,
+condition_valid=function() return covenantfeature("Anima Conductor") >= 1 end,
+condition_valid_msg="You must unlock the Anima Conductor using the \"Necrolords Anima Conductor\" guide first!",
 patch='90001',
 },[[
 step
@@ -5864,8 +5943,11 @@ collect 25 Bloody Tusks##183620 |q 62403/1 |goto 55.72,38.35
 |only if havequest(62403) or completedq(62403)
 step
 talk Au'narim##159830
-accept Spoiling For A Fight##58454 |goto 53.60,47.51
-|only if questactive(58454) or completedq(58454)
+accept Spoiling For A Fight##58454 |goto 53.60,47.51 |or
+|tip
+Click Here if you Have Not Channeled the Theater of Pain |confirm |or
+|tip You must channel the Theater of Pain at the Anima Conductor in your covenant or permanently reinforce that location.
+|only if covenantfeature("Anima Conductor") >= 3
 step
 kill Sabriel the Bonecleaver##168147 |q 58454/1 |goto 50.36,47.28
 |tip Kill champions in the Theater of Pain until Sabriel spawns.
@@ -5911,10 +5993,12 @@ You have completed all Anima Conductor daily quests
 |tip This guide will reset when more become available.
 '|condition not completedanyq(60482,60505,58211,62403,62390,62362,58260,62363,62364,62563,57964) |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Anima Conductor Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Anima Conductor Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests unlocked through the Night Fae Anima Conductor.",
 condition_suggested=function() return level >= 60 end,
+condition_valid=function() return covenantfeature("Anima Conductor") >= 1 end,
+condition_valid_msg="You must unlock the Anima Conductor using the \"Night Fae Anima Conductor\" guide first!",
 patch='90001',
 },[[
 step
@@ -6020,10 +6104,12 @@ You have completed all Anima Conductor daily quests
 |tip This guide will reset when more become available.
 '|condition not completedanyq(62160,62188,61875,61985,62224,61968,62081,61950,62057,62155) |next "Begin_Dailies"
 ]])
-ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Anima Conductor Daily Quests",{
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Anima Conductor Daily Quests",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the various daily quests unlocked through the Venthyr Anima Conductor.",
 condition_suggested=function() return level >= 60 end,
+condition_valid=function() return covenantfeature("Anima Conductor") >= 1 end,
+condition_valid_msg="You must unlock the Anima Conductor using the \"Venthyr Anima Conductor\" guide first!",
 patch='90001',
 },[[
 step
@@ -6169,3 +6255,842 @@ You have completed all Anima Conductor daily quests
 |tip This guide will reset when more become available.
 '|condition not completedanyq(61847,61735,61845,61848,61846,61734,61732,61707,61733,61849) |next "Begin_Dailies"
 ]])
+ZGV.BETASTART()
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Abomination Factory Weekly Quests",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through completing the various daily quests unlocked through the Necrolords Abomination Factory.",
+condition_suggested=function() return level >= 60 end,
+condition_valid=function() return completedq(60041) end,
+condition_valid_msg="You must unlock the Abomination Factory using the \"Necrolord Abomination Factory\" guide first!",
+patch='90001',
+},[[
+step
+label "Begin_Weekly_Quests"
+talk Chordy##161270
+accept Something Old, Something Used##58432 |goto Maldraxxus/0 55.15,68.61 |only if questpossible |or
+accept A Bountiful Haul##61510 |goto 55.15,68.61 |only if questpossible |or
+accept Shinies of Bastion##61509 |goto 55.15,68.61 |only if questpossible |or
+accept Things They Leave Behind##61511 |goto 55.15,68.61 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(58432,61510,61509,61511) |goto 55.15,68.61 |or
+|only if completedq(60041)
+step
+talk Chordy##161270
+Tell it _"Let's go find some things."_
+Recruit Chordy |q 58432/1 |goto Maldraxxus/0 55.15,68.61 |only if havequest(58432)
+Recruit Chordy |q 61510/1 |goto 55.15,68.61 |only if havequest(61510)
+Recruit Chordy |q 61509/1 |goto 55.15,68.61 |only if havequest(61509)
+Recruit Chordy |q 61511/1 |goto 55.15,68.61 |only if havequest(61511)
+|only if haveanyquest(58432,61510,61509,61511)
+step
+talk Roseboil##159241
+accept Cure For All Ills##60765 |goto Maldraxxus/0 55.11,68.07 |only if questpossible |or
+accept In A Bad Light##62041 |goto 55.11,68.07 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(60765,62041) |goto 55.11,68.07 |or
+|only if completedq(57605)
+step
+talk Roseboil##159241
+Tell it _"I need your assistance."_
+Recruit Roseboil |q 60765/1 |goto Maldraxxus/0 55.11,68.07 |only if havequest(60765)
+Recruit Roseboil |q 62041/1 |goto 55.11,68.07 |only if havequest(62041)
+|only if haveanyquest(60765,62041)
+step
+talk Atticus##159238
+accept A Brokered Deal##62213 |goto Maldraxxus/0 55.27,68.32 |only if questpossible |or
+accept Asset Extraction##62256 |goto 55.27,68.32 |only if questpossible |or
+accept Supply Chain##59126 |goto 55.27,68.32 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62213,62256,59126) |goto 55.27,68.32 |or
+|only if completedq(58410)
+step
+talk Atticus##159238
+Tell it _"I need your assistance."_
+Recruit Atticus |q 62213/1 |goto Maldraxxus/0 55.27,68.32 |only if havequest(62213)
+Recruit Atticus |q 62256/1 |goto 55.27,68.32 |only if havequest(62256)
+Recruit Atticus |q 59126/1 |goto 55.27,68.32 |only if havequest(59126)
+|only if haveanyquest(62213,62256,59126)
+step
+talk Flytrap##158300
+|tip It walks around this area.
+accept Corpse Run##60291 |goto Maldraxxus/0 54.31,68.11 |only if questpossible |or
+accept Corpse Run##61522 |goto 54.31,68.11 |only if questpossible |or
+accept Corpse Run##61523 |goto 54.31,68.11 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(60291,61522,61523) |goto 54.31,68.11 |or
+|only if completedq(57597)
+step
+talk Flytrap##158300
+Tell it _"I need your assistance."_
+Recruit Flytrap |q 60291/1 |goto Maldraxxus/0 54.31,68.11 |only if havequest(60291)
+Recruit Flytrap |q 61522/1 |goto 54.31,68.11 |only if havequest(61522)
+Recruit Flytrap |q 61523/1 |goto 54.31,68.11 |only if havequest(61523)
+|only if haveanyquest(60291,61522,61523)
+step
+talk Toothpick##159212
+accept Digging Around##62244 |goto Maldraxxus/0 54.90,67.80 |only if questpossible |or
+accept Old Stomping Grounds##60237 |goto 54.90,67.80 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62244,60237) |goto 54.90,67.80 |or
+|only if completedq(58414)
+step
+talk Toothpick##159212
+Tell it _"I need your assistance."_
+Recruit Toothpick |q 62244/1 |goto Maldraxxus/0 54.90,67.80 |only if havequest(62244)
+Recruit Toothpick |q 60237/1 |goto 54.90,67.80 |only if havequest(60237)
+|only if haveanyquest(62244,60237)
+step
+talk Gas Bag##159240
+accept Herbicidal Tendencies##62407 |goto Maldraxxus/0 54.20,68.00 |only if questpossible |or
+accept Special Formula##59293 |goto 54.20,68.00 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62407,59293) |goto 54.20,68.00 |or
+|only if completedq(57608)
+step
+talk Gas Bag##159240
+Tell it _"I need your assistance."_
+Recruit Gas Bag |q 62407/1 |goto Maldraxxus/0 54.90,67.80 |only if havequest(62407)
+Recruit Gas Bag |q 59293/1 |goto 54.90,67.80 |only if havequest(59293)
+|only if haveanyquest(62407,59293)
+step
+talk Mama Tomalin##161678
+accept Give A Dog A Bone##56470 |goto Maldraxxus/0 55.20,68.61 |only if questpossible |or
+accept Pie Not?##58992 |goto 55.20,68.61 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(56470,58992) |goto 55.20,68.61 |or
+|only if completedq(60216)
+step
+talk The Professor##159198
+accept One Lich's Trash...##62294 |goto Maldraxxus/0 55.39,68.16 |only if questpossible |or
+accept Scrounging for Scrolls##58515 |goto 55.39,68.16 |only if questpossible |or
+accept The Two Sides of History##58525 |goto 55.39,68.16 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62294,58515,58525) |goto 55.39,68.16 |or
+|only if completedq(57601)
+step
+talk The Professor##159198
+Tell it _"Let's go find some things."_
+Recruit The Professor |q 62294/1 |goto Maldraxxus/0 55.39,68.16 |only if havequest(62294)
+Recruit The Professor |q 58515/1 |goto 55.39,68.16 |only if havequest(58515)
+Recruit The Professor |q 58525/1 |goto 55.39,68.16 |only if havequest(58525)
+|only if haveanyquest(62294,58515,58525)
+step
+talk Marz##158301
+accept Arboreal Tactics##62232 |goto Maldraxxus/0 54.24,68.65 |only if questpossible |or
+accept Field Training##62217 |goto 54.24,68.65 |only if questpossible |or
+accept Training Program##62216 |goto 54.24,68.65 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62232,62217,62216) |goto 54.24,68.65 |or
+|only if completedq(57611)
+step
+talk Marz##158301
+Tell it _"Let's go find some things."_
+Recruit Marz |q 62232/1 |goto Maldraxxus/0 54.24,68.65 |only if havequest(62232)
+Recruit Marz |q 62217/1 |goto 54.24,68.65 |only if havequest(62217)
+Recruit Marz |q 62216/1 |goto 54.24,68.65 |only if havequest(62216)
+|only if haveanyquest(62232,62217,62216)
+step
+talk Naxx##158301
+accept Drink to the Dead##62276 |goto Maldraxxus/0 54.19,68.59
+|only if completedq(58413)
+step
+talk Naxx##158301
+Tell it _"Let's go find some things."_
+Recruit Naxx |q 62276/1 |goto Maldraxxus/0 54.19,68.59
+|only if havequest(62276)
+step
+talk Iron Phillip##159199
+accept Bring Your Own##57634 |goto Maldraxxus/0 55.4,68.2
+|only if completedq(58411)
+step
+talk Iron Phillip##159199
+Tell it _"Let's go find some things."_
+Recruit Iron Phillip |q 57634/1 |goto Maldraxxus/0 55.4,68.2
+|only if havequest(57634)
+step
+talk Sabrina##158301
+accept Fighting Words##62194 |goto Maldraxxus/0 54.76,68.90 |only if questpossible |or
+accept Say The Magic Words##61996 |goto 54.76,68.90 |only if questpossible |or
+accept The Last Word##62195 |goto 54.76,68.90 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62194,61996,62195) |goto 54.76,68.90 |or
+|only if completedq(57600)
+step
+talk Sabrina##158301
+Tell it _"Let's go find some things."_
+Recruit Sabrina |q 62194/1 |goto Maldraxxus/0 54.76,68.90 |only if havequest(62194)
+Recruit Sabrina |q 61996/1 |goto 54.76,68.90 |only if havequest(61996)
+Recruit Sabrina |q 62195/1 |goto 54.76,68.90 |only if havequest(62195)
+|only if haveanyquest(62194,61996,62195)
+step
+talk Guillotine##159214
+accept Cut 'Em Down to Size##60342 |goto Maldraxxus/0 54.76,68.90 |only if questpossible |or
+accept Grinder##62261 |goto 54.76,68.90 |only if questpossible |or
+accept Hands on Approach##60340 |goto 54.76,68.90 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(60342,62261,60340) |goto 54.76,68.90 |or
+|only if completedq(58416)
+step
+talk Guillotine##159214
+Tell it _"Let's go find some things."_
+Recruit Guillotine |q 60342/1 |goto Maldraxxus/0 54.76,68.90 |only if havequest(60342)
+Recruit Guillotine |q 62261/1 |goto 54.76,68.90 |only if havequest(62261)
+Recruit Guillotine |q 60340/1 |goto 54.76,68.90 |only if havequest(60340)
+|only if haveanyquest(60342,62261,60340)
+step
+'|use Call Chordy##178554
+Use the _"Lucky Note"_ ability
+|tip It appears as a button on the screen.
+|tip Use it to have Chordy salvage for items.
+|tip Try to stay in flat areas to avoid something spawning in an inacessible spot.
+|tip You can have Chordy search anywhere in Maldraxxus.
+|tip You can complete this quest while mounted.
+|tip Use the "Call Chordy" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+click Salvageable Goods##167828
+|tip They look like small sacks on the ground after Chordy searches.
+|tip Chordy will not always find something.
+Collect #10# Valuable Salvage in Maldraxxus |q 58432/2 |goto Maldraxxus/0 44.30,50.86
+|only if havequest(58432)
+step
+'|use Call Roseboil##178680
+Use the _"Regenerative Molt"_ ability
+|tip It appears as a button on the screen.
+|tip Use it near Plague-ridden Survivor NPCs around this area.
+|tip They look like humanoid NPCs standing and laying down around this area.
+|tip Use the "Call Roseboil" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Cure #15# Plague-ridden Survivors with Roseboil |q 60765/2 |goto Maldraxxus/0 58.11,63.29
+|only if havequest(60765)
+step
+click Broker Portal |goto Maldraxxus/0 53.70,47.21
+Use the Broker Portal |goto Chill's Reach/0 37.07,75.72 < 1000 |c |noway
+|only if havequest(62213)
+step
+'|use Call Atticus##178678
+_Next to you:_
+talk Atticus##159238
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+buy 1 Strength of Fire##183857 |q 62213
+|only if havequest(62213)
+step
+'|use Call Atticus##178678
+use the Strength of Fire##183857
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Gain the Strength of Fire |havebuff spell:343191 |q 62213
+|only if havequest(62213)
+step
+'|use Call Atticus##178678
+talk Acquisition Facilitator##173839+
+|tip They look like corpspes on the ground all over Chill's Reach.
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Choose _Search the body._
+Search #4# Broker Corpses |q 62213/3 |goto 49.71,45.75
+|only if havequest(62213)
+step
+'|use Call Atticus##178678
+kill Chilled Crustburster##173834
+|tip Avoid standing in front of it when it casts "Frozen Sweep."
+|tip Standing in "Frost Patch" on the ground will make it difficult to avoid the sweep.
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect Broker Bauble##183119 |q 62213/4 |goto 60.83,41.02
+|only if havequest(62213)
+step
+click Broker Portal |goto 36.60,78.27
+Return to Maldraxxus |goto Maldraxxus/0 53.77,47.53 < 1000 |c |noway
+|only if havequest(62213)
+step
+talk Au'narim##159830
+turnin A Brokered Deal##62213 |goto Maldraxxus/0 53.60,47.51
+|only if havequest(62213)
+step
+'|use Call Atticus##178678
+_Next to you:_
+talk Atticus##159238
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+buy 1 Slim Shinbone##178681 |q 59126
+|only if havequest(59126)
+stickystart "Collect_Ossien_Battlemail"
+step
+'|use Call Atticus##178678
+click Atticus's Lockbox##352018
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect Atticus's Ledger##178682 |q 59126/3 |goto Maldraxxus/0 55.11,55.08
+|only if havequest(59126)
+step
+label "Collect_Ossien_Battlemail"
+'|use Call Atticus##178678
+click Ossien Battlemail##352021+
+|tip They look like discarded pieces of armor on the ground around this area.
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 10 Ossien Battlemail##175133 |q 59126/2 |goto Maldraxxus/0 54.77,56.82
+|only if havequest(59126)
+step
+'|use Call Flytrap##178599
+Use the _"Uber Lift"_ ability
+|tip It appears as a button on the screen.
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Ride Flytrap |q 60291/2 |goto Maldraxxus/0 63.44,57.77
+|only if havequest(60291)
+step
+'|use Call Flytrap##178599
+click Salvageable Carcass##334899
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Pick Up the Carcass |havebuff spell:307787 |q 60291 |goto Maldraxxus/0 63.44,57.77
+|only if havequest(60291)
+step
+Follow the road |goto 60.50,59.64 < 30 |walk
+Continue following the road |goto 56.47,58.79 < 30 |walk
+Run up the stairs |goto 55.62,63.44 < 20 |walk
+Run up the stairs |goto 53.82,67.07 < 20 |walk
+'|use Call Flytrap##178599
+Return a Salvageable Carcass to Rathan in Butcher's Block |q 60291/3 |goto Maldraxxus/0 54.98,68.63 |notravel
+|tip Use the "Monstrous Effort" ability to build up a stacking speed buff.
+|tip The "Sudden Stop" ability will stop you instantly.
+|tip Avoid enemies when possible and use "Mindless Strikes" to defend yourself when necessary.
+|tip Avoid outpacing the carcass too far or it will disappear.
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(60291)
+step
+'|use Call Flytrap##178599
+Use the _"Uber Lift"_ ability
+|tip It appears as a button on the screen.
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Ride Flytrap |q 61522/2 |goto Maldraxxus/0 43.89,47.52
+|only if havequest(61522)
+step
+'|use Call Flytrap##178599
+click Salvageable Carcass##334899
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Pick Up the Carcass |havebuff spell:307787 |q 61522 |goto Maldraxxus/0 43.89,47.52
+|only if havequest(61522)
+step
+'|use Call Flytrap##178599
+Follow the path |goto 46.13,51.84 < 30 |only if walking
+Follow the path |goto 48.29,55.07 < 30 |only if walking
+Cross the bridge |goto 50.40,57.21 < 30 |only if walking
+Run up the stairs |goto 50.39,65.34 < 20 |only if walking
+Follow the path |goto 50.82,66.90 < 30 |only if walking
+Return a Salvageable Carcass to Rathan in Butcher's Block |q 61522/3 |goto Maldraxxus/0 54.98,68.63 |notravel
+|tip Use the "Monstrous Effort" ability to build up a stacking speed buff.
+|tip The "Sudden Stop" ability will stop you instantly.
+|tip Avoid enemies when possible and use "Mindless Strikes" to defend yourself when necessary.
+|tip Avoid outpacing the carcass too far or it will disappear.
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(61522)
+step
+'|use Call Flytrap##178599
+Use the _"Uber Lift"_ ability
+|tip It appears as a button on the screen.
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Ride Flytrap |q 61523/2 |goto Maldraxxus/0 55.66,44.25
+|only if havequest(61523)
+step
+'|use Call Flytrap##178599
+click Salvageable Carcass##334899
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Pick Up the Carcass |havebuff spell:307787 |q 61523 |goto Maldraxxus/0 55.66,44.25
+|only if havequest(61523)
+step
+'|use Call Flytrap##178599
+Follow the path |goto 56.16,57.02 < 30 |only if walking
+Run up the stairs |goto 55.67,64.32 < 20 |only if walking
+Return a Salvageable Carcass to Rathan in Butcher's Block |q 61523/3 |goto Maldraxxus/0 54.98,68.63 |notravel
+|tip Use the "Monstrous Effort" ability to build up a stacking speed buff.
+|tip The "Sudden Stop" ability will stop you instantly.
+|tip Avoid enemies when possible and use "Mindless Strikes" to defend yourself when necessary.
+|tip Avoid outpacing the carcass too far or it will disappear.
+|tip Use the "Call Flytrap" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(61523)
+step
+'|use Call Gas Bag##183133
+use the Slime Siphon##175842
+|tip Use it near the Absorbing Pox.
+|tip Use the "Call Gas Bag" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 100 Pox Nodules##175843 |q 59293/2 |goto Maldraxxus/0 61.34,81.63
+|only if havequest(59293)
+step
+use the Tasty Bone##174270
+|tip Use it next to Marrowgrub Nibblers.
+|tip They look like small white maggots on the ground around these areas.
+kill Giant Marrowgrub##161566+
+|tip They will spawn from Nibblers after Dog Bone pounces on them.
+collect 12 Marrowgrub Flesh##183796 |q 56470/1 |goto Maldraxxus/0 51.72,54.36
+You can find more around [54.93,50.29]
+|only if havequest(56470)
+step
+Enter the cave |goto Maldraxxus/0 58.31,33.65 < 20 |walk
+click Maldraxxi Bone Marrow##349574+
+|tip Inside the cave.
+collect 4 Maldraxxi Bone Marrow##177879 |q 58992/1 |goto 57.30,34.49
+|only if havequest(58992)
+step
+'|use Call Professor##183142
+Use the _"Illusory Guise"_ ability
+|tip It appears as a button on the screen.
+|tip Use the "Call Professor" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Disuise Yourself |havebuff spell:339509 |goto Maldraxxus/0 63.11,33.62 |q 62294
+|only if havequest(62294)
+step
+'|use Call Professor##183142
+click Pile of Debris+
+|tip They look like piles of dirt and bones on the ground around this area.
+|tip Use the "Call Professor" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+click Salvageable Goods##167828
+|tip They look like small sacks on the ground after The Professor searches.
+|tip The Professor will not always find something.
+collect 1 Intriguing Ancient Relic##183398 |q 62294/2 |goto Maldraxxus/0 70.31,34.16
+|only if havequest(62294)
+step
+'|use Call Professor##183142
+click The Malice of Maldraxxus##358321
+|tip Downstairs inside the crypt.
+|tip Use the "Call Professor" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Recover "The Malice of Maldraxxus" |q 58525/3 |goto Revendreth/0 42.06,49.14
+|only if havequest(58525)
+step
+'|use Call Marz##178679
+kill Decadious##171381 |q 62216/2 |goto Maldraxxus/0 66.38,52.41
+|tip This enemy is elite and may require a group.
+|tip Use the "Call Marz" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(62216)
+step
+'|use Call Iron Phillip##182959
+kill Scunner##158406 |q 57634/2 |goto Maldraxxus/0 62.11,75.81
+|tip This enemy is elite and may require a group.
+|tip Use the "Call Iron Phillip" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(57634)
+stickystart "Collect_Chosen_Razorstones"
+step
+'|use Call Guillotine##183127
+click Bonesheared Grinder##335503+
+|tip Use the "Call Guillotine" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Collect #3# Bonesheared Grinders |q 62261/3 |goto Maldraxxus/0 41.03,61.11
+|only if havequest(62261)
+step
+label "Collect_Chosen_Razorstones"
+'|use Call Guillotine##183127
+Kill enemies around this area
+|tip Use the "Call Guillotine" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 12 Chosen Razorstone##183138 |q 62261/2 |goto Maldraxxus/0 38.94,65.12
+|only if havequest(62261)
+step
+'|use Call Guillotine##183127
+kill Wurtzog Soultap##168324 |q 60340/2 |goto Maldraxxus/0 37.03,38.58
+|tip Use the "Call Guillotine" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(60340)
+step
+'|use Call Guillotine##183127
+click Anima Traces##352070+
+|tip They look like bowls of crystals around this area.
+|tip Use the "Call Guillotine" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 12 Anima Traces##178788 |q 60340/3 |goto Maldraxxus/0 36.73,37.87
+|only if havequest(60340)
+step
+'|use Call Chordy##178554
+Use the _"Lucky Note"_ ability
+|tip It appears as a button on the screen.
+|tip Use it to have Chordy salvage for items.
+|tip Try to stay in flat areas to avoid something spawning in an inacessible spot.
+|tip You can have Chordy search anywhere in Bastion.
+|tip You can complete this quest while mounted.
+|tip Use the "Call Chordy" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+click Salvageable Goods##167828
+|tip They look like small sacks on the ground after Chordy searches.
+|tip Chordy will not always find something.
+Collect #10# Valuable Salvage in Bastion |q 61509/2 |goto Bastion/0 58.70,52.90
+|only if havequest(61509)
+stickystart "Collect_8_Scrolls_of_the_Path"
+step
+'|use Call Professor##183142
+click The Roles of Kyrian and Their Importance to the Shadowlands: Volume 1##358377
+|tip Use the "Call Professor" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 1 The Roles of Kyrian and Their Importance to the Shadowlands: Volume 1##358377 |q 58515/3 |goto Bastion/0 67.66,43.24
+|only if havequest(58515)
+step
+label "Collect_8_Scrolls_of_the_Path"
+Kill enemies around this area
+|tip Use the "Call Professor" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 8 Scroll of the Path##175275 |q 58515/2 |goto Bastion/0 68.17,43.30
+|only if havequest(58515)
+step
+'|use Call Marz##178679
+Kill enemies around this area
+|tip Use the "Call Marz" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Slay #15# Forsworn Forces |q 62217/2 |goto Bastion/0 51.32,17.33
+|only if havequest(62217)
+stickystart "Slay_Bristlecone_Sprigans"
+step
+'|use Call Sabrina##182474
+Kill enemies around this area
+|tip Use the "Call Sabrina" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Defeat #8# Forsworn Forces |q 62194/3 |goto Bastion/0 64.22,43.36
+|only if havequest(62194)
+step
+label "Impart_Ancient_Teachings_Upon_Sabrina"
+'|use Call Sabrina##182474
+clicknpc Kyrian Steward##173683+
+|tip They look like short bipedal owls carrying scrolls around this area.
+|tip Use the "Call Sabrina" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Impart #8# Ancient Teachings Upon Sabrina |q 62194/2 |goto Bastion/0 64.22,43.36
+|only if havequest(62194)
+stickystart "Slay_Bristlecone_Sprigans"
+step
+'|use Call Naxx##183128
+Recruit #2# Kyrian Stewards |q 62276/2
+|tip Use the "Call Naxx" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(62276)
+step
+label "Slay_Bristlecone_Sprigans"
+'|use Call Naxx##183128
+collect 24 Purified Nectar##183186 |q 62276/3
+|tip Use the "Call Naxx" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(62276)
+step
+'|use Call Chordy##178554
+Use the _"Lucky Note"_ ability
+|tip It appears as a button on the screen.
+|tip Use it to have Chordy salvage for items.
+|tip Try to stay in flat areas to avoid something spawning in an inacessible spot.
+|tip You can have Chordy search anywhere in Ardenweald.
+|tip You can complete this quest while mounted.
+|tip Use the "Call Chordy" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+click Salvageable Goods##167828
+|tip They look like small sacks on the ground after Chordy searches.
+|tip Chordy will not always find something.
+Collect #10# Valuable Salvage in Ardenweald |q 61510/2 |goto Ardenweald/0 66.29,40.51
+|only if havequest(61510)
+step
+'|use Call Atticus##178678
+talk Tabithia##173918
+Tell her _"I was told you have something for Au'larrynar..."_
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Locate Tabitha |q 62256/2 |goto Ardenweald/0 49.19,20.82
+|only if havequest(62256)
+step
+'|use Call Atticus##178678
+kill Izik the Dissolver##173940
+|tip Use the "Call Atticus" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect Otherworldly Egg##183130 |q 62256/3 |goto Ardenweald/0 47.56,20.52
+|only if havequest(62256)
+step
+'|use Call Toothpick##183043
+Use the _"Toothpick's World Shaker"_ ability
+|tip It appears as a button on the screen.
+|tip Use it within the quest circles indicated on the minimap.
+clicknpc Lost Animacone##173787+
+|tip They look like silver and blue acorns that appear from the ground around this area.
+|tip They will sometimes appear after using "Toothpick's World Shaker."
+|tip Use the "Call Toothpick" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 15 Lost Animacone##183074 |q 60237/2 |goto Ardenweald/0 51.85,75.78
+|only if havequest(60237)
+step
+'|use Call Gas Bag##183133
+Kill Rotbloom enemies around this area.
+|tip Make sure Gas Bag is next to you.
+|tip Use the "Call Gas Bag" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect 12 Rotbloom Petal##183719 |q 62407/2 |goto Ardenweald/0 71.73,28.30
+|only if havequest(62407)
+stickystart "Slay_Bristlecone_Sprigans"
+step
+'|use Call Marz##178679
+kill Deranged Guardian##166735 |q 62232/3 |goto Ardenweald/0 28.47,53.57
+|tip This enemy is elite and may require a group.
+|tip Use the "Call Marz" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(62232)
+step
+label "Slay_Bristlecone_Sprigans"
+'|use Call Marz##178679
+Kill Bristlecone enemies around this area
+|tip Use the "Call Marz" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Slay #12# Bristlecone Sprigans |q 62232/2 |goto Ardenweald/0 28.47,53.57
+|only if havequest(62232)
+step
+'|use Call Chordy##178554
+Use the _"Lucky Note"_ ability
+|tip It appears as a button on the screen.
+|tip Use it to have Chordy salvage for items.
+|tip Try to stay in flat areas to avoid something spawning in an inacessible spot.
+|tip You can have Chordy search anywhere in Revendreth.
+|tip You can complete this quest while mounted.
+|tip Use the "Call Chordy" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+click Salvageable Goods##167828
+|tip They look like small sacks on the ground after Chordy searches.
+|tip Chordy will not always find something.
+Collect #10# Valuable Salvage in Revendreth |q 61511/2 |goto Revendreth/0 45.98,67.67
+|only if havequest(61511)
+step
+'|use Call Roseboil##178680
+Use the _"Regenerative Molt"_ ability
+|tip It appears as a button on the screen.
+|tip Use it near Light-Seared Exile NPCs around this area.
+|tip They look like scared ghouls around this area.
+|tip Use the "Call Roseboil" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Cure #15# Light-Seared Exiles with Roseboil |q 62041/2 |goto Revendreth/0 35.73,56.36
+|only if havequest(62041)
+step
+'|use Call Toothpick##183043
+Use the _"Toothpick's World Shaker"_ ability
+|tip It appears as a button on the screen.
+|tip Use it within the quest circles indicated on the minimap.
+clicknpc Anima Cache##173801+
+|tip They look like black lanterns with red gems on them that appear from the ground around this area.
+|tip They will sometimes appear after using "Toothpick's World Shaker."
+|tip Use the "Call Toothpick" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Collect #15# Lost Anima Caches |q 62244/2 |goto Revendreth/0 43.90,64.99
+|only if havequest(62244)
+step
+Enter the crypt |goto Revendreth/0 41.88,50.12 < 7 |walk
+'|use Call Professor##183142
+click On Bone and Stone##340019
+|tip Downstairs inside the crypt.
+|tip Use the "Call Professor" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Recover "On Bone and Stone" |q 58525/2 |goto Revendreth/0 42.61,50.77
+|only if havequest(58525)
+step
+'|use Call Guillotine##183127
+kill Charthox##157869 |q 60342/2 |goto Revendreth/0 75.46,76.46
+|tip This enemy is elite and may require a group.
+|tip Use the "Call Guillotine" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+|only if havequest(60342)
+step
+'|use Call Sabrina##182474
+click Archivam Tome+
+|tip They look like small books on the ground around this area.
+|tip Use the "Call Sabrina" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Give #12# Archivam Tomes to Sabrina |q 61996/2 |goto Revendreth/0 78.40,37.75
+|only if havequest(61996)
+step
+'|use Call Sabrina##182474
+Kill Depraved enemies around this area
+|tip Use the "Call Sabrina" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+collect Inquisitor's Crypt Key##182957 |q 62195/2 |goto Revendreth/0 69.12,43.98
+|only if havequest(62195)
+step
+'|use Call Sabrina##182474
+click Inquisitor's Crypt Door
+|tip Use the "Call Sabrina" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Free Inquisitor Darksion |q 62195/3 |goto Revendreth/0 67.53,39.28
+|only if havequest(62195)
+step
+'|use Call Sabrina##182474
+Use the "Hungering Heart" ability
+|tip It appears as a button on the screen.
+Kill Depraved enemies around this area
+|tip Kill them next to the big red orb.
+|tip Use the "Call Sabrina" item if it dies or disappears.
+|tip To switch abominations, dismiss your current companion by talking to it and telling it to go home.
+Slay #12# Depraved Forces |q 62195/4 |goto Revendreth/0 69.12,43.98
+|only if havequest(62195)
+step
+talk Au'larrynar##166640
+turnin Asset Extraction##62256 |goto Maldraxxus/0 53.63,47.92
+|only if havequest(62256)
+step
+talk Rathan##167150
+turnin Something Old, Something Used##58432 |goto Maldraxxus/0 55.10,68.78 |only if havequest(58432)
+turnin A Bountiful Haul##61510 |goto 55.10,68.78 |only if havequest(61510)
+turnin Shinies of Bastion##61509 |goto 55.10,68.78 |only if havequest(61509)
+turnin Things They Leave Behind##61511 |goto 55.10,68.78 |only if havequest(61511)
+turnin Cure For All Ills##60765 |goto 55.10,68.78 |only if havequest(60765)
+turnin In A Bad Light##62041 |goto 55.10,68.78 |only if havequest(62041)
+turnin Supply Chain##59126 |goto 55.10,68.78 |only if havequest(59126)
+turnin Corpse Run##60291 |goto 55.10,68.78 |only if havequest(60291)
+turnin Corpse Run##61522 |goto 55.10,68.78 |only if havequest(61522)
+turnin Corpse Run##61523 |goto 55.10,68.78 |only if havequest(61523)
+turnin Digging Around##62244 |goto 55.10,68.78 |only if havequest(62244)
+turnin Old Stomping Grounds##60237 |goto 55.10,68.78 |only if havequest(60237)
+turnin Herbicidal Tendencies##62407 |goto 55.10,68.78 |only if havequest(62407)
+turnin Special Formula##59293 |goto 55.10,68.78 |only if havequest(59293)
+turnin Give A Dog A Bone##56470 |goto 55.20,68.61 |only if havequest(56470)
+turnin Pie Not?##58992 |goto 55.20,68.61 |only if havequest(58992)
+turnin One Lich's Trash...##62294 |goto 55.10,68.78 |only if havequest(62294)
+turnin Scrounging for Scrolls##58515 |goto 55.10,68.78 |only if havequest(58515)
+turnin The Two Sides of History##58525 |goto 55.10,68.78 |only if havequest(58525)
+turnin Arboreal Tactics##62232 |goto 55.10,68.78 |only if havequest(62232)
+turnin Field Training##62217 |goto 55.10,68.78 |only if havequest(62217)
+turnin Training Program##62216 |goto 55.10,68.78 |only if havequest(62216)
+turnin Drink to the Dead##62276 |goto 55.10,68.78 |only if havequest(62276)
+turnin Bring Your Own##57634 |goto 55.10,68.78 |only if havequest(57634)
+turnin Fighting Words##62194 |goto 55.10,68.78 |only if havequest(62194)
+turnin Say The Magic Words##61996 |goto 55.10,68.78 |only if havequest(61996)
+turnin The Last Word##62195 |goto 55.10,68.78 |only if havequest(62195)
+turnin Cut 'Em Down to Size##60342 |goto 55.10,68.78 |only if havequest(60342)
+turnin Grinder##62261 |goto 55.10,68.78 |only if havequest(62261)
+turnin Hands on Approach##60340 |goto 55.10,68.78 |only if havequest(60340)
+|only if haveanyquest(58432,61510,61509,61511,60765,62041,59126,60291,61522,61523,62244,60237,62407,59293,56470,58992,62294,58515,58525,62232,62217,62216,62276,57634,62194,61996,62195,60342,62261,60340)
+step
+You have completed all available weekly quests
+|tip This guide will reset when more become available.
+'|condition completedq(60041) and not completedanyq(58432,61510,61509,61511) |next "Begin_Weekly_Quests" |or
+'|condition completedq(57605) and not completedanyq(60765,62041) |next "Begin_Weekly_Quests" |or
+'|condition completedq(58410) and not completedanyq(62213,62256,59126) |next "Begin_Weekly_Quests" |or
+'|condition completedq(57597) and not completedanyq(60291,61522,61523) |next "Begin_Weekly_Quests" |or
+'|condition completedq(58414) and not completedanyq(62244,60237) |next "Begin_Weekly_Quests" |or
+'|condition completedq(57608) and not completedanyq(62407,59293) |next "Begin_Weekly_Quests" |or
+'|condition completedq(60216) and not completedanyq(56470,58992) |next "Begin_Weekly_Quests" |or
+'|condition completedq(57601) and not completedanyq(62294,58515,58525) |next "Begin_Weekly_Quests" |or
+'|condition completedq(57611) and not completedanyq(62232,62217,62216) |next "Begin_Weekly_Quests" |or
+'|condition completedq(58413) and not completedq(62276) |next "Begin_Weekly_Quests" |or
+'|condition completedq(58411) and not completedq(57634) |next "Begin_Weekly_Quests" |or
+'|condition completedq(57600) and not completedanyq(62194,61996,62195) |next "Begin_Weekly_Quests" |or
+'|condition completedq(58416) and not completedanyq(60342,62261,60340) |next "Begin_Weekly_Quests" |or
+]])
+ZygorGuidesViewer:RegisterGuide("Dailies Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Queen's Conservatory Daily Quests",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through completing the various daily quests unlocked through the Night Fae Queen's Conservatory.",
+condition_suggested=function() return level >= 60 end,
+condition_valid=function() return covenantfeature("Covenant Unique") >= 1 end,
+condition_valid_msg="You must unlock the Queen's Conservatory to use this guide!",
+patch='90001',
+},[[
+step
+label "Begin_Dailies"
+talk Warden Casad##166476
+accept Fair Exchange for a Soul##62441 |goto Queen's Conservatory/0 33.35,62.31
+step
+talk Conservator Aoni##174324
+accept Aid the Covenant##62444 |goto 32.06,61.97 |only if questpossible |or
+accept Aid the Covenant##62442 |goto 32.06,61.97 |only if questpossible |or
+accept Aid the Covenant##62443 |goto 32.06,61.97 |only if questpossible |or
+Accept the Daily Quest |condition false |goto 32.06,61.97 |or
+|only if covenantfeature("Covenant Unique") >= 2
+step
+talk Falir the Shifting##174273
+|tip Inside the building.
+accept A Spirit's Duty##62449 |goto 24.02,53.02 |only if questpossible |or
+accept A Spirit's Might##62452 |goto 24.02,53.02 |only if questpossible |or
+accept A Spirit's Pride##62445 |goto 24.02,53.02 |only if questpossible |or
+accept A Spirit's Heart##62450 |goto 24.02,53.02 |only if questpossible |or
+Accept the Weekly Quest |condition false or completedanyq(62449,62452,62445,62450) |goto 24.02,53.02 |or
+|only if completedq(62454)
+step
+Collect a Dutiful Spirit |condition itemcount(178881,178879,178880) >= 1
+|tip You can collect these from mobs in The Maw, quests in The Maw, or the Queen's Conservatory daily quests.
+|only if havequest(62449)
+step
+use the Dutiful Spirit##178881 |only if itemcount(178881) >= 1
+use the Greater Dutiful Spirit##178880 |only if itemcount(178880) >= 1
+use the Divine Dutiful Spirit##178879 |only if itemcount(178879) >= 1
+|tip Use it on a Wildseed of Regrowth.
+Place a Dutiful Spirit in a Wildseed |q 62449/1 |goto 37.39,45.72
+|only if havequest(62449)
+step
+Collect a Martial Spirit |condition itemcount(178874,178878,178877) >= 1
+|tip You can collect these from mobs in The Maw, quests in The Maw, or the Queen's Conservatory daily quests.
+|only if havequest(62452)
+step
+use the Martial Spirit##178874 |only if itemcount(178874) >= 1
+use the Greater Martial Spirit##178877 |only if itemcount(178877) >= 1
+use the Divine Martial Spirit##178878 |only if itemcount(178878) >= 1
+|tip Use it on a Wildseed of Regrowth.
+Place a Martial Spirit in a Wildseed |q 62452/1 |goto 37.39,45.72
+|only if havequest(62452)
+step
+Collect a Prideful Spirit |condition itemcount(178882,178884,178883) >= 1
+|tip You can collect these from mobs in The Maw, quests in The Maw, or the Queen's Conservatory daily quests.
+|only if havequest(62445)
+step
+use the Prideful Spirit##178882 |only if itemcount(178882) >= 1
+use the Greater Prideful Spirit##178883 |only if itemcount(178883) >= 1
+use the Divine Prideful Spirit##178884 |only if itemcount(178884) >= 1
+|tip Use it on a Wildseed of Regrowth.
+Place a Prideful Spirit in a Wildseed |q 62445/1 |goto 37.39,45.72
+|only if havequest(62445)
+step
+Collect a Untamed Spirit |condition itemcount(177698,177700,177699) >= 1
+|tip You can collect these from mobs in The Maw, quests in The Maw, or the Queen's Conservatory daily quests.
+|only if havequest(62450)
+step
+use the Untamed Spirit##177698 |only if itemcount(177698) >= 1
+use the Greater Untamed Spirit##177699 |only if itemcount(177699) >= 1
+use the Divine Untamed Spirit##177700 |only if itemcount(177700) >= 1
+|tip Use it on a Wildseed of Regrowth.
+Place a Untamed Spirit in a Wildseed |q 62450/1 |goto 37.39,45.72
+|only if havequest(62450)
+step
+talk Falir the Shifting##174273
+|tip Inside the building.
+turnin A Spirit's Duty##62449 |goto 24.02,53.02 |only if havequest(62449)
+turnin A Spirit's Might##62452 |goto 24.02,53.02 |only if havequest(62452)
+turnin A Spirit's Pride##62445 |goto 24.02,53.02 |only if havequest(62445)
+turnin A Spirit's Heart##62450 |goto 24.02,53.02 |only if havequest(62450)
+|only if haveanyquest(62449,62452,62445,62450)
+stickystart "Collect_1000_Anima"
+step
+Complete a World Quest in Ardenweald |q 62444/1
+|tip Use the "Ardenweald World Quests" daily guide to accomplish this.
+|tip Click a world quest icon on the map to load it.
+|only if havequest(62444)
+step
+Complete a World Quest in Ardenweald |q 62442/1
+|tip Use the "Ardenweald World Quests" daily guide to accomplish this.
+|tip Click a world quest icon on the map to load it.
+|only if havequest(62442)
+step
+Complete a World Quest in Ardenweald |q 62443/1
+|tip Use the "Ardenweald World Quests" daily guide to accomplish this.
+|tip Click a world quest icon on the map to load it.
+|only if havequest(62443)
+step
+talk Conservator Aoni##174324
+turnin Aid the Covenant##62444 |goto 32.06,61.97 |only if havequest(62444)
+turnin Aid the Covenant##62442 |goto 32.06,61.97 |only if havequest(62442)
+turnin Aid the Covenant##62443 |goto 32.06,61.97 |only if havequest(62443)
+|only if haveanyquest(62444,62442,62443)
+step
+label "Collect_1000_Anima"
+Collect #1000# Anima |q 62441/1 |or
+|tip Gather anima by completing world quests, killing rare enemies, and looting treasures across the Shadowlands.
+|only if havequest(62441) and not completedq(62441)
+'|condition not completedanyq(62444,62442,62443) |only if covenantfeature("Covenant Unique") >= 2 and not haveanyquest(62444,62442,62443) |or |next "Begin_Dailies"
+step
+talk Warden Casad##166476
+turnin Fair Exchange for a Soul##62441 |goto 33.35,62.31
+|only if havequest(62441)
+step
+You have completed the weekly Queen's Conservatory quest |only if covenantfeature("Covenant Unique") == 1
+You have completed the daily Queen's Conservatory quest |only if default
+|tip This guide will reset when another becomes available.
+'|condition not completedanyq(62444,62442,62443) |only if default |or |next "Begin_Dailies"
+'|condition not completedq(62441) |only if covenantfeature("Covenant Unique") == 1 |or |next "Begin_Dailies"
+]])
+ZGV.BETAEND()

@@ -130,7 +130,8 @@ ZGV.mentionedQuests = {}
 ZGV.ACTION_BUTTONS_DISABLED = true
 
 
-local MIN_HEIGHT=80
+local MIN_HEIGHT=10
+
 -- ZGV.STEPMARGIN_X=3
 -- ZGV.STEPMARGIN_Y=3
 
@@ -141,11 +142,11 @@ local function SkinData(parm)
 end
 
 
-ZGV.MIN_STEP_HEIGHT=15
+ZGV.MIN_STEP_HEIGHT=12
 ZGV.MIN_SPOT_HEIGHT=40
 
 local MIN_WIDTH = 260
-local TOP_HEIGHT = 65
+local MAX_WIDTH = 800
 
 --local FONT = STANDARD_TEXT_FONT
 local FONT=L['MainFont']
@@ -196,10 +197,10 @@ StaticPopupDialogs['ZYGORGUIDESVIEWER_DEFAULT'] = {
 	whileDead = 1,
 }
 
-ZGV.loadtime = debugprofilestop()
-ZGV.loadtimeGT = GetTime()
+ZGV.timestamp_loaded = debugprofilestop()
+ZGV.timestamp_loaded_GT = GetTime()
 
-function ZGV:OnInitialize()
+function ZGV:OnInitialize()  --ADDON_LOADED
 	ZGV.db = LibStub("AceDB-3.0"):New("ZygorGuidesViewerSettings")
 	
 	ZGV.db.global.gii_cache=ZGV.db.global.gii_cache or {}
@@ -211,13 +212,23 @@ function ZGV:OnInitialize()
 
 --	if not ZygorGuidesViewerMiniFrame then error("Zygor Guide Viewer step frame not loaded.") end
 
+	ZGV.startuptimestamps:Punch("libs.xml start",___ZGV_TIMESTAMP_LOADLIBSXML_START)
+	ZGV.startuptimestamps:Punch("libs.xml end",___ZGV_TIMESTAMP_LOADLIBSXML_END)
+	ZGV.startuptimestamps:Punch("localization.xml start",___ZGV_TIMESTAMP_LOADLOCALIZATIONXML_START)
+	ZGV.startuptimestamps:Punch("localization.xml end",___ZGV_TIMESTAMP_LOADLOCALIZATIONXML_END)
+	ZGV.startuptimestamps:Punch("guides/autoload.xml start",___ZGV_TIMESTAMP_LOADGUIDESXML_START)
+	ZGV.startuptimestamps:Punch("guides/autoload.xml end",___ZGV_TIMESTAMP_LOADGUIDESXML_END)
+	ZGV.startuptimestamps:Punch("files.xml start",___ZGV_TIMESTAMP_LOADFILESXML_START)
+	ZGV.startuptimestamps:Punch("files.xml end",___ZGV_TIMESTAMP_LOADFILESXML_END)
+	ZGV.startuptimestamps:Punch("OnInitialize")
+	self.timestamp_initing = debugprofilestop()
 	
-	ZGV.Profiler:Store("file-load-total",ZGV.loading_memory_total,ZGV.loading_time_total,ZGV.loading_time_total)
-	ZGV.loading_time_total=nil
-	ZGV.loading_memory_total=nil
+	self.Profiler:Store("file-load-total",self.loading_memory_total,self.time_loadedfiles,self.time_loadedfiles)  -- time_loadedfiles set in files.xml
 
-
-	ZGV.starttime = debugprofilestop()
+	self.startuptimes["Loading libs"]=ZGV.startuptimestamps["libs.xml end"]-ZGV.startuptimestamps["libs.xml start"]
+	self.startuptimes["Loading guides"]=ZGV.startuptimestamps["guides/autoload.xml end"]-ZGV.startuptimestamps["guides/autoload.xml start"]
+	self.startuptimes["Loading code"]=ZGV.startuptimestamps["files.xml end"]-ZGV.startuptimestamps["files.xml start"]-self.startuptimes["Loading guides"]
+	--self.startuptimes["Loading variables"]=self.timestamp_initing-self.loadtime
 
 	local t1=debugprofilestop()
 
@@ -239,7 +250,7 @@ function ZGV:OnInitialize()
 
 	self:WarnAboutDebugSettings()
 
-	ZGV:Print("Loading...")
+	--ZGV:Print("Loading...")
 
 	
 	if IsShiftKeyDown() then
@@ -368,10 +379,15 @@ function ZGV:OnInitialize()
 	
 	if self.ERRORS then self:Print("Errors were detected on startup, see ZGV.ERRORS") end
 
+	ZGV.startuptimestamps:Punch("oninitialize_complete")
+
+	-- clear timestamp globals
+	for k,v in pairs(_G) do if k:find("___ZGV_TIMESTAMP",1,true) then _G[k]=nil end end
+
 	self:Debug("&startup Initialized")
 end
 
-function ZGV:OnEnable()
+function ZGV:OnEnable()  --PLAYER_LOGIN
 
 	self:Debug("&startup Enabling...")
 
@@ -846,9 +862,9 @@ local function _StartupThread()
 
 
 
-	self:Debug("Loading time - guides: %.2f",self.loading_time_guides or -1)
+	self:Debug("Loading time - guides: %.2f",self.startuptimes["Loading guides"] or -1)
 	self:Debug("Loading time - DEV: %.2f",self.loading_time_DEV or -1)
-	self:Debug("Loading time - total: %.2f",self.loading_time_total or -1)
+	self:Debug("Loading time - total: %.2f",self.startuptimes["Loading libs"]+self.startuptimes["Loading guides"]+self.startuptimes["Loading code"])
 
 	--if ZGV.AnimatePopup then ZGV:ShowAnimatedPopup() end -- if we have animated popup, show it
 
@@ -864,7 +880,38 @@ local startup_frames,startup_ticks=0,0
 local last_gettime
 local displayedInCombatWarning = false
 
+
 ZGV.startuptimes={}
+ZGV.startuptimes.index={}
+function ZGV.startuptimes:View()
+	local ret = {}
+	for i,t in ipairs(self.index) do tinsert(ret,("%s = %.3f ms"):format(t,self[t])) end
+	return ret
+end
+function ZGV.startuptimes:Add(k,v)
+	self[k]=(self[k] or 0)+v
+end
+setmetatable(ZGV.startuptimes,{__newindex=function(t,k,v) tinsert(t.index,k) rawset(t,k,v) end})
+
+
+ZGV.startuptimestamps={}
+function ZGV.startuptimestamps:View()
+	local ret = {}
+	for k,t in pairs(self) do if tonumber(t) then tinsert(ret,{k,t}) end end
+	sort(ret,function(a,b) return a[2]<b[2] end)
+	local ret2={}
+	for i,v in ipairs(ret) do ret2[i]=("%d (+%d): %s"):format(v[2],(i>1) and (v[2]-ret[i-1][2]) or 0,v[1]) end
+	return ret2
+end
+function ZGV.startuptimestamps:Punch(name,time)
+	self[name]=time or debugprofilestop()
+end
+
+function ZGV:ViewStartupTimes()
+	return {timestamps=ZGV.startuptimestamps:View(),times=ZGV.startuptimes:View()}
+end
+
+
 local lastret,lastrettime=0,0
 function ZGV:StartupStep()  -- called from MasterFrame
 	if not last_gettime then last_gettime=GetTime() end
@@ -927,11 +974,10 @@ function ZGV:StartupStep()  -- called from MasterFrame
 		elseif status(thread)=="dead" then
 			self:Debug("&startup COMPLETE!");
 			self:Debug("Startup complete in %.2f (%d ticks in %d frames)",startup_time,startup_ticks,startup_frames)
-			self:Debug("From file load to variables = %.2f",ZGV.starttime-ZGV.loadtime)
-			self:Debug("Total startup (realtime) = %.2f",debugprofilestop()-ZGV.starttime)
-			self.startuptimes['_total realtime']=debugprofilestop()-ZGV.starttime
-			self.startuptimes['_total pure']=startup_time
-			self.startuptimes['_total initial']=ZGV.starttime-ZGV.loadtime
+			self:Debug("From file load to variables = %.2f",ZGV.timestamp_initing-ZGV.timestamp_loaded)
+			self:Debug("Total startup (realtime) = %.2f",debugprofilestop()-ZGV.timestamp_initing)
+			self.startuptimes['Total (realtime)']=debugprofilestop()-ZGV.timestamp_initing
+			self.startuptimes['Total (pure)']=startup_time
 			self.loading=nil
 			self.initialized = true
 			self.db.profile.hide_dev_once = false
@@ -957,6 +1003,7 @@ end
 
 function ZGV:LOADING_SCREEN_DISABLED()
 	self:Debug("LOADING_SCREEN_DISABLED! Let's go!")
+	self.startuptimestamps:Punch("loading_screen_disabled")
 	self.loading_screen_disabled=true
 end
 
@@ -2326,40 +2373,29 @@ function ZGV:DoUpdateFrame(full,onupdate)
 
 	local focusedstep = ZGV:GetFocusedStep()
 
-	local minh = 0
-
-	local Scroll = self.Frame.Scroll
-
-	local tabh = ZGV.Frame.Border.TabBack:GetHeight()
-
 	--if self.loading then ZygorGuidesViewerFrame_Border_GuideBack_SectionTitle:SetText(self.loading:format((self.loadprogress or 0)*100)) end
-
-	self.Frame.Border.Guides:Show()
+	
 	--self.Frame.Border.Gold:Hide() - bfa alpha change unused frame
 
 	self.do_showwaypoints_after_updateframe = false
+	
+	local Scroll = self.Frame.Controls.Scroll
 
 	if self.CurrentGuide and self.CurrentGuide.steps and self.CurrentGuide.fully_parsed then
-
-		local showallsteps = (self.db.profile.showcountsteps==0)
-		if showallsteps then
-			if self.Frame.Scroll.Bar:GetValue()<1 then self.Frame.Scroll.Bar:SetValue(self.CurrentStepNum) end
-			self.Frame.Scroll.Bar:Show()
-		else
-			self.Frame.Scroll.Bar:Hide()
-		end
-
+		
+		self.Frame.Border.Toolbar:Show()
 		--if full then
-			self.Frame.Scroll.Bar:SetMinMaxValues(1,#self.CurrentGuide.steps>0 and #self.CurrentGuide.steps or 1)
-			self.Frame.Border.Guides.StepNum.Step:SetText(self.CurrentStepNum)
-			--ZygorGuidesViewerFrame_Border_GuideBack_SectionTitle:SetText(self.CurrentGuide.title_short)
+		self.Frame.Border.Toolbar.StepNum.Step:SetText(self.CurrentStepNum)
+		--ZygorGuidesViewerFrame_Border_GuideBack_SectionTitle:SetText(self.CurrentGuide.title_short)
 		--end
+		
+		local showallsteps = (self.db.profile.showcountsteps==0)
 
 		Scroll:Show()
 
 		local stepnum,stepdata
 
-		local firststep = (showallsteps and math.floor(self.Frame.Scroll.Bar:GetValue()) or self.CurrentStepNum) or 1
+		local firststep = (showallsteps and math.floor(Scroll.Bar:GetValue()) or self.CurrentStepNum) or 1
 		firststep=max(1,firststep)
 		local laststep = showallsteps and #self.CurrentGuide.steps or self.CurrentStepNum+self.db.profile.showcountsteps-1
 		laststep=min(laststep,#self.CurrentGuide.steps)
@@ -2427,16 +2463,15 @@ function ZGV:DoUpdateFrame(full,onupdate)
 
 		self.stepchanged=false
 
-		-- set minimum frame size to one step
-		minh = (self.Frame.stepframes[1] and self.Frame.stepframes[1]:GetHeight() or 10) + TOP_HEIGHT + ZGV.Frame.Border.TabBack:GetHeight()
-
 		--self:HighlightCurrentStep()
 
 		-- steps displayed, clear the remaining slots
 
-	--[[
 	else -- no current guide?
 
+		Scroll:Hide()
+		ZGV.Frame.Border.Toolbar:Hide()
+		--[[
 		local guides = self:GetGuides()
 		if #guides>0 then
 			ZGV:Print(L["guide_notselected"])
@@ -2446,13 +2481,10 @@ function ZGV:DoUpdateFrame(full,onupdate)
 		for i,stepframe in ipairs(self.stepframes) do stepframe:Hide() end
 		self.ProgressBar:Hide()
 		minh=0
-	--]]
+		--]]
 	end
 
-	if minh<MIN_HEIGHT+tabh then minh=MIN_HEIGHT+tabh end
-	self.Frame:SetMinResize(MIN_WIDTH,minh)
-	if self.Frame:GetHeight()<minh-0.01 then self.Frame:SetHeight(minh) end
-
+	--if self.Frame:GetHeight()<minh-0.01 then self.Frame:SetHeight(minh) end
 
 	self:ResizeFrame()
 
@@ -2485,7 +2517,7 @@ function ZGV:ReanchorFrame()
 
 
 	frame:ClearAllPoints()
-	local tabh = ZGV.Frame.Border.TabBack:GetHeight()
+	local tabh = ZGV.Frame.Border.TabContainer:GetHeight()
 
 	if frame.sizedleft then
 		local q,w,e,x,y = framemaster:GetPoint()
@@ -2497,12 +2529,12 @@ function ZGV:ReanchorFrame()
 	if upsideup then
 		--frame:SetPoint("TOP",nil,"TOP",(left+right)/2-(uiwidth/2/scale),top-uiheight/scale)
 		--frame:SetPoint("TOP",frame:GetParent(),"BOTTOMLEFT",left+width/2,top)
-		frame:SetPoint("TOPLEFT",framemaster,"TOPLEFT",0,0)
+		frame:SetPoint("TOPLEFT",framemaster)
 		frame:SetClampRectInsets(0,0,-48-tabh,0)
 	else
 		--frame:SetPoint("BOTTOM",nil,"BOTTOM",(left+right)/2-(uiwidth/2/scale),bottom)
 		--frame:SetPoint("BOTTOM",frame:GetParent(),"BOTTOMLEFT",left+width/2,bottom)
-		frame:SetPoint("BOTTOMLEFT",framemaster,"BOTTOMLEFT",0,0)
+		frame:SetPoint("BOTTOMLEFT",framemaster)
 		frame:SetClampRectInsets(0,0,0,48+tabh)
 	end
 
@@ -2518,73 +2550,141 @@ function ZGV:ApplySkin()
 	self.Frame:ApplySkin()
 end
 
+local resizing
 function ZGV:ResizeFrame()
+	if resizing then return end
+	resizing=true
+	C_Timer.After(0.001,function() resizing=false end)
+	
 	if not self.Frame then return end
-	--autosize
-	--if (self.db.profile.autosize) then
-	--print("resize")
+
 	if self.frameNeedsResizing then
 		if self.frameNeedsResizing>0 then self.frameNeedsResizing = self.frameNeedsResizing - 1 end
 		if self.frameNeedsResizing>0 then return nil end
 	end
 	if not self.db then return end
 
-	--[[
-	if ZygorGuidesViewerFrame_Border_Bottom:GetRect() then
-		local xsize = select(3,ZygorGuidesViewerFrame_Border_Bottom:GetRect())/200
-		local ysize = select(4,ZygorGuidesViewerFrame_Border_Left:GetRect())/100
-		local ysize2 = select(4,ZygorGuidesViewerFrame_Border_Right:GetRect())/100
-		ZygorGuidesViewerFrame_Border_Left:SetTexCoord(0.2,0.8,0,1*ysize)
-		ZygorGuidesViewerFrame_Border_Right:SetTexCoord(0.2,0.8,0,1*ysize2)
-		ZygorGuidesViewerFrame_Border_Bottom:SetTexCoord(0,-xsize,1,-xsize,0,xsize,1,xsize)
-	end
-	--]]
-
 	--ZygorGuidesViewerFrame_Border:SetBackdropColor(self.db.profile.skincolors.back[1],self.db.profile.skincolors.back[2],self.db.profile.skincolors.back[3],self.db.profile.backopacity)
 
+	local ctrls = self.Frame.Controls
+	local Scroll = ctrls.Scroll
+	local StepContainer = ctrls.StepContainer
 
 	--self:Debug("resizing from "..tostring(ZygorGuidesViewerFrame:GetHeight()))
+	--if not self.CurrentStepNum or not _G['ZygorGuidesViewerFrame_Step'..self.CurrentStepNum] then return end
 
-	if self.db.profile.showcountsteps==0 or self.db.profile.displaymode=="gold" then
-		self.Frame.Scroll.Bar:Show()
-	else
-		self.Frame.Scroll.Bar:Hide()
-		--if not self.CurrentStepNum or not _G['ZygorGuidesViewerFrame_Step'..self.CurrentStepNum] then return end
-		local height = 0
+	local MAX_CONTENT_HEIGHT=600
+
+	--print("--- RESIZE:")
+
+	local function CalculateHeight()
+		local last_bottom=false
+		local sc_width = StepContainer:GetWidth()
+		if self.Frame.Controls.DefaultStateButton:IsShown() then return self.Frame.Controls.DefaultStateButton.min_height end
 		for i,stepframe in ipairs(self.Frame.stepframes) do  if stepframe:IsShown() then
-			if i>1 then height = height + SkinData("StepStickyBarSpace")+SkinData("StepStickyBarHeight")+SkinData("StepStickyBarSpace")  end
+			stepframe:SetWidth(sc_width)
+			stepframe:AdjustHeight()
+			last_bottom = stepframe:GetBottom()
+			--if i>1 then contentheight = contentheight + SkinData("StepStickyBarSpace")+SkinData("StepStickyBarHeight")+SkinData("StepStickyBarSpace")  end
 			--if i>1 then height = height + SkinData("StepSpacing") + (stepframe.is_sticky and SkinData("StepStickyBarSpace")+SkinData("StepStickyBarHeight")+SkinData("StepStickyBarHeight") or 0) end
-			height = height + stepframe:GetHeight()
+			--contentheight = contentheight + stepframe:GetHeight()
 		end end
-
-		--local tabh = ZGV.Frame.Border.TabBack:GetHeight()
-
-		--height = height + TOP_HEIGHT + tabh
-		height = height + TOP_HEIGHT
-		--self:Debug("Height "..height.."  min "..MIN_HEIGHT)
-		--if height < MIN_HEIGHT + tabh then height=MIN_HEIGHT + tabh end
-		if height < MIN_HEIGHT then height=MIN_HEIGHT end
-		self.Frame:SetHeight(height + SkinData("ProgressBarSpaceHeight") + SkinData("TabsHeight") + (ZGV.db.profile.resizeup and 10 or -2))
+		if not last_bottom then return 0.1 end
+		local height = self.Frame.stepframes[1]:GetTop() - last_bottom
+		--print(("h = %d"):format(height))
+		return height
 	end
+
+	local CONTROLS_HEIGHT = SkinData("TopHeight")+SkinData("TabsHeight")+SkinData("ProgressBarSpaceHeight")
+	local autoresize = not self.db.profile.fixedheight and self.db.profile.showcountsteps~=0
+	local allstepsmode = self.db.profile.showcountsteps==0
+
+	local MIN_SCROLLABLE_CONTENT_HEIGHT = 80
+	self.Frame:SetMinResize(MIN_WIDTH,CONTROLS_HEIGHT+(autoresize and 0 --[[n/a]] or MIN_SCROLLABLE_CONTENT_HEIGHT))
+	self.Frame:SetMaxResize(MAX_WIDTH,CONTROLS_HEIGHT+MAX_CONTENT_HEIGHT)
+
+	-- calculate full wide height
+	--print("Try: full width")
+	StepContainer:SetWidth(Scroll:GetWidth())
+	local contentheight = CalculateHeight()  --print("height a:",contentheight)
+	StepContainer:SetHeight(contentheight)
+
+	local adjusted_contentheight
+	if autoresize then
+		adjusted_contentheight = min(contentheight,MAX_CONTENT_HEIGHT)
+		if contentheight_got_adjusted then
+			--print(("adj h to %d"):format(adjusted_contentheight))
+		else
+			--print("adj h? no")
+		end
+		local height = max(adjusted_contentheight + CONTROLS_HEIGHT, MIN_HEIGHT)
+		self.Frame:SetHeight(height )
+	
+	else
+
+		-- do we need the scrollbar?
+		local scrollbar_needed = allstepsmode or contentheight>Scroll:GetHeight()+0.1 or contentheight>MAX_CONTENT_HEIGHT
+		local cur_h = Scroll:GetHeight()
+		if scrollbar_needed and cur_h<MIN_SCROLLABLE_CONTENT_HEIGHT then
+			-- WHY!? :(
+			-- Enlarge the frame even in scrolly mode :(
+			adjusted_contentheight = max(cur_h,min(contentheight,MIN_SCROLLABLE_CONTENT_HEIGHT))
+			--print("adj contentheight = ",math.round(adjusted_contentheight))
+			local height = adjusted_contentheight
+			self.Frame:SetHeight(height-0.1 + CONTROLS_HEIGHT )
+			-- do we STILL need the scrollbar?
+		else
+			--print("scrollbar not needed: sn",scrollbar_needed and "yes" or "no","ch",math.round(contentheight))
+		end
+	end
+
+	local scrollbar_needed = allstepsmode or contentheight>Scroll:GetHeight()+0.1 or contentheight>MAX_CONTENT_HEIGHT
+	if scrollbar_needed then
+			-- enable the scrolls and resize the container
+		local barsize = SkinData("ScrollBarButtonSize") or {16,16}
+		StepContainer:SetWidth(Scroll:GetWidth()-barsize[1])
+		--print("Try: with scrollbar")
+		contentheight = CalculateHeight() --print("height b:",contentheight)
+		StepContainer:SetHeight(contentheight)
+
+		-- set scroll range
+		if allstepsmode then
+			Scroll.Bar:SetMinMaxValues(1,ZGV.CurrentGuide and #ZGV.CurrentGuide.steps)
+		else
+			Scroll.Bar:SetMinMaxValues(0,Scroll:GetScrollRange())
+		end
+		Scroll.Bar:SetValue(Scroll.Bar:GetValue())
+		Scroll.Bar:Show()
+		Scroll.Bar.ThumbTexture:Show()
+	else
+		--print(("scroll not needed; ch %d < sc %d"):format(contentheight,Scroll:GetHeight()))
+		Scroll.Bar:Hide()
+	end
+
+	--print(("Content: %d"):format(math.round(StepContainer:GetHeight())))
+	--print(("Scroll: %d"):format(math.round(Scroll:GetHeight())))
+
+	--local tabh = ZGV.Frame.Border.TabContainer:GetHeight()
+
 
 	-- do not call this on the same frame, as getwidth/height inside will be broken
 	-- self:ScheduleTimer(function() ZGV.ProgressBar:Refresh() end,0)
 	
 
 
-	--self:Debug(("%d %d"):format(left,bottom))
---		ZygorGuidesViewerFrame:SetHeight(ZygorGuidesViewerFrame_Text:GetHeight()+35)
+		--self:Debug(("%d %d"):format(left,bottom))
+	--		ZygorGuidesViewerFrame:SetHeight(ZygorGuidesViewerFrame_Text:GetHeight()+35)
 
 
---	if ZygorGuidesViewerFrame_ActiveStep_Line1:GetTop() then
-		--ZygorGuidesViewerFrame_Resize.max = ZygorGuidesViewerFrame_Line1:GetTop()-ZygorGuidesViewerFrame_TextInfo2:GetBottom()+35
-		--ZygorGuidesViewerFrame_Resize:Stop()
-		--ZygorGuidesViewerFrame_Resize:Play()
+	--	if ZygorGuidesViewerFrame_ActiveStep_Line1:GetTop() then
+			--ZygorGuidesViewerFrame_Resize.max = ZygorGuidesViewerFrame_Line1:GetTop()-ZygorGuidesViewerFrame_TextInfo2:GetBottom()+35
+			--ZygorGuidesViewerFrame_Resize:Stop()
+			--ZygorGuidesViewerFrame_Resize:Play()
 
---		ZygorGuidesViewerFrame:SetHeight(ZygorGuidesViewerFrame_ActiveStep_Line1:GetTop()-ZygorGuidesViewerFrame_TextInfo2:GetBottom()+35)
---	end
+	--		ZygorGuidesViewerFrame:SetHeight(ZygorGuidesViewerFrame_ActiveStep_Line1:GetTop()-ZygorGuidesViewerFrame_TextInfo2:GetBottom()+35)
+	--	end
 
---	end
+	--	end
 end
 
 function ZGV:GoalProgress(goal)
@@ -2592,6 +2692,7 @@ function ZGV:GoalProgress(goal)
 end
 
 function ZGV:ScrollToCurrentStep()  -- deprecated: no more scrolling
+	do return end
 --	if self.ForceScrollToCurrentStep and self.CurrentStep then
 --		self.ForceScrollToCurrentStep = false
 		if self.CurrentStep and self.db.profile.displaymode=="guide" then
@@ -2625,24 +2726,13 @@ function ZGV:IsVisible()
 end
 
 function ZGV:SetVisible(info,onoff)
-	if onoff then 
-		self.Frame:Show() 
-		self.db.profile.enable_viewer = true
-	else 
-		self.Frame:Hide() 
-		self.db.profile.enable_viewer = false
-	end
+	self.Frame:SetShown(onoff) 
+	self.db.profile.enable_viewer = not not onoff
+	if onoff then ZGV.Tabs:ReanchorTabs() end
 end
 
 function ZGV:ToggleFrame()
-	if self.Frame:IsShown() then 
-		self.Frame:Hide() 
-		self.db.profile.enable_viewer = false
-	else 
-		self.Frame:Show() 
-		self.db.profile.enable_viewer = true
-		ZGV.Tabs:ReanchorTabs()
-	end
+	ZGV:SetVisible(nil,not self.Frame:IsShown())
 	ZGV.ActionBar:ToggleFrame()
 end
 
@@ -2991,9 +3081,20 @@ end
 function ZGV:UpdateFrameStepSkipping()
 	if not self.Frame then return end
 	local enabled = self.CurrentGuide and self.CurrentStep
-	self.Frame.Border.Guides.NextButton:SetEnabled(enabled and self.CurrentStep.num<#self.CurrentGuide.steps)
-	self.Frame.Border.Guides.PrevButton:SetEnabled(enabled and self.CurrentStep.num>1)
+	self.Frame.Border.Toolbar.NextButton:SetEnabled(enabled and self.CurrentStep.num<#self.CurrentGuide.steps)
+	self.Frame.Border.Toolbar.PrevButton:SetEnabled(enabled and self.CurrentStep.num>1)
 end
+
+
+local StartupTimingFrame = CreateFrame("FRAME",nil,UIParent)
+StartupTimingFrame:Show()
+StartupTimingFrame:RegisterEvent("ADDON_LOADED")
+StartupTimingFrame:RegisterEvent("VARIABLES_LOADED")
+StartupTimingFrame:SetScript("OnEvent",function(f,event,arg)
+	if event=="ADDON_LOADED" and arg==addonName then ZGV.startuptimestamps:Punch("addonloaded") end
+	if event=="VARIABLES_LOADED" then ZGV.startuptimestamps:Punch("variablesloaded") end
+end)
+
 
 local blobstate=nil
 function ZGV:PLAYER_REGEN_DISABLED()
@@ -4346,11 +4447,11 @@ function ZGV:Debug (msg,...)
 
 		local message
 		if func then
-			message = ("|cffffee77Z|r: %s%06.03f+%03d|r |cff00ddbb#%d:|r %s%s  |cffaaaaaa(%s)"):format(timecolor,(t-self.loadtimeGT),debugms,self.DebugI,debugcolor,formatted_msg,func)
+			message = ("|cffffee77Z|r: %s%06.03f+%03d|r |cff00ddbb#%d:|r %s%s  |cffaaaaaa(%s)"):format(timecolor,(t-self.timestamp_loaded_GT),debugms,self.DebugI,debugcolor,formatted_msg,func)
 		elseif self.db.profile.debug_fps then
-			message = ("|cffffee77Z|r: %s%06.03f+%03d|r@%03d |cff00ddbb#%d:|r %s%s"):format(timecolor,(t-self.loadtimeGT),debugms,GetFramerate(),self.DebugI,debugcolor,formatted_msg)
+			message = ("|cffffee77Z|r: %s%06.03f+%03d|r@%03d |cff00ddbb#%d:|r %s%s"):format(timecolor,(t-self.timestamp_loaded_GT),debugms,GetFramerate(),self.DebugI,debugcolor,formatted_msg)
 		else
-			message = ("|cffffee77Z|r: %s%06.03f+%03d|r |cff00ddbb#%d:|r %s%s"):format(timecolor,(t-self.loadtimeGT),debugms,self.DebugI,debugcolor,formatted_msg)
+			message = ("|cffffee77Z|r: %s%06.03f+%03d|r |cff00ddbb#%d:|r %s%s"):format(timecolor,(t-self.timestamp_loaded_GT),debugms,self.DebugI,debugcolor,formatted_msg)
 		end
 
 		local replace_at

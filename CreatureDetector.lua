@@ -218,7 +218,7 @@ function CreatureDetector:DetectMount(silent_mode)
 
 	-- If found, point at it
 	if found then
-		ZGV:Debug("Mount Detected")
+		ZGV:Debug("CreatureDetector: Mount '%s' detected.",found.title_short)
 		found.is_mount=true
 		self:AddGuideToDetectedGuides(found)
 		--if not silent_mode and ZGV.GuidePicker then ZGV.GuidePicker:NavigateTo("DETECTOR") end
@@ -255,7 +255,7 @@ function CreatureDetector:DetectMount(silent_mode)
 		StaticPopup_Show ("ZYGOR_REPORT_MOUNT")
 		return
 	else
-		ZGV:Debug("Mount Guide not found")
+		ZGV:Debug("CreatureDetector: No valid mount guide found for targeted player.")
 	end
 end
 
@@ -411,7 +411,7 @@ function CreatureDetector:OnEvent(event)
 						local _,path = recentlydetectedguide:GetParentFolder()
 						ZGV.GuideMenu:Show(path)
 					else
-						ZGV:SetGuide(recentlydetectedguide_title)
+						ZGV.Tabs:LoadGuideToTab(recentlydetectedguide_title)
 					end
 					ZGV.NotificationCenter:RemoveEntry(recentlydetectedguide_title)
 					ZGV.NotificationCenter:UpdateCounter()
@@ -443,7 +443,9 @@ function CreatureDetector:OnEvent(event)
 					nil,		-- removetime
 					nil,		-- quiet
 					nil,		-- OnOpen
-					"pet")
+					"pet",
+					{dontdelete=true,guide=recentlydetectedguide}					
+					)
 
 			elseif TargetFrame:IsVisible() then
 				button:Show()

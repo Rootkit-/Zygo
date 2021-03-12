@@ -45,15 +45,25 @@ function FrameProto:ApplySkin()
 	CHAIN(frame.Border.Back)
 		:SetBackdrop(SkinData("WindowBottomBackdrop"))
 		:SetBackdropColor(unpack(SkinData("WindowBottomBackdropColor")))
-		:SetBackdropBorderColor(unpack(SkinData("WindowBottomBBackdropBorderColor")))
-		:SetFrameLevel(4)
+		:SetBackdropBorderColor(unpack(SkinData("WindowBottomBackdropBorderColor")))
 
-	frame.Border.Guides:SetBackdrop(SkinData("Backdrop"))
-	frame.Border.Guides:SetBackdropColor(unpack(SkinData("SystemBarBackdropColor")))
-	frame.Border.Guides:SetBackdropBorderColor(unpack(SkinData("SystemBarBackdropBorderColor")))
+	CHAIN(frame.Border.TabContainer)
+	:SetBackdrop(SkinData("TabBackdrop"))
+	:SetHeight(SkinData("TabsHeight")+3)
+	local center = frame.Border.TabContainer.Center or frame.Border.TabContainer:GetRegions()
+	if center then 
+		center:SetColorTexture(unpack(SkinData("TabBackdropColor")))
+	end
 
-	frame.StepContainer:SetFrameLevel(4)
-	frame.Border.Guides:SetFrameLevel(5)
+
+	CHAIN(frame.Border.Toolbar)
+		:SetBackdrop(SkinData("Backdrop"))
+		:SetBackdropColor(unpack(SkinData("SystemBarBackdropColor")))
+		:SetBackdropBorderColor(unpack(SkinData("SystemBarBackdropBorderColor")))
+		:SetFrameLevel(5)  -- ~~sinus: I hate this.
+
+	--frame.StepContainer:SetFrameLevel(4)
+	--frame.Border.Toolbar:SetFrameLevel(5)
 
 	-- Search Button
 	--frame.Controls.SearchButton:ClearAllPoints()
@@ -79,19 +89,9 @@ function FrameProto:ApplySkin()
 	ZGV.Sync:UpdateButtonColor()
 
 
-	if not frame.Border.TabBack then
-		frame.Border.TabBack = ZGV.CreateFrameWithBG("FRAME","ZygorGuidesViewerFrame_Border_TabBack",frame.Border)
-	end
-	CHAIN(frame.Border.TabBack)
-		:SetBackdrop(SkinData("TabBackdrop"))
-	local center = frame.Border.TabBack.Center or frame.Border.TabBack:GetRegions()
-	if center then 
-		center:SetColorTexture(unpack(SkinData("TabBackdropColor")))
-	end
-
-	frame.Scroll.Bar.ScrollUpButton:SetSize(unpack(SkinData("ScrollBarButtonSize") or {16,16})) -- they're 18x16 by default now, the silly things.
-	frame.Scroll.Bar.ScrollDownButton:SetSize(unpack(SkinData("ScrollBarButtonSize") or {16,16}))
-	frame.Scroll.Bar.ThumbTexture:SetTexture(ZGV.StyleDir.."scrollbutton")
+	frame.Controls.Scroll.Bar.ScrollUpButton:SetSize(unpack(SkinData("ScrollBarButtonSize") or {16,16})) -- they're 18x16 by default now, the silly things.
+	frame.Controls.Scroll.Bar.ScrollDownButton:SetSize(unpack(SkinData("ScrollBarButtonSize") or {16,16}))
+	frame.Controls.Scroll.Bar.ThumbTexture:SetTexture(ZGV.StyleDir.."scrollbutton")
 
 	ZGV.ProgressBar:SetDecor(SkinData("ProgressBarDecorUse"))
 	ZGV.ProgressBar:SetTexture(SkinData("ProgressBarTextureFile"))
@@ -106,7 +106,7 @@ function FrameProto:ApplySkin()
 	frame.Controls.Logo:SetSize(unpack(SkinData("TitleLogoSize")))
 	frame.Controls.Logo:SetPoint("CENTER",frame.Border.TitleBar,"CENTER",0,-2)
 
-	for tk,tex in ipairs({frame.MenuAdditional:GetRegions()}) do if tex.SetNonBlocking then tex:SetNonBlocking(false) end end
+	for tk,tex in ipairs({frame.Controls.MenuHostAdditional:GetRegions()}) do if tex.SetNonBlocking then tex:SetNonBlocking(false) end end
 
 	
 	-- menu elements' fonts and checks: now set in ZGV_DefaultSkin_MenuButton_Mixin:ApplySkin()
@@ -122,10 +122,6 @@ function FrameProto:ApplySkin()
 		:SetBackdropColor(unpack(SkinData("StepBackdropColor")))
 		:SetBackdropBorderColor(unpack(SkinData("StepBackdropColor")))
 		:SetFrameStrata("MEDIUM")
-		:SetPoint("TOP",ZGV.Frame.Controls.Logo,"BOTTOM",0,0)
-		:SetPoint("LEFT",ZGV.Frame)
-		:SetPoint("RIGHT",ZGV.Frame)
-		:SetPoint("BOTTOM",ZGV.Frame.Controls.Scroll,0,17)
 	CHAIN(frame.Controls.DefaultStateButton:GetFontString())
 		:SetFont(ZGV.Font,12)
 		:SetTextColor(1,1,1,1)
@@ -157,14 +153,14 @@ function FrameProto:UpdateLocking()
 	
 	frame.Border:EnableMouse(not locked)
 	frame.Border.TitleBar:EnableMouse(not locked)
-	frame.Border.Guides:EnableMouse(not locked)
+	frame.Border.Toolbar:EnableMouse(not locked)
 	frame.ResizerLeft:EnableMouse(not locked)
 	frame.ResizerRight:EnableMouse(not locked)
 	frame.ResizerBottomLeft:EnableMouse(not locked)
 	frame.ResizerBottomRight:EnableMouse(not locked)
 	frame.ResizerBottom:EnableMouse(not locked)
 
-	frame.Scroll:EnableMouseWheel(not locked)
+	frame.Controls.Scroll:EnableMouseWheel(not locked)
 
 	--[[
 	local BUTTONTEXTURE = SkinData("TitleButtons")
@@ -187,6 +183,7 @@ function FrameProto:AlignFrame()  -- mixed into Frame, never called on Skin!!
 
 	local upsideup = not ZGV.db.profile.resizeup
 
+	local UP_TOP = upsideup and "TOP" or "BOTTOM"
 	local UP_TOPLEFT = upsideup and "TOPLEFT" or "BOTTOMLEFT"
 	local UP_BOTTOMLEFT = upsideup and "BOTTOMLEFT" or "TOPLEFT"
 	local UP_BOTTOM = upsideup and "BOTTOM" or "TOP"
@@ -194,72 +191,104 @@ function FrameProto:AlignFrame()  -- mixed into Frame, never called on Skin!!
 	local UP_BOTTOMRIGHT = upsideup and "BOTTOMRIGHT" or "TOPRIGHT"
 	local UP = upsideup and 1 or -1
 
+	local backdrop_coords = {
+		TopLeftCorner = {4/8+1/128, 5/8-1/128, 1/16, 1-1/16 },
+		TopRightCorner = {5/8+1/128, 6/8-1/128, 1/16, 1-1/16 },
+		BottomLeftCorner = {6/8+1/128, 7/8-1/128, 1/16, 1-1/16 },
+		BottomRightCorner = {7/8+1/128, 8/8-1/128, 1/16, 1-1/16 },
+		TopEdge = {2/8+1/128, 3/8-1/128, 1/16, 1-1/16 },
+		BottomEdge = {3/8+1/128, 4/8-1/128, 1/16, 1-1/16 },
+	}
+	local function flipy(x1,x2,y1,y2)
+		return x1,x2,y2,y1
+	end
+	local function flipx(x1,x2,y1,y2)
+		return x2,x1,y1,y2
+	end
+	local function rotl(x1,x2,y1,y2)
+		return x1,y2,x2,y2,x1,y1,x2,y1
+	end
+
+	self.Controls.DefaultStateButton.min_height = 60
+
+	local backdrop_bottomleft = {6/8+1/128, 7/8-1/128, 1/16, 1-1/16 }
+
 	CHAIN(frame.Border.TitleBar)
 		:ClearAllPoints()
-		:SetPoint(UP_TOPLEFT,frame.Border,UP_TOPLEFT,0,0)
-		:SetPoint(UP_TOPRIGHT,frame.Border,UP_TOPRIGHT,0,0)
+		:SetPoint(UP_TOPLEFT,frame.Border)
+		:SetPoint(UP_TOPRIGHT,frame.Border)
 
 	local tabadj =  SkinData("TabsHeight")
 
-	frame.Border.Guides:ClearAllPoints()
+	frame.Border:SetScript("OnSizeChanged",nil)
+
+	frame.Border.Toolbar:ClearAllPoints()
 	frame.Controls.Scroll:ClearAllPoints()
 
 	CHAIN(frame.Border.Back)
 		:SetBackdrop(SkinData("WindowBottomBackdrop"))
 		:SetBackdropColor(unpack(SkinData("WindowBottomBackdropColor")))
-		:SetBackdropBorderColor(unpack(SkinData("WindowBottomBBackdropBorderColor")))
+		:SetBackdropBorderColor(unpack(SkinData("WindowBottomBackdropBorderColor")))
+		:SetPoint("TOPLEFT",frame.Controls.Scroll)
+		:SetPoint("BOTTOMRIGHT",frame)
 
 	if upsideup then
 		CHAIN(frame.Controls.Scroll)
-			:SetPoint("TOPLEFT",ZGV.Frame.Border,"TOPLEFT",SkinData("ViewerMargin"),-57-tabadj-SkinData("TabsTopOffset")) -- TODO starlight
-			:SetPoint("BOTTOMRIGHT",ZGV.Frame.Border,"BOTTOMRIGHT",-SkinData("ViewerMargin"),8-tabadj-SkinData("TabsTopOffset")) -- TODO starlight
-		CHAIN(frame.Border.Guides)
-			:SetPoint("BOTTOMLEFT",frame.Controls.Scroll.Child,"TOPLEFT",0,0)
-			:SetPoint("BOTTOMRIGHT",frame.Controls.Scroll.Child,"TOPRIGHT",0,0)
-		CHAIN(ZGV.ProgressBar)
-			:SetPoint("TOPLEFT", frame.Controls.Scroll,"BOTTOMLEFT",SkinData("ProgressBarOffsetX"),23)
-			:SetPoint("TOPRIGHT", frame.Controls.Scroll.Child , "BOTTOMRIGHT",-SkinData("ProgressBarOffsetX"),23)
+			:SetPoint("TOPLEFT",frame.Border,"TOPLEFT",SkinData("ViewerMargin"),-60-tabadj-SkinData("TabsTopOffset")) -- TODO starlight
+			:SetPoint("BOTTOMRIGHT",frame.Border,"BOTTOMRIGHT",-SkinData("ViewerMargin"),SkinData("ProgressBarSpaceHeight")) -- TODO starlight
 		framemaster:SetClampRectInsets(0,(width-40)*scale,(-43)*scale,(-height+55)*scale)
 
-		CHAIN(frame.Border.Back)
-			:SetPoint("TOP",0,-49)
-			:SetPoint("BOTTOM",0,0)
 		frame.Border.Back.TopLeftCorner:SetColorTexture(1,1,1,1)
 		frame.Border.Back.TopRightCorner:SetColorTexture(1,1,1,1)
+		frame.Border.BottomLeftCorner:SetTexCoord(unpack(backdrop_coords.BottomLeftCorner))
+		frame.Border.TopLeftCorner:SetTexCoord(unpack(backdrop_coords.TopLeftCorner))
+		frame.Border.BottomRightCorner:SetTexCoord(unpack(backdrop_coords.BottomRightCorner))
+		frame.Border.TopRightCorner:SetTexCoord(unpack(backdrop_coords.TopRightCorner))
+		frame.Border.TopEdge:SetTexCoord(rotl(unpack(backdrop_coords.TopEdge)))
+		frame.Border.BottomEdge:SetTexCoord(rotl(unpack(backdrop_coords.BottomEdge)))
 	else
 		CHAIN(frame.Controls.Scroll)
-			:SetPoint("TOPLEFT",ZGV.Frame.Border,"TOPLEFT",SkinData("ViewerMargin"),-5) -- -10-SkinData("TabsTopOffset"))
-			:SetPoint("BOTTOMRIGHT",ZGV.Frame.Border.Guides,"TOPRIGHT",0,0) -- 8-SkinData("TabsTopOffset"))
-		CHAIN(frame.Border.Guides)
-			:SetPoint("BOTTOMLEFT",ZGV.Frame.Border.TitleBar,"TOPLEFT",0,-2)
-			:SetPoint("BOTTOMRIGHT",ZGV.Frame.Border.TitleBar,"TOPRIGHT",0,-2)
-		CHAIN(ZGV.ProgressBar)
-			:SetPoint("TOPLEFT", frame.Controls.Scroll,"BOTTOMLEFT",SkinData("ProgressBarOffsetX"),35)
-			:SetPoint("TOPRIGHT", frame.Controls.Scroll.Child , "BOTTOMRIGHT",-SkinData("ProgressBarOffsetX"),35)
+			:SetPoint("TOPLEFT",frame.Border,"TOPLEFT",SkinData("ViewerMargin"),-14) -- -10-SkinData("TabsTopOffset"))
+			:SetPoint("BOTTOMRIGHT",frame.Border.Toolbar,"TOPRIGHT",0,0) -- 8-SkinData("TabsTopOffset"))
 		framemaster:SetClampRectInsets(0,(width-40)*scale,-height*scale,(42)*scale)
 
-		CHAIN(frame.Border.Back)
-			:SetPoint("BOTTOM",0,26)
-			:SetPoint("TOP",0,0)
 		frame.Border.Back.BottomLeftCorner:SetColorTexture(1,1,1,1)
 		frame.Border.Back.BottomRightCorner:SetColorTexture(1,1,1,1)
+		frame.Border.BottomLeftCorner:SetTexCoord(flipy(unpack(backdrop_coords.TopLeftCorner)))
+		frame.Border.TopLeftCorner:SetTexCoord(flipy(unpack(backdrop_coords.BottomLeftCorner)))
+		frame.Border.BottomRightCorner:SetTexCoord(flipy(unpack(backdrop_coords.TopRightCorner)))
+		frame.Border.TopRightCorner:SetTexCoord(flipy(unpack(backdrop_coords.BottomRightCorner)))
+		frame.Border.TopEdge:SetTexCoord(rotl(flipx(unpack(backdrop_coords.BottomEdge))))
+		frame.Border.BottomEdge:SetTexCoord(rotl(flipx(unpack(backdrop_coords.TopEdge))))
 	end
 
-	
-	frame.Border.Guides:Show()
 	frame.Border:Show()
+	
+	CHAIN(frame.Border.TabContainer)
+	:ClearAllPoints()
+	:SetPoint(UP_TOPLEFT,frame.Border.TitleBar,UP_BOTTOMLEFT,0,0)
+	:SetPoint(UP_TOPRIGHT,frame.Border.TitleBar,UP_BOTTOMRIGHT,0,0)
 
-	frame.Border.TabBack:ClearAllPoints()
-	frame.Border.TabBack:SetPoint(UP_TOPLEFT,frame.Border,UP_TOPLEFT,2,-27*UP)
-	frame.Border.TabBack:SetPoint(UP_BOTTOMRIGHT,frame.Border,UP_TOPRIGHT,-2,(-29)*UP)
+	CHAIN(frame.Border.Toolbar)
+	:SetPoint(UP_TOPLEFT,frame.Border.TabContainer,UP_BOTTOMLEFT,0,0*UP)  -- was -2
+	:SetPoint(UP_TOPRIGHT,frame.Border.TabContainer,UP_BOTTOMRIGHT,0,0*UP) -- was -2
+	:Show()
 
+	CHAIN(ZGV.ProgressBar)
+	:ClearAllPoints()
+	:SetPoint(UP_TOPLEFT,frame.Controls.Scroll,UP_BOTTOMLEFT, SkinData("ProgressBarOffsetX"),UP*SkinData("ProgressBarOffsetY"))
+	:SetPoint(UP_TOPRIGHT,frame.Controls.Scroll,UP_BOTTOMRIGHT, -SkinData("ProgressBarOffsetX"),UP*SkinData("ProgressBarOffsetY"))
+
+	CHAIN(frame.Controls.DefaultStateButton)
+	:SetPoint(UP_TOPLEFT,frame.Controls.TabContainer)
+	:SetPoint(UP_BOTTOMRIGHT,frame.Controls.Scroll)
 
 	-- first line according to up/down orientation, the rest follows
 
 	-- resizers
-	CHAIN(frame.ResizerBottom) :ClearAllPoints() :SetPoint(UP_BOTTOMLEFT,10,0) :SetPoint(UP_TOPRIGHT,frame,UP_BOTTOMRIGHT,-10,10*UP)
-	CHAIN(frame.ResizerBottomLeft) :ClearAllPoints() :SetPoint(UP_BOTTOMLEFT,0,0)
-	CHAIN(frame.ResizerBottomRight) :ClearAllPoints() :SetPoint(UP_BOTTOMRIGHT,0,0)
+	CHAIN(frame.ResizerBottomLeft) :ClearAllPoints() :SetPoint(UP_BOTTOMLEFT,-4,-4*UP)
+	CHAIN(frame.ResizerBottomRight) :ClearAllPoints() :SetPoint(UP_BOTTOMRIGHT,4,-4*UP)
+	CHAIN(frame.ResizerBottom) :ClearAllPoints() :SetPoint(UP_TOPLEFT,frame.ResizerBottomLeft,UP_TOPRIGHT) :SetPoint(UP_BOTTOMRIGHT,frame.ResizerBottomRight,UP_BOTTOMLEFT)
 
-	ZGV:ResizeFrame()
+	ZGV:UpdateFrame(true)
 end

@@ -123,7 +123,7 @@ for cat,catdata in pairs(RightColumnSubmenus) do
 				table.insert(catdata,{
 					text=value, 
 					checked=function() return ZGV.db.profile[name]==value end,
-					func=function() ZGV.db.profile[name]=value UIDropDownFork_Refresh(ZGV.Frame.MenuGuides) end,
+					func=function() ZGV.db.profile[name]=value UIDropDownFork_Refresh(ZGV.Frame.Controls.MenuHostGuides) end,
 					isNotRadio=1,
 					keepShownOnClick=1,
 				})
@@ -1076,10 +1076,14 @@ end
 -- text: 15px normal
 -- guide list: 15px normal, zygor orange
 
-local function featured_colourise(str,gray)
-	if not gray then
+local function featured_colourise(str,gray,dev)
+	if not (gray or dev) then
 		str = str:gsub("[**]+([^\*]+)[**]+","|cfffe6100%1|r")
 		str = str:gsub("[==]+([^\=]+)[==]+","|cffbbbbbb%1|r")
+	elseif dev then
+		str = str:gsub("[**]+([^\*]+)[**]+","|cff0000ff%1|r")
+		str = str:gsub("[==]+([^\=]+)[==]+","|cff0000ff%1|r")
+		if not str:find("(DEV)") then str=str .. " (DEV)" end
 	else
 		str = str:gsub("[**]+([^\*]+)[**]+","|cffaaaaaa%1|r")
 		str = str:gsub("[==]+([^\=]+)[==]+","|cffaaaaaa%1|r")
@@ -1140,7 +1144,7 @@ GuideMenu.Parsers.ICONS = false
 			if not e.text then
 				local guide = ZGV:GetGuideByTitle(e.guide)
 				if guide then 
-					e.text = "|cfffe6100"..(guide.title_short or e.guide).."|r"
+					e.text = "**"..(guide.title_short or e.guide).."**"
 				else
 					local folder,title = e.guide:match("^(.+)\\(.-)$")
 					e.text = "**"..(title).."**"
@@ -1270,8 +1274,11 @@ GuideMenu.Parsers.ICONS = false
 			:SetTexture(ZGV.DIR.."\\Skins\\Default\\Stealth\\stepicons")
 			:SetTexCoord(1/16,2/16,0,1)
 		.__END
-		if object.guide then
-			object:SetText(featured_colourise(e.text))
+		local guide = (object.guide or e.guide) and ZGV:GetGuideByTitle(object.guide or e.guide)
+		local folder = (object.folder or e.folder) and ZGV:FindOrCreateGroup(ZGV.registered_groups,object.folder or e.folder,"onlyfind")
+		
+		if guide or folder then
+			object:SetText(featured_colourise(e.text,false,guide and guide.devonly))
 		else
 			object:SetText(featured_colourise(e.text,true))
 		end
@@ -1325,7 +1332,7 @@ GuideMenu.Parsers.ICONS = false
 			:SetVertexColor(ZGV.F.HTMLColor("#fe6100ff"))
 
 		CHAIN(object.text)
-			:SetPoint("TOP")
+			--:SetPoint("TOP")
 			:SetPoint("LEFT",object.tex,"RIGHT",7,0)
 			:SetWidth(width-15)
 			:SetWordWrap(mode~="overview")
@@ -1338,7 +1345,7 @@ GuideMenu.Parsers.ICONS = false
 				:SetVertexColor(1,1,1,1)
 				:SetPoint("LEFT",3,0)
 				:SetTexture(ZGV.IconSets.GuideIconsSmall.file)
-			object.text:SetPoint("TOPLEFT",object.tex,"TOPRIGHT",4,-1)
+			object.text:SetPoint("LEFT",object.tex,"RIGHT",4,-1)
 			function object:updatefunc()
 				if e.guide then
 					local guide = ZGV:GetGuideByTitle(e.guide)
@@ -1383,7 +1390,7 @@ GuideMenu.Parsers.ICONS = false
 	end
 
 	GuideMenu.Parsers.list = function(parent,e,width)
-		-- itme, but without icon and wordwrapped 
+		-- item, but without icon and wordwrapped 
 		local object,height,space = GuideMenu.Parsers.item(parent,e,width,"home")
 
 		local text_height = object.text:GetStringHeight()
@@ -1481,6 +1488,7 @@ GuideMenu.Parsers.ICONS = false
 					count = count + 1
 				end
 			end
+
 			if count==0 then count = 1 end
 
 			count = math.min((e.count or 2),count)
@@ -1499,12 +1507,14 @@ GuideMenu.Parsers.ICONS = false
 
 			local prev = {}
 
+			local validcount = 1
 			for i=2,#e do -- from 2, since 1 is the "columns" keyword
 				local element = e[i]
 				if (not element.faction or (element.faction==faction)) then
+					validcount = validcount + 1
 					local subobject, s_height, s_space
 
-					local position = (i-2)%count+1
+					local position = (validcount-2)%count+1
 
 					if GuideMenu.Parsers[element[1]] then
 						subobject,s_height,s_space = GuideMenu.Parsers[element[1]](object.Columns[position],element,c_width)
@@ -1598,9 +1608,25 @@ GuideMenu.Parsers.ICONS = false
 		return object,text_height,space
 	end
 
+	local function value_find(haystack,needle)
+		needle = needle:lower()
+		if type(haystack)=="table" then
+			for _,straw in pairs(haystack) do
+				if straw:lower()==needle then
+					return true
+				end
+			end
+			return false
+		else
+			return haystack:lower()==needle
+		end
+	end
+
 	GuideMenu.Parsers.guideslist = function(parent,e,width,prepare)
 		local space = e and e.space or 15
 		width = width or (e and e.width) or GuideMenu.Parsers.WIDTH
+
+		e.text = e.text or e.content
 
 		local results = {}
 
@@ -1608,14 +1634,28 @@ GuideMenu.Parsers.ICONS = false
 		for _,guide in ipairs(ZGV.registeredguides) do
 			local valid = true
 			for key,value in pairs(e.filters) do
-				if type(value)=="table" then
-					local lvalid = false
-					for _,subvalue in pairs(value) do
-						lvalid = lvalid or guide[key]==subvalue or (guide[key] and value=="*")
+				if guide[key] then
+					if value~="*" then
+						if type(value)=="table" then
+							local mode_and = value[1]=="AND"
+							local lvalid = mode_and
+							for _,subvalue in pairs(value) do
+								if mode_and then
+									if subvalue~="AND" then
+										lvalid = lvalid and value_find(guide[key],subvalue)
+									end
+								else
+									lvalid = lvalid or value_find(guide[key],subvalue)
+								end
+							end
+							valid = valid and lvalid
+						else
+							valid = valid and value_find(guide[key],value)
+						end
 					end
-					valid = valid and lvalid
+					-- value=="*" is always true
 				else
-					valid = valid and guide[key]==value or (guide[key] and value=="*")
+					valid=false
 				end
 			end
 			if valid then table.insert(results,{guide.title,guide.title_short}) end
@@ -1624,6 +1664,21 @@ GuideMenu.Parsers.ICONS = false
 
 		table.sort(results,function(a,b) return a[2]<b[2] end)
 
+		local guideslist_content
+		if e.text and not prepare then
+			guideslist_content = GuideMenu.Parsers.content(parent,e,width)
+		end
+
+		if #results==0 and e.text then
+			if guideslist_content then 
+				guideslist_content.force_hidden=true 
+				guideslist_content.displayed=false 
+				guideslist_content:Hide()
+				guideslist_content.Toggle:Hide()
+				guideslist_content.Decor:Hide()
+			end
+			return false,0,0,guideslist_content
+		end
 		
 		-- create placeholder to be fed to columns parser later
 		local creator = {count=e.columns}
@@ -1644,10 +1699,10 @@ GuideMenu.Parsers.ICONS = false
 		end		
 
 		-- make columns
-		local object, height,space = GuideMenu.Parsers.columns(parent,creator,width)
+		local object, height, space = GuideMenu.Parsers.columns(parent,creator,width)
 
 		object.ztype = "guideslist"
-		return object,1,space
+		return object,1,space,guideslist_content
 	end
 
 	GuideMenu.Parsers.showcase_container = function(parent,e,width) -- not used by hand, creates container for guide type in showcase mode (icon, title, frame)
@@ -1825,7 +1880,7 @@ local function CreateFeatured(index,section,featuredhide)
 		local content_block_faction
 		for ei,element in ipairs(data) do
 			-- inherit faction filters from sections
-			if element[1]=="content" then 
+			if element[1]=="content" or (element[1]=="guideslist" and element[1].text) then 
 				content_block_faction=element.faction
 			elseif element[1]=="columns" then
 				for si,subelement in ipairs(element) do if type(subelement)=="table" then
@@ -1862,7 +1917,8 @@ local function CreateFeatured(index,section,featuredhide)
 		end
 
 		-- cleanup, add guide names
-		for _,category in pairs(data) do if type(category)=="table" then
+		local cname,category
+		for cname,category in pairs(data) do if type(category)=="table" then
 			if category.featured_filters then
 				category.featured = {}
 
@@ -1887,18 +1943,23 @@ local function CreateFeatured(index,section,featuredhide)
 				category.featured = {}
 				local hash = {}
 				local count=0
+				category.force_showcase = false
 				for ci,element in ipairs(category) do
 					if element[1]=="columns" then
 						for si,subelement in ipairs(element) do
 							if count<auto_featured_limit then
 								count = count + grab_featured(subelement,category.featured,hash)
 							end
+							if element.roadmaponly then category.force_showcase=true end
 						end
 					elseif element[1]=="guideslist" then
+						if element.filters then element.filters.type=element.filters.type or cname end
 						local res = GuideMenu.Parsers.guideslist(parent,element,0,"prepare")
-						for si,subelement in ipairs(res) do
-							if count<auto_featured_limit then
-								count = count + grab_featured(subelement,category.featured,hash)
+						if res then
+							for si,subelement in ipairs(res) do
+								if count<auto_featured_limit then
+									count = count + grab_featured(subelement,category.featured,hash)
+								end
 							end
 						end
 					else
@@ -1925,7 +1986,7 @@ local function CreateFeatured(index,section,featuredhide)
 				local object, e_height, space
 				if GuideMenu.Parsers[e[1]] then
 					if e[1]~="section" then
-						object,e_height,space = GuideMenu.Parsers[e[1]](parent,e,785)
+						object,e_height,space= GuideMenu.Parsers[e[1]](parent,e,785)
 					end
 				else
 					print("Unknown showcase element at",i,e[1])
@@ -1951,7 +2012,7 @@ local function CreateFeatured(index,section,featuredhide)
 		data.Blocks = {}
 		data.Showcase = {}
 		for i,group in pairs(ZGV.registered_groups.groups) do
-			if group and data[group.name] then
+			if group and data[group.name] and (data[group.name].force_showcase or data[group.name].featured and #data[group.name].featured>0) then
 				local parentindex = (blockindex-1)%3+1
 				local block = CHAIN(ui:Create("Frame",MF.FullColumnFeaturedInner,nil))
 					:SetPoint("TOP",0,-5)
@@ -2152,29 +2213,41 @@ local function CreateFeatured(index,section,featuredhide)
 			if element[1]=="guideslist" and element.filters then element.filters.type=element.filters.type or block.type end
 
 			if (not element.faction or (element.faction==faction)) and (not element.beta or ZGV.BETA) and (not element.showcaseonly) then
-				local object
+				local object,guideslist_content
+
 				if GuideMenu.Parsers[element[1]] then
-					object = GuideMenu.Parsers[element[1]](expanded_frame,element,785)
+					object, _, _, guideslist_content = GuideMenu.Parsers[element[1]](expanded_frame,element,785)
 				else
 					print("Unknown section element at",ci,element[1])
 					return false
 				end
-				element.object = object
 
-				-- store contents elements, we will need that for hiding/showing blocks
-				if current_content_block and element[1]~="content" then
-					table.insert(current_content_block.Elements,object) 
-					object.parentblock = current_content_block
+				if guideslist_content then
+					current_content_block = guideslist_content 
+					guideslist_content.zident = ("%s_%s_%d"):format(data.group,block.type,ci)
+					guideslist_content.displayed = (not guideslist_content.force_hidden) and not (element.collapsed or featuredhide[guideslist_content.zident])
+					guideslist_content:UpdateText()
+					if object then table.insert(expanded_frame.Elements,guideslist_content) end
 				end
 
-				table.insert(expanded_frame.Elements,object)
+				if object then
+					element.object = object
 
-				-- move pointer to new content storage
-				if element[1]=="content" then 
-					current_content_block = object 
-					object.zident = ("%s_%s_%d"):format(data.group,block.type,ci)
-					object.displayed = not (element.collapsed or featuredhide[object.zident])
-					object:UpdateText()
+					-- store contents elements, we will need that for hiding/showing blocks
+					if current_content_block and element[1]~="content" and not (element[1]=="guideslist" and element[1].header) then
+						table.insert(current_content_block.Elements,object) 
+						object.parentblock = current_content_block
+					end
+
+					table.insert(expanded_frame.Elements,object)
+
+					-- move pointer to new content storage
+					if element[1]=="content" or (element[1]=="guideslist" and element[1].header) then 
+						current_content_block = object 
+						object.zident = ("%s_%s_%d"):format(data.group,block.type,ci)
+						object.displayed = not (element.collapsed or featuredhide[object.zident])
+						object:UpdateText()
+					end
 				end
 			end
 		end
@@ -2261,14 +2334,14 @@ end
 function GuideMenu:ToggleSectionMenu()
 	local MF = GuideMenu.MainFrame
 
-	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==ZGV.Frame.MenuGuides then CloseDropDownForks() return end
+	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==ZGV.Frame.Controls.MenuHostGuides then CloseDropDownForks() return end
 
 	local menu = GuideMenu:GetSectionMenu()
 
-	UIDropDownFork_SetAnchor(ZGV.Frame.MenuGuides, 0, 0, "TOP",MF.CenterColumn.SectionInfo.SettingsButton,"BOTTOM")
-	EasyFork(RightColumnSubmenus[menu],ZGV.Frame.MenuGuides,nil,0,0,"MENU",10)
+	UIDropDownFork_SetAnchor(ZGV.Frame.Controls.MenuHostGuides, 0, 0, "TOP",MF.CenterColumn.SectionInfo.SettingsButton,"BOTTOM")
+	EasyFork(RightColumnSubmenus[menu],ZGV.Frame.Controls.MenuHostGuides,nil,0,0,"MENU",10)
 	DropDownForkList1:SetPoint("RIGHT",MF.RightColumn)
-	UIDropDownFork_SetWidth(ZGV.Frame.MenuGuides,210,10)
+	UIDropDownFork_SetWidth(ZGV.Frame.Controls.MenuHostGuides,210,10)
 end
 
 

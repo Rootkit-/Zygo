@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML/UI.xsd">
 
 	<Script>
-	___ZGV_LOAD_TIME = debugprofilestop()
+	___ZGV_TIMESTAMP_LOADFILESXML_START = debugprofilestop()
 	collectgarbage()
 	___ZGV_LOAD_MEM = collectgarbage("count")
 	</Script>
@@ -121,8 +121,10 @@
 
 	<Script file="Poi.lua"/>
 
+	<Script> ___ZGV_TIMESTAMP_LOADGUIDESXML_START = debugprofilestop() </Script>
 	<Include file="Guides\Autoload.xml"/>
 	<Script file="GuideSorting.lua" />
+	<Script> ___ZGV_TIMESTAMP_LOADGUIDESXML_END = debugprofilestop() </Script>
 
 
 
@@ -149,8 +151,7 @@
 	-->
 	
 	<Script>
-	ZGV.loading_time_total = (debugprofilestop()-___ZGV_LOAD_TIME)
-	___ZGV_LOAD_TIME=nil
+	___ZGV_TIMESTAMP_LOADFILESXML_END = debugprofilestop()
 
 	collectgarbage()
 	ZGV.loading_memory_total = collectgarbage("count")-___ZGV_LOAD_MEM

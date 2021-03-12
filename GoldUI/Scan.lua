@@ -103,7 +103,7 @@ function Scan:ScanByName(name,itemid,dontanalyze)
 	return true
 end
 
-function Scan:ListenByName(name,itemid)
+function Scan:ListenByKey(itemkey)
 	Scan.ListenItemID = nil
 	Scan.ScannedItemID = nil
 	Scan.ScannedItemKey = nil
@@ -117,19 +117,20 @@ function Scan:ListenByName(name,itemid)
 	self.queried_by_id = nil
 	self.get_links = false
 	
-	if itemid > 1000000000 then -- search for pets by petid
-		Scan.ScannedPetID = ZGV.PetBattle:GetBattlePetIdFromFakeId(itemid)
-	end
+	--if itemid > 1000000000 then -- search for pets by petid
+	--	Scan.ScannedPetID = ZGV.PetBattle:GetBattlePetIdFromFakeId(itemid)
+	--end
 
 	table.wipe(self.rawdata)
+
+	local name = ZGV:GetItemInfo(itemkey.itemID)
 
 	Scan.BrowseQuery.searchString = name;
 	local dontanalyze --TODO: unused?
 	if not dontanalyze then
 		Scan.queried_by_name = name
-		Scan.ListenItemID = itemid
-		Scan.ScannedItemKey = C_AuctionHouse.MakeItemKey(itemid)
-		
+		Scan.ListenItemID = itemkey.itemID
+		Scan.ScannedItemKey = itemkey		
 		Scan:SetState("SS_QUERYING")
 	end
 	return true
@@ -184,6 +185,8 @@ end
 function Scan.EventHandler(frame,event,arg1,arg2)
 	local self=Scan
 
+	--print(event,self.state)
+
 	if event=="AUCTION_HOUSE_SHOW" then
 		self.FWORK:Show()
 		self:SetState("SS_IDLE")
@@ -223,12 +226,18 @@ function Scan.EventHandler(frame,event,arg1,arg2)
 	elseif self.state=="SS_QUERYING" and (Scan.ScannedItemID or Scan.ScannedItemKey or Scan.ListenItemID) and event=="AUCTION_HOUSE_NEW_RESULTS_RECEIVED" then
 		if C_AuctionHouse.HasFullBrowseResults() then
 			Scan:SetState("SS_SCANSINGLE")
+			local browseresults = C_AuctionHouse.GetBrowseResults()
+			if #browseresults==1 and not Scan.ScannedItemKey then
+				Scan.ScannedItemKey=browseresults[1].itemKey
+			end
 		end
-	elseif self.state=="SS_QUERYING" and (Scan.ScannedItemID or Scan.ScannedItemKey or Scan.ListenItemID) and (event=="AUCTION_HOUSE_BROWSE_RESULTS_UPDATED" or event=="AUCTION_HOUSE_BROWSE_RESULTS_ADDED") then
+	elseif self.state=="SS_SCANSINGLE" and (Scan.ScannedItemID or Scan.ScannedItemKey or Scan.ListenItemID) and (event=="AUCTION_HOUSE_BROWSE_RESULTS_UPDATED" or event=="AUCTION_HOUSE_BROWSE_RESULTS_ADDED") then
 		-- check for browse results completness
 		if C_AuctionHouse.HasFullBrowseResults() then
+			--print("full")
 			Scan:WorkStep()
-			Scan:SetState("SS_SCANSINGLE")
+		else
+			--print("not full")
 		end
 	elseif self.state=="SS_SCANSINGLE" and (Scan.ScannedItemID or Scan.ListenItemID) and (event=="COMMODITY_SEARCH_RESULTS_ADDED" or event=="COMMODITY_SEARCH_RESULTS_UPDATED") then
 		-- check for commodities results completness
@@ -237,7 +246,9 @@ function Scan.EventHandler(frame,event,arg1,arg2)
 		end
 	elseif self.state=="SS_SCANSINGLE" and Scan.ScannedItemKey and (event=="ITEM_SEARCH_RESULTS_ADDED" or event=="ITEM_SEARCH_RESULTS_UPDATED" )then
 		-- check for browse results completness
-		if AuctionHouseFrame.ItemSellFrame.listDisplayedItemKey and C_AuctionHouse.HasFullItemSearchResults(AuctionHouseFrame.ItemSellFrame.listDisplayedItemKey) then
+		if Scan.ScannedItemKey and C_AuctionHouse.HasFullItemSearchResults(Scan.ScannedItemKey) then
+			Scan:WorkStep("item")
+		elseif AuctionHouseFrame.ItemSellFrame.listDisplayedItemKey and C_AuctionHouse.HasFullItemSearchResults(AuctionHouseFrame.ItemSellFrame.listDisplayedItemKey) then
 			Scan:WorkStep("item")
 		end
 		

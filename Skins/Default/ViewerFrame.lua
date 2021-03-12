@@ -1,4 +1,3 @@
-		--ZYGORGUIDESVIEWERFRAME_TITLE = "Zygor Guides Viewer";
 local name,ZGV = ...
 local ZygorGuidesViewer = ZGV
 local L = ZGV.L
@@ -8,7 +7,14 @@ local CHAIN = ZGV.ChainCall
 local UIFrameFadeOut,UIFrameFadeIn=ZGV.UIFrameFade.UIFrameFadeOut,ZGV.UIFrameFade.UIFrameFadeIn  -- prevent taint
 local SkinData = ZGV.UI.SkinData
 
--- GLOBAL DropDownForkList1,FindNearestFrame,ZGV_SetHeight
+local tinsert=tinsert
+
+-- GLOBAL DropDownForkList1,FindNearestFrame,ZGV_SetHeight,
+-- GLOBAL BackFlatTemplate_Mixin,ZGV_DefaultSkin_DefaultStep_Mixin,ZGV_DefaultSkin_Frame_Mixin,ZGV_DefaultSkin_MenuButton_Mixin,ZGV_DefaultSkin_StepLine_Mixin,ZGV_DefaultSkin_StepLineClicker_Mixin,ZGV_DefaultSkin_TitleButton_Mixin,ZGV_ResizerMixin,ZygorGuidesViewerFrameMaster
+-- GLOBAL CloseDropDownForks,EasyFork,UIDropDownFork_separatorInfo,UIDropDownFork_SetAnchor
+-- GLOBAL ZygorGuidesViewerFrame_HideTooltip,ZygorGuidesViewerFrame_size,ZygorGuidesViewerMapIcon,ZygorGuidesViewerPointer_ArrowCtrl
+-- GLOBAL ReloadUI
+
 
 local round=math.round
 
@@ -252,7 +258,8 @@ ZGV_DefaultSkin_DefaultStep_Mixin = {}
 		--#### position step frame
 		--print("BXCGQW step width",self:GetWidth(),"line1 width",self.lines[1]:GetWidth(),debugstack)
 
-		self:SetWidth(showallsteps and ZGV.Frame.Controls.Child:GetWidth() or ZGV.Frame.Controls.Scroll:GetWidth()) -- this is needed so the text lines below can access proper widths
+		--self:SetWidth(showallsteps and ZGV.Frame.Controls.Child:GetWidth() or ZGV.Frame.Controls.Scroll:GetWidth()) -- this is needed so the text lines below can access proper widths
+		self:SetWidth(ZGV.Frame.Controls.StepContainer:GetWidth()) -- this is needed so the text lines below can access proper widths
 
 		-- out of screen space? bail.
 		-- but only in all steps mode!
@@ -433,7 +440,7 @@ ZGV_DefaultSkin_DefaultStep_Mixin = {}
 		-- ALL collapsed? come on...
 		if showbriefsteps then
 			local all_collapsed=true
-			for l=1,line do
+			for l=1,self.lines_shown do
 				if not self.lines[l].briefhidden then
 					all_collapsed=false
 					break
@@ -977,7 +984,7 @@ ZGV_DefaultSkin_StepLine_Mixin = {}
 		
 		-- WHY do we need a workaround like that!?  Stupid frames get a width of 0 because of an OnSizeChanged call out of nowhere
 		local max_text_width = self.parentStep:GetWidth() - 2 * SkinData("StepPaddingWidth") - 2 * SkinData("StepLinePaddingWidth") - self.icon:GetWidth() - SkinData("StepLineIconMarginRight")
-		if max_text_width<0 then max_text_width=max_text_width+ZGV.Frame.Controls.Scroll.Child:GetWidth() end  -- BFA 8.0.1.26530 bug: step's frame has a width of 0 here...
+		if max_text_width<0 then max_text_width=max_text_width+ZGV.Frame.Controls.StepContainer:GetWidth() end  -- BFA 8.0.1.26530 bug: step's frame has a width of 0 here...
 		self.label:SetSize(max_text_width,300)
 		
 		--if self.label:GetText():find("yellow globs") then print(("line:%d text:%d %d %d"):format(self:GetWidth(),self.label:GetWidth(),self.label:GetHeight(),self.label:GetStringHeight(),0)) end
@@ -1141,6 +1148,7 @@ local function CreateProgressBar(frame)
 	end
 	ProgressBar:SetScript("OnClick",function(self) ProgressBar_OnClick(self) end)
 
+	frame.ProgressBar = ProgressBar
 	ZGV.ProgressBar = ProgressBar
 	return ProgressBar
 end
@@ -1151,8 +1159,47 @@ end
 	function ZGV_DefaultSkin_Frame_Mixin:OnLoad()
 		local Border = self.Border
 		local TitleBar = Border.TitleBar
+		local Toolbar = Border.Toolbar
+		local TabContainer = Border.TabContainer
+		local Scroll = self.Border.Scroll
 		
-		self:CreateStepPools()
+
+		-- exports
+		self.Controls = {
+			--LockButton = Border.TitleBar.LockButton,
+			TitleBar = TitleBar or error(),
+			CloseButton = TitleBar.CloseButton or error(),
+			Notifications = TitleBar.Notifications or error(),
+			ReportButton = TitleBar.ReportButton or error(),
+			Logo = TitleBar.Logo or error(),
+			DevLabel = TitleBar.DevLabel or error(),
+
+			--SearchButton = Border.TitleBar.SearchButton,
+			MenuSettingsButton = Border.MenuSettingsButton or error(),
+			MenuAdditionalButton = Toolbar.MenuAdditionalButton or error(),
+			PrevButton = Toolbar.PrevButton or error(),
+			NextButton = Toolbar.NextButton or error(),
+			NextButtonSpecial = Toolbar.NextButtonSpecial or error(),
+			GuideShareButton = Toolbar.GuideShareButton or error(),
+			--MiniButton = Border.Toolbar.MiniButton,
+			Toolbar = Toolbar,
+			StepNum = Toolbar.StepNum or error(),
+			ReportStep = Toolbar.ReportStep or error(),
+
+			Scroll = Scroll or error(),
+			StepContainer = Scroll.StepContainer or error(),
+			DefaultStateButton = self.Border.DefaultStateButton or error(),
+
+			TabContainer = TabContainer or error(),
+			TabsAddButton = TabContainer.TabsAddButton or error(),
+			TabsMoreButton = TabContainer.TabsMoreButton or error(),
+
+			MenuHostSettings = self.MenuHostSettings or error(),
+			MenuHostAdditional = self.MenuHostAdditional or error(),
+			MenuHostGuides = self.MenuHostGuides or error(),
+			MenuHostNotifications = TitleBar.MenuHostNotifications or error()
+		}
+
 
 		self:EnableMouseWheel(1)
 
@@ -1163,11 +1210,10 @@ end
 			:SetFrameLevel(5)
 
 		-- Progress Bar
-		local ProgressBar = CreateProgressBar(self)
-		ProgressBar:SetPoint("TOPLEFT", self.Scroll,"BOTTOMLEFT",0,35)
-		ProgressBar:SetPoint("TOPRIGHT", self.Scroll.Child , "BOTTOMRIGHT",0,35)
-		ProgressBar:SetFrameLevel(self:GetFrameLevel()+5)
-		ProgressBar:SetTextOnMouse(true)
+		self.Controls.ProgressBar = CHAIN(CreateProgressBar(self))
+			:SetFrameLevel(self:GetFrameLevel()+5)
+			:SetTextOnMouse(true)
+		.__END
 
 		-- Search Button
 		--CHAIN(TitleBar.SearchButton)
@@ -1181,27 +1227,57 @@ end
 		--TitleBar.SearchButton.htx:SetTexCoord(0,0.125,0,0.5)
 		--TitleBar.SearchButton.ptx:SetTexCoord(0,0.125,0,0.5)
 
-		local STEP_LIMIT=20 -- normally 20, bandaiding. ~sinus 2014-11-22
-
 
 		-- scrollbar
 
-		local Scroll = self.Scroll
-
+		Scroll.ScrollByDelta = function(self,delta)
+			if not self.Bar:IsShown() then return end
+			local step = ZGV.db.profile.showcountsteps>0 and 30 --[[pixels]] or 3 --[[steps]]
+			self.Bar:SetValue(self.Bar:GetValue()+delta*step)
+		end
 		Scroll:EnableMouseWheel(1)
-		Scroll:SetScript("OnMouseWheel",function(self,delta)
-			--if ZGV.db.profile.showallsteps then
-			--else
-			--	ZygorGuidesViewer:SkipStep(-delta)
-			--end
-			self.Bar:SetValue(self.Bar:GetValue()-delta*3)
-		end)
-		Scroll.SetVerticalScroll = function(val) ZGV:UpdateFrame() end
+		Scroll:SetScript("OnMouseWheel",function(f,delta) Scroll:ScrollByDelta(-delta) end)
+		Scroll.OldSetVerticalScroll = Scroll.SetVerticalScroll
+		Scroll.SetVerticalScroll = function(self)
+			if ZGV.db.profile.showcountsteps==0 then
+				ZGV:UpdateFrame() -- will redisplay based on self.Bar:GetValue(), no actual scrolling involved
+			else
+				return self:OldSetVerticalScroll(self.Bar:GetValue())
+			end
+		end
+		Scroll.GetContentHeight = function()
+			return ZGV.Frame.Controls.StepContainer:GetHeight()
+		end
+		Scroll.GetScrollRange = function(self)
+			if ZGV.db.profile.showcountsteps>0 then return max(0,self:GetContentHeight()-self:GetHeight()) or 0
+			else return ZGV.CurrentGuide and ZGV.CurrentGuide.steps and #ZGV.CurrentGuide.steps or 0 end
+		end
 
 		CHAIN(Scroll.Bar:CreateTexture("BACKGROUND"))
 			:SetColorTexture(0,0,0,0.4)
 			:SetPoint("TOPLEFT",Scroll.Bar,"TOPLEFT")
 			:SetPoint("BOTTOMRIGHT",Scroll.Bar,"BOTTOMRIGHT")
+
+		-- arrow holder tex coords:
+		-- 862/1024,907/1024,124/512,169/512
+		Scroll.Bar.ScrollUpButton  :SetScript("OnClick",function(self,button) Scroll:ScrollByDelta(-1) end)
+		Scroll.Bar.ScrollDownButton:SetScript("OnClick",function(self,button) Scroll:ScrollByDelta(1)  end)
+		--Scroll.Bar.ThumbTexture:SetTexCoord(871/1024,896/1024,202/512,256/512)
+		Scroll.Bar.ThumbTexture:SetSize(12,30)
+		Scroll.scrollBarHideable = 1
+
+		ZGV.Skins:AddStyleToBlizzardScrollBar(Scroll.Bar)
+		--
+		ZGV:AddMessageHandler("ZGV_STEP_CHANGED",function()
+			if ZGV.db.profile.fixedheight then ZGV.Frame.Controls.Scroll.Bar:SetValue(0) end
+		end)
+
+		
+		Toolbar.PrevButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+		Toolbar.NextButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+
+
+		--ZGVF.SmoothSetHeight = ZGV_SetHeight
 
 
 		--local back=Border:GetRegions()
@@ -1211,30 +1287,12 @@ end
 			self:SetBackdropBorderColor(col.r,col.g,col.b,col.a)
 		end
 
-
-		-- arrow holder tex coords:
-		-- 862/1024,907/1024,124/512,169/512
-		Scroll.Bar.ScrollUpButton:SetScript("OnClick",function(self,button) self:GetParent():SetValue(self:GetParent():GetValue()-1) end)
-		Scroll.Bar.ScrollDownButton:SetScript("OnClick",function(self,button) self:GetParent():SetValue(self:GetParent():GetValue()+1) end)
-		--Scroll.Bar.ThumbTexture:SetTexCoord(871/1024,896/1024,202/512,256/512)
-		Scroll.Bar.ThumbTexture:SetWidth(12)
-		Scroll.Bar.ThumbTexture:SetHeight(30)
-
-		Scroll.scrollBarHideable = 1
-
-		Border.Guides.PrevButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-		Border.Guides.NextButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-
-		--ZGVF.SmoothSetHeight = ZGV_SetHeight
-
-
 		-- flash
 		
 		-- COMMENTING for WoD crashes..?  Not anymore, Blizz fixed their shit
 		local bg = self:CreateAnimationGroup()
 		bg:SetLooping("NONE")
 		local f = bg:CreateAnimation("Animation","ZygorGuidesViewerFrame_bdflash")
-		self.bdflash = f
 		f:SetDuration(1.0)
 		if f.SetMaxFramerate then f:SetMaxFramerate(99) end  -- 4.1 PTR issue? is SetMaxFramerate gone?
 		f:SetSmoothing("OUT")
@@ -1246,41 +1304,13 @@ end
 			self:Stop()
 			self:Play()
 		end
+		self.bdflash = f
+
 
 		self.ThinFlash:SetBackdrop({bgFile="Interface\\Buttons\\white8x8",edgeFile=ZGV.DIR.."\\Skins\\glowborder", tile = true, edgeSize=32, tileSize = 128, insets = { left = 20, right = 20, top = 20, bottom = 20 }})
 		self.ThinFlash:SetBackdropColor(1,1,1,0.5)
 		self.ThinFlash:SetAlpha(0.0)
 
-		-- exports
-		self.Controls = {
-			--LockButton = Border.TitleBar.LockButton,
-			CloseButton = Border.TitleBar.CloseButton,
-			Notifications = Border.TitleBar.Notifications,
-			ReportButton = Border.TitleBar.ReportButton,
-			--SearchButton = Border.TitleBar.SearchButton,
-			MenuSettingsButton = Border.MenuSettingsButton,
-			MenuAdditionalButton = Border.Guides.MenuAdditionalButton,
-			PrevButton = Border.Guides.PrevButton,
-			NextButton = Border.Guides.NextButton,
-			NextButtonSpecial = Border.Guides.NextButtonSpecial,
-			GuideShareButton = Border.Guides.GuideShareButton,
-			ReportStep = Border.Guides.ReportStep,
-			--MiniButton = Border.Guides.MiniButton,
-			StepNum = Border.Guides.StepNum,
-			Logo = Border.TitleBar.Logo,
-			DevLabel = Border.TitleBar.DevLabel,
-			Scroll = self.Scroll,
-			DefaultStateButton = self.DefaultStateButton,
-
-			TabsAddButton = Border.TabsAddButton,
-			TabsMoreButton = Border.TabsMoreButton,
-
-			MenuSettings = self.MenuSettings,
-			MenuAdditional =self.MenuAdditional,
-			MenuGuides =self.MenuGuides,
-			MenuNotifications = Border.TitleBar.MenuNotifications,
-
-		}
 
 		-- make stuff drag me
 		self.everything = {}
@@ -1308,6 +1338,7 @@ end
 
 		self.oldxPos,self.oldyPos = 0,0
 
+		self:CreateStepPools()
 		self:ShowSpecialState("loading")
 	end
 
@@ -1316,9 +1347,10 @@ end
 		local function stepPoolResetter(pool,step)
 			--step:Hide()
 		end
+		assert(self.Controls.StepContainer,"StepContainer missing!")
 		self.stepFramePools = {
-			default=CreateFramePool("BUTTON",self.StepContainer,"ZGV_DefaultSkin_DefaultStep_Template",stepPoolResetter),
-			silly=CreateFramePool("BUTTON",self.StepContainer,"ZGV_DefaultSkin_SillyStep_Template",stepPoolResetter),
+			default=CreateFramePool("BUTTON",self.Controls.StepContainer,"ZGV_DefaultSkin_DefaultStep_Template",stepPoolResetter),
+			silly=CreateFramePool("BUTTON",self.Controls.StepContainer,"ZGV_DefaultSkin_SillyStep_Template",stepPoolResetter),
 		}
 
 
@@ -1369,9 +1401,10 @@ end
 		stepframe.is_sticky = (mode == "sticky")
 		stepframe:ClearAllPoints()
 		
+		assert(self.Controls.StepContainer,"StepContainer missing!")
 		if stepframe.num==1 then
-			stepframe:SetPoint("TOPLEFT",self.Scroll.Child,"TOPLEFT",0,0)
-			stepframe:SetPoint("TOPRIGHT",self.Scroll.Child,"TOPRIGHT",0,0)
+			stepframe:SetPoint("TOPLEFT",self.Controls.StepContainer,"TOPLEFT",0,0)
+			stepframe:SetPoint("TOPRIGHT",self.Controls.StepContainer,"TOPRIGHT",0,0)
 
 		else
 			local stickytexture = self.stickySepPool:Acquire()
@@ -1406,7 +1439,7 @@ end
 		stepframe:Render()
 
 		tinsert(self.stepframes,stepframe)
-		self.StepContainer['step'..stepframe.num..'_'..stepframe.stepnum]=stepframe  -- for debugging only
+		self.Controls.StepContainer['step'..stepframe.num..'_'..stepframe.stepnum]=stepframe  -- for debugging only
 	end
 
 	local throttle=0
@@ -1568,18 +1601,36 @@ end
 	end
 
 	local resizing=false
+	local update_twice
+	local once
+	local FLICKERING_SCROLL=true
 	function ZGV_DefaultSkin_Frame_Mixin:OnSizeChanged()
+		if FLICKERING_SCROLL then  -- protect from calling twice in same frame
+			if once then return end
+			once=true
+			C_Timer.After(0.001,function() once=false end)
+		end
+
 		if resizing then return end
 		resizing=true
-		if not ZGV or not ZGV.db then return end
-		
+
+		if not ZGV or not ZGV.db then resizing=false return end
+
 		local width = self:GetWidth()
 		local margin = SkinData("ViewerMargin")*2
 	
 		-- sorry. Can't rely on SetPoint alone, as they notoriously report GetWidth()==0 during resizes.
-		self.Scroll.Child:SetWidth(ZGV.db.profile.showcountsteps==0 and width-margin-19 or width-margin)
-	
+		self.Controls.StepContainer:SetWidth(ZGV.db.profile.showcountsteps==0 and width-margin-19 or width-margin)
+
+		self.Controls.Scroll.Bar:SetValue(0)
+
+		--ZGV:Debug("Calling UpdateFrame")
 		ZGV:UpdateFrame(true)
+		--[[
+		if not update_twice then  update_twice=true  C_Timer.After(0.001,function() resizing=true update_twice=nil ZGV:Debug("Calling UpdateFrame a second time") ZGV:UpdateFrame(true) resizing=false end) end
+		C_Timer.After(0.002,function() resizing=true ZGV:UpdateFrame(true) resizing=false end)
+		--]]
+
 		--if self.stepframes and self.stepframes[1] and self.stepframes[1].lines[1]:GetWidth()==0 then ZGV:UpdateFrame(true) end
 		--[[
 		print("SCROLL:",self.Scroll.Child:GetWidth())
@@ -1596,9 +1647,12 @@ end
 		--]]
 
 		self.oldWidth=self:GetWidth()
-		if ZGV.db.profile.showcountsteps==0 then
+		if ZGV.db.profile.showcountsteps==0 or ZGV.db.profile.fixedheight then
 			ZGV.db.profile.fullheight = self:GetHeight()
 		end
+
+		if self.ApplySkin then self:ApplySkin() end  -- needed for upside-down texcoord trickery  -- might not be there yet on load!!!
+
 		resizing=false
 		--self.aligncount=4
 	end
@@ -1665,59 +1719,41 @@ end
 
 	function ZGV_DefaultSkin_Frame_Mixin:ShowSpecialState(state)
 		if state=="loading" then
-			self.Controls.Notifications:Hide()
 			self.Controls.MenuSettingsButton:Hide()
-			self.Controls.MenuAdditionalButton:Hide()
-			self.Controls.PrevButton:Hide()
-			self.Controls.NextButton:Hide()
-			self.Controls.NextButtonSpecial:Hide()
-			self.Controls.GuideShareButton:Hide()
-			self.Controls.ReportStep:Hide()
-			self.Controls.StepNum:Hide()
-			self.Controls.TabsAddButton:Hide()
-			self.Controls.TabsMoreButton:Hide()
+			self.Controls.Notifications:Hide()
+			self.Controls.TabContainer:Hide()
+			self.Controls.Toolbar:Hide()
+			self.Controls.Scroll:Hide()
+			self.Border.Back:Hide()
 
 			self.Controls.DefaultStateButton:SetScript("OnClick",nil)
-
 			self.Controls.DefaultStateButton:Show()
 			self.Controls.DefaultStateButton:SetText(L["viewer_special_loading"])
 		end
 
 		if state=="select" then
-			self.Controls.Notifications:Show()
 			self.Controls.MenuSettingsButton:Show()
-			self.Controls.MenuAdditionalButton:Hide()
-
-			self.Controls.PrevButton:Hide()
-			self.Controls.NextButton:Hide()
-			self.Controls.NextButtonSpecial:Hide()
-			self.Controls.GuideShareButton:Hide()
-			self.Controls.ReportStep:Hide()
-			self.Controls.StepNum:Hide()
-			self.Controls.TabsAddButton:Hide()
-			self.Controls.TabsMoreButton:Hide()
+			self.Controls.Notifications:Show()
+			self.Controls.TabContainer:Hide()
+			self.Controls.Toolbar:Hide()
+			self.Controls.Scroll:Hide()
+			self.Border.Back:Hide()
 
 			ZGV.ActionBar.Frame:Hide()
 
 			self.Controls.DefaultStateButton:SetScript("OnClick",function() ZGV.GuideMenu:Show() end)
-
 			self.Controls.DefaultStateButton:Show()
 			self.Controls.DefaultStateButton:SetText(L["viewer_special_select"])
 
 		end
 
 		if state=="normal" then
-			self.Controls.Notifications:Show()
 			self.Controls.MenuSettingsButton:Show()
-			self.Controls.MenuAdditionalButton:Show()
-			self.Controls.PrevButton:Show()
-			self.Controls.NextButton:Show()
-			self.Controls.NextButtonSpecial:Show()
-			self.Controls.GuideShareButton:Hide()
-			self.Controls.ReportStep:Hide()
-			self.Controls.StepNum:Show()
-			self.Controls.TabsAddButton:Show()
-			self.Controls.TabsMoreButton:Show()
+			self.Controls.Notifications:Show()
+			self.Controls.TabContainer:Show()
+			self.Controls.Toolbar:Show()
+			self.Controls.Scroll:Show()
+			self.Border.Back:Show()
 
 			ZGV.Tabs:ReanchorTabs()
 			ZGV.QuestDB:MaybeShowButton()
@@ -1748,10 +1784,12 @@ function ZGVFSectionDropDown_Func()
 end
 --]]
 
+--[[
 function ZGV_SetHeight(self,height)
 	self.targetheight = height
 	ZygorGuidesViewerFrame_size:Play()
 end
+--]]
 
 function ZygorGuidesViewerFrame_HideTooltip(self)
 	if (not self or GameTooltip:GetOwner()==self or GameTooltip:GetOwner()==ZGV.Frame) then
@@ -1786,7 +1824,7 @@ end
 
 
 function ZGV_DefaultSkin_Frame_Mixin:MenuSettingsButton_OnClick()
-	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==ZGV.Frame.MenuSettings then CloseDropDownForks() return end
+	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==ZGV.Frame.Controls.MenuHostSettings then CloseDropDownForks() return end
 
 	local setting_menu = {
 		{
@@ -1860,8 +1898,8 @@ function ZGV_DefaultSkin_Frame_Mixin:MenuSettingsButton_OnClick()
 		end
 	end
 
-	UIDropDownFork_SetAnchor(self.MenuSettings, 0, 0, "TOP", self.Controls.MenuSettingsButton, "BOTTOM")
-	EasyFork(setting_menu,self.MenuSettings,nil,0,0,"MENU",10)
+	UIDropDownFork_SetAnchor(self.MenuHostSettings, 0, 0, "TOP", self.Controls.MenuSettingsButton, "BOTTOM")
+	EasyFork(setting_menu,self.MenuHostSettings,nil,0,0,"MENU",10)
 	DropDownForkList1:SetPoint("LEFT",self,"LEFT")
 end
 
@@ -1875,7 +1913,7 @@ end
 
 
 function ZGV_DefaultSkin_Frame_Mixin:MenuAdditionalButton_OnClick()
-	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==self.MenuAdditional then CloseDropDownForks() return end
+	if DropDownForkList1 and DropDownForkList1:IsShown() and DropDownForkList1.dropdown==self.Controls.MenuHostAdditional then CloseDropDownForks() return end
 
 	local additional_menu = {
 		{
@@ -1897,6 +1935,7 @@ function ZGV_DefaultSkin_Frame_Mixin:MenuAdditionalButton_OnClick()
 				ZGV:ReanchorFrame()
 				ZGV:AlignFrame()
 			end,
+			checked=function() return ZGV.db.profile.showinlinetravel end,
 			isNotRadio=1,
 			keepShownOnClick=1,
 		},
@@ -1913,8 +1952,8 @@ function ZGV_DefaultSkin_Frame_Mixin:MenuAdditionalButton_OnClick()
 		end
 	end
 
-	UIDropDownFork_SetAnchor(self.MenuAdditional, 0, 0, "TOP", self.Controls.MenuAdditionalButton, "BOTTOM")
-	EasyFork(additional_menu,self.MenuAdditional,nil,0,0,"MENU",10)
+	UIDropDownFork_SetAnchor(self.MenuHostAdditional, 0, 0, "TOP", self.Controls.MenuAdditionalButton, "BOTTOM")
+	EasyFork(additional_menu,self.MenuHostAdditional,nil,0,0,"MENU",10)
 	DropDownForkList1:SetPoint("RIGHT",self,"RIGHT")
 end
 
@@ -2131,34 +2170,42 @@ end
 
 ZGV_ResizerMixin = {}
 --
-	function ZGV_ResizerMixin:SizeLeft(button)
-		if not ZGV.db.profile.windowlocked then
-			ZGV.Frame.sizedleft=self:GetParent():GetLeft()
-			--ZygorGuidesViewerFrameMaster:StartSizing("LEFT")
-			self:GetParent():StartSizing("LEFT")
-		end
+	function ZGV_ResizerMixin:OnLoad(button)
+		self:SetScript("OnMouseDown",self.StartSizing)
+		self:SetScript("OnMouseUp",self.SizeOff)
+		--self:SetScript("OnEnter",self.HighlightOn)
+		--self:SetScript("OnLeave",self.HighlightOff)
+
+		self.Highlight = CHAIN(self:CreateTexture())
+			:SetAllPoints()
+			:SetColorTexture(1,1,1,0.1)
+			:Hide()
+			.__END
 	end
 
-	function ZGV_ResizerMixin:SizeRight(button)
-		if not ZGV.db.profile.windowlocked then self:GetParent():StartSizing("RIGHT") end
+	function ZGV_ResizerMixin:StartSizing(button)
+		if ZGV.db.profile.windowlocked then return false end
+		local dir=self.ResizerDir
+		local can_size_vertically = (ZGV.db.profile.fixedheight or ZGV.db.profile.showcountsteps==0)
+		if not can_size_vertically then
+			if dir=="BOTTOMLEFT" then dir="LEFT"
+			elseif dir=="BOTTOMRIGHT" then dir="RIGHT"
+			elseif dir=="BOTTOM" then return end
+		end
+		if ZGV.db.profile.resizeup then dir=dir:gsub("BOTTOM","UP") end
+		if dir=="BOTTOMLEFT" or dir=="LEFT" then ZGV.Frame.sizedleft=self:GetParent():GetLeft() end
+		self:GetParent():StartSizing(dir)
 	end
 
-	function ZGV_ResizerMixin:SizeBottom(button)
-		if not ZGV.db.profile.windowlocked and ZGV.db.profile.showcountsteps==0 then
-			self:GetParent():StartSizing(ZGV.db.profile.resizeup and "TOP" or "BOTTOM")
-		end
+	function ZGV_ResizerMixin:HighlightOn(button)
+		if ZGV.db.profile.windowlocked then return end
+		--SetCursor("UI_RESIZE_CURSOR")
+		self.Highlight:Show()
 	end
 
-	function ZGV_ResizerMixin:SizeBottomLeft(button)
-		if not ZGV.db.profile.windowlocked then
-			self:GetParent():StartSizing(ZGV.db.profile.showcountsteps==0 and (ZGV.db.profile.resizeup and "TOPLEFT" or "BOTTOMLEFT") or "LEFT")
-		end
-	end
-
-	function ZGV_ResizerMixin:SizeBottomRight(button)
-		if not ZGV.db.profile.windowlocked then
-			self:GetParent():StartSizing(ZGV.db.profile.showcountsteps==0 and (ZGV.db.profile.resizeup and "TOPRIGHT" or "BOTTOMRIGHT") or "RIGHT")
-		end
+	function ZGV_ResizerMixin:HighlightOff(button)
+		--SetCursor(nil)
+		self.Highlight:Hide()
 	end
 
 	function ZGV_ResizerMixin:SizeOff(button)
@@ -2233,7 +2280,7 @@ function ZGV_DefaultSkin_TitleButton_Mixin:SetTextureInsetsFromSkin()
 				:SetPoint("TOPRIGHT",self,"TOPRIGHT",-insetx,-insety)
 		end
 	end
-	inset = SkinData("TitleButtonInsetHighlight") or SkinData("TitleButtonInset")
+	local inset = SkinData("TitleButtonInsetHighlight") or SkinData("TitleButtonInset")
 	ZGV.ChainCall(self:GetHighlightTexture())
 		:ClearAllPoints()
 		:SetPoint("BOTTOMLEFT",self,"BOTTOMLEFT",inset,inset)

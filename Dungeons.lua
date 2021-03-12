@@ -99,11 +99,11 @@ local hardcoded_dungeons = {
 }
 
 local max_levels = {
-	[2093]=1, -- Castle Nathria (Mythic)
-	[2092]=1, -- Castle Nathria, Blood From Stone
-	[2091]=1, -- Castle Nathria, Reliquary of Opulence
-	[2096]=1, -- Castle Nathria, An Audience with Arrogance
-	[2090]=1, -- Castle Nathria, The Leeching Vaults
+	[2093]=60, -- Castle Nathria (Mythic)
+	[2092]=60, -- Castle Nathria, Blood From Stone
+	[2091]=60, -- Castle Nathria, Reliquary of Opulence
+	[2096]=60, -- Castle Nathria, An Audience with Arrogance
+	[2090]=60, -- Castle Nathria, The Leeching Vaults
 
 	[2037]=50, -- Ny'alotha, the Waking City, Halls of Devotion
 	[2038]=50, -- Ny'alotha, the Waking City, Gift of Flesh

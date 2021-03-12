@@ -4,7 +4,7 @@ addon.LibRoverData = addon.LibRoverData or {}
 local data=addon.LibRoverData
 
 data.version={
-	nodes_version = 381,  -- Increase this when working on the nodes. Bake the connections using the Debug menu when you're done.
+	nodes_version = 392,  -- Increase this when working on the nodes. Bake the connections using the Debug menu when you're done.
 }
 
 -- These are kept strictly unique. Make up bogus names if you need to.
@@ -43,6 +43,7 @@ data.MapIDsByName = {
 ["Sightless Hold"] = {[0]=1650},
 ["Ardenweald"] = {[0]=1565, [1]=1829, [2]=1818, [3]=1824, [4]=1709},
 ["Revendreth"] = {[0]=1525},
+["Ember Court"] = {[0]=1644},
 ["The Maw"] = {[0]=1543},
 ["Val'sharah SDL"] = {[0]=1642},
 ["Heart of the Forest"] = {[0]=1701, [1]=1702, [2]=1703},
@@ -60,6 +61,11 @@ data.MapIDsByName = {
 ["Extractor's Sanatorium"] = {[0]=1822},
 ["Night Fae Torghast"] = {[0]=1720},
 ["Path of Wisdom"] = {[0]=1713},
+["Queen's Conservatory"] = {[0]=1662},
+["Ascension Coliseum"] = {[0]=1711},
+["Third Chamber of Kalliope"] = {[0]=1714},
+["Etheric Vault"] = {[0]=1649},
+["Chill's Reach"] = {[0]=1717},
 
 
 --Shadowlands Dungeons--
@@ -1288,6 +1294,7 @@ data.point_context_templates = {
 	{'taxi_argushub',"arrivefp"},
 
 	{'taxi',"Talk to {npc}\nFly to {next_name}, {next_map}"},
+	{'taximaybe',"Talk to {npc}\nTry to fly to {next_name}, {next_map}"},
 	{'eternalgateway',"Activate the blue teleport pad\nTeleport to {next_name}"},
 	{'taxidumb',"Arrive at your destination"},
 
@@ -1484,6 +1491,8 @@ data.ZoneMeta = {
 	["Fungal Terminus/0"] = {hostile=false},
 	["Path of Wisdom/0"] = {hostile=false},
 	["Altar of Domination/0"] = {hostile=false},
+	["Third Chamber of Kalliope/0"] = {hostile=false},
+	["Etheric Vault/0"] = {hostile=false},
 }
 
 --[[

@@ -287,18 +287,8 @@ function Pointer:Startup()
 	worldMap_TargetFrame=WorldMapFrame.ScrollContainer.Child
 	self.OverlayFrame = CHAINC(CreateFrame("FRAME","ZygorGuidesViewerPointerOverlay",worldMap_TargetFrame))
 		:SetAllPoints(true)
-		--:SetSize(1002,668)
-		:SetFrameStrata("DIALOG")
-		--:SetFrameLevel(WorldMapButton:GetFrameLevel()+1)
-		--:SetScript("OnMouseUp",self.Overlay_OnClick)
-		--:EnableMouse(true)
-		:SetScript("OnEvent",self.Overlay_OnEvent)
-		:SetScript("OnUpdate",self.Overlay_OnUpdate)
-		:RegisterEvent("PLAYER_ENTERING_WORLD")
-		:RegisterEvent("PLAYER_DEAD")
-		:RegisterEvent("PLAYER_ALIVE")
-		:RegisterEvent("PLAYER_UNGHOST")
-		:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+		:SetFrameStrata("MEDIUM")
+		:SetFrameLevel(1)
 		.__END
 
 	
@@ -306,52 +296,6 @@ function Pointer:Startup()
 	CHAINC(self.ControlFrame)
 		:SetScript("OnEvent",self.ControlFrame.OnEvent)
 		:RegisterEvent("TAXIMAP_OPENED")
-
-
-	if ZGV.DEV then
-		local worldMap_TargetFrame_UI = WorldMapFrame.BorderFrame
-		local upsideup=nil
-		self.OverlayFrame.ZygorCoordsDEV = CHAINC(ZGV.CreateFrameWithBG("FRAME","ZygorCoordsDEV",worldMap_TargetFrame_UI))
-			:SetPoint("BOTTOMLEFT",10,35)
-			:SetSize(600,80)
-			:SetBackdrop{bgFile = "Interface/Tooltips/UI-Tooltip-Background",edgeSize = 1,tileSize=128,tile=true,insets={top=upsideup and 20 or 0,right=0,left=0,bottom=upsideup and 0 or 0}}
-			:SetBackdropColor(0,0,0,0.6)
-			:Hide()
-		.__END
-		self.OverlayFrame.ZygorCoordsDEV.text = CHAINC(self.OverlayFrame.ZygorCoordsDEV:CreateFontString(nil,"ARTWORK","GameFontHighlight")) :SetAllPoints() :SetJustifyH("LEFT") .__END 
-		self.OverlayFrame.LibRoverButton = CHAINC(CreateFrame("BUTTON","ZGVLibRoverButton",worldMap_TargetFrame_UI,"UIPanelButtonTemplate"))
-		:SetPoint("TOPLEFT",0,-60)
-		:SetSize(100,30)
-		:SetText("Travel system")
-		:SetScript("OnClick",LibRover.ShowDebugMenu)
-		--:RegisterForClicks("AnyUp")
-		:Hide()
-		.__END
-		self.OverlayFrame.PointerDebugButton = CHAINC(CreateFrame("BUTTON","ZGVPointerDebugButton",worldMap_TargetFrame_UI,"UIPanelButtonTemplate"))
-		:SetPoint("TOP",self.OverlayFrame.LibRoverButton,"BOTTOM")
-		:SetSize(100,30)
-		:SetText("Free zoom")
-		:SetScript("OnClick",function() Pointer:Debug_FreeWorldMapScale() end)
-		--:RegisterForClicks("AnyUp")
-		:Hide()
-		.__END
-		self.OverlayFrame.PathDebugButton = CHAINC(CreateFrame("BUTTON","ZGVPointerDebugButton",worldMap_TargetFrame_UI,"UIPanelButtonTemplate"))
-		:SetPoint("TOP",self.OverlayFrame.PointerDebugButton,"BOTTOM")
-		:SetSize(100,30)
-		:SetText("Paths")
-		:SetScript("OnClick",function() Pointer:Debug_PathMenu() end)
-		--:RegisterForClicks("AnyUp")
-		:Hide()
-		.__END
-		self.OverlayFrame.WQDebugButton = CHAINC(CreateFrame("BUTTON","ZGVPointerDebugButton",worldMap_TargetFrame_UI,"UIPanelButtonTemplate"))
-		:SetPoint("TOP",self.OverlayFrame.PathDebugButton,"BOTTOM")
-		:SetSize(100,30)
-		:SetText("WQ")
-		:SetScript("OnClick",function() ZGV.Testing:ReportMissingWorldQuests() end)
-		--:RegisterForClicks("AnyUp")
-		:Hide()
-		.__END
-	end
 
 	--hooksecurefunc("WorldMapButton_OnClick",ZGV.Pointer.hook_WorldMapButton_OnClick)
 
@@ -1014,7 +958,7 @@ function Pointer:MakeMarkerFrames(marker,markertype)
 		:SetScript("OnEnter",ZGV.Pointer.frame_minimap_functions.OnEnter)
 		:SetScript("OnLeave",ZGV.Pointer.frame_minimap_functions.OnLeave)
 		:SetScript("OnClick",ZGV.Pointer.frame_minimap_functions.OnClick)
-		:RegisterForClicks("RightButtonUp","LeftButtonUp")
+		:RegisterForClicks("LeftButtonUp")
 		:SetFrameLevel(4)
 		--:SetScript("OnEvent",ZGV.Pointer.frame_minimap_functions.OnEvent)
 	end
@@ -2303,33 +2247,6 @@ function Pointer:UpdateMapLines()
 	for i,line in self.mapLinePoolMini:EnumerateInactive() do line:Hide() end
 end
 
-function Pointer.Overlay_OnEvent(self,event,...)
-	self=Pointer
-	if event == "WORLD_MAP_UPDATE" then -- NOT ANYMORE!   but our DataProvider fakes this. A lot.
-		self:Debug("Pointer got W_M_U")
-		if ZGV.db.profile.waypointaddon=="internal" then
-			local m = ZGV.GetCurrentMapID()
-			local count=0
-			for w,way in ipairs(self.waypoints) do
-				way:UpdateWorldMapIcon(m)
-				if way.frame_worldmap:IsShown() and way.OnEvent then way:OnEvent(event,...) end
-			end
-
-			-- force ants update
-			Pointer:AnimateAnts()
-		end
-
-	elseif (event=="PLAYER_ENTERING_WORLD" or event=="ZONE_CHANGED_NEW_AREA") then
-		ZGV.Pointer:DoCorpseCheck(event)
-	elseif event=="PLAYER_DEAD" then
-		ZGV.Pointer:RecordCorpseLocation()
-	elseif (event=="PLAYER_UNGHOST" or event=="PLAYER_ALIVE") then
-		if UnitIsGhost("player") then return end -- player released, but is still a ghost, abort
-		Pointer:Debug("Player is no longer dead.")
-		Pointer:ForgetCorpse()
-		ZGV:ShowWaypoints()
-	end
-end
 ------------------------------------------- ARROW -----------------
 
 
@@ -3537,162 +3454,6 @@ local oldzone,zone
 local maptype = {}
 for tn,tv in pairs(Enum.UIMapType) do maptype[tv]=tn end
 
-function Pointer.Overlay_OnUpdate(frame,but,...)
-	-- zone change behaviour is out
-
-	--[[
-	local c,z = GetCurrentMapContinentAndZone()
-	local zonechanged
-	if c~=old_c or z~=old_z then zonechangecount=1 end
-	old_c,old_z=c,z
-	if zonechangecount>0 then
-		if not IsMouseButtonDown("LeftButton") then leftbutdown=false end
-		if not IsMouseButtonDown("RightButton") then rightbutdown=false end
-		zonechangecount=zonechangecount-1
-		return
-	end
-	--]]
-
-	-- set waypoints by shift-leftclicking the world map
-
-	if frame.ZygorCoordsDEV and frame.ZygorCoordsDEV:IsVisible() then
-		local mx,my = GetCursorPosition()
-		mx=(mx-(frame:GetLeft()*frame:GetEffectiveScale()))/(frame:GetWidth()*frame:GetEffectiveScale())
-		my=(my-(frame:GetBottom()*frame:GetEffectiveScale()))/(frame:GetHeight()*frame:GetEffectiveScale())
-		my=1-my
-		local mm = WorldMapFrame:GetMapID()
-		local rawmi,wmp = C_Map.GetWorldPosFromMapPos(mm,{x=mx,y=my})
-		local rawmx,rawmy = wmp and wmp.y or 0,wmp and wmp.x or 0  -- flipped ffs
-		local px, py, pm, remapfrom,remapnum = LibRover:GetPlayerPosition()
-		px, py, pm, mm = (px or 0), (py or 0), (pm or 0), (mm or 0)
-		local txy = C_Map.GetPlayerMapPosition(mm,"player")
-		local tx,ty = txy and txy.x*100 or 0,txy and txy.y*100 or 0
-		local rawy,rawx,rawz,rawi = UnitPosition("player")
-		local function colorcoords(x,y)
-			return ("|cffffffff%s|r|cffcccccc.%s|r|cff888888,|r|cffffffff%s|r|cffcccccc.%s|r"):format(("%.2f,%.2f"):format(x or -1,y or -1):match("([0-9-]+)%.(%d+),([0-9-]+)%.(%d+)"))
-		end
-		local function colormap(id)
-			local mf=LibRover.data.MapNamesByID[id]
-			return ("|cffffffff%s|r|cff888888##|r|cffffffff%d|r |cffaaaaaa(%s/%d)|r"):format(ZGV.GetMapNameByID(id),id,mf and mf[1] or ZGV.GetMapNameByID(id),mf and mf[2] or 0)
-		end
-		local s = ""
-		s = s .. ("|cffccccccCursor:|r %s %s |cffaaaaaa(raw: %d,%d i:%d)|r\n"):format(
-			colormap(mm),
-			colorcoords(mx*100,my*100),
-			rawmx,rawmy,rawmi
-		)
-		local mapinfo = ZGV.GetMapInfo(mm)
-		s = s .. ("|cffcccccc- Map type: %s%s, parent: %d, cont: %d)|n"):format(
-			maptype[mapinfo.mapType] or "type#"..mapinfo.mapType,
-			(LibRover.data.ZoneMeta[mm] and LibRover.data.ZoneMeta[mm].hostile and ", hostile" or ""),
-			mapinfo.parentMapID, ZGV.GetMapContinent(mm)
-		)
-		s = s .. ("|cffccccccPlayer:|r %s %s%s |cffaaaaaa(raw: %d,%d i:%d)|r\n"):format(
-			colormap(pm),
-			colorcoords(px*100,py*100),
-			remapfrom and (" |cffff8888(remap from %d #%d)"):format(remapfrom,remapnum) or "",
-			rawx,rawy,rawi)
-		if mm~=pm and tx>0 and ty>0 then s = s .. ("|cffddddddPlayer as on |cffffffff%s|r|cff888888##|r|cffffffff%d|r: %s|r\n"):format(
-			ZGV.GetMapNameByID(mm),mm,
-			colorcoords(tx,ty)
-			) end
-		s = s .. ("|cffccccccDistance: %.2f yd|r"):format(HBD:GetZoneDistance(pm,px,py, mm,mx,my) or 0)
-
-		if ZGV.db.profile.pointer_dev_showroverzoneinfo then
-			local speeds = LibRover.maxspeedinzone[mm]
-			local spdnow,spdrun,spdfly,spdswim = GetUnitSpeed("player")
-			s = s .. ("\nLibRover: speeds: %d%% run, %d%% fly; player: %d%% now, max %d%%,%d%%,%d%%"):format(speeds[2]*100,speeds[3]*100,math.round(spdnow/7*100),math.round(spdrun/7*100),math.round(spdfly/7*100),math.round(spdswim/7*100))
-		end
-		frame.ZygorCoordsDEV.text:SetText(s)
-		frame.ZygorCoordsDEV:SetHeight(frame.ZygorCoordsDEV.text:GetStringHeight())
-
-		local wqtracker_present
-		for i=1,50 do
-			local f = select(i,WorldMapFrame:GetChildren())
-			if f and f.bounties and f:IsShown() then wqtracker_present=true break end
-		end
-		frame.ZygorCoordsDEV:SetPoint("BOTTOMLEFT",5,wqtracker_present and 115 or 35)
-
-	end
-
-	if IsMouseButtonDown("LeftButton") and (IsShiftKeyDown() or ZGV.db.profile.no_shift_for_waypoints) then
-		-- okay, clicked, but aren't we on a waypoint?
-		leftbutdown=true
-		oldzone=WorldMapFrame:GetMapID()
-		downx,downy = GetCursorPosition()
-	else
-		repeat  -- left click handling
-			if not leftbutdown then break end
-			leftbutdown=nil
-
-			if Pointer.IgnoreThisButtonDown == true then -- this shift click was used to remove manual waypoint. don't reuse it to set another one
-				Pointer.IgnoreThisButtonDown = false
-				return
-			end
-
-			local map = WorldMapFrame:GetMapID()
-			if map<1 then break end  -------------------------- OUT: no sane map found.
-			if map~=oldzone then break end  -------------- OUT! map changed with the click! Don't put any notes here.
-
-			local x,y=GetCursorPosition()
-			if math.abs(downx-x)>10 or math.abs(downy-y)>10 then break end  -------------------- OUT! moved between mousedown and mouseup
-
-			-- these are processed AFTER click procs. Necessary to IGNORE (not DELAY) clicks.
-			--local foc,foundWF=GetMouseFocus(),nil
-			--while foc do if foc==WorldMapButton then foundWF=true end foc=foc:GetParent() end
-			--if not foundWF then break end  ---------------------- OUT: we're not on WorldMapButton
-
-			x=(x-(frame:GetLeft()*frame:GetEffectiveScale()))/(frame:GetWidth()*frame:GetEffectiveScale())
-			y=(y-(frame:GetBottom()*frame:GetEffectiveScale()))/(frame:GetHeight()*frame:GetEffectiveScale())
-			y=1-y
-			if x<0 or x>1 or y<0 or y>1 then break end  -------------------------- OUT: where the hell did you click?
-
-			--ZGV.Pointer:ClearWaypoints("manual")
-			--ZGV.Pointer:SetWaypoint(nil,nil,x*100,y*100,{title=WorldMapFrameAreaLabel:GetText(),type="manual",clearonarrival=true,overworld=true,onminimap="always"})
-			local info = C_Map.GetMapInfo(map)
-			local fmt = ZGV.db.profile.debug_display and "%s %.2f,%.2f" or "%s %d,%d"
-
-			if Pointer.debug_patheditmode then
-				Pointer:Debug_AddPointToPath(map,x,y)
-				ZGV:ShowWaypoints()
-				return
-			end
-
-			--Pointer:ClearWaypoints("manual")
-			local way = Pointer:SetWaypoint(nil,x,y,{
-				title=fmt:format(info.name,x*100,y*100),
-				type="manual",
-				cleartype=not IsControlKeyDown(),
-				icon=Pointer.Icons.greendotbig,
-				onminimap="always",
-				overworld=true,
-				showonedge=true,
-				findpath=true
-			})
-
-			-- put coords in chat editbox
-			if ChatFrame1EditBox:HasFocus() then
-				local floor = LibRover:GetFloorByMapID(map)
-				ChatFrame1EditBox:SetText(ChatFrame1EditBox:GetText()..("%s/%d %.2f,%.2f"):format(info.name,floor,x*100,y*100))
-				ChatFrame1EditBox:SetFocus(true)
-			elseif ZygorGuidesWriterFrame and ZygorGuidesWriterFrame:IsVisible() then
-				ZGW.MapClickedF=ZGV.GetCurrentMapDungeonLevel()
-				ZGW.MapClickedX=x
-				ZGW.MapClickedY=y
-			end
-
-		until true
-	end
-
-	--[[
-	-- debug button raising
-	if ZGVLibRoverButton and not ZGVLibRoverButton.raised then
-		ZGVLibRoverButton:SetFrameLevel(WorldMapButton:GetFrameLevel()+1)
-		ZGVLibRoverButton.raised=true
-	end
-	--]]
-end
-
 function Pointer:RescaleMarkers()
 	local canvas=WorldMapFrame:GetCanvas()
 	local container = WorldMapFrame:GetCanvasContainer()
@@ -4467,50 +4228,6 @@ function Pointer:MinimapNodeFlashOff()
 end
 
 local q=0
-
-do
-	local F = CreateFrame("FRAME","ZGVPointerExtraFrame")
-	local ant_last=GetTime()
-	local flash_last=GetTime()
-	F:SetScript("OnUpdate",function(self,elapsed)
-		if not ZGV.db then return end
-		local t=GetTime()
-		
-		if not Pointer.OverlayFrame then return end -- too early!
-
-		-- ant_last and flash_last need to be increments of their respective intervals
-		
-		local antspeed = ZGV.db.profile.antspeed or 0.033  --frequency, really
-		ant_interval = (antspeed>900) and 0.001 or (antspeed==0) and 999 or (1/antspeed)
-
-		if t-ant_last>=ant_interval then
-			if ZGV.db.profile.waypointaddon=="internal" then
-				Pointer:AnimateAnts()
-			end
-			ant_last=t-(t-ant_last)%ant_interval  -- make sure ant_last advances in exactly ant_interval increments.
-		end
-
-		-- Flashing node dots. Prettier than the standard, too. And slightly bigger.  Also, s/ode do/ude ti/.
-		--[[ Disabled in 7.0.3 due to changes in minimap icons display
-		if ZGV.db.profile.flashmapnodes then
-			if t-flash_last>=flash_interval then
-				ZGV.Pointer:MinimapNodeFlash()
-				flash_last=t-(t-flash_last)%flash_interval
-			end
-		end
-		--]]
-	end)
-	
-	F:SetPoint("CENTER",UIParent)
-	F:Show()
-
-	-- these make sure the flashing dots don't blink-glitch when their texture changes.
-	CHAINC(F:CreateTexture("ZGVPointerDotOn","OVERLAY")) :SetTexture("Interface\\MINIMAP\\ObjectIcons") :SetSize(50,50) :SetPoint("RIGHT") :SetNonBlocking(true) :Show()
-	CHAINC(F:CreateTexture("ZGVPointerDotOff","OVERLAY")) :SetTexture(ZGV.DIR.."\\Skins\\objecticons_off") :SetSize(50,50) :SetPoint("RIGHT") :SetNonBlocking(true) :Show()
-end
-
-
-
 
 -- Some small utilities which may be useful to several waypointing backends
 -- Moved 'em out of Internal waypointer so that TomTom, for example,
@@ -5785,8 +5502,12 @@ end
 
 Pointer.Provider = CreateFromMixins(MapCanvasDataProviderMixin)
 
-Pointer.Provider.EventFrame = CreateFrame("FRAME","ZGVPointerProviderEventFrame")
-Pointer.Provider.EventFrame:SetScript("OnUpdate",function() Pointer.Provider:OnUpdate() end)
+function Pointer.Provider:OnAdded()
+	if not Pointer.Provider.OnUpdateRegistered then
+		Pointer.Provider.OnUpdateRegistered = true
+		ZGV.UpdateCentral:AddHandler(Pointer.Provider.OnUpdate)
+	end
+end
 
 function Pointer.Provider:RemoveAllData()
 	for i,way in ipairs(Pointer.waypoints) do
@@ -5795,7 +5516,7 @@ function Pointer.Provider:RemoveAllData()
 end
 
 function Pointer.Provider:RefreshAllData(fromOnShow)
-	Pointer.Overlay_OnEvent(Pointer.OverlayFrame,"WORLD_MAP_UPDATE") -- FAAKE
+	Pointer.OverlayProvider:OnEvent("WORLD_MAP_UPDATE") -- FAAKE
 	Pointer:RescaleMarkers()
 end
 
@@ -5803,7 +5524,8 @@ function Pointer.Provider:SoilData()
 	self.dirty=true
 end
 
-function Pointer.Provider:OnUpdate()
+function Pointer.Provider.OnUpdate()
+	local self = Pointer.Provider
 	if self.dirty then
 		self.dirty=false
 		self:RefreshAllData()
@@ -5999,3 +5721,128 @@ function ZygorGuidesViewer_ArrowMenu_Destination_Mixin:OnClick()
 	if self.map then OpenWorldMap(self.map) end
 	-- todo: ping
 end
+
+
+Pointer.OverlayProvider = CreateFromMixins(MapCanvasDataProviderMixin);
+
+function Pointer.OverlayProvider:OnAdded(mapCanvas)
+	MapCanvasDataProviderMixin.OnAdded(self, mapCanvas);
+	-- canvas handlers
+	local priority = 90;
+	self.onCanvasClickHandler = self.onCanvasClickHandler or function(mapCanvas, button, cursorX, cursorY) return self:OnCanvasClickHandler(button, cursorX, cursorY) end;
+	mapCanvas:AddCanvasClickHandler(self.onCanvasClickHandler, priority);
+
+	self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	self:RegisterEvent("PLAYER_DEAD")
+	self:RegisterEvent("PLAYER_ALIVE")
+	self:RegisterEvent("PLAYER_UNGHOST")
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	self:RegisterEvent("PLAYER_STARTED_TURNING")
+
+	if not self.OnUpdateRegistered then
+		self.OnUpdateRegistered = true
+		ZGV.UpdateCentral:AddHandler(self.OnUpdate)
+	end
+
+	--self.cursorHandler = self.cursorHandler or function() return "MAP_PIN_CURSOR" end
+	--mapCanvas:AddCursorHandler(self.cursorHandler, priority);
+end
+
+function Pointer.OverlayProvider:OnRemoved(mapCanvas)
+	--mapCanvas:RemoveCursorHandler(self.cursorHandler);
+	MapCanvasDataProviderMixin.OnRemoved(self, mapCanvas);
+end
+
+Pointer.OverlayProvider.dump = {}
+	
+function Pointer.OverlayProvider:OnEvent(event, ...)
+	if event == "WORLD_MAP_UPDATE" then -- NOT ANYMORE!   but our DataProvider fakes this. A lot.
+		Pointer:Debug("Pointer got W_M_U")
+		if ZGV.db.profile.waypointaddon=="internal" then
+			local m = ZGV.GetCurrentMapID()
+			local count=0
+			for w,way in ipairs(Pointer.waypoints) do
+				way:UpdateWorldMapIcon(m)
+				if way.frame_worldmap:IsShown() and way.OnEvent then way:OnEvent(event,...) end
+			end
+
+			-- force ants update
+			Pointer:AnimateAnts()
+		end
+
+	elseif (event=="PLAYER_ENTERING_WORLD" or event=="ZONE_CHANGED_NEW_AREA") then
+		ZGV.Pointer:DoCorpseCheck(event)
+	elseif event=="PLAYER_DEAD" then
+		ZGV.Pointer:RecordCorpseLocation()
+	elseif (event=="PLAYER_UNGHOST" or event=="PLAYER_ALIVE") then
+		if UnitIsGhost("player") then return end -- player released, but is still a ghost, abort
+		Pointer:Debug("Player is no longer dead.")
+		Pointer:ForgetCorpse()
+		ZGV:ShowWaypoints()
+	end
+end
+
+local ant_last=GetTime()
+local flash_last=GetTime()
+
+function Pointer.OverlayProvider.OnUpdate(self,elapsed)
+	if not ZGV.db then return end
+	local t=GetTime()
+	
+	if not Pointer.OverlayFrame then return end -- too early!
+
+	local antspeed = ZGV.db.profile.antspeed or 0.033  --frequency, really
+	ant_interval = (antspeed>900) and 0.001 or (antspeed==0) and 999 or (1/antspeed)
+
+	if t-ant_last>=ant_interval then
+		if ZGV.db.profile.waypointaddon=="internal" then
+			Pointer:AnimateAnts()
+		end
+		ant_last=t-(t-ant_last)%ant_interval  -- make sure ant_last advances in exactly ant_interval increments.
+	end
+end
+
+function Pointer.OverlayProvider:OnCanvasClickHandler(button, x, y)
+	-- return false - allow other canvas click handlers with lower priority to trigger
+	-- return true - no more handlers. prevents map from being changed on our shift modified clicks
+
+	if not IsShiftKeyDown() then return false end -- we only care about shift clicks to set waypoint
+
+	local map = self:GetMap():GetMapID()
+
+	if Pointer.debug_patheditmode then
+		Pointer:Debug_AddPointToPath(map,x,y)
+		ZGV:ShowWaypoints()
+		return true
+	end
+
+	local fmt = ZGV.db.profile.debug_display and "%s %.2f,%.2f" or "%s %d,%d"
+	local info = C_Map.GetMapInfo(map)
+
+	--Pointer:ClearWaypoints("manual")
+	local way = Pointer:SetWaypoint(nil,x,y,{
+		title=fmt:format(info.name,x*100,y*100),
+		type="manual",
+		cleartype=not IsControlKeyDown(),
+		icon=Pointer.Icons.greendotbig,
+		onminimap="always",
+		overworld=true,
+		showonedge=true,
+		findpath=true
+	})
+
+	-- put coords in chat editbox
+	if ChatFrame1EditBox:HasFocus() then
+		local floor = LibRover:GetFloorByMapID(map)
+		ChatFrame1EditBox:SetText(ChatFrame1EditBox:GetText()..("%s/%d %.2f,%.2f"):format(info.name,floor,x*100,y*100))
+		ChatFrame1EditBox:SetFocus(true)
+	elseif ZygorGuidesWriterFrame and ZygorGuidesWriterFrame:IsVisible() then
+		ZGW.MapClickedF=ZGV.GetCurrentMapDungeonLevel()
+		ZGW.MapClickedX=x
+		ZGW.MapClickedY=y
+	end
+
+	return true
+end
+
+WorldMapFrame:AddDataProvider(Pointer.OverlayProvider)

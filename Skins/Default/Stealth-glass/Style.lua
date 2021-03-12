@@ -1,6 +1,6 @@
 local name,ZGV=...
 
-local STYLE = ZGV.Skins:GetSkin("default"):AddStyle("stealth-glass","Stealth (Glass)")
+local STYLE = ZGV.Skins:GetSkin("default"):AddStyle("stealth-glass","Stealth (Glass)","stealth")
 STYLE.GUIHidden = true
 
 local SKIN=STYLE.skin
@@ -150,6 +150,7 @@ STYLE.ProgressBarCaps = ""
 STYLE.ProgressBarWidth = 0
 STYLE.ProgressBarCapsColor = {0,0,0,0}
 STYLE.ProgressBarOffsetX = 0
+STYLE.ProgressBarOffsetY = 0
 
 -- Progress bar legacy, still used in some places. 
 STYLE.ProgressBarTexture = {1.0,1.0,1.0,1.0}
@@ -163,14 +164,9 @@ STYLE.ProgressBarSpaceHeight = 12
 
 ------------------- Specific objects
 -- Main viewer frame, bottom part decoration
-STYLE.WindowBottomBackdrop=STYLE.MainBackdrop
-STYLE.WindowBottomBackdropColor=TRANSPARENT
-STYLE.WindowBottomBBackdropBorderColor=TRANSPARENT
-
--- Main viewer frame, bottom part decoration
 STYLE.WindowBottomBackdrop={bgFile=SKINSDIR.."white",edgeFile=SKINSDIR.."white",tile = true, edgeSize=1, tileSize = 32, insets = { left = 0, right = 0, top = 0, bottom = 0 }}
 STYLE.WindowBottomBackdropColor=TRANSPARENT
-STYLE.WindowBottomBBackdropBorderColor=TRANSPARENT
+STYLE.WindowBottomBackdropBorderColor=TRANSPARENT
 
 -- Bar with step navigation
 STYLE.SystemBarBackdropColor = {ZGV.F.HTMLColor("#222222ff")}
@@ -275,7 +271,7 @@ STYLE.GoldguideHeaderFooterColor=STYLE.GuideMenuHeaderFooterBackground
 STYLE.WorldQuestBackdrop=STYLE.MainBackdrop
 STYLE.WorldQuestBackdropColor=STYLE.MainBackdropColor
 STYLE.WorldQuestBackdropBorderColor=STYLE.MainBackdropBorderColor
-STYLE.WorldQuestMargin = 5
+STYLE.WorldQuestMargin = 10
 
 -- Tabs
 STYLE.TabsMargin = 10

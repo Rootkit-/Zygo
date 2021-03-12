@@ -341,6 +341,16 @@ local ChromieTime = {
 	[10] = "LEG",
 }
 
+local TorghastDoors = {
+	theupperreaches = 4188,
+	thesoulforges = 4186,
+	skoldushall = 4184,
+	mortregar = 4187,
+	coldheartinterstitia = 4189,
+	fracturechambers = 4185,
+	twistingcorridors = 4190,
+}
+
 local last_glvl=0
 local building_states={none=0,building=1,ready=2,active=3}
 
@@ -385,7 +395,7 @@ local ConditionEnv = {
 		for i,ra in ipairs(self.races) do  local ra=ra:lower()  registerLiteral(ra,pra==ra)  end
 
 		local aliases = {undead='scourge',lfdraenei='lightforgeddraenei',hmtauren='highmountaintauren',ztroll='zandalaritroll',didwarf='darkirondwarf',mhorc='magharorc',kthuman='kultiran',mgnome='mechagnome'}
-		for new,old in pairs(aliases) do  registerLiteral(new,old)  end
+		for new,old in pairs(aliases) do  registerLiteral(new,self[old])  end
 		
 		-- Store faction constants
 		local pfa = UnitFactionGroup("player"):lower()
@@ -394,7 +404,7 @@ local ConditionEnv = {
 		-- Build covenant info
 		for i,v in pairs(C_Covenants.GetCovenantIDs()) do
 			local info = C_Covenants.GetCovenantData(v)
-			registerLiteral(info.textureKit,i)
+			registerLiteral(info.textureKit,v)
 		end
 
 		-- Build Chromie expansion names
@@ -746,20 +756,23 @@ local ConditionEnv = {
 	isdead = function()
 		return UnitIsDeadOrGhost("player")
 	end,
-	questpossible = function() -- user is on quest, or has quest dialog open
-		local goal = Parser.ConditionEnv.goal
+	questpossible = function(questid) -- user is on quest, or has quest dialog open
+		local goal = not questid and Parser.ConditionEnv.goal
 
-		if Parser.ConditionEnv.havequest(goal.questid) then return true end
+		if goal and Parser.ConditionEnv.havequest(goal.questid) then return true end
+		if questid and Parser.ConditionEnv.havequest(questid) then return true end
 		
-		if not goal.L then
+		if goal and not goal.L then
 			return false -- we don't have quest title. at all. 
 		end
 
-		if goal.questid then
+		local qid = questid or goal.questid
+
+		if qid then
 			if GossipFrame and GossipFrame:IsVisible() then
 				local quests=C_GossipInfo.GetAvailableQuests()
 				for qnum,questsInfo in ipairs(quests) do
-					if questsInfo.questID==goal.questid then
+					if questsInfo.questID==qid then
 						return true
 					end
 				end
@@ -768,14 +781,18 @@ local ConditionEnv = {
 				for qnum=1,GetNumAvailableQuests() do
 					local isTrivial, frequency, isRepeatable, isLegendary, questID = GetAvailableQuestInfo(qnum)
 					local title=GetAvailableTitle(qnum)
-					if questID==goal.questid then
+					if questID==qid then
 						return true
 					end
+				end
+			elseif QuestFrameProgressPanel and QuestFrameProgressPanel:IsVisible() then
+				if GetQuestID()==qid then
+					return true
 				end
 			end
 		end
 
-		if goal.quest.title and QuestFrame and QuestFrame:IsVisible() then
+		if goal and goal.quest.title and QuestFrame and QuestFrame:IsVisible() then
 			if GetTitleText() == goal.quest.title then
 				return true
 			end
@@ -834,7 +851,8 @@ local ConditionEnv = {
 		return level
 	end,
 	covenant = function()
-		return C_Covenants.GetActiveCovenantID()
+		local fake = ZGV.db.profile.fake_covenant
+		return fake or C_Covenants.GetActiveCovenantID()
 	end,
 	covenantrenown = function()
 		return C_CovenantSanctumUI.GetRenownLevel()
@@ -848,18 +866,82 @@ local ConditionEnv = {
 		return researched
 	end,
 	covenantnetwork = function()
-		return Parser.ConditionEnv.covenantfeature('Transport Network')
+		local fake = ZGV.db.profile.fake_covenant_feature_transport
+		return fake or Parser.ConditionEnv.covenantfeature('Transport Network')
 	end,
 	chromietime = function()
 		local timeid = UnitChromieTimeID("player")
 		return timeid>0 and timeid
 	end,
-	invehicle = function()
-		return UnitInVehicle("player")
+	invehicle = function(id)
+		-- id - int optional
+		-- if id is given, checks if unit pet is vehicle with proper id
+		-- if id is not given, check if player is in any vehicle
+
+		if not UnitInVehicle("player") then return false end
+
+		if id then
+			local guid = UnitGUID("pet")
+			if not guid then return false end
+			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
+			return (type=="Vehicle" and tonumber(npc_id)==id)
+		else
+			return true
+		end
+			
 	end,
 	outvehicle = function()
 		return not UnitInVehicle("player")
 	end,
+	vignette = function(id)
+		-- works only if player is on map with vignette in question
+		-- no cache since some vignettes are up only for couple minutes
+		-- use /run local o={} for i,v in ipairs(C_VignetteInfo.GetVignettes()) do o[i]=C_VignetteInfo.GetVignetteInfo(v) end ZGV:ShowDump(o) to get list of active ones on current map
+		for i,v in ipairs(C_VignetteInfo.GetVignettes()) do
+			info=C_VignetteInfo.GetVignetteInfo(v)
+			if info and info.vignetteID==id and not info.isDead then return true end
+		end
+		return false
+	end,
+
+	torghast = function(id)
+		ZGV.db.char.torghast = ZGV.db.char.torghast or {}
+		local map = C_Map.GetBestMapForUnit("player")
+		if map==1911 then
+			local info
+			table.wipe(ZGV.db.char.torghast)
+			for i,v in ipairs(C_VignetteInfo.GetVignettes()) do
+				info=C_VignetteInfo.GetVignetteInfo(v)
+				if info and info.vignetteID then ZGV.db.char.torghast[info.vignetteID]=true end
+			end
+		end
+		if tonumber(id) then 
+			return ZGV.db.char.torghast[id]
+		else
+			id=id:lower():gsub(" ",""):gsub("'","")
+			if TorghastDoors[id] then
+				return ZGV.db.char.torghast[TorghastDoors[id]]
+			end
+		end
+
+		--local data = LibRover.data.MapNamesByID[map]
+		--if data and data[1]=="Torghast" then
+		--	return ZGV.db.char.torghast[id]
+		--else
+		--	return false,"not in torghast"
+		--end
+	end,
+	playerchoice = function(set,choice)
+		-- checks which choice player made from given screen that uses Blizzard_PlayerChoiceUI
+		-- results are cached on selection, and if made within scenario, are reset when player leaves scenario
+		-- if choice is not defined, we are checking if player show the selection screen at all
+		local PC = ZGV.db.char.playerchoices
+		if choice then
+			return PC and PC[set] and PC[set][choice] and PC[set][choice].selected
+		else
+			return PC and PC[set] and PC[set]
+		end
+	end
 }
 setmetatable(ConditionEnv,{__index=function(t,k) local lower=rawget(t,k:lower())  if lower~=nil then return lower end  return _G[k]  end})
 
@@ -2007,6 +2089,7 @@ function Parser:ParseHeader(guide)
 			for m,id in ipairs(params) do
 				ZGV.CreatureDetector:RegisterMountSpell(tonumber(id),guide) -- TODO mark duplicates
 			end
+			guide.mounts=params
 
 		elseif cmd=="pets" then
 			for m,id in ipairs(params) do
@@ -2092,6 +2175,17 @@ function Parser:ParseHeader(guide)
 			guide.model = params
 		elseif cmd=="icon" then
 			guide.icon= { texname=params, coords={ 0,1,0,1 } }
+		elseif cmd=="keywords" then
+			guide.keywords = {}
+			for _,word in ipairs(params) do
+				if word:find(",") then
+					for subword in word:gmatch('[ ]*([^,]+)') do
+						table.insert(guide.keywords,subword)
+					end
+				else
+					table.insert(guide.keywords,word)
+				end
+			end
 		else
 			guide[cmd]=params
 		end

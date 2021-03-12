@@ -1,6 +1,10 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
 
+<Script>
+___ZGV_TIMESTAMP_LOADLOCALIZATIONXML_START = debugprofilestop()
+</Script>
+
 <Script file="Base.lua"/>
 
 <Script file="Quests_deDE.lua"/>
@@ -49,4 +53,7 @@
 
 <Script file="Fallback.lua"/>
 
+<Script>
+___ZGV_TIMESTAMP_LOADLOCALIZATIONXML_END = debugprofilestop()
+</Script>
 </Ui>

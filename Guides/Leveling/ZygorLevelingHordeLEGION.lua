@@ -2006,10 +2006,10 @@ You completed the Death Knight order hall campaign
 ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Legion (10-50)\\Demon Hunter\\Demon Hunter Intro & Artifacts",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through completing the introductory Demon Hunter quests and unlocking the Havoc and Vengeance artifacts.",
-condition_suggested=function() return raceclass('DemonHunter') and level >= 10 and level <= 45 and not intutorial end,
+condition_suggested=function() return raceclass('DemonHunter') and level >= 8 and level <= 45 and not intutorial end,
 condition_suggested_exclusive=true,
-condition_valid=function() return raceclass('DemonHunter') and level >= 10 end,
-condition_valid_msg="You must be a Demon Hunter and at least level 10 to complete this guide!",
+condition_valid=function() return raceclass('DemonHunter') and level >= 8 end,
+condition_valid_msg="You must be a Demon Hunter and at least level 8 to complete this guide!",
 image=ZGV.DIR.."\\Guides\\Images\\Mardum",
 startlevel=10.0,
 },[[

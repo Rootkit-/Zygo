@@ -308,8 +308,8 @@ end
 function QuestItem:FoundQuestItemForCurStep(questid,quest_itemid)
 	self:Debug( ("Found a quest item to equip for the current step. Quest: %d , Item : %s"):format(questid,(select(2,ZGV:GetItemInfo(quest_itemid))) or "empty"))
 
-	local equipslot = select(9,ZGV:GetItemInfo(quest_itemid))
-	local itemlink_slot1,itemlink_slot2 = ItemScore:GetItemInSlot(equipslot)
+	local equiptype = select(9,ZGV:GetItemInfo(quest_itemid))
+	local itemlink_slot1,itemlink_slot2 = ItemScore:GetItemByType(equiptype)
 	
 	if not itemlink_slot1 then itemlink_slot1 = 0 end
 

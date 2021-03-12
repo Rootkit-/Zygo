@@ -128,7 +128,7 @@ do
 
 		local COSTMOD_COMFORT_TAXI = 0.5
 		local COSTMOD_WALK = 1.2
-		local COSTMOD_HOSTILE = 10
+		local COSTMOD_HOSTILE = 1
 
 		local TAXI_NODE_RADIUS = 1
 		local STANDING_ON_NODE_RADIUS = 10
@@ -1288,6 +1288,9 @@ do
 					local iz2=Lib.greenborders[z2] or {}   iz2[z1]=1   Lib.greenborders[z2] = iz2
 				end
 				Lib.data.greenborders=nil
+
+				-- TESTING... maximize speed in greenbordered zones
+
 				punchStartupTime(segment)
 				yield(segment,1)
 			end
@@ -1995,6 +1998,8 @@ do
 				local old_raritycost = (port.cooldown or 0)/72 --30m cd = 25 extra cost.
 
 				local casttime=0
+				if port.destination=="_HEARTH" then casttime = casttime + (((port.item or port.spell) * math.floor(GetTime()/600))%50)/50*0.1 end  -- random cost noise each 600 seconds
+
 				if port.item then
 					link.mode = port.mode or "useitem"
 					link.toy = port.toy
@@ -2378,7 +2383,7 @@ do
 		
 		
 		-- These fields get REMOVED from the nodes when clearing.
-		local temp_fields_i = {"cost","time","mycost","mytime","status","parentlink","parent","prev","next","text","maplabel","toend","taxiFinal","taxiDestination","link","a_b","a_b__c_d","costdesc","wayp_override_icon","wayp_override_text","border_optimization","changed_modes"}
+		local temp_fields_i = {"cost","time","mycost","mytime","speed","status","parentlink","parent","prev","next","text","maplabel","toend","taxiFinal","taxiDestination","link","a_b","a_b__c_d","costdesc","wayp_override_icon","wayp_override_text","border_optimization","changed_modes"}
 
 		-- private
 		function Lib:InitializePath__RemoveStartEnd_Threaded()
@@ -2946,7 +2951,7 @@ do
 
 					-- we'll be handling this one, eh? okay, cost calculation
 
-					local mycost,mytime
+					local mycost,mytime,myspeed
 
 					--[[  DETERMINE THE MOVEMENT COST, BASING ON LINK MODE ]]--
 
@@ -3027,6 +3032,8 @@ do
 							if cost_debugging then costdesc = costdesc .. ("mountup; ") end
 						end
 
+						myspeed = speed
+
 						--(Astrolabe:ComputeDistance(current.m,current.f or 0,current.x,current.y, neigh.m,neigh.f or 0,neigh.x,neigh.y) or 99999999)*speedcost
 						-- divide by movement speed later
 					end
@@ -3036,7 +3043,7 @@ do
 					if costprev then
 						if type(costprev)=="string" and costprev:sub(1,1)=="*" then  mytime = mytime * tonumber(costprev:sub(2))
 						else  mytime = costprev  end
-						if cost_debugging then costdesc = costdesc .. "costmod_prev_"..prevmode.."="..costprev.." ; " end
+						if cost_debugging then costdesc = costdesc .. "costmod_prev_"..prevmode.."="..costprev.."; " end
 					end
 
 					-- Walled segments: let borders pass over them, but block walks
@@ -3120,7 +3127,7 @@ do
 							if mode=="walk" then
 								local mod = 1 + (Lib.cfg.pathfinding_comfort * 1)
 								mycost = mycost * mod
-								if cost_debugging then costdesc = costdesc .. (" cmft=%d%%, * %.2f"):format(Lib.cfg.pathfinding_comfort*100,mod) end
+								if cost_debugging then costdesc = costdesc .. ("cmft=%d%%,*%.2f; "):format(Lib.cfg.pathfinding_comfort*100,mod) end
 							elseif mode=="taxi" then
 								--[[ if mode is walk or fly... ]]
 								--[[
@@ -3134,13 +3141,13 @@ do
 								]]
 								local mod = 1 - (Lib.cfg.pathfinding_comfort * COSTMOD_COMFORT_TAXI)
 								mycost = mycost * mod
-								if cost_debugging then costdesc = costdesc .. (" cmft=%d%%, * %.2f"):format(Lib.cfg.pathfinding_comfort*100,mod) end
+								if cost_debugging then costdesc = costdesc .. ("cmft=%d%%,*%.2f; "):format(Lib.cfg.pathfinding_comfort*100,mod) end
 							end
 
 							-- mode change penalty
 							local mod = 1 + (Lib.cfg.pathfinding_comfort * changed_modes * 0.2)
 							mycost = mycost * mod
-							if cost_debugging then costdesc = costdesc .. ("; modechange %d x %.2f"):format(changed_modes,mod) end
+							if cost_debugging then costdesc = costdesc .. ("modechange %d*%.2f; "):format(changed_modes,mod) end
 
 						end
 
@@ -3161,7 +3168,7 @@ do
 						if known==false and couldbe==false then
 							mycost=mycost+COST_FAILURE+20
 						end -- but allow takeoff for known or maybe
-						if not known and cost_debugging then costdesc = costdesc .. desc.."|r; " end
+						if not known and cost_debugging then costdesc = costdesc .. "taxi "..desc.."; " end
 					end
 
 					-- Seriously frown upon banned nodes :)
@@ -3186,12 +3193,15 @@ do
 					end
 
 					-- Ban nodes by quest/faction.
-						if (neigh.factionid and select(3,GetFactionInfoByID(neigh.factionid))<neigh.factionstanding)
-						or (neigh.quest and not IsQuestFlaggedCompleted(neigh.quest))
-						or (neigh.class and select(2,UnitClass("player"))~=neigh.class)
-						then -- Class only! woo
+						if (neigh.factionid and select(3,GetFactionInfoByID(neigh.factionid))<neigh.factionstanding) then
 							mycost = mycost+COST_FAILURE+100
-							if cost_debugging then costdesc = costdesc .. "bad faction/quest/class "..tostring(neigh.factionid).." "..tostring(neigh.quest).." "..tostring(neigh.class).."; " end
+							if cost_debugging then costdesc = costdesc .. ("low fac(%s,%s); "):format(neigh.factionid,neigh.factionstanding) end
+						elseif (neigh.quest and not IsQuestFlaggedCompleted(neigh.quest)) then
+							mycost = mycost+COST_FAILURE+100
+							if cost_debugging then costdesc = costdesc .. ("incomp q(%s); "):format(neigh.quest) end
+						elseif (neigh.class and select(2,UnitClass("player"))~=neigh.class) then
+							mycost = mycost+COST_FAILURE+100
+							if cost_debugging then costdesc = costdesc .. ("wrong class(%s); "):format(neigh.class) end
 						end
 					-- ==
 
@@ -3267,6 +3277,7 @@ do
 						neigh.parent = current
 						neigh.costdesc = costdesc
 						neigh.changed_modes = changed_modes
+						neigh.speed = speed
 						updated=true
 
 						-- border opening optimization: open the OTHER end of the door instead.
@@ -3573,6 +3584,10 @@ do
 					if node==self.force_next and node.a_b__c_d:match("taxi_.-__taxi_.-") then
 						text='forced_taxi__taxi_taxi'
 					end
+					if node.a_b__c_d:match(".*_taxi__taxi_taxi") then
+						local known,desc,couldbe = node:IsTaxiKnown()
+						if not known and couldbe then text='taximaybe' end
+					end
 
 					if DEBUG_MATCHING then Lib:Debug("-- finally matched: |cff00ff88%s",text) end
 
@@ -3798,6 +3813,8 @@ do
 				returnData.fromme = self.startnode.player
 				self.PathFoundHandler("success",results,returnData)
 			end
+
+			ZGV:SendMessage("LIBROVER_TRAVEL_REPORTED")
 
 			self.pathfinding_speed_override = nil
 
@@ -4444,7 +4461,7 @@ do
 			for ni,n in ipairs(Lib.nodes[nodetype]) do
 				if n.m==m then
 					local icon_by_status = {closed="ant_ship", open="ant_portal", ['nil']="ant"}
-					if do_spoo then tinsert(ret,n) else ZGV.Pointer:SetWaypoint(n.m,n.x,n.y,{title=n:tostring(true),qqtruesize=n.radius or 200,icon=ZGV.Pointer.Icons[icon_by_status[n.status or "nil"]],debugnodes=1,pathnode=n,overworld=true,}) end
+					if do_spoo then tinsert(ret,n) else ZGV.Pointer:SetWaypoint(n.m,n.x,n.y,{title="|cff9999aa"..n:tostring(true):gsub("%(state","|n(state").."|r",qqtruesize=n.radius or 200,icon=ZGV.Pointer.Icons[icon_by_status[n.status or "nil"]],debugnodes=1,pathnode=n,overworld=true,}) end
 				end
 			end
 			if do_spoo then Spoo(nil,nil,ret) end
@@ -4559,21 +4576,21 @@ do
 				{ text = "ALL", notCheckable=true, func=function() LibRover:ShowAllNodes() LibRover:DEV_ShowAllWalls() ZGV.Pointer.debug_drawlines_walkfly=true end },
 				{ text = "Explore in Spoo",  notCheckable=true, disabled=not Spoo, func=function() LibRover:ShowAllNodes(nil,"spoo") end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!"), tooltipWhileDisabled=true },
 			}})
-			tinsert(menu,{ text = "Explore ALL nodes",  notCheckable=true, disabled=not Spoo, func=function() Spoo(LibRover.nodes) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!"), tooltipWhileDisabled=true })
-			tinsert(menu,{ text = "Explore node sources",  notCheckable=true, disabled=not Spoo, func=function() Spoo(LibRover.NODE_SOURCES) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!"), tooltipWhileDisabled=true })
+			tinsert(menu,{ text = "Explore nodes", notCheckable=true, hasArrow=true, menuList = {
+				{ text = "ALL nodes",  notCheckable=true, disabled=not Spoo, func=function() Spoo(LibRover.nodes) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!"), tooltipWhileDisabled=true },
+				{ text = "Transport items",  notCheckable=true, disabled=not Spoo or not Lib.debug_portkeys, func=function() Spoo(Lib.debug_portkeys) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!") or (not Lib.debug_portkeys and "|cffff0000No route calculated yet!"), tooltipWhileDisabled=true },
+				{ text = "Explore node sources",  notCheckable=true, disabled=not Spoo, func=function() Spoo(LibRover.NODE_SOURCES) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!"), tooltipWhileDisabled=true },
+			}})
 			tinsert(menu,{ text = "Is player in region..?",  notCheckable=true, disabled=not Spoo or not Lib.startnode, func=function() Spoo(LibRover:DebugRegionsForPlayer()) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded or no start point!"), tooltipWhileDisabled=true })
 			tinsert(menu,{ text = "Show overlay info", notCheckable=true, hasArrow=true, menuList = {
 				{ text = "max speeds",  checked=ZGV.db.profile.pointer_dev_showroverzoneinfo, func=function() ZGV.db.profile.pointer_dev_showroverzoneinfo=not ZGV.db.profile.pointer_dev_showroverzoneinfo end }
 			}})
-			tinsert(menu,{ text = "Debug bad nodes?",  checked=LibRover.debug_badnodes, func=function() LibRover.debug_badnodes = not LibRover.debug_badnodes end })
-			tinsert(menu,{ text = "View Travel speed info on map",  isNotRadio=true, checked=ZGV.db.profile.pointer_dev_showroverzoneinfo, func=function() ZGV.db.profile.pointer_dev_showroverzoneinfo=not ZGV.db.profile.pointer_dev_showroverzoneinfo end })
 			tinsert(menu,{ text = "Debug bad nodes?",  isNotRadio=true, checked=LibRover.debug_badnodes, func=function() LibRover.debug_badnodes = not LibRover.debug_badnodes end })
 			tinsert(menu,{ text = "Ignore node conditions?",  isNotRadio=true, checked=Lib.ignore_travel_conditions, func=function() Lib.ignore_travel_conditions = not Lib.ignore_travel_conditions Lib:UpdateNow() end })
-			tinsert(menu,{ text = "Test: fake location in Garrison",  checked=LibRover.garrison_fix_test, func=function() LibRover.garrison_fix_test = not LibRover.garrison_fix_test end })
-			tinsert(menu,{ text = "Show transport items",  notCheckable=true, disabled=not Spoo or not Lib.debug_portkeys, func=function() Spoo(Lib.debug_portkeys) end, tooltipTitle=(not Spoo and "|cffff0000Spoo not loaded!") or (not Lib.debug_portkeys and "|cffff0000No route calculated yet!"), tooltipWhileDisabled=true })
-			tinsert(menu,{ text = "Subzones:",  notCheckable=true, disabled=not subzones_src, hasArrow=not not subzones_src, menuList = subzones_menu, keepShownOnClick=true })
+			tinsert(menu,{ text = "Subzones of '"..ZGV.GetMapFloorNameByID(mapid).."':",  notCheckable=true, disabled=not subzones_src, hasArrow=not not subzones_src, menuList = subzones_menu, keepShownOnClick=true })
 			tinsert(menu,{ text = "Test Flight Whistle", notCheckable=true, func=function() Lib.TaxiWhistlePredictor:PredictWhistle() Lib.TaxiWhistlePredictor:AnnouncePrediction() end })
-			tinsert(menu,{ text = "Use fake starting point", isNotRadio=true, checked=self.FAKE_STARTING_POINT_SETUP or self.FAKE_STARTING_POINT, func=function() Lib:SetupFakeStartingPoint() end})
+			tinsert(menu,{ text = "Use fake starting point?", isNotRadio=true, checked=self.FAKE_STARTING_POINT_SETUP or self.FAKE_STARTING_POINT, func=function() Lib:SetupFakeStartingPoint() end})
+			tinsert(menu,{ text = "Test: fake location in Garrison",  isNotRadio=true, checked=LibRover.garrison_fix_test, func=function() LibRover.garrison_fix_test = not LibRover.garrison_fix_test end })
 
 			EasyFork(menu,Lib.debugmenu,nil,0,0,"MENU",10)
 			UIDropDownFork_SetWidth(Lib.debugmenu, 300)

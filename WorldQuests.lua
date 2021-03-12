@@ -32,22 +32,20 @@ local DATATABLE_COLUMNS = {
 	{ title="", width=20, headerwidth=20, titlej="LEFT", textj="LEFT", name="icon", type="icon", texture="_iconsets_worldquest_" },
 	{ title=L["wqp_col_NAME"], width=100, titlej="LEFT", textj="LEFT", name="name", sortable=true, sortfunction=WorldQuests.UpdateSorting, onentertooltip=function(row) WorldQuests:ShowTooltipQuest(row) end, tooltipanchor="ANCHOR_BOTTOM" },
 	{ title="", width=20, headerwidth=20, titlej="LEFT", textj="LEFT", name="rewardicon", type="icon", onentertooltip=function(row) WorldQuests:ShowTooltipReward(row) end, tooltipanchor="ANCHOR_BOTTOM" },
-	{ title=L["wqp_col_REWARDS"], width=60, titlej="LEFT", textj="LEFT", name="rewards", sortable=true, sortfunction=WorldQuests.UpdateSorting, onentertooltip=function(row) WorldQuests:ShowTooltipReward(row) end, tooltipanchor="ANCHOR_BOTTOM" },
-	{ title=L["wqp_col_FACTION"], width=1, titlej="LEFT", textj="LEFT", name="faction", sortable=true, sortfunction=WorldQuests.UpdateSorting, onentertooltip=function(row) WorldQuests:ShowTooltipFaction(row) end, tooltipanchor="ANCHOR_BOTTOM"  },
+	{ title=L["wqp_col_REWARDS"], width=80, titlej="LEFT", textj="LEFT", name="rewards", sortable=true, sortfunction=WorldQuests.UpdateSorting, onentertooltip=function(row) WorldQuests:ShowTooltipReward(row) end, tooltipanchor="ANCHOR_BOTTOM" },
+	{ title=L["wqp_col_FACTION"], width=65, titlej="LEFT", textj="LEFT", name="faction", sortable=true, sortfunction=WorldQuests.UpdateSorting, onentertooltip=function(row) WorldQuests:ShowTooltipFaction(row) end, tooltipanchor="ANCHOR_BOTTOM"  },
 	{ title=L["wqp_col_TIME"], width=60, titlej="LEFT", textj="LEFT", name="time", sortable=true, sortfunction=WorldQuests.UpdateSorting },
-	{ title=L["wqp_col_ZONE"], width=40, titlej="LEFT", textj="LEFT", name="zone", sortable=true, sortfunction=WorldQuests.UpdateSorting },
+	{ title=L["wqp_col_ZONE"], width=90, titlej="LEFT", textj="LEFT", name="zone", sortable=true, sortfunction=WorldQuests.UpdateSorting },
 }
-	--:SetWidth(520+2*SkinData("WorldQuestMargin"))
-	--	:SetHeight(500)
-local DATATABLE_DATA = {
-	ROW_COUNT = 14,
-	LIST_WIDTH = 378,
-	LIST_HEIGHT = 240,
 
+local DATATABLE_DATA = {
+	ROW_COUNT = 20,
+	LIST_WIDTH = 518,
+	LIST_HEIGHT = 455,
 	ROW_ICONSIZE = 20,
 	HEADERY = -5,
 	POSX = 0,
-	POSY = -35,
+	POSY = -55,
 	STRATA = "HIGH",
 	ROWBACKGROUND = true,
 }
@@ -965,11 +963,10 @@ end
 
 function WorldQuests:CreateFrame()	
 	self.DisplayFrame = CHAIN(ui:Create("Frame",WorldMapFrame,"ZGVWQ"))
-		:SetPoint("TOPLEFT",WorldMapFrame,"TOPRIGHT",0,-60)
-
-
-		:SetWidth(380+2*SkinData("WorldQuestMargin"))
-		:SetHeight(300)
+		:SetPoint("TOPLEFT",WorldMapFrame,"TOPRIGHT")
+		:SetPoint("BOTTOMLEFT",WorldMapFrame,"BOTTOMRIGHT")
+		:SetWidth(520+2*SkinData("WorldQuestMargin"))
+		:SetHeight(500)
 		:EnableMouse(true)
 		:RegisterEvent("QUEST_WATCH_LIST_CHANGED")
 		:RegisterEvent("QUEST_LOG_UPDATE")
@@ -981,7 +978,6 @@ function WorldQuests:CreateFrame()
 		end)
 		:SetScript("OnUpdate",function() WorldQuests:Update() end)
 		:SetBackdrop(SkinData("WorldQuestBackdrop"))
-		:SetAlpha(.9)
 		:SetBackdropColor(unpack(SkinData("WorldQuestBackdropColor")))
 		:SetBackdropBorderColor(unpack(SkinData("WorldQuestBackdropBorderColor")))
 		:Hide()
@@ -1003,7 +999,7 @@ function WorldQuests:CreateFrame()
 	ZGV.ButtonSets.TitleButtons.CLOSE:AssignToButton(MF.close)
 
 	MF.DisplayMode = CHAIN(ui:Create("ToggleButton",MF))
-		:SetPoint("TOPLEFT",MF,"TOPLEFT",16,-15)
+		:SetPoint("TOPLEFT",MF,"TOPLEFT",16,-35)
 		:SetFont(FONT,12)
 		:SetText(L["wqp_only_selected"])
 		:SetToggle(false)
@@ -1023,8 +1019,7 @@ function WorldQuests:CreateFrame()
 
 	MF.DisplayOverride = CHAIN(MF:CreateFontString())
 		:SetSize(260,20)
-
-		:SetPoint("TOPLEFT",MF,"TOPLEFT",15,-12)
+		:SetPoint("TOPLEFT",MF,"TOPLEFT",15,-32)
 		:SetFont(FONT,12)
 		:SetJustifyH("LEFT")
 		:SetText(L["wqp_showing_queue"])
@@ -1036,8 +1031,8 @@ function WorldQuests:CreateFrame()
 	local profile = ZGV.db.profile
 	-- Type
 	MF.ModeDropdown = CHAIN(ui:Create("Multiselect",MF,2,MF:GetFrameLevel()+2))
-		:SetPoint("TOPLEFT",MF,"TOPLEFT",100,-10)
-		:SetSize(80,20)
+		:SetPoint("TOPLEFT",MF,"TOPLEFT",190,-30)
+		:SetSize(100,20)
 		:AddTooltip("ANCHOR_TOPLEFT","Type")
 		:SetName(L["wqp_filter_Type"])
 	.__END
@@ -1054,8 +1049,8 @@ function WorldQuests:CreateFrame()
 
 	-- Reward
 	MF.RewardsDropdown = CHAIN(ui:Create("Multiselect",MF,2,MF:GetFrameLevel()+2))
-		:SetPoint("TOPLEFT",MF.ModeDropdown.frame,"TOPRIGHT",5,0)
-		:SetSize(80,20)
+		:SetPoint("TOPLEFT",MF.ModeDropdown.frame,"TOPRIGHT",10,0)
+		:SetSize(100,20)
 		:AddTooltip("ANCHOR_TOPLEFT","Reward")
 		:SetName(L["wqp_filter_Reward"])
 	.__END
@@ -1072,8 +1067,8 @@ function WorldQuests:CreateFrame()
 
 	-- Rep
 	MF.ReputationDropdownBFA = CHAIN(ui:Create("Multiselect",MF,2,MF:GetFrameLevel()+2))
-		:SetPoint("TOPLEFT",MF.RewardsDropdown.frame,"TOPRIGHT",5,0)
-		:SetSize(80,20)
+		:SetPoint("TOPLEFT",MF.RewardsDropdown.frame,"TOPRIGHT",10,0)
+		:SetSize(100,20)
 		:AddTooltip("ANCHOR_TOPLEFT","Faction")
 		:SetName(L["wqp_filter_Faction"])
 	.__END
@@ -1087,8 +1082,8 @@ function WorldQuests:CreateFrame()
 		item.checked = ZGV.db.profile.WQreputation[opt[3]]
 	end
 	MF.ReputationDropdownLEG = CHAIN(ui:Create("Multiselect",MF,2,MF:GetFrameLevel()+2))
-		:SetPoint("TOPLEFT",MF.RewardsDropdown.frame,"TOPRIGHT",5,0)
-		:SetSize(80,20)
+		:SetPoint("TOPLEFT",MF.RewardsDropdown.frame,"TOPRIGHT",10,0)
+		:SetSize(100,20)
 		:AddTooltip("ANCHOR_TOPLEFT","Faction")
 		:SetName(L["wqp_filter_Faction"])
 		:Hide()
@@ -1103,8 +1098,8 @@ function WorldQuests:CreateFrame()
 		item.checked = ZGV.db.profile.WQreputation[opt[3]]
 	end
 	MF.ReputationDropdownSHA = CHAIN(ui:Create("Multiselect",MF,2,MF:GetFrameLevel()+2))
-		:SetPoint("TOPLEFT",MF.RewardsDropdown.frame,"TOPRIGHT",5,0)
-		:SetSize(80,20)
+		:SetPoint("TOPLEFT",MF.RewardsDropdown.frame,"TOPRIGHT",10,0)
+		:SetSize(100,20)
 		:AddTooltip("ANCHOR_TOPLEFT","Faction")
 		:SetName(L["wqp_filter_Faction"])
 		:Hide()

@@ -287,886 +287,6 @@ _Lordaeron is under attack!_
 Click Here to Load the "Battle for Lordaeron" Leveling Guide |confirm |next "Events Guides\\World Events\\Battle for Azeroth (110-120)\\The Battle for Lordaeron"
 |only if not completedq(51796)
 ]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\'Tis the Season",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(277) end,
-achieveid={277},
-patch='30002',
-description="\nDuring the Feast of Winter Veil, wear 3 pieces of winter clothing and eat Graccu's Mince Meat Fruitcake.",
-},[[
-step
-Complete the "Feast of Winter Veil Quests" guide |condition completedq(6984) |achieve 277 |future |only if level >= 15
-Complete the "Feast of Winter Veil Quests" guide |condition completedq(7061) |achieve 277 |future |only if default
-step
-#include "auctioneer"
-buy 1 Red Winter Clothes##151790 |next "Collect_Winter_Boots" |or |achieve 277 |future
-buy 1 Green Winter Clothes##151792 |next "Collect_Winter_Boots" |or |achieve 277 |future
-|tip You only need one of these.
-Click Here to Craft Clothes with Tailoring |confirm |next "Craft_Winter_Clothes" |only if skill("Tailoring") >= 250 |or
-step
-label "Craft_Winter_Clothes"
-talk Penney Copperpinch##13420
-buy 1 Pattern: Green Winter Clothes##34261 |goto Orgrimmar/1 52.68,77.28 |achieve 277 |future
-step
-use the Pattern: Green Winter Clothes##34261
-learn Green Winter Clothes##44950 |achieve 277 |future
-step
-collect 16 Runecloth##14047 |achieve 277 |future
-|tip Farm them from humanoid mobs or purchase them from the Auction House.
-step
-collect 3 Wool Cloth##2592 |achieve 277 |future
-|tip Farm them from humanoid mobs or purchase them from the Auction House.
-step
-talk Shimra##5817
-|tip Inside the building.
-buy 1 Rune Thread##14341 |goto 53.98,81.87 |achieve 277 |future
-buy 2 Green Dye##2605 |goto 53.98,81.87 |achieve 277 |future
-step
-Open Your Tailoring Crafting Panel:
-_<Create 1 Bolt of Woolen Cloth>_
-collect 1 Bolt of Woolen Cloth##2997 |achieve 277 |future
-step
-Open Your Tailoring Crafting Panel:
-_<Create 4 Bolt of Runecloth>_
-collect 4 Bolt of Runecloth##14048 |achieve 277 |future
-step
-Open Your Tailoring Crafting Panel:
-_<Create 1 Green Winter Clothes>_
-collect 1 Green Winter Clothes##151792 |achieve 277 |future
-step
-label "Collect_Winter_Boots"
-#include "auctioneer"
-buy 1 Winter Boots##151791 |next "Collect_Winter_Hat" |or |achieve 277 |future
-Click Here to Craft Boots with Leatherworking |confirm |next "Create_Winter_Boots" |only if skill("Leatherworking") >= 285
-step
-label "Create_Winter_Boots"
-talk Penney Copperpinch##13420
-buy Pattern: Winter Boots##34262 |goto 52.68,77.28 |achieve 277 |future
-step
-use the Pattern: Winter Boots##34262
-learn Winter Boots##44953 |achieve 277 |future
-step
-collect 1 Copper Bar##2840 |achieve 277 |future
-|tip Farm and Smelt it with Mining or purchase it from the Auction House.
-step
-collect 1 Bolt of Woolen Cloth##2997 |achieve 277 |future
-|tip Farm the cloth from humanoid mobs and create it with Tailoring or purchase it from the Auction House.
-step
-collect 4 Rugged Leather##8170 |achieve 277 |future
-|tip Farm it with Skinning or purchase it from the Auction House.
-step
-Open Your Leatherworking Crafting Panel:
-_<Create 1 Winter Boots>_
-collect 1 Winter Boots##151791 |achieve 277 |future
-step
-label "Collect_Winter_Hat"
-kill Grand Magus Telestra##26731
-|tip Inside "The Nexus" dungeon.
-|tip It's the bottom portal.
-|tip The hat will only drop on Heroic difficulty.
-Collect a Winter Hat |condition itemcount(21525) >=1 or itemcount(21524) >= 1 |goto The Nexus/0 27.50,39.91 |achieve 277 |future
-step
-collect 1 Stolen Present##116762 |achieve 277 |future
-|tip You should have this from completing the quest guide.
-step
-use the Stolen Present##116762
-collect 1 Graccu's Mince Meat Fruitcake##21215 |achieve 277 |future
-step
-use the Red Winter Clothes##151790
-Equip the Red Winter Clothes |equipped Red Winter Clothes##151790 |achieve 277 |future
-|only if itemcount(151790) >= 1
-step
-use the Green Winter Clothes##151792
-Equip the Green Winter Clothes |equipped Green Winter Clothes##151792 |achieve 277 |future
-|only if itemcount(151792) >= 1
-step
-use the Winter Boots##151791
-Equip the Winter Boots |equipped Winter Boots##151791 |achieve 277 |future
-step
-use the Green Winter Hat##21525
-Equip the Green Winter Hat |equipped Green Winter Hat##21525 |achieve 277 |future
-|only if itemcount(21525) >= 1
-step
-use the Red Winter Hat##21524
-Equip the Red Winter Hat |equipped Red Winter Hat##21524 |achieve 277 |future
-|only if itemcount(21524) >= 1
-step
-|achieve 277
-step
-_Congratulations!_
-You Earned the "'Tis the Season" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\A Frosty Shake",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1690) end,
-achieveid={1691},
-patch='30003',
-description="\nDuring the Feast of Winter Veil, use your Winter Veil Disguise kit to become a "..
-"snowman and then dance with another snowman in Dalaran.",
-},[[
-step
-Reach Level 30 |ding 30 |achieve 1690 |future
-step
-Complete the "Feast of Winter Veil Quests" guide |condition completedq(6984) |achieve 1690 |future
-step
-collect 1 Winter Veil Disguise Kit##17712 |achieve 1690 |future
-|tip This should appear in your mailbox within 24 hours of completing the quest guide.
-step
-talk Penney Copperpinch##13420
-buy 1 Snowball##17202 |goto Orgrimmar/1 52.68,77.28 |achieve 1690 |future
-step
-use the Winter Veil Disguise Kit##17712
-|tip Use it near another snowman because it will root you.
-|tip You may have to search around Dalaran.
-Become a Snowman |havebuff 132387 |goto Dalaran/1 49.78,62.01 |achieve 1690 |future
-step
-Dance with another snowman |script DoEmote("DANCE")
-|tip Target another snowman player.
-|achieve 1690
-step
-_Congratulations!_
-You Earned the "A Frosty Shake" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\BB King",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(4437) end,
-achieveid={4437},
-patch='30300',
-description="\nPelt the following enemy leaders:\n\nAnduin Wrynn\nMuradin Bronzebeard\n"..
-"Prophet Velen\nTyrande Whisperwind",
-},[[
-step
-talk Blax Bottlerocket##52809
-|tip He looks like a goblin pushing a cart.
-|tip He patrols along The Drag in Orgrimmar.
-buy 1 Red Rider Air Rifle##46725 |goto Orgrimmar/1 58.89,59.10 |achieve 4437 |future
-buy 1 Red Rider Air Rifle Ammo##48601 |goto 58.89,59.10 |achieve 4437 |future
-step
-Enter the building |goto Stormwind City/0 83.27,29.47 < 10 |walk
-use the Red Rider Air Rifle##46725
-|tip Use it on Anduin Wrynn inside the building.
-Use your Red Rider Air Rifle on Anduin Wrynn |achieve 4437/4 |goto 85.92,31.56 |achieve 4437 |future
-step
-Enter the building |goto Ironforge/0 44.65,49.24 < 10 |walk
-use the Red Rider Air Rifle##46725
-|tip Use it on Muradin Bronzebeard inside the building.
-Use your Red Rider Air Rifle on Muradin Bronzebeard |achieve 4437/1 |goto 39.18,56.09 |achieve 4437 |future
-step
-talk Zidormi##141489
-Ask her _"Can you show me what Darkshore was like before the battle?"_
-Travel to the Past |condition ZGV.InPhase('Old Darnassus') |goto Darkshore/0 48.86,24.46 |achieve 4437 |future
-step
-Enter the building |goto Darnassus/0 43.00,74.83 < 10 |walk
-use the Red Rider Air Rifle##46725
-|tip Use it on Tyrande Whisperwind upstairs inside the building.
-Use your Red Rider Air Rifle on Tyrande Whisperwind |achieve 4437/3 |goto 43.01,78.10 |achieve 4437 |future
-step
-use the Red Rider Air Rifle##46725
-|tip Use it on Prophet Velen in The Vault of the Lights in The Exodar.
-Use your Red Rider Air Rifle on Prophet Velen |achieve 4437/2 |goto The Exodar/0 32.86,54.48 |achieve 4437 |future
-step
-|achieve 4437
-step
-_Congratulations!_
-You Earned the "BB King" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Bros. Before Ho Ho Ho's",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1685) end,
-achieveid={1685},
-patch='30002',
-description="\nUse Mistletoe on the three Horde \"Brothers\" during the Feast of Winter Veil.",
-},[[
-step
-Kiss a Winter Reveler |script DoEmote("KISS")
-|tip Emote kiss Winter Revelers for a chance at Mistletoe.
-|tip They can be found in capital cities around inns.
-|tip You can only get a reward from them once per hour.
-|tip You may need to do this multiple times before proceeding.
-collect 8 Mistletoe##21519 |achieve 1685 |future
-step
-talk Zidormi##141488
-Tell her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
-Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.45,62.80 |achieve 1685 |future
-step
-use the Mistletoe##21519
-|tip Use it on Brother Malach.
-|tip He is located in the War Quarter of Undercity.
-Use Mistletoe on Brother Malach |achieve 1685/1 |goto Undercity/0 50.87,21.70 |achieve 1685 |future
-step
-use the Mistletoe##21519
-|tip Use it on Durkot Wolfbrother.
-|tip Downstairs in the stables of Warsong Hold.
-Use Mistletoe on Durkot Wolfbrother |achieve 1685/2 |goto Borean Tundra/0 40.25,55.05 |achieve 1685 |future
-step
-_Find Orgrim's Hammer flying around in the sky_
-|tip On your world map, it looks like a ship icon with 2 long reddish ballons on either side of it.
-use the Mistletoe##21519
-|tip Use it on Brother Keltan.
-|tip He is a Blood Elf with gray hair walking around Orgrim's Hammer.
-Use Mistletoe on Brother Keltan |achieve 1685/3 |goto Icecrown/0 61.98,45.38 |achieve 1685 |future
-step
-|achieve 1685
-step
-_Congratulations!_
-You Earned the "Bros. Before Ho Ho Ho's" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\A-Caroling We Will Go",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(5854) end,
-achieveid={5854},
-patch='40300',
-description="\nUse your Gaudy Winter Veil Sweater to carol in enemy capital cities during the Feast of Winter Veil.",
-},[[
-step
-talk Penney Copperpinch##13420
-buy 1 Gaudy Winter Veil Sweater##70923 |goto Orgrimmar/1 52.69,77.28 |achieve 5854 |future
-step
-Equip a Gaudy Winter Veil Sweater |equipped Gaudy Winter Veil Sweater##70923 |achieve 5854 |future
-step
-use the Gaudy Winter Veil Sweater##70923
-|tip Use it inside the city.
-Carol in Darnassus |achieve 5854/1 |goto Darnassus/0 40.32,50.45 |achieve 5854 |future
-step
-use the Gaudy Winter Veil Sweater##70923
-|tip Use it inside the city.
-Carol in Stormwind City |achieve 5854/4 |goto Stormwind City/0 67.86,80.22 |achieve 5854 |future
-step
-use the Gaudy Winter Veil Sweater##70923
-|tip Use it inside the city.
-Carol in The Exodar |achieve 5854/2 |goto The Exodar/0 71.49,51.73 |achieve 5854 |future
-step
-use the Gaudy Winter Veil Sweater##70923
-|tip Use it inside the city.
-Carol in Ironforge |achieve 5854/3 |goto Ironforge/0 18.03,82.21 |achieve 5854 |future
-step
-|achieve 5854
-step
-_Congratulations!_
-You Earned the "A-Caroling We Will Go" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Crashin' & Thrashin'",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1295) end,
-achieveid={1295},
-patch='30002',
-description="\nGain 25 crashes with your Crashin' Thrashin' Racer during the Feast of Winter Veil.",
-},[[
-step
-Enter the building |goto Dalaran L/10 42.60,45.33 < 5
-talk Jepetto Joybuzz##96483
-buy 1 Blue Crashin' Thrashin' Racer Controller##54343 |goto 43.59,45.19 |achieve 1295 |future
-step
-use the Blue Crashin' Thrashin' Racer Controller##54343
-|tip Use the "Racer Rocket Slam" ability on other players' race controllers.
-|tip You will likely need to search for them.
-|tip Having a friend to do this with helps.
-Gain 25 Crashes with your Racer |achieve 1295 |goto Orgrimmar/1 51.34,78.74
-step
-|achieve 1295
-step
-_Congratulations!_
-You Earned the "Crashin' & Thrashin'" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\The Danger Zone",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(8699) end,
-achieveid={8699},
-patch='50400',
-description="\nShoot down another player's Crashin' Thrashin' Flyer with yours.",
-},[[
-step
-use the Stolen Present##116762
-collect Crashin' Thrashin' Flyer Controller##104318 |achieve 8699 |future |or
-|tip Use the "Feast of Winter Veil Daily Quests" guide.
-|tip Complete the quest "You're a Mean One..." to get a Stolen Present.
-|tip There is a small chance to get this toy from a Stolen Present.
-'|toy Crashin' Thrashin' Flyer Controller##104318 |next "Earn_Achievement" |or
-step
-use the Crashin' Thrashin' Flyer Controller##104318
-|toy Crashin' Thrashin' Flyer Controller##104318 |achieve 8699 |future
-step
-label "Earn_Achievement"
-use the Crashin' Thrashin' Flyer Controller##104318
-|tip Use it on another player's Crashin' Thrashin' Flyer.
-|tip You may have to search around to find someone with one.
-Shoot Down Another Player's Crashin' Thrashin' Flyer |achieve 8699 |goto Orgrimmar/1 51.34,78.74
-step
-_Congratulations!_
-You Earned "The Danger Zone" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Fa-la-la-la-Ogri'la",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1282) end,
-achieveid={1282},
-patch='30001',
-description="\nComplete the Bomb Them Again! quest while mounted on a flying reindeer during the Feast of Winter Veil.",
-},[[
-step
-Kiss a Winter Reveler |script DoEmote("KISS")
-|tip Emote kiss Winter Revelers for a chance at Mistletoe.
-|tip They can be found in capital cities around inns.
-|tip You can only get a reward from them once per hour.
-|tip You may need to do this multiple times before proceeding.
-Collect a Fresh Holly or Preserved Holly |condition itemcount(21212) >= 1 or itemcount(21212) >= 1 |achieve 1282 |future
-step
-Routing to proper section |next "Complete_Achievement_Quest" |only if completedq(11010)
-Routing to proper section |next "Unlock_Ogri'la_Dailies" |only if not completedq(11010)
-step
-label "Unlock_Ogri'la_Dailies"
-talk Chu'a'lor##23233
-accept The Trouble Below##11057 |goto Blade's Edge Mountains/0 28.75,57.38
-accept The Crystals##11025 |goto 28.75,57.38
-step
-Kill enemies around this area
-|tip They spawn all around the crystal-covered hills.
-collect 6 Apexis Shard##32569 |goto 29.23,53.70 |q 11025
-step
-talk Chu'a'lor##23233
-turnin The Crystals##11025 |goto 28.75,57.38
-accept An Apexis Relic##11058 |goto 28.75,57.38
-step
-talk Torkus##23316
-accept Our Boy Wants To Be A Skyguard Ranger##11030 |goto 28.38,57.65
-step
-kill Gan'arg Analyzer##23386+
-|tip They can respawn during this process.
-click Apexis Relic
-|tip It looks like a small crystal of alternating colors floating in the air.
-|tip Kill more enemies for shards if needed.
-Choose _"Insert an Apexis Shard to begin!"_
-|tip Stand on the white globe and watch as the crystal floating above you casts a beam on the surrounding clusters.
-|tip Click the clusters in the same color pattern as the crystal.
-|tip You must do this eight times.
-|tip If you make a mistake, you will be given a few chances to correct yourself before having to start over.
-Attain the Apexis Emanations |q 11058/1 |goto 29.05,47.00
-step
-Kill enemies around this area
-|tip They spawn all around the crystal-covered hills.
-collect 11 Apexis Shard##32569 |goto 29.23,53.70 |q 11030
-step
-Click the Fel Crystalforge
-|tip It looks like a big metal machine with green smoke coming out of it.
-Choose _"Purchase 1 Unstable Flask of the Beast for the cost of 10 Apexis Shards"_
-collect 1 Unstable Flask of the Beast##32598 |q 11030/1 |goto 32.79,40.49
-step
-talk Chu'a'lor##23233
-turnin An Apexis Relic##11058 |goto 28.75,57.38
-accept The Relic's Emanation##11080 |goto 28.75,57.38
-step
-talk Torkus##23316
-turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto 28.38,57.65
-step
-kill Gan'arg Analyzer##23386+
-|tip They can respawn during this process.
-click Apexis Relic
-|tip It looks like a small crystal of alternating colors floating in the air.
-|tip Kill more enemies for shards if needed.
-Choose _"Insert an Apexis Shard to begin!"_
-|tip Stand on the white globe and watch as the crystal floating above you casts a beam on the surrounding clusters.
-|tip Click the clusters in the same color pattern as the crystal.
-|tip You must do this eight times.
-|tip If you make a mistake, you will be given a few chances to correct yourself before having to start over.
-Attain the Apexis Vibrations |q 11080/1 |goto 31.49,63.35
-step
-talk Chu'a'lor##23233
-turnin The Relic's Emanation##11080 |goto 28.75,57.38
-accept The Skyguard Outpost##11062 |goto 28.75,57.38
-step
-talk Sky Commander Keller##23334
-turnin The Skyguard Outpost##11062 |goto 27.40,52.69
-step
-label "Complete_Achievement_Quest"
-talk Sky Sergeant Vanderlip##23120
-accept Bombing Run##11010 |goto 27.58,52.91 |achieve 1282 |future
-step
-use the Skyguard Bombs##32456
-|tip While on your flying reindeer mount, use them on Fel Cannonball Stacks.
-|tip They are located next to cannons and marked with a red arrow.
-|tip Keep moving and avoid the fel cannonfire.
-Destroy #15# Fel Cannonball Stacks |q 11010/1 |goto 34.49,40.99 |achieve 1282 |future
-step
-talk Sky Sergeant Vanderlip##23120
-turnin Bombing Run##11010 |goto 27.58,52.91 |achieve 1282 |future
-accept Bomb Them Again!##11023 |goto 27.58,52.91 |achieve 1282 |future
-step
-_You must be on a flying mount!_
-use the Preserved Holly##21213 |only if itemcount(21213) >= 1
-use the Fresh Holly##21212 |only if itemcount(21212) >= 1
-Use Holly While Riding your Flying Mount |havebuff 133749 |achieve 1282 |future
-step
-_You must be on a flying reindeer mount!_
-use the Skyguard Bombs##32456
-|tip While on your flying reindeer mount, use them on Fel Cannonball Stacks.
-|tip They are located next to cannons and marked with a red arrow.
-|tip Keep moving and avoid the fel cannonfire.
-Destroy #15# Fel Cannonball Stacks |q 11023/1 |goto 34.49,40.99 |achieve 1282 |future
-step
-_You must be on a flying reindeer mount!_
-talk Sky Sergeant Vanderlip##23120
-turnin Bomb Them Again!##11023 |goto 27.58,52.91
-step
-|achieve 1282
-step
-_Congratulations!_
-You Earned the "Fa-la-la-la-Ogri'la" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\He Knows If You've Been Naughty",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1689) end,
-achieveid={1689},
-patch='30002',
-description="\nOpen one of the presents underneath the Winter Veil tree once they are available.",
-},[[
-step
-Click a present under the tree
-|tip You can only open a present from December 25 to January 2.
-|tip No peeking!
-|achieve 1689 |goto Orgrimmar/1 49.54,78.02
-step
-_Congratulations!_
-You Earned the "He Knows If You've Been Naughty" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Iron Armada",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(10353) end,
-achieveid={10353},
-patch='60202',
-description="\nCollect all five toys that are part of the Crashin' Thrashin' \"Iron Armada\" set.",
-},[[
-step
-collect 5 Merry Supplies##128659 |achieve 10353 |future
-|tip Use the "Feast of Winter Veil Daily Quests" guide to complete the Draenor dailies.
-|tip Merry Supplies are rewarded for completing these quests.
-step
-talk Izzy Hollyfizzle##96362
-|tip She may be in a slightly different spot if your garrison is not level 3.
-buy 1 Crashin' Thrashin' Killdozer Controller##108635 |goto Frostwall/0 47.35,38.45 |achieve 10353 |future
-step
-use the Crashin' Thrashin' Killdozer Controller##108635
-|toy Crashin' Thrashin' Killdozer Controller##108635 |achieve 10353/2 |future |achieve 10353 |future
-step
-label "Check_Status"
-Achievement Complete |next "Achievement_Complete" |only if achieved(10353)
-Achievement Not Complete |next |only if not achieved(10353)
-step
-kill Drakum##98283
-|tip Upstairs inside the building.
-collect Crashin' Thrashin' Roller Controller##108631 |goto Tanaan Jungle/0 83.47,43.65 |achieve 10353 |future |or
-|tip This toy has a 10 percent drop chance.
-|tip You can kill this mob once per day for a chance to get it.
-|tip You can also purchase it from the Auction House.
-Click Here if it Did Not Drop |confirm |next "Kill_Gondar" |or
-|only if not achieved(10353/5)
-step
-use the Crashin' Thrashin' Roller Controller##108631
-|toy Crashin' Thrashin' Roller Controller##108631 |achieve 10353/5 |future
-step
-label "Kill_Gondar"
-kill Gondar##98284
-|tip Inside the building.
-collect Crashin' Thrashin' Cannon Controller##108633 |goto 80.37,56.84 |achieve 10353 |future |or
-|tip This toy has a 10 percent drop chance.
-|tip You can kill this mob once per day for a chance to get it.
-|tip You can also purchase it from the Auction House.
-Click Here if it Did Not Drop |confirm |next "Kill_Smashum_Grabb" |or
-|only if not achieved(10353/4)
-step
-use the Crashin' Thrashin' Cannon Controller##108633
-|toy Crashin' Thrashin' Cannon Controller##108633 |achieve 10353/4 |future
-step
-label "Kill_Smashum_Grabb"
-kill Smashum Grabb##98285
-collect Crashin' Thrashin' Mortar Controller##108634 |goto 88.15,55.83 |achieve 10353 |future |or
-|tip This toy has a 10 percent drop chance.
-|tip You can kill this mob once per day for a chance to get it.
-|tip You can also purchase it from the Auction House.
-Click Here if it Did Not Drop |confirm |next "Collect_Flamer_Controller" |or
-|only if not achieved(10353/3)
-step
-use the Crashin' Thrashin' Mortar Controller##108634
-|toy Crashin' Thrashin' Mortar Controller##108634 |achieve 10353/3 |future
-step
-label "Collect_Flamer_Controller"
-collect Crashin' Thrashin' Flamer Controller##108632 |goto Orgrimmar/1 49.53,78.15 |achieve 10353 |future |or
-|tip You can only collect this toy from December 25 to January 2.
-|tip Click on presents under the tree until you collect it.
-Click Here if it is Not Yet Time |confirm |next "Check_Status" |or
-|only if not achieved(10353/1)
-step
-use the Crashin' Thrashin' Flamer Controller##108632
-|toy Crashin' Thrashin' Flamer Controller##108632 |achieve 10353 |future
-step
-label "Achievement_Complete"
-|achieve 10353
-step
-_Congratulations!_
-You Earned the "Iron Armada" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Let It Snow",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1687) end,
-achieveid={1687},
-patch='30002',
-description="\nDuring the Feast of Winter Veil, use a Handful of Snowflakes on the following "..
-"race/class combinations:\n\nBlood Elf Warlock\nDraenei Priest\nDwarf Paladin\n"..
-"Gnome Mage\nHuman Warrior\nNight Elf Druid\nOrc Death Knight\nTauren Shaman\n"..
-"Troll Hunter\nUndead Rogue",
-},[[
-step
-Kiss a Winter Reveler |script DoEmote("KISS")
-|tip Inside the building.
-|tip Emote kiss Winter Revelers for a chance at Mistletoe.
-|tip You can only get a reward from them once per hour.
-|tip You may need to do this multiple times before proceeding.
-collect 10 Handful of Snowflakes##34191 |goto Orgrimmar/1 54.55,77.89 |achieve 1687 |future
-step
-Use a Handful of Snowflakes on the following race/class combinations:
-use the Handful of Snowflakes##34191
-|tip Use one on each of the races below.
-Blood Elf Warlock |achieve 1687/9 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/9)
-Draenei Priest |achieve 1687/10 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/10)
-Dwarf Paladin |achieve 1687/8 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/8)
-Gnome Mage |achieve 1687/7 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/7)
-Human Warrior |achieve 1687/2 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/2)
-Night Elf Druid |achieve 1687/4 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/4)
-Orc Death Knight |achieve 1687/1 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/1)
-Tauren Shaman |achieve 1687/3 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/3)
-Troll Hunter |achieve 1687/6 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/6)
-Undead Rogue |achieve 1687/5 |goto 51.49,78.87 |achieve 1687 |future |only if not achieved(1687/5)
-step
-|achieve 1687
-step
-_Congratulations!_
-You Earned the "Let It Snow" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Merrymaker",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1691) end,
-achieveid={1691},
-patch='30003',
-description="\nComplete the following Winter Veil achievements:\n\nOn Metzen!\nScrooge\n"..
-"'Tis the Season\nLet It Snow\nThe Winter Veil Gourmet\nA Frosty Shake\n"..
-"With a Little Helper from My Friends\nFa-la-la-la-Ogri'la\nSimply Abominable\n"..
-"Bros. Before Ho Ho Ho's\nHe Knows If You've Been Naughty",
-},[[
-step
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\On Metzen!"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\Scrooge"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\'Tis the Season"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\Let It Snow"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\The Winter Veil Gourmet"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\A Frosty Shake"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\With a Little Helper from My Friends"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\Fa-la-la-la-Ogri'la"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\Simply Abominable"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\Bros. Before Ho Ho Ho's"
-leechsteps "Events Guides\\Feast of Winter Veil\\Achievements\\He Knows If You've Been Naughty"
-step
-|achieve 1691
-step
-_Congratulations!_
-You Earned the "Merrymaker" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\On Metzen!",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(273) end,
-achieveid={273},
-patch='30008',
-description="\nSave Metzen the Reindeer.",
-},[[
-step
-Reach Level 30 |ding 30 |achieve 273 |future
-step
-talk Kaymard Copperpinch##13418
-accept You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05 |achieve 273 |future
-step
-kill The Abominable Greench##13602
-Free Metzen the Reindeer |q 6983/2 |goto Hillsbrad Foothills/0 43.57,38.42 |achieve 273 |future
-step
-click Stolen Treats##209506
-collect Stolen Treats##17662 |q 6983/1 |goto 43.57,38.67 |achieve 273 |future
-step
-talk Kaymard Copperpinch##13418
-turnin You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05 |achieve 273 |future
-step
-|achieve 273
-step
-_Congratulations!_
-You Earned the "On Metzen!" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Scrooge",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(259) end,
-achieveid={259},
-patch='30001',
-description="\nThrow a snowball at Baine Bloodhoof during the Feast of Winter Veil.",
-},[[
-step
-talk Penney Copperpinch##13420
-buy 1 Snowball##17202 |goto Orgrimmar/1 52.69,77.26 |achieve 259 |future
-step
-use the Snowball##17202
-|tip Use it on Baine Bloodhoof.
-Throw a Snowball at Baine Bloodhoof |achieve 259 |goto Thunder Bluff/0 60.26,51.67
-step
-|achieve 259
-step
-_Congratulations!_
-You Earned the "Scrooge" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\Simply Abominable",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(279) end,
-achieveid={279},
-patch='30008',
-description="\nComplete the quest to retrieve Smokywood Pastures' stolen treats and receive a Smokywood Pastures' Thank You.",
-},[[
-step
-Reach Level 30 |ding 30 |achieve 279 |future
-step
-talk Kaymard Copperpinch##13418
-accept You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05 |achieve 279 |future
-step
-kill The Abominable Greench##13602
-Free Metzen the Reindeer |q 6983/2 |goto Hillsbrad Foothills/0 43.57,38.42 |achieve 279 |future
-step
-click Stolen Treats##209506
-collect Stolen Treats##17662 |q 6983/1 |goto 43.57,38.67 |achieve 279 |future
-step
-talk Kaymard Copperpinch##13418
-turnin You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05 |achieve 279 |future
-accept A Smokywood Pastures' Thank You!##6984 |goto 52.53,77.05 |achieve 279 |future
-step
-talk Great-father Winter##13445
-turnin A Smokywood Pastures' Thank You!##6984 |goto 49.63,78.00 |achieve 279 |future
-step
-|achieve 279
-step
-_Congratulations!_
-You Earned the "Simply Abominable" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\The Winter Veil Gourmet",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(1688) end,
-achieveid={1688},
-patch='30003',
-description="\nDuring the Feast of Winter Veil, use your culinary expertise to produce a Gingerbread "..
-"Cookie, Winter Veil Egg Nog and Hot Apple Cider.",
-},[[
-step
-Reach 300 Cooking Skill |skill Cooking,300 |achieve 1688 |future
-|tip Use the "Cooking 1-300" Profession guide.
-step
-talk Innkeeper Gryshka##6929
-|tip Inside the building.
-buy 1 Ice Cold Milk##1179 |goto Orgrimmar/1 53.63,78.76 |achieve 1688 |future
-step
-talk Kaymard Copperpinch##13418
-buy 1 Sparkling Apple Cider##34412 |goto 52.53,77.05 |achieve 1688 |future
-step
-talk Penney Copperpinch##13420
-buy 1 Recipe: Winter Veil Egg Nog##17201 |goto 52.68,77.29 |achieve 1688 |future
-buy 1 Recipe: Hot Apple Cider##34413 |goto 52.68,77.29 |achieve 1688 |future
-buy 1 Recipe: Gingerbread Cookie##17200 |goto 52.68,77.29 |achieve 1688 |future
-buy 3 Holiday Spices##17194 |goto 52.68,77.29 |achieve 1688 |future
-buy 2 Holiday Spirits##17196 |goto 52.68,77.29 |achieve 1688 |future
-step
-#include "auctioneer"
-|tip Inside the building.
-buy 2 Small Egg##6889 |next "Learn_Hot_Apple_Cider" |achieve 1688 |future |or
-Click Here to Farm Them |confirm |next "Farm_Small_Eggs" |or
-step
-label "Farm_Small_Eggs"
-Kill Dragonhawk enemies around this area
-collect 2 Small Egg##6889 |goto Eversong Woods/0 43.41,56.60 |achieve 1688 |future
-step
-label "Learn_Hot_Apple_Cider"
-use the Recipe: Hot Apple Cider##34413
-learn Hot Apple Cider##45022 |achieve 1688 |future
-step
-use the Recipe: Egg Nog##17201
-learn Egg Nog##21144 |achieve 1688 |future
-step
-Recipe: Gingerbread Cookie##17200
-learn Gingerbread Cookie##21143 |achieve 1688 |future
-step
-Open Your Cooking Crafting Panel:
-_<Create 1 Gingerbread Cookie>_
-Create a Gingerbread Cookie |achieve 1688/1 |goto Orgrimmar/1 53.50,75.54 |achieve 1688 |future
-step
-Open Your Cooking Crafting Panel:
-_<Create 1 Egg Nog>_
-Create Egg Nog |achieve 1688/2 |goto 53.50,75.54 |achieve 1688 |future
-step
-Open Your Cooking Crafting Panel:
-_<Create 1 Hot Apple Cider>_
-Create Hot Apple Cider |achieve 1688/3 |goto 53.50,75.54 |achieve 1688 |future
-step
-|achieve 1688
-step
-_Congratulations!_
-You Earned "The Winter Veil Gourmet" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Achievements\\With a Little Helper from My Friends",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not achieved(252) end,
-achieveid={252},
-patch='30001',
-description="\nEarn 50 honorable kills as a Little Helper from the Winter Wondervolt machine.",
-},[[
-step
-label "Become_A_Little_Helper"
-Become a Little Helper |havebuff 135849 |goto Orgrimmar/1 50.24,62.15 |achieve 252 |future
-|tip Step on the blue pad.
-step
-Kill enemies in PvP combat
-|tip Queue up for PvP Battlegrounds and kill enemy players.
-Earn #50# PvP Kills as a Little Helper |achieve 252 |or |achieve 252 |future
-'|nobuff 135849 |next "Become_A_Little_Helper" |or |only if not achieved(252)
-step
-|achieve 252
-step
-_Congratulations!_
-You Earned the "With a Little Helper from My Friends" Achievement.
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Feast of Winter Veil Quests",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not completedq(6984) end,
-description="\nThis guide section will walk you through completing the quests for the Feast of Winter Veil event.",
-},[[
-step
-talk Innkeeper Gryshka##6929
-|tip Inside the building.
-home Orgrimmar |goto Orgrimmar/1 53.63,78.77
-step
-talk Innkeeper Gryshka##6929
-|tip Inside the building.
-buy 1 Ice Cold Milk##1179 |goto 53.63,78.77 |q 6962 |future
-step
-talk Kaymard Copperpinch##13418
-accept Great-father Winter is Here!##6961 |goto 52.53,77.05
-accept You're a Mean One...##6983 |goto 52.53,77.05 |only if level >= 30 and not completedq(6984)
-step
-talk Great-father Winter##13445
-turnin Great-father Winter is Here!##6961 |goto 49.63,78.00
-accept Treats for Great-father Winter##6962 |goto 49.63,78.00
-step
-talk Furmund##9550
-accept The Reason for the Season##6964 |goto 51.05,71.02
-step
-talk Arugi##46709
-|tip She walks around inside the building.
-Train Cooking |skillmax Cooking,300 |goto 56.17,61.59
-step
-talk Sagorne Creststrider##13417
-turnin The Reason for the Season##6964 |goto 39.55,47.34
-accept The Feast of Winter Veil##7061 |goto 39.55,47.34
-step
-talk Penney Copperpinch##13420
-buy 1 Recipe: Gingerbread Cookie##17200 |goto 52.68,77.29 |q 6962
-buy 5 Holiday Spices##17194 |goto 52.68,77.29 |q 6962
-step
-use the Recipe: Gingerbread Cookie##17200
-learn Gingerbread Cookie##21143
-step
-#include "auctioneer"
-|tip Inside the building.
-buy 5 Small Egg##6889 |next "Cook_Gingerbread_Cookies" |q 6962 |or
-Click Here to Farm Them |confirm |next "Farm_Small_Eggs" |or
-step
-label "Farm_Small_Eggs"
-Kill Dragonhawk enemies around this area
-collect 5 Small Egg##6889 |goto Eversong Woods/0 43.41,56.60 |q 6962
-step
-label "Cook_Gingerbread_Cookies"
-Open Your Cooking Crafting Panel:
-_<Create 5 Gingerbread Cookies>_
-collect 5 Gingerbread Cookie##17197 |q 6962/1 |goto Orgrimmar/1 53.48,75.58
-step
-talk Great-father Winter##13445
-turnin Treats for Great-father Winter##6962 |goto 49.63,78.00
-step
-talk Baine Bloodhoof##36648
-|tip Inside the building.
-turnin The Feast of Winter Veil##7061 |goto Thunder Bluff/0 60.26,51.68
-step
-kill The Abominable Greench##13602
-Free Metzen the Reindeer |q 6983/2 |goto Hillsbrad Foothills/0 43.57,38.42
-|only if not completedq(6984)
-step
-click Stolen Treats##209506
-collect Stolen Treats##17662 |q 6983/1 |goto 43.57,38.67
-|only if not completedq(6984)
-step
-talk Kaymard Copperpinch##13418
-turnin You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05 |only if not completedq(6984)
-accept A Smokywood Pastures' Thank You!##6984 |goto 52.53,77.05
-step
-talk Great-father Winter##13445
-turnin A Smokywood Pastures' Thank You!##6984 |goto 49.63,78.00
-]])
-ZygorGuidesViewer:RegisterGuide("Events Guides\\Feast of Winter Veil\\Feast of Winter Veil Daily Quests",{
-author="support@zygorguides.com",
-condition_suggested=function() return isevent('Feast of Winter Veil') and not completedq(39651) end,
-description="\nThis guide section will walk you through completing the daily quests for the Feast of Winter Veil event.",
-},[[
-step
-label "Reach_Level_30"
-Reach Level 30 |ding 30
-step
-talk Kaymard Copperpinch##13418
-accept You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05
-step
-kill The Abominable Greench##13602
-Free Metzen the Reindeer |q 6983/2 |goto Hillsbrad Foothills/0 43.57,38.42
-step
-click Stolen Treats##209506
-collect Stolen Treats##17662 |q 6983/1 |goto 43.57,38.67
-step
-talk Kaymard Copperpinch##13418
-turnin You're a Mean One...##6983 |goto Orgrimmar/1 52.53,77.05
-step
-Reach Level 40 |ding 40 |or
-|tip You must be level 40 to continue.
-Click Here to Repeat the Level 30 Daily Quest |confirm |next "Reach_Level_30" |or
-|tip You will need to wait until the next server reset.
-step
-talk Pizzle##96735
-|tip If your garrison is not level 3, look for Pizzle nearby.
-accept Where Are the Children?##39648 |goto Frostwall/0 47.20,37.74
-accept Menacing Grumplings##39649 |goto 47.20,37.74
-accept What Horrible Presents!##39668 |goto 47.20,37.74
-accept Grumpus##39651 |goto 47.20,37.74
-stickystart "Rescue_Children"
-stickystart "Kill_Grumplings"
-step
-kill Grumpus##96448 |q 39651/1 |goto Frostfire Ridge/0 45.67,28.19
-|tip This may require a group to complete.
-step
-use the Spirit Bomb##128675
-|tip Use it to destroy Unusual Gifts.
-|tip They look like small piles of poop near large brown sacks on the ground around this area.
-Destroy #5# Unusual Gifts |q 39668/1 |goto 45.49,28.47
-step
-label "Rescue_Children"
-click Holding Cage##243905+
-|tip They look like sturdy brown wooden cages on the ground around this area.
-Save #6# Kidnapped Children |q 39648/1 |goto 46.38,27.29
-step
-label "Kill_Grumplings"
-kill 8 Grumpling##96449 |q 39649/1 |goto 46.38,27.29
-step
-talk Izzy Hollyfizzle##96362
-|tip If your garrison is not level 3, look for Izzy nearby.
-turnin Where Are the Children?##39648 |goto Frostwall/0 47.34,38.48
-turnin Menacing Grumplings##39649 |goto 47.34,38.48
-turnin What Horrible Presents!##39668 |goto 47.34,38.48
-turnin Grumpus##39651 |goto 47.34,38.48
-step
-Click Here to Repeat the Daily Quests |confirm |next "Reach_Level_30"
-|tip You will need to wait until the next server reset.
-]])
 ZygorGuidesViewer:RegisterGuide("Events Guides\\Warlords of Draenor\\Iron Horde Invasion",{
 description="\nTake part in the opening event of the Warlords of Draenor!",
 condition_end=function() return completedq(36940) end,
@@ -1311,4 +431,2044 @@ step
 talk High Overlord Saurfang##14720
 |tip Inside the building.
 turnin Warning Orgrimmar##36940 |goto Orgrimmar/1 48.53,70.73
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Love is in the Air Main Questline",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Love is in the Air') and not completedq(24576) end,
+description="\nThis guide will walk you through completing the main questline for the Love is in the Air event.",
+},[[
+step
+talk Detective Snap Snagglebolt##37172
+accept Something Stinks##24536 |goto Orgrimmar/1 50.80,75.26
+step
+clicknpc Orgrimmar Grunt##3296+
+|tip Look for Orgrimmar Grunts that have the Heavily Perfumed buff.
+|tip They look like Orgrimmar Grunts with a glowing purple aura around them all over Orgrimmar.
+use Snagglebolt's Air Analyzer##50131
+|tip Use it on Orgrimmar Grunts around this area.
+Analyze #6# Perfumed Guards |q 24536/1 |goto 50.77,77.98
+step
+talk Detective Snap Snagglebolt##37172
+turnin Something Stinks##24536 |goto 50.80,75.26
+accept Pilfering Perfume##24541 |goto 50.80,75.26
+step
+label "Gain_Crown_Parcel_Service_Uniform_Buff"
+talk Detective Snap Snagglebolt##37172
+Tell him  _"I need another disguise."_
+Gain the "Crown Parcel Service Uniform" Buff |havebuff spell:71450 |goto 50.80,75.26 |or
+'|condition completedq(24541) |or
+step
+Leave Orgrimmar |goto Durotar/0 45.53,12.00 < 30 |only if walking
+Get the Crown Chemical Co. Package |condition hasbuff("spell:71459") |q 24541 |goto Durotar/0 47.70,11.81 |or
+|tip Quickly run by the boxes to get the package.
+'|condition not hasbuff("spell:71450") and not readyq(24541) and not completedq(24541) |next "Gain_Crown_Parcel_Service_Uniform_Buff" |or
+step
+Return the Crown Chemical Co. Package |condition readyq(24541) or completedq(24541) |goto Orgrimmar/1 50.80,75.26 |or
+|tip You have to move quickly before your disguise wears off or you drop the package.
+|tip Simply walk next to Detective Snap Snagglebolt to return the package to him.
+'|condition (not hasbuff("spell:71450") or not hasbuff("spell:71459")) and not readyq(24541) and not completedq(24541) |next "Gain_Crown_Parcel_Service_Uniform_Buff" |or
+step
+talk Detective Snap Snagglebolt##37172
+turnin Pilfering Perfume##24541 |goto 50.80,75.26
+accept Snivel's Sweetheart##24850 |goto 50.80,75.26
+step
+talk Roka##38328
+|tip Inside the building.
+turnin Snivel's Sweetheart##24850 |goto 57.60,60.79
+accept Hot On The Trail##24851 |goto 57.60,60.79
+step
+Watch the dialogue
+|tip Inside the building.
+Search the Orgrimmar Auction House |q 24851/2 |goto 52.93,74.72
+step
+Watch the dialogue
+|tip Inside the building.
+Search the Orgrimmar Bank |q 24851/1 |goto 49.23,82.12
+step
+Watch the dialogue
+|tip Inside the building.
+Search the Orgrimmar Barber Shop |q 24851/3 |goto 40.53,60.70
+step
+talk Roka##38328
+|tip Inside the building.
+turnin Hot On The Trail##24851 |goto 57.58,60.81
+accept A Friendly Chat...##24576 |goto 57.58,60.81
+step
+talk Snivel Rustrocket##37715
+Tell him _"I have a rocket here with your mark on it, Snivel."_
+collect 1 Snivel's Ledger##49915 |q 24576/1 |goto 51.65,56.72
+step
+talk Detective Snap Snagglebolt##37172
+turnin A Friendly Chat...##24576 |goto 50.81,75.23
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Love is in the Air Dailies",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Love is in the Air') and completedq(24576) and not completedanyq(44546,24629,24635,24636,24612,44559,24614,24613,24615) end,
+description="\nThis guide will walk you through completing the Love is in the Air event daily quests.",
+},[[
+step
+label "Complete_Leveling_Guide"
+Complete the "Love is in the Air Main Questline" guide before using this guide |condition completedq(24576)
+step
+talk Detective Snap Snagglebolt##37172
+accept Crushing the Crown##44546 |goto Orgrimmar/1 50.79,75.23
+step
+talk Public Relations Agent##37675
+accept A Perfect Puff of Perfume##24629 |goto 53.07,77.14 |or
+accept A Cloudlet of Classy Cologne##24635 |goto 53.07,77.14 |or
+accept Bonbon Blitz##24636 |goto 53.07,77.14 |or
+|tip You will only be able to accept one of these quests.
+step
+talk Kwee Q. Peddlefeet##38042
+accept A Gift for the Warchief's Advisor##24612 |goto 53.01,76.81
+step
+use the Crown Cologne Sprayer##49669
+|tip Use it on NPCs and other players without a red heart over their head.
+|tip You can do this anywhere in Orgrimmar.
+Give #10# Cologne Samples |q 24635/1 |goto 51.64,77.81
+|only if havequest(24635)
+step
+use the Crown Perfume Sprayer##49668
+|tip Use it on NPCs and other players without a red heart over their head.
+|tip You can do this anywhere in Orgrimmar.
+Give #10# Perfume Samples |q 24629/1 |goto 51.64,77.81
+|only if havequest(24629)
+step
+use the Crown Chocolate Sampler##49670
+|tip Use it on NPCs and other players without a red heart over their head.
+|tip You can do this anywhere in Orgrimmar.
+Give #10# Chocolate Samples |q 24636/1 |goto 51.64,77.81
+|only if havequest(24636)
+stickystart "Slay_Crown_Chemical_Co_Employees"
+step
+use Snagglebolt's Khorium Bomb##50130
+Destroy the Chemical Wagon |q 44546/1 |goto Silverpine Forest/0 45.74,73.39
+|only if havequest(44546)
+step
+click Love Potion Recipe
+accept Follow the Recipe##44559 |goto 45.25,73.85
+|only if havequest(44546)
+step
+Enter the building |goto 46.23,73.45 < 10 |walk
+click Recipe Fragment##6478
+|tip Upstairs inside the building.
+Collect the 1st Fragment |q 44559/1 |goto 46.28,73.51
+|only if havequest(44559)
+step
+Enter the building |goto 44.98,71.64 < 10 |walk
+click Recipe Fragment##6478
+|tip Inside the building.
+Collect the 2nd Fragment |q 44559/2 |goto 45.14,71.52
+|only if havequest(44559)
+step
+click Recipe Fragment##6478
+Collect the 3rd Fragment |q 44559/3 |goto 42.70,71.16
+|only if havequest(44559)
+step
+label "Slay_Crown_Chemical_Co_Employees"
+Kill enemies around this area
+Slay #12# Crown Chemical Co. Employees |q 44546/2 |goto 45.78,73.39
+|only if havequest(44546)
+step
+Kill enemies that yield experience
+|tip Any enemy that is green, yellow, or red difficulty will drop charms.
+|tip You can kill enemies in dungeons or the open-world zone of your choice.
+collect 40 Lovely Charm##49655 |q 24615 |future
+step
+use the Lovely Charm##49655
+collect 4 Lovely Charm Bracelet##49916 |q 24615 |future
+step
+talk Detective Snap Snagglebolt##37172
+turnin Crushing the Crown##44546 |goto Orgrimmar/1 50.79,75.23 |only if havequest(44546) or completedq(44546)
+turnin Follow the Recipe##44559 |goto 50.79,75.23 |only if havequest(44559) or completedq(44559)
+|only if haveanyquest(44546,44559) or completedanyq(44546,44559)
+step
+talk Public Relations Agent##37675
+turnin A Perfect Puff of Perfume##24629 |goto 53.07,77.17 |only if havequest(24629) or completedq(24629)
+turnin A Cloudlet of Classy Cologne##24635 |goto 53.07,77.17 |only if havequest(24635) or completedq(24635)
+turnin Bonbon Blitz##24636 |goto 53.07,77.17 |only if havequest(24636) or completedq(24636)
+|only if haveanyquest(24629,24635,24636) or completedanyq(24629,24635,24636)
+step
+Enter the building |goto 49.86,75.50 < 10 |walk
+talk Eitrigg##3144
+|tip He will appear inside once you have a Lovely Charm Bracelet in your inventory.
+|tip Phasing makes this tricky, so you may need to enter multiple times before he appears.
+turnin A Gift for the Warchief's Advisor##24612 |goto Orgrimmar/1 49.21,72.28
+step
+talk Kwee Q. Peddlefeet##38042
+accept A Gift for the High Chieftain##24614 |goto Thunder Bluff/0 44.02,52.61
+step
+talk Baine Bloodhoof##36648
+turnin A Gift for the High Chieftain##24614 |goto 60.25,51.68
+step
+talk Zidormi##141488
+Tell her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
+Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.45,62.80 |q 24613 |future
+step
+talk Kwee Q. Peddlefeet##38042
+|tip He is in the Ruins of Lordaeron.
+accept A Gift for the Banshee Queen##24613 |goto Undercity/0 66.55,38.60
+step
+Enter the tunnel |goto 52.36,64.21 < 10 |walk
+talk Lady Sylvanas Windrunner##10181
+turnin A Gift for the Banshee Queen##24613 |goto 58.05,91.77
+step
+talk Kwee Q. Peddlefeet##38042
+accept A Gift for the Regent Lord of Quel'Thalas##24615 |goto Silvermoon City/0 64.45,66.52
+step
+talk Lor'themar Theron##16802
+turnin A Gift for the Regent Lord of Quel'Thalas##24615 |goto 53.81,20.27
+step
+You have completed all available daily quests
+|tip This guide will reset when more become available.
+'|condition not completedanyq(44546,24629,24635,24636,24612,44559,24614,24613,24615) |next "Complete_Leveling_Guide"
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Be Mine!",{
+author="support@zygorguides.com",
+description="\nEat the eight \"Bag of Candies\" heart candies listed below:\n\nBe Mine!\nAll yours.\nHot Lips.\n"..
+"You're the best!\nI'll follow you all around Azeroth.\nI'm all yours!\nYou're Mine!\nI LOVE YOU",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1701) end,
+achieveid={1701},
+patch='30002',
+},[[
+step
+talk Lovely Merchant##37674
+buy Bag of Heart Candies##21813 |n |goto Orgrimmar/1 53.05,77.00
+use the Bag of Heart Candies##21813
+|tip Collect the 8 different types of Heart Candy from the Bag of Heart Candies.
+Collect "Be Mine" |collect 1 Heart Candy##21816 |only if not achieved(1701,1)
+Collect "I'll Follow You All Around Azeroth" |collect 1 Heart Candy##21818 |only if not achieved(1701,2)
+Collect "All Yours" |collect 1 Heart Candy##21819 |only if not achieved(1701,3)
+Collect "I'm All Yours" |collect 1 Heart Candy##21821 |only if not achieved(1701,4)
+Collect "Hot Lips" |collect 1 Heart Candy##21823 |only if not achieved(1701,5)
+Collect "You're Mine" |collect 1 Heart Candy##21822 |only if not achieved(1701,6)
+Collect "You're the Best" |collect 1 Heart Candy##21820 |only if not achieved(1701,7)
+Collect "I LOVE YOU" |collect 1 Heart Candy##21817 |only if not achieved(1701,8)
+step
+use Heart Candy##21816
+Eat the "Be Mine!" Heart Candy |achieve 1701/1
+step
+use Heart Candy##21818
+Eat the "I'll follow you all around Azeroth." Heart Candy |achieve 1701/2
+step
+use Heart Candy##21819
+Eat the "All yours." Heart Candy |achieve 1701/3
+step
+use Heart Candy##21821
+Eat the "I'm all yours!" Heart Candy |achieve 1701/4
+step
+use Heart Candy##21823
+Eat the "Hot lips." Heart Candy |achieve 1701/5
+step
+use Heart Candy##21822
+Eat the "You're mine!" Heart Candy |achieve 1701/6
+step
+use Heart Candy##21820
+Eat the "You're the best!" Heart Candy |achieve 1701/7
+step
+use Heart Candy##21817
+Eat the "I LOVE YOU" Heart Candy |achieve 1701/8
+step
+_Congratulations!_
+You Have Earned the "Be Mine!" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Charming",{
+author="support@zygorguides.com",
+description="\nCreate 12 Lovely Charm Bracelets.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(260) end,
+achieveid={260},
+patch='30001',
+},[[
+step
+talk Kwee Q. Peddlefeet##38042
+collect 1 Lovely Charm Collector's Kit##49661 |goto Orgrimmar/1 52.8,76.8 |or
+'|condition achieved(260) |or
+'|accept A Gift for High Overlord Saurfang##24612 |n
+step
+collect 120 Lovely Charm##49655
+|tip They come from killing enemies that are at least green difficulty to you.
+|tip They will not drop if they are grey difficulty.
+|tip You can run dungeons or pick a zone of your choice and kill anything.
+step
+use the Lovely Charm##49655
+collect 12 Lovely Charm Bracelet##49916 |or
+'|condition achieved(260) |or
+step
+_Congratulations!_
+You Have Earned the "Charming" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Dangerous Love",{
+author="support@zygorguides.com",
+description="\nAssist the Steamwheedle Cartel in stopping the sinister Crown Chemical Co. plot.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1695) end,
+achieveid={1695},
+patch='30003',
+},[[
+leechsteps "Events Guides\\Love is in the Air\\Love is in the Air Main Questline"
+step
+Reach Level 7 |ding 7 |or
+'|condition achieved(1695) |or
+step
+talk Detective Snap Snagglebolt##37172
+accept Crushing the Crown##44546 |goto Orgrimmar/1 50.79,75.23 |or
+'|condition achieved(1695) |or
+stickystart "Slay_Crown_Chemical_Co_Employees"
+step
+use Snagglebolt's Khorium Bomb##50130
+Destroy the Chemical Wagon |q 44546/1 |goto Silverpine Forest/0 45.74,73.39 |or
+'|condition achieved(1695) |or
+step
+label "Slay_Crown_Chemical_Co_Employees"
+Kill enemies around this area
+Slay #12# Crown Chemical Co. Employees |q 44546/2 |goto 45.78,73.39 |or
+'|condition achieved(1695) |or
+step
+talk Detective Snap Snagglebolt##37172
+turnin Crushing the Crown##44546 |goto Orgrimmar/1 50.79,75.23 |or
+'|condition achieved(1695) |or
+step
+Earn the "Dangerous Love" Achievement |achieve 1695
+step
+_Congratulations!_
+You Have Earned the "Dangerous Love" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Fistful of Love",{
+author="support@zygorguides.com",
+description="\nUse a Handful of Rose Petals on each of the race/class combinations listed below:\n\nGnome Warlock\n"..
+"Human Death Knight\nOrc Shaman\nUndead Warrior\nBlood Elf Mage\nDwarf Hunter\nOrc Death Knight\nNight Elf Priest"..
+"\nTauren Druid\nTroll Rogue\nDraenei Paladin",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1699) end,
+achieveid={1699},
+patch='30003',
+},[[
+step
+talk Lovely Merchant##37674
+buy 15 Handful of Rose Petals##22218 |goto Orgrimmar/1 53.04,77.04 |or
+'|condition achieved(1699) |or
+stickystart "Use_Petals_on_Gnome_Warlock"
+stickystart "Use_Petals_on_Orc_Death_Knight"
+stickystart "Use_Petals_on_Human_Death_Knight"
+stickystart "Use_Petals_on_Night_Elf_Priest"
+stickystart "Use_Petals_on_Orc_Shaman"
+stickystart "Use_Petals_on_Tauren_Druid"
+stickystart "Use_Petals_on_Undead_Warrior"
+stickystart "Use_Petals_on_Troll_Rogue"
+stickystart "Use_Petals_on_Blood_Elf_Mage"
+stickystart "Use_Petals_on_Draenei_Paladin"
+stickystart "Use_Petals_on_Dwarf_Hunter"
+step
+use the Handful of Rose Petals##22218
+|tip Battlegrounds and capital cities are good locations.
+Use them once on each of the following classes:
+'|condition achieved(1699)
+step
+label "Use_Petals_on_Gnome_Warlock"
+Use Rose Petals on a "Gnome Warlock" |achieve 1699/1
+step
+label "Use_Petals_on_Orc_Death_Knight"
+Use Rose Petals on a "Orc Death Knight" |achieve 1699/2
+step
+label "Use_Petals_on_Human_Death_Knight"
+Use Rose Petals on a "Human Death Knight" |achieve 1699/3
+step
+label "Use_Petals_on_Night_Elf_Priest"
+Use Rose Petals on a "Night Elf Priest" |achieve 1699/4
+step
+label "Use_Petals_on_Orc_Shaman"
+Use Rose Petals on a "Orc Shaman" |achieve 1699/5
+step
+label "Use_Petals_on_Tauren_Druid"
+Use Rose Petals on a "Tauren Druid" |achieve 1699/6
+step
+label "Use_Petals_on_Undead_Warrior"
+Use Rose Petals on a "Undead Warrior" |achieve 1699/7
+step
+label "Use_Petals_on_Troll_Rogue"
+Use Rose Petals on a "Troll Rogue" |achieve 1699/8
+step
+label "Use_Petals_on_Blood_Elf_Mage"
+Use Rose Petals on a "Blood Elf Mage" |achieve 1699/9
+step
+label "Use_Petals_on_Draenei_Paladin"
+Use Rose Petals on a "Draenei Paladin" |achieve 1699/10
+step
+label "Use_Petals_on_Dwarf_Hunter"
+Use Rose Petals on a "Dwarf Hunter" |achieve 1699/11
+step
+_Congratulations!_
+You Have Earned the "Fistful of Love" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Flirt With Disaster",{
+author="support@zygorguides.com",
+description="\nGet completely smashed, put on your best perfume, throw a handful of rose petals "..
+"on Jeremiah Payson and then kiss him. You'll regret it in the morning.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1280) end,
+achieveid={1280},
+patch='30001',
+},[[
+step
+talk Lovely Merchant##37674
+buy 1 "VICTORY" Perfume##49856 |goto Orgrimmar/1 53.04,77.04 |or
+'|condition achieved(1280) |or
+step
+talk Barkeep Morag##5611
+|tip Inside the building.
+buy 6 Cup of Frog Venom Brew##44573 |goto 55.06,77.96 |or
+'|condition achieved(1280) |or
+step
+talk Zidormi##141488
+Ask her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
+Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.46,62.80 |or
+'|condition achieved(1280) |or
+step
+use the "VICTORY" Perfume##49856
+Gain the "'VICTORY' Perfume" Buff |havebuff spell:70233 |or
+'|condition achieved(1280) |or
+step
+clicknpc Jeremiah Payson##8403
+|tip He's under the stairs surrounded by cockroaches.
+use the Cup of Frog Venom Brew##44573
+|tip Use all 6 of your Cups of Frog Venom Brew to get Completely Smashed.
+use the Handful of Rose Petals##22218
+|tip Use them on Jeremiah Payson.
+Use a Handful of Rose Petals on Jeremiah Payson |achieve 1280/1 |goto Undercity/0 67.59,44.13
+step
+clicknpc Jeremiah Payson##8403
+"Kiss" Jeremiah Payson |script DoEmote("KISS")
+Kiss Jeremiah Payson While Completely Smashed |achieve 1280/2 |goto 67.59,44.13
+step
+_Congratulations!_
+You Have Earned the "Flirt With Disaster" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\I Pitied The Fool",{
+author="support@zygorguides.com",
+description="\nPity the Love Fool in the locations specified below:\n\nWintergrasp\nNaxxramas\n"..
+"Arathi Basin Blacksmith\nBattle Ring of Gurubashi Arena\nThe Culling of Stratholme",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1704) end,
+achieveid={1704},
+patch='30002',
+},[[
+step
+talk Lovely Merchant##37674
+buy 5 Love Fool##22261 |goto Orgrimmar/1 53.04,77.04 |or
+'|condition achieved(1704) |or
+step
+use the Love Fool##22261
+|tip You can use your Love Fool anywhere inside Wintergrasp.
+clicknpc Love Fool##16111
+"Pity" the Love Fool |script DoEmote("PITY")
+Target and Pity the Love Fool in Wintergrasp |achieve 1704/1 |goto Wintergrasp/0 70.30,32.28
+step
+use the Love Fool##22261
+|tip You can use your Love Fool anywhere inside the Gurubashi Arena.
+clicknpc Love Fool##16111
+"Pity" the Love Fool |script DoEmote("PITY")
+Target and Pity the Love Fool in the Gurubashi Arena |achieve 1704/2 |goto The Cape of Stranglethorn/0 46.41,26.05
+step
+use the Love Fool##22261
+|tip Use your Love Fool near the Blacksmith node inside of the Arathi Basin Battleground.
+clicknpc Love Fool##16111
+"Pity" the Love Fool |script DoEmote("PITY")
+Target and Pity the Love Fool in the Arathi Basin Battleground |achieve 1704/3
+step
+use Love Fool##22261
+|tip You can use your Love Fool anywhere inside the Culling of Stratholme Dungeon.
+clicknpc Love Fool##16111
+"Pity" the Love Fool |script DoEmote("PITY")
+Target and Pity the Love Fool in The Culling of Stratholme Dungeon |achieve 1704/4 |goto The Culling of Stratholme/1 86.80,58.97
+step
+use Love Fool##22261
+|tip You can use your Love Fool anywhere inside the Naxxramas Raid.
+clicknpc Love Fool##16111
+"Pity" the Love Fool |script DoEmote("PITY")
+Target and Pity the Love Fool in the Naxxramas Raid |achieve 1704/5 |goto Naxxramas/5 51.79,51.58
+step
+_Congratulations!_
+You Have Earned the "I Pitied The Fool" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Lonely?",{
+author="support@zygorguides.com",
+description="\nEnjoy a Buttermilk Delight with someone in Dalaran at a Romantic Picnic during the Love is in the Air celebration.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1291) end,
+achieveid={1291},
+patch='30100',
+},[[
+step
+talk Lovely Merchant##37674
+buy 1 Romantic Picnic Basket##34480 |goto Orgrimmar/1 53.04,77.04 |or
+'|condition achieved(1291) |or
+step
+talk Lovely Merchant##37674
+buy 1 Box of Chocolates##49909 |goto 53.06,77.02 |n
+|tip These cost 10 Love Tokens each.
+|tip You can acquire Love Tokens by completing Love is in the Air daily quests.
+|tip Use the "Love is in the Air Dailies" event guide to accomplish this.
+use the Box of Chocolates##49909
+collect 1 Buttermilk Delight##22236 |or
+'|condition achieved(1291) |or
+step
+use the Romantic Picnic Basket##34480
+|tip Find a player to have a picnic with you.
+|tip It can be anywhere in Dalaran.
+use the Buttermilk Delight##22236
+|tip While having a picnic, use your Buttermilk Delight.
+Enjoy a Buttermilk Delight with Someone in Dalaran at a Romantic Picnic |achieve 1291 |goto Dalaran L/10 53.61,39.65
+step
+_Congratulations!_
+You Have Earned the "Lonely?" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Lovely Luck Is On Your Side",{
+author="support@zygorguides.com",
+description="\nOpen a Lovely Dress Box and receive a Lovely Black Dress.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1694) end,
+achieveid={1694},
+patch='30002',
+},[[
+step
+talk Lovely Merchant##37674
+buy 1 Lovely Dress Box##50160 |n
+|tip These cost 20 Love Tokens each.
+|tip You can acquire Love Tokens by completing Love is in the Air daily quests.
+|tip Use the "Love is in the Air Dailies" event guide to accomplish this.
+use the Lovely Dress Box##50160
+collect 1 Lovely Black Dress##22279 |goto Orgrimmar/1 53.04,77.04
+'|condition achieved(1694) |or
+step
+Earn the "Lovely Luck Is On Your Side" Achievement |achieve 1694
+step
+_Congratulations!_
+You Have Earned the "Lovely Luck Is On Your Side" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\My Love is Like a Red, Red Rose",{
+author="support@zygorguides.com",
+description="\nObtain a Bouquet of Red or Ebon Roses during the Love is in the Air celebration.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1703) end,
+achieveid={1703},
+patch='30002',
+},[[
+step
+collect 1 Bouquet of Red Roses##22206 |n
+collect 1 Bouquet of Ebon Roses##44731 |n
+|tip These come from specific bosses in dungeons.
+|tip Corla, Herald of Twilight in Blackrock Caverns
+|tip High Priestess Azil in Stonecore
+|tip Admiral Ripsnarl in Deadmines
+|tip Lord Godfrey in Shadowfang Keep
+|tip You will need one or the other, not both.
+Obtain a Bouquet of Red or Ebon Roses During the Love is in the Air Celebration |achieve 1703
+step
+_Congratulations!_
+You Have Earned the "My Love is Like a Red, Red Rose" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Nation of Adoration",{
+author="support@zygorguides.com",
+description="\nComplete the Lovely Charm Bracelet daily quest for each Horde capital.",
+condition_suggested=function() return isevent('Love is in the Air') and completedq(24576) and not achieved(1698) end,
+achieveid={1698},
+patch='30100',
+},[[
+leechsteps "Events Guides\\Love is in the Air\\Love is in the Air Main Questline"
+step
+talk Kwee Q. Peddlefeet##38042
+accept A Gift for the Warchief's Advisor##24612 |goto Orgrimmar/1 53.01,76.81 |or
+'|condition achieved(1698,1) |or
+step
+Kill enemies that yield experience
+|tip Any enemy that is green, yellow, or red difficulty will drop charms.
+|tip You can kill enemies in dungeons or the open-world zone of your choice.
+collect 40 Lovely Charm##49655 |or
+'|condition achieved(1698) |or
+step
+use the Lovely Charm##49655
+collect 4 Lovely Charm Bracelet##49916 |or
+'|condition achieved(1698) |or
+step
+Enter the building |goto 49.86,75.50 < 10 |walk
+talk Eitrigg##3144
+|tip He will appear inside once you have a Lovely Charm Bracelet in your inventory.
+|tip Phasing makes this tricky, so you may need to enter multiple times before he appears.
+turnin A Gift for the Warchief's Advisor##24612 |goto 48.13,70.54 |or
+'|condition achieved(1698,1) |or
+step
+talk Kwee Q. Peddlefeet##38042
+accept A Gift for the High Chieftain##24614 |goto Thunder Bluff/0 44.02,52.61 |or
+'|condition achieved(1698,2) |or
+step
+talk Baine Bloodhoof##36648
+|tip If he isn't there, try to log out then back in.
+turnin A Gift for the High Chieftain##24614 |goto 60.25,51.68 |or
+'|condition achieved(1698,2) |or
+step
+talk Zidormi##141488
+Tell her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
+Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.45,62.80 |or
+'|condition achieved(1698,4) |or
+step
+talk Kwee Q. Peddlefeet##38042
+|tip He is in the Ruins of Lordaeron.
+accept A Gift for the Banshee Queen##24613 |goto Undercity/0 66.55,38.60 |or
+'|condition achieved(1698,4) |or
+step
+Enter the tunnel |goto 52.36,64.21 < 10 |walk
+talk Lady Sylvanas Windrunner##10181
+turnin A Gift for the Banshee Queen##24613 |goto 58.05,91.77 |or
+'|condition achieved(1698,4) |or
+step
+talk Kwee Q. Peddlefeet##38042
+accept A Gift for the Regent Lord of Quel'Thalas##24615 |goto Silvermoon City/0 64.45,66.52 |or
+'|condition achieved(1698,3) |or
+step
+talk Lor'themar Theron##16802
+turnin A Gift for the Regent Lord of Quel'Thalas##24615 |goto 53.81,20.27 |or
+'|condition achieved(1698,3) |or
+step
+Earn the "Nation of Adoration" Achievement |achieve 1698
+step
+_Congratulations!_
+You Have Earned the "Nation of Adoration" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Perma-Peddle",{
+author="support@zygorguides.com",
+description="\nObtain a permanent Peddlefeet pet by procuring a Truesilver Shafted Arrow.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1700) end,
+achieveid={1700},
+patch='30003',
+},[[
+step
+collect 40 Love Token##49927 |or
+|tip You can acquire these by completing Love is in the Air daily quests.
+|tip Use the "Love is in the Air Dailies" event guide to accomplish this.
+'|condition achieved(1700) |or
+step
+talk Lovely Merchant##37674
+buy 1 Truesilver Shafted Arrow##22235 |goto Orgrimmar/1 53.04,77.04
+'|condition achieved(1700) |or
+step
+Earn the "Perma-Peddle" Achievement |achieve 1700
+step
+_Congratulations!_
+You Have Earned the "Perma-Peddle" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Shafted!",{
+author="support@zygorguides.com",
+description="\nShoot 10 players with a Silver Shafted Arrow.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1188) end,
+achieveid={1188},
+patch='30003',
+},[[
+step
+collect 10 Love Token##49927 |or
+|tip You can acquire these by completing Love is in the Air daily quests.
+|tip Use the "Love is in the Air Dailies" event guide to accomplish this.
+'|condition achieved(1188) |or
+step
+talk Lovely Merchant##37674
+buy 10 Silver Shafted Arrow##22200 |goto Orgrimmar/1 53.05,77.03 |or
+'|condition achieved(1188) |or
+step
+use the Silver Shafted Arrow##22200
+|tip Use your Silver Shafted Arrows on 10 players inside Orgrimmar.
+Shoot 10 Players with the Silver Shafted Arrow |achieve 1188 |goto 53.05,77.03
+step
+_Congratulations!_
+You Have Earned the "Shafted!" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\Sweet Tooth",{
+author="support@zygorguides.com",
+description="\nSample the following holiday candy:\n\nButtermilk Delight\nDark Desire\n"..
+"Sweet Surprise\nVery Berry Cream",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1702) end,
+achieveid={1702},
+patch='30008',
+},[[
+step
+talk Lovely Merchant##37674
+buy 1 Box of Chocolates##49909 |goto Orgrimmar/1 53.06,77.02 |n
+|tip These cost 10 Love Tokens each.
+|tip You can acquire Love Tokens by completing Love is in the Air daily quests.
+|tip Use the "Love is in the Air Dailies" event guide to accomplish this.
+use Box of Chocolates##49909
+collect 1 Buttermilk Delight##22236 |only if not achieved(1702,1)
+collect 1 Dark Desire##22237 |only if not achieved(1702,2)
+collect 1 Sweet Surprise##22239 |only if not achieved(1702,3)
+collect 1 Very Berry Cream##22238 |only if not achieved(1702,4)
+step
+use the Buttermilk Delight##22236
+Sample the "Buttermilk Delight" Candy |achieve 1702/1
+|tip Save the remaining Buttermilk Delights for a later achievement.
+step
+use the Dark Desire##22237
+Sample the "Dark Desire" Candy |achieve 1702/2
+step
+use the Sweet Surprise##22239
+Sample the "Sweet Surprise" Candy |achieve 1702/3
+step
+use the Very Berry Cream##22238
+Sample the "Very Berry Cream" Candy |achieve 1702/4
+step
+_Congratulations!_
+You Have Earned the "Sweet Tooth" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Love is in the Air\\Achievements\\The Rocket's Pink Glare",{
+author="support@zygorguides.com",
+description="\nShoot off 10 Love Rockets in 20 seconds or less.",
+condition_suggested=function() return isevent('Love is in the Air') and not achieved(1696) end,
+achieveid={1696},
+patch='30002',
+},[[
+step
+collect 10 Love Token##49927 |or
+|tip You can acquire these by completing Love is in the Air daily quests.
+|tip Use the "Love is in the Air Dailies" event guide to accomplish this.
+'|condition achieved(1696) |or
+step
+talk Lovely Merchant##37674
+buy 10 Love Rocket##34258 |goto Orgrimmar/1 53.04,77.04 |or
+'|condition achieved(1696) |or
+step
+use the Love Rocket##34258
+|tip Use them quickly to set off all 10 in 20 seconds or less.
+Shoot off 10 Love Rockets in 20 Seconds or Less |achieve 1696
+step
+_Congratulations!_
+You Have Earned the "The Rocket's Pink Glare" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Lunar Festival Main Questline",{
+author="support@zygorguides.com",
+description="\nThis guide section will walk you through completing the main questline for the Lunar Festival event.",
+condition_suggested=function() return isevent('Lunar Festival') end,
+condition_end=function() return completedq(56842) end,
+},[[
+step
+talk Lunar Festival Herald##15891
+accept The Lunar Festival##8873 |goto Orgrimmar/1 49.89,81.20
+step
+talk Lunar Festival Harbinger##15895
+turnin The Lunar Festival##8873 |goto 49.08,55.81
+accept Lunar Fireworks##8867 |goto 49.08,55.81
+step
+talk Lunar Festival Vendor##47897
+buy 8 Small Blue Rocket##21558 |goto 48.68,57.01 |q 8867
+buy 2 Blue Rocket Cluster##21571 |goto 48.68,57.01 |q 8867
+step
+use the Small Blue Rocket##21558
+|tip Use it eight times.
+Fire #8# Lunar Fireworks |q 8867/1 |goto 48.75,56.88
+step
+use the Blue Rocket Cluster##21571
+|tip Use it two times.
+Fire #2# Lunar Fireworks Clusters |q 8867/2 |goto 48.75,56.88
+step
+talk Lunar Festival Harbinger##15895
+turnin Lunar Fireworks##8867 |goto 49.08,55.81
+accept Valadar Starsong##8883 |goto 49.08,55.81
+step
+use Lunar Festival Invitation##21711 |goto 49.12,54.73
+|tip Stand in the beam of light.
+Teleport to Moonglade |goto Moonglade/0 36.60,58.57 |c |noway |q 8883
+step
+talk Valadar Starsong##15864
+turnin Valadar Starsong##8883 |goto 53.65,35.24
+step
+talk Myrael Lunarbloom##155759
+accept Lunar Preservation##56842 |goto 53.09,36.02
+|tip NOTE: If you currently have the quest "A Fresh Trauma" available from Magni in Chamber of Heart, you will need to do that first to complete the Hyjal step.
+step
+Gain the "Blessing of the Moon" Buff |havebuff spell:303601 |goto 48.65,32.93 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Two Stacks of the "Blessing of the Moon" Buff |havebuff 2 spell:303601 |goto Felwood/0 44.04,28.40 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Three Stacks of the "Blessing of the Moon" Buff |havebuff 3 spell:303601 |goto Ashenvale/0 53.75,46.01 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Four Stacks of the "Blessing of the Moon" Buff |havebuff 4 spell:303601 |goto 60.21,72.91 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Five Stacks of the "Blessing of the Moon" Buff |havebuff 5 spell:303601 |goto Stonetalon Mountains/0 41.60,18.97 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Six Stacks of the "Blessing of the Moon" Buff |havebuff 6 spell:303601 |goto Feralas/0 60.20,46.25 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Seven Stacks of the "Blessing of the Moon" Buff |havebuff 7 spell:303601 |goto Duskwood/0 49.18,33.25 |q 56842
+|tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
+step
+Gain the Eight Stacks of the "Blessing of the Moon" Buff |condition readyq(56842) or completedq(56842) |goto Mount Hyjal/0 60.60,25.76 |q 56842
+|tip Stand in the lake and click the "Ritual of the Moon" ability that appears on-screen.
+step
+use the Lunar Festival Invitation##21711 |goto Orgrimmar/1 49.12,54.71
+Return to Moonglade |goto Moonglade/0 |c |noway |q 56842
+step
+talk Myrael Lunarbloom##155759
+turnin Lunar Preservation##56842 |goto 53.09,36.02 |next "Events Guides\\Lunar Festival\\Achievements\\Elune's Blessing"
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Lunar Festival Crown Transmog Quests",{
+author="support@zygorguides.com",
+description="\nThis guide section will walk you through completing the questline to unlock Lunar Festival crown transmogs year-round.",
+condition_suggested=function() return isevent('Lunar Festival') end,
+condition_end=function() return completedq(56906) end,
+},[[
+step
+Complete the "Lunar Festival Main Questline" Event Guide |condition completedq(56842)
+step
+talk Valadar Starsong##15864
+|tip These items cost 25 Coins of Ancestry each.
+|tip Coins can be earned by completing the various Lunar Festival elder guides.
+buy 1 Crown of Courage##151355 |goto Moonglade/0 53.61,35.40
+buy 1 Crown of Prosperity##151354 |goto 53.61,35.40
+buy 1 Crown of Dark Blossoms##151353 |goto 53.61,35.40
+buy 1 Crown of Good Fortune##151352 |goto 53.61,35.40
+step
+talk Myrael Lunarbloom##155759
+accept Crown of Courage##56903 |goto 53.09,36.02
+accept Crown of Prosperity##56904 |goto 53.09,36.02
+accept Crown of Dark Blossoms##56905 |goto 53.09,36.02
+accept Crown of Good Fortune##56906 |goto 53.09,36.02
+step
+click Flower of Generosity##332294+
+|tip They look like small blue flowers on the ground around this area.
+collect 3 Flower of Generosity##170322 |q 56906/3 |goto Winterspring/0 57.48,32.53
+step
+click Flower of Wealth##332281+
+|tip They look like small red flowers on the ground around this area.
+collect 3 Flower of Wealth##170281 |q 56904/1 |goto Northern Barrens/0 37.20,45.62
+step
+click Flower of Sincerity##332279+
+|tip They look like clusters of white flowers on the ground around this area.
+collect 3 Flower of Sincerity##170279 |q 56903/2 |goto Mulgore/0 51.52,32.25
+step
+click Flower of Compassion##332287+
+|tip They look like small red flowers on the ground around this area.
+collect 3 Flower of Compassion##170296 |q 56905/1 |goto Desolace/0 52.38,48.27
+step
+click Flower of Felicity##332283+
+|tip They look like clusters of red leaves on the ground around this area.
+collect 3 Flower of Felicity##170283 |q 56904/3 |goto Un'Goro Crater/0 66.79,28.80
+step
+click Flower of Peace##332282+
+|tip They look like clusters of green flowers on the ground around this area.
+collect 3 Flower of Peace##170282 |q 56904/2 |goto The Cape of Stranglethorn/0 47.08,18.92
+step
+click Flower of Reflection##332288+
+|tip They look like small purple flowers on the ground around this area.
+collect 3 Flower of Reflection##170298 |q 56905/2 |goto Duskwood/0 64.56,25.44
+step
+click Flower of Luck##332293+
+|tip They look like small blue flowers on the ground around this area.
+collect 3 Flower of Luck##170321 |q 56906/2 |goto Dun Morogh/0 49.29,55.72
+step
+click Flower of Vigor##332280+
+|tip They look like clusters of purple flowers on the ground around this area.
+collect 3 Flower of Vigor##170280 |q 56903/3 |goto The Hinterlands/0 61.85,40.65
+step
+click Flower of Thoughtfulness##332292+
+|tip They look like small blue flowers on the ground around this area.
+collect 3 Flower of Thoughtfulness##170319 |q 56906/1 |goto Hillsbrad Foothills/0 49.62,22.33
+step
+click Flower of Solemnity##332289+
+|tip They look like bell-shaped flowers on the ground around this area.
+collect 3 Flower of Solemnity##170308 |q 56905/3 |goto Silverpine Forest/0 55.94,32.87
+step
+click Flower of Fortitude##332278+
+|tip They look like glowing white and red flowers on the ground around this area.
+collect 3 Flower of Fortitude##170278 |q 56903/1 |goto Eversong Woods/0 42.66,69.43
+step
+use the Lunar Festival Invitation##21711 |goto Orgrimmar/1 49.12,54.71
+Return to Moonglade |goto Moonglade/0 |c |noway |q 56906
+step
+talk Myrael Lunarbloom##155759
+turnin Crown of Courage##56903 |goto 53.09,36.02
+turnin Crown of Prosperity##56904 |goto 53.09,36.02
+turnin Crown of Dark Blossoms##56905 |goto 53.09,36.02
+turnin Crown of Good Fortune##56906 |goto 53.09,36.02
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Lunar Festival Optimized Elders Path",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+description="\nThis guide section will walk you through an optimized path for honoring the elders that are spread out all over Azeroth for the Lunar Festival event.",
+},[[
+step
+talk Zidormi##141488
+Ask her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
+Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.46,62.80 |q 8648 |future
+step
+talk Elder Darkcore##15564
+|tip Inside the entrance area building, before the Undercity elevators.
+accept Darkcore the Elder##8648 |goto Undercity/0 66.64,38.23
+step
+talk Elder Obsidian##15561
+accept Obsidian the Elder##8645 |goto Silverpine Forest/0 44.97,41.14
+step
+talk Elder Graveborn##15568
+accept Graveborn the Elder##8652 |goto Tirisfal Glades/0 61.86,53.91
+step
+Enter the cave |goto Western Plaguelands/0 64.69,38.62 < 15 |walk
+Follow the path |goto 63.68,37.66 < 15 |walk
+talk Elder Meadowrun##15602
+|tip Inside the cave.
+accept Meadowrun the Elder##8722 |goto 63.51,36.12
+step
+Leave the cave |goto 64.92,38.73 < 15 |only if walking
+talk Elder Moonstrike##15594
+|tip On top of the building.
+accept Moonstrike the Elder##8714 |goto 69.19,73.45
+step
+Enter Stratholme |goto Stratholme/1 68.01,88.52 < 10000 |c |q 8727 |future
+step
+map Stratholme/1
+path follow smart; loop off; ants curved; dist 25
+path	66.29,73.98	67.15,58.93	59.97,53.76	60.26,31.18	72.74,20.65
+talk Elder Farwhisper##15607
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Farwhisper the Elder##8727 |goto 78.91,20.00
+step
+Leave Stratholme |goto 78.91,20.00 > 10000 |c |noway |q 8650 |future
+step
+talk Elder Snowcrown##15566
+accept Snowcrown the Elder##8650 |goto Eastern Plaguelands/0 75.74,54.56
+step
+Enter the building |goto 35.35,68.76 < 10 |walk
+talk Elder Windrun##15592
+|tip Inside the building.
+accept Windrun the Elder##8688 |goto 35.58,68.82
+step
+talk Elder Highpeak##15559
+accept Highpeak the Elder##8643 |goto The Hinterlands/0 50.00,48.05
+step
+talk Elder Darkfeather##55218
+accept Darkfeather the Elder##29736 |goto Twilight Highlands/0 51.88,33.07
+step
+talk Elder Firebeard##55219
+accept Firebeard the Elder##29737 |goto 50.91,70.46
+step
+talk Elder Silvervein##15558
+accept Silvervein the Elder##8642 |goto Loch Modan/0 33.32,46.54
+step
+talk Elder Bronzebeard##15871
+|tip Inside Ironforge.
+accept Bronzebeard the Elder##8866 |goto Ironforge/0 29.19,17.06
+step
+talk Elder Goldwell##15569
+accept Goldwell the Elder##8653 |goto Dun Morogh/0 53.91,49.91
+step
+talk Elder Ironband##15567
+accept Ironband the Elder##8651 |goto Searing Gorge/0 21.28,79.12
+step
+talk Elder Dawnstrider##15585
+accept Dawnstrider the Elder##8683 |goto Burning Steppes/0 52.38,23.93
+step
+talk Elder Rumblerock##15557
+accept Rumblerock the Elder##8636 |goto 70.11,45.38
+step
+Run up the ramp |goto Burning Steppes/14 65.92,41.83 < 10 |walk
+Enter Lower Blackrock Spire |goto Blackrock Spire/4 37.91,43.32 < 10000 |c |q 8644 |future
+|tip Inside Blackrock Mountain
+step
+map Blackrock Spire/3
+path follow smart; loop off; ants curved; dist 20
+path	38.59,48.17
+map Blackrock Spire/4
+path	42.47,44.95	48.35,41.94
+map Blackrock Spire/2
+path	59.97,43.01
+talk Elder Stonefort##15560
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Stonefort the Elder##8644 |goto 61.84,39.79
+step
+map Blackrock Spire/2
+path follow smart; loop off; ants curved; dist 20
+path	59.97,43.01
+map Blackrock Spire/4
+path	42.47,44.95	48.35,41.94
+map Blackrock Spire/3
+path	38.59,48.17	37.73,40.86
+Leave Lower Blackrock Spire |goto Burning Steppes/14 80.32,40.26 |c |noway |q 8619 |future
+step
+Run down the ramp |goto 69.89,40.46 < 10 |walk
+Enter the building |goto Burning Steppes/16 55.35,84.18 < 10 |walk
+Follow the path |goto 38.89,53.11 < 30 |only if walking
+Enter Blackrock Depths |goto Blackrock Depths/1 34.71,77.82 < 10000 |c |q 8619 |future
+step
+map Blackrock Depths/1
+path follow smart; loop off; ants curved; dist 20
+path	38.45,75.70	48.78,72.26	51.36,67.96
+talk Elder Morndeep##15549
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Morndeep the Elder##8619 |goto 50.50,62.91
+step
+Leave Blackrock Depths |goto 50.50,62.91 > 10000 |c |noway |q 8646 |future
+step
+talk Elder Hammershout##15562
+accept Hammershout the Elder##8646 |goto Elwynn Forest/0 34.56,50.25
+step
+talk Elder Stormbrow##15565
+accept Stormbrow the Elder##8649 |goto 39.79,63.66
+step
+talk Elder Skychaser##15577
+|tip At the top of the tower.
+accept Skychaser the Elder##8675 |goto Westfall/0 56.65,47.10
+step
+Enter The Temple of Atal'Hakkar |goto The Temple of Atal'Hakkar/1 50.01,15.82 < 10000 |c |q 8713 |future
+step
+map The Temple of Atal'Hakkar/1
+path follow smart; loop off; ants curved; dist 20
+path	49.93,32.90	58.54,37.64
+talk Elder Starsong##15593
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Starsong the Elder##8713 |goto 62.84,34.19
+step
+Leave The Temple of Atal'Hakkar |goto 62.84,34.19 > 10000 |c |noway |q 8647 |future
+step
+talk Zidormi##88206
+Tell her _"Show me the Blasted Lands before the invasion."_
+Travel to the Past |condition ZGV.InPhase('Old Blasted Lands') |goto Blasted Lands/0 48.16,7.28 |q 8647 |future
+step
+talk Elder Bellowrage##15563
+accept Bellowrage the Elder##8647 |goto 54.28,49.50
+step
+talk Elder Starglade##15596
+accept Starglade the Elder##8716 |goto Northern Stranglethorn/0 71.04,34.31
+step
+talk Elder Winterhoof##15576
+accept Winterhoof the Elder##8674 |goto The Cape of Stranglethorn/0 39.96,72.51
+step
+talk Elder Moonlance##55228
+accept Moonlance the Elder##29738 |goto Shimmering Expanse/0 57.26,86.16
+step
+talk Elder Darkhorn##15579
+accept Darkhorn the Elder##8677 |goto Orgrimmar/1 52.25,60.03
+step
+talk Elder Skygleam##15600
+accept Skygleam the Elder##8720 |goto Azshara/0 64.74,79.34
+step
+talk Elder Stonespire##15574
+accept Stonespire the Elder##8672 |goto Winterspring/0 59.96,49.94
+step
+talk Elder Brightspear##15606
+accept Brightspear the Elder##8726 |goto 53.23,56.75
+step
+talk Elder Evershade##55227
+accept Evershade the Elder##29740 |goto Mount Hyjal/0 62.54,22.82
+step
+talk Elder Windsong##55224
+accept Windsong the Elder##29739 |goto 26.69,62.05
+step
+talk Elder Nightwind##15603
+accept Nightwind the Elder##8723 |goto Felwood/0 38.35,52.85
+step
+talk Zidormi##141489
+Ask her _"Can you show me what Darkshore was like before the battle?"_
+Travel to the Past |condition ZGV.InPhase('Old Darnassus') |goto Darkshore/0 48.86,24.46 |q 8718 |future
+step
+talk Elder Starweave##15601
+accept Starweave the Elder##8721 |goto 49.54,18.95
+step
+talk Elder Bladeleaf##15595
+accept Bladeleaf the Elder##8715 |goto Teldrassil/0 56.85,53.10
+step
+talk Elder Bladeswift##15598
+accept Bladeswift the Elder##8718 |goto Darnassus/0 39.18,31.85
+step
+talk Elder Riversong##15605
+accept Riversong the Elder##8725 |goto Ashenvale/0 35.54,48.91
+step
+talk Elder Moonwarden##15597
+accept Moonwarden the Elder##8717 |goto Northern Barrens/0 48.52,59.27
+step
+talk Elder Windtotem##15582
+accept Windtotem the Elder##8680 |goto 68.36,69.96
+step
+talk Elder Runetotem##15572
+accept Runetotem the Elder##8670 |goto Durotar/0 53.23,43.61
+step
+talk Elder High Mountain##15588
+accept High Mountain the Elder##8686 |goto Southern Barrens/0 41.59,47.45
+step
+talk Elder Bloodhoof##15575
+accept Bloodhoof the Elder##8673 |goto Mulgore/0 48.49,53.24
+step
+talk Elder Ezra Wheathoof##15580
+accept Wheathoof the Elder##8678 |goto Thunder Bluff/0 72.99,23.34
+step
+Enter Maraudon: Earth Song Falls |goto Maraudon/2 0.00,0.00 < 10000 |c |q 8635 |future
+|tip As soon as you go into the purple side, jump down to your left and take the portal to Inner Mauradon.
+step
+map Maraudon/2
+path follow smart; loop off; ants curved; dist 20
+path	28.98,46.45	33.57,60.86	36.59,57.21	44.48,60.22	44.48,54.20
+path	47.20,50.75	50.65,53.76	49.79,63.01	52.08,67.10	46.06,67.31
+path	41.61,68.17	40.75,74.63	44.48,76.35	45.05,84.30	46.77,92.26
+talk Elder Splitrock##15556
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Splitrock the Elder##8635 |goto 51.08,93.55
+step
+Leave Maraudon: Earth Song Falls |goto 51.08,93.55 < 10000 |c |noway |q 8685 |future
+step
+talk Elder Mistwalker##15587
+accept Mistwalker the Elder##8685 |goto Feralas/0 62.56,31.08
+step
+talk Elder Grimtotem##15581
+accept Grimtotem the Elder##8679 |goto 76.71,37.89
+step
+talk Elder Skyseer##15584
+accept Skyseer the Elder##8682 |goto Thousand Needles/0 46.35,51.02
+step
+talk Elder Morningdew##15604
+accept Morningdew the Elder##8724 |goto 77.09,75.61
+step
+talk Elder Dreamseer##15586
+accept Dreamseer the Elder##8684 |goto Tanaris/0 51.40,28.81
+step
+Enter Zul'Farrak |goto Zul'Farrak/0 56.61,91.02 < 10000 |c |q 8676 |future
+step
+map Zul'Farrak/0
+path follow smart; loop off; ants curved; dist 25
+path	57.96,77.85	58.82,62.80	51.79,41.29	41.46,51.83	33.43,43.66
+talk Elder Wildmane##15578
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Wildmane the Elder##8676 |goto 34.29,39.14
+step
+Leave Zul'Farrak |goto 34.29,39.14 < 10000 |c |noway |q 8671 |future
+step
+talk Elder Ragetotem##15573
+accept Ragetotem the Elder##8671 |goto Tanaris/0 37.24,79.06
+step
+talk Zidormi##162419
+Ask her _"Can you show me what Uldum was like during the time of the Cataclysm?"_
+Travel to the Past |condition ZGV.InPhase('OldUldum') |goto Uldum/0 56.02,35.14 |q 29742 |future
+step
+talk Elder Sekhemi##55210
+accept Sekhemi the Elder##29741 |goto Uldum/0 31.59,62.98
+step
+talk Elder Menkhaf##55211
+accept Menkhaf the Elder##29742 |goto Uldum/0 65.52,18.67
+step
+talk Elder Thunderhorn##15583
+accept Thunderhorn the Elder##8681 |goto Un'Goro Crater/0 50.37,76.17
+step
+talk Zidormi##128607
+|tip She is at the top of the ramp leading from Un'Goro Crater to Silithus.
+Ask her _"Can you show me what Silithus was like before the Wound in the World?"_
+Travel to the Past |condition ZGV.InPhase('Old Silithus') |goto Silithus/0 78.93,21.97 |q 8719 |future
+step
+talk Elder Bladesing##15599
+accept Bladesing the Elder##8719 |goto 53.02,35.47
+step
+talk Elder Primestone##15570
+accept Primestone the Elder##8654 |goto 30.80,13.32
+step
+talk Elder Pamuya##30371
+accept Pamuya the Elder##13029 |goto Borean Tundra/0 42.94,49.57
+step
+talk Elder Sardis##30348
+accept Sardis the Elder##13012 |goto 59.09,65.63
+step
+talk Elder Arp##30364
+accept Arp the Elder##13033 |goto 57.40,43.72
+step
+talk Elder Northal##30360
+accept Northal the Elder##13016 |goto 33.80,34.36
+step
+Enter the Nexus |goto The Nexus/1 27.51,26.02 < 10000 |c |q 13021 |future
+|tip It's the lowest portal.
+step
+map The Nexus/1
+path follow smart; loop off; ants curved; dist 20
+path	36.59,81.29	45.91,68.17	48.92,67.10	51.51,62.58	53.52,53.76
+path	64.56,53.33	64.99,61.08	55.38,64.73
+talk Elder Igasho##30536
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Igasho the Elder##13021 |goto 55.38,64.73
+step
+Leave the Nexus |goto 55.38,64.73 > 10000 |c |noway |q 13018 |future
+step
+talk Elder Sandrene##30362
+accept Sandrene the Elder##13018 |goto Sholazar Basin/0 49.78,63.62
+step
+talk Elder Wanikaya##30365
+accept Wanikaya the Elder##13024 |goto 63.80,49.02
+step
+talk Elder Bluewolf##30368
+|tip Inside the building.
+|tip You can only get to this NPC when your faction controls Wintergrasp.
+accept Bluewolf the Elder##13026 |goto Wintergrasp/0 49.03,13.94 |or
+If your faction does not control Wintergrasp, click here to continue |confirm |or
+step
+Enter Azjol-Nerub |goto Azjol-Nerub/3 9.41,93.32 < 10000 |c |q 13022 |future
+step
+map  Azjol-Nerub/3
+path follow smart; loop off; ants curved; dist 20
+path	13.06,86.67	19.23,71.83	25.68,35.49	53.80,44.73	64.13,44.52
+path	74.03,44.30	82.50,44.52	88.95,44.73	80.78,40.22	70.59,33.55
+map  Azjol-Nerub/2
+path	39.17,28.82	53.09,15.91	60.98,32.04	49.21,62.58
+talk Elder Nurgen##30533
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Nurgen the Elder##13022 |goto Azjol-Nerub/1 21.81,43.23
+step
+Leave Azjol-Nerub |goto 21.81,43.23 > 10000 |c |noway |q 13014 |future
+step
+talk Elder Morthie##30358
+accept Morthie the Elder##13014 |goto Dragonblight/0 29.75,55.91
+step
+talk Elder Skywarden##30373
+accept Skywarden the Elder##13031 |goto 35.10,48.35
+step
+talk Elder Thoim##30363
+accept Thoim the Elder##13019 |goto 48.77,78.18
+step
+Enter Drak'Tharon Keep |goto Drak'Tharon Keep/1 29.41,81.02 < 1000 |c |q 13023 |future
+step
+map Drak'Tharon Keep/1
+path follow smart; loop off; ants curved; dist 20
+path	33.14,78.28	40.89,86.67	47.35,79.14	47.78,45.16	56.67,30.97
+path	56.82,18.28	67.00,17.85	63.42,31.83	68.01,40.00	67.72,54.63
+path	60.40,57.64	55.96,59.14	55.52,77.42	63.70,76.99	68.87,78.93
+talk Elder Kilias##30534
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Kilias the Elder##13023 |goto 68.87,78.93
+step
+Leave Drak'Tharon Keep |goto 68.87,78.93 > 1000 |c |noway |q 13028 |future
+step
+talk Elder Graymane##30370
+accept Graymane the Elder##13028 |goto The Storm Peaks/0 41.16,84.72
+step
+talk Elder Fargal##30359
+accept Fargal the Elder##13015 |goto 28.88,73.71
+step
+Enter the building |goto 30.64,37.02 < 15 |walk
+talk Elder Stonebeard##30375
+|tip Inside the building.
+accept Stonebeard the Elder##13020 |goto 31.26,37.61
+step
+Enter the Halls of Stone |goto Halls of Stone/1 34.41,36.27 < 1000 |c |q 13066 |future
+step
+map  Halls of Stone/1
+path follow smart; loop off; ants curved; dist 20
+path	36.16,36.13	45.05,35.92	50.22,45.16	48.49,53.33
+path	39.60,54.20	34.15,50.32	29.27,61.72
+talk Elder Yurauk##30535
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Yurauk the Elder##13066 |goto 29.27,61.72
+step
+Leave the Halls of Stone |goto 29.27,61.72 > 10000 |c |noway |q 13032 |future
+step
+talk Elder Muraco##30374
+accept Muraco the Elder##13032 |goto The Storm Peaks/0 64.59,51.34
+step
+Enter Gundrak |goto Gundrak/1 59.01,30.92 < 1000 |c |q 13065 |future
+step
+map Gundrak/1
+path follow smart; loop off; ants curved; dist 20
+path	58.68,37.21	59.25,48.82	57.96,67.96	51.08,73.55	46.34,70.97
+path	45.34,61.08
+talk Elder Ohanzee##30537
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Ohanzee the Elder##13065 |goto 45.34,61.08
+step
+Leave Gundrak |goto 45.34,61.08 > 10000 |c |q 13027 |noway |future
+step
+talk Elder Tauros##30369
+accept Tauros the Elder##13027 |goto Zul'Drak/0 58.91,55.97
+step
+talk Elder Beldak##30357
+accept Beldak the Elder##13013 |goto Grizzly Hills/0 60.57,27.67
+step
+talk Elder Whurain##30372
+accept Whurain the Elder##13030 |goto 64.18,46.99
+step
+talk Elder Lunaro##30367
+accept Lunaro the Elder##13025 |goto 80.53,37.11
+step
+Enter Utgarde Keep |goto Utgarde Keep/1 69.15,73.98 < 10000 |c |q 13017 |future
+step
+map Utgarde Keep/1
+path follow smart; loop off; ants curved; dist 20
+path	68.72,70.54	63.56,46.67	62.27,40.22	65.57,29.03	58.82,23.44
+path	50.07,28.17	43.76,27.31	34.00,32.04	24.10,38.93	26.40,51.83
+path	28.26,61.94	21.66,76.35	28.69,87.53	39.60,86.02	49.21,81.94
+path	47.32,69.46
+talk Elder Jarten##30531
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Jarten the Elder##13017 |goto 47.32,69.46
+step
+Leave Utgarde Keep |goto Utgarde Keep/1 47.32,69.46 > 10000 |c |noway |q 13067 |future
+step
+Enter Utgarde Pinnacle |goto Utgarde Pinnacle/2 44.33,14.84 < 10000 |c |q 13067 |future
+step
+map Utgarde Pinnacle/2
+path follow smart; loop off; ants curved; dist 20
+path	44.48,17.85	44.19,35.70	33.86,36.13	33.72,50.97	34.43,68.39
+path	39.60,68.60	39.31,76.35
+map Utgarde Pinnacle/1
+path	30.99,74.41	35.87,76.35	36.01,85.16	45.62,85.81
+map Utgarde Pinnacle/2
+path	52.51,73.98	51.65,83.66	60.55,83.87	60.83,69.89	68.15,69.25
+path	68.44,52.04	68.15,36.35	60.98,37.42	56.24,37.42
+map Utgarde Pinnacle/1
+path	48.49,23.01
+talk Elder Chogan'gada##30538
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Chogan'gada the Elder##13067 |goto 48.71,23.12
+step
+Leave Utgarde Pinnacle |goto Utgarde Pinnacle/2 44.33,14.84 > 10000 |c |noway |q 29735 |future
+step
+talk Elder Stonebrand##55217
+|tip Inside the building.
+accept Stonebrand the Elder##29735 |goto Deepholm/0 49.70,54.89
+step
+talk Elder Deepforge##55216
+accept Deepforge the Elder##29734 |goto 27.70,69.18
+step
+talk Elder Naladu##176253
+accept Naladu the Elder##63213 |goto Ember Court/0 61.84,59.82
+|only if covenant() == Venthyr and covenantfeature("Covenant Unique") >= 1
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\A Coin of Ancestry",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={605},
+patch='40302',
+description="\nReceive a Coin of Ancestry.",
+},[[
+step
+leechsteps "Events Guides\\Lunar Festival\\Lunar Festival Optimized Elders Path" 1-2
+step
+|achieve 605
+step
+_Congratulations!_
+You Earned the "A Coin of Ancestry" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\5 Coins of Ancestry",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={606},
+patch='30001',
+description="\nReceive 5 Coins of Ancestry.",
+},[[
+step
+leechsteps "Events Guides\\Lunar Festival\\Lunar Festival Optimized Elders Path" 1-6
+step
+|achieve 606
+step
+_Congratulations!_
+You Earned the "5 Coins of Ancestry" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\10 Coins of Ancestry",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={607},
+patch='30001',
+description="\nReceive 10 Coins of Ancestry.",
+},[[
+step
+leechsteps "Events Guides\\Lunar Festival\\Lunar Festival Optimized Elders Path" 1-11
+step
+|achieve 607
+step
+_Congratulations!_
+You Earned the "10 Coins of Ancestry" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\25 Coins of Ancestry",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={608},
+patch='30001',
+description="\nReceive 25 Coins of Ancestry.",
+},[[
+step
+leechsteps "Events Guides\\Lunar Festival\\Lunar Festival Optimized Elders Path" 1-35
+step
+|achieve 608
+step
+_Congratulations!_
+You Earned the "25 Coins of Ancestry" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\50 Coins of Ancestry",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={609},
+patch='30002',
+description="\nReceive 50 Coins of Ancestry.",
+},[[
+step
+leechsteps "Events Guides\\Lunar Festival\\Lunar Festival Optimized Elders Path" 1-63
+step
+|achieve 609
+step
+_Congratulations!_
+You Earned the "50 Coins of Ancestry" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of Cataclysm",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={6006},
+patch='40300',
+description="\nHonor the Elders of the following zones:\n\nElder Stonebrand, Temple of Earth\n"..
+"Elder Menkhaf, Uldum\nElder Sekhemi, Uldum\nElder Firebeard, Twilight Highlands\n"..
+"Elder Darkfeather, Twilight Highlands\nElder Windsong, Hyjal\nElder Evershade, "..
+"Nordrassil\nElder Moonlance, Vashj'ir\nElder Deepforge, Deepholm",
+},[[
+step
+talk Elder Darkfeather##55218
+accept Darkfeather the Elder##29736 |goto Twilight Highlands/0 51.88,33.07
+step
+talk Elder Firebeard##55219
+accept Firebeard the Elder##29737 |goto 50.91,70.46
+step
+talk Elder Moonlance##55228
+accept Moonlance the Elder##29738 |goto Shimmering Expanse/0 57.26,86.16
+step
+talk Elder Evershade##55227
+accept Evershade the Elder##29740 |goto Mount Hyjal/0 62.54,22.82
+step
+talk Elder Windsong##55224
+accept Windsong the Elder##29739 |goto 26.69,62.05
+step
+talk Zidormi##162419
+Ask her _"Can you show me what Uldum was like during the time of the Cataclysm?"_
+Travel to the Past |condition ZGV.InPhase('OldUldum') |goto Uldum/0 56.02,35.14 |q 29742 |future
+step
+talk Elder Sekhemi##55210
+accept Sekhemi the Elder##29741 |goto Uldum/0 31.59,62.98
+step
+talk Elder Menkhaf##55211
+accept Menkhaf the Elder##29742 |goto 65.52,18.67
+step
+talk Elder Stonebrand##55217
+|tip Inside the building.
+accept Stonebrand the Elder##29735 |goto Deepholm/0 49.70,54.89
+step
+talk Elder Deepforge##55216
+accept Deepforge the Elder##29734 |goto 27.70,69.18
+step
+|achieve 6006
+step
+_Congratulations!_
+You Earned the "Elders of Cataclysm" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of Eastern Kingdoms",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={912},
+patch='30008',
+description="\nHonor the Elders of the following zones:\n\nElder Goldwell, Kharanos\n"..
+"Elder Bellowrage, Blasted Lands\nElder Stormbrow, Goldshire\nElder Meadowrun, "..
+"Western Plaguelands\nElder Starglade, Zul'Gurub\nElder Winterhoof, Booty Bay\n"..
+"Elder Silvervein, Thelsamar\nElder Skychaser, Sentinel Hill\nElder Rumblerock, "..
+"Burning Steppes\nElder Dawnstrider, Flame Crest\nElder Highpeak, The Hinterlands\n"..
+"Elder Ironband, Searing Gorge\nElder Graveborn, Brill\nElder Obsidian, The Sepulcher"..
+"\nElder Windrun, Eastern Plaguelands\nElder Snowcrown, Light's Hope Chapel\n"..
+"Elder Moonstrike, Scholomance",
+},[[
+step
+talk Elder Obsidian##15561
+accept Obsidian the Elder##8645 |goto Silverpine Forest/0 44.97,41.14
+step
+talk Zidormi##141488
+Ask her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
+Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.46,62.80 |q 8652 |future
+step
+talk Elder Graveborn##15568
+accept Graveborn the Elder##8652 |goto 61.86,53.91
+step
+Enter the cave |goto Western Plaguelands/0 64.69,38.62 < 15 |walk
+Follow the path |goto 63.68,37.66 < 15 |walk
+talk Elder Meadowrun##15602
+|tip Inside the cave.
+accept Meadowrun the Elder##8722 |goto 63.51,36.12
+step
+Leave the cave |goto 64.92,38.73 < 15 |only if walking
+talk Elder Moonstrike##15594
+|tip On top of the building.
+accept Moonstrike the Elder##8714 |goto 69.19,73.45
+step
+talk Elder Snowcrown##15566
+accept Snowcrown the Elder##8650 |goto Eastern Plaguelands/0 75.74,54.56
+step
+Enter the building |goto 35.35,68.76 < 10 |walk
+talk Elder Windrun##15592
+|tip Inside the building.
+accept Windrun the Elder##8688 |goto 35.58,68.82
+step
+talk Elder Highpeak##15559
+accept Highpeak the Elder##8643 |goto The Hinterlands/0 50.00,48.05
+step
+talk Elder Silvervein##15558
+accept Silvervein the Elder##8642 |goto Loch Modan/0 33.32,46.54
+step
+talk Elder Goldwell##15569
+accept Goldwell the Elder##8653 |goto Dun Morogh/0 53.91,49.91
+step
+talk Elder Ironband##15567
+accept Ironband the Elder##8651 |goto Searing Gorge/0 21.28,79.12
+step
+talk Elder Dawnstrider##15585
+accept Dawnstrider the Elder##8683 |goto Burning Steppes/0 52.38,23.93
+step
+talk Elder Rumblerock##15557
+accept Rumblerock the Elder##8636 |goto 70.11,45.38
+step
+talk Elder Stormbrow##15565
+accept Stormbrow the Elder##8649 |goto Elwynn Forest/0 39.79,63.66
+step
+talk Elder Skychaser##15577
+|tip At the top of the tower.
+accept Skychaser the Elder##8675 |goto Westfall/0 56.65,47.10
+step
+talk Zidormi##88206
+Tell her _"Show me the Blasted Lands before the invasion."_
+Travel to the Past |condition ZGV.InPhase('Old Blasted Lands') |goto Blasted Lands/0 48.16,7.28 |q 8647 |future
+step
+talk Elder Bellowrage##15563
+accept Bellowrage the Elder##8647 |goto 54.28,49.50
+step
+talk Elder Starglade##15596
+accept Starglade the Elder##8716 |goto Northern Stranglethorn/0 71.04,34.31
+step
+talk Elder Winterhoof##15576
+accept Winterhoof the Elder##8674 |goto The Cape of Stranglethorn/0 39.96,72.51
+step
+|achieve 912
+step
+_Congratulations!_
+You Earned the "Elders of Eastern Kingdoms" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of Kalimdor",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={911},
+patch='30008',
+description="\nHonor the Elders of the following zones:\n\nElder Runetotem, Razor Hill\n"..
+"Elder Skygleam, Azshara\nElder Moonwarden, The Crossroads\nElder High "..
+"Mountain, Vendetta Point\nElder Windtotem, Ratchet\nElder Bladeleaf, "..
+"Dolanaar\nElder Starweave, Lor'danel\nElder Bloodhoof, Bloodhoof Village\n"..
+"Elder Riversong, Astranaar\nElder Grimtotem, Feralas\nElder Mistwalker, "..
+"Dire Maul\nElder Nightwind, Felwood\nElder Skyseern Freewind Post\nElder"..
+" Morningdew, Fizzle and Pozzik's Speedbarge\nElder Ragetotem, Tanaris\n"..
+"Elder Dreamseer, Gadgetzan\nElder Thunderhorn, Un'Goro\nElder Brightspear,"..
+" Winterspring\nElder Stonespire, Everlook\nElder Primestone, Silithus\n"..
+"Elder Bladesing, Cenarion Hold",
+},[[
+step
+talk Elder Skygleam##15600
+accept Skygleam the Elder##8720 |goto Azshara/0 64.74,79.34
+step
+talk Elder Stonespire##15574
+accept Stonespire the Elder##8672 |goto Winterspring/0 59.96,49.94
+step
+talk Elder Brightspear##15606
+accept Brightspear the Elder##8726 |goto 53.23,56.75
+step
+talk Elder Nightwind##15603
+accept Nightwind the Elder##8723 |goto Felwood/0 38.35,52.85
+step
+talk Zidormi##141489
+Ask her _"Can you show me what Darkshore was like before the battle?"_
+Travel to the Past |condition ZGV.InPhase('Old Darnassus') |goto Darkshore/0 48.86,24.46 |q 8721 |future
+step
+talk Elder Starweave##15601
+accept Starweave the Elder##8721 |goto 49.54,18.95
+step
+talk Elder Bladeleaf##15595
+accept Bladeleaf the Elder##8715 |goto Teldrassil/0 56.85,53.10
+step
+talk Elder Riversong##15605
+accept Riversong the Elder##8725 |goto Ashenvale/0 35.54,48.91
+step
+talk Elder Moonwarden##15597
+accept Moonwarden the Elder##8717 |goto Northern Barrens/0 48.52,59.27
+step
+talk Elder Windtotem##15582
+accept Windtotem the Elder##8680 |goto 68.36,69.96
+step
+talk Elder Runetotem##15572
+accept Runetotem the Elder##8670 |goto Durotar/0 53.23,43.61
+step
+talk Elder High Mountain##15588
+accept High Mountain the Elder##8686 |goto Southern Barrens/0 41.59,47.45
+step
+talk Elder Bloodhoof##15575
+accept Bloodhoof the Elder##8673 |goto Mulgore/0 48.49,53.24
+step
+talk Elder Mistwalker##15587
+accept Mistwalker the Elder##8685 |goto Feralas/0 62.56,31.08
+step
+talk Elder Grimtotem##15581
+accept Grimtotem the Elder##8679 |goto 76.71,37.89
+step
+talk Elder Skyseer##15584
+accept Skyseer the Elder##8682 |goto Thousand Needles/0 46.35,51.02
+step
+talk Elder Morningdew##15604
+accept Morningdew the Elder##8724 |goto 77.09,75.61
+step
+talk Elder Dreamseer##15586
+accept Dreamseer the Elder##8684 |goto Tanaris/0 51.40,28.81
+step
+talk Elder Ragetotem##15573
+accept Ragetotem the Elder##8671 |goto 37.24,79.06
+step
+talk Elder Thunderhorn##15583
+accept Thunderhorn the Elder##8681 |goto Un'Goro Crater/0 50.37,76.17
+step
+talk Zidormi##128607
+|tip She is at the top of the ramp leading from Un'Goro Crater to Silithus.
+Ask her _"Can you show me what Silithus was like before the Wound in the World?"_
+Travel to the Past |condition ZGV.InPhase('Old Silithus') |goto Silithus/0 78.93,21.97 |q 8719 |future
+step
+talk Elder Bladesing##15599
+accept Bladesing the Elder##8719 |goto 53.02,35.47
+step
+talk Elder Primestone##15570
+accept Primestone the Elder##8654 |goto 30.80,13.32
+step
+|achieve 911
+step
+_Congratulations!_
+You Earned the "Elders of Kalimdor" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of Northrend",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={1396},
+patch='30008',
+description="\nHonor the Elders of the following zones:\n\nElder Sardis, Valiance Keep\n"..
+"Elder Morthie, Star's Rest\nElder Arp, D.E.H.T.A\nElder Sandrene, Lakeside"..
+" Landing\nElder Lunaro, Ruins of Tethys\nElder Tauros, Zim'Torga\nElder "..
+"Graymane, K3\nElder Pamuya, Warsong Hold\nElder Skywarden, Agmar's Hammer\n"..
+"Elder Beldak, Westfall Brigade\nElder Fargal, Frosthold\nElder Northal, "..
+"Transitus Shield\nElder Wanikaya, Rainspeaker Rapids\nElder Bluewolf, "..
+"Wintergrasp\nElder Thoim, Moa'ki Harbor\nElder Stonebeard, Bouldercrag's "..
+"Refuge\nElder Whurain, Camp Oneqwah\nElder Muraco, Camp Tunka'lo",
+},[[
+step
+talk Elder Pamuya##30371
+accept Pamuya the Elder##13029 |goto Borean Tundra/0 42.94,49.57
+step
+talk Elder Sardis##30348
+accept Sardis the Elder##13012 |goto 59.09,65.63
+step
+talk Elder Arp##30364
+accept Arp the Elder##13033 |goto 57.40,43.72
+step
+talk Elder Northal##30360
+accept Northal the Elder##13016 |goto 33.80,34.36
+step
+talk Elder Sandrene##30362
+accept Sandrene the Elder##13018 |goto Sholazar Basin/0 49.78,63.62
+step
+talk Elder Wanikaya##30365
+accept Wanikaya the Elder##13024 |goto 63.80,49.02
+step
+talk Elder Bluewolf##30368
+|tip Inside the building.
+|tip You can only get to this NPC when your faction controls Wintergrasp.
+accept Bluewolf the Elder##13026 |goto Wintergrasp/0 49.03,13.94 |or
+If your faction does not control Wintergrasp, click here to continue |confirm |or
+step
+talk Elder Morthie##30358
+accept Morthie the Elder##13014 |goto Dragonblight/0 29.75,55.91
+step
+talk Elder Skywarden##30373
+accept Skywarden the Elder##13031 |goto 35.10,48.35
+step
+talk Elder Thoim##30363
+accept Thoim the Elder##13019 |goto 48.77,78.18
+step
+talk Elder Graymane##30370
+accept Graymane the Elder##13028 |goto The Storm Peaks/0 41.16,84.72
+step
+talk Elder Fargal##30359
+accept Fargal the Elder##13015 |goto 28.88,73.71
+step
+Enter the building |goto 30.64,37.02 < 15 |walk
+talk Elder Stonebeard##30375
+|tip Inside the building.
+accept Stonebeard the Elder##13020 |goto 31.26,37.61
+step
+talk Elder Muraco##30374
+accept Muraco the Elder##13032 |goto The Storm Peaks/0 64.59,51.34
+step
+talk Elder Tauros##30369
+accept Tauros the Elder##13027 |goto Zul'Drak/0 58.91,55.97
+step
+talk Elder Beldak##30357
+accept Beldak the Elder##13013 |goto Grizzly Hills/0 60.57,27.67
+step
+talk Elder Whurain##30372
+accept Whurain the Elder##13030 |goto 64.18,46.99
+step
+talk Elder Lunaro##30367
+accept Lunaro the Elder##13025 |goto 80.53,37.11
+step
+|achieve 1396
+step
+_Congratulations!_
+You Earned the "Elders of Northrend" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of the Dungeons",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={910},
+patch='30002',
+description="\nHonor the Elders of the following dungeons:\n\nElder Wildmane, Zul'Farrak\nElder "..
+"Splitrock, Maraudon\nElder Morndeep, Blackrock Depths\nElder Jarten, Utgarde "..
+"Keep\nElder Nurgen, Azjol-Nerub\nElder Ohanzee, Gundrak\nElder Chogan'gada, "..
+"Utgarde Pinnacle\nElder Starsong, the Sunken Temple\nElder Stonefort, Blackrock"..
+" Spire\nElder Farwhisper, Stratholme\nElder Igasho, The Nexus\nElder Kilias, "..
+"Drak'Tharon Keep\nElder Yurauk, the Halls of Stone",
+},[[
+step
+Enter Stratholme |goto Stratholme/1 68.01,88.52 < 10000 |c |q 8727 |future
+step
+map Stratholme/1
+path follow smart; loop off; ants curved; dist 25
+path	66.29,73.98	67.15,58.93	59.97,53.76	60.26,31.18	72.74,20.65
+talk Elder Farwhisper##15607
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Farwhisper the Elder##8727 |goto 78.91,20.00
+step
+Leave Stratholme |goto 78.91,20.00 > 10000 |c |noway |q 8644 |future
+step
+Run up the ramp |goto Burning Steppes/14 65.92,41.83 < 10 |walk
+Enter Lower Blackrock Spire |goto Blackrock Spire/4 37.91,43.32 < 10000 |c |q 8644 |future
+|tip Inside Blackrock Mountain
+step
+map Blackrock Spire/3
+path follow smart; loop off; ants curved; dist 20
+path	38.59,48.17
+map Blackrock Spire/4
+path	42.47,44.95	48.35,41.94
+map Blackrock Spire/2
+path	59.97,43.01
+talk Elder Stonefort##15560
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Stonefort the Elder##8644 |goto 61.84,39.79
+step
+map Blackrock Spire/2
+path follow smart; loop off; ants curved; dist 20
+path	59.97,43.01
+map Blackrock Spire/4
+path	42.47,44.95	48.35,41.94
+map Blackrock Spire/3
+path	38.59,48.17	37.73,40.86
+Leave Lower Blackrock Spire |goto Burning Steppes/14 80.32,40.26 |c |noway |q 8619 |future
+step
+Run down the ramp |goto 69.89,40.46 < 10 |walk
+Enter the building |goto Burning Steppes/16 55.35,84.18 < 10 |walk
+Follow the path |goto 38.89,53.11 < 30 |only if walking
+Enter Blackrock Depths |goto Blackrock Depths/1 34.71,77.82 < 10000 |c |q 8619 |future
+step
+map Blackrock Depths/1
+path follow smart; loop off; ants curved; dist 20
+path	38.45,75.70	48.78,72.26	51.36,67.96
+talk Elder Morndeep##15549
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Morndeep the Elder##8619 |goto 50.50,62.91
+step
+Leave Blackrock Depths |goto 50.50,62.91 > 10000 |c |noway |q 8713 |future
+step
+Enter The Temple of Atal'Hakkar |goto The Temple of Atal'Hakkar/1 50.01,15.82 < 10000 |c |q 8713 |future
+step
+map The Temple of Atal'Hakkar/1
+path follow smart; loop off; ants curved; dist 20
+path	49.93,32.90	58.54,37.64
+talk Elder Starsong##15593
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Starsong the Elder##8713 |goto 62.84,34.19
+step
+Leave The Temple of Atal'Hakkar |goto 62.84,34.19 > 10000 |c |noway |q 8635 |future
+step
+Enter Maraudon: Earth Song Falls |goto Maraudon/2 0.00,0.00 < 10000 |c |q 8635 |future
+|tip As soon as you go into the purple side, jump down to your left and take the portal to Inner Mauradon.
+step
+map Maraudon/2
+path follow smart; loop off; ants curved; dist 20
+path	28.98,46.45	33.57,60.86	36.59,57.21	44.48,60.22	44.48,54.20
+path	47.20,50.75	50.65,53.76	49.79,63.01	52.08,67.10	46.06,67.31
+path	41.61,68.17	40.75,74.63	44.48,76.35	45.05,84.30	46.77,92.26
+talk Elder Splitrock##15556
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Splitrock the Elder##8635 |goto 51.08,93.55
+step
+Leave Maraudon: Earth Song Falls |goto 51.08,93.55 < 10000 |c |noway |q 8676 |future
+step
+Enter Zul'Farrak |goto Zul'Farrak/0 56.61,91.02 < 10000 |c |q 8676 |future
+step
+map Zul'Farrak/0
+path follow smart; loop off; ants curved; dist 25
+path	57.96,77.85	58.82,62.80	51.79,41.29	41.46,51.83	33.43,43.66
+talk Elder Wildmane##15578
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Wildmane the Elder##8676 |goto 34.29,39.14
+step
+Leave Zul'Farrak |goto 34.29,39.14 < 10000 |c |noway |q 13021 |future
+step
+Enter the Nexus |goto The Nexus/1 27.51,26.02 < 10000 |c |q 13021 |future
+|tip It's the lowest portal.
+step
+map The Nexus/1
+path follow smart; loop off; ants curved; dist 20
+path	36.59,81.29	45.91,68.17	48.92,67.10	51.51,62.58	53.52,53.76
+path	64.56,53.33	64.99,61.08	55.38,64.73
+talk Elder Igasho##30536
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Igasho the Elder##13021 |goto 55.38,64.73
+step
+Leave the Nexus |goto 55.38,64.73 > 10000 |c |noway |q 13022 |future
+step
+Enter Azjol-Nerub |goto Azjol-Nerub/3 9.41,93.32 < 10000 |c |q 13022 |future
+step
+map  Azjol-Nerub/3
+path follow smart; loop off; ants curved; dist 20
+path	13.06,86.67	19.23,71.83	25.68,35.49	53.80,44.73	64.13,44.52
+path	74.03,44.30	82.50,44.52	88.95,44.73	80.78,40.22	70.59,33.55
+map  Azjol-Nerub/2
+path	39.17,28.82	53.09,15.91	60.98,32.04	49.21,62.58
+talk Elder Nurgen##30533
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Nurgen the Elder##13022 |goto Azjol-Nerub/1 21.81,43.23
+step
+Leave Azjol-Nerub |goto 21.81,43.23 > 10000 |c |noway |q 13023 |future
+step
+Enter Drak'Tharon Keep |goto Drak'Tharon Keep/1 29.41,81.02 < 1000 |c |q 13023 |future
+step
+map Drak'Tharon Keep/1
+path follow smart; loop off; ants curved; dist 20
+path	33.14,78.28	40.89,86.67	47.35,79.14	47.78,45.16	56.67,30.97
+path	56.82,18.28	67.00,17.85	63.42,31.83	68.01,40.00	67.72,54.63
+path	60.40,57.64	55.96,59.14	55.52,77.42	63.70,76.99	68.87,78.93
+talk Elder Kilias##30534
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Kilias the Elder##13023 |goto 68.87,78.93
+step
+Leave Drak'Tharon Keep |goto 68.87,78.93 > 1000 |c |noway |q 13066 |future
+step
+Enter the Halls of Stone |goto Halls of Stone/1 34.41,36.27 < 1000 |c |q 13066 |future
+step
+map  Halls of Stone/1
+path follow smart; loop off; ants curved; dist 20
+path	36.16,36.13	45.05,35.92	50.22,45.16	48.49,53.33
+path	39.60,54.20	34.15,50.32	29.27,61.72
+talk Elder Yurauk##30535
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Yurauk the Elder##13066 |goto 29.27,61.72
+step
+Leave the Halls of Stone |goto 29.27,61.72 > 10000 |c |noway |q 13065 |future
+step
+Enter Gundrak |goto Gundrak/1 59.01,30.92 < 1000 |c |q 13065 |future
+step
+map Gundrak/1
+path follow smart; loop off; ants curved; dist 20
+path	58.68,37.21	59.25,48.82	57.96,67.96	51.08,73.55	46.34,70.97
+path	45.34,61.08
+talk Elder Ohanzee##30537
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Ohanzee the Elder##13065 |goto 45.34,61.08
+step
+Leave Gundrak |goto 45.34,61.08 > 10000 |c |q 13017 |noway |future
+step
+Enter Utgarde Keep |goto Utgarde Keep/1 69.15,73.98 < 10000 |c |q 13017 |future
+step
+map Utgarde Keep/1
+path follow smart; loop off; ants curved; dist 20
+path	68.72,70.54	63.56,46.67	62.27,40.22	65.57,29.03	58.82,23.44
+path	50.07,28.17	43.76,27.31	34.00,32.04	24.10,38.93	26.40,51.83
+path	28.26,61.94	21.66,76.35	28.69,87.53	39.60,86.02	49.21,81.94
+path	47.32,69.46
+talk Elder Jarten##30531
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Jarten the Elder##13017 |goto 47.32,69.46
+step
+Leave Utgarde Keep |goto Utgarde Keep/1 47.32,69.46 > 10000 |c |noway |q 13067 |future
+step
+Enter Utgarde Pinnacle |goto Utgarde Pinnacle/2 44.33,14.84 < 10000 |c |q 13067 |future
+step
+map Utgarde Pinnacle/2
+path follow smart; loop off; ants curved; dist 20
+path	44.48,17.85	44.19,35.70	33.86,36.13	33.72,50.97	34.43,68.39
+path	39.60,68.60	39.31,76.35
+map Utgarde Pinnacle/1
+path	30.99,74.41	35.87,76.35	36.01,85.16	45.62,85.81
+map Utgarde Pinnacle/2
+path	52.51,73.98	51.65,83.66	60.55,83.87	60.83,69.89	68.15,69.25
+path	68.44,52.04	68.15,36.35	60.98,37.42	56.24,37.42
+map Utgarde Pinnacle/1
+path	48.49,23.01
+talk Elder Chogan'gada##30538
+|tip Open the world map to see an ant trail guiding you to your destination.
+accept Chogan'gada the Elder##13067 |goto 48.71,23.12
+step
+Leave Utgarde Pinnacle |goto Utgarde Pinnacle/2 44.33,14.84 > 10000 |c |noway |achieve 910 |future
+step
+|achieve 910
+step
+_Congratulations!_
+You Earned the "Elders of the Dungeons" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of the Alliance",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={915},
+patch='30003',
+description="\nHonor the Elders of the following zones:\n\nElder Bladeswift, Darnassus\n"..
+"Elder Bronzebeard, Ironforge\nElder Hammershout, Stormwind",
+},[[
+step
+talk Elder Hammershout##15562
+accept Hammershout the Elder##8646 |goto Elwynn Forest/0 34.56,50.25
+step
+talk Elder Bronzebeard##15871
+|tip Inside Ironforge.
+accept Bronzebeard the Elder##8866 |goto Ironforge/0 29.19,17.06
+step
+talk Zidormi##141489
+Ask her _"Can you show me what Darkshore was like before the battle?"_
+Travel to the Past |condition ZGV.InPhase('Old Darnassus') |goto Darkshore/0 48.86,24.46 |q 8718 |future
+step
+talk Elder Bladeswift##15598
+accept Bladeswift the Elder##8718 |goto Darnassus/0 39.18,31.85
+step
+|achieve 915
+step
+_Congratulations!_
+You Earned the "Elders of the Alliance" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elders of the Horde",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={914},
+patch='30003',
+description="\nHonor the Elders of the following zones:\n\nElder Darkhorn, Orgrimmar\n"..
+"Elder Wheathoof, Thunder Bluff\nElder Darkcore, Undercity",
+},[[
+step
+talk Zidormi##141488
+Ask her _"Can you show me what Tirisfal Glades was like before the Battle for Lordaeron?"_
+Travel to the Past |condition ZGV.InPhase('Old Undercity') |goto Tirisfal Glades/0 69.46,62.80 |q 8648 |future
+step
+talk Elder Darkcore##15564
+|tip Inside the entrance area building, before the Undercity elevators.
+accept Darkcore the Elder##8648 |goto Undercity/0 66.64,38.23
+step
+talk Elder Darkhorn##15579
+accept Darkhorn the Elder##8677 |goto Orgrimmar/1 52.25,60.03
+step
+talk Elder Ezra Wheathoof##15580
+accept Wheathoof the Elder##8678 |goto Thunder Bluff/0 72.99,23.34
+step
+|achieve 914
+step
+_Congratulations!_
+You Earned the "Elders of the Horde" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Elune's Blessing",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={937},
+patch='30003',
+description="\nComplete the Elune's Blessing quest by defeating Omen.",
+},[[
+step
+talk Valadar Starsong##15864
+accept Elune's Blessing##8868 |goto Moonglade/0 53.60,35.40
+step
+kill Omen##15467
+|tip This boss will require a raid group.
+|tip Stand in the pillar of light after it dies.
+|tip If it was already killed, quickly jump in the pillar of light before it disappears.
+Gain Elune's Blessing |q 8868/1 |goto 64.31,62.67
+step
+talk Valadar Starsong##15864
+turnin Elune's Blessing##8868 |goto 53.60,35.40
+step
+|achieve 937
+step
+_Congratulations!_
+You Earned the "Elune's Blessing" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Frenzied Firecracker",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={1552},
+patch='30003',
+description="\nShoot off 10 Festival Firecrackers in 30 seconds or less.",
+},[[
+step
+talk Lunar Festival Vendor##47897
+buy 10 Festival Firecracker##21747 |goto Orgrimmar/1 48.69,57.01 |achieve 1552 |future
+step
+use the Festival Firecracker##21747
+|tip Spam it quickly until you use all 10.
+|tip You will need to target the ground after using it.
+|achieve 1552 |goto 48.69,57.01
+step
+_Congratulations!_
+You Earned the "Frenzied Firecracker" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\The Rocket's Red Glare",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={1281},
+patch='30002',
+description="\nShoot off 10 Red Rocket Clusters in 25 seconds or less.",
+},[[
+step
+talk Lunar Festival Vendor##47897
+buy 10 Red Rocket Cluster##21576 |goto Orgrimmar/1 48.69,57.01 |achieve 1281 |future
+step
+use the Red Rocket Cluster##21576
+|tip Spam it quickly until you use all 10.
+|achieve 1281 |goto 48.69,57.01
+step
+_Congratulations!_
+You Earned the "The Rocket's Red Glare" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\Lunar Festival Finery",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={626},
+patch='30008',
+description="\nPurchase a festive pant suit or festive dress with Coins of Ancestry.",
+},[[
+step
+collect 5 Coin of Ancestry##21100 |achieve 626 |future
+|tip Use the "Lunar Festival Optimized Elders Path" event guide to accomplish this.
+step
+talk Valadar Starsong##15864
+Purchase any Pant Suit or Dress |achieve 626 |goto Moonglade/0 53.63,35.41
+step
+_Congratulations!_
+You Earned the "Lunar Festival Finery" Achievement.
+]])
+ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\To Honor One's Elders",{
+author="support@zygorguides.com",
+condition_suggested=function() return isevent('Lunar Festival') end,
+achieveid={913},
+patch='30001',
+description="\nComplete the following Lunar Festival achievements:\n\nElders of Cataclysm\n"..
+"Elders of Eastern Kingdoms\nElders of Kalimdor\nElders of the Dungeons\n"..
+"Elders of the Horde\nElders of the Alliance\nElders of Northrend\n50 Coins of "..
+"Ancestry\nLunar Festival Finery\nThe Rocket's Red Glare\nFrenzied Firecracker\n"..
+"Elune's Blessing",
+},[[
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of Cataclysm"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of Eastern Kingdoms"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of Kalimdor"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of the Dungeons"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of Northrend"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of the Alliance"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elders of the Horde"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Elune's Blessing"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Lunar Festival Finery"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\The Rocket's Red Glare"
+leechsteps "Events Guides\\Lunar Festival\\Achievements\\Frenzied Firecracker"
+step
+|achieve 913
+step
+_Congratulations!_
+You Earned the "To Honor One's Elders" Achievement.
 ]])

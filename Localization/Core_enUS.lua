@@ -28,7 +28,7 @@ ZygorGuidesViewer_L("Main", "enUS", function() local f = {
 	["about_desc3"] = "All Rights Preserved",
 	["about_desc4"] = "Release %s.",
 	["link"] = "Release|n|n|n",
-	["tech_support_header"] = "Technical Support",
+	["tech_support_header"] = "Release",
 	["tech_support"] = "For assistance please contact please visit |cffff8800Release|r.",
 	["opt_bug_button"] = "Enable Bug Reporting button on viewer",
 	["quest_automation_header"] = "Quest Automation",
@@ -238,11 +238,11 @@ ZygorGuidesViewer_L("Main", "enUS", function() local f = {
 
 
 	['opt_group_stepdisplay'] = "Step Display",
-		['opt_stepdisplay_dungeon'] = "Dungeons",
+	['opt_stepdisplay_dungeon'] = "Dungeons",
 	
 	['opt_group_automation'] = "Automation",
-		['opt_header_automation_quests'] = "Quests",
-		['opt_header_automation_inventory'] = "Inventory",
+	['opt_header_automation_quests'] = "Quests",
+	['opt_header_automation_inventory'] = "Inventory",
 
 	['opt_group_actionbuttons'] = "Action Buttons",
 	['opt_group_waypointarrow'] = "Waypoint Arrow",
@@ -279,6 +279,8 @@ ZygorGuidesViewer_L("Main", "enUS", function() local f = {
 	["opt_resizeup_desc"] = "Flips the window upside-down, with the title bar at bottom and expanding upwards. Useful if you're placing it at the bottom of your screen.",
 	--["opt_opacitymini"] = "Background opacity",
 	--["opt_opacitymini_desc"] = "Opacity of step window background.",
+	["opt_fixedheight"] = "Enable manual vertical step resizing",
+	 ["opt_fixedheight_desc"] = "In this mode, the window will keep its size, instead of resizing to fix the step(s) shown.\nA minimum height will be enforced.",
 
 	--["opt_showallsteps"] = "Collapsed mode",
 	--["opt_showallsteps_desc"] = "Display only the current step and some next steps, instead of the whole guide",
@@ -448,8 +450,9 @@ ZygorGuidesViewer_L("Main", "enUS", function() local f = {
 
 		["opt_actionbuttons_title"] = "Zygor Action Buttons",
 		["opt_enable_actionbuttons"] = "Enable Action Buttons",
-		["opt_enable_actionbuttons_desc"] = "Display clickable buttons that dynamically change to perform certain guide actions, such as talking to npcs, using items, selecting enemies, ect",
+		["opt_enable_actionbuttons_desc"] = "Generate custom macros for performing step actions that dynamically update with each step. Buttons can be displayed on Zygor action bar, WoW action bar, or with third party action bar addons.",
 		["opt_enable_actionbar"] = "Enable Action Bar",
+		["opt_enable_actionbar_desc"] = "Show custom Zygor action bar to display action buttons on",
 		["opt_actionbar_scale_s"] = "Action Bar Scale",
 		["opt_actionbar_hide_useless"] = "Only display when step has items or spells to use.",
 		['opt_targetonclick'] = "Add raid marker to NPCs when selected with action buttons",
@@ -1762,6 +1765,7 @@ If you're new to the guides, or have only started using them on this character, 
 
 	['notifcenter_title'] = "Zygor Notifications",
 	['notifcenter_no_entries'] = "You have no notifications.",
+	['notifcenter_reset'] = "Remove all notifications.",
 
 	['notifcenter_gen_popup_tooltip'] = "<<Click>> to open this pop-up again.",
 
@@ -2289,6 +2293,9 @@ If you're new to the guides, or have only started using them on this character, 
 
 	share_nowarnagain = "Don't warn me again.",
 	
+	viewer_special_loading = "Loading...",
+	viewer_special_select = "Welcome to Zygor Guides.\n|cfffe6100Click here|r to load a guide.",
+
 	}
 	for k,v in pairs(f) do
 		if type(v)=="string" then  f[k]=v:gsub("<<(.-)>>",COLOR_TIP_MOUSE.."%1"..COLOR_TIP)  end

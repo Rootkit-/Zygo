@@ -8,6 +8,21 @@ data.basenodes.FloorCrossings = {
 	-- SHADOWLANDS
 
 
+		["Oribos"] = {
+			-- The Idyllia, Oribos -x- Downstairs, Oribos --
+				"Oribos/0 70.72,40.59 <radius:15> -x- Oribos/2 55.71,28.17 <radius:15> {title_atob:Run down the stairs} {title_btoa:Run up the stairs}",
+			-- The Idyllia, Oribos -x- Downstairs, Oribos --
+				"Oribos/0 70.50,59.94 <radius:15> -x- Oribos/2 55.63,71.15 <radius:15> {title_atob:Run down the stairs} {title_btoa:Run up the stairs}",
+		},
+
+
+		["Bastion"] = {
+			-- Kalliope's Rest, Bastion -x- Third Chamber of Kalliope, Bastion --
+				"Bastion/0 43.52,38.60 <radius:15> -x- Third Chamber of Kalliope/0 25.68,88.78 <radius:15> {title_atob:Enter the building} {title_btoa:Leave the building} "..
+				"{cond:PlayerCompletedQuest(57875) and PlayerCompletedQuest(57914)}",
+		},
+
+
 		["Pit of Anguish"] = {
 			-- Pit of Anguish (Upper) -x- Pit of Anguish (Lower)
 				"Pit of Anguish/1 51.81,27.65 <radius:15> -x- Pit of Anguish/0 52.09,26.31 <radius:15> {title_atob:Run down the ramp} {title_btoa:Run up the ramp}",
@@ -22,11 +37,14 @@ data.basenodes.FloorCrossings = {
 
 		["Maldraxxus"] = {
 			
-			-- Seat of the Primus Building Entrance/Exit
+			-- Seat of the Primus Building Entrance/Exit --
 				"Maldraxxus/0 50.39,68.04 <radius:7> -x- Seat of the Primus/0 49.68,13.66 <radius:7> {title_atob:Enter the building} {title_btoa:Leave the building}",
 			
-			-- Sightless Hold Building Entrance/Exit
+			-- Sightless Hold Building Entrance/Exit --
 				"Maldraxxus/0 54.08,12.25 <radius:6> -x- Sightless Hold/0 42.06,82.99 <radius:6> {title_atob:Enter the building} {title_btoa:Leave the building}",
+			
+			-- Etheric Vault Building Entrance/Exit --
+				"Maldraxxus/0 24.45,31.55 <radius:6> -x- Etheric Vault/0 62.64,69.18 <radius:6> {title_atob:Enter the building} {title_btoa:Leave the building}",
 		},
 
 		["Elysian Hold"] = {
@@ -276,14 +294,14 @@ data.basenodes.FloorCrossings = {
 			"Shrine of Seven Stars/1 25.5,55.8 <nofly:1> -x- Vale of Eternal Blossoms 85.6,67.4 {B:WALK}",  -- west door
 			"Shrine of Seven Stars/1 60.3,18.0 <nofly:1> -x- Vale of Eternal Blossoms 89.1,63.5 {B:WALK}",  -- east door
 
-			"Shrine of Seven Stars/1 33.6,78.3 <radius:5> -x- Shrine of Seven Stars/2 32.3,75.5 <radius:5>", -- west staircase
-			"Shrine of Seven Stars/1 70.4,33.5 <radius:5> -x- Shrine of Seven Stars/2 61.7,18.4 <radius:5>", -- east staircase
+			"Shrine of Seven Stars/1 33.6,78.3 <radius:5> -x- Shrine of Seven Stars/2 32.3,75.5 <radius:5> <region:shrine7star_west>", -- west staircase
+			"Shrine of Seven Stars/1 70.4,33.5 <radius:5> -x- Shrine of Seven Stars/2 61.7,18.4 <radius:5> <region:shrine7star_east>", -- east staircase
 
-			"Shrine of Seven Stars/1 52.4,78.9 <radius:10> -x- Shrine of Seven Stars/2 56.1,75.7 <radius:10>", -- west hall
-			"Shrine of Seven Stars/1 66.4,63.3 <radius:10> -x- Shrine of Seven Stars/2 68.4,63.3 <radius:10>", -- east hall
+			"Shrine of Seven Stars/1 52.4,78.9 <radius:10> -x- Shrine of Seven Stars/2 56.1,75.7 <radius:10> <region:shrine7star_west>", -- west hall
+			"Shrine of Seven Stars/1 66.4,63.3 <radius:10> -x- Shrine of Seven Stars/2 68.4,63.3 <radius:10> <region:shrine7star_east>", -- east hall
 
-			"Shrine of Seven Stars/2 43.3,44.3 <radius:5> -to- Shrine of Seven Stars/1 44.9,47.6 <radius:5>", -- west balcony jump
-			"Shrine of Seven Stars/2 52.6,33.7 <radius:5> -to- Shrine of Seven Stars/1 46.4,44.8 <radius:5>", -- east balcony jump
+			"Shrine of Seven Stars/2 43.3,44.3 <radius:5> <region:shrine7star_west> -to- Shrine of Seven Stars/1 44.9,47.6 <radius:5>", -- west balcony jump
+			"Shrine of Seven Stars/2 52.6,33.7 <radius:5> <region:shrine7star_east> -to- Shrine of Seven Stars/1 46.4,44.8 <radius:5>", -- east balcony jump
 
 			"Shrine of Seven Stars/1 38.6,28.4 <nofly:1> -x- Vale of Eternal Blossoms 86.8,64.3",  -- main door
 			"Shrine of Seven Stars/1 25.5,55.8 <nofly:1> -x- Vale of Eternal Blossoms 85.6,67.4",  -- west door
@@ -295,14 +313,14 @@ data.basenodes.FloorCrossings = {
 			"The Veiled Stair/0 57.3,13.6 -x- The Veiled Stair/5 77.6,36.7", -- The Ancient Passage
 		},
 		["Shrine of Two Moons"] = {
-			"Shrine of Two Moons/1 22.1,54.4 <radius:5> -x- Shrine of Two Moons/2 27.8,80.6 <radius:5>", -- west staircase
-			"Shrine of Two Moons/1 77.5,42.6 <radius:5> -x- Shrine of Two Moons/2 74.4,70.3 <radius:5>", -- east staircase
+			"Shrine of Two Moons/1 22.1,54.4 <radius:5> -x- Shrine of Two Moons/2 27.8,80.6 <radius:5> <region:shrine2moon_west>", -- west staircase
+			"Shrine of Two Moons/1 77.5,42.6 <radius:5> -x- Shrine of Two Moons/2 74.4,70.3 <radius:5> <region:shrine2moon_east>", -- east staircase
 
-			"Shrine of Two Moons/1 36.6,21.7 <radius:10> -x- Shrine of Two Moons/2 38.3,36.6 <radius:10>", -- west hall
-			"Shrine of Two Moons/1 58.0,18.5 <radius:10> -x- Shrine of Two Moons/2 55.8,30.0 <radius:10>", -- east hall
+			"Shrine of Two Moons/1 36.6,21.7 <radius:10> -x- Shrine of Two Moons/2 38.3,36.6 <radius:10> <region:shrine2moon_west>", -- west hall
+			"Shrine of Two Moons/1 58.0,18.5 <radius:10> -x- Shrine of Two Moons/2 55.8,30.0 <radius:10> <region:shrine2moon_east>", -- east hall
 
-			"Shrine of Two Moons/2 47.0,77.0 <radius:5> -to- Shrine of Two Moons/1 48.6,64.5 <radius:5>", -- west balcony jump
-			"Shrine of Two Moons/2 55.4,73.1 <radius:5> -to- Shrine of Two Moons/1 49.4,42.2 <radius:5>", -- east balcony jump
+			"Shrine of Two Moons/2 47.0,77.0 <radius:5> <region:shrine2moon_west> -to- Shrine of Two Moons/1 48.6,64.5 <radius:5>", -- west balcony jump
+			"Shrine of Two Moons/2 55.4,73.1 <radius:5> <region:shrine2moon_east> -to- Shrine of Two Moons/1 54.0,62.0 <radius:5>", -- east balcony jump
 
 			"Shrine of Two Moons/1 53.8,87.0 <nofly:1> -x- Vale of Eternal Blossoms 61.5,18.8",  -- main door
 			"Shrine of Two Moons/1 26.8,80.7 <nofly:1> -x- Vale of Eternal Blossoms 59.1,17.9",  -- west door

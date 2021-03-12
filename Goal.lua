@@ -1673,6 +1673,15 @@ GOALTYPES['questchoice'] = {
 
 }
 
+GOALTYPES['playerchoice'] = {
+	parse = function(self,params)
+		_,self.choiceset,self.choice = ParseID(params)
+	end,
+	iscomplete = function(self)
+		return ZGV.Parser.ConditionEnv.playerchoice(self.choiceset,self.choice),true
+	end,
+}
+
 local default_goto_dist = 3
 
 GOALTYPES['goto'] = {
@@ -2921,18 +2930,20 @@ function Goal:GetText(showcompleteness,brief,showtotals,nocolor)
 	elseif self.action=='goldcollect' then
 		-- Two different types of goldcollect goals. If there is a max demand, then don't want to collect more because that would flood the market.
 		-- No demand then just collect until they get bored.
-		goalcountnow = goalcountnow or GetItemCount(self.targetid or 0)
-		if self.demand then
+		goalcountnow = GetItemCount(self.targetid or 0) or goalcountnow
+		if self.demand and self.demand>0 then
 			-- There is a set demand for this.
 			goalcountneeded = goalcountneeded or self.demand
-			remaining = remaining or goalcountneeded-goalcountnow
+			remaining = max(0,remaining or goalcountneeded-goalcountnow)
 			--if remaining<1 then remaining=goalcountneeded end
 			local done = remaining==0 and "_done" or ""
 
 			text = GenericText(brief,self.action,COLOR_ITEM, remaining or self.demand , self.target, self.demand==1, self.demand~=1, done)
 		else
 			-- if we have 0 demand then just display "Collect item" If we have some of the item display "Collected # item"
-			text = GenericText(brief,self.action,COLOR_ITEM,goalcountnow,self.target,goalcountnow==0,not self.count or self.count==1, "")
+			local done = goalcountnow>0 and "_done" or ""
+			text = GenericText(brief,self.action,COLOR_ITEM, goalcountnow , self.target, goalcountnow==0,not self.count or self.count==1, done)
+
 		end
 
 	elseif self.action=='buy' then

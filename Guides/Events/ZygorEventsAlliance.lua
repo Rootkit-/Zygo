@@ -6474,32 +6474,32 @@ step
 Gain the "Blessing of the Moon" Buff |havebuff spell:303601 |goto 48.65,32.93 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Two Stacks of the "Blessing of the Moon" Buff |havebuff 2 spell:303601 |goto Felwood/0 44.04,28.40 |q 56842
+Gain Two Stacks of the "Blessing of the Moon" Buff |havebuff 2 spell:303601 |goto Felwood/0 44.04,28.40 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Three Stacks of the "Blessing of the Moon" Buff |havebuff 3 spell:303601 |goto Ashenvale/0 53.75,46.01 |q 56842
+Gain Three Stacks of the "Blessing of the Moon" Buff |havebuff 3 spell:303601 |goto Ashenvale/0 53.75,46.01 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Four Stacks of the "Blessing of the Moon" Buff |havebuff 4 spell:303601 |goto 60.21,72.91 |q 56842
+Gain Four Stacks of the "Blessing of the Moon" Buff |havebuff 4 spell:303601 |goto 60.21,72.91 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Five Stacks of the "Blessing of the Moon" Buff |havebuff 5 spell:303601 |goto Stonetalon Mountains/0 41.60,18.97 |q 56842
+Gain Five Stacks of the "Blessing of the Moon" Buff |havebuff 5 spell:303601 |goto Stonetalon Mountains/0 41.60,18.97 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Six Stacks of the "Blessing of the Moon" Buff |havebuff 6 spell:303601 |goto Feralas/0 60.20,46.25 |q 56842
+Gain Six Stacks of the "Blessing of the Moon" Buff |havebuff 6 spell:303601 |goto Feralas/0 60.20,46.25 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Seven Stacks of the "Blessing of the Moon" Buff |havebuff 7 spell:303601 |goto Duskwood/0 49.18,33.25
+Gain Seven Stacks of the "Blessing of the Moon" Buff |havebuff 7 spell:303601 |goto Duskwood/0 49.18,33.25 |q 56842
 |tip Stand in the moonwell and click the "Ritual of the Moon" ability that appears on-screen.
 step
-Gain the Eight Stacks of the "Blessing of the Moon" Buff |condition readyq(56842) |goto Mount Hyjal/0 60.60,25.76 |q 56842
+Gain Eight Stacks of the "Blessing of the Moon" Buff |condition readyq(56842) or completedq(56842) |goto Mount Hyjal/0 60.60,25.76 |q 56842
 |tip Stand in the lake and click the "Ritual of the Moon" ability that appears on-screen.
 step
 use the Lunar Festival Invitation##21711 |goto Elwynn Forest/0 34.59,50.75
 Return to Moonglade |goto Moonglade/0 |c |noway |q 56842
 step
 talk Myrael Lunarbloom##155759
-turnin Lunar Preservation##56842 |goto 53.09,36.02
+turnin Lunar Preservation##56842 |goto 53.09,36.02 |next "Events Guides\\Lunar Festival\\Achievements\\Elune's Blessing"
 ]])
 ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Lunar Festival Crown Transmog Quests",{
 author="support@zygorguides.com",
@@ -7018,6 +7018,10 @@ accept Stonebrand the Elder##29735 |goto Deepholm/0 49.70,54.89
 step
 talk Elder Deepforge##55216
 accept Deepforge the Elder##29734 |goto 27.70,69.18
+step
+talk Elder Naladu##176253
+accept Naladu the Elder##63213 |goto Ember Court/0 61.84,59.82
+|only if covenant() == Venthyr and covenantfeature("Covenant Unique") >= 1
 ]])
 ZygorGuidesViewer:RegisterGuide("Events Guides\\Lunar Festival\\Achievements\\A Coin of Ancestry",{
 author="support@zygorguides.com",
@@ -7669,12 +7673,16 @@ step
 talk Valadar Starsong##15864
 accept Elune's Blessing##8868 |goto Moonglade/0 53.60,35.40
 step
-|achieve 937
-step
-kill Omen##15467 |q 8868/1 |goto 64.31,62.67
+kill Omen##15467
+|tip This boss will require a raid group.
+|tip Stand in the pillar of light after it dies.
+|tip If it was already killed, quickly jump in the pillar of light before it disappears.
+Gain Elune's Blessing |q 8868/1 |goto 64.31,62.67
 step
 talk Valadar Starsong##15864
-accept Elune's Blessing##8868 |goto 53.60,35.40
+turnin Elune's Blessing##8868 |goto 53.60,35.40
+step
+|achieve 937
 step
 _Congratulations!_
 You Earned the "Elune's Blessing" Achievement.

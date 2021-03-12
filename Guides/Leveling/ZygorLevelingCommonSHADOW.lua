@@ -389,6 +389,7 @@ turnin The Threads of Fate##62704 |goto 20.41,50.28
 step
 talk Fatescribe Roh-Tahl##174871
 accept Re-Introductions##62716				|goto 19.61,50.27	|next "Alt_Skip_Normal_Questing"
+|only if not havequest(60129) or completedq(60129)
 step
 talk Fatescribe Roh-Tahl##174871
 accept Stranger in an Even Stranger Land##60129		|goto 19.61,50.27	|next "Main_Character_Or_Replay_Storyline"
@@ -417,14 +418,21 @@ step
 talk Tal-Inara##159478
 turnin Aiding the Shadowlands##62159 |goto 38.88,70.00 |only if not completedq(62159)
 turnin Bastion##62275 |goto 38.88,70.00
-accept The Elysian Fields##62707 |goto 38.88,70.00
+accept The Elysian Fields##62707 |goto 38.88,70.00 |only if covenant() ~= Kyrian
+accept The Elysian Fields##63034 |goto 38.88,70.00 |only if covenant() == Kyrian
 step
 talk Pathscribe Roh-Avonavi##162666
 fpath Oribos |goto Oribos/1 60.90,68.69
 step
 talk Kalisthene##163427
+turnin The Elysian Fields##63034 |goto Elysian Hold/0 37.10,61.17
+accept Bolstering Bastion##62723 |goto 37.10,61.17
+|only if covenant() == Kyrian
+step
+talk Kalisthene##163427
 turnin The Elysian Fields##62707 |goto Bastion/0 51.12,46.79 |region heros_rest
 accept Bolstering Bastion##62723 |goto Bastion/0 51.12,46.79 |region heros_rest
+|only if covenant() ~= Kyrian
 step
 _Complete Objectives in Bastion:_
 |tip Complete side quests, bonus objectives, world quests, dungeons, and kill rare enemies in Bastion.
@@ -435,8 +443,14 @@ _Complete Objectives in Bastion:_
 Aid the Kyrian |q 62723/1
 step
 talk Kalisthene##163427
+turnin Bolstering Bastion##62723 |goto Elysian Hold/0 37.10,61.17
+accept Return to Oribos##62729 |goto 37.10,61.17
+|only if covenant() == Kyrian
+step
+talk Kalisthene##163427
 turnin Bolstering Bastion##62723 |goto Bastion/0 51.12,46.79 |region heros_rest
 accept Return to Oribos##62729 |goto Bastion/0 51.12,46.79 |region heros_rest
+|only if covenant() ~= Kyrian
 step
 talk Tal-Inara##159478
 turnin Return to Oribos##62729 |goto Oribos/0 38.89,69.99
@@ -452,12 +466,19 @@ step
 talk Tal-Inara##159478
 turnin The Next Step##63208 |goto 38.88,70.00
 turnin Maldraxxus##62278 |goto 38.88,70.00
-accept A Fresh Blade##62738 |goto 38.88,70.00
+accept A Fresh Blade##63035 |goto 38.88,70.00 |only if covenant() == Necrolord
+accept A Fresh Blade##62738 |goto 38.88,70.00 |only if covenant() ~= Necrolord
 |only if not havequest(62748) and not completedq(62748)
 step
 talk Secutor Mevix##175008
+turnin A Fresh Blade##63035 |goto Seat of the Primus/0 49.67,44.39 |only if not havequest(62748) and not completedq(62748)
+accept Rallying Maldraxxus##62748 |goto 49.67,44.39
+|only if covenant() == Necrolord
+step
+talk Secutor Mevix##175008
 turnin A Fresh Blade##62738 |goto Maldraxxus/0 52.85,68.27 |only if not havequest(62748) and not completedq(62748)
-accept Rallying Maldraxxus##62748 |goto Maldraxxus/0 52.85,68.27
+accept Rallying Maldraxxus##62748 |goto 52.85,68.27
+|only if covenant() ~= Necrolord
 step
 _Complete Objectives in Maldraxxus:_
 |tip Complete side quests, bonus objectives, world quests, dungeons, and kill rare enemies in Maldraxxus.
@@ -491,12 +512,20 @@ step
 talk Tal-Inara##159478
 turnin Furthering the Purpose##63209 |goto 38.88,70.00
 turnin Ardenweald##62277 |goto 38.88,70.00
-accept Restoring Balance##62739 |goto 38.88,70.00
+accept Restoring Balance##63036 |goto 38.88,70.00 |only if covenant() == NightFae
+accept Restoring Balance##62739 |goto 38.88,70.00 |only if covenant() ~= NightFae
 |only if not havequest(62763) and not completedq(62763)
+step
+talk Lady Moonberry##172431
+|tip Inside the tree.
+turnin Restoring Balance##63036 |goto Heart of the Forest/0 47.50,36.43 |only if not havequest(62763) and not completedq(62763)
+accept Support the Court##62763 |goto 47.50,36.43
+|only if covenant() == NightFae
 step
 talk Lady Moonberry##172431
 turnin Restoring Balance##62739 |goto Ardenweald/0 49.34,52.36 |only if not havequest(62763) and not completedq(62763)
 accept Support the Court##62763 |goto Ardenweald/0 49.34,52.36
+|only if covenant() ~= NightFae
 step
 _Complete Objectives in Ardenweald:_
 |tip Complete side quests, bonus objectives, world quests, dungeons, and kill rare enemies in Ardenweald.
@@ -507,15 +536,15 @@ _Complete Objectives in Ardenweald:_
 Aid the Night Fae |q 62763/1
 step
 talk Lady Moonberry##172431
-turnin Support the Court##62763 |goto Ardenweald/0 49.34,52.36
-accept Return to Oribos##62776 |goto Ardenweald/0 49.34,52.36
-|only if covenant() ~= NightFae
-step
-talk Lady Moonberry##172431
 |tip Inside the tree.
 turnin Support the Court##62763 |goto Heart of the Forest/0 47.50,36.43
 accept Return to Oribos##62776 |goto Heart of the Forest/0 47.50,36.43
 |only if covenant() == NightFae
+step
+talk Lady Moonberry##172431
+turnin Support the Court##62763 |goto Ardenweald/0 49.34,52.36
+accept Return to Oribos##62776 |goto Ardenweald/0 49.34,52.36
+|only if covenant() ~= NightFae
 step
 talk Tal-Inara##159478
 turnin Return to Oribos##62776 |goto Oribos/0 38.89,69.99
@@ -534,13 +563,22 @@ turnin Revendreth##62279 |goto 38.88,70.00
 |only if not havequest(62778) and not completedq(62778)
 step
 talk Tal-Inara##159478
-accept Dark Aspirations##63037 |goto 38.88,70.00
+accept Dark Aspirations##63037 |goto 38.88,70.00 |only if covenant() == Venthyr
+accept Dark Aspirations##62740 |goto 38.88,70.00 |only if covenant() ~= Venthyr
 |only if not havequest(62778) and not completedq(62778)
 step
 talk Prince Renathal##158653
 |tip Inside the building.
 turnin Dark Aspirations##63037 |goto Sinfall/0 51.83,37.56 |only if not havequest(62778) and not completedq(62778)
 accept Reinforcing Revendreth##62778 |goto Sinfall/0 51.83,37.56
+|only if covenant() == Venthyr
+step
+Enter the building |goto Revendreth/0 61.30,59.73 < 7 |walk
+talk Prince Renathal##158653
+|tip Downstairs inside the building.
+turnin Dark Aspirations##62740 |goto 61.47,60.43 |only if not havequest(62778) and not completedq(62778)
+accept Reinforcing Revendreth##62778 |goto 61.47,60.43
+|only if covenant() ~= Venthyr
 step
 _Complete Objectives in Revendreth:_
 |tip Complete side quests, bonus objectives, world quests, dungeons, and kill rare enemies in Revendreth.
@@ -552,7 +590,7 @@ Aid the Venthyr |q 62778/1
 step
 talk Prince Renathal##175056
 |tip Inside the building.
-turnin Reinforcing Revendreth##62778 |goto 51.76,37.62
+turnin Reinforcing Revendreth##62778 |goto Sinfall/0 51.76,37.62
 |only if covenant() == Venthyr
 step
 Enter the building |goto Revendreth/0 61.30,59.73 < 7 |walk
@@ -847,10 +885,10 @@ step
 label "Which_Covenant_Did_You_Choose"
 _Which Covenant Did You Choose?_
 |tip Click the line below for the covenant you chose to join.
-Kyrian		|condition completedq(62023)	|or	|next Leveling Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Questline
-Necrolords	|condition completedq(62017)	|or	|next Leveling Guides\\Shadowlands (50-60)\\Covenants\\Necrolord Questline
-Night Fae	|condition completedq(62019)	|or	|next Leveling Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Questline
-Venthyr		|condition completedq(62020)	|or	|next Leveling Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Questline
+Kyrian		|condition completedq(62023)	|or	|next "Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Questline"
+Necrolords	|condition completedq(62017)	|or	|next "Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Questline"
+Night Fae	|condition completedq(62019)	|or	|next "Leveling Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Questline"
+Venthyr		|condition completedq(62020)	|or	|next "Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Questline"
 ]])
 ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Bastion",{
 author="support@zygorguides.com",
@@ -6926,14 +6964,19 @@ step
 talk Ve'nari##162804
 turnin Stalking the Warrens##62461 |goto 46.91,41.70
 step
-Click Here After Reaching Cordial Reputation with Ve'nari |confirm |q 60158 |future
+Click Here After Reaching Appreciative Reputation with Ve'nari |confirm |q 60158 |future
 step
 talk Ve'nari##162804
 accept Rule 7: Betrayal is Inevitable##60158 |goto 46.91,41.70
 step
-collect Broker Device##184314 |q 63022/1
+Enter the cave |goto 38.85,58.55 < 15 |walk
+click Broker Device
+|tip Inside the cave.
+collect Broker Device##184314 |q 60158/1 |goto 37.43,62.24
 step
-kill Ve'brax##175711 |q 63022/2
+kill Ve'brax##175711 |q 60158/2 |goto 37.40,62.53
+|tip Inside the cave.
+|tip You only need to reduce it to 50% health.
 step
 talk Ve'nari##162804
 turnin Rule 7: Betrayal is Inevitable##60158 |goto 46.91,41.70
@@ -7508,7 +7551,7 @@ Aid the House of Plagues Survivors |q 62742/1 |goto 58.81,61.73
 step
 Run up the stairs |goto 57.83,66.73 < 15 |only if walking
 talk Judas Sneap##165049
-accept Plagues Aid##59430 |goto 58.06,72.11
+accept A Plague on Your House##59430 |goto 58.06,72.11
 step
 talk Vradira Livid##157515
 fpath Plague Watch |goto 58.14,72.45
@@ -7529,7 +7572,7 @@ Ask him _"Is there any way I can help?"_
 Speak with Boil Master Yetch |q 59430/3 |goto 59.10,73.87
 step
 talk Boil Master Yetch##157945
-turnin Plagues Aid##59430 |goto 59.10,73.87
+turnin A Plague on Your House##59430 |goto 59.10,73.87
 accept Pool of Potions##58431 |goto 59.10,73.87
 step
 Enter the building |goto 58.47,79.30 < 10 |walk
@@ -13635,7 +13678,7 @@ talk Tal-Inara##159478
 turnin The End of the Beginning##57876 |goto Oribos/0 38.87,70.01
 |next Leveling Guides\\Shadowlands (50-60)\\Shadowlands Intro & Main Story Questline
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Questline",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Questline",{
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing the Kyrian\n"..
 "\ncovenant quests and storyline.\n",
@@ -13901,6 +13944,118 @@ accept The Highlord Calls##63029 |goto 55.64,41.96
 step
 talk Highlord Bolvar Fordragon##164079
 turnin The Highlord Calls##63029 |goto Oribos/0 39.94,68.59
+step
+talk Highlord Bolvar Fordragon##164079
+accept Into Torghast##60136 |goto Oribos/0 39.93,68.62
+step
+talk Ve'nari##162804
+Ask her _"How do I enter Torghast?"_
+Ask Ve'nari about a Way into Torghast |q 60136/1 |goto The Maw/0 46.91,41.69
+step
+talk Ve'nari##162804
+turnin Into Torghast##60136 |goto 46.91,41.69
+accept The Search for Baine##61099 |goto 46.91,41.69
+step
+Use Ve'nari's Portal to Enter Torghast |q 61099/1 |goto 48.20,39.38
+step
+click Wayfinder
+Choose _<Use the [Attuned Shard] with the Wayfinder.>_
+|tip Enter the instance with the popup that displays.
+Take the Attuned Shard to the Wayfinder and See Where it Leads |q 61099/2 |goto Torghast/0 37.96,47.08
+step
+Enter Arkoban Hall |goto Torghast/6 43.78,9.70 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/6 51.30,84.47
+|tip Walk into the swirling portal.
+Reach Floor 2 in Torghast |goto Torghast/7 36.19,61.10 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 54.08,52.39 < 10 |walk
+Enter the Portal |goto Torghast/7 54.84,78.28
+|tip Walk into the swirling portal.
+Reach Floor 3 in Torghast |goto Torghast/8 50.69,85.55 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/8 72.38,54.51
+|tip Walk into the swirling portal.
+Reach Floor 4 in Torghast |goto Torghast/7 78.38,52.61 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 71.37,52.40 < 10 |walk
+Run up the stairs |goto Torghast/7 62.90,35.51 < 10 |walk
+Enter the Portal |goto Torghast/7 62.86,53.95
+|tip Walk into the swirling portal.
+Reach Floor 5 in Torghast |goto Torghast/9 54.13,18.73 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/9 37.27,58.44 < 15 |only if walking
+Enter the Portal |goto Torghast/9 62.57,71.88
+|tip Walk into the swirling portal.
+Reach Floor 6 in Torghast |goto Torghast/10 75.86,76.65 < 10 |noway |c |q 61099
+step
+kill Warden Arkoban##175123 |q 61099/3 |goto Torghast/10 46.43,50.95
+accept Prison of the Forgotten##60267 |goto Torghast/10 46.43,50.95
+|tip You will automatically accept this quest after looting him.
+step
+clicknpc Baine Bloodhoof##175294
+Rescue Baine |q 61099/4 |goto 34.79,56.25
+step
+Enter the Portal |goto 35.23,41.51
+|tip Walk into the swirling portal.
+Leave Arkoban Hall |goto Torghast/0 37.23,47.20 < 10 |noway |c |q 61099
+step
+talk Highlord Bolvar Fordragon##164079
+turnin Arkoban Hall##61099 |goto Oribos/0 39.92,68.62
+accept Explore Torghast##62932 |goto 39.92,68.62
+step
+talk Ve'nari##162804
+Tell her _"This was carried by one of the Jailer's more powerful guards. Do you know what it does?"_
+Speak with Ve'nari |q 60267/1 |goto The Maw/0 46.91,41.69
+step
+click Domination Lock
+turnin Prison of the Forgotten##60267 |goto Torghast/0 15.96,62.97
+step
+talk Runecarver##164937
+accept Deep Within##60268 |goto The Runecarver/0 50.36,54.22
+step
+talk Runecarver##164937
+Ask him _"Who are you? Why are you here?"_
+Learn More About the Prisoner |q 60268/1 |goto 50.17,53.83
+step
+talk Runecarver##164937
+turnin Deep Within##60268 |goto 50.17,53.83
+accept Reawakening##60269 |goto 50.17,53.83
+step
+Follow the path |goto The Maw/0 44.56,41.13 < 15 |only if walking
+kill Odalrik##172207
+collect Runecarver's Memory##178561 |q 60269/1 |goto 38.63,28.84
+step
+talk Runecarver##164937
+turnin Reawakening##60269 |goto The Runecarver/0 50.17,53.83
+accept A Damned Pact##60270 |goto 50.17,53.83
+step
+talk Ve'nari##162804
+turnin A Damned Pact##60270 |goto The Maw/0 46.91,41.69
+accept A Grave Chance##60271 |goto 46.91,41.69
+stickystart "Collect_50_Stygia"
+step
+Kill enemies around this area
+|tip Enemies that are on fire will drop Molten Anima.
+collect 5 Molten Anima##178562 |q 60271/2 |goto 37.76,39.29
+step
+label "Collect_50_Stygia"
+Collect #50# Stygia |condition curcount(1767) >= 50 |q 60271
+|tip Stygia is a reward from world quests, daily quests, bonus objectives and rare spawns in The Maw.
+step
+talk Ve'nari##162804
+buy 1 Anima Supricifer##181324 |q 60271/1 |goto 46.91,41.69
+step
+talk Ve'nari##162804
+turnin A Grave Chance##60271 |goto 46.91,41.69
+accept The Weak Link##60272 |goto 46.91,41.69
+step
+talk Runecarver##164937
+Tell him _"I've found a way, but we only have one shot at it. Let's get you free!"_
+Break the Chain |q 60272/1 |goto The Runecarver/0 50.17,53.83
+step
+talk Runecarver##164937
+turnin The Weak Link##60272 |goto 50.72,54.13
 step
 Reach Renown Level 5 |condition covenant() == Kyrian and covenantrenown() >= 5
 |tip Complete Covenant Sanctum quests.
@@ -14932,9 +15087,9 @@ click Sacred Scroll+
 collect 5 Sacred Scroll##170550 |q 57115/1 |goto 64.44,44.14
 step
 label "Stop_Rituals"
-Stop #5# Rituals |q 57116/1 |goto 64.44,44.14
-|tip Kill the enemies next to Burdened Aspirants.
+clicknpc Burdened Aspirant##156365
 |tip They look like blue people on the ground around this area.
+Stop #5# Rituals |q 57116/1 |goto 64.44,44.14
 step
 label "Charge_Compassion"
 Kill Pride enemies around this area
@@ -15192,6 +15347,10 @@ talk Polemarch Adrestes##174503
 Watch the dialogue
 Empower the Crest of Ascension |q 62557/1 |goto 65.12,18.60
 step
+talk Polemarch Adrestes##160037
+|tip Upstairs.
+turnin Our Realm Reclaimed##62557 |goto 66.51,16.51
+step
 Reach Renown Level 40 |condition covenant() == Kyrian and covenantrenown() >= 40
 |tip Increase your Renown by completing Covenant Sanctum quests.
 |tip They are repeatable quests in your covenant base.
@@ -15200,7 +15359,7 @@ step
 _Congratulations!_
 You Reached Renown Level 40.
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Questline",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Questline",{
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing the Night Fae\n"..
 "\ncovenant quests and storyline.\n",
@@ -15633,6 +15792,118 @@ accept The Highlord Calls##63030 |goto 47.51,36.47
 step
 talk Highlord Bolvar Fordragon##164079
 turnin The Highlord Calls##63030 |goto Oribos/0 39.94,68.59
+step
+talk Highlord Bolvar Fordragon##164079
+accept Into Torghast##60136 |goto Oribos/0 39.93,68.62
+step
+talk Ve'nari##162804
+Ask her _"How do I enter Torghast?"_
+Ask Ve'nari about a Way into Torghast |q 60136/1 |goto The Maw/0 46.91,41.69
+step
+talk Ve'nari##162804
+turnin Into Torghast##60136 |goto 46.91,41.69
+accept The Search for Baine##61099 |goto 46.91,41.69
+step
+Use Ve'nari's Portal to Enter Torghast |q 61099/1 |goto 48.20,39.38
+step
+click Wayfinder
+Choose _<Use the [Attuned Shard] with the Wayfinder.>_
+|tip Enter the instance with the popup that displays.
+Take the Attuned Shard to the Wayfinder and See Where it Leads |q 61099/2 |goto Torghast/0 37.96,47.08
+step
+Enter Arkoban Hall |goto Torghast/6 43.78,9.70 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/6 51.30,84.47
+|tip Walk into the swirling portal.
+Reach Floor 2 in Torghast |goto Torghast/7 36.19,61.10 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 54.08,52.39 < 10 |walk
+Enter the Portal |goto Torghast/7 54.84,78.28
+|tip Walk into the swirling portal.
+Reach Floor 3 in Torghast |goto Torghast/8 50.69,85.55 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/8 72.38,54.51
+|tip Walk into the swirling portal.
+Reach Floor 4 in Torghast |goto Torghast/7 78.38,52.61 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 71.37,52.40 < 10 |walk
+Run up the stairs |goto Torghast/7 62.90,35.51 < 10 |walk
+Enter the Portal |goto Torghast/7 62.86,53.95
+|tip Walk into the swirling portal.
+Reach Floor 5 in Torghast |goto Torghast/9 54.13,18.73 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/9 37.27,58.44 < 15 |only if walking
+Enter the Portal |goto Torghast/9 62.57,71.88
+|tip Walk into the swirling portal.
+Reach Floor 6 in Torghast |goto Torghast/10 75.86,76.65 < 10 |noway |c |q 61099
+step
+kill Warden Arkoban##175123 |q 61099/3 |goto Torghast/10 46.43,50.95
+accept Prison of the Forgotten##60267 |goto Torghast/10 46.43,50.95
+|tip You will automatically accept this quest after looting him.
+step
+clicknpc Baine Bloodhoof##175294
+Rescue Baine |q 61099/4 |goto 34.79,56.25
+step
+Enter the Portal |goto 35.23,41.51
+|tip Walk into the swirling portal.
+Leave Arkoban Hall |goto Torghast/0 37.23,47.20 < 10 |noway |c |q 61099
+step
+talk Highlord Bolvar Fordragon##164079
+turnin Arkoban Hall##61099 |goto Oribos/0 39.92,68.62
+accept Explore Torghast##62932 |goto 39.92,68.62
+step
+talk Ve'nari##162804
+Tell her _"This was carried by one of the Jailer's more powerful guards. Do you know what it does?"_
+Speak with Ve'nari |q 60267/1 |goto The Maw/0 46.91,41.69
+step
+click Domination Lock
+turnin Prison of the Forgotten##60267 |goto Torghast/0 15.96,62.97
+step
+talk Runecarver##164937
+accept Deep Within##60268 |goto The Runecarver/0 50.36,54.22
+step
+talk Runecarver##164937
+Ask him _"Who are you? Why are you here?"_
+Learn More About the Prisoner |q 60268/1 |goto 50.17,53.83
+step
+talk Runecarver##164937
+turnin Deep Within##60268 |goto 50.17,53.83
+accept Reawakening##60269 |goto 50.17,53.83
+step
+Follow the path |goto The Maw/0 44.56,41.13 < 15 |only if walking
+kill Odalrik##172207
+collect Runecarver's Memory##178561 |q 60269/1 |goto 38.63,28.84
+step
+talk Runecarver##164937
+turnin Reawakening##60269 |goto The Runecarver/0 50.17,53.83
+accept A Damned Pact##60270 |goto 50.17,53.83
+step
+talk Ve'nari##162804
+turnin A Damned Pact##60270 |goto The Maw/0 46.91,41.69
+accept A Grave Chance##60271 |goto 46.91,41.69
+stickystart "Collect_50_Stygia"
+step
+Kill enemies around this area
+|tip Enemies that are on fire will drop Molten Anima.
+collect 5 Molten Anima##178562 |q 60271/2 |goto 37.76,39.29
+step
+label "Collect_50_Stygia"
+Collect #50# Stygia |condition curcount(1767) >= 50 |q 60271
+|tip Stygia is a reward from world quests, daily quests, bonus objectives and rare spawns in The Maw.
+step
+talk Ve'nari##162804
+buy 1 Anima Supricifer##181324 |q 60271/1 |goto 46.91,41.69
+step
+talk Ve'nari##162804
+turnin A Grave Chance##60271 |goto 46.91,41.69
+accept The Weak Link##60272 |goto 46.91,41.69
+step
+talk Runecarver##164937
+Tell him _"I've found a way, but we only have one shot at it. Let's get you free!"_
+Break the Chain |q 60272/1 |goto The Runecarver/0 50.17,53.83
+step
+talk Runecarver##164937
+turnin The Weak Link##60272 |goto 50.72,54.13
 step
 talk Aithlyn##158556
 accept Silk Shortage##57661 |goto Heart of the Forest/0 59.48,31.82
@@ -16836,7 +17107,7 @@ step
 _Congratulations!_
 You Reached Renown Level 40.
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Questline",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Questline",{
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing the Venthyr\n"..
 "\ncovenant quests and storyline.\n",
@@ -17143,6 +17414,118 @@ accept Halls of Atonement: Medallion of Pride##60500 |goto 56.80,30.94
 step
 talk Highlord Bolvar Fordragon##164079
 turnin The Highlord Calls##63033 |goto Oribos/0 39.94,68.59
+step
+talk Highlord Bolvar Fordragon##164079
+accept Into Torghast##60136 |goto Oribos/0 39.93,68.62
+step
+talk Ve'nari##162804
+Ask her _"How do I enter Torghast?"_
+Ask Ve'nari about a Way into Torghast |q 60136/1 |goto The Maw/0 46.91,41.69
+step
+talk Ve'nari##162804
+turnin Into Torghast##60136 |goto 46.91,41.69
+accept The Search for Baine##61099 |goto 46.91,41.69
+step
+Use Ve'nari's Portal to Enter Torghast |q 61099/1 |goto 48.20,39.38
+step
+click Wayfinder
+Choose _<Use the [Attuned Shard] with the Wayfinder.>_
+|tip Enter the instance with the popup that displays.
+Take the Attuned Shard to the Wayfinder and See Where it Leads |q 61099/2 |goto Torghast/0 37.96,47.08
+step
+Enter Arkoban Hall |goto Torghast/6 43.78,9.70 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/6 51.30,84.47
+|tip Walk into the swirling portal.
+Reach Floor 2 in Torghast |goto Torghast/7 36.19,61.10 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 54.08,52.39 < 10 |walk
+Enter the Portal |goto Torghast/7 54.84,78.28
+|tip Walk into the swirling portal.
+Reach Floor 3 in Torghast |goto Torghast/8 50.69,85.55 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/8 72.38,54.51
+|tip Walk into the swirling portal.
+Reach Floor 4 in Torghast |goto Torghast/7 78.38,52.61 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 71.37,52.40 < 10 |walk
+Run up the stairs |goto Torghast/7 62.90,35.51 < 10 |walk
+Enter the Portal |goto Torghast/7 62.86,53.95
+|tip Walk into the swirling portal.
+Reach Floor 5 in Torghast |goto Torghast/9 54.13,18.73 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/9 37.27,58.44 < 15 |only if walking
+Enter the Portal |goto Torghast/9 62.57,71.88
+|tip Walk into the swirling portal.
+Reach Floor 6 in Torghast |goto Torghast/10 75.86,76.65 < 10 |noway |c |q 61099
+step
+kill Warden Arkoban##175123 |q 61099/3 |goto Torghast/10 46.43,50.95
+accept Prison of the Forgotten##60267 |goto Torghast/10 46.43,50.95
+|tip You will automatically accept this quest after looting him.
+step
+clicknpc Baine Bloodhoof##175294
+Rescue Baine |q 61099/4 |goto 34.79,56.25
+step
+Enter the Portal |goto 35.23,41.51
+|tip Walk into the swirling portal.
+Leave Arkoban Hall |goto Torghast/0 37.23,47.20 < 10 |noway |c |q 61099
+step
+talk Highlord Bolvar Fordragon##164079
+turnin Arkoban Hall##61099 |goto Oribos/0 39.92,68.62
+accept Explore Torghast##62932 |goto 39.92,68.62
+step
+talk Ve'nari##162804
+Tell her _"This was carried by one of the Jailer's more powerful guards. Do you know what it does?"_
+Speak with Ve'nari |q 60267/1 |goto The Maw/0 46.91,41.69
+step
+click Domination Lock
+turnin Prison of the Forgotten##60267 |goto Torghast/0 15.96,62.97
+step
+talk Runecarver##164937
+accept Deep Within##60268 |goto The Runecarver/0 50.36,54.22
+step
+talk Runecarver##164937
+Ask him _"Who are you? Why are you here?"_
+Learn More About the Prisoner |q 60268/1 |goto 50.17,53.83
+step
+talk Runecarver##164937
+turnin Deep Within##60268 |goto 50.17,53.83
+accept Reawakening##60269 |goto 50.17,53.83
+step
+Follow the path |goto The Maw/0 44.56,41.13 < 15 |only if walking
+kill Odalrik##172207
+collect Runecarver's Memory##178561 |q 60269/1 |goto 38.63,28.84
+step
+talk Runecarver##164937
+turnin Reawakening##60269 |goto The Runecarver/0 50.17,53.83
+accept A Damned Pact##60270 |goto 50.17,53.83
+step
+talk Ve'nari##162804
+turnin A Damned Pact##60270 |goto The Maw/0 46.91,41.69
+accept A Grave Chance##60271 |goto 46.91,41.69
+stickystart "Collect_50_Stygia"
+step
+Kill enemies around this area
+|tip Enemies that are on fire will drop Molten Anima.
+collect 5 Molten Anima##178562 |q 60271/2 |goto 37.76,39.29
+step
+label "Collect_50_Stygia"
+Collect #50# Stygia |condition curcount(1767) >= 50 |q 60271
+|tip Stygia is a reward from world quests, daily quests, bonus objectives and rare spawns in The Maw.
+step
+talk Ve'nari##162804
+buy 1 Anima Supricifer##181324 |q 60271/1 |goto 46.91,41.69
+step
+talk Ve'nari##162804
+turnin A Grave Chance##60271 |goto 46.91,41.69
+accept The Weak Link##60272 |goto 46.91,41.69
+step
+talk Runecarver##164937
+Tell him _"I've found a way, but we only have one shot at it. Let's get you free!"_
+Break the Chain |q 60272/1 |goto The Runecarver/0 50.17,53.83
+step
+talk Runecarver##164937
+turnin The Weak Link##60272 |goto 50.72,54.13
 step
 Reach Renown Level 5 |condition covenant() == Venthyr and covenantrenown() >= 5
 |tip Increase your Renown by completing Covenant Sanctum quests.
@@ -18359,7 +18742,7 @@ step
 _Congratulations!_
 You Reached Renown Level 40.
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Necrolord Questline",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Questline",{
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing the Necrolord\n"..
 "\ncovenant quests and storyline.\n",
@@ -18648,6 +19031,118 @@ step
 talk Highlord Bolvar Fordragon##164079
 turnin The Highlord Calls##63032 |goto Oribos/0 39.94,68.59
 step
+talk Highlord Bolvar Fordragon##164079
+accept Into Torghast##60136 |goto Oribos/0 39.93,68.62
+step
+talk Ve'nari##162804
+Ask her _"How do I enter Torghast?"_
+Ask Ve'nari about a Way into Torghast |q 60136/1 |goto The Maw/0 46.91,41.69
+step
+talk Ve'nari##162804
+turnin Into Torghast##60136 |goto 46.91,41.69
+accept The Search for Baine##61099 |goto 46.91,41.69
+step
+Use Ve'nari's Portal to Enter Torghast |q 61099/1 |goto 48.20,39.38
+step
+click Wayfinder
+Choose _<Use the [Attuned Shard] with the Wayfinder.>_
+|tip Enter the instance with the popup that displays.
+Take the Attuned Shard to the Wayfinder and See Where it Leads |q 61099/2 |goto Torghast/0 37.96,47.08
+step
+Enter Arkoban Hall |goto Torghast/6 43.78,9.70 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/6 51.30,84.47
+|tip Walk into the swirling portal.
+Reach Floor 2 in Torghast |goto Torghast/7 36.19,61.10 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 54.08,52.39 < 10 |walk
+Enter the Portal |goto Torghast/7 54.84,78.28
+|tip Walk into the swirling portal.
+Reach Floor 3 in Torghast |goto Torghast/8 50.69,85.55 < 10 |noway |c |q 61099
+step
+Enter the Portal |goto Torghast/8 72.38,54.51
+|tip Walk into the swirling portal.
+Reach Floor 4 in Torghast |goto Torghast/7 78.38,52.61 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/7 71.37,52.40 < 10 |walk
+Run up the stairs |goto Torghast/7 62.90,35.51 < 10 |walk
+Enter the Portal |goto Torghast/7 62.86,53.95
+|tip Walk into the swirling portal.
+Reach Floor 5 in Torghast |goto Torghast/9 54.13,18.73 < 10 |noway |c |q 61099
+step
+Follow the path |goto Torghast/9 37.27,58.44 < 15 |only if walking
+Enter the Portal |goto Torghast/9 62.57,71.88
+|tip Walk into the swirling portal.
+Reach Floor 6 in Torghast |goto Torghast/10 75.86,76.65 < 10 |noway |c |q 61099
+step
+kill Warden Arkoban##175123 |q 61099/3 |goto Torghast/10 46.43,50.95
+accept Prison of the Forgotten##60267 |goto Torghast/10 46.43,50.95
+|tip You will automatically accept this quest after looting him.
+step
+clicknpc Baine Bloodhoof##175294
+Rescue Baine |q 61099/4 |goto 34.79,56.25
+step
+Enter the Portal |goto 35.23,41.51
+|tip Walk into the swirling portal.
+Leave Arkoban Hall |goto Torghast/0 37.23,47.20 < 10 |noway |c |q 61099
+step
+talk Highlord Bolvar Fordragon##164079
+turnin Arkoban Hall##61099 |goto Oribos/0 39.92,68.62
+accept Explore Torghast##62932 |goto 39.92,68.62
+step
+talk Ve'nari##162804
+Tell her _"This was carried by one of the Jailer's more powerful guards. Do you know what it does?"_
+Speak with Ve'nari |q 60267/1 |goto The Maw/0 46.91,41.69
+step
+click Domination Lock
+turnin Prison of the Forgotten##60267 |goto Torghast/0 15.96,62.97
+step
+talk Runecarver##164937
+accept Deep Within##60268 |goto The Runecarver/0 50.36,54.22
+step
+talk Runecarver##164937
+Ask him _"Who are you? Why are you here?"_
+Learn More About the Prisoner |q 60268/1 |goto 50.17,53.83
+step
+talk Runecarver##164937
+turnin Deep Within##60268 |goto 50.17,53.83
+accept Reawakening##60269 |goto 50.17,53.83
+step
+Follow the path |goto The Maw/0 44.56,41.13 < 15 |only if walking
+kill Odalrik##172207
+collect Runecarver's Memory##178561 |q 60269/1 |goto 38.63,28.84
+step
+talk Runecarver##164937
+turnin Reawakening##60269 |goto The Runecarver/0 50.17,53.83
+accept A Damned Pact##60270 |goto 50.17,53.83
+step
+talk Ve'nari##162804
+turnin A Damned Pact##60270 |goto The Maw/0 46.91,41.69
+accept A Grave Chance##60271 |goto 46.91,41.69
+stickystart "Collect_50_Stygia"
+step
+Kill enemies around this area
+|tip Enemies that are on fire will drop Molten Anima.
+collect 5 Molten Anima##178562 |q 60271/2 |goto 37.76,39.29
+step
+label "Collect_50_Stygia"
+Collect #50# Stygia |condition curcount(1767) >= 50 |q 60271
+|tip Stygia is a reward from world quests, daily quests, bonus objectives and rare spawns in The Maw.
+step
+talk Ve'nari##162804
+buy 1 Anima Supricifer##181324 |q 60271/1 |goto 46.91,41.69
+step
+talk Ve'nari##162804
+turnin A Grave Chance##60271 |goto 46.91,41.69
+accept The Weak Link##60272 |goto 46.91,41.69
+step
+talk Runecarver##164937
+Tell him _"I've found a way, but we only have one shot at it. Let's get you free!"_
+Break the Chain |q 60272/1 |goto The Runecarver/0 50.17,53.83
+step
+talk Runecarver##164937
+turnin The Weak Link##60272 |goto 50.72,54.13
+step
 talk Baroness Draka##161907
 |tip Inside the building.
 accept Securing the House##62448 |goto Seat of the Primus/0 49.77,50.68
@@ -18757,7 +19252,7 @@ Ask him _"Will you offer your aid?"_
 Return to Xennir |q 57644/3 |goto 52.01,16.95
 step
 talk Navigator Xennir##158604
-turnin No Friend Left Behind##57644 |goto 49.96,18.04
+turnin No Friend Left Behind##57644 |goto 52.01,16.95
 step
 talk Khaliiq##171875
 turnin Call In a Favor##61252 |goto 50.02,17.92
@@ -19944,7 +20439,7 @@ step
 _Congratulations!_
 You Reached Renown Level 40.
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Transport Network",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Transport Network",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through upgrading your covenant transport network.",
 condition_suggested=function() return level >= 60 end,
@@ -20017,7 +20512,7 @@ talk Haephus##167745
 |tip Select the "Transport Network" node and click the "Activate" button to begin the upgrade.
 Upgrade your Transport Network to Tier 3 |condition covenantfeature("Transport Network") == 3 |goto Elysian Hold/0 42.59,53.02
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Transport Network",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Transport Network",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through upgrading your covenant transport network.",
 condition_suggested=function() return level >= 60 end,
@@ -20142,7 +20637,7 @@ talk Zayhad, The Builder##165702
 |tip Select the "Transport Network" node and click the "Activate" button to begin the upgrade.
 Upgrade your Transport Network to Tier 3 |condition covenantfeature("Transport Network") == 3 |goto Heart of the Forest/1 39.40,54.32
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Transport Network",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Transport Network",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through upgrading your covenant transport network.",
 condition_suggested=function() return level >= 60 end,
@@ -20233,7 +20728,7 @@ Tell him _"Show me the Sanctum."_
 |tip Select the "Transport Network" node and click the "Activate" button to begin the upgrade.
 Upgrade your Transport Network to Tier 3 |condition covenantfeature("Transport Network") == 3 |goto Sinfall/0 55.63,26.27
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Necrolords Transport Network",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Transport Network",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through upgrading your covenant transport network.",
 condition_suggested=function() return level >= 60 end,
@@ -20312,7 +20807,7 @@ Tell her _"Show me the Sanctum."_
 |tip Select the "Transport Network" node and click the "Activate" button to begin the upgrade.
 Upgrade your Transport Network to Tier 3 |condition covenantfeature("Transport Network") == 3 |goto Seat of the Primus/0 52.75,38.27
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Command Table",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Command Table",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through recruiting your covenant command table followers.",
 condition_end=function() return completedq(61865) end,
@@ -20405,7 +20900,7 @@ Reach Renown Level 40 |condition covenant() == Kyrian and covenantrenown() >= 40
 |tip They are repeatable quests in your covenant base.
 |tip Use the "Kyrian Daily Quests" guide to accomplish this.
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Command Table",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Command Table",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through recruiting your covenant command table followers.",
 condition_end=function() return completedq(61857) end,
@@ -20485,7 +20980,7 @@ step
 talk Watcher Vesperbloom##164023
 accept Adventurer: Groonoomcrooek##61857 |goto 44.67,56.28
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Command Table",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Command Table",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through recruiting your covenant command table followers.",
 condition_end=function() return completedq(61792) end,
@@ -20574,7 +21069,7 @@ talk Tactician Sakaa##164741
 |tip Inside the building.
 accept Adventurer: Bogdan##61792 |goto 58.10,59.78
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Necrolords Command Table",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Command Table",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through recruiting your covenant command table followers.",
 condition_end=function() return completedq(62316) end,
@@ -20665,7 +21160,7 @@ talk Merick Feldscar##165321
 |tip Inside the building.
 accept Adventurer: Rathan##62316 |goto 38.75,48.52
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Kyrian Anima Conductor",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Anima Conductor",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through unlocking and upgrading your covenant Anima Conductor.",
 condition_end=function() return covenantfeature("Anima Conductor") >= 3 end,
@@ -20738,7 +21233,7 @@ Tell him _"Show me the Sanctum."_
 |tip Select the "Anima Conductor" node and click the "Activate" button to begin the upgrade.
 Upgrade your Anima Conductor to Tier 3 |condition covenantfeature("Anima Conductor") >= 3 |goto Elysian Hold/0 42.59,53.02
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Night Fae Anima Conductor",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Anima Conductor",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through unlocking and upgrading your covenant Anima Conductor.",
 condition_end=function() return covenantfeature("Anima Conductor") >= 3 end,
@@ -20811,7 +21306,7 @@ talk Zayhad, The Builder##165702
 |tip Select the "Anima Conductor" node and click the "Activate" button to begin the upgrade.
 Upgrade your Anima Conductor to Tier 3 |condition covenantfeature("Anima Conductor") >= 3 |goto 39.40,54.32
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Venthyr Anima Conductor",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr Anima Conductor",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through unlocking and upgrading your covenant Anima Conductor.",
 condition_end=function() return covenantfeature("Anima Conductor") >= 3 end,
@@ -20887,7 +21382,7 @@ Tell him _"Show me the Sanctum."_
 |tip Select the "Anima Conductor" node and click the "Activate" button to begin the upgrade.
 Upgrade your Anima Conductor to Tier 3 |condition covenantfeature("Anima Conductor") >= 3 |goto Sinfall/0 55.63,26.27
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Covenants\\Necrolords Anima Conductor",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Anima Conductor",{
 author="support@zygorguides.com",
 description="\nThis guide will walk you through unlocking and upgrading your covenant Anima Conductor.",
 condition_end=function() return covenantfeature("Anima Conductor") >= 3 end,
@@ -20967,6 +21462,12856 @@ Tell her _"Show me the Sanctum."_
 |tip Select the "Anima Conductor" node and click the "Activate" button to begin the upgrade.
 Upgrade your Anima Conductor to Tier 3 |condition covenantfeature("Anima Conductor") >= 3 |goto Seat of the Primus/0 52.75,38.27
 ]])
+ZGV.BETASTART()
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Kyrian Path of Ascension",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and upgrading the Path of Ascension of the Kyrian covenant.",
+condition_suggested=function() return level >= 60 end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Reach Level 60 |ding 60 |q 60489 |future
+|tip Use the leveling guides to accomplish this.
+step
+Join the Kyrian Covenant |condition covenant() == Kyrian |q 60489 |future
+|tip Use the "Shadowlands Intro & Main Story Questline" leveling guide to accomplish this.
+stickystart "Collect_6_Redeemed_Souls"
+step
+Collect #1500# Reservoir Anima |condition curcount(1813) >= 1500 or covenantfeature("Covenant Unique") >= 1 or completedq(60489)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_6_Redeemed_Souls"
+Collect #6# Redeemed Souls |condition curcount(1865) >= 6 or covenantfeature("Covenant Unique") >= 1 or completedq(60489)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 1 |condition covenantfeature("Covenant Unique") >= 1 |goto Elysian Hold/0 42.59,53.02
+step
+talk Haephus##167745
+accept The Path of Ascension##60489 |goto 42.59,53.02
+step
+click Elysian Scroll
+Activate the Path of Ascension |q 60489/1 |goto Elysian Hold/0 29.78,42.04
+step
+talk Apolon##168485
+turnin The Path of Ascension##60489 |goto 27.81,41.75
+accept Humble Gatherer##60493 |goto 27.81,41.75
+stickystart "Collect_Tampered_Anima_Chargers"
+stickystart "Collect_Soul_Mirror_Shards"
+step
+Kill Forsworn Punsher and Dark Goliath enemies around this area
+|tip Punishers and Goliaths are elite and may require a group.
+|tip All of these materials can be looted from mobs inside the "Spires of Ascension" dungeon as well.
+collect 2 Depleted Goliath Core##179008 |q 60493/1 |goto Bastion/0 51.44,17.34
+step
+label "Collect_Tampered_Anima_Chargers"
+Kill Mechanical and Praetorian enemies around this area
+|tip Only enemies classified as Mechanical and named Praetorian can drop these parts.
+|tip All of these materials can be looted from mobs inside the "Spires of Ascension" dungeon as well. |notinsticky
+collect 6 Tampered Anima Charger##179009 |q 60493/2 |goto 51.44,17.34
+step
+label "Collect_Soul_Mirror_Shards"
+Kill Forsworn enemies around this area
+|tip All of these materials can be looted from mobs inside the "Spires of Ascension" dungeon as well. |notinsticky
+collect 5 Soul Mirror Shard##178995 |q 60493/3 |goto 51.44,17.34
+step
+talk Apolon##168485
+turnin Humble Gatherer##60493 |goto Elysian Hold/0 27.81,41.75
+accept Your Friend, Dactylis##60494 |goto 27.81,41.75
+step
+talk Dactylis##168430
+Choose _Overcharged Goliath Core_
+|tip Click the "Create All" button
+collect 2 Overcharged Goliath Core##179010 |q 60494/1 |goto 29.98,38.76
+step
+talk Dactylis##168430
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |q 60494/2 |goto 29.98,38.76
+step
+talk Apolon##168485
+turnin Your Friend, Dactylis##60494 |goto 27.81,41.75
+accept A Suitable Opponent##60495 |goto 27.81,41.75
+step
+clicknpc Depleted Goliath##168720
+Overcharge the Depleted Goliath |q 60495/1 |goto Bastion/0 53.34,88.83 |count 1
+step
+clicknpc Depleted Goliath##168720
+Overcharge the Depleted Goliath |q 60495/1 |goto 53.68,88.91 |count 2
+step
+Watch the dialogue
+talk Kalisthene##168517
+|tip She will eventually fly to this spot.
+Tell her _"The Path of Acension has been reinstated, and you would be an appropriate opponent for my soulbinds."_
+Speak with Kalisthene |q 60495/2 |goto 53.52,87.02
+step
+use Soul Mirror##181782
+|tip Use it on Kalisthene.
+Capture Kalisthene |q 60495/3 |goto 53.52,87.02
+step
+talk Apolon##168485
+turnin A Suitable Opponent##60495 |goto Elysian Hold/0 27.81,41.75
+step
+talk Artemede##168427
+accept Into the Coliseum##60496 |goto 28.26,42.40
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |q 60496/1 |goto 28.26,42.40
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Courage difficulty.
+Choose an Enemy and Difficulty to Fight |scenariogoal 1/48227 |goto Ascension Coliseum/0 72.54,27.83 |q 60496
+step
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+Choose a Soulbind |scenariogoal 1/48239 |goto 66.54,26.59 |q 60496
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45 |q 60496
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |q 60496
+|tip Use the abilities on your action bar.
+|tip Keep your distance as much as possible.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage when she channels in the air.
+|tip When she begins channeling spears in the air, running in a straight line while not rooted will ensure safety.
+|tip This fight is very difficult without the Herald's Footpads you craft in the next section.
+|tip You don't need to win this fight to progress.
+step
+click Victor's Chest
+Collect your Reward |scenariogoal 4/48413 |goto 50.04,53.72 |q 60496
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 4/48458 |goto 50.43,56.91 |q 60496
+step
+Challenge Kalisthene |q 60496/2
+step
+talk Artemede##168427
+turnin Into the Coliseum##60496 |goto Elysian Hold/0 28.26,42.40
+accept Herald's Footpads##60497 |goto 28.26,42.40
+step
+talk Dactylis##168430
+turnin Herald's Footpads##60497 |goto 29.98,38.76
+accept Sourcing Your Own Materials##61473 |goto 29.98,38.76
+stickystart "Collect_Champion's_Pelts"
+step
+kill Swiftwing Larion##160569+
+collect 4 Elysian Feathers##180477 |goto Bastion/0 47.00,35.63 |q 61473
+step
+label "Collect_Champion's_Pelts"
+Kill Runestag and Runestalker enemies around this area
+|tip You can also continue to farm Swiftwing Larions at a lower drop chance.
+collect 2 Champion's Pelt##180478 |goto Ardenweald/0 60.16 37.09 |q 61473
+step
+talk Dactylis##168430
+Choose _Herald's Footpads_
+|tip Click the "Create" button
+collect 1 Herald's Footpads##180579 |q 61473/1 |goto Elysian Hold/0 29.98,38.76
+step
+talk Paolone##171816
+turnin Sourcing Your Own Materials##61473 |goto 29.04,37.97
+step
+talk Artemede##168427
+accept Overcoming the Trial##60498 |goto 28.26,42.40
+step
+label "Collect_A_Medallion_Of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1 or readyq(60498) or completedq(60498)
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto 28.26,42.40 |q 60498
+step
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+Choose a Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59 |q 60498
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91 |q 60498
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Courage difficulty.
+Choose an Enemy and Difficulty to Fight |scenariogoal 1/48227 |goto 72.54,27.83 |q 60498
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45 |q 60498
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |q 60498
+|tip Use the abilities on your action bar.
+|tip Keep your distance as much as possible.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage when she channels in the air.
+|tip When she begins channeling spears in the air, running in a straight line while not rooted will ensure safety.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared.
+|tip It will cause you to dash forward and remove your snare.
+step
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72 |q 60498
+step
+collect Blueprint: Deep Echo Trident##180472 |n
+|tip This will be in the chest.
+accept Blueprint: Deep Echo Trident##60946 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |q 60498
+step
+Leave the Path of Ascension |scenarioend |q 60498
+step
+Challenge Kalisthene |q 60498/1 |or
+'|condition not readyq(60498) and not completedq(60498) |next "Collect_A_Medallion_Of_Service" |or
+step
+talk Artemede##168427
+turnin Overcoming the Trial##60498 |goto Elysian Hold/0 28.26,42.40
+step
+talk Dactylis##168430
+turnin Blueprint: Deep Echo Trident##60946 |goto 29.98,38.76
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+|only if covenantfeature("Covenant Unique") < 2
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+|only if covenantfeature("Covenant Unique") < 2
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+|only if covenantfeature("Covenant Unique") < 3
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+|only if covenantfeature("Covenant Unique") < 3
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+|only if covenantfeature("Covenant Unique") < 4
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+|only if covenantfeature("Covenant Unique") < 4
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+|only if covenantfeature("Covenant Unique") < 5
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+|only if covenantfeature("Covenant Unique") < 5
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 |goto Elysian Hold/0 42.59,53.02
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Elysian Feathers",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through farming Elysian Feathers for ascension crafting for the Kyrian covenant.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+kill Swiftwing Larion##160569+
+collect Elysian Feathers##180477 |goto Bastion/0 47.00,35.63 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Nightforged Steel",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through farming Nightforged Steel for ascension crafting for the Kyrian covenant.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Kill Depraved enemies around this area
+|tip They drop from humanoid enemies.
+collect Nightforged Steel##180595 |goto Revendreth/0 72.51,48.19 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Calloused Bone",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through farming Calloused Bones for ascension crafting for the Kyrian covenant.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Kill Depraved enemies around this area
+|tip They drop from undead enemies.
+collect Calloused Bone##180594 |goto Maldraxxus/0 65.35,36.26 |n
+You can find more around:
+[63.39,33.32]
+[67.30,29.87]
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Champion's Pelt",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through farming Champion's Pelts for ascension crafting for the Kyrian covenant.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Kill Runestag and Runestalker enemies around this area
+collect Champion's Pelt##180478 |goto Ardenweald/0 60.16 37.09 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Soul Mirror Shard",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through farming Soul Mirror Shards for ascension crafting for the Kyrian covenant.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Kill Forsworn enemies around this area
+|tip They can be looted from mobs inside the "Spires of Ascension" dungeon as well.
+collect Soul Mirror Shard##178995 |goto Bastion/0 58.36,59.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Ascension Calling: Mikanikos",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Mikanikos as a soulbind for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62223) end,
+condition_end=function() return completedq(62223) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Ascension Calling: Mikanikos##182975 |q 62223 |future
+|tip Defeat Athanos on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+step
+use the Ascension Calling: Mikanikos##182975
+accept Ascension Calling: Mikanikos##62223
+step
+talk Mikanikos##160391
+turnin Ascension Calling: Mikanikos##62223 |goto Elysian Hold/0 45.25,41.52
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Ascension Calling: Kleia",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Kleia as a soulbind for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(60907) end,
+condition_end=function() return completedq(60907) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Ascension Calling: Kleia##182095 |q 60907 |future
+|tip Defeat Nuuminuuru on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+use the Ascension Calling: Kleia##182095
+accept Ascension Calling: Kleia##60907
+step
+talk Kleia##160390
+turnin Ascension Calling: Kleia##60907 |goto Elysian Hold/0 38.48,43.28
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Artisan Tool Belt",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating an Artisan Tool Belt for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62976) end,
+condition_end=function() return completedq(62976) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Artisan Tool Belt##184414 |q 62981 |future
+|tip Defeat Mad Mortimer on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+use the Blueprint: Artisan Tool Belt##184414
+accept Blueprint: Artisan Tool Belt##62981
+step
+talk Dactylis##168430
+turnin Blueprint: Artisan Tool Belt##62981 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Calloused_Bone"
+stickystart "Collect_Nightforged_Steel"
+stickystart "Collect_Elysian_Feathers"
+step
+collect 10 Champion's Pelt##180478 |q 62976 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Calloused_Bone"
+collect 8 Calloused Bone##180594 |q 62976 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 6 Nightforged Steel##180595 |q 62976 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 8 Elysian Feathers##180477 |q 62976 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Artisan Tool Belt_
+|tip Click the "Create" button
+accept Artisan Tool Belt##62976 |goto 29.98,38.76
+step
+Use the _"Summon Steward"_ ability
+|tip Use it to summon your Kyrian Steward.
+_Next to you:_
+talk Steward##166663
+turnin Artisan Tool Belt##62976
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Charm of Discord",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Charm of Discord for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(61272) end,
+condition_end=function() return completedq(61272) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Charm of Discord##181155 |q 61272 |future
+|tip Defeat Azaruux on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Azaruux" guide to accomplish this.
+step
+use the Blueprint: Charm of Discord##181155
+accept Blueprint: Charm of Discord##61272
+step
+talk Dactylis##168430
+turnin Blueprint: Charm of Discord##61272 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Charm of Discord_
+|tip Click the "Create" button
+|tip Each one requires four each of Calloused Bones and Nightforged Steel.
+|tip This item is single-use and must be used before choosing a soulbind.
+collect 1 Charm of Discord##181157 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Charm of Focus",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Charm of Focus for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(63000) end,
+condition_end=function() return completedq(63000) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Charm of Focus##181238 |q 63000 |future
+|tip Defeat Thran'tiok on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Thran'tiok" guide to accomplish this.
+step
+use the Blueprint: Charm of Focus##181238
+accept Blueprint: Charm of Focus##63000
+step
+talk Dactylis##168430
+turnin Blueprint: Charm of Focus##63000 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Charm of Focus_
+|tip Click the "Create" button
+|tip Each one requires two each of Elysian Feathers, Champion's Pelts, Calloused Bones, and Nightforged Steel.
+|tip This item is single-use.
+collect 1 Charm of Focus##181239 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Charm of Fortitude",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Charm of Fortitude for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(60947) end,
+condition_end=function() return completedq(60947) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Charm of Fortitude##180482 |q 60947 |future
+|tip Defeat Echthra on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+use the Blueprint: Charm of Fortitude##180482
+accept Blueprint: Charm of Fortitude##60947
+step
+talk Dactylis##168430
+turnin Blueprint: Charm of Fortitude##60947 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Charm of Fortitude_
+|tip Click the "Create" button
+|tip Each one requires six Champion's Pelts and four Calloused Bones.
+|tip This item is single-use and must be used before choosing a soulbind.
+collect 1 Charm of Fortitude##180479 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Charm of Persistence",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Charm of Persistence for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(61269) end,
+condition_end=function() return completedq(61269) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Charm of Persistence##181147 |q 61269 |future
+|tip Defeat Splinterbark Nightmare on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+step
+use the Blueprint: Charm of Persistence##181147
+accept Blueprint: Charm of Persistence##61269
+step
+talk Dactylis##168430
+turnin Blueprint: Charm of Persistence##61269 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Charm of Persistence_
+|tip Click the "Create" button
+|tip Each one requires four Elysian Feathers and four Nightforged Steel.
+|tip This item is single-use and must be used before choosing a soulbind.
+collect 1 Charm of Persistence##181145 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Charm of Quickness",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Charm of Quickness for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(61713) end,
+condition_end=function() return completedq(61713) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Charm of Quickness##182162 |q 61713 |future
+|tip Defeat Alderyn and Myn'ir on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+step
+use the Blueprint: Charm of Quickness##182162
+accept Blueprint: Charm of Quickness##61713
+step
+talk Dactylis##168430
+turnin Blueprint: Charm of Quickness##61713 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Charm of Quickness_
+|tip Click the "Create" button
+|tip Each one requires two Champion's Pelts and four Elysian Feathers.
+|tip This item is single-use and must be used before choosing a soulbind.
+collect 1 Charm of Quickness##181846 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Deep Echo Trident",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Deep Echo Trident for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(60945) end,
+condition_end=function() return completedq(60945) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Deep Echo Trident##180472 |q 60946 |future
+|tip Defeat Kalisthene on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+use the Blueprint: Deep Echo Trident##180472
+accept Blueprint: Deep Echo Trident##60946
+step
+talk Dactylis##168430
+turnin Blueprint: Deep Echo Trident##60946 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Nightforged_Steel"
+step
+collect 6 Calloused Bone##180594 |q 60945 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 8 Nightforged Steel##180595 |q 60945 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Deep Echo Trident_
+|tip Click the "Create" button
+accept Deep Echo Trident##60945 |goto 29.98,38.76
+step
+talk Paolone##171816
+turnin Deep Echo Trident##60945 |goto 29.08,37.99
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Empyrean Refreshment",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Empyrean Refreshment for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62486) end,
+condition_end=function() return completedq(62486) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Empyrean Refreshment##183794 |q 62486 |future
+|tip Defeat Azaruux on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Azaruux" guide to accomplish this.
+step
+use the Blueprint: Empyrean Refreshment##183794
+accept Blueprint: Empyrean Refreshment##62486
+step
+talk Dactylis##168430
+turnin Blueprint: Empyrean Refreshment##62486 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Empyrean Refreshment_
+|tip Click the "Create" button
+|tip Each one requires two Elysian Feathers, six Champion's Pelts, two Calloused Bones, and four Nightforged Steel.
+|tip This item is single-use.
+collect 1 Empyrean Refreshment##183793 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Gilded Abacus",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Gilded Abacus for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(61714) end,
+condition_end=function() return completedq(61714) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Gilded Abacus##184411 |q 62971 |future
+|tip Defeat Craven Corinth on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Craven Corinth" guide to accomplish this.
+step
+use the Blueprint: Gilded Abacus##184411
+accept Blueprint: Gilded Abacus##62971
+step
+talk Dactylis##168430
+turnin Blueprint: Gilded Abacus##62971 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Calloused_Bone"
+step
+collect 16 Nightforged Steel##180595 |q 61714 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Calloused_Bone"
+collect 12 Calloused Bone##180594 |q 61714 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Gilded Abacus_
+|tip Click the "Create" button
+accept Gilded Abacus##61714 |goto 29.98,38.76
+step
+Use the _"Summon Steward"_ ability
+|tip Use it to summon your Kyrian Steward.
+_Next to you:_
+talk Steward##166663
+turnin Gilded Abacus##61714
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Kyrian Smith's Kit",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Kyrian Smith's Kit for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(61304) end,
+condition_end=function() return completedq(61304) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Kyrian Smith's Kit##181165 |q 61304 |future
+|tip Defeat Athanos on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Athanos" guide to accomplish this.
+step
+use the Blueprint: Kyrian Smith's Kit##181165
+accept Blueprint: Kyrian Smith's Kit##61304
+step
+talk Dactylis##168430
+turnin Blueprint: Kyrian Smith's Kit##61304 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Kyrian Smith's Kit_
+|tip Click the "Create" button
+|tip Each one requires four Elysian Feathers, two Champion's Pelts, four Calloused Bones, and eight Nightforged Steel.
+|tip This item is single-use.
+collect 1 Kyrian Smith's Kit##183126 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Medallion of Service",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Medallion of Service for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62984) end,
+condition_end=function() return completedq(62984) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Medallion of Service##184445 |q 62984 |future
+|tip Defeat Echthra on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Echthra" guide to accomplish this.
+step
+use the Blueprint: Medallion of Service##184445
+accept Blueprint: Medallion of Service##62984
+step
+talk Dactylis##168430
+turnin Blueprint: Medallion of Service##62984 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Medallion of Service_
+|tip Click the "Create" button
+|tip Each one requires eight each of Champion's Pelts, Elysian Feathers, Nightforged Steel, and Calloused Bones.
+|tip This is the currency required to enter the Path of Ascension.
+Create a Medallion of Service |goto 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Phial of Serenity",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Phial of Serenity for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(60974) end,
+condition_end=function() return completedq(60974) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Phial of Serenity##180495 |q 60973 |future
+|tip Defeat Kalisthene on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Kalisthene" guide to accomplish this.
+step
+use the Blueprint: Phial of Serenity##180495
+accept Blueprint: Phial of Serenity##60973
+step
+talk Dactylis##168430
+turnin Blueprint: Phial of Serenity##60973 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Calloused_Bone"
+stickystart "Collect_Nightforged_Steel"
+stickystart "Collect_Elysian_Feathers"
+step
+collect 2 Champion's Pelt##180478 |q 60974 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Calloused_Bone"
+collect 2 Calloused Bone##180594 |q 60974 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 2 Nightforged Steel##180595 |q 60974 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 12 Elysian Feathers##180477 |q 60974 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Phial of Serenity_
+|tip Click the "Create" button
+accept Phial of Serenity##60974 |goto 29.98,38.76
+step
+talk Paolone##171816
+turnin Phial of Serenity##60974 |goto 29.08,37.99
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Ring of Warding",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Ring of Warding for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62998) end,
+condition_end=function() return completedq(62998) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Ring of Warding##184348 |q 62928 |future
+|tip Defeat Splinterbark Nightmare on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Splinterbark Nightmare" guide to accomplish this.
+step
+use the Blueprint: Ring of Warding##184348
+accept Blueprint: Ring of Warding##62928
+step
+talk Dactylis##168430
+turnin Blueprint: Ring of Warding##62928 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Calloused_Bone"
+stickystart "Collect_Nightforged_Steel"
+step
+collect 8 Champion's Pelt##180478 |q 62998 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Calloused_Bone"
+collect 8 Calloused Bone##180594 |q 62998 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 6 Nightforged Steel##180595 |q 62998 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Ring of Warding_
+|tip Click the "Create" button
+accept Ring of Warding##62998 |goto 29.98,38.76
+step
+talk Paolone##171816
+turnin Ring of Warding##62998 |goto 29.08,37.99
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Skystrider Glider",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Skystrider Glider for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62477) end,
+condition_end=function() return completedq(62477) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Skystrider Glider##183761 |q 62477 |future
+|tip Defeat Kalisthene on the Wisdom difficulty in the Path of Ascension.
+|tip Use the "Trial of Wisdom: Kalisthene" guide to accomplish this.
+step
+use the Blueprint: Skystrider Glider##183761
+accept Blueprint: Skystrider Glider##62477
+step
+talk Dactylis##168430
+turnin Blueprint: Skystrider Glider##62477 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Skystrider Glider_
+|tip Click the "Create" button
+|tip Each one requires four Champion's Pelts, two Nightforged Steel, four Calloused Bones, and six Elysian Feathers.
+|tip This item is required to summon the rare mob Sundancer.
+collect 1 Skystrider Glider##180445 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Spiritforged Aegis",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Spiritforged Aegis for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62995) end,
+condition_end=function() return completedq(62995) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Spiritforged Aegis##180494 |q 60975 |future
+|tip Defeat Craven Corinth on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+use the Blueprint: Spiritforged Aegis##180494
+accept Blueprint: Spiritforged Aegis##60975
+step
+talk Dactylis##168430
+turnin Blueprint: Spiritforged Aegis##60975 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Calloused_Bone"
+stickystart "Collect_Nightforged_Steel"
+stickystart "Collect_Elysian_Feathers"
+step
+collect 2 Champion's Pelt##180478 |q 62995 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Calloused_Bone"
+collect 2 Calloused Bone##180594 |q 62995 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 6 Nightforged Steel##180595 |q 62995 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 10 Elysian Feathers##180477 |q 62995 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Spiritforged Aegis_
+|tip Click the "Create" button
+accept Spiritforged Aegis##62995 |goto 29.98,38.76
+step
+talk Paolone##171816
+turnin Spiritforged Aegis##62995 |goto 29.08,37.99
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Steward Mail Pouch",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Steward Mail Pouch for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62483) end,
+condition_end=function() return completedq(62483) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Steward Mail Pouch##184407 |q 62970 |future
+|tip Defeat Alderyn and Myn'ir on the Loyalty difficulty in the Path of Ascension.
+|tip Use the "Trial of Loyalty: Alderyn and Myn'ir" guide to accomplish this.
+step
+use the Blueprint: Steward Mail Pouch##184407
+accept Blueprint: Steward Mail Pouch##62970
+step
+talk Dactylis##168430
+turnin Blueprint: Steward Mail Pouch##62970 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Elysian_Feathers"
+step
+collect 20 Champion's Pelt##180478 |q 62483 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 12 Elysian Feathers##180477 |q 62483 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Steward Mail Pouch_
+|tip Click the "Create" button
+accept Steward Mail Pouch##62483 |goto 29.98,38.76
+step
+Use the _"Summon Steward"_ ability
+|tip Use it to summon your Kyrian Steward.
+_Next to you:_
+talk Steward##166663
+turnin Steward Mail Pouch##62483
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Vesper of Calling",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Vesper of Calling for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62986) end,
+condition_end=function() return completedq(62986) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Vesper of Calling##184450 |q 62986 |future
+|tip Defeat Splinterbark Nightmare on the Wisdom difficulty in the Path of Ascension.
+|tip Use the "Trial of Wisdom: Splinterbark Nightmare" guide to accomplish this.
+step
+use the Blueprint: Vesper of Calling##184450
+accept Blueprint: Vesper of Calling##62986
+step
+talk Dactylis##168430
+turnin Blueprint: Vesper of Calling##62986 |goto Elysian Hold/0 29.98,38.76
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Vesper of Calling_
+|tip Click the "Create" button
+|tip Each one requires eight each of Elysian Feathers, Champion's Pelts, Calloused Bones, and Nightforged Steel.
+|tip This item is single-use.
+collect 1 Vesper of Calling##184451 |goto 29.98,38.76 |n
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Blueprint: Vial of Lichfrost",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through creating a Vial of Lichfrost for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level == 60 and covenant() == Kyrian and not completedq(62996) end,
+condition_end=function() return completedq(62996) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+collect Blueprint: Vial of Lichfrost##184349 |q 62997 |future
+|tip Defeat Thran'tiok on the Courage difficulty in the Path of Ascension.
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+use the Blueprint: Vial of Lichfrost##184349
+accept Blueprint: Vial of Lichfrost##62997
+step
+talk Dactylis##168430
+turnin Blueprint: Vial of Lichfrost##62997 |goto Elysian Hold/0 29.98,38.76
+stickystart "Collect_Calloused_Bone"
+stickystart "Collect_Nightforged_Steel"
+step
+collect 2 Champion's Pelt##180478 |q 62996 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Calloused_Bone"
+collect 8 Calloused Bone##180594 |q 62996 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 2 Nightforged Steel##180595 |q 62996 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Vial of Lichfrost_
+|tip Click the "Create" button
+accept Vial of Lichfrost##62996 |goto 29.98,38.76
+step
+talk Paolone##171816
+turnin Vial of Lichfrost##62996 |goto 29.08,37.99
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Kalisthene",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Kalisthene for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(60496) end,
+condition_end=function() return completedq(60496) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Reach Level 60 |ding 60 |q 60489 |future
+|tip Use the leveling guides to accomplish this.
+step
+Join the Kyrian Covenant |condition covenant() == Kyrian |q 60489 |future
+|tip Use the "Shadowlands Intro & Main Story Questline" leveling guide to accomplish this.
+stickystart "Collect_6_Redeemed_Souls"
+step
+Collect #1500# Reservoir Anima |condition curcount(1813) >= 1500 or covenantfeature("Covenant Unique") >= 1 or completedq(60489)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_6_Redeemed_Souls"
+Collect #6# Redeemed Souls |condition curcount(1865) >= 6 or covenantfeature("Covenant Unique") >= 1 or completedq(60489)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 1 |condition covenantfeature("Covenant Unique") >= 1 |goto Elysian Hold/0 42.59,53.02
+step
+talk Haephus##167745
+accept The Path of Ascension##60489 |goto 42.59,53.02
+step
+click Elysian Scroll
+Activate the Path of Ascension |q 60489/1 |goto Elysian Hold/0 29.78,42.04
+step
+talk Apolon##168485
+turnin The Path of Ascension##60489 |goto 27.81,41.75
+accept Humble Gatherer##60493 |goto 27.81,41.75
+stickystart "Collect_Tampered_Anima_Chargers"
+stickystart "Collect_Soul_Mirror_Shards"
+step
+Kill Forsworn Punsher and Dark Goliath enemies around this area
+|tip Punishers and Goliaths are elite and may require a group.
+|tip All of these materials can be looted from mobs inside the "Spires of Ascension" dungeon as well.
+collect 2 Depleted Goliath Core##179008 |q 60493/1 |goto Bastion/0 51.44,17.34
+step
+label "Collect_Tampered_Anima_Chargers"
+Kill Mechanical and Praetorian enemies around this area
+|tip Only enemies classified as Mechanical and named Praetorian can drop these parts.
+|tip All of these materials can be looted from mobs inside the "Spires of Ascension" dungeon as well. |notinsticky
+collect 6 Tampered Anima Charger##179009 |q 60493/2 |goto 51.44,17.34
+step
+label "Collect_Soul_Mirror_Shards"
+Kill Forsworn enemies around this area
+|tip All of these materials can be looted from mobs inside the "Spires of Ascension" dungeon as well. |notinsticky
+collect 5 Soul Mirror Shard##178995 |q 60493/3 |goto 51.44,17.34
+step
+talk Apolon##168485
+turnin Humble Gatherer##60493 |goto Elysian Hold/0 27.81,41.75
+accept Your Friend, Dactylis##60494 |goto 27.81,41.75
+step
+talk Dactylis##168430
+Choose _Overcharged Goliath Core_
+|tip Click the "Create All" button
+collect 2 Overcharged Goliath Core##179010 |q 60494/1 |goto 29.98,38.76
+step
+talk Dactylis##168430
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |q 60494/2 |goto 29.98,38.76
+step
+talk Apolon##168485
+turnin Your Friend, Dactylis##60494 |goto 27.81,41.75
+accept A Suitable Opponent##60495 |goto 27.81,41.75
+step
+clicknpc Depleted Goliath##168720
+Overcharge the Depleted Goliath |q 60495/1 |goto Bastion/0 53.34,88.83 |count 1
+step
+clicknpc Depleted Goliath##168720
+Overcharge the Depleted Goliath |q 60495/1 |goto 53.68,88.91 |count 2
+step
+Watch the dialogue
+talk Kalisthene##168517
+|tip She will eventually fly to this spot.
+Tell her _"The Path of Acension has been reinstated, and you would be an appropriate opponent for my soulbinds."_
+Speak with Kalisthene |q 60495/2 |goto 53.52,87.02
+step
+use Soul Mirror##181782
+|tip Use it on Kalisthene.
+Capture Kalisthene |q 60495/3 |goto 53.52,87.02
+step
+talk Apolon##168485
+turnin A Suitable Opponent##60495 |goto Elysian Hold/0 27.81,41.75
+step
+talk Artemede##168427
+accept Into the Coliseum##60496 |goto 28.26,42.40
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |q 60496/1 |goto 28.26,42.40
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Courage difficulty.
+Choose an Enemy and Difficulty to Fight |scenariogoal 1/48227 |goto Ascension Coliseum/0 72.54,27.83 |q 60496
+step
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+Choose a Soulbind |scenariogoal 1/48239 |goto 66.54,26.59 |q 60496
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45 |q 60496
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |q 60496
+|tip Use the abilities on your action bar.
+|tip Keep your distance as much as possible.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage when she channels in the air.
+|tip When she begins channeling spears in the air, running in a straight line while not rooted will ensure safety.
+|tip This fight is very difficult without the Herald's Footpads you craft in the next section.
+|tip You don't need to win this fight to progress.
+step
+click Victor's Chest
+Collect your Reward |scenariogoal 4/48413 |goto 50.04,53.72 |q 60496
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 4/48458 |goto 50.43,56.91 |q 60496
+step
+Challenge Kalisthene |q 60496/2
+step
+talk Artemede##168427
+turnin Into the Coliseum##60496 |goto Elysian Hold/0 28.26,42.40
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Echthra",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Echthra for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61357) end,
+condition_end=function() return completedq(61357) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+collect 5 Soul Mirror Shard##178995 |q 61356 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61356 |future
+stickystart "Collect_Nightforged_Steel"
+stickystart "Collect_Elysian_Feathers"
+step
+collect 4 Calloused Bone##180594 |q 61356 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 2 Nightforged Steel##180595 |q 61356 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 1 Elysian Feathers##180477 |q 61356 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Anointment Oil_
+|tip Click the "Create" button
+collect 1 Anointment Oil##181273 |goto 29.98,38.76 |q 61356 |future
+step
+talk Dactylis##168430
+accept Echthra, Dame of Hatred##61356 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept Of Hearsay and Heresy##61489 |goto 29.98,38.76
+step
+Enter the building |goto Maldraxxus/0 56.20,12.56 < 7 |walk
+talk Echthra##172515
+|tip Inside the building.
+turnin Of Hearsay and Heresy##61489 |goto Maldraxxus/0 56.70,11.64
+accept War of Information##61490 |goto 56.70,11.64
+step
+Run up the stairs |goto 64.08,31.40 < 30 |only if walking
+click Eye of Hatred
+Surveil the House of Rituals |q 61490/1 |goto 68.84,28.49
+step
+Cross the bridge |goto Revendreth/0 53.95,33.05 < 30 |only if walking
+Run up the ramp |goto 52.39,38.86 < 20 |only if walking
+click Eye of Hatred
+Surveil Castle Nathria |q 61490/4 |goto 52.25,41.50
+step
+click Eye of Hatred
+Surveil Tirna Vaal |q 61490/3 |goto Ardenweald/0 62.74,37.30
+step
+Follow the path up |goto Bastion/0 42.34,22.94 < 20 |only if walking
+click Eye of Hatred
+Surveil the Eonian Archives |q 61490/2 |goto 42.47,20.85
+step
+Enter the building |goto Maldraxxus/0 56.20,12.56 < 7 |walk
+talk Echthra##172515
+|tip Inside the building.
+turnin War of Information##61490 |goto 56.70,11.64
+accept Hatred Abated##61357 |goto 56.70,11.64
+step
+use the Soul Mirror##181701
+|tip Use it on Echthra.
+|tip Inside the building.
+Capture the Memory |q 61357/1 |goto 56.70,11.64
+step
+talk Dactylis##168430
+turnin Hatred Abated##61357 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Alderyn and Myn'ir",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Alderyn and Myn'ir for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61360) end,
+condition_end=function() return completedq(61360) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+collect 5 Soul Mirror Shard##178995 |q 61358 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61358 |future
+stickystart "Collect_Nightforged_Steel"
+step
+collect 4 Champion's Pelt##180478 |q 61358 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 3 Nightforged Steel##180595 |q 61358 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Heartpiercer Javelin_
+|tip Click the "Create" button
+collect 1 Heartpiercer Javelin##181274 |goto 29.98,38.76 |q 61358 |future
+step
+talk Dactylis##168430
+accept Alderyn and Myn'ir##61358 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept Called to the Hunt##61963 |goto 29.98,38.76
+step
+talk Alderyn##173402
+turnin Called to the Hunt##61963 |goto Ardenweald/0 50.65,69.90
+accept Piercing the Shell##61965 |goto 50.65,69.90
+step
+Find Myn'ir |q 61965/1 |goto 51.79,78.54
+step
+talk Myn'ir##173403
+|tip Inside the cave.
+Tell her _"I have arrived as aid from Bastion."_
+Speak to Myn'ir |q 61965/2 |goto 51.74,78.83
+step
+Use the _"Heartpiercer Javelin"_ ability
+|tip It appears as a button on the screen.
+|tip Use it on the Fortified Dessicator.
+|tip Inside the cave.
+kill Fortified Dessicator##173409 |q 61965/3 |goto 51.45,80.08
+step
+talk Myn'ir##173403
+|tip Inside the cave.
+turnin Piercing the Shell##61965 |goto 51.74,78.83
+accept The Hunt's Gratitude##61360 |goto 51.74,78.83
+step
+use the Soul Mirror##182580
+|tip Use it on Alderyn and Myn'ir.
+Capture the Memory |q 61360/1 |goto 51.74,78.83
+step
+talk Dactylis##168430
+turnin The Hunt's Gratitude##61360 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Nuuminuuru",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Nuuminuuru for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61362) end,
+condition_end=function() return completedq(61362) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+step
+collect 5 Soul Mirror Shard##178995 |q 61361 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61361 |future
+stickystart "Collect_Elysian_Feathers"
+step
+collect 2 Champion's Pelt##180478 |q 61361 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 4 Elysian Feathers##180477 |q 61361 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Fountain of Rejuvenation_
+|tip Click the "Create" button
+collect 1 Fountain of Rejuvenation##181275 |goto 29.98,38.76 |q 61361 |future
+step
+talk Dactylis##168430
+accept Nuuminuuru##61361 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept A Fountain for Fae##62218 |goto 29.98,38.76
+step
+talk Nuuminuuru##173710
+turnin A Fountain for Fae##62218 |goto Ardenweald/0 51.37,33.67
+accept Fanciful Distractions##62219 |goto 51.37,33.67
+step
+click Riverblossom's Flute
+|tip Next to the pink flower on the lily pad.
+Click Here After Collecting the Flute |confirm |q 62219 |goto 64.92,40.99
+step
+talk Riverblossom##173711
+Tell her _"Nuuminuuru requests your return."_
+Return Riverblossom |q 62219/1 |goto 65.62,38.70
+step
+talk Lunarwind##173712
+|tip She rides a wolf around this area.
+|tip Click her to make her stop and jump off.
+Tell her _"Nuuminuuru is worried about you."_
+Return Lunarwind |q 62219/2 |goto 60.00,53.12
+step
+talk Flitterfly##173713
+Tell her _"You should return to Nuuminuuru. They are concerned."_
+Return Flitterfly |q 62219/3 |goto 52.49,60.46
+step
+talk Nuuminuuru##173710
+turnin Fanciful Distractions##62219 |goto 51.37,33.67
+accept Caretaker of Faeries##61362 |goto 51.37,33.67
+step
+use the Soul Mirror##182969
+|tip Use it on Nuuminuuru.
+Capture the Memory |q 61362/1 |goto 51.37,33.67
+step
+talk Dactylis##168430
+turnin Caretaker of Faeries##61362 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Craven Corinth",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Craven Corinth for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61370) end,
+condition_end=function() return completedq(61370) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+step
+collect 5 Soul Mirror Shard##178995 |q 61369 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61369 |future
+stickystart "Collect_Elysian_Feathers"
+step
+collect 2 Champion's Pelt##180478 |q 61369 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 4 Elysian Feathers##180477 |q 61369 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Ashfallen Key_
+|tip Click the "Create" button
+collect 1 Ashfallen Key##181279 |goto 29.98,38.76 |q 61369 |future
+step
+talk Dactylis##168430
+accept Craven Corinth##61369 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept No Other Way##61370 |goto 29.98,38.76
+step
+Open the Cage |q 61370/1 |goto Revendreth/0 34.82,59.14
+step
+kill Craven Corinth##173455
+Subdue Craven Corinth |q 61370/2 |goto 34.87,59.42
+step
+use the Soul Mirror##182623
+|tip Use it on Craven Corinth.
+Capture the Memory |q 61370/3 |goto 34.87,59.40
+step
+talk Dactylis##168430
+turnin No Other Way##61370 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Splinterbark Nightmare",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Splinterbark Nightmare for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61366) end,
+condition_end=function() return completedq(61366) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+step
+collect 5 Soul Mirror Shard##178995 |q 61365 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61365 |future
+stickystart "Collect_Elysian_Feathers"
+step
+collect 2 Champion's Pelt##180478 |q 61365 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 4 Elysian Feathers##180477 |q 61365 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Praetor Resonance Beacon_
+|tip Click the "Create" button
+collect 1 Praetor Resonance Beacon##181277 |goto 29.98,38.76 |q 61365 |future
+step
+talk Dactylis##168430
+accept Splinterbark Nightmare##61365 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept Tactical Operation##61366 |goto 29.98,38.76
+step
+clicknpc Praetor Resonance Beacon##172491
+Place the Beacon |q 61366/1 |goto Ardenweald/0 33.76,50.15
+step
+kill Living Nightmare##173438
+|tip Kill the two waves of enemies and it will appear.
+Subdue the Living Nightmare |q 61366/2 |goto 33.81,50.00
+step
+use the Soul Mirror##182467
+|tip Use it on Splinterbark Nightmare.
+Capture the Memory |q 61366/3 |goto 33.88,49.89
+step
+talk Dactylis##168430
+turnin Tactical Operation##61366 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Thran'tiok",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Thran'tiok for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61368) end,
+condition_end=function() return completedq(61368) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61368)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61368)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61368) |goto Elysian Hold/0 42.59,53.02
+step
+collect 5 Soul Mirror Shard##178995 |q 61367 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61367 |future
+stickystart "Collect_Elysian_Feathers"
+step
+collect 2 Champion's Pelt##180478 |q 61367 |future
+|tip Use the "Champion's Pelt" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 4 Elysian Feathers##180477 |q 61367 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Praetor Soulseeker Crystal_
+|tip Click the "Create" button
+collect 1 Soulseeker Crystal##181278 |goto 29.98,38.76 |q 61367 |future
+step
+talk Dactylis##168430
+accept Thran'tiok##61367 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept Exiled by Paranoia##62052 |goto 29.98,38.76
+step
+talk Karaxi the Defector##173495
+turnin Exiled by Paranoia##62052 |goto Maldraxxus/0 53.86,48.83
+accept Necromantic Power##62053 |goto 53.86,48.83
+step
+Kill Lichsworn enemies around this area
+Charge the Soulseeker Crystal |q 62053/1 |goto 65.21,35.20
+step
+Enter the building |goto 58.83,38.19 < 15 |walk
+Find the Phylactery |q 62053/2 |goto 59.37,38.14
+step
+talk Karaxi the Defector##173495
+|tip Inside the building.
+turnin Necromantic Power##62053 |goto 59.77,38.00
+accept Filching Phylacteries##61368 |goto 59.77,38.00
+step
+use the Soul Mirror##182965
+|tip Use it on the Phylactery of Pain.
+|tip Inside the building.
+Capture the Memory |q 61368/1 |goto 59.77,38.08
+step
+talk Dactylis##168430
+turnin Filching Phylacteries##61368 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Mad Mortimer",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Mad Mortimer for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61364) end,
+condition_end=function() return completedq(61364) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61364)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61364)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61364) |goto Elysian Hold/0 42.59,53.02
+step
+collect 5 Soul Mirror Shard##178995 |q 61363 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61363 |future
+stickystart "Collect_Nightforged_Steel"
+stickystart "Collect_Elysian_Feathers"
+step
+collect 4 Calloused Bone##180594 |q 61363 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 2 Nightforged Steel##180595 |q 61363 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 1 Elysian Feathers##180477 |q 61363 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Catalyst of Creation_
+|tip Click the "Create" button
+collect 1 Catalyst of Creation##181276 |goto 29.98,38.76 |q 61363 |future
+step
+talk Dactylis##168430
+accept Mad Mortimer##61363 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept Field Trip##61436 |goto 29.98,38.76
+step
+talk Mad Mortimer##172141
+turnin Field Trip##61436 |goto Maldraxxus/0 59.22,71.91
+accept Oozing with Opportunity##61364 |goto 59.22,71.91
+step
+talk Mad Mortimer##172324
+Tell him _"Show me your new serum."_
+Speak to Mad Mortimer |q 61364/1 |goto 60.60,71.43
+step
+Watch the dialogue
+Kill enemies that attack in waves
+Complete the Experiment |q 61364/2 |goto 60.54,71.46
+step
+use the Soul Mirror##181460
+|tip Use it on Mort, Ortim, and Imer.
+Capture the Memory |q 61364/3 |goto 60.58,71.45
+step
+talk Dactylis##168430
+turnin Oozing with Opportunity##61364 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Athanos",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Athanos for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61372) end,
+condition_end=function() return completedq(61372) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(60498)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(60498)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(60498) |goto Elysian Hold/0 42.59,53.02
+step
+collect 5 Soul Mirror Shard##178995 |q 61371 |future
+|tip Use the "Soul Mirror Shard" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Soul Mirror_
+|tip Click the "Create" button
+collect 1 Soul Mirror##179378 |goto Elysian Hold/0 29.98,38.76 |q 61371 |future
+stickystart "Collect_Nightforged_Steel"
+stickystart "Collect_Elysian_Feathers"
+step
+collect 3 Calloused Bone##180594 |q 61371 |future
+|tip Use the "Calloused Bone" guide to accomplish this.
+step
+label "Collect_Nightforged_Steel"
+collect 4 Nightforged Steel##180595 |q 61371 |future
+|tip Use the "Nightforged Steel" guide to accomplish this.
+step
+label "Collect_Elysian_Feathers"
+collect 4 Elysian Feathers##180477 |q 61371 |future
+|tip Use the "Elysian Feathers" guide to accomplish this.
+step
+talk Dactylis##168430
+Say _"I'd like to do some crafting."_
+Choose _Humility's Guard_
+|tip Click the "Create" button
+collect 1 Humility's Guard##181280 |goto 29.98,38.76 |q 61371 |future
+step
+talk Dactylis##168430
+accept Athanos##61371 |goto 29.98,38.76
+step
+talk Dactylis##168430
+accept Humble Beginnings##61478 |goto 29.98,38.76
+step
+talk Forgelite Sophone##172141
+turnin Humble Beginnings##61478 |goto Bastion/0 51.68,80.93
+accept Back to Him##61372 |goto 51.68,80.93
+step
+kill Athanos##171873
+|tip Use the "Humility's Guard" ability to block Power Stomp.
+|tip Use it at the last possible moment because it only lasts for a half second.
+|tip It appears as a button on the screen.
+|tip Don't stand in front of Athanos during the "Anima Expulsion" ability.
+Block Power Stomp #6# Times |q 61372/1 |goto 51.25,80.49
+step
+use the Soul Mirror##181472
+|tip Use it on Athanos.
+Capture the Memory |q 61372/2 |goto 51.25,80.49
+step
+talk Dactylis##168430
+turnin Back to Him##61372 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Memory: Azaruux",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking Azaruux for the Path of Ascension in the Kyrian covenant.",
+condition_suggested=function() return level >= 60 and covenant() == Kyrian and not completedq(61373) end,
+condition_end=function() return completedq(61373) end,
+condition_valid=function() return completedq(60498) end,
+condition_valid_msg="Complete the \"Path of Ascension\" guide to unlock additional memories.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61373)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61373)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61373) |goto Elysian Hold/0 42.59,53.02
+step
+talk Dactylis##168430
+accept Azaruux, the Realm Ender##61373 |goto Elysian Hold/0 29.98,38.76
+step
+talk Artemede##168427
+Tell her _"I am needed in the coliseum to repel Azaruux."_
+Enter the Path of Ascension |q 61373/1 |goto 28.18,42.39
+step
+click Anima Gateway |goto Ascension Coliseum/0 66.70,28.66
+Enter the Coliseum |goto 60.88,37.50 < 5 |c |noway |q 61373
+step
+clicknpc Dismantled Crusher##172668+
+|tip They look like empty suits of armor on the ground around this area.
+kill Devouring Mite##172663+
+Reclaim the Anima |q 61373/2 |goto 55.03,46.29
+step
+click Anima Conflux+
+|tip They look like anima canisters sticking out of the four pillars.
+|tip Click them and run them to the Anima Conflux that they are pointing to.
+|tip The blue lines should make a square when finished.
+Connect #4# Anima Confluxes |q 61373/3 |goto 55.03,46.29
+step
+use the Soul Mirror##181795
+|tip Use it on Azaruux.
+Capture the Memory |q 61373/4 |goto 53.30,48.99
+step
+talk Apolon##172718 |goto 60.52,37.80
+Tell him _"Return me to Elysian Hold."_
+Leave the Coliseum |goto Elysian Hold/0 29.79,41.85 < 5000 |c |noway |q 61373
+step
+talk Dactylis##168430
+turnin Azaruux, the Realm Ender##61373 |goto Elysian Hold/0 29.98,38.76
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Kalisthene",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Kalisthene in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedq(60496) and covenantfeature("Covenant Unique") >= 1 and not completedq(60917) end,
+condition_end=function() return completedq(60917) end,
+condition_valid=function() return completedq(60496) end,
+condition_valid_msg="Complete the \"Memory: Kalisthene\" guide to unlock Kalisthene.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Kalisthene to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Test of Faith" ability and when the channel finishes root her with "Aspirant's Bindings."
+|tip Keep your distance as much as possible to minimize damage from her melee attack.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" safely.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Unleash" when you are safe or have a shield available to deal heavy damage.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind with a Phial of Serenity |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Kalisthene to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Only use "Leap of Faith" to break the spear tethers.
+|tip Keep using "Ascendant Strike" while breaking tethers for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Archon's Blessing" when you have enough energy, but only when she isn't raining spears to maximize it's effect.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Kalisthene to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Hyperlight Beam" ability and start using "Overhead Smash."
+|tip Orbs left on the ground will grant you a stacking haste buff.
+|tip Keep repeating this, spawning orbs until the Bron suit dies.
+|tip When Bron dies, use the "Sparkling Drift" and "Resilient Plumage" abilities to quickly grab the orbs and then jump back in the suit.
+|tip Be sure you stay near Bron so a tether doesn't prevent you from reclaiming Bron.
+|tip Repeat this process for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip If you are still in Bron during her barrage, use that time to pick up orbs and avoid spears.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60917) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60917)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Kalisthene"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Echthra",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Echthra in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61357) and covenantfeature("Covenant Unique") >= 1 and not completedq(60918) end,
+condition_end=function() return completedq(60918) end,
+condition_valid=function() return completedq(60498) and completedq(61357) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Echthra\" guides to unlock Echthra.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Throughout the fight, attempt to LoS her ranged ability as often as possible to minimize damage.
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" without taking damage.
+|tip The shield will NOT prevent the poison stacks from applying to you.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Avoid the areas they charge to and try to group them up so you can kill them with "Aspirant's Bindings."
+|tip Use the equipment button to use "Herald's Footpads" when you need to clear some distance in an emergency.
+|tip It will cause you to dash forward and remove any snares.
+|tip Save your "Unleash" ability for times when the crawlers become unmanageable.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Drag her to one of the pillars and begin moving her around it.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Only use "Leap of Faith" to jump to a new pillar and LoS Echthra and the crawlers.
+|tip Avoid the areas the crawlers charge to and group them up moving around the pillar, killing them with "Ascendant Strike."
+|tip Keep using "Ascendant Strike" and buffing "Keen Insight" for the duration of the fight.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Save your "Archon's Blessing" ability for times when the crawlers become unmanageable or to quickly burst crawlers down to focus on Echthra.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Focus is suggested for this fight.
+|tip Charm of Focus gives your soulbind additional resources every 5 seconds for the duration of one fight.
+|tip Persistence and Fortitude charms can also help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Hyperlight Beam" ability and then spam "Overhead Smash."
+|tip Periodically, she will summon groups of three crawlers.
+|tip "Hyperlight Beam" will allow you to kill crawlers efficiently.
+|tip Certain areas will remain free of poison puddles.
+|tip Get to one of these areas and keep using "Hyperlight Beam" and"Overhead Smash" until Bron dies.
+|tip When you gain 1 energy from your Charm of Focus as Mikanikos, use the "Resilient Plumage" ability for damage reduction and jump back in Bron.
+|tip Keep using "Hyperlight Beam" and"Overhead Smash" for the duration of the fight, repeating the process.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60918) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60918)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Echthra"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Alderyn and Myn'ir",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Alderyn and Myn'ir in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61360) and covenantfeature("Covenant Unique") >= 1 and not completedq(60919) end,
+condition_end=function() return completedq(60919) end,
+condition_valid=function() return completedq(60498) and completedq(61360) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Alderyn and Myn'ir\" guides to unlock Alderyn and Myn'ir.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1 or completedq(60919)
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Alderyn and Myn'ir to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by hitting them with "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage throughout the fight.
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and using the shield to pause to channel an ability.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Always attempt to hit both of them together with "Aspirant's Bindings" and "Unleash."
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Alderyn and Myn'ir to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Keen Insight" and then jumping between them with "Leap of Faith."
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and spamming "Ascendant Strike."
+|tip Use "Leap of Faith" to dodge arrows and hit both of them at the same time if possible.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "Archon's Blessing" on cooldown, preferrably just before using "Leap of Faith."
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Alderyn and Myn'ir to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Hyperlight Beam" and with both of them in a straight line in front of you, Alderyn first
+|tip Backpedal continuously away from them, avoiding arrows large blue swirls and spamming "Overhead Smash" and "Hyperlight Beam."
+|tip If Bron dies, use both of Mikanikos' abilities and pick up orbs before hopping back in Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "High-Tech Relocation" if you are low on energy with Bron but still have health, using both abilities as Mikanikos and picking up orbs before rejoining Bron.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60919) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60919)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Alderyn and Myn'ir"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Nuuminuuru",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Nuuminuuru in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61362) and covenantfeature("Covenant Unique") >= 1 and not completedq(60921) end,
+condition_end=function() return completedq(60921) end,
+condition_valid=function() return completedq(60498) and completedq(61362) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Nuuminuuru\" guides to unlock Nuuminuuru.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Nuuminuuru to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for emergencies when fairies get out of control.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Test of Faith" for single fairies and "Aspirant's Bindings" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority and should be what you save the "Unleash" ability for.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Nuuminuuru to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Ascendant Strike" on Nuuminuuru.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Ascendant Strike" for single fairies and "Leap of Faith" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip If no fairies are up, focus on Nuuminuuru until more spawn.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Use "Archon's Blessing" on cooldown and then use "Keen Insight" next to a large group of fairies.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Nuuminuuru to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Overhead Smash."
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Overhead Smash" for single fairies and "Hyperlight Beam" for groups of two or more.
+|tip "Hyperlight Beam" affects a 50 yard line and can damage multiple groups of fairies.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Just before Bron dies, move close to a group of fairies so he will kill them when he breaks down.
+|tip When Bron dies, use both of Mikanikos' abilities and quickly pick up orbs before jumping back on Bron.
+|tip Repeat this process until the end of the fight.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" to reach Violent Fairies quickly.
+|tip It will cause you to dash forward and remove any snares.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60921) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60921)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Nuuminuuru"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Craven Corinth",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Craven Corinth in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61370) and covenantfeature("Covenant Unique") >= 1 and not completedq(60922) end,
+condition_end=function() return completedq(60922) end,
+condition_valid=function() return completedq(60498) and completedq(61370) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Craven Corinth\" guides to unlock Craven Corinth.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Craven Corinth to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by channeling "Test of Faith" and then root him with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for allowing you to channel "Test of Faith."
+|tip Run around, stopping to cast "Test of Faith" when you are invulnerable or after using "Aspirant's Bindings."
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip "Unleash" is useful for this, but make sure the circle has LoS of the orb or it won't work.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Craven Corinth to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by using "Keen Insight" and then jumping with Craven at the edge of "Leap of Faith's" circle.
+|tip Throughout the fight, keep using "Leap of Faith" and catching him at the edge of the circle to stay out of melee range.
+|tip Backpedal constantly using "Ascendant Strike" at a short distance to damage him.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas at a close distance, spamming "Ascendant Strike" and strafing to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip Save "Archon's Blessing" and use it to kill the red anima orb immediately when he teleports to a pillar to limit his healing.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Craven Corinth to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60922) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60922)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Craven Corinth"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Splinterbark Nightmare",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Splinterbark Nightmare in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61366) and covenantfeature("Covenant Unique") >= 1 and not completedq(60923) end,
+condition_end=function() return completedq(60923) end,
+condition_valid=function() return completedq(60498) and completedq(61366) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Splinterbark Nightmare\" guides to unlock Splinterbark Nightmare.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark Nightmare_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Splinterbark Nightmare to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for ignoring damage during his enrage and avoid the grey ground spike patches.
+|tip Use "Test of Faith" and "Unleash" in combination with "Aspirant's Bindings" to work away at his health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When he enrages, take the first few swings if you have 10 stacks and then use "Confront Memories" for invulnerability.
+|tip With less than 10 stacks, kite him for a few seconds first and then use "Confront Memories" for invulnerability.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark Nightmare_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Splinterbark Nightmare to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Begin by leaping just into range using "Leap of Faith" and follow with "Ascendant Strike."
+|tip Constantly run away from him, spinning to face him to use "Ascendant Strike" before quickly running away again.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip Flowers aren't necessary for Kleia but help if you make a mistake.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use "Archon's Blessing" on cooldown.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark Nightmare_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Splinterbark Nightmare to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Engage him and start spamming "Overhead Smash" and "Hyperlight Beam."
+|tip Use "Recharge" any time you are below 80% health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When Splinterbark enrages use "High-Tech Relocation" if you are still in Bron and then activate "Resilient Plumage."
+|tip This along with the flower debuffs will allow you to tank the enrage.
+|tip Use "Sparkling Drift" to quickly run around and collect orbs as fast as possible.
+|tip When the enrage ends, jump back in Bron and repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60923) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60923)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Splinterbark Nightmare"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Thran'tiok",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Thran'tiok in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61368) and covenantfeature("Covenant Unique") >= 2 and not completedq(60924) end,
+condition_end=function() return completedq(60924) end,
+condition_valid=function() return completedq(60498) and completedq(61368) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Thran'tiok\" guides to unlock Thran'tiok.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Thran'tiok to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for gaining DPS time.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Channeling a full "Test of Faith" and then "Aspirant's Bindings" will destroy a Phylactery.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy death first, then pain, followed by suffering and then destruction.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground and using your shield to DPS safely.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Save "Unleash" until you are sure you can channel the full duration safely.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Thran'tiok to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy death first, then pain, followed by suffering and then destruction.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Thran'tiok to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy death first, then pain, followed by suffering and then destruction.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use Bron's abilities until he is defeated, then use Mikanikos and both of his abilities to quickly pick up orbs before rejoining Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction" or soak it with Bron.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip "Terminal Destruction" will kill Mikanikos.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60924) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60924)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Thran'tiok"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Mad Mortimer",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Mad Mortimer in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61364) and covenantfeature("Covenant Unique") >= 2 and not completedq(60925) end,
+condition_suggested=function() return level == 60 and not completedq(60925) end,
+condition_end=function() return completedq(60925) end,
+condition_valid=function() return completedq(60498) and completedq(61364) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Mad Mortimer\" guides to unlock Mad Mortimer.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Mad Mortimer to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Mad Mortimer to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Mad Mortimer to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60925) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60925)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Mad Mortimer"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Athanos",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Athanos in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61372) and covenantfeature("Covenant Unique") >= 2 and not completedq(60926) end,
+condition_end=function() return completedq(60926) end,
+condition_valid=function() return completedq(60498) and completedq(61372) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Athanos\" guides to unlock Athanos.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Athanos to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Athanos to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Athanos to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60926) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60926)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Athanos"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Courage: Azaruux",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Azaruux in the Path of Ascension on courage difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61373) and covenantfeature("Covenant Unique") >= 2 and not completedq(60927) end,
+condition_end=function() return completedq(60927) end,
+condition_valid=function() return completedq(60498) and completedq(61373) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Azaruux\" guides to unlock Azaruux.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Azaruux to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Azaruux to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Azaruux to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(60927) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(60927)
+step
+_Congratulations!_
+You defeated the "Trial of Courage: Azaruux"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Kalisthene",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Kalisthene in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,60496,60917,60918,60919,60921,60922,60923) and covenantfeature("Covenant Unique") >= 2 and not completedq(61023) end,
+condition_end=function() return completedq(61023) end,
+condition_valid=function() return completedq(60498) and completedq(60496) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Kalisthene\" guides to unlock Kalisthene.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61023)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61023)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61023) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Kalisthene to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Test of Faith" ability and when the channel finishes root her with "Aspirant's Bindings."
+|tip Keep your distance as much as possible to minimize damage from her melee attack.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" safely.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Unleash" when you are safe or have a shield available to deal heavy damage.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind with a Phial of Serenity |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Kalisthene to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Only use "Leap of Faith" to break the spear tethers.
+|tip Keep using "Ascendant Strike" while breaking tethers for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Archon's Blessing" when you have enough energy, but only when she isn't raining spears to maximize it's effect.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Kalisthene to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Hyperlight Beam" ability and start using "Overhead Smash."
+|tip Orbs left on the ground will grant you a stacking haste buff.
+|tip Keep repeating this, spawning orbs until the Bron suit dies.
+|tip When Bron dies, use the "Sparkling Drift" and "Resilient Plumage" abilities to quickly grab the orbs and then jump back in the suit.
+|tip Be sure you stay near Bron so a tether doesn't prevent you from reclaiming Bron.
+|tip Repeat this process for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip If you are still in Bron during her barrage, use that time to pick up orbs and avoid spears.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61023) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61023)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Kalisthene"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Echthra",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Echthra in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61357,60917,60918,60919,60921,60922,60923) and covenantfeature("Covenant Unique") >= 2 and not completedq(61022) end,
+condition_end=function() return completedq(61022) end,
+condition_valid=function() return completedq(60498) and completedq(61357) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Echthra\" guides to unlock Echthra.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61022)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61022)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61022) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Persistence is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Throughout the fight, attempt to LoS her ranged ability as often as possible to minimize damage.
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" without taking damage.
+|tip The shield will NOT prevent the poison stacks from applying to you.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Avoid the areas they charge to and try to group them up so you can kill them with "Aspirant's Bindings."
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Save your "Unleash" ability for times when the crawlers become unmanageable.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Drag her to one of the pillars and begin moving her around it.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Only use "Leap of Faith" to jump to a new pillar and LoS Echthra and the crawlers.
+|tip Avoid the areas the crawlers charge to and group them up moving around the pillar, killing them with "Ascendant Strike."
+|tip Keep using "Ascendant Strike" and buffing "Keen Insight" for the duration of the fight.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Save your "Archon's Blessing" ability for times when the crawlers become unmanageable or to quickly burst crawlers down to focus on Echthra.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Focus is suggested for this fight.
+|tip Charm of Focus gives your soulbind additional resources every 5 seconds for the duration of one fight.
+|tip Persistence and Fortitude charms can also help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Hyperlight Beam" ability and then spam "Overhead Smash."
+|tip Periodically, she will summon groups of three crawlers.
+|tip "Hyperlight Beam" will allow you to kill crawlers efficiently.
+|tip Certain areas will remain free of poison puddles.
+|tip Get to one of these areas and keep using "Hyperlight Beam" and"Overhead Smash" until Bron dies.
+|tip When you gain 1 energy from your Charm of Focus as Mikanikos, use the "Resilient Plumage" ability for damage reduction and jump back in Bron.
+|tip Keep using "Hyperlight Beam" and"Overhead Smash" for the duration of the fight, repeating the process.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61022) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61022)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Echthra"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Alderyn and Myn'ir",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Alderyn and Myn'ir in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61360,60917,60918,60919,60921,60922,60923) and covenantfeature("Covenant Unique") >= 2 and not completedq(61021) end,
+condition_end=function() return completedq(61021) end,
+condition_valid=function() return completedq(60498) and completedq(61360) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Alderyn and Myn'ir\" guides to unlock Alderyn and Myn'ir.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61021)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61021)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61021) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Alderyn and Myn'ir to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by hitting them with "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage throughout the fight.
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and using the shield to pause to channel an ability.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Always attempt to hit both of them together with "Aspirant's Bindings" and "Unleash."
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Alderyn and Myn'ir to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Keen Insight" and then jumping between them with "Leap of Faith."
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and spamming "Ascendant Strike."
+|tip Use "Leap of Faith" to dodge arrows and hit both of them at the same time if possible.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "Archon's Blessing" on cooldown, preferrably just before using "Leap of Faith."
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Alderyn and Myn'ir to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Hyperlight Beam" and with both of them in a straight line in front of you, Alderyn first
+|tip Backpedal continuously away from them, avoiding arrows large blue swirls and spamming "Overhead Smash" and "Hyperlight Beam."
+|tip If Bron dies, use both of Mikanikos' abilities and pick up orbs before hopping back in Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "High-Tech Relocation" if you are low on energy with Bron but still have health, using both abilities as Mikanikos and picking up orbs before rejoining Bron.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61021) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61021)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Alderyn and Myn'ir"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Nuuminuuru",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Nuuminuuru in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61362,60917,60918,60919,60921,60922,60923) and covenantfeature("Covenant Unique") >= 2 and not completedq(61020) end,
+condition_end=function() return completedq(61020) end,
+condition_valid=function() return completedq(60498) and completedq(61362) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Nuuminuuru\" guides to unlock Nuuminuuru.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61020)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61020)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61020) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Nuuminuuru to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for emergencies when fairies get out of control.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Test of Faith" for single fairies and "Aspirant's Bindings" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority and should be what you save the "Unleash" ability for.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Nuuminuuru to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Ascendant Strike" on Nuuminuuru.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Ascendant Strike" for single fairies and "Leap of Faith" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip If no fairies are up, focus on Nuuminuuru until more spawn.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Use "Archon's Blessing" on cooldown and then use "Keen Insight" next to a large group of fairies.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Nuuminuuru to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Overhead Smash."
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Overhead Smash" for single fairies and "Hyperlight Beam" for groups of two or more.
+|tip "Hyperlight Beam" affects a 50 yard line and can damage multiple groups of fairies.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Just before Bron dies, move close to a group of fairies so he will kill them when he breaks down.
+|tip When Bron dies, use both of Mikanikos' abilities and quickly pick up orbs before jumping back on Bron.
+|tip Repeat this process until the end of the fight.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" to reach Violent Fairies quickly.
+|tip It will cause you to dash forward and remove any snares.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61020) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61020)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Nuuminuuru"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Craven Corinth",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Craven Corinth in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61370,60917,60918,60919,60921,60922,60923,60924,60925,60926) and covenantfeature("Covenant Unique") >= 3 and not completedq(61019) end,
+condition_end=function() return completedq(61019) end,
+condition_valid=function() return completedq(60498) and completedq(61370) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Craven Corinth\" guides to unlock Craven Corinth.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61019)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61019)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61019) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61019)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61019)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61019) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Craven Corinth to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by channeling "Test of Faith" and then root him with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for allowing you to channel "Test of Faith."
+|tip Run around, stopping to cast "Test of Faith" when you are invulnerable or after using "Aspirant's Bindings."
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip "Unleash" is useful for this, but make sure the circle has LoS of the orb or it won't work.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Craven Corinth to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by using "Keen Insight" and then jumping with Craven at the edge of "Leap of Faith's" circle.
+|tip Throughout the fight, keep using "Leap of Faith" and catching him at the edge of the circle to stay out of melee range.
+|tip Backpedal constantly using "Ascendant Strike" at a short distance to damage him.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas at a close distance, spamming "Ascendant Strike" and strafing to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip Save "Archon's Blessing" and use it to kill the red anima orb immediately when he teleports to a pillar to limit his healing.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Craven Corinth to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61019) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61019)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Craven Corinth"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Splinterbark Nightmare",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Splinterbark Nightmare in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61366,60917,60918,60919,60921,60922,60923,60924,60925,60926) and covenantfeature("Covenant Unique") >= 3 and not completedq(61018) end,
+condition_end=function() return completedq(61018) end,
+condition_valid=function() return completedq(60498) and completedq(61366) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Splinterbark Nightmare\" guides to unlock Splinterbark Nightmare.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61018)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61018)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61018) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61018)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61018)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61018) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Splinterbark to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for ignoring damage during his enrage and avoid the grey ground spike patches.
+|tip Use "Test of Faith" and "Unleash" in combination with "Aspirant's Bindings" to work away at his health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When he enrages, take the first few swings if you have 10 stacks and then use "Confront Memories" for invulnerability.
+|tip With less than 10 stacks, kite him for a few seconds first and then use "Confront Memories" for invulnerability.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Splinterbark to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Begin by leaping just into range using "Leap of Faith" and follow with "Ascendant Strike."
+|tip Constantly run away from him, spinning to face him to use "Ascendant Strike" before quickly running away again.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip Flowers aren't necessary for Kleia but help if you make a mistake.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use "Archon's Blessing" on cooldown.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Splinterbark to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Engage him and start spamming "Overhead Smash" and "Hyperlight Beam."
+|tip Use "Recharge" any time you are below 80% health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When Splinterbark enrages use "High-Tech Relocation" if you are still in Bron and then activate "Resilient Plumage."
+|tip This along with the flower debuffs will allow you to tank the enrage.
+|tip Use "Sparkling Drift" to quickly run around and collect orbs as fast as possible.
+|tip When the enrage ends, jump back in Bron and repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61018) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61018)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Splinterbark Nightmare"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Thran'tiok",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Thran'tiok in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61368,60917,60918,60919,60921,60922,60923,60924,60925,60926) and covenantfeature("Covenant Unique") >= 3 and not completedq(61017) end,
+condition_end=function() return completedq(61017) end,
+condition_valid=function() return completedq(60498) and completedq(61368) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Thran'tiok\" guides to unlock Thran'tiok.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61017)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61017)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61017) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61017)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61017)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61017) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Thran'tiok to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for gaining DPS time.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Channeling a full "Test of Faith" and then "Aspirant's Bindings" will destroy a Phylactery.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy death first, then pain, followed by suffering and then destruction.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground and using your shield to DPS safely.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Save "Unleash" until you are sure you can channel the full duration safely.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Thran'tiok to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy death first, then pain, followed by suffering and then destruction.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Thran'tiok to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy death first, then pain, followed by suffering and then destruction.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use Bron's abilities until he is defeated, then use Mikanikos and both of his abilities to quickly pick up orbs before rejoining Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction" or soak it with Bron.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip "Terminal Destruction" will kill Mikanikos.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61017) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61017)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Thran'tiok"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Mad Mortimer",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Mad Mortimer in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61364,60917,60918,60919,60921,60922,60923,60924,60925,60927) and covenantfeature("Covenant Unique") >= 3 and not completedq(61016) end,
+condition_end=function() return completedq(61016) end,
+condition_valid=function() return completedq(60498) and completedq(61364) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Mad Mortimer\" guides to unlock Mad Mortimer.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+step
+Defeat Azaruux on Courage Difficulty |q 60927 |future
+|tip Use the "Trial of Courage: Azaruux" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61016)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61016)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61016) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61016)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61016)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61016) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Mad Mortimer to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Mad Mortimer to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Mad Mortimer to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61016) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61016)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Mad Mortimer"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Athanos",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Athanos in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61372,60917,60918,60919,60921,60922,60923,60924,60925,60927) and covenantfeature("Covenant Unique") >= 3 and not completedq(61015) end,
+condition_end=function() return completedq(61015) end,
+condition_valid=function() return completedq(60498) and completedq(61372) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Athanos\" guides to unlock Athanos.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+step
+Defeat Azaruux on Courage Difficulty |q 60927 |future
+|tip Use the "Trial of Courage: Azaruux" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61015)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61015)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61015) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61015)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61015)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61015) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Athanos to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Athanos to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Athanos to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61015) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61015)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Athanos"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Loyalty: Azaruux",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Azaruux in the Path of Ascension on loyalty difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61373,60917,60918,60919,60921,60922,60923,60924,60925,60927) and covenantfeature("Covenant Unique") >= 3 and not completedq(61014) end,
+condition_end=function() return completedq(61014) end,
+condition_valid=function() return completedq(60498) and completedq(61373) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Azaruux\" guides to unlock Azaruux.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Loyalty difficulty:_
+|tip Bosses on the loyalty difficulty have increased health and damage over courage bosses.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Courage_Difficulty"
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Defeat_Craven_Corinth_on_Courage_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Courage_Difficulty"
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Courage_Difficulty"
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Courage_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Courage_Difficulty"
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Courage_Difficulty"
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+step
+Defeat Azaruux on Courage Difficulty |q 60927 |future
+|tip Use the "Trial of Courage: Azaruux" guide to accomplish this.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2 or completedq(61014)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2 or completedq(61014)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Path of Ascension to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 or completedq(61014) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61014)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61014)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61014) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Azaruux to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Azaruux to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Loyalty difficulty.
+Challenge Azaruux to Fight on Loyalty Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61014) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61014)
+step
+_Congratulations!_
+You defeated the "Trial of Loyalty: Azaruux"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Kalisthene",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Kalisthene in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,60496,60917,61023) and covenantfeature("Covenant Unique") >= 3 and not completedq(61033) end,
+condition_end=function() return completedq(61033) end,
+condition_valid=function() return completedq(60498) and completedq(60496) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Kalisthene\" guides to unlock Kalisthene.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Kalisthene also gains a new ability.
+|tip This allows her to lunge forward to a white swirling spot, causing damage and closing distance.
+Click Here to Proceed |confirm
+stickystart "Defeat_Kalisthene_on_Loyalty_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Kalisthene_on_Loyalty_Difficulty"
+Defeat Kalisthene on Loyalty Difficulty |q 61023 |future
+|tip Use the "Trial of Loyalty: Kalisthene" guide to accomplish this.
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Kalisthene to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Test of Faith" ability and when the channel finishes root her with "Aspirant's Bindings."
+|tip Keep your distance as much as possible to minimize damage from her melee attack.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" safely.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Unleash" when you are safe or have a shield available to deal heavy damage.
+|tip When she hovers, quickly move out of white swirling areas before she can leap to them.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind with a Phial of Serenity |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Kalisthene to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Only use "Leap of Faith" to break the spear tethers.
+|tip Keep using "Ascendant Strike" while breaking tethers for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Archon's Blessing" when you have enough energy, but only when she isn't raining spears to maximize it's effect.
+|tip When she hovers, quickly move out of white swirling areas before she can leap to them.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Kalisthene to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Hyperlight Beam" ability and start using "Overhead Smash."
+|tip Orbs left on the ground will grant you a stacking haste buff.
+|tip Keep repeating this, spawning orbs until the Bron suit dies.
+|tip When Bron dies, use the "Sparkling Drift" and "Resilient Plumage" abilities to quickly grab the orbs and then jump back in the suit.
+|tip Be sure you stay near Bron so a tether doesn't prevent you from reclaiming Bron.
+|tip Repeat this process for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip If you are still in Bron during her barrage, use that time to pick up orbs and avoid spears.
+|tip When she hovers, quickly move out of white swirling areas before she can leap to them.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61033) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61033)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Kalisthene"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Echthra",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Echthra in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61357,60918,61022) and covenantfeature("Covenant Unique") >= 3 and not completedq(61032) end,
+condition_end=function() return completedq(61032) end,
+condition_valid=function() return completedq(60498) and completedq(61357) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Echthra\" guides to unlock Echthra.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Echthra also gains a new ability.
+|tip This grants her a frontal-cone AoE that can disorient you for several seconds.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Loyalty_Difficulty"
+step
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Loyalty_Difficulty"
+Defeat Echthra on Loyalty Difficulty |q 61022 |future
+|tip Use the "Trial of Loyalty: Echthra" guide to accomplish this.
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61032)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61032)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61032) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Persistence is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Echthra to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Throughout the fight, attempt to LoS her ranged ability as often as possible to minimize damage.
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" without taking damage.
+|tip The shield will NOT prevent the poison stacks from applying to you.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Avoid the areas they charge to and try to group them up so you can kill them with "Aspirant's Bindings."
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Save your "Unleash" ability for times when the crawlers become unmanageable.
+|tip Max range her new frontal cone ability, which has the same range as your "Test of Faith" ability.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Echthra to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Drag her to one of the pillars and begin moving her around it.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Only use "Leap of Faith" to jump to a new pillar and LoS Echthra and the crawlers.
+|tip Avoid the areas the crawlers charge to and group them up moving around the pillar, killing them with "Ascendant Strike."
+|tip Keep using "Ascendant Strike" and buffing "Keen Insight" for the duration of the fight.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Save your "Archon's Blessing" ability for times when the crawlers become unmanageable or to quickly burst crawlers down to focus on Echthra.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Focus is suggested for this fight.
+|tip Charm of Focus gives your soulbind additional resources every 5 seconds for the duration of one fight.
+|tip Persistence and Fortitude charms can also help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Echthra to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Hyperlight Beam" ability and then spam "Overhead Smash."
+|tip Periodically, she will summon groups of three crawlers.
+|tip "Hyperlight Beam" will allow you to kill crawlers efficiently.
+|tip Certain areas will remain free of poison puddles.
+|tip Get to one of these areas and keep using "Hyperlight Beam" and"Overhead Smash" until Bron dies.
+|tip When you gain 1 energy from your Charm of Focus as Mikanikos, use the "Resilient Plumage" ability for damage reduction and jump back in Bron.
+|tip Keep using "Hyperlight Beam" and"Overhead Smash" for the duration of the fight, repeating the process.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid staying out as Mikanikos too long or the disorient ability might kill you.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61032) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61032)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Echthra"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Alderyn and Myn'ir",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Alderyn and Myn'ir in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61360,60919,61021) and covenantfeature("Covenant Unique") >= 3 and not completedq(61031) end,
+condition_end=function() return completedq(61031) end,
+condition_valid=function() return completedq(60498) and completedq(61360) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Alderyn and Myn'ir\" guides to unlock Alderyn and Myn'ir.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Myn'ir also gain a new ability.
+|tip This grants Myn'ir a teleport, usually to the opposite side of where she last shot her arrows.
+Click Here to Proceed |confirm
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Loyalty_Difficulty"
+step
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Loyalty_Difficulty"
+Defeat Alderyn and Myn'ir on Loyalty Difficulty |q 61021 |future
+|tip Use the "Trial of Loyalty: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61031)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61031)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61031) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Alderyn and Myn'ir to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by hitting them with "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage throughout the fight.
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and using the shield to pause to channel an ability.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Always attempt to hit both of them together with "Aspirant's Bindings" and "Unleash."
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Alderyn and Myn'ir to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Keen Insight" and then jumping between them with "Leap of Faith."
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and spamming "Ascendant Strike."
+|tip Use "Leap of Faith" to dodge arrows and hit both of them at the same time if possible.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "Archon's Blessing" on cooldown, preferrably just before using "Leap of Faith."
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Alderyn and Myn'ir to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Hyperlight Beam" and with both of them in a straight line in front of you, Alderyn first
+|tip Backpedal continuously away from them, avoiding arrows large blue swirls and spamming "Overhead Smash" and "Hyperlight Beam."
+|tip If Bron dies, use both of Mikanikos' abilities and pick up orbs before hopping back in Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "High-Tech Relocation" if you are low on energy with Bron but still have health, using both abilities as Mikanikos and picking up orbs before rejoining Bron.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61031) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61031)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Alderyn and Myn'ir"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Nuuminuuru",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Nuuminuuru in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61362,60921,61020) and covenantfeature("Covenant Unique") >= 3 and not completedq(61030) end,
+condition_end=function() return completedq(61030) end,
+condition_valid=function() return completedq(60498) and completedq(61362) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Nuuminuuru\" guides to unlock Nuuminuuru.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Nuuminuuru also gains a new ability.
+|tip This grants her the ability to summon a Symbiotic Faerie.
+|tip The Symbiotic Faerie will make Nuuminuuru immune to damage until it is killed.
+Click Here to Proceed |confirm
+stickystart "Defeat_Nuuminuuru_on_Loyalty_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Nuuminuuru_on_Loyalty_Difficulty"
+Defeat Nuuminuuru on Loyalty Difficulty |q 61020 |future
+|tip Use the "Trial of Loyalty: Nuuminuuru" guide to accomplish this.
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3 or completedq(61030)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3 or completedq(61030)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 or completedq(61030) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+|tip This item is not required for the fight if you wish to attempt the "Bare Necessities" achievement.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Nuuminuuru to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for emergencies when fairies get out of control.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Test of Faith" for single fairies and "Aspirant's Bindings" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority and should be what you save the "Unleash" ability for.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Kill Symbiotic Faeries quickly when Violent Fairies are not active to remove her damage shield.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+|tip This item is not required for the fight if you wish to attempt the "Bare Necessities" achievement.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Nuuminuuru to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Ascendant Strike" on Nuuminuuru.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Ascendant Strike" for single fairies and "Leap of Faith" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip If no fairies are up, focus on Nuuminuuru until more spawn.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Kill Symbiotic Faeries quickly when Violent Fairies are not active to remove her damage shield.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Use "Archon's Blessing" on cooldown and then use "Keen Insight" next to a large group of fairies.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+|tip This item is not required for the fight if you wish to attempt the "Bare Necessities" achievement.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Nuuminuuru to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Overhead Smash."
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Overhead Smash" for single fairies and "Hyperlight Beam" for groups of two or more.
+|tip "Hyperlight Beam" affects a 50 yard line and can damage multiple groups of fairies.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Just before Bron dies, move close to a group of fairies so he will kill them when he breaks down.
+|tip When Bron dies, use both of Mikanikos' abilities and quickly pick up orbs before jumping back on Bron.
+|tip Repeat this process until the end of the fight.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Kill Symbiotic Faeries quickly when Violent Fairies are not active to remove her damage shield.
+|tip Use the equipment button to use "Herald's Footpads" to reach Violent Fairies quickly.
+|tip It will cause you to dash forward and remove any snares.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61030) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61030)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Nuuminuuru"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Craven Corinth",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Craven Corinth in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61370,60922,61019) and covenantfeature("Covenant Unique") >= 3 and not completedq(61029) end,
+condition_end=function() return completedq(61029) end,
+condition_valid=function() return completedq(60498) and completedq(61370) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Craven Corinth\" guides to unlock Craven Corinth.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Craven Corinth also gains new abilities.
+|tip This grants him the ability to summon a blood orb that slows you if you come in contact with it.
+|tip He also leaves behind pools of blood that apply a DoT effect to you.
+Click Here to Proceed |confirm
+stickystart "Defeat_Craven_Corinth_on_Loyalty_Difficulty"
+step
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Loyalty_Difficulty"
+Defeat Craven Corinth on Loyalty Difficulty |q 61019 |future
+|tip Use the "Trial of Loyalty: Craven Corinth" guide to accomplish this.
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Craven Corinth to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by channeling "Test of Faith" and then root him with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for allowing you to channel "Test of Faith."
+|tip Run around, stopping to cast "Test of Faith" when you are invulnerable or after using "Aspirant's Bindings."
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip "Unleash" is useful for this, but make sure the circle has LoS of the orb or it won't work.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+|tip Throughout the fight, avoid coming in contact with any blood pools or blood orbs.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Craven Corinth to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by using "Keen Insight" and then jumping with Craven at the edge of "Leap of Faith's" circle.
+|tip Throughout the fight, keep using "Leap of Faith" and catching him at the edge of the circle to stay out of melee range.
+|tip Backpedal constantly using "Ascendant Strike" at a short distance to damage him.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas at a close distance, spamming "Ascendant Strike" and strafing to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip Save "Archon's Blessing" and use it to kill the red anima orb immediately when he teleports to a pillar to limit his healing.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+|tip Throughout the fight, avoid coming in contact with any blood pools or blood orbs.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Craven Corinth to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+|tip Throughout the fight, avoid coming in contact with any blood pools or blood orbs.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61029) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61029)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Craven Corinth"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Splinterbark Nightmare",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Splinterbark Nightmare in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61366,60923,61018) and covenantfeature("Covenant Unique") >= 4 and not completedq(61028) end,
+condition_end=function() return completedq(61028) end,
+condition_valid=function() return completedq(60498) and completedq(61366) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Splinterbark Nightmare\" guides to unlock Splinterbark Nightmare.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Splinterbark Nightmare also gains a new ability.
+|tip "Nightmarish Wail" will fear you if you are within a small radius surrounding him.
+Click Here to Proceed |confirm
+stickystart "Defeat_Splinterbark_Nightmare_on_Loyalty_Difficulty"
+step
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Loyalty_Difficulty"
+Defeat Splinterbark Nightmare on Loyalty Difficulty |q 61018 |future
+|tip Use the "Trial of Loyalty: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61028)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61028)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61028) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Splinterbark to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for ignoring damage during his enrage and avoid the grey ground spike patches.
+|tip Use "Test of Faith" and "Unleash" in combination with "Aspirant's Bindings" to work away at his health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When he enrages, take the first few swings if you have 10 stacks and then use "Confront Memories" for invulnerability.
+|tip With less than 10 stacks, kite him for a few seconds first and then use "Confront Memories" for invulnerability.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid being near Splinterbark during "Nightmarish Wail" casts.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Splinterbark to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Begin by leaping just into range using "Leap of Faith" and follow with "Ascendant Strike."
+|tip Constantly run away from him, spinning to face him to use "Ascendant Strike" before quickly running away again.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip Flowers aren't necessary for Kleia but help if you make a mistake.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use "Archon's Blessing" on cooldown.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid being near Splinterbark during "Nightmarish Wail" casts.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Splinterbark to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Engage him and start spamming "Overhead Smash" and "Hyperlight Beam."
+|tip Use "Recharge" any time you are below 80% health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When Splinterbark enrages use "High-Tech Relocation" if you are still in Bron and then activate "Resilient Plumage."
+|tip This along with the flower debuffs will allow you to tank the enrage.
+|tip Use "Sparkling Drift" to quickly run around and collect orbs as fast as possible.
+|tip When the enrage ends, jump back in Bron and repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid being near Splinterbark during "Nightmarish Wail" casts.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61028) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61028)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Splinterbark Nightmare"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Thran'tiok",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Thran'tiok in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61368,60924,61017) and covenantfeature("Covenant Unique") >= 4 and not completedq(61027) end,
+condition_end=function() return completedq(61027) end,
+condition_valid=function() return completedq(60498) and completedq(61368) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Thran'tiok\" guides to unlock Thran'tiok.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip Thran'tiok's phylactery powers are permanent on this difficulty.
+Click Here to Proceed |confirm
+stickystart "Defeat_Thran'tiok_on_Loyalty_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Thran'tiok_on_Loyalty_Difficulty"
+Defeat Thran'tiok on Loyalty Difficulty |q 61017 |future
+|tip Use the "Trial of Loyalty: Thran'tiok" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61027)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61027)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61027) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Thran'tiok to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for gaining DPS time.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Channeling a full "Test of Faith" and then "Aspirant's Bindings" will destroy a Phylactery.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy pain first, then suffering, followed by destruction and then death.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground and using your shield to DPS safely.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Save "Unleash" until you are sure you can channel the full duration safely.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Thran'tiok to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy pain first, then suffering, followed by destruction and then death.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Thran'tiok to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy pain first, then suffering, followed by destruction and then death.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use Bron's abilities until he is defeated, then use Mikanikos and both of his abilities to quickly pick up orbs before rejoining Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction" or soak it with Bron.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip "Terminal Destruction" will kill Mikanikos.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61027) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61027)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Thran'tiok"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Mad Mortimer",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Mad Mortimer in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61364,60925,61016) and covenantfeature("Covenant Unique") >= 4 and not completedq(61026) end,
+condition_end=function() return completedq(61026) end,
+condition_valid=function() return completedq(60498) and completedq(61364) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Mad Mortimer\" guides to unlock Mad Mortimer.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Mad Mortimer also gains a new ability.
+|tip Occasionally, he will summon four slimes which need to be controlled and killed.
+Click Here to Proceed |confirm
+stickystart "Defeat_Mad_Mortimer_on_Loyalty_Difficulty"
+step
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Loyalty_Difficulty"
+Defeat Mad Mortimer on Loyalty Difficulty |q 61016 |future
+|tip Use the "Trial of Loyalty: Mad Mortimer" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61026)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61026)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61026) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Mad Mortimer to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Mad Mortimer to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Mad Mortimer to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61026) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61026)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Mad Mortimer"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Athanos",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Athanos in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61372,60926,61015) and covenantfeature("Covenant Unique") >= 4 and not completedq(61025) end,
+condition_end=function() return completedq(61025) end,
+condition_valid=function() return completedq(60498) and completedq(61372) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Athanos\" guides to unlock Athanos.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Athanos also gains a new ability.
+|tip "Quaking Shockwave" will do a small circle AoE, then a larger circle AoE excluding the original area.
+Click Here to Proceed |confirm
+stickystart "Defeat_Athanos_on_Loyalty_Difficulty"
+step
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Loyalty_Difficulty"
+Defeat Athanos on Loyalty Difficulty |q 61015 |future
+|tip Use the "Trial of Loyalty: Athanos" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61025)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61025)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61025) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Athanos to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Athanos to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Athanos to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61025) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61025)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Athanos"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Wisdom: Azaruux",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Azaruux in the Path of Ascension on wisdom difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61373,60927,61014) and covenantfeature("Covenant Unique") >= 4 and not completedq(61024) end,
+condition_end=function() return completedq(61024) end,
+condition_valid=function() return completedq(60498) and completedq(61373) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Azaruux\" guides to unlock Azaruux.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Wisdom difficulty:_
+|tip Bosses on the wisdom difficulty have increased health and damage over courage and loyalty bosses.
+|tip In addition, Azaruux also gains a new ability.
+|tip This frontal cone slam ability can be side-stepped or out-distanced.
+Click Here to Proceed |confirm
+stickystart "Defeat_Azaruux_on_Loyalty_Difficulty"
+step
+Defeat Azaruux on Courage Difficulty |q 60927 |future
+|tip Use the "Trial of Courage: Azaruux" guide to accomplish this.
+step
+label "Defeat_Azaruux_on_Loyalty_Difficulty"
+Defeat Azaruux on Loyalty Difficulty |q 61014 |future
+|tip Use the "Trial of Loyalty: Azaruux" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61024)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61024)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61024) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Azaruux to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Azaruux to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Wisdom difficulty.
+Challenge Azaruux to Fight on Wisdom Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61024) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61024)
+step
+_Congratulations!_
+You defeated the "Trial of Wisdom: Azaruux"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Kalisthene",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Kalisthene in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,60496,60917,61023,61033) and covenantfeature("Covenant Unique") >= 5 and not completedq(61043) end,
+condition_end=function() return completedq(61043) end,
+condition_valid=function() return completedq(60498) and completedq(60496) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Kalisthene\" guides to unlock Kalisthene.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Kalisthene also gains a new ability.
+|tip This allows her to lunge forward to a white swirling spot, causing damage and closing distance.
+|tip Humility difficulty also adds a 2 minute and 30 second timer.
+|tip When the timer expires, Kalisthene will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Kalisthene_on_Loyalty_Difficulty"
+stickystart "Defeat_Kalisthene_on_Wisdom_Difficulty"
+step
+Defeat Kalisthene on Courage Difficulty |q 60917 |future
+|tip Use the "Trial of Courage: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Kalisthene_on_Loyalty_Difficulty"
+Defeat Kalisthene on Loyalty Difficulty |q 61023 |future
+|tip Use the "Trial of Loyalty: Kalisthene" guide to accomplish this.
+step
+label "Defeat_Kalisthene_on_Wisdom_Difficulty"
+Defeat Kalisthene on Wisdom Difficulty |q 61033 |future
+|tip Use the "Trial of Wisdom: Kalisthene" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61043)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61043)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61043) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61043)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61043)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61043) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Kalisthene to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Test of Faith" ability and when the channel finishes root her with "Aspirant's Bindings."
+|tip Keep your distance as much as possible to minimize damage from her melee attack.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" safely.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Unleash" when you are safe or have a shield available to deal heavy damage.
+|tip When she hovers, quickly move out of white swirling areas before she can leap to them.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind with a Phial of Serenity |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Kalisthene to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Only use "Leap of Faith" to break the spear tethers.
+|tip Keep using "Ascendant Strike" while breaking tethers for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip Use "Archon's Blessing" when you have enough energy, but only when she isn't raining spears to maximize it's effect.
+|tip When she hovers, quickly move out of white swirling areas before she can leap to them.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind with Herald's Footpads |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Kalisthene_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Kalisthene to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Kalisthene##170654 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip To begin, use the "Hyperlight Beam" ability and start using "Overhead Smash."
+|tip Orbs left on the ground will grant you a stacking haste buff.
+|tip Keep repeating this, spawning orbs until the Bron suit dies.
+|tip When Bron dies, use the "Sparkling Drift" and "Resilient Plumage" abilities to quickly grab the orbs and then jump back in the suit.
+|tip Be sure you stay near Bron so a tether doesn't prevent you from reclaiming Bron.
+|tip Repeat this process for the duration of the fight.
+|tip Periodically she will throw a spear down that tethers to you and slowly drags you towards the center where you will take heavy damage.
+|tip Use the equipment button to use "Herald's Footpads" when you become snared to break the chain in an emergency only.
+|tip It will cause you to dash forward and remove your snare.
+|tip There is a 30 second cooldown on Herald's Footpads, so use it wisely.
+|tip You can also use a pillar to line of sight her spears so they drag you into the pillar instead of the spear.
+|tip When she begins her barrage in the air, running in a straight line while not rooted will ensure safety.
+|tip Any active tethers will be broken when the barrage finishes.
+|tip If you are still in Bron during her barrage, use that time to pick up orbs and avoid spears.
+|tip When she hovers, quickly move out of white swirling areas before she can leap to them.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61043) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61043)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Kalisthene"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Echthra",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Echthra in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61357,60918,61022,61032) and covenantfeature("Covenant Unique") >= 5 and not completedq(61042) end,
+condition_end=function() return completedq(61042) end,
+condition_valid=function() return completedq(60498) and completedq(61357) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Echthra\" guides to unlock Echthra.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and humility bosses.
+|tip In addition, Echthra also gains a new ability.
+|tip This grants her a frontal-cone AoE that can disorient you for several seconds.
+|tip Humility difficulty also adds a 1 minute and 40 second timer.
+|tip When the timer expires, Echthra will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Echthra_on_Loyalty_Difficulty"
+stickystart "Defeat_Echthra_on_Wisdom_Difficulty"
+step
+Defeat Echthra on Courage Difficulty |q 60918 |future
+|tip Use the "Trial of Courage: Echthra" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Loyalty_Difficulty"
+Defeat Echthra on Loyalty Difficulty |q 61022 |future
+|tip Use the "Trial of Loyalty: Echthra" guide to accomplish this.
+step
+label "Defeat_Echthra_on_Wisdom_Difficulty"
+Defeat Echthra on Wisdom Difficulty |q 61032 |future
+|tip Use the "Trial of Wisdom: Echthra" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61042)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61042)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61042) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61042)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61042)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61042) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness, Charm of Persistence, and Charm of Discord is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Discord has a chance to debuff enemies with Discord for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Throughout the fight, attempt to LoS her ranged ability as often as possible to minimize damage.
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip Start by channeling "Test of Faith" and then root her with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip Use the shield for channeling "Test of Faith" without taking damage.
+|tip The shield will NOT prevent the poison stacks from applying to you.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Avoid the areas they charge to and try to group them up so you can kill them with "Aspirant's Bindings."
+|tip Use the equipment button to use "Herald's Footpads" when you need to clear some distance in an emergency.
+|tip It will cause you to dash forward and remove any snares.
+|tip Save your "Unleash" ability for times when the crawlers become unmanageable.
+|tip Max range her new frontal cone ability, which has the same range as your "Test of Faith" ability.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Persistence and Fortitude charms can help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Keen Insight" ability and then hit her with "Ascendant Strike."
+|tip Drag her to one of the pillars and begin moving her around it.
+|tip Periodically, she will summon groups of three crawlers.
+|tip Only use "Leap of Faith" to jump to a new pillar and LoS Echthra and the crawlers.
+|tip Avoid the areas the crawlers charge to and group them up moving around the pillar, killing them with "Ascendant Strike."
+|tip Keep using "Ascendant Strike" and buffing "Keen Insight" for the duration of the fight.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Save your "Archon's Blessing" ability for times when the crawlers become unmanageable or to quickly burst crawlers down to focus on Echthra.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Focus is suggested for this fight.
+|tip Charm of Focus gives your soulbind additional resources every 5 seconds for the duration of one fight.
+|tip Persistence and Fortitude charms can also help.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Echthra_
+|tip Click the "Choose" button under the Courage difficulty.
+Challenge Echthra to Fight on Courage Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Echthra##172177 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip She hits harder with her melee attack than with her ranged attack.
+|tip To begin, use the "Hyperlight Beam" ability and then spam "Overhead Smash."
+|tip Periodically, she will summon groups of three crawlers.
+|tip "Hyperlight Beam" will allow you to kill crawlers efficiently.
+|tip Certain areas will remain free of poison puddles.
+|tip Get to one of these areas and keep using "Hyperlight Beam" and"Overhead Smash" until Bron dies.
+|tip When you gain 1 energy from your Charm of Focus as Mikanikos, use the "Resilient Plumage" ability for damage reduction and jump back in Bron.
+|tip Keep using "Hyperlight Beam" and"Overhead Smash" for the duration of the fight, repeating the process.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid staying out as Mikanikos too long or the disorient ability might kill you.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61042) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61042)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Echthra"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Alderyn and Myn'ir",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Alderyn and Myn'ir in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61360,60919,61021,61031) and covenantfeature("Covenant Unique") >= 5 and not completedq(61041) end,
+condition_end=function() return completedq(61041) end,
+condition_valid=function() return completedq(60498) and completedq(61360) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Alderyn and Myn'ir\" guides to unlock Alderyn and Myn'ir.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Myn'ir also gain a new ability.
+|tip This grants Myn'ir a teleport, usually to the opposite side of where she last shot her arrows.
+|tip Humility difficulty also adds a 1 minute and 40 second timer.
+|tip When the timer expires, Alderyn and Myn'ir will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Loyalty_Difficulty"
+stickystart "Defeat_Alderyn_and_Myn'ir_on_Wisdom_Difficulty"
+step
+Defeat Alderyn and Myn'ir on Courage Difficulty |q 60919 |future
+|tip Use the "Trial of Courage: Alderyn and Myn'ir" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Loyalty_Difficulty"
+Defeat Alderyn and Myn'ir on Loyalty Difficulty |q 61021 |future
+|tip Use the "Trial of Loyalty: Alderyn and Myn'ir" guide to accomplish this.
+step
+label "Defeat_Alderyn_and_Myn'ir_on_Wisdom_Difficulty"
+Defeat Alderyn and Myn'ir on Wisdom Difficulty |q 61031 |future
+|tip Use the "Trial of Wisdom: Alderyn and Myn'ir" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61041)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61041)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61041) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61041)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61041)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61041) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Alderyn and Myn'ir to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by hitting them with "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for mitigating damage throughout the fight.
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and using the shield to pause to channel an ability.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Always attempt to hit both of them together with "Aspirant's Bindings" and "Unleash."
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Alderyn and Myn'ir to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Keen Insight" and then jumping between them with "Leap of Faith."
+|tip Strafe continuously in a circle around them, avoiding arrows large blue swirls and spamming "Ascendant Strike."
+|tip Use "Leap of Faith" to dodge arrows and hit both of them at the same time if possible.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "Archon's Blessing" on cooldown, preferrably just before using "Leap of Faith."
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Alderyn and Myn'ir_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Alderyn and Myn'ir to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+Kill Alderyn and Myn'ir |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Alderyn and Myn'ir share the same health pool.
+|tip Focus on Alderyn for the duration of the fight.
+|tip Myn'ir will shoot groups of arrows in a frontal cone that must be dodged.
+|tip Start by using "Hyperlight Beam" and with both of them in a straight line in front of you, Alderyn first
+|tip Backpedal continuously away from them, avoiding arrows large blue swirls and spamming "Overhead Smash" and "Hyperlight Beam."
+|tip If Bron dies, use both of Mikanikos' abilities and pick up orbs before hopping back in Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt Alderyn's "Anima Seed" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip If you don't interrupt "Anima Seed," you will be forced to stand in a small circle to prevent it from exploding.
+|tip Use "High-Tech Relocation" if you are low on energy with Bron but still have health, using both abilities as Mikanikos and picking up orbs before rejoining Bron.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61041) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61041)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Alderyn and Myn'ir"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Nuuminuuru",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Nuuminuuru in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61362,60921,61020,61030) and covenantfeature("Covenant Unique") >= 5 and not completedq(61040) end,
+condition_end=function() return completedq(61040) end,
+condition_valid=function() return completedq(60498) and completedq(61362) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Nuuminuuru\" guides to unlock Nuuminuuru.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Nuuminuuru also gains a new ability.
+|tip This grants her the ability to summon a Symbiotic Faerie.
+|tip The Symbiotic Faerie will make Nuuminuuru immune to damage until it is killed.
+|tip Humility difficulty also adds a 1 minute and 40 second timer.
+|tip When the timer expires, Nuuminuuru will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Nuuminuuru_on_Loyalty_Difficulty"
+stickystart "Defeat_Nuuminuuru_on_Wisdom_Difficulty"
+step
+Defeat Nuuminuuru on Courage Difficulty |q 60921 |future
+|tip Use the "Trial of Courage: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Nuuminuuru_on_Loyalty_Difficulty"
+Defeat Nuuminuuru on Loyalty Difficulty |q 61020 |future
+|tip Use the "Trial of Loyalty: Nuuminuuru" guide to accomplish this.
+step
+label "Defeat_Nuuminuuru_on_Wisdom_Difficulty"
+Defeat Nuuminuuru on Wisdom Difficulty |q 61030 |future
+|tip Use the "Trial of Wisdom: Nuuminuuru" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61040)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61040)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61040) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61040)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61040)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61040) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Nuuminuuru to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for emergencies when fairies get out of control.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Test of Faith" for single fairies and "Aspirant's Bindings" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority and should be what you save the "Unleash" ability for.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Kill Symbiotic Faeries quickly when Violent Fairies are not active to remove her damage shield.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness, Charm of Focus, and Charm of Persistence is suggested for this fight.
+|tip Charm of Focus gives your soulbind additional resources every 5 seconds for the duration of one fight.
+|tip Charm of Persistence will allow you to regenerate 1% of your total health every 5 seconds for the duration of one fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Nuuminuuru to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Ascendant Strike" on Nuuminuuru.
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Ascendant Strike" for single fairies and "Leap of Faith" for groups of two or more.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip If no fairies are up, focus on Nuuminuuru until more spawn.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Kill Symbiotic Faeries quickly when Violent Fairies are not active to remove her damage shield.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt the Violent Fairy's "Violent Blast" ability.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Use "Archon's Blessing" on cooldown and then use "Keen Insight" next to a large group of fairies.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Focus is suggested for this fight.
+|tip Charm of Focus gives your soulbind additional resources every 5 seconds for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Nuuminuuru_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Nuuminuuru to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Nuuminuuru##172410 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Start by using "Overhead Smash."
+|tip Nuuminuuru will remain stationary the entire fight and spawn groups of 1-3 fairies.
+|tip Use the pillars to LoS the fairies and reduce your damage taken as needed.
+|tip Use "Overhead Smash" for single fairies and "Hyperlight Beam" for groups of two or more.
+|tip "Hyperlight Beam" affects a 50 yard line and can damage multiple groups of fairies.
+|tip Damaging fairies will also damage Nuuminuuru.
+|tip Just before Bron dies, move close to a group of fairies so he will kill them when he breaks down.
+|tip When Bron dies, use both of Mikanikos' abilities and quickly pick up orbs before jumping back on Bron.
+|tip Repeat this process until the end of the fight.
+|tip Occasionally, an orb of fire will appear and then spawn a Violent Fairy.
+|tip Killing this fairy quickly is top priority.
+|tip It casts "Violent Blast," which deals heavy damage.
+|tip Kill Symbiotic Faeries quickly when Violent Fairies are not active to remove her damage shield.
+|tip Use the equipment button to use "Herald's Footpads" to reach Violent Fairies quickly.
+|tip It will cause you to dash forward and remove any snares.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61040) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61040)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Nuuminuuru"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Craven Corinth",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Craven Corinth in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61370,60922,61019,61029) and covenantfeature("Covenant Unique") >= 5 and not completedq(61039) end,
+condition_end=function() return completedq(61039) end,
+condition_valid=function() return completedq(60498) and completedq(61370) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Craven Corinth\" guides to unlock Craven Corinth.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Craven Corinth also gains new abilities.
+|tip This grants him the ability to summon a blood orb that slows you if you come in contact with it.
+|tip He also leaves behind pools of blood that apply a DoT effect to you.
+|tip Humility difficulty also adds a 1 minute and 20 second timer.
+|tip When the timer expires, Craven Corinth will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Craven_Corinth_on_Loyalty_Difficulty"
+stickystart "Defeat_Craven_Corinth_on_Wisdom_Difficulty"
+step
+Defeat Craven Corinth on Courage Difficulty |q 60922 |future
+|tip Use the "Trial of Courage: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Loyalty_Difficulty"
+Defeat Craven Corinth on Loyalty Difficulty |q 61019 |future
+|tip Use the "Trial of Loyalty: Craven Corinth" guide to accomplish this.
+step
+label "Defeat_Craven_Corinth_on_Wisdom_Difficulty"
+Defeat Craven Corinth on Wisdom Difficulty |q 61029 |future
+|tip Use the "Trial of Wisdom: Craven Corinth" guide to accomplish this.
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4 or completedq(61039)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4 or completedq(61039)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 or completedq(61039) |goto Elysian Hold/0 42.59,53.02
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61039)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61039)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61039) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Craven Corinth to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by channeling "Test of Faith" and then root him with "Aspirant's Bindings."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for allowing you to channel "Test of Faith."
+|tip Run around, stopping to cast "Test of Faith" when you are invulnerable or after using "Aspirant's Bindings."
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip "Unleash" is useful for this, but make sure the circle has LoS of the orb or it won't work.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+|tip Throughout the fight, avoid coming in contact with any blood pools or blood orbs.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Craven Corinth to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Start by using "Keen Insight" and then jumping with Craven at the edge of "Leap of Faith's" circle.
+|tip Throughout the fight, keep using "Leap of Faith" and catching him at the edge of the circle to stay out of melee range.
+|tip Backpedal constantly using "Ascendant Strike" at a short distance to damage him.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas at a close distance, spamming "Ascendant Strike" and strafing to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip Save "Archon's Blessing" and use it to kill the red anima orb immediately when he teleports to a pillar to limit his healing.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+|tip Throughout the fight, avoid coming in contact with any blood pools or blood orbs.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip None are essential for this fight, but Quickness and Fortitude charms can help.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Craven Corinth_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Craven Corinth to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Craven Corinth##172412 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Stay out of melee range, kiting him around throughout the fight.
+|tip Periodically, Craven Corinth will teleport to the center of the room and start three waves of AoE.
+|tip The first two waves will be one eighth sections of the room and the second will cover two-thirds of a circle.
+|tip Stand in clean areas to avoid taking damage.
+|tip It becomes more difficult to dodge these areas when you are standing further from the center.
+|tip When he teleports to a pillar, kill the red anima orb quickly to prevent him from healing too much.
+|tip Use the equipment button to use "Herald's Footpads" when you need an emergency speed boost.
+|tip It will cause you to dash forward and remove your snare.
+|tip Throughout the fight, avoid coming in contact with any blood pools or blood orbs.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61039) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61039)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Craven Corinth"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Splinterbark Nightmare",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Splinterbark Nightmare in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61366,60923,61018,61028) and covenantfeature("Covenant Unique") >= 5 and not completedq(61038) end,
+condition_end=function() return completedq(61038) end,
+condition_valid=function() return completedq(60498) and completedq(61366) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Splinterbark Nightmare\" guides to unlock Splinterbark Nightmare.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Splinterbark Nightmare also gains a new ability.
+|tip "Nightmarish Wail" will fear you if you are within a small radius surrounding him.
+|tip Humility difficulty also adds a 2 minute and 30 second timer.
+|tip When the timer expires, Splinterbark Nightmare will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Splinterbark_Nightmare_on_Loyalty_Difficulty"
+stickystart "Defeat_Splinterbark_Nightmare_on_Wisdom_Difficulty"
+step
+Defeat Splinterbark Nightmare on Courage Difficulty |q 60923 |future
+|tip Use the "Trial of Courage: Splinterbark Nightmare" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Loyalty_Difficulty"
+Defeat Splinterbark Nightmare on Loyalty Difficulty |q 61018 |future
+|tip Use the "Trial of Loyalty: Splinterbark Nightmare" guide to accomplish this.
+step
+label "Defeat_Splinterbark_Nightmare_on_Wisdom_Difficulty"
+Defeat Splinterbark Nightmare on Wisdom Difficulty |q 61028 |future
+|tip Use the "Trial of Wisdom: Splinterbark Nightmare" guide to accomplish this.
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61038)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61038)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61038) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Splinterbark to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Start by using "Aspirant's Bindings" and then channeling "Test of Faith."
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for ignoring damage during his enrage and avoid the grey ground spike patches.
+|tip Use "Test of Faith" and "Unleash" in combination with "Aspirant's Bindings" to work away at his health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When he enrages, take the first few swings if you have 10 stacks and then use "Confront Memories" for invulnerability.
+|tip With less than 10 stacks, kite him for a few seconds first and then use "Confront Memories" for invulnerability.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid being near Splinterbark during "Nightmarish Wail" casts.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Splinterbark to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Avoid melee range with Splinterbark Nightmare at all costs.
+|tip Begin by leaping just into range using "Leap of Faith" and follow with "Ascendant Strike."
+|tip Constantly run away from him, spinning to face him to use "Ascendant Strike" before quickly running away again.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip Flowers aren't necessary for Kleia but help if you make a mistake.
+|tip When the enrage ends, repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use "Archon's Blessing" on cooldown.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid being near Splinterbark during "Nightmarish Wail" casts.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+|tip A Charm of Quickness and Charm of Fortitude is suggested for this fight.
+|tip Charm of Quickness increases your movement speed for the duration of one fight.
+|tip Charm of Fortitude increases your health by 10% for the duration of one fight.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Phial of Serenity_
+|tip Equipping this will allow you to heal yourself for 10% of your maximum health.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Splinterbark_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Splinterbark to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Splinterbark Nightmare##172682 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Engage him and start spamming "Overhead Smash" and "Hyperlight Beam."
+|tip Use "Recharge" any time you are below 80% health.
+|tip Run around picking up green flowers that will stack a debuff on you, reducing damage taken per stack.
+|tip Upon collecting the 10th flower you will have maximum 90% damage reduction.
+|tip You will need to collect another flower before the debuff expires to keep it at 10 stacks.
+|tip When Splinterbark enrages use "High-Tech Relocation" if you are still in Bron and then activate "Resilient Plumage."
+|tip This along with the flower debuffs will allow you to tank the enrage.
+|tip Use "Sparkling Drift" to quickly run around and collect orbs as fast as possible.
+|tip When the enrage ends, jump back in Bron and repeat the process again.
+|tip Avoid letting the 10 stack of flowers fall off if possible.
+|tip Use the equipment button to use the "Phial of Serenity" on cooldown if you have 10% or more of your health missing.
+|tip There is a 45 second cooldown on Phial of Serenity, so use it wisely.
+|tip Avoid being near Splinterbark during "Nightmarish Wail" casts.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61038) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61038)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Splinterbark Nightmare"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Thran'tiok",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Thran'tiok in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61368,60924,61017,61027) and covenantfeature("Covenant Unique") >= 5 and not completedq(61037) end,
+condition_end=function() return completedq(61037) end,
+condition_valid=function() return completedq(60498) and completedq(61368) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Thran'tiok\" guides to unlock Thran'tiok.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip Thran'tiok's phylactery powers are permanent on this difficulty.
+|tip Humility difficulty also adds a 2 minute and 20 second timer.
+|tip When the timer expires, Thran'tiok will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Thran'tiok_on_Loyalty_Difficulty"
+stickystart "Defeat_Thran'tiok_on_Wisdom_Difficulty"
+step
+Defeat Thran'tiok on Courage Difficulty |q 60924 |future
+|tip Use the "Trial of Courage: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Thran'tiok_on_Loyalty_Difficulty"
+Defeat Thran'tiok on Loyalty Difficulty |q 61017 |future
+|tip Use the "Trial of Loyalty: Thran'tiok" guide to accomplish this.
+step
+label "Defeat_Thran'tiok_on_Wisdom_Difficulty"
+Defeat Thran'tiok on Wisdom Difficulty |q 61027 |future
+|tip Use the "Trial of Wisdom: Thran'tiok" guide to accomplish this.
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61037)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61037)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61037) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Thran'tiok to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+|tip The shield is useful for gaining DPS time.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Channeling a full "Test of Faith" and then "Aspirant's Bindings" will destroy a Phylactery.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy pain first, then suffering, followed by destruction and then death.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground and using your shield to DPS safely.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip Save "Unleash" until you are sure you can channel the full duration safely.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Thran'tiok to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy pain first, then suffering, followed by destruction and then death.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction."
+|tip Deep Echo Trident has a 25 second cooldown.
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Deep Echo Trident_
+|tip Equipping this will allow you to interrupt.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Thran'tiok_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Thran'tiok to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Thran'tiok##172411 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip Thran'tiok will be immune to damage and can only be harmed briefly after destroying one of her Phylacteries.
+|tip Destroying a Phylactery will grant her its corresponding power for a short period of time.
+|tip Destroying the Phylactery of Destruction makes her cast "Terminal Destruction," dealing AoE damage.
+|tip Destroying the Phylactery of Death makes her cast "Death Blossom," causing spiraling necrotic zones.
+|tip Destroying the Phylactery of Suffering makes her cast "Word of Suffering," applying a 12 second DoT.
+|tip Destroying the Phylactery of Pain makes her cast "Greater Necrotic Bolt," dealing single-target damage which you can LoS with pillars.
+|tip Destroy pain first, then suffering, followed by destruction and then death.
+|tip After destroying one, DPS her until she becomes immune again.
+|tip Move around, dodging bad areas on the ground.
+|tip Use Bron's abilities until he is defeated, then use Mikanikos and both of his abilities to quickly pick up orbs before rejoining Bron.
+|tip Use the equipment button to use the "Deep Echo Trident" to interrupt "Terminal Destruction" or soak it with Bron.
+|tip Deep Echo Trident has a 25 second cooldown.
+|tip "Terminal Destruction" will kill Mikanikos.
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61037) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61037)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Thran'tiok"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Mad Mortimer",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Mad Mortimer in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61364,60925,61016,61026) and covenantfeature("Covenant Unique") >= 5 and not completedq(61036) end,
+condition_end=function() return completedq(61036) end,
+condition_valid=function() return completedq(60498) and completedq(61364) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Mad Mortimer\" guides to unlock Mad Mortimer.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Mad Mortimer also gains a new ability.
+|tip Occasionally, he will summon four slimes which need to be controlled and killed.
+|tip Humility difficulty also adds a 2 minute timer.
+|tip When the timer expires, Mad Mortimer will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Mad_Mortimer_on_Loyalty_Difficulty"
+stickystart "Defeat_Mad_Mortimer_on_Wisdom_Difficulty"
+step
+Defeat Mad Mortimer on Courage Difficulty |q 60925 |future
+|tip Use the "Trial of Courage: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Loyalty_Difficulty"
+Defeat Mad Mortimer on Loyalty Difficulty |q 61016 |future
+|tip Use the "Trial of Loyalty: Mad Mortimer" guide to accomplish this.
+step
+label "Defeat_Mad_Mortimer_on_Wisdom_Difficulty"
+Defeat Mad Mortimer on Wisdom Difficulty |q 61026 |future
+|tip Use the "Trial of Wisdom: Mad Mortimer" guide to accomplish this.
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61036)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61036)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61036) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Mad Mortimer to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Mad Mortimer to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Mad Mortimer_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Mad Mortimer to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Mad Mortimer##172487 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61036) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61036)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Mad Mortimer"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Athanos",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Athanos in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61372,60926,61015,61025) and covenantfeature("Covenant Unique") >= 5 and not completedq(61035) end,
+condition_end=function() return completedq(61035) end,
+condition_valid=function() return completedq(60498) and completedq(61372) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Athanos\" guides to unlock Athanos.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Athanos also gains a new ability.
+|tip "Quaking Shockwave" will do a small circle AoE, then a larger circle AoE excluding the original area.
+|tip Humility difficulty also adds a 2 minute timer.
+|tip When the timer expires, Athanos will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Athanos_on_Loyalty_Difficulty"
+stickystart "Defeat_Athanos_on_Wisdom_Difficulty"
+step
+Defeat Athanos on Courage Difficulty |q 60926 |future
+|tip Use the "Trial of Courage: Athanos" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Loyalty_Difficulty"
+Defeat Athanos on Loyalty Difficulty |q 61015 |future
+|tip Use the "Trial of Loyalty: Athanos" guide to accomplish this.
+step
+label "Defeat_Athanos_on_Wisdom_Difficulty"
+Defeat Athanos on Wisdom Difficulty |q 61025 |future
+|tip Use the "Trial of Wisdom: Athanos" guide to accomplish this.
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61035)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61035)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61035) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Athanos to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Athanos to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Athanos_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Athanos to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Athanos##171873 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61035) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61035)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Athanos"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Kyrian Covenant\\Trial of Humility: Azaruux",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through defeating Azaruux in the Path of Ascension on humility difficulty.",
+condition_suggested=function() return level == 60 and completedallq(60498,61373,60927,61014,61024) and covenantfeature("Covenant Unique") >= 5 and not completedq(61034) end,
+condition_end=function() return completedq(61034) end,
+condition_valid=function() return completedq(60498) and completedq(61373) end,
+condition_valid_msg="Complete the \"Path of Ascension\" and \"Memory: Azaruux\" guides to unlock Azaruux.",
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+_Humility difficulty:_
+|tip Bosses on the humility difficulty have increased health and damage over courage, loyalty, and wisdom bosses.
+|tip In addition, Azaruux also gains a new ability.
+|tip This frontal cone slam ability can be side-stepped or out-distanced.
+|tip Humility difficulty also adds a 3 minute timer.
+|tip When the timer expires, Azaruux will enrage and become more deadly and uncontrollable.
+Click Here to Proceed |confirm
+stickystart "Defeat_Azaruux_on_Loyalty_Difficulty"
+stickystart "Defeat_Azaruux_on_Wisdom_Difficulty"
+step
+Defeat Azaruux on Courage Difficulty |q 60927 |future
+|tip Use the "Trial of Courage: Azaruux" guide to accomplish this.
+step
+label "Defeat_Azaruux_on_Loyalty_Difficulty"
+Defeat Azaruux on Loyalty Difficulty |q 61014 |future
+|tip Use the "Trial of Loyalty: Azaruux" guide to accomplish this.
+step
+label "Defeat_Azaruux_on_Wisdom_Difficulty"
+Defeat Azaruux on Wisdom Difficulty |q 61024 |future
+|tip Use the "Trial of Wisdom: Azaruux" guide to accomplish this.
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5 or completedq(61034)
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5 or completedq(61034)
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Haephus##167745
+Tell him _"Show me the Sanctum."_
+|tip Select the "Path of Ascension" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Path of Ascension to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 or completedq(61034) |goto Elysian Hold/0 42.59,53.02
+step
+label "Collect_a_Medallion_of_Service"
+Collect a Medallion of Service |condition curcount(1819) >= 1
+|tip These can be obtained by completing Covenant Callings, looting treasures, and killing rares.
+step
+talk Artemede##168427
+Tell her _"We are ready to challenge the Path of Ascension."_
+Enter the Path of Ascension |scenariostart |goto Elysian Hold/0 28.26,42.40
+step
+_Choose your soulbind:_
+Click Here to Choose Pelagos |confirm |next "Choose_Pelagos_Soulbind"
+|tip Pelagos is a ranged caster that has the ability to root enemies in place.
+Click Here to Choose Kleia |confirm |next "Choose_Kleia_Soulbind"
+|tip Kleia is a melee fighter with a long-range leap ability.
+Click Here to Choose Mikanikos |confirm |next "Choose_Mikanikos_Soulbind"
+|tip Mikanikos is an engineer hybrid soulbind with a mechanical suit.
+step
+label "Choose_Pelagos_Soulbind"
+talk Pelagos##169187
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Pelagos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.54,26.59
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Azaruux to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+|tip "Confront Memories" will grant you a haste buff (move forward), invulnerability shield for five seconds (move right), or movement speed increase (move left) depending on what you pick up.
+step
+label "Choose_Kleia_Soulbind"
+talk Kleia##169186
+Tell her _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Kleia as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 66.25,25.65
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Azaruux to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Choose_Mikanikos_Soulbind"
+talk Mikanikos##169188
+Tell him _"The Path awaits you."_
+|tip If you have charms to use, equip them before selecting your soulbind.
+|tip Charms are single-use and last for a single encounter in the Path of Ascension.
+Choose Mikanikos as your Soulbind |scenariogoal 1/48239 |goto Ascension Coliseum/0 65.70,25.04
+step
+talk Paolone##170815
+Choose _Herald's Footpads_
+|tip Equipping these will increase your mobility.
+Equip your Soulbind |scenariogoal 1/48244 |goto 70.08,23.15 |goto 69.53,29.91
+step
+click Soul Mirror
+Choose _Azaruux_
+|tip Click the "Choose" button under the Humility difficulty.
+Challenge Azaruux to Fight on Humility Difficulty |scenariogoal 1/48227 |goto 72.54,27.83
+step
+click Vesper of Tradition
+|tip Do not click it until you are ready to fight.
+|tip Look over your abilities first to see what each of them do.
+Ring the Vesper of Tradition to Begin |scenariogoal 1/48459 |goto 66.85,28.45
+step
+kill Azaruux##172333 |scenariogoal 2/48408 |goto 55.55,44.63 |next "Collect_your_Reward"
+step
+label "Collect_your_Reward"
+click Victor's Chest
+Collect your Reward |scenariogoal 3/48413 |goto 50.04,53.72
+step
+talk Adrianos##175573
+Tell him _"Return me to Elysian Hold."_
+Speak to Adrianos |scenariogoal 3/48458 |goto 50.43,56.91 |or
+'|scenarioend |or
+step
+Leave the Path of Ascension |scenarioend |only if not completedq(61034) |next "Collect_a_Medallion_of_Service"
+Leave the Path of Ascension |scenarioend |only if completedq(61034)
+step
+_Congratulations!_
+You defeated the "Trial of Humility: Azaruux"
+|tip
+Click Here to Attempt this Trial Again |confirm |next "Collect_a_Medallion_of_Service"
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Necrolords Abomination Factory",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and upgrading the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return covenantfeature("Covenant Unique") >= 5 end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Reach Level 60 |ding 60
+|tip Use the leveling guides to accomplish this.
+step
+Join the Necrolord Covenant |condition covenant() == Necrolord
+|tip Use the "Shadowlands Intro & Main Story Questline" leveling guide to accomplish this.
+stickystart "Collect_6_Redeemed_Souls"
+step
+Collect #1500# Reservoir Anima |condition curcount(1813) >= 1500 or covenantfeature("Covenant Unique") >= 1
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_6_Redeemed_Souls"
+Collect #6# Redeemed Souls |condition curcount(1865) >= 6 or covenantfeature("Covenant Unique") >= 1
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Abomination Factory to Tier 1 |condition covenantfeature("Covenant Unique") >= 1 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Arkadia Moa##161909
+accept Abominable Stitching and Me##63058 |goto 52.75,38.27
+step
+click Prime Scroll
+Activate the Abomination Factory |q 63058/1 |goto Maldraxxus/0 54.94,68.65
+step
+talk Miggsie##175967
+turnin Abominable Stitching and Me##63058 |goto 54.81,68.70
+step
+talk Rathan##162222
+|tip Inside the building.
+accept Rebellious Souls##58665 |goto Seat of the Primus/0 47.97,50.47
+step
+Follow the path up |goto Maldraxxus/0 25.68,40.59 < 20 |only if walking
+talk Rathan##162108
+turnin Rebellious Souls##58665 |goto 25.95,42.55
+accept Find The Way##58668 |goto 25.95,42.55
+step
+Reach the Body Banks |q 58668/1 |goto 24.18,38.74
+step
+Watch the dialogue
+talk Rathan##162227
+turnin Find The Way##58668 |goto 24.18,38.74
+accept Loose Threads##58680 |goto 24.18,38.74
+step
+talk Emeni##161285
+accept Skin in the Game##58677 |goto 24.15,38.65
+stickystart "Collect_Clotting_Patches"
+stickystart "Collect_Razorthread_Spool"
+stickystart "Collect_Skewering_Needle"
+step
+Enter the building |goto 21.99,38.69 < 15 |walk
+kill Faldo Iscar##162175
+|tip Inside the building.
+collect Faldo's Key##181456 |goto 21.11,38.69 |q 58677
+step
+click Faldo's Keepsakes
+|tip Inside the building.
+collect Emeni's Magnificent Skin##174520 |q 58677/1 |goto 21.02,38.86
+step
+label "Collect_Clotting_Patches"
+Follow the path |goto 23.45,38.70 < 20 |only if walking
+Kill Undead enemies around this area
+collect 30 Clotting Patches##174526 |q 58680/1 |goto 25.48,36.63
+step
+label "Collect_Razorthread_Spool"
+click Razorthread Spools##355915+
+|tip They look like large spools of thread on the ground around this area.
+|tip Razorthread Haulers will drop them when killed as well.
+collect 10 Razorthread Spool##174534 |q 58680/2 |goto 25.48,36.63
+step
+label "Collect_Skewering_Needle"
+click Skewering Needle##340839+
+|tip They look like large daggers on tables around this area.
+collect 3 Skewering Needle##174524 |q 58680/3 |goto 25.48,36.63
+step
+talk Emeni##161285
+turnin Skin in the Game##58677 |goto 24.15,38.65
+step
+talk Rathan##162227
+turnin Loose Threads##58680 |goto 24.18,38.74
+accept Weapon of Mass Construction##58686 |goto 24.18,38.74
+step
+click Operational Schematics
+Check the Operational Schematics |q 58686/1 |goto 24.06,38.30
+step
+click Acerbic Bile Vat
+Activate the Acerbic Bile Vat |q 58686/2 |goto 23.87,38.36
+step
+click Bile Conduit
+|tip You will have 20 seconds to make the connection.
+Pull the Bile Conduit |havebuff spell:315666 |goto 23.83,38.38 |q 58686
+step
+click Bile Conduit Connector
+|tip You have 20 seconds to make the connection.
+Connect the Bile Conduit |q 58686/3 |goto 23.77,39.14
+step
+click Mucilaginous Enzyme Vat
+Activate the Mucilaginous Enzyme Vat |q 58686/4 |goto 24.30,39.14
+step
+click Enzyme Conduit
+|tip You will have 20 seconds to make the connection.
+Pull the Enzyme Conduit |havebuff spell:315634 |goto 24.30,39.14 |q 58686
+step
+click Enzyme Conduit Connector
+|tip You have 20 seconds to make the connection.
+Connect the Enzyme Conduit |q 58686/5 |goto 23.79,39.17
+step
+talk Rathan##162227
+turnin Weapon of Mass Construction##58686 |goto 24.18,38.74
+accept A Good Heart##59042 |goto 24.18,38.74
+step
+Click a Heart
+|tip It doesn't matter which one you choose.
+Collect a Heart |q 59042/1 |goto 24.41,38.60
+step
+Place a Heart in Emeni's Construct. |q 59042/2 |goto 23.84,39.06
+step
+talk Rathan##162227
+turnin A Good Heart##59042 |goto 24.18,38.74
+step
+_Next to you:_
+talk Emeni##162174
+accept The Slaughter Daughter##58670
+accept Bottled Up Inside##58671
+stickystart "Slay_Stitchyard_Constructs"
+step
+click Imprisoned Soul+
+|tip They look like large stone urns on the ground inside the building.
+Free #10# Imprisoned Souls |q 58671/1 |goto Etheric Vault/0 47.09,44.36
+step
+kill Yardmaster Pralak##166088 |q 58670/2 |goto Maldraxxus/0 25.70,33.46
+step
+label "Slay_Stitchyard_Constructs"
+Use the _"On The List"_ ability
+|tip It appears as a button on the screen.
+|tip Use it on undead enemies around this area.
+Slay #57# Stitchyard Constructs |q 58670/1 |goto 23.70,35.86
+step
+_Next to you:_
+talk Emeni##162174
+turnin The Slaughter Daughter##58670
+turnin Bottled Up Inside##58671
+accept A Place To Call Home##58727
+step
+talk Rathan##167150
+turnin A Place To Call Home##58727 |goto 55.10,68.78
+accept Stitching Time##60048 |goto 55.10,68.78
+step
+talk Rathan##167150
+turnin Stitching Time##60048 |goto 55.10,68.78
+accept Build-A-Bomination##60041 |goto 55.10,68.78
+step
+talk Emeni##167044
+accept At Your Service##60049 |goto 55.15,68.70
+step
+talk Chordy##167077
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Chordy |q 60041/1 |goto 55.15,68.61
+step
+click Construct Parts##350074
+collect Malleable Flesh##178061 |q 60041/2 |goto 55.01,68.69
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Chordy"_
+|tip Click the "Stitcher" button.
+Construct Chordy's Body |q 60041/3 |goto 54.94,68.83
+step
+talk Rathan##167150
+turnin Build-A-Bomination##60041 |goto 55.10,68.78
+accept May I Take Your Order?##60042 |goto 55.10,68.78
+step
+talk Atticus##167161
+Ask it _"What sort of construct should I build?"_
+Take Atticus's Specification |q 60042/1 |goto 55.28,68.29
+step
+talk Roseboil##167159
+|tip It floats around this area.
+Ask it _"What sort of construct should I build?"_
+Take Roseboil's Specification |q 60042/2 |goto 55.20,68.07
+step
+talk Marz##167162
+|tip It floats around this area.
+Ask it _"What sort of construct should I build?"_
+Take Marz's Specification |q 60042/3 |goto 54.58,68.46
+step
+talk Flytrap##167157
+|tip It floats around this area.
+Ask it _"What sort of construct should I build?"_
+Take Flytrap's Specification |q 60042/4 |goto 54.37,68.01
+step
+talk Rathan##167150
+turnin May I Take Your Order?##60042 |goto 55.10,68.78
+accept Build One More##60195 |goto 55.10,68.78
+step
+collect 10 Malleable Flesh##178061
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Atticus"_
+|tip Click the "Stitcher" button.
+|tip You can choose another abomination if you like.
+Construct Atticus's Body |q 60195/1 |goto 54.94,68.83
+step
+talk Rathan##167150
+turnin Build One More##60195 |goto 55.10,68.78
+step
+talk Baroness Draka##161907
+turnin At Your Service##60049 |goto Seat of the Primus/0 49.75,50.64
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+step
+talk Toothpick##167764
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Toothpick |q 60230/1 |goto 54.90,67.80
+step
+talk Sabrina##173028
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Sabrina |q 60230/2 |goto 54.76,68.90
+step
+talk The Professor##167762
+Ask it _"What sort of construct should I build?"_
+Get Specifications from The Professor |q 60230/3 |goto 55.39,68.16
+step
+talk Rathan##167150
+turnin More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+step
+talk Gas Bag##167763
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Gas Bag |q 61635/1 |goto 54.20,68.00
+step
+talk Guillotine##173030
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Guilotine |q 61635/2 |goto 54.76,68.90
+step
+talk Moma Tomalin##167756
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Moma Tomalin |q 61635/3 |goto 55.20,68.61
+step
+talk Rathan##167150
+turnin Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept Iron Solution##61638 |goto Maldraxxus/0 55.10,68.78
+step
+talk Naxx##173049
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Naxx |q 61638/1 |goto 54.19,68.59
+step
+talk Iron Phillip##173048
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Iron Phillip |q 61638/2 |goto 55.4,68.2
+step
+talk Rathan##167150
+turnin Iron Solution##61638 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") >= 5
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") >= 5
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 |goto Seat of the Primus/0 52.75,38.27
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Chordy (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Chordy through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(60041) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Reach Level 60 |ding 60
+|tip Use the leveling guides to accomplish this.
+step
+Join the Necrolord Covenant |condition covenant() == Necrolord
+|tip Use the "Shadowlands Intro & Main Story Questline" leveling guide to accomplish this.
+stickystart "Collect_6_Redeemed_Souls"
+step
+Collect #1500# Reservoir Anima |condition curcount(1813) >= 1500 or covenantfeature("Covenant Unique") >= 1
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_6_Redeemed_Souls"
+Collect #6# Redeemed Souls |condition curcount(1865) >= 6 or covenantfeature("Covenant Unique") >= 1
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Abomination Factory to Tier 1 |condition covenantfeature("Covenant Unique") >= 1 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Arkadia Moa##161909
+accept Abominable Stitching and Me##63058 |goto 52.75,38.27
+step
+click Prime Scroll
+Activate the Abomination Factory |q 63058/1 |goto Maldraxxus/0 54.94,68.65
+step
+talk Miggsie##175967
+turnin Abominable Stitching and Me##63058 |goto 54.81,68.70
+step
+talk Rathan##162222
+|tip Inside the building.
+accept Rebellious Souls##58665 |goto Seat of the Primus/0 47.97,50.47
+step
+Follow the path up |goto Maldraxxus/0 25.68,40.59 < 20 |only if walking
+talk Rathan##162108
+turnin Rebellious Souls##58665 |goto 25.95,42.55
+accept Find The Way##58668 |goto 25.95,42.55
+step
+Reach the Body Banks |q 58668/1 |goto 24.18,38.74
+step
+Watch the dialogue
+talk Rathan##162227
+turnin Find The Way##58668 |goto 24.18,38.74
+accept Loose Threads##58680 |goto 24.18,38.74
+step
+talk Emeni##161285
+accept Skin in the Game##58677 |goto 24.15,38.65
+stickystart "Collect_Clotting_Patches"
+stickystart "Collect_Razorthread_Spool"
+stickystart "Collect_Skewering_Needle"
+step
+Enter the building |goto 21.99,38.69 < 15 |walk
+kill Faldo Iscar##162175
+|tip Inside the building.
+collect Faldo's Key##181456 |goto 21.11,38.69 |q 58677
+step
+click Faldo's Keepsakes
+|tip Inside the building.
+collect Emeni's Magnificent Skin##174520 |q 58677/1 |goto 21.02,38.86
+step
+label "Collect_Clotting_Patches"
+Follow the path |goto 23.45,38.70 < 20 |only if walking
+Kill Undead enemies around this area
+collect 30 Clotting Patches##174526 |q 58680/1 |goto 25.48,36.63
+step
+label "Collect_Razorthread_Spool"
+click Razorthread Spools##355915+
+|tip They look like large spools of thread on the ground around this area.
+|tip Razorthread Haulers will drop them when killed as well.
+collect 10 Razorthread Spool##174534 |q 58680/2 |goto 25.48,36.63
+step
+label "Collect_Skewering_Needle"
+click Skewering Needle##340839+
+|tip They look like large daggers on tables around this area.
+collect 3 Skewering Needle##174524 |q 58680/3 |goto 25.48,36.63
+step
+talk Emeni##161285
+turnin Skin in the Game##58677 |goto 24.15,38.65
+step
+talk Rathan##162227
+turnin Loose Threads##58680 |goto 24.18,38.74
+accept Weapon of Mass Construction##58686 |goto 24.18,38.74
+step
+click Operational Schematics
+Check the Operational Schematics |q 58686/1 |goto 24.06,38.30
+step
+click Acerbic Bile Vat
+Activate the Acerbic Bile Vat |q 58686/2 |goto 23.87,38.36
+step
+click Bile Conduit
+|tip You will have 20 seconds to make the connection.
+Pull the Bile Conduit |havebuff spell:315666 |goto 23.83,38.38 |q 58686
+step
+click Bile Conduit Connector
+|tip You have 20 seconds to make the connection.
+Connect the Bile Conduit |q 58686/3 |goto 23.77,39.14
+step
+click Mucilaginous Enzyme Vat
+Activate the Mucilaginous Enzyme Vat |q 58686/4 |goto 24.30,39.14
+step
+click Enzyme Conduit
+|tip You will have 20 seconds to make the connection.
+Pull the Enzyme Conduit |havebuff spell:315634 |goto 24.30,39.14 |q 58686
+step
+click Enzyme Conduit Connector
+|tip You have 20 seconds to make the connection.
+Connect the Enzyme Conduit |q 58686/5 |goto 23.79,39.17
+step
+talk Rathan##162227
+turnin Weapon of Mass Construction##58686 |goto 24.18,38.74
+accept A Good Heart##59042 |goto 24.18,38.74
+step
+Click a Heart
+|tip It doesn't matter which one you choose.
+Collect a Heart |q 59042/1 |goto 24.41,38.60
+step
+Place a Heart in Emeni's Construct. |q 59042/2 |goto 23.84,39.06
+step
+talk Rathan##162227
+turnin A Good Heart##59042 |goto 24.18,38.74
+step
+_Next to you:_
+talk Emeni##162174
+accept The Slaughter Daughter##58670
+accept Bottled Up Inside##58671
+stickystart "Slay_Stitchyard_Constructs"
+step
+click Imprisoned Soul+
+|tip They look like large stone urns on the ground inside the building.
+Free #10# Imprisoned Souls |q 58671/1 |goto Etheric Vault/0 47.09,44.36
+step
+kill Yardmaster Pralak##166088 |q 58670/2 |goto Maldraxxus/0 25.70,33.46
+step
+label "Slay_Stitchyard_Constructs"
+Use the _"On The List"_ ability
+|tip It appears as a button on the screen.
+|tip Use it on undead enemies around this area.
+Slay #57# Stitchyard Constructs |q 58670/1 |goto 23.70,35.86
+step
+_Next to you:_
+talk Emeni##162174
+turnin The Slaughter Daughter##58670
+turnin Bottled Up Inside##58671
+accept A Place To Call Home##58727
+step
+talk Rathan##167150
+turnin A Place To Call Home##58727 |goto 55.10,68.78
+accept Stitching Time##60048 |goto 55.10,68.78
+step
+talk Rathan##167150
+turnin Stitching Time##60048 |goto 55.10,68.78
+accept Build-A-Bomination##60041 |goto 55.10,68.78
+step
+talk Emeni##167044
+accept At Your Service##60049 |goto 55.15,68.70
+step
+talk Chordy##167077
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Chordy |q 60041/1 |goto 55.15,68.61
+step
+click Construct Parts##350074
+collect Malleable Flesh##178061 |q 60041/2 |goto 55.01,68.69
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Chordy"_
+|tip Click the "Stitcher" button.
+Construct Chordy's Body |q 60041/3 |goto 54.94,68.83
+step
+talk Rathan##167150
+turnin Build-A-Bomination##60041 |goto 55.10,68.78
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Flytrap (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Flytrap through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(57597) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,57597)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_Superior_Parts"
+step
+collect 10 Malleable Flesh##178061 |q 57597 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 2 Superior Parts##183744 |q 57597 |future
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Flytrap"_
+|tip Click the "Stitcher" button.
+Construct Flytrap's Body |q 57597 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Marz (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Marz through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(57611) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,57611)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_Superior_Parts"
+step
+collect 10 Malleable Flesh##178061 |q 57611 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 1 Superior Parts##183744 |q 57611 |future
+|tip Complete weekly abomination quests to collect it.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Marz"_
+|tip Click the "Stitcher" button.
+Construct Marz's Body |q 57611 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Roseboil (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Roseboil through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(57605) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,57605)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_Superior_Parts"
+step
+collect 10 Malleable Flesh##178061 |q 57605 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 1 Superior Parts##183744 |q 57605 |future
+|tip Complete weekly abomination quests to collect it.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Roseboil"_
+|tip Click the "Stitcher" button.
+Construct Roseboil's Body |q 57605 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Atticus (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Atticus through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(58410) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,58410)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+step
+collect 10 Malleable Flesh##178061 |q 58410 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Atticus"_
+|tip Click the "Stitcher" button.
+Construct Atticus's Body |q 58410 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Gas Bag (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Gas Bag through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(57608) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,57608)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto 52.75,38.27
+step
+talk Rathan##167150
+accept Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+step
+talk Gas Bag##167763
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Gas Bag |q 61635/1 |goto 54.20,68.00
+step
+talk Guillotine##173030
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Guilotine |q 61635/2 |goto 54.76,68.90
+step
+talk Moma Tomalin##167756
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Moma Tomalin |q 61635/3 |goto 55.20,68.61
+step
+talk Rathan##167150
+turnin Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Superior_Parts"
+step
+collect 20 Malleable Flesh##178061 |q 57608 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 5 Superior Parts##183744 |q 57608 |future
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Gas Bag"_
+|tip Click the "Stitcher" button.
+Construct Gas Bag's Body |q 57608 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Mama Tomalin (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Mama Tomalin through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(60216) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,60216)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto 52.75,38.27
+step
+talk Rathan##167150
+accept Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+step
+talk Gas Bag##167763
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Gas Bag |q 61635/1 |goto 54.20,68.00
+step
+talk Guillotine##173030
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Guilotine |q 61635/2 |goto 54.76,68.90
+step
+talk Moma Tomalin##167756
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Moma Tomalin |q 61635/3 |goto 55.20,68.61
+step
+talk Rathan##167150
+turnin Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Tenebrous_Ribs"
+stickystart "Collect_Phantasmal_Haunch"
+stickystart "Collect_Shadowy_Shank"
+step
+collect 5 Aethereal Meat##172052 |q 60216 |future
+|tip Use the "Aethereal Meat" farming guide to accomplish this.
+step
+label "Collect_Tenebrous_Ribs"
+collect 5 Tenebrous Ribs##172053 |q 60216 |future
+|tip Use the "Tenebrous Ribs" farming guide to accomplish this.
+step
+label "Collect_Phantasmal_Haunch"
+collect 5 Phantasmal Haunch##172055 |q 60216 |future
+|tip Use the "Phantasmal Haunch" farming guide to accomplish this.
+step
+label "Collect_Shadowy_Shank"
+collect 5 Shadowy Shank##179315 |q 60216 |future
+|tip Use the "Shadowy Shank" farming guide to accomplish this.
+stickystart "Collect_Superior_Parts"
+step
+collect 10 Malleable Flesh##178061 |q 60216 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 1 Superior Parts##183744 |q 60216 |future
+|tip Complete weekly abomination quests to collect it.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Mama Tomalin"_
+|tip Click the "Stitcher" button.
+Construct Mama Tomalin's Body |q 60216 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Professor (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Professor through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(57601) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,57601)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+step
+talk Toothpick##167764
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Toothpick |q 60230/1 |goto 54.90,67.80
+step
+talk Sabrina##173028
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Sabrina |q 60230/2 |goto 54.76,68.90
+step
+talk The Professor##167762
+Ask it _"What sort of construct should I build?"_
+Get Specifications from The Professor |q 60230/3 |goto 55.39,68.16
+step
+talk Rathan##167150
+turnin More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Superior_Parts"
+step
+collect 15 Malleable Flesh##178061 |q 57601 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 3 Superior Parts##183744 |q 57601 |future
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Professor"_
+|tip Click the "Stitcher" button.
+Construct Professor's Body |q 57601 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Iron Phillip (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Iron Phillip through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(58411) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,58411)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto 52.75,38.27
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+|tip This is a rare spawn and may not always be active.
+|tip This is not a guaranteed drop, but you can try more than once per day.
+Upgrade your Abomination Factory to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept Iron Solution##61638 |goto Maldraxxus/0 55.10,68.78
+step
+talk Naxx##173049
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Naxx |q 61638/1 |goto 54.19,68.59
+step
+talk Iron Phillip##173048
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Iron Phillip |q 61638/2 |goto 55.4,68.2
+step
+talk Rathan##167150
+turnin Iron Solution##61638 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Superior_Parts"
+stickystart "Collect_Laestrite_Ore"
+step
+collect 20 Malleable Flesh##178061 |q 58411 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 10 Superior Parts##183744 |q 58411 |future
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+label "Collect_Laestrite_Ore"
+collect 20 Laestrite Ore##171828 |q 58411 |future
+|tip Farm them with Mining or purchase them from the auction house.
+step
+kill Indomitable Schmitd##161105
+|tip This is a rare spawn and may not always be active.
+|tip This is not a guaranteed drop, but you can try more than once per day.
+collect 1 Indomitable Hide##174070 |goto Maldraxxus/0 38.84,42.43 |q 58379 |future
+step
+use the Indomitable Hide##174070
+accept Construct Part: Indomitable Hide##58379
+step
+talk Rathan##167150
+turnin Construct Part: Indomitable Hide##58379 |goto 55.10,68.78
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Iron Phillip"_
+|tip Click the "Stitcher" button.
+Construct Iron Phillip's Body |q 58411 |goto 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Toothpick (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Toothpick through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(58414) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,58414)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+step
+talk Toothpick##167764
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Toothpick |q 60230/1 |goto 54.90,67.80
+step
+talk Sabrina##173028
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Sabrina |q 60230/2 |goto 54.76,68.90
+step
+talk The Professor##167762
+Ask it _"What sort of construct should I build?"_
+Get Specifications from The Professor |q 60230/3 |goto 55.39,68.16
+step
+talk Rathan##167150
+turnin More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Superior_Parts"
+step
+collect 15 Malleable Flesh##178061 |q 58414 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 4 Superior Parts##183744 |q 58414 |future
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Toothpick"_
+|tip Click the "Stitcher" button.
+Construct Toothpick's Body |q 58414 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Naxx (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Naxx through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(58413) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,58413)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto 52.75,38.27
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept Iron Solution##61638 |goto Maldraxxus/0 55.10,68.78
+step
+talk Naxx##173049
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Naxx |q 61638/1 |goto 54.19,68.59
+step
+talk Iron Phillip##173048
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Iron Phillip |q 61638/2 |goto 55.4,68.2
+step
+talk Rathan##167150
+turnin Iron Solution##61638 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Shrouded_Cloth"
+stickystart "Collect_Malleable_Flesh"
+stickystart "Collect_Superior_Parts"
+step
+kill Nerissa Heartless##162690
+|tip She walks around this area.
+|tip This is a rare spawn and may not always be active.
+|tip This is not a guaranteed drop, but you can try more than once per day.
+collect 1 Necromantic Oil##174076 |goto Maldraxxus/0 66.02,35.32 |q 58376 |future
+step
+use the Necromantic Oil##174076
+accept Construct Part: Necromantic Oil##58376
+step
+talk Rathan##167150
+turnin Construct Part: Necromantic Oil##58376 |goto 55.10,68.78
+step
+collect 1 Necromantic Oil##183519 |q 58413 |future
+step
+label "Collect_Shrouded_Cloth"
+collect 12 Shrouded Cloth##173202
+|tip Farm them from humanoid mobs in Shadowlands zones or purchase them from the auction house.
+|tip Use the "Shrouded Cloth" farming guide to accomplish this.
+step
+label "Collect_Malleable_Flesh"
+collect 20 Malleable Flesh##178061
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 10 Superior Parts##183744
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Naxx"_
+|tip Click the "Stitcher" button.
+Construct Naxx's Body |q 58413 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Sabrina (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Sabrina through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(57600) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,57600)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+step
+talk Rathan##167150
+accept More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+step
+talk Toothpick##167764
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Toothpick |q 60230/1 |goto 54.90,67.80
+step
+talk Sabrina##173028
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Sabrina |q 60230/2 |goto 54.76,68.90
+step
+talk The Professor##167762
+Ask it _"What sort of construct should I build?"_
+Get Specifications from The Professor |q 60230/3 |goto 55.39,68.16
+step
+talk Rathan##167150
+turnin More the Merrier##60230 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Superior_Parts"
+step
+collect 15 Malleable Flesh##178061
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 4 Superior Parts##183744
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Sabrina"_
+|tip Click the "Stitcher" button.
+Construct Sabrina's Body |q 57600 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Necrolords Covenant\\Guillotine (Abomination)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and crafting Guillotine through the Abomination Factory of the Necrolord covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(58416) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Unlock Abomination Crafting |condition completedanyq(60041,58416)
+|tip Use the "Necrolord Abomination Factory" leveling guide to accomplish this.
+|tip Complete the "Build-A-Bomination" quest.
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Abomination Factory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Seat of the Primus/0 52.75,38.27
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Arkadia Moa##161909
+|tip Inside the building.
+Tell her _"Show me the Sanctum."_
+|tip Select the "Abomination Factory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Abomination Factory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto 52.75,38.27
+step
+talk Rathan##167150
+accept Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+step
+talk Gas Bag##167763
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Gas Bag |q 61635/1 |goto 54.20,68.00
+step
+talk Guillotine##173030
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Guilotine |q 61635/2 |goto 54.76,68.90
+step
+talk Moma Tomalin##167756
+Ask it _"What sort of construct should I build?"_
+Get Specifications from Moma Tomalin |q 61635/3 |goto 55.20,68.61
+step
+talk Rathan##167150
+turnin Troubled Souls##61635 |goto Maldraxxus/0 55.10,68.78
+stickystart "Collect_Superior_Parts"
+step
+collect 20 Malleable Flesh##178061 |q 58416 |future
+|tip They have a small chance to drop from any Shadowlands mob.
+|tip Dungeons are a great place to farm them.
+|tip You also get some from weekly abomination quests.
+step
+label "Collect_Superior_Parts"
+collect 7 Superior Parts##183744 |q 58416 |future
+|tip Complete weekly abomination quests to collect them.
+|tip Use the "Necrolords Abomination Factory Weekly Quests" daily guide to accomplish this.
+step
+clicknpc Abominable Stitching Table##167042
+Choose _Construct Body: "Guillotine"_
+|tip Click the "Stitcher" button.
+Construct Guillotine's Body |q 58416 |goto Maldraxxus/0 54.94,68.83 |future
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Night Fae Covenant\\Night Fae Queen's Conservatory",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and upgrading The Queen's Conservatory of the Night Fae covenant.",
+condition_suggested=function() return level >= 60 end,
+condition_end=function() return completedq(60642) end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Reach Level 60 |ding 60 |q 62624 |future
+|tip Use the leveling guides to accomplish this.
+step
+Join the Night Fae Covenant |condition covenant() == NightFae |q 62624 |future
+|tip Use the "Shadowlands Intro & Main Story Questline" leveling guide to accomplish this.
+stickystart "Collect_6_Redeemed_Souls"
+step
+Collect #1500# Reservoir Anima |condition curcount(1813) >= 1500 |q 62624 |future
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_6_Redeemed_Souls"
+Collect #6# Redeemed Souls |condition curcount(1865) >= 6 |q 62624 |future
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Zayhad, The Builder##165702
+|tip Downstairs inside the tree.
+|tip Select "The Queen's Conservatory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one hour to complete.
+Upgrade your Queen's Conservatory to Tier 1 |condition covenantfeature("Covenant Unique") >= 1 |goto Heart of the Forest/1 39.40,54.32
+step
+talk Conservator Starry Night##173171
+accept The Queen's Conservatory##62624 |goto Heart of the Forest/1 56.27,68.40
+step
+click Fae Scroll
+Activate the Queen's Conservatory |q 62624/2 |goto 55.12,66.23
+step
+talk Conservator Starry Night##173171
+turnin The Queen's Conservatory##62624 |goto 56.27,68.40
+accept The End and the Beginning##63046 |goto 56.27,68.40
+step
+talk Winter Queen##156634
+Tell her _"I am ready to begin the ceremony."_
+Speak to the Winter Queen |q 63046/1 |goto Heart of the Forest/2 51.13,28.37
+step
+talk Conservator Starry Night##173171
+Speak with Conservator Starry Night |q 63046/3 |goto Heart of the Forest/1 56.27,68.40
+step
+Click the _"Traverse to the Queen's Conservatory"_ button |goto 57.27,65.68
+|tip It appears on-screen.
+Travel to the Queen's Conservatory |goto Queen's Conservatory/0 73.47,48.05 |c |noway |q 63046
+step
+talk Warden Casad##166476
+turnin The End and the Beginning##63046 |goto 70.01,44.76
+accept A Savior for Lost Souls##59862 |goto 70.01,44.76
+step
+Watch the dialogue
+|tip Follow Warden Casad as it walks.
+Walk with the Warden to the Grove |q 59862/1 |goto 33.34,62.36
+step
+talk Warden Casad##166476
+turnin A Savior for Lost Souls##59862 |goto 33.34,62.36
+accept How to Save a God##59872 |goto 33.34,62.36
+step
+use the Untamed Spirit##177953
+|tip Use it on the Wildseed of Regrowth.
+Plant the seed in the Wildseed |q 59872/1 |goto 37.44,45.72
+step
+talk Warden Casad##166476
+turnin How to Save a God##59872 |goto 33.34,62.36
+accept Greeting a God##59873 |goto 33.34,62.36
+step
+clicknpc Wildseed of Regrowth##165466
+|tip It will take one hour for the seed to mature.
+Release the Spirit from the Wildseed |q 59873/1 |goto 37.39,45.73
+step
+talk Majar'Ta##176324
+Tell it _"It is time for you to return to the cycle."_
+Speak to the Restored Spirit |q 59873/2 |goto 37.41,45.65
+step
+Watch the dialogue
+click Queen's Conservatory Cache
+Collect your Reward |q 59873/3 |goto 38.27,45.84
+step
+talk Warden Casad##166476
+turnin Greeting a God##59873 |goto 33.34,62.36
+step
+talk Warden Casad##166476
+accept Rebirth of the Grove##59999 |goto 33.37,62.27
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 |q 59999
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 |q 59999
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Zayhad, The Builder##165702
+|tip Downstairs inside the tree.
+|tip Select "The Queen's Conservatory" node and click the "Activate" button to begin the upgrade.
+|tip This will take twelve hours to complete.
+Upgrade your Queen's Conservatory to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Heart of the Forest/1 39.40,54.32
+step
+talk Warden Casad##166476
+turnin Rebirth of the Grove##59999 |goto Queen's Conservatory/0 33.37,62.27
+accept Catalyze This##59871 |goto 33.37,62.27
+step
+talk Cultivator Littleflower##171107
+accept A Rare and Unusual Spirit##62447 |goto 42.25,52.95
+step
+use the Temporal Leaves##184779
+|tip Use it on the brown Anima Catalyst Plot
+Use the Catalyst on the Catalyst Plot |q 59871/1 |goto 37.45,41.04
+step
+talk Warden Casad##166476
+turnin Catalyze This##59871 |goto 33.37,62.27
+accept Seed of a Thought##62467 |goto 33.37,62.27
+step
+talk Seed Merchant Daybreak##174403
+Purchase the Seed of your Choice |q 62467/1 |goto 35.06,60.77
+step
+use Temporal Leaf Seeds##183521 |only if itemcount(183521) >= 1
+use Wild Nightbloom Seeds##183520 |only if itemcount(183520) >= 1
+use Wildseed Root Grain Seeds##183522 |only if itemcount(183522) >= 1
+|tip Use it on the Wildseed of Regrowth |only if itemcount(183520,183521,183522) >= 1
+Use a Catalyst Seed |q 62467/2 |goto 37.41,45.74
+step
+talk Warden Casad##166476
+turnin Seed of a Thought##62467 |goto 33.37,62.27
+accept Regrowth of the Grove##60640 |goto 33.37,62.27
+step
+kill Tred'ova##164517 |q 62447/1 |goto Mists of Tirna Scithe/0 15.11,74.45
+|tip Use the "Mists of Tirna Scithe" dungeon guide to accomplish this.
+step
+talk Cultivator Littleflower##171107
+turnin A Rare and Unusual Spirit##62447 |goto Queen's Conservatory/0 42.25,52.95
+step
+use the Shifting Spirit of Knowledge##183704
+|tip Use it on a Wildseed of Regrowth.
+Infuse a Wildseed with the Shifting Spirit of Knowledge |condition itemcount(183704) == 0 or covenantfeature("Covenant Unique") >= 3 |goto 37.40,45.72
+step
+Loot the Infused Wildseed |condition completedq(62446) or covenantfeature("Covenant Unique") >= 3 |goto 37.40,45.72
+|tip This will take 7 days to mature.
+step
+talk Falir the Shifting##174329
+accept A Rare and Unusual Spirit##62454 |goto 24.06,53.08
+|only if covenantfeature("Covenant Unique") < 3
+step
+talk Falir the Shifting##174329
+Tell it _"We restored you to health using the wildseeds of Ardenweald."_
+Speak to Falir |q 62454/1 |goto 24.06,53.08
+step
+click Essence of Ardenweald
+Sample an Essence of Ardenweald |q 62454/5 |goto Ardenweald/0 65.58,33.09
+step
+click Essence of Bastion
+Sample an Essence of Bastion |q 62454/2 |goto Bastion/0 47.86,78.23
+step
+click Essence of Maldraxxus
+Sample an Essence of Maldraxxus |q 62454/3 |goto Maldraxxus/0 63.37,55.09
+step
+click Essence of Revendreth
+Sample an Essence of Revendreth |q 62454/4 |goto Revendreth/0 50.32,68.81
+step
+talk Falir the Shifting##174329
+turnin A Rare and Unusual Spirit##62454 |goto 24.06,53.08
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 |q 60640
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 |q 60640
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Zayhad, The Builder##165702
+|tip Downstairs inside the tree.
+|tip Select "The Queen's Conservatory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Queen's Conservatory to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto Heart of the Forest/1 39.40,54.32
+step
+talk Warden Casad##166476
+turnin Regrowth of the Grove##60640 |goto Queen's Conservatory/0 33.37,62.27
+accept Blossoming of the Grove##60641 |goto 33.37,62.27
+step
+use the Shifting Spirit of Knowledge##183704
+|tip Use it on a Wildseed of Regrowth.
+Infuse a Wildseed with the Shifting Spirit of Knowledge |condition itemcount(183704) == 0 or covenantfeature("Covenant Unique") >= 4 |goto 37.40,45.72
+step
+Loot the Infused Wildseed |condition completedq(62446) or covenantfeature("Covenant Unique") >= 4 |goto 37.40,45.72
+|tip This will take 7 days to mature.
+step
+talk Falir the Shifting##174329
+accept A Rare and Unusual Spirit##62603 |goto 24.06,53.08
+step
+kill Devos##167410 |q 62603/1 |goto Spires of Ascension/3 45.51,62.77
+|tip Use the "Spires of Ascension" dungeon guide to accomplish this.
+step
+talk Falir the Shifting##174329
+turnin A Rare and Unusual Spirit##62603 |goto Queen's Conservatory/0 24.06,53.08
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 |q 60641
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 |q 60641
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Zayhad, The Builder##165702
+|tip Downstairs inside the tree.
+|tip Select "The Queen's Conservatory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Queen's Conservatory to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 |goto Heart of the Forest/1 39.40,54.32
+step
+talk Warden Casad##166476
+turnin Blossoming of the Grove##60641 |goto Queen's Conservatory/0 33.37,62.27
+accept The Grove Resplendent##60642 |goto 33.37,62.27
+step
+talk Falir the Shifting##174329
+accept A Rare and Unusual Spirit##62625 |goto 24.06,53.08
+step
+kill Mueh'zala##169769 |q 62625/1 |goto De Other Side/3 50.73,57.68
+|tip Use the "De Other Side" dungeon guide to accomplish this.
+step
+talk Falir the Shifting##174329
+turnin A Rare and Unusual Spirit##62625 |goto Queen's Conservatory/0 24.06,53.08
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 |q 60642
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 |q 60642
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Zayhad, The Builder##165702
+|tip Downstairs inside the tree.
+|tip Select "The Queen's Conservatory" node and click the "Activate" button to begin the upgrade.
+|tip This will take one day to complete.
+Upgrade your Queen's Conservatory to Tier 5 |condition covenantfeature("Covenant Unique") >= 5 |goto Heart of the Forest/1 39.40,54.32
+step
+talk Warden Casad##166476
+turnin The Grove Resplendent##60642 |goto Queen's Conservatory/0 33.37,62.27
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr The Ember Court",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and upgrading The Ember Court of the Venthyr covenant.",
+condition_suggested=function() return level >= 60 end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+Reach Level 60 |ding 60 |q 63065 |future
+|tip Use the leveling guides to accomplish this.
+step
+Join the Venthyr Covenant |condition covenant() == Venthyr |q 63065 |future
+|tip Use the "Shadowlands Intro & Main Story Questline" leveling guide to accomplish this.
+stickystart "Collect_6_Redeemed_Souls"
+step
+Collect #1500# Reservoir Anima |condition curcount(1813) >= 1500 |q 63065 |future
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_6_Redeemed_Souls"
+Collect #6# Redeemed Souls |condition curcount(1865) >= 6 |q 63065 |future
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Foreman Flatfinger##172605
+|tip Inside the building.
+Upgrade The Ember Court to Tier 1 |condition covenantfeature("Covenant Unique") >= 1 |goto Sinfall/0 55.60,26.25
+step
+talk Foreman Flatfinger##172605
+|tip Inside the building.
+accept Sanctum Upgrade: The Ember Court##63065 |goto 55.59,26.28
+step
+click Scroll of Dark Empowerment##364950
+|tip Inside the building.
+Active the Scroll of Dark Empowerment |q 63065/1 |goto 50.15,19.29
+step
+talk Theotar##161979
+|tip Inside the building.
+turnin Sanctum Upgrade: The Ember Court##63065 |goto 50.23,18.07
+accept A New Court##59660 |goto 50.23,18.07
+step
+talk Picky Stefan##172533
+|tip Inside the building.
+Tell him _"I need you to coordinate the refreshments for our new court."_
+Recruit Picky Stefan |q 59660/1 |goto 39.41,27.33
+step
+talk Hips##172535
+|tip Downstairs inside the building.
+Tell him _"I need you to coordinate the entertainment for our new court."_
+Recruit Hips |q 59660/2 |goto Sinfall/1 60.55,27.26
+step
+talk Lord Garridan##172536
+|tip Downstairs inside the building.
+Tell him _"I need you to coordinate the guest list for our new court."_
+Recruit Lord Garridan |q 59660/3 |goto 75.10,52.41
+step
+talk The Accuser##165291
+|tip Downstairs inside the building.
+Tell her _"I need you to coordinate all of the logistics for our new court."_
+Watch the dialogue
+The Accuser recruited |q 59660/4 |goto 56.05,78.57
+step
+clicknpc Sinfall Surface Flyer##172649
+|tip Downstairs inside the building.
+Use the Bat to Reach the Surface |q 59660/5 |goto 67.19,47.44
+step
+Enter the building |goto Revendreth/0 28.72,43.01 < 7 |only if walking
+talk Temel##164966
+|tip Inside the building.
+turnin A New Court##59660 |goto 27.93,43.05
+accept Ember Court Rehearsal##59661 |goto 27.93,43.05
+step
+talk Temel##164966
+|tip Inside the building.
+Tell him _"I'm ready for the Ember Court rehearsal."_
+|tip Click the "Accept" button when it appears.
+Speak with Temel to Start the Rehearsal |q 59661/1 |goto 27.93,43.05
+step
+Follow Temel |goto Ember Court/0 40.00,45.88 < 7 |walk
+Watch the dialogue
+Walk with Temel to Refreshments Area |scenariogoal 1/48759 |goto 41.78,54.99 |q 59661
+step
+clicknpc Messy Rubble##172424
+Quick Clean Up |scenariogoal 2/48779 |count 1 |goto 44.84,54.46 |q 59661
+step
+clicknpc Messy Rubble##172424
+Quick Clean Up |scenariogoal 2/48779 |count 2 |goto 47.22,60.97 |q 59661
+step
+clicknpc Messy Rubble##172424
+Quick Clean Up |scenariogoal 2/48779 |count 3 |goto 40.70,56.69 |q 59661
+step
+clicknpc Messy Rubble##172424
+Quick Clean Up |scenariogoal 2/48779 |count 4 |goto 35.84,57.12 |q 59661
+step
+Watch the dialogue
+Await the Rehearsal's Special Guest |scenariogoal 2/48760 |goto 44.75,55.75 |q 59661
+step
+Watch the dialogue
+Await the Guest's Arrival |scenariogoal 3/48761 |goto 45.92,55.66 |q 59661
+step
+click Picky Stefan's Teapot##355934
+Pick Up the Formal Teapot |scenariogoal 4/48762 |goto 41.06,55.34 |q 59661
+step
+clicknpc Theotar##172340
+Use the "Offer Tea" ability
+|tip It appears as a button on the screen.
+Watch the dialogue
+Improve Theotar's Mood by Pouring Him a Cup of Tea |scenariogoal 4/48763 |goto 45.95,55.62 |q 59661
+step
+clicknpc Watchmaster Boromod##172341
+Use the "Offer Tea" ability
+|tip It appears as a button on the screen.
+Watch the dialogue
+Offer Watchmaster Boromod a Cup of Tea |scenariogoal 5/48764 |goto 43.76,52.26 |q 59661
+step
+talk Sinfall Recruit##172447
+Choose _Challenge this guard to a duel. (+Casual)_
+kill Sinfall Recruit##172447
+Improve Watchmaster Boromod's Mood by Dueling |scenariogoal 6/48774 |goto 43.23,58.32 |q 59661
+stickystart "Improve_Temels_Mood"
+step
+Talk to Sinfall Recruits around this area
+Choose _Challenge this guard to a duel. (+Casual)_
+kill Sinfall Recruit##172447+
+(Optional) Do Casual Activities to Improve Watchmaster Boromod's Mood |scenariogoal 7/48770 |goto 43.59,61.10 |q 59661
+step
+label "Improve_Temels_Mood"
+Click Messy Rubbles around this area
+(Optional) Do Clean Activities to Improve Temel's Mood |scenariogoal 7/48771 |goto 45.06,62.06 |q 59661
+step
+click Picky Stefan's Teapot##355934
+Start Carrying the Teapot |havebuff spell:336689 |goto 41.06,55.34 |q 59661
+step
+Click NPC's around this area
+Use the "Offer Tea" ability
+|tip It appears as a button on the screen.
+|tip If the tempurate on the teapot runs out you'll have to go get it again.
+(Optional) Do Formal Activities to Improve Theotar's Mood |scenariogoal 7/48769 |goto 41.87,60.02 |q 59661
+step
+Wait for the Ember Court Rehearsal timer to expire
+Improve Your Guests' Mood During the Rehearsal |scenariogoal 7/48768 |goto 44.85,59.23 |q 59661
+step
+Join Prince Renathal on the Tribute Stage |scenariogoal 8/48772 |goto 46.47,41.77 |q 59661
+step
+click Tribute Chest##355936
+Collect the Guests' Tribute From Your Chest |scenariogoal 8/48773 |goto 47.66,41.07 |q 59661
+step
+Complete the Ember Court Rehearsal |q 59661/2
+step
+talk Prince Renathal##172342
+Tell him _"I'm ready to leave."_
+Speak with Prince Renathal to Leave |scenarioend |goto 46.90,41.45 |q 59661
+step
+talk Temel##164966
+|tip Inside the building.
+turnin Ember Court Rehearsal##59661 |goto Revendreth/0 27.93,43.05
+accept Ember Court: Refreshments##61705 |goto 27.93,43.05
+accept Ember Court: Entertainment##61706 |goto 27.93,43.05
+accept Ember Court: Guest RSVPs##61704 |goto 27.93,43.05
+step
+talk Picky Stefan##165490
+Review the Refreshments List |q 61705/1 |goto 28.97,44.28
+step
+talk Hips##165494
+Review the Entertainment List |q 61706/1 |goto 30.67,41.81
+step
+talk Lord Garridan##165399
+Review the Guest List |q 61704/1 |goto 28.53,41.03
+step
+talk Lady Ilinca##165453
+Ask Lady Ilinca for More Information (Optional) |q 61704/2 |goto 28.48,41.06
+step
+Enter the building |goto 71.82,40.34 < 7 |walk
+talk The Accuser##160116
+|tip Downstairs inside the building.
+accept An Abuse of Power##57919 |goto 71.75,40.41
+step
+talk Abused Soul##160107
+|tip Downstairs inside the building.
+Subjugate the Abused Soul |q 57919/1 |goto 71.46,40.71
+step
+kill Shattered Soul##160120 |q 57919/2 |goto 71.46,40.71
+|tip Downstairs inside the building.
+step
+talk The Accuser##160116
+|tip Downstairs inside the building.
+turnin An Abuse of Power##57919 |goto 71.76,40.42
+accept The Proper Souls##57920 |goto 71.76,40.42
+accept The Proper Tools##57921 |goto 71.76,40.42
+accept The Proper Punishment##57922 |goto 71.76,40.42
+stickystart "Collect_Venthyr_Ritual_Robes"
+stickystart "Collect_Venthyr_Ritual_Dagger"
+stickystart "Collect_Venthyr_Ritual_Tome"
+step
+Run up the stairs |goto 68.96,39.79 < 15 |only if walking
+clicknpc Fugitive Soul##160149
+Subjugate the Fugitive Soul |q 57920/1 |goto 68.00,42.03 |count 1
+step
+Run up the stairs |goto 67.80,41.54 < 15 |only if walking
+clicknpc Fugitive Soul##160149
+Subjugate the Fugitive Soul |q 57920/1 |goto 66.35,43.64 |count 2
+step
+kill Fata the Soulflayer##159677 |q 57922/1 |goto 65.19,43.80
+|tip He floats around this area.
+step
+clicknpc Fugitive Soul##160149
+Subjugate the Fugitive Soul |q 57920/1 |goto 68.44,43.01 |count 3
+step
+clicknpc Fugitive Soul##160149
+Subjugate the Fugitive Soul |q 57920/1 |goto 70.57,43.37 |count 4
+step
+label "Collect_Venthyr_Ritual_Robes"
+Kill enemies around this area
+collect Venthyr Ritual Robes##173695 |q 57921/1 |goto 69.51,44.00
+step
+label "Collect_Venthyr_Ritual_Dagger"
+Kill enemies around this area |notinsticky
+collect Venthyr Ritual Dagger |q 57921/2 |goto 69.51,44.00
+step
+label "Collect_Venthyr_Ritual_Tome"
+Kill enemies around this area |notinsticky
+collect Venthyr Ritual Tome##173697 |q 57921/3 |goto 69.51,44.00
+step
+Run up the stairs |goto 69.88,44.32 < 15 |only if walking
+talk The Accuser##160139
+turnin The Proper Souls##57920 |goto 70.70,46.97
+turnin The Proper Tools##57921 |goto 70.70,46.97
+turnin The Proper Punishment##57922 |goto 70.70,46.97
+accept Ritual of Absolution##57923 |goto 70.70,46.97
+step
+Watch the dialogue
+talk The Accuser##160163
+|tip She runs to this location.
+Tell her _"I'm ready. Begin the ritual."_
+Start the Absolution Ritual |q 57923/1 |goto 71.96,46.22
+step
+Watch the dialogue
+Kill the enemies that attack in waves
+Complete the Ritual |q 57923/2 |goto 71.96,46.22
+step
+Watch the dialogue
+talk The Accuser##160163
+turnin Ritual of Absolution##57923 |goto 71.96,46.22
+accept Ritual of Judgment##57924 |goto 71.96,46.22
+step
+Watch the dialogue
+talk The Accuser##160233
+|tip She walks to this location.
+Tell her _"I am ready. Begin the ritual."_
+Join the Ritual of Judgment |q 57924/1 |goto 74.12,49.71
+step
+Watch the dialogue
+Judge the Soul |q 57924/2 |goto 74.12,49.71
+step
+talk The Accuser##160294
+turnin Ritual of Judgment##57924 |goto 74.29,49.72
+accept Archivist Fane##57925 |goto 74.29,49.72
+step
+Enter the building |goto 72.98,52.47 < 15 |walk
+talk Archivist Fane##160248
+|tip Inside the building.
+turnin Archivist Fane##57925 |goto 73.00,51.99
+accept The Sinstone Archive##57926 |goto 73.00,51.99
+accept Missing Stone Fiend##60127 |goto 73.00,51.99
+stickystart "Collect_Sinstone_Records"
+step
+Kill enemies around this area
+accept Atonement Crypt Key##57928 |goto 72.71,53.34
+|tip You will eventually automatically accept this quest after looting.
+step
+Run up the stairs |goto 72.07,56.07 < 15 |only if walking
+talk Cryptkeeper Kassir##163073
+turnin Missing Stone Fiend##60127 |goto 70.15,56.22
+accept Rebuilding Temel##57927 |goto 70.15,56.22
+step
+click Temel's Head
+collect Temel's Head##173739 |q 57927/3 |goto 70.23,53.80
+step
+click Temel's Body
+collect Temel's Body##173737 |q 57927/1 |goto 68.90,53.29
+step
+click Temel's Wings
+collect Temel's Wings##173738 |q 57927/2 |goto 66.15,53.10
+step
+click Crypt Door+
+|tip They look like the doors on the small stone buildings around this area.
+|tip You may have to open many of them before you find an Atonement Crypt.
+Open an Atonement Crypt |q 57928/1 |goto 70.03,54.91
+step
+label "Collect_Sinstone_Records"
+Kill enemies around this area
+collect 100 Sinstone Records##173733 |q 57926/1 |goto 70.03,54.91
+step
+talk Cryptkeeper Kassir##163073
+turnin Rebuilding Temel##57927 |goto 70.15,56.21
+turnin Atonement Crypt Key##57928 |goto 70.15,56.21
+Complete the Requirement to Meet Cryptkeeper Kassir |q 61704/3 |goto 70.15,56.21
+step
+talk Cryptkeeper Kassir##163073
+accept Ready to Serve##60128 |goto 70.15,56.21
+turnin Ember Court: Guest RSVPs##61704 |goto 70.15,56.21
+accept RSVP: Cryptkeeper Kassir##60236 |goto 70.15,56.21 |condition completedq(61880)
+step
+Kill Depraved enemies around this area
+collect 1 Atonement Crypt Key##172957 |q 60236/1 |goto 70.02,54.83 |condition completedq(61880)
+step
+click Crypt Door+
+|tip They look like the doors on the small stone buildings around this area.
+|tip You may have to open many of them before you find an Atonement Crypt.
+kill Depraved Soul##159070
+Find the Lost Cryptkeeper's Ring |q 60236/2 |goto 70.03,54.91 |condition completedq(61880)
+step
+talk Cryptkeeper Kassir##163073
+turnin RSVP: Cryptkeeper Kassir##60236 |goto 70.15,56.21 |condition completedq(61880)
+step
+use RSVP: Cryptkeeper Kassir##176120
+talk Cryptkeeper Kassir##163073
+accept Honored Attendance##61880 |goto 70.15,56.21
+step
+Run down the stairs |goto 71.46,56.45 < 15 |only if walking
+talk Archivist Fane##160248
+|tip Inside the building.
+turnin The Sinstone Archive##57926 |goto 72.99,51.99
+turnin Ready to Serve##60128 |goto 72.99,51.99
+accept Hunting an Inquisitor##57929 |goto 72.99,51.99
+step
+Run up the stairs |goto 75.32,50.94 < 15 |only if walking
+Use the _"Read Inquisitor Traian's Sinstone"_ ability
+|tip It appears as a button on the screen.
+kill Inquisitor Traian##159151 |q 57929/1 |goto 76.19,52.11
+step
+Enter the building |goto 72.98,52.47 < 15 |walk
+talk Archivist Fane##160248
+|tip Inside the building.
+turnin Hunting an Inquisitor##57929 |goto 72.99,51.99
+Complete the Requirement to Access Atoning Rituals |q 61706/2 |goto 72.99,51.99
+step
+talk Laurent##158038
+accept An Unfortunate Situation##57531 |goto 26.42,48.95
+step
+kill Costel##158165
+|tip Inside the building.
+Recover Laurent's Belongings |q 57531/1 |goto 29.72,48.72
+step
+talk Laurent##158038
+turnin An Unfortunate Situation##57531 |goto 26.43,48.95
+accept Foraging for Fragments##57532 |goto 26.43,48.95
+step
+Watch the dialogue
+|tip Follow Laurent as he walks.
+|tip He walks to this location.
+Follow Laurent |q 57532/1 |goto 25.71,48.57
+step
+click Mirror Fragment
+collect Mirror Fragment##172085 |q 57532/2 |goto 25.68,48.54
+step
+Watch the dialogue
+|tip Follow Laurent as he walks.
+|tip He walks to this location.
+Follow Laurent |q 57532/3 |goto 25.53,47.34
+step
+click Mirror Fragment
+collect Mirror Fragment##172085 |q 57532/4 |goto 25.51,47.39
+step
+Watch the dialogue
+|tip Follow Laurent as he walks.
+|tip He walks to this location.
+Follow Laurent |q 57532/5 |goto 24.98,47.98
+step
+click Mirror Fragment
+collect Mirror Fragment##172085 |q 57532/6 |goto 25.00,48.04
+step
+Watch the dialogue
+talk Laurent##158205
+|tip He walks to this location.
+turnin Foraging for Fragments##57532 |goto 24.25,49.41
+accept Moving Mirrors##57571 |goto 24.25,49.41
+step
+click Mirror Trap+
+|tip There are 3 of them surrounding Simone.
+Free Simone |q 57571/1 |goto 24.07,49.67
+step
+Watch the dialogue
+talk Simone##158088
+|tip She walks to this location.
+turnin Moving Mirrors##57571 |goto 24.22,49.48
+accept Light Punishment##57533 |goto 24.22,49.48
+step
+talk Laurent##158205
+accept When Only Ash Remains##57534 |goto 24.25,49.42
+stickystart "Kill_Ashen_Ravagers"
+step
+click Mirror Trap+
+|tip There are 3 of them surrounding the Blistering Outcast.
+Free the Blistering Outcast |q 57533/1 |goto 23.02,49.52 |count 1
+step
+click Mirror Trap+
+|tip There are 3 of them surrounding the Blistering Outcast.
+Free the Blistering Outcast |q 57533/1 |goto 22.20,48.11 |count 2
+step
+click Mirror Trap+
+|tip There are 3 of them surrounding the Blistering Outcast.
+Free the Blistering Outcast |q 57533/1 |goto 21.86,50.38 |count 3
+step
+click Mirror Trap+
+|tip There are 3 of them surrounding the Blistering Outcast.
+Free the Blistering Outcast |q 57533/1 |goto 22.88,50.00 |count 4
+step
+click Mirror Trap+
+|tip There are 3 of them surrounding the Blistering Outcast.
+Free the Blistering Outcast |q 57533/1 |goto 22.51,52.16 |count 5
+step
+Follow the path up |goto 23.78,53.06 < 20 |only if walking
+Enter the building |goto 22.76,55.40 < 7 |walk
+kill Enforcer Kristof##168118 |q 60275/1 |goto 22.88,55.84
+|tip Inside the building.
+step
+label "Kill_Ashen_Ravagers"
+kill 10 Ashen Ravager##164524 |q 57534/1 |goto 23.21,49.46
+step
+talk Simone##158088
+turnin Light Punishment##57533 |goto 24.22,49.48
+step
+talk Laurent##158205
+turnin When Only Ash Remains##57534 |goto 24.25,49.41
+accept Escaping the Master##57535 |goto 24.25,49.41
+step
+talk Simone##158088
+accept We Need More Power##59427 |goto 24.22,49.49
+stickystart "Collect_Anima_59427"
+step
+Kill Shrouded enemies around this area
+|tip You can find more inside the buildings around this area.
+collect 10 Mirror Fragment##172220 |q 57535/1 |goto 23.79,53.09
+step
+label "Collect_Anima_59427"
+click Anima Stores+
+|tip They look like small metal burnt out lanterns on the ground around this area.
+|tip You can find more inside the buildings around this area.
+|tip Fill up the blue bar in the quest tracker area.
+Collect Anima |q 59427/1 |goto 23.79,53.09
+step
+talk Simone##158088
+turnin We Need More Power##59427 |goto 24.22,49.48
+step
+talk Laurent##158205
+turnin Escaping the Master##57535 |goto 24.25,49.41
+accept Mirror Making, Not Breaking##57536 |goto 24.25,49.41
+step
+Watch the dialogue
+Follow Laurent and Simone |q 57536/1 |goto 24.80,50.32
+step
+talk Laurent##164420
+|tip He runs to this location.
+Tell him _"I am ready."_
+Speak to Laurent |q 57536/2 |goto 24.80,50.32
+step
+Kill the enemies that attack in waves
+|tip Fill up the blue bar in the quest tracker area.
+Defend Laurent and Simone |q 57536/3 |goto 24.73,50.38
+step
+talk Laurent##158505
+turnin Mirror Making, Not Breaking##57536 |goto 24.80,50.32
+Complete the Requirement to Access Tubbins's Tea Party |q 61705/2 |goto 24.80,50.32
+step
+Follow the path down |goto 31.12,56.04 < 10 |only if walking
+Enter the building |goto 31.15,57.07 < 7 |walk
+talk Tubbins##167863
+|tip Inside the building.
+turnin Ember Court: Refreshments##61705 |goto 30.99,57.67
+accept Ember Court: Tubbins's Tea Party##61404 |goto 30.99,57.67
+|tip This is a group quest, you may need help.
+|tip You can use the group finder to find other players.
+step
+talk Dwyl'ir##167243
+Ask her _"Is there a "special floaty island" nearby that has good water?"_
+Request Transportation to the "Special Floaty Island" |q 61404/1 |goto Ardenweald/0 51.42,34.52
+step
+Find the Mushroom Ring |q 61404/2 |goto 49.38,27.59
+step
+talk Marasmius##172314
+Ask him _"Can you transport me to the islands with pure water?"_
+Ask Marasmius for Transportation |q 61404/3 |goto 49.38,27.59
+step
+Kill enemies around this area
+Slay #20# Mushroom Destroyers |q 61404/4 |goto 31.98,35.32
+step
+Follow the path |goto 32.43,51.20 < 15 |only if walking
+Kill enemies around this area
+Slay #10# Mushroom Defilers |q 61404/5 |goto 31.96,53.75
+step
+Kill enemies around this area
+Slay #10# Mushroom Tormentors |q 61404/6 |goto 28.50,55.21
+step
+talk Marasmius##172314
+Ask him _"Can you transport me to the islands with pure water?"_
+Travel to the Island with Marasmius |q 61404/7 |goto 49.38,27.59
+step
+Step onto the Bounding Shroom |goto 48.59,8.61 < 5 |only if walking
+Step onto the second Bounding Shroom  |goto 48.21,8.13 < 5 |only if walking
+use Tubbins's Bucket##183943
+|tip At the top of the waterfall.
+collect Pristine Water##181370 |q 61404/8 |goto 47.58,7.63
+step
+talk Marasmius##174800
+Ask him _"Can you transport me back to the mainland?"_
+Ask Marasmius for Transportation |q 61404/9 |goto 50.82,7.61
+step
+Follow the path down |goto Revendreth/0 31.12,56.04 < 10 |only if walking
+Enter the building |goto 31.15,57.07 < 7 |walk
+talk Tubbins##167863
+|tip Inside the building.
+turnin Ember Court: Tubbins's Tea Party##61404 |goto 30.99,57.67
+step
+use Contract: Tubbins's Tea Party##176134
+Unlock the Tubbin's Tea Party Amenity |achieve 14680/4
+step
+talk Tubbins##167863
+|tip Inside the building.
+accept Formal Refreshments##61884 |goto 30.99,57.67
+step
+Enter the building |goto 71.81,40.36 < 7 |walk
+talk Gresit##167332
+|tip Downstairs inside the building.
+turnin Ember Court: Entertainment##61706 |goto 71.73,40.37
+accept Ember Court: Atoning Rituals##61407 |goto 71.73,40.37
+stickystart "Collect_Sinstone_Fragments"
+step
+Ride the elevator up |goto 74.27,42.99 < 7 |only if walking
+Run up the stairs |goto 71.14,46.74 < 15 |only if walking
+Continue up the stairs |goto 71.23,49.73 < 20 |only if walking
+clicknpc Fugitive Soul##156150+
+|tip They look like friendly spirits around this area.
+|tip They will appear on your minimap as a yellow dot.
+talk Avowed Ritualist##159406
+Tell them _"Absolve this soul."_
+Guide Vugitive Souls to an Avowed Ritualist |q 61407/1 |goto 69.02,46.77
+step
+label "Collect_Sinstone_Fragments"
+Kill enemies around this area
+Collect #125# Sinstone Fragments |q 61407/2 |goto 68.72,47.16
+step
+Enter the building |goto 71.81,40.36 < 7 |walk
+talk Gresit##167332
+|tip Downstairs inside the building.
+turnin Ember Court: Atoning Rituals##61407 |goto 71.73,40.37
+step
+use Contract: Atoning Rituals##176130
+Unlock the Atoning Rituals Amenity |achieve 14680/1
+step
+talk Gresit##167332
+|tip Downstairs inside the building.
+accept Formal Entertainment##61882 |goto 71.73,40.37
+step
+Enter the building |goto 28.72,43.01 < 7 |only if walking
+talk Temel##164966
+|tip Inside the building.
+turnin Formal Entertainment##61882 |goto 27.93,43.05
+turnin Formal Refreshments##61884 |goto 27.93,43.05
+turnin Honored Attendance##61880 |goto 27.93,43.05
+accept The Ember Court##61616 |goto 27.93,43.05
+step
+talk Picky Stefan##165490
+Click the "Select" button for Tubbin's Tea Party
+Select the Tubbins's Tea Party Refreshments |q 61616/3 |goto 28.97,44.28
+step
+talk Hips##165494
+Click the "Select" button for Atoning Rituals
+Select the Atoning Rituals Entertainment |q 61616/2 |goto 30.67,41.80
+step
+talk Lord Garridan##165399
+Confirm the Guest List |q 61616/1 |goto 28.53,41.03
+step
+Enter the building |goto 28.72,43.01 < 7 |only if walking
+talk Temel##164966
+|tip Inside the building.
+Tell him _"Open the Ember Court."_
+Speak with Temel to Open the Ember Court |q 61616/4 |goto 27.93,43.05
+step
+Follow the scenario objectives to complete your Ember Court
+|tip Clean Unsightly Rubble, talk to Ember Court Socialites to gain different buffs and complete activities marked by gold stars on the map.
+Complete the Ember Court |q 61616/5
+step
+talk Prince Renathal##164965
+|tip He walks around this area.
+|tip He will appear as a yellow dot on the minimap.
+Tell him _"I'm ready to leave."_
+Leave the Ember Court |scenarioend |goto Ember Court/0 45.28,42.67 |q 61616
+step
+talk Temel##164966
+|tip Inside the building.
+turnin The Ember Court##61616 |goto Revendreth/0 27.93,43.05
+step
+use the Guest List Page##181536
+Unlock Your Second Guest |q 61504 |future
+stickystart "Collect_12_Redeemed_Souls"
+step
+Collect #5000# Reservoir Anima |condition curcount(1813) >= 5000 or covenantfeature("Covenant Unique") >= 2
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_12_Redeemed_Souls"
+Collect #12# Redeemed Souls |condition curcount(1865) >= 12 or covenantfeature("Covenant Unique") >= 2
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Foreman Flatfinger##172605
+|tip Inside the building.
+Upgrade The Ember Court to Tier 2 |condition covenantfeature("Covenant Unique") >= 2 |goto Sinfall/0 55.60,26.25
+step
+talk Temel##164966
+|tip Inside the building.
+accept Homegrown Help##61766 |goto Revendreth/0 27.93,43.05
+step
+talk Rendle##157846
+turnin Homegrown Help##61766 |goto Revendreth/0 72.57,73.21
+accept Shades of Muck##61851 |goto 72.57,73.21
+step
+talk Dirk##173243
+|tip It walks around this area
+Inspect the Red Dredger |q 61851/1 |goto 72.73,73.30
+step
+talk Gil##173242
+Inspect the Blue Dredger |q 61851/3 |goto 72.28,73.52
+step
+talk Purps##173241
+Inspect the Purple Dredger |q 61851/2 |goto 72.28,73.17
+step
+talk Rendle##157846
+|tip Choose blue, green, purple, or red.
+Pick a Dredger Pigment |q 61851/4 |goto 72.57,73.21
+step
+talk Rendle##157846
+turnin Shades of Muck##61851 |goto Revendreth/0 72.57,73.21
+accept Making a Smarter Dredger##61762 |goto 72.57,73.21
+step
+talk Ta'tru##171808
+buy 1 Kaja'Extreme##182298 |q 61762/1 |goto 51.14,78.84
+step
+talk Rendle##157846
+turnin Making a Smarter Dredger##61762 |goto 72.57,73.21
+accept Dredging up an Assistant##61763 |goto 72.57,73.21
+step
+use the Kaja-Infused Dredger Mix##182301
+Throw the Kaja'Extreme Into the Bubbling Muck Pool |q 61763/1 |goto 72.52,73.54
+step
+talk Rendle##157846
+turnin Dredging up an Assistant##61763 |goto 72.57,73.21
+accept Introductions are in Order##62361 |goto 72.57,73.21
+step
+use the Dredger Butler's Contract##182683
+Recruit the Dredger Butler |learnpet Dredger Butler##172854 |q 62361
+step
+Summon your Dredger Butler from your Pet Journal |q 62361/1
+|tip Open your pet journal (Shift + P by default) and search for "Dredger Butler".
+|tip Right-click on it and click the "Summon" text.
+|tip You can drag the Butler pet to a hotbar to summon and dismiss it.
+step
+_Next to you:_
+talk Dredger Butler##172854
+Talk to your New Butler |q 62361/2
+step
+_Next to you:_
+talk Dredger Butler##172854
+turnin Introductions are in Order##62361
+accept Dredging up a Name##61764
+step
+_Next to you:_
+talk Dredger Butler##172854
+Ask it _"So, you need a name... have any ideas?"_
+|tip Go through the list and pick your favorite name.
+|tip Use the last option to switch back and forth between both pages.
+Pick a Name for your Dredger Assistant |q 61764/1
+step
+_Next to you:_
+talk Dredger Butler##172854
+turnin Dredging up a Name##61764
+accept Dredging up a New Look##62985
+step
+click Discarded Vial##353947
+|tip They look like half-buried vials with blue liquid inside on the ground around this area.
+Kill enemies around this area
+collect 1 Vial of Blue Muck Dye##184446 |q 62985/1 |goto 73.42,72.73
+step
+_Next to you:_
+talk Dredger Butler##172854
+turnin Dredging up a New Look##62985
+stickystart "Collect_22_Redeemed_Souls"
+step
+Collect #10000# Reservoir Anima |condition curcount(1813) >= 10000 or covenantfeature("Covenant Unique") >= 3
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_22_Redeemed_Souls"
+Collect #22# Redeemed Souls |condition curcount(1865) >= 22 or covenantfeature("Covenant Unique") >= 3
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Foreman Flatfinger##172605
+|tip Inside the building.
+Upgrade The Ember Court to Tier 3 |condition covenantfeature("Covenant Unique") >= 3 |goto 55.60,26.25
+step
+talk Lord Garridan##165399
+accept Court Influencer##61943 |goto Revendreth/0 28.53,41.03
+step
+use the Guest List Page##181537
+Unlock Your Third Guest |q 61505 |future
+stickystart "Collect_40_Redeemed_Souls"
+step
+Collect #12500# Reservoir Anima |condition curcount(1813) >= 12500 or covenantfeature("Covenant Unique") >= 4
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_40_Redeemed_Souls"
+Collect #40# Redeemed Souls |condition curcount(1865) >= 40 or covenantfeature("Covenant Unique") >= 4
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Foreman Flatfinger##172605
+|tip Inside the building.
+Upgrade The Ember Court to Tier 4 |condition covenantfeature("Covenant Unique") >= 4 |goto Sinfall/0 55.60,26.25
+step
+talk Lord Garridan##165399
+accept Discerning Taste##61944 |goto Revendreth/0 28.53,41.03
+step
+use the Guest List Page##181538
+Unlock Your Fourth Guest |q 61506 |future
+stickystart "Collect_70_Redeemed_Souls"
+step
+Collect #15000# Reservoir Anima |condition curcount(1813) >= 15000 or covenantfeature("Covenant Unique") == 5
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+step
+label "Collect_70_Redeemed_Souls"
+Collect #70# Redeemed Souls |condition curcount(1865) >= 70 or covenantfeature("Covenant Unique") == 5
+|tip Complete the "Return Lost Souls" weekly quest to earn these each week.
+step
+talk Foreman Flatfinger##172605
+|tip Inside the building.
+Upgrade The Ember Court to Tier 5 |condition covenantfeature("Covenant Unique") == 5 |goto Sinfall/0 55.60,26.25
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Venthyr Covenant\\Venthyr The Ember Court (Weekly Scenario)",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking and upgrading The Ember Court of the Venthyr covenant.",
+condition_suggested=function() return level >= 60 end,
+startlevel=60.0,
+endlevel=60.0,
+},[[
+step
+label "Unlock_The_Ember_Court"
+Unlock The Ember Court |q 61616 |future
+|tip Use the "Venthyr The Ember Court" guide to accomplish this.
+step
+Collect #100# Reservoir Anima |condition curcount(1813) >= 100
+|tip Collect anima by completing world quests, dungeons, covenant calling quests, killing rares, and opening treasures.
+|only if rep("The Ember Court") >= Friendly and not completedq(61493)
+step
+talk Temel##164966
+buy 1 Building: Dredger Pool##181517 |goto Revendreth/0 27.93,43.05
+|only if rep("The Ember Court") >= Friendly and not completedq(61493)
+step
+use the Building: Dredger Pool##181517
+Build the Dredger Pool |q 61493 |future
+|only if rep("The Ember Court") >= Friendly and not completedq(61493)
+step
+talk Lady Ilinca##165453
+accept Ember Court Ambassador##61892 |goto 28.48,41.07
+|only if rep("The Ember Court") >= Friendly and not completedq(61892)
+stickystart "Complete_World_Quests_in_Bastion"
+stickystart "Complete_World_Quests_in_Maldraxxus"
+stickystart "Complete_World_Quests_in_Revendreth"
+step
+Complete #2# World Quests in Ardenweald |q 61892/1
+|tip Use the "Ardenweald World Quests" guide to accomplish this.
+|only if havequest(61892)
+step
+label "Complete_World_Quests_in_Bastion"
+Complete #2# World Quests in Bastion |q 61892/2
+|tip Use the "Bastion World Quests" guide to accomplish this.
+|only if havequest(61892)
+step
+label "Complete_World_Quests_in_Maldraxxus"
+Complete #2# World Quests in Maldraxxus |q 61892/3
+|tip Use the "Maldraxxus World Quests" guide to accomplish this.
+|only if havequest(61892)
+step
+label "Complete_World_Quests_in_Revendreth"
+Complete #2# World Quests in Revendreth |q 61892/4
+|tip Use the "Revendreth World Quests" guide to accomplish this.
+|only if havequest(61892)
+step
+talk Lady Ilinca##165453
+turnin Ember Court Ambassador##61892 |goto 28.48,41.07
+|only if havequest(61892)
+step
+use Staff: Ambassador##181521
+Hire an Ambassador for your Ember Court |q 61501 |future
+|only if completedq(61892) and not completedq(61501)
+step
+Collect #5# Infused Rubies |condition curcount(1820) >= 5
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|tip You will use these to purchase Grandmaster Vole.
+|only if rep("The Ember Court") >= Friendly and not completedq(62657)
+step
+talk Lady Ilinca##165453
+buy 1 Invitation: Grandmaster Vole##183957 |goto 28.48,41.07
+|only if rep("The Ember Court") >= Friendly and not completedq(62657)
+step
+use the Invitation: Grandmaster Vole##183957
+Add Grandmaster Vole to your Ember Court |q 62657 |future
+|only if rep("The Ember Court") >= Friendly and not completedq(62657)
+step
+talk Temel##164966
+buy 1 Building: Guardhouse##181518 |goto 27.93,43.05
+|only if rep("The Ember Court") >= Honored and not completedq(61494)
+step
+use the Building: Guardhouse##181518
+Build the Guardhouse |q 61494 |future
+|only if rep("The Ember Court") >= Honored and not completedq(61494)
+step
+talk Picky Stefan##165490
+accept Small Bites##61898 |goto 28.97,44.28
+|only if rep("The Ember Court") >= Friendly and not completedq(61898)
+step
+click Soggy Kelpcheese##357332
+|tip Floating in the water.
+collect 1 Soggy Kelpcheese##182357 |q 61898/3 |goto Bastion/0 37.07,32.22
+|only if havequest(61898)
+step
+click Aged Windcheese##357333
+collect 1 Aged Windcheese##182356 |q 61898/2 |goto 43.23,47.78
+|only if havequest(61898)
+step
+click Forgotten Sweetcheese##357334
+|tip Up on the top cliff.
+collect 1 Forgotten Sweetcheese##182355 |q 61898/1 |goto 32.91,68.05
+|only if havequest(61898)
+step
+Enter the building |goto Maldraxxus/0 58.84,38.20 < 15 |walk
+click Abandoned Jar##357341+
+|tip They look like large stone jars around inside the building.
+collect 1 Sourbread Yeast Starter##182365 |q 61898/4 |goto 59.75,38.18
+|only if havequest(61898)
+step
+talk Temel##164966
+turnin Small Bites##61898 |goto Revendreth/0 27.93,43.05
+|only if havequest(61898)
+step
+use Stock: Appetizers##181532
+Add Appetizers to your Ember Court |q 61498 |future
+|only if completedq(61898) and not completedq(61498)
+step
+talk Hips##165494
+accept Anima Tastings##61899 |goto Revendreth/0 30.67,41.81
+|only if rep("The Ember Court") >= Honored and not completedq(61899)
+step
+click Fresh Revendreth Anima##357338
+collect 1 Fresh Revendreth Anima##182361 |q 61899/4 |goto 76.8,64.8
+|only if havequest(61899)
+step
+click Fresh Maldraxxus Anima##357337
+collect 1 Fresh Maldraxxus Anima##182359 |q 61899/3 |goto Maldraxxus/0 50.6,46.5
+|only if havequest(61899)
+step
+click Fresh Bastion Anima##357335
+collect 1 Fresh Bastion Anima##182358 |q 61899/2 |goto Bastion/0 52.9,18.7
+|only if havequest(61899)
+step
+click Fresh Ardenweald Anima##357336
+collect 1 Fresh Ardenweald Anima##182360 |q 61899/1 |goto Ardenweald/0 52.9,62.3
+|only if havequest(61899)
+step
+talk Temel##164966
+turnin Anima Tastings##61899 |goto Revendreth/0 27.93,43.05
+|only if havequest(61899)
+step
+use Stock: Anima Samples##181533
+Add Anima Samples to your Ember Court |q 61499 |future
+|only if completedq(61899) and not completedq(61499)
+step
+talk Boot the Beaut##165493
+accept Comfy Chairs##61900 |goto Revendreth/0 29.79,45.39
+|only if rep("The Ember Court") >= Revered and not completedq(61900)
+step
+kill Goldenpaw Vulpin##168436+
+collect 30 Soft Vulpin Fur##182354 |q 61900/1 |goto Bastion/0 59.4,85.2
+|only if havequest(61900)
+step
+Kill Drust enemies around this area
+collect 30 Reclaimed Lumber##182362 |q 61900/2 |goto  Ardenweald/0 36.6,66.6
+|only if havequest(61900)
+step
+talk Temel##164966
+turnin Comfy Chairs##61900 |goto Revendreth/0 27.93,43.05
+|only if havequest(61900)
+step
+use the Stock: Comfy Chairs##181535
+Add Comfy Chairs to your Ember Court |q 61500 |future
+|only of completedq(61900) and not completedq(61500)
+step
+talk Temel##164966
+accept The Ember Court##61526 |goto Revendreth/0 27.93,43.05 |only if default
+accept The Ember Court##61525 |goto Revendreth/0 27.93,43.05 |only if completedq(61493) and not completedq(61494)
+accept The Ember Court##60339 |goto Revendreth/0 27.93,43.05 |only if completedq(61494)
+step
+talk Lord Garridan##165399
+Review the Guest List |q 61526/1 |goto 28.53,41.03 |only if havequest(61526)
+Review the Guest List |q 61525/1 |goto 28.53,41.03 |only if havequest(61525)
+Review the Guest List |q 60339/1 |goto 28.53,41.03 |only if havequest(60339)
+step
+use the Ember Court Guest List##179958
+|tip Use it to check your current guest selection.
+Confirm your Guests |confirm
+|tip Make sure you are certain you have the guests you want before proceeding.
+|tip Each guest will have a preference.
+|tip Cleanliness Level can be Messy or Clean.
+|tip Danger Level can be Safe or Dangerous.
+|tip Decadence Level can be Humble or Decadent.
+|tip Excitement Level can be Relaxing or Exciting.
+|tip Formality Level can be Casual or Formal.
+|tip Ideally, you want guests with complimentary preferences.
+|tip Conflicting guest preferences will make it very difficult to make them both happy.
+Purchase Blank Invitations from Lady Ilinca here [28.48,41.06]
+|tip They cost 8 Infused Rubies each and one is required each time you want to reroll a guest.
+|tip The "Revoke Invitation" button on the guest panel will consume a Blank Invitation and generate one new guest option.
+|only if haveanyquest(61526,61525,60339)
+step
+talk Sika##166577
+accept RSVP: Sika##61130 |goto Bastion/0 52.66,82.60
+|only if questactive(61130)
+step
+talk Aspirant Ikaran##159278
+Ask him _"Will you help Sika so she can take time off to attend the Ember Court?"_
+collect 1 Ikaran's Promissory Note##180967 |q 61130/1 |goto 52.94,82.38
+|only if havequest(61130)
+step
+talk Forgelite Sophone##158807
+|tip Inside the building.
+Ask her _"Will you help Sika so she can take time off to attend the Ember Court?"_
+collect 1 Sophone's Promissory Note##180968 |q 61130/2 |goto 52.94,83.48
+|only if havequest(61130)
+step
+talk Aspirant Leda##159277
+Ask her _"Will you help Sika so she can take time off to attend the Ember Court?"_
+collect 1 Leda's Promissory Note##180966 |q 61130/3 |goto 56.09,82.79
+|only if havequest(61130)
+step
+clicknpc Adonas##171798
+talk Adonas##171798
+Ask him _"Will you help Sika so she can take time off to attend the Ember Court?"_
+collect 1 Adonas's Promissory Note##180965 |q 61130/4 |goto 54.57,78.12
+|only if havequest(61130)
+step
+talk Sika##166577
+turnin RSVP: Sika##61130 |goto 52.66,82.60
+|only if havequest(61130)
+step
+use RSVP: Sika##176125
+RSVP Sika |q 59424 |future
+|only if completedq(61130)
+step
+talk Plague Deviser Marileth##159930
+accept RSVP: Plague Deviser Marileth##61105 |goto Maldraxxus/0 60.50,71.65
+|only if questactive(61105)
+step
+Herd #4# Bubbling Oozes |q 61105/1 |goto 60.08,77.77
+|tip Approach Bubbling Oozes and they will run away from you.
+|tip Position yourself so that one is between you and Kevin's location and make it run there.
+|tip Herd 4 of the oozes to Kevin successfully.
+You can find Kevin at [58.72,77.47]
+|only if havequest(61105)
+step
+talk Plague Deviser Marileth##159930
+turnin RSVP: Plague Deviser Marileth##61105 |goto 60.50,71.65
+|only if havequest(61105)
+step
+use RSVP: Plague Deviser Marileth##176124
+RSVP Plague Deviser Marileth |q 59421 |future
+|only if completedq(61105)
+step
+talk Choofa##160814
+accept RSVP: Choofa##61139 |goto Ardenweald/0 63.69,36.63
+|only if questactive(61139)
+step
+Enter the cave |goto 64.45,36.48 < 15 |walk
+talk Rury##160816
+Choose _"Ask Choofa's friend to come to the party."_
+Ready Rury |q 61139/2 |goto Ardenweald/2 40.61,37.82
+|only if havequest(61139)
+step
+talk Awool##160813
+Choose _"Ask Choofa's friend to come to the party."_
+Ready Awool |q 61139/1 |goto Ardenweald/0 62.65,35.25
+|only if havequest(61139)
+step
+talk Slanknen##171459
+Choose _"Ask Choofa's friend to come to the party."_
+Ready Slanknen |q 61139/3 |goto 49.14,39.85
+|only if havequest(61139)
+step
+talk Choofa##160814
+turnin RSVP: Choofa##61139 |goto 63.69,36.63
+|only if havequest(61139)
+step
+use RSVP: Choofa##176119
+RSVP Choofa |q 59406 |future
+|only if completedq(61139)
+step
+talk Cryptkeeper Kassir##163073
+accept RSVP: Cryptkeeper Kassir##60236 |goto Revendreth/0 70.15,56.21
+|only if questactive(60236)
+step
+Kill enemies around this area
+collect Atonement Crypt Key##172957 |n
+click Crypt Door+
+|tip They are on the sides of crypts around this area.
+click Stashed Equipment
+|tip They are sometimes found behind the Crypt Doors.
+collect 1 Lost Cryptkeeper's Ring##178526 |q 60236/2 |goto 70.03,54.80
+|only if havequest(60236)
+step
+talk Cryptkeeper Kassir##163073
+turnin RSVP: Cryptkeeper Kassir##60236 |goto 70.15,56.21
+|only if havequest(60236)
+step
+use RSVP: Cryptkeeper Kassir##176120
+RSVP Cryptkeeper Kassir |q 59409 |future
+|only if completedq(60236)
+step
+talk Kleia##174916
+accept RSVP: Kleia and Pelagos##61256 |goto Bastion/0 55.88,86.48
+|only if questactive(61256)
+step
+Follow the path |goto 57.07,86.59 < 15 |walk
+Enter the Meditation Chamber |q 61256/1 |goto 58.02,87.95
+|tip Inside the building.
+|only if havequest(61256)
+step
+click Soul Mirror
+|tip Inside the building.
+Start the Meditation |q 61256/2 |goto 58.64,88.84
+|only if havequest(61256)
+step
+kill 5 Excruciating Memory##171980 |q 61256/3 |goto 58.92,88.15
+|tip Inside the building.
+|only if havequest(61256)
+step
+Watch the dialogue
+talk Kleia##174916
+|tip Inside the building.
+turnin RSVP: Kleia and Pelagos##61256 |goto 57.79,85.77
+|only if havequest(61256)
+step
+use RSVP: Kleia and Pelagos##176123
+RSVP Kleia and Pelagos |q 59418 |future
+|only if completedq(61256)
+step
+talk Grandmaster Vole##163019
+|tip On the wall.
+accept RSVP: Grandmaster Vole##61092 |goto Maldraxxus/0 52.80,49.17
+|only if questactive(61092)
+step
+talk Grandmaster Vole##163019
+|tip On the wall.
+Convince Grandmaster Vole |q 61092/1 |goto 52.80,49.17
+|only if havequest(61092)
+step
+talk Grandmaster Vole##163019
+|tip On the wall.
+Pay the Bribe |q 61092/2 |goto 52.80,49.17
+|tip You can also kill 5 enemy players in PvP.
+|only if havequest(61092)
+step
+talk Grandmaster Vole##163019
+|tip On the wall.
+turnin RSVP: Grandmaster Vole##61092 |goto 52.80,49.17
+|only if havequest(61092)
+step
+use RSVP: Grandmaster Vole##176122
+RSVP Grandmaster Vole |q 59415 |future
+|only if completedq(61092)
+step
+talk Droman Aliothe##160894
+accept RSVP: Droman Aliothe##61129 |goto Ardenweald/0 60.08,53.94
+|only if questactive(61129)
+step
+talk Ta'tru##171808
+buy 1 Necklace of Dredbat Fangs##180973 |goto Revendreth/0 51.14,78.84
+|tip The price of this changes weekly.
+|tip It will cost some number of a single profession material such Laestrite Ore Shadowy Shank.
+|tip You can purchase more than one of these if you intend to RSVP this guest again.
+|only if havequest(61129)
+step
+talk Trader Ta'bix##158625
+buy 1 Pristine Vulpine Pelt##180972 |goto Bastion/0 33.39,36.41
+|tip You can purchase more than one of these if you intend to RSVP this guest again.
+|only if havequest(61129)
+step
+Run down the stairs |goto Oribos/2 48.85,19.28 < 15 |walk
+talk Ta'lan the Antiquary##167881
+|tip Downstairs inside Oribos.
+buy 1 Aquamarine Cartel Chit##180971 |goto 51.33,42.97
+|tip You can purchase more than one of these if you intend to RSVP this guest again.
+|only if havequest(61129)
+step
+talk Acquirer Ta'gosh##169524
+buy 1 Teregeer Crystal##180970 |goto Oribos/0 61.73,72.29
+|tip You can purchase more than one of these if you intend to RSVP this guest again.
+|only if havequest(61129)
+step
+talk Au'larrynar##166640
+buy 1 Spiral Deathroc Horn##180969 |goto Maldraxxus/0 53.63,47.92
+|tip You can purchase more than one of these if you intend to RSVP this guest again.
+|only if havequest(61129)
+step
+talk Ta'ruca##160091
+buy 1 Preserved Berries##180774 |goto Revendreth/0 51.13,78.52
+|tip You can purchase more than one of these if you intend to RSVP this guest again.
+|only if havequest(61129)
+step
+talk Droman Aliothe##160894
+turnin RSVP: Droman Aliothe##61129 |goto Ardenweald/0 60.08,53.94
+|only if havequest(61129)
+step
+use RSVP: Droman Aliothe##176121
+RSVP Droman Aliothe |q 59412 |future
+|only if completedq(61129)
+step
+click Hollow Rock
+Pick Up the Rock |havebuff spell:320559 |goto Revendreth/0 38.87,64.33 |q 58327 |future
+|only if questactive(60916)
+step
+click Chewed Light Shard
+accept Snacks for Stonehead##58327 |goto 39.30,65.24
+|only if questactive(60916)
+step
+kill Ravenous Swarm##160613+
+|tip You can find them along the sides of the road.
+collect 50 Gooey Bug Bites##175829 |q 58327/1 |goto 36.50,64.83
+|only if questactive(60916)
+step
+click Remnant of Light
+|tip It looks like a bright yellow crystal on the ground around this area.
+collect 1 A Light Snack##175840 |q 58327/4 |goto 35.87,59.51
+|only if questactive(60916)
+step
+Kill Ash enemies around this area
+collect 20 Ash Crisps##175826 |q 58327/2 |goto 29.14,56.97
+|only if questactive(60916)
+step
+Kill Shrouded enemies around this area
+collect 6 Mirror Candy##175828 |q 58327/3 |goto 24.19,52.52
+|only if questactive(60916)
+step
+talk Stonehead##157199
+|tip He will pick you up but won't throw you.
+turnin Snacks for Stonehead##58327 |goto 39.04,65.92
+|only if questactive(60916)
+step
+talk Stonehead##157199
+accept RSVP: Stonehead##60916 |goto 39.04,65.92
+|only if questactive(60916)
+stickystart "Collect_venthyr_Calligraphy_Set"
+step
+click Forbidden Research Documents##352488
+collect 4 Blank Parchment##171343 |q 60916/1 |goto 38.44,69.39
+|only if havequest(60916)
+step
+label "Collect_venthyr_Calligraphy_Set"
+Kill Forbidden enemies around this area
+collect 1 Venthyr Calligraphy Set##171344 |q 60916/2 |goto 38.44,69.39
+|only if havequest(60916)
+step
+click Venthyr Writing Desk
+Choose _<Forge Stonehead's Permission Slip.>_
+|tip Form the letter however you wish.
+collect 1 Forged Permission Slip##180466 |q 60916/3 |goto 37.93,68.23
+|only if havequest(60916)
+step
+talk Stonehead##157199
+turnin RSVP: Stonehead##60916 |goto 39.05,65.93
+|only if havequest(60916)
+step
+use RSVP: Stonehead##178686
+RSVP Stonehead |q 59619 |future
+|only if completedq(60916)
+step
+talk Polemarch Adrestes##171385
+accept RSVP: Polemarch Adrestes##61123 |goto Bastion/0 69.0,40.6
+|only if questactive(61123)
+step
+click Anima Gateway
+Ascend to the Temple of Humility |invehicle |goto 69.37,40.32 |q 61123
+|only if havequest(61123)
+step
+Reach the Temple of Humility |outvehicle |q 61123
+|only if havequest(61123)
+step
+Find the Paragon of Humility |q 61123/1 |goto 70.67,38.35
+|only if havequest(61123)
+step
+talk Chyrus##154625
+Explain the Situation |q 61123/2 |goto 70.67,38.35
+|only if havequest(61123)
+step
+Convince Polemarch Adrestes |q 61123/3
+|only if havequest(61123)
+step
+talk Polemarch Adrestes##171385
+turnin RSVP: Polemarch Adrestes##61123 |goto Bastion/0 69.0,40.6
+|only if havequest(61123)
+step
+use RSVP: Polemarch Adrestes##176117
+RSVP Polemarch Adrestes |q 59400 |future
+|only if completedq(61123)
+step
+talk Alexandros Mograine##171933
+accept RSVP: Alexandros Mograine##61255 |goto Maldraxxus/0 50.39,67.42
+|only if questactive(61255)
+stickystart "Collect_Ossein_Battleaxes"
+step
+kill Ossein Boneshaper##161928+
+collect 9 Ossein Staff##181161 |q 61255/1 |goto 28.88,45.53
+|only if havequest(61255)
+step
+label "Collect_Ossein_Battleaxes"
+kill Ossein Strongarm##160264+
+collect 3 Ossein Battleaxe##181160 |q 61255/2 |goto 28.88,45.53
+|only if havequest(61255)
+step
+talk Alexandros Mograine##171933
+turnin RSVP: Alexandros Mograine##61255 |goto 50.39,67.42
+|only if havequest(61255)
+step
+use RSVP: Alexandros Mograine##176115
+RSVP Alexandros Mograine |q 59394 |future
+|only if completedq(61255)
+step
+talk Hunt-Captain Korayn##171319
+accept RSVP: Hunt-Captain Korayn##61109 |goto Ardenweald/0 50.83,70.40
+|only if questactive(61109)
+step
+kill 3 Gorm Egg Tender##171328 |q 61109/1
+|only if havequest(61109)
+step
+click Hatching Gorm Eggs##355074+
+|tip They look like small clusters of eggs on the ground inside caves around this area.
+Destroy #8# Hatching Gorm Eggs |q 61109/2 |goto 51.67,76.08
+|only if havequest(61109)
+step
+Kill Gorm enemies around this area
+Slay #12# Gormhive Gorm |q 61109/3 |goto 51.67,76.08
+|only if havequest(61109)
+step
+talk Hunt-Captain Korayn##171319
+turnin RSVP: Hunt-Captain Korayn##61109 |goto 50.83,70.40
+|only if havequest(61109)
+step
+use RSVP: Hunt-Captain Korayn##176116
+RSVP Hunt-Captain Korayn |q 59397 |future
+|only if completedq(61109)
+step
+talk Cudgelface##171190
+accept RSVP: Rendle and Cudgelface##61059 |goto Sinfall/1 61.92,77.00
+|only if questactive(61059)
+step
+Collect a "Sootible" Hat |condition itemcount(180752,180751,180760,180755) >= 1 or completedq(61059)
+|tip Craft any of the following hats or purchase one from the Auction House.
+|tip A Pink Party Hat can be crafted with Tailoring.
+|tip A Red Noggin Candle can be crafted with Alchemy.
+|tip A Crown of the Righteous can be crafted with Jewelcrafting.
+|tip A Fae Revel Masque can be crafted with Inscription.
+|only if havequest(61059)
+step
+talk Rendle##165302
+'|accept Sootible Hat: Red Noggin Candle##62554 |only if itemcount(180751) >= 1 and not readyq(61059) |or
+'|accept Sootible Hat: Pink Party Hat##62556 |only if itemcount(180752) >= 1 and not readyq(61059) |or
+'|accept Sootible Hat: Crown of the Righteous##62559 |only if itemcount(180760) >= 1 and not readyq(61059) |or
+'|accept Sootible Hat: Fae Revel Masque##62558 |only if itemcount(180755) >= 1 and not readyq(61059) |or
+Give Rendle a "Sootible" Hat |q 61059/1 |goto 62.44,76.60 |or
+|only if havequest(61059)
+step
+talk Cudgelface##171190
+turnin RSVP: Rendle and Cudgelface##61059 |goto 61.92,77.00
+|only if havequest(61059)
+step
+use RSVP: Rendle and Cudgelface##176118
+RSVP Rendle and Cudgelface |q 59403 |future
+|only if completedq(61059)
+step
+talk Mikanikos##160280
+accept RSVP: Mikanikos##61173 |goto Bastion/0 50.15,20.47
+|only if questactive(61173)
+step
+Kill enemies around this area
+|tip Overseers, Clawguards, Artificers, and Punishers drop parts.
+collect 150 Potentially Perfect Part##180895 |q 61173/1 |goto 51.90,18.56
+|only if havequest(61173)
+step
+talk Mikanikos##160280
+turnin RSVP: Mikanikos##61173 |goto Bastion/0 50.15,20.47
+|only if havequest(61173)
+step
+use RSVP: Mikanikos##176113
+RSVP Mikanikos |q 59388 |future
+|only if completedq(61173)
+step
+talk Baroness Vashj##162487
+accept RSVP: Baroness Vashj##61174 |goto Maldraxxus/0 67.66,45.92
+|only if questactive(61174)
+step
+kill Morbid Boneguard##168266
+|tip This enemy is elite and may require a group.
+collect Morbid Boneguard's Head##180850 |q 61174/4 |goto 68.81,52.82
+|only if havequest(61174)
+step
+kill Soul-Rotted Flesh##158642
+|tip This enemy is elite and may require a group.
+collect Soul-Rotted Flesh Head##180849 |q 61174/3 |goto 57.81,39.60
+|only if havequest(61174)
+step
+kill Colossal Feaster##166728
+|tip This enemy is elite and may require a group.
+collect Colossal Feaster's Head##180846 |q 61174/1 |goto 46.90,40.31
+|only if havequest(61174)
+step
+kill Steelskin Linebreaker##160479
+|tip This enemy is elite and may require a group.
+collect Steelskin Linebreaker's Head##180848 |q 61174/2 |goto 39.51,44.92
+|only if havequest(61174)
+step
+click Prince Renathal's Banner
+Display the Heads |q 61174/5 |goto 67.53,45.99
+|only if havequest(61174)
+step
+talk Baroness Vashj##162487
+turnin RSVP: Baroness Vashj##61174 |goto 67.66,45.92
+|only if havequest(61174)
+step
+use RSVP: Baroness Vashj##176097
+RSVP Baroness Vashj |q 59382 |future
+|only if completedq(61174)
+step
+accept RSVP: Lady Moonberry##61354
+|only if questactive(61354)
+step
+click Silverheart Vines##355807+
+collect 3 Silverheart Vine Leaves##181252 |q 61354/1 |goto 51.25,36.98
+|only if havequest(61354)
+step
+collect 9 Blooming Lasher Spur##181251 |q 61354/2 |goto 51.43,32.92
+|only if havequest(61354)
+step
+kill Gorm Matriarch##172120
+|tip You'll most likely find them in caves around this area.
+collect 1 Gorm Pheromone Gland##181250 |q 61354/3 |goto 51.90,77.08
+|only if havequest(61354)
+step
+turnin RSVP: Lady Moonberry##61354
+|only if havequest(61354)
+step
+use RSVP: Lady Moonberry##176112
+RSVP Lady Moonberry |q 59385 |future
+|only if completedq(61354)
+step
+Enter the building |goto Revendreth/0 59.22,30.24 < 7 |walk
+Enter the Mirror |goto 58.73,30.30
+Teleport to Redelav Tower |goto 57.39,28.63 < 30 |c |noway |q 60948 |future
+|only if questactive(60948)
+step
+talk The Countess##159694
+|tip Inside the building.
+accept RSVP: The Countess##60948 |goto 58.05,27.53
+|only if questactive(60948)
+step
+Enter the Mirror |goto 57.39,28.63
+Leave Redelav Tower |goto 58.73,30.30 < 30 |c |noway
+|only if havequest(60948)
+step
+Enter the building |goto 56.25,35.96 < 7 |walk
+click House Iremoore Formal Wear
+|tip Inside the building.
+collect 1  House Iremoore Disguise##180497 |q 60948/1 |goto 55.95,35.42
+|only if havequest(60948)
+step
+use the House Iremoore Disguise##180497
+Gain the House Iremoore Disguise Buff |havebuff spell:333367
+|only if havequest(60948)
+step
+click Balthazar
+Steal Balthazar |q 60948/2 |goto 53.38,40.03
+|only if havequest(60948)
+step
+Follow the road |goto 53.50,39.13 < 20 |walk
+Continue following the road |goto 54.64,40.27 < 20 |walk
+Continue following the road |goto 55.51,39.04 < 20 |walk
+Continue following the road |goto 55.94,37.32 < 20 |walk
+Continue following the road |goto 57.43,36.65 < 20 |walk
+Continue following the road |goto 58.24,34.79 < 20 |walk
+Run down the stairs |goto 59.65,35.07 < 15 |walk
+Run down the stairs |goto 61.27,37.18 < 20 |walk
+Follow the path |goto 62.62,37.23 < 20 |walk
+Deliver Balthazar |q 60948/3 |goto 63.68,34.75
+|only if havequest(60948)
+step
+Enter the building |goto 59.22,30.24 < 7 |walk
+Enter the Mirror |goto 58.73,30.30
+Teleport to Redelav Tower |goto 57.39,28.63 < 30 |c |noway
+|only if havequest(60948)
+step
+talk The Countess##159694
+|tip Inside the building.
+turnin RSVP: The Countess##60948 |goto 58.05,27.53
+|only if havequest(60948)
+step
+use RSVP: The Countess##176114
+RSVP The Countess |q 59391 |future
+|only if completedq(60948)
+step
+talk Niya##172352
+accept Ember Court: Glimpse of the Wilds##61408 |goto Ardenweald/0 56.31,55.72
+|only if questactive(61408)
+step
+clicknpc Highland Runestag##170856+
+|tip They look like large Runestag mobs walking around this area.
+Collect #3# Highland Runestags |q 61408/1 |goto 58.15,57.78
+|tip
+Return them to Niya here [56.34,55.72]
+|only if havequest(61408)
+stickystart "Subdue_Territorial_Waders"
+step
+clicknpc Radiant Grouper##172379+
+|tip They swim down the waterfall and around the water.
+|tip They appear on your minimap as yellow dots.
+Collect #8# Radiant Groupers |q 61408/2 |goto 54.81,56.77
+|tip
+You can find more around [52.84,59.81]
+|only if havequest(61408)
+step
+label "Subdue_Territorial_Waders"
+use Heron Net##183944
+|tip Use it on Territorial Waders around this area.
+Subdue #4# Territorial Waders |q 61408/3 |goto 55.04,56.77
+|tip
+Return them to Niya here [56.29,55.45]
+|only if havequest(61408)
+step
+talk Niya##172352
+turnin Ember Court: Glimpse of the Wilds##61408 |goto 56.31,55.72
+|only if havequest(61408)
+step
+use the Contract: Glimpse of the Wilds##176131
+Add the Glimpse of the Wilds to your Ember Court |q 59491 |future
+|only if completedq(61408) and not completedq(59491)
+step
+talk Caretaker Tedo##173173
+accept Ember Court: Lost Chalice Band##61738 |goto Revendreth/0 55.11,43.70
+|only if questactive(61738)
+stickystart "Recruit_Venthyr_Groupies"
+stickystart "Recruit_Dredger_Roadies"
+step
+use the Band Promotional Posters##182302
+|tip Use it while out of combat to regain your disguise.
+click Confiscated Instruments##357156
+collect Confiscated Instruments##182310 |q 61738/3 |goto 52.9,43.3 |count 1
+|only if havequest(61738)
+step
+use the Band Promotional Posters##182302
+|tip Use it while out of combat to regain your disguise.
+click Confiscated Stage Lights##357205
+collect Confiscated Stage Lights##182311 |q 61738/3 |goto 52.2,46.9 |count 2
+|only if havequest(61738)
+step
+use the Band Promotional Posters##182302
+|tip Use it while out of combat to regain your disguise.
+click Confiscated Stage Props##357206
+collect Confiscated Stage Props##182312 |q 61738/3 |goto 50.4,48.5 |count 3
+|only if havequest(61738)
+step
+label "Recruit_Venthyr_Groupies"
+use the Band Promotional Posters##182302
+|tip Use it while out of combat to regain your disguise.
+Recruit #10# Venthyr Groupies |q 61738/1 |goto 54.42,45.66
+|only if havequest(61738)
+step
+label "Recruit_Dredger_Roadies"
+use the Band Promotional Posters##182302
+|tip Use it while out of combat to regain your disguise.
+Recruit #10# Dredger Roadies |q 61738/2 |goto 54.42,45.66
+|only if havequest(61738)
+step
+talk Caretaker Tedo##173173
+turnin Ember Court: Lost Chalice Band##61738 |goto 55.11,43.70
+|only if havequest(61738)
+step
+use the Contract: Lost Chalice Band##176132
+Add the Lost Chalice Band to your Ember Court |q 59488 |future
+|only if completedq(61738) and not completedq(59488)
+stickystart "Guest_RSVPs"
+step
+label "Select_the_Entertainment"
+talk Hips##165494
+|tip Atoning Rituals grant a Decadence shift towards Humble and a Formality shift towards Formal.
+|tip Glimpse of the Wilds grants a Cleanliness shift towards Clean and a Danger shift towards Safe.
+|tip Lost Chalice Band grants a Decadence shift towards Decadent and an Excitement shift towards Exciting.
+Select the Entertainment |q 61526/2 |goto 30.67,41.81 |only if havequest(61526) or completedq(61526)
+Select the Entertainment |q 61525/2 |goto 30.67,41.81 |only if havequest(61525) or completedq(61525)
+Select the Entertainment |q 60339/2 |goto 30.67,41.81 |only if havequest(60339) or completedq(60339)
+stickystop "Guest_RSVPs"
+step
+talk Stewart##172448
+accept Ember Court: Divine Desserts##61405 |goto Bastion/0 33.93,66.54
+|only if questactive(61405)
+stickystart "Collect_Aethereal_Meat"
+stickystart "Collect_Phantasmal_Haunch"
+step
+collect 1 Banana Beef Pudding##172069 |q 61405/1
+|tip Create it with Cooking or purchase it from the Auction House.
+|tip It requires 3 Aethereal Meat, 3 Phantasmal Haunches, 3 Rich Grazer Milks, and 3 Lusterwheat Flours to make.
+|only if havequest(61405)
+step
+label "Collect_Aethereal_Meat"
+collect 30 Aethereal Meat##172052 |q 61405/2
+|tip Farm them with the "Aethereal Meat" farming guide or purchase them from the Auction House.
+|only if havequest(61405)
+step
+label "Collect_Phantasmal_Haunch"
+collect 30 Phantasmal Haunch##172055 |q 61405/3
+|tip Farm them with the "Phantasmal Haunch" farming guide or purchase them from the Auction House.
+|only if havequest(61405)
+step
+Watch the dialogue
+click Stewart's Banana Beef Pudding
+|tip It will appear on the table.
+Taste the Stewart's Pudding |q 61405/4 |goto 33.91,66.53
+|only if havequest(61405)
+step
+talk Stewart##172448
+turnin Ember Court: Divine Desserts##61405 |goto 33.93,66.54
+|only if havequest(61405)
+step
+use the Contract: Divine Desserts##176135
+Add Divine Desserts to your Ember Court |q 59503 |future
+|only if completedq(61405) and not completedq(59503)
+step
+talk Melody Madcap##168429
+accept Ember Court: Mushroom Surprise!##61406 |goto Maldraxxus/0 40.2,41.2
+|only if questactive(61406)
+step
+click Feather Cap##356596+
+|tip They look like pink growths on top of the giant mushrooms around this area.
+|tip Use the Grappling Growths to pull yourself up onto the mushrooms.
+collect 18 Feather Cap##181829 |q 61406/1 |goto 41.6,30.4
+|only if havequest(61406)
+step
+click Lacy Bell Morel##356597+
+|tip They look like small white mushroom clusters on the ground around this area.
+collect 24 Lacy Bell Morel##181830 |q 61406/2 |goto Bastion/0 51.0,58.2
+|only if havequest(61406)
+step
+click Violet Frill##356607+
+|tip They look like purple mushrooms with glowing stalks on the ground around this area.
+collect 4 Violet Frill##181839 |q 61406/3 |goto Ardenweald/0 67.2 35.4
+|only if havequest(61406)
+step
+talk Melody Madcap##168429
+turnin Ember Court: Mushroom Surprise!##61406 |goto Maldraxxus/0 40.2,41.2
+|only if havequest(61406)
+step
+use the Contract: Mushroom Surprise!##176136
+Add Mushroom Surprise to your Ember Court |q 59500 |future
+|only if completedq(61406) and not completedq(59500)
+step
+Enter the building |goto Revendreth/0 31.15,57.06 < 15 |walk
+talk Tubbins##167863
+|tip Inside the building.
+accept Ember Court: Tubbins's Tea Party##61404 |goto 30.98,57.67
+|only if questactive(61404)
+step
+talk Dwyl'ir##167243
+Ask him _"Is there a "special floaty island" nearby that has good water?"_
+Request Transportation to the "Special Floaty Island" |q 61404/1 |goto Ardenweald/0 51.42,34.52
+|only if havequest(61404)
+step
+Find the Mushroom Ring |q 61404/2 |goto 49.38,27.56
+|only if havequest(61404)
+step
+talk Marasmius##172314
+Ask it _"Can you transport me to the islands with the pure water?"_
+Ask Marasmius for Transportation |q 61404/3 |goto 49.38,27.56
+|only if havequest(61404)
+step
+Kill enemies around this area
+Slay #20# Mushroom Destroyers |q 61404/4 |goto 31.98,34.91
+|only if havequest(61404)
+step
+Kill enemies around this area
+Slay #10# Mushroom Defilers |q 61404/5 |goto 32.45,55.20
+|only if havequest(61404)
+step
+Kill enemies around this area
+Slay #10# Mushroom Tormentors |q 61404/6 |goto 28.54,57.86
+|only if havequest(61404)
+step
+talk Marasmius##172314
+Ask it _"Can you transport me to the islands with the pure water?"_
+Travel to the Island with Marasmius |q 61404/7 |goto 49.38,27.56
+|only if havequest(61404)
+step
+Jump onto the mushroom |goto 48.83,8.14
+|tip It will launch you into the air.
+Jump onto the mushroom |goto 48.20,8.12
+use Tubbins's Bucket##183943
+collect 1 Pristine Water##181370 |q 61404/8 |goto 47.57,7.50
+|only if havequest(61404)
+step
+talk Marasmius##174800
+Ask it _"Can you transport me back to the mainland?"_
+Ask Marasmius for Transportation |q 61404/9 |goto 50.79,7.60
+|only if havequest(61404)
+step
+Enter the building |goto Revendreth/0 31.15,57.06 < 15 |walk
+talk Tubbins##167863
+|tip Inside the building.
+turnin Ember Court: Tubbins's Tea Party##61404 |goto 30.98,57.67
+|only if havequest(61404)
+step
+use the Contract: Tubbins's Tea Party##176134
+Add Tubbins's Tea Party to your Ember Court |q 59506 |future
+|only if completedq(61404) and not completedq(59506)
+stickystart "Guest_RSVPs"
+step
+label "Select_the_Refreshments"
+talk Picky Stefan##165490
+|tip Tubbin's Tea grants a Excitement shift towards Relaxing and a Formality shift towards Formal.
+|tip Divine Desserts grant a Cleanliness shift towards Messy and a Decadence shift towards Decadent.
+|tip Mushroom Surprise grants a Danger shift towards Dangerous and an Decadence shift towards Humble.
+Select the Refreshments |q 61526/3 |goto 28.97,44.28 |only if havequest(61526) or completedq(61526)
+Select the Refreshments |q 61525/3 |goto 28.97,44.28 |only if havequest(61525) or completedq(61525)
+Select the Refreshments |q 60339/3 |goto 28.97,44.28 |only if havequest(60339) or completedq(60339)
+stickystop "Guest_RSVPs"
+step
+Enter the building |goto 62.26,63.57 < 10 |walk
+talk Mistress Mihaela##156822
+|tip Inside the building.
+accept Ember Court: Traditional##61398 |goto 61.31,63.78
+|only if questactive(61398)
+stickystart "Collect_Death_Blossom"
+step
+click Candle Drip##355945+
+|tip They look like puddles of red wax near groups of candles around this area.
+click Small Candle Stub##355944+
+|tip They look like small red candles around this area.
+click Large Candle Stub##355943+
+|tip They look like large red candles around this area.
+|tip You can also find them in buildings.
+collect 50 Candle Wax Chunk##181473 |q 61398/2 |goto 62.48,61.22
+|only if havequest(61398)
+step
+label "Collect_Death_Blossom"
+collect 20 Death Blossom##169701 |q 61398/1
+|tip Farm them with Herbalism or purchase them from the Auction House.
+|tip Use the "Death Blossom" farming guide to accomplish this.
+|only if havequest(61398)
+step
+Enter the building |goto 62.26,63.57 < 10 |walk
+talk Mistress Mihaela##156822
+|tip Inside the building.
+turnin Ember Court: Traditional##61398 |goto 61.31,63.78
+|only if havequest(61398)
+step
+use the Contract: Traditional Theme##176126
+Add Traditional to your Ember Court Decoration Options |q 59473 |future
+|only if completedq(61398) and not completedq(59473)
+step
+talk Keeper Ta'saran##156791
+accept Ember Court: Mortal Reminders##61399 |goto Oribos/0 59.23,75.47
+|only if completedq(61493) and not completedq(61399)
+step
+collect 10 Luminous Pigment##173057
+|tip Create them with Inscription or purchase them from the auction house.
+|only if havequest(61399)
+step
+Do the chicken emote |script DoEmote("CHICKEN")
+|tip Do it on the Lake Frogs until one talks to you.
+|tip The frog with the ID number "172223" is the correct frog.
+clicknpc Lake Frog##172223
+collect 1 Talking Frog in a Jar##181336 |q 61399/1 |goto Grizzly Hills/0 60.83,50.51
+|only if havequest(61399)
+step
+kill Ancient Core Hound##11673+
+|tip You don't need to kill any bosses.
+|tip Kill Core Hounds all over Molten Core.
+collect 20 Regenerative Magma##181354 |q 61399/2 |goto Molten Core/1 00.00,00.00
+|only if havequest(61399)
+step
+talk Inkmaster Glenzu##56064
+Tell him _"I would like to commission a special work from you."_
+click Glenzu Original##358380
+collect 1 Glenzu Original##181356 |q 61399/3 |goto The Jade Forest/0 54.89,45.31
+|only if havequest(61399)
+step
+talk Keeper Ta'saran##156791
+turnin Ember Court: Mortal Reminders##61399 |goto Oribos/0 59.23,75.47
+|only if havequest(61399)
+step
+use the Contract: Mortal Reminders Theme##176128
+Add Mortal Reminders to your Ember Court Decoration Options |q 59476 |future
+|only if completedq(61399) and not completedq(59476)
+step
+talk Simone##172986
+accept Ember Court: Mystery Mirrors##61400 |goto Revendreth/0 24.6,50.2
+|only if questactive(61400)
+step
+Kill Shrouded enemies around this area
+collect 12 Shrouded Mirror Shard##182097 |q 61400/1 |goto 23.6,53.2
+|only if havequest(61400)
+step
+Kill enemies around this area
+|tip Feral Ritualists and Blistering Inquisitors drop these.
+collect 12 Scorched Mirror Fragment##61400 |q 61400/2 |goto 21.8,36.4
+|only if havequest(61400)
+step
+Kill Ash Crawler enemies around this area
+collect 3 Ashen Core##183919 |q 61400/3 |goto 30.6,56.2
+You can find more around [30.6,63.0]
+|only if havequest(61400)
+step
+talk Simone##172986
+turnin Ember Court: Mystery Mirrors##61400 |goto 24.6,50.2
+|only if havequest(61400)
+step
+use the Contract: Mystery Mirrors##176127
+Add Mystery Mirrors to your Ember Court Decoration Options |q 59479 |future
+|only if completedq(61400) and not completedq(59479)
+stickystart "Guest_RSVPs"
+step
+label "Select_the_Decorations"
+talk Boot the Beaut##165493
+|tip Traditional grants a Cleanliness shift towards Clean and a Danger shift towards Dangerous.
+|tip Mortal Reminders grant a Excitement shift towards Relaxing and a Formality shift towards Casual.
+Select the Decorations |q 61525/4 |goto 29.79,45.39 |only if havequest(61525) or completedq(61525) |next "Guest_RSVPs"
+Select the Decorations |q 60339/5 |goto 29.79,45.39 |only if havequest(60339) or completedq(60339)
+|only if haveanyquest(61525,60339) or completedanyq(61525,60339)
+stickystop "Guest_RSVPs"
+step
+talk Nadjia the Mistblade##172614
+accept Ember Court: Venthyr Volunteers##61401 |goto Revendreth/0 61.0,39.4
+|only if questactive(61401)
+step
+use the Recruiting Posters##181716
+Place #6# Recruitment Posters |q 61401/1
+|only if havequest(61401)
+step
+Return to Nadjia |q 61401/2 |goto 61.0,39.4
+|only if havequest(61401)
+step
+Test #3# Sinfall Recruits |q 61401/3
+|only if havequest(61401)
+step
+talk Nadjia the Mistblade##172614
+turnin Ember Court: Venthyr Volunteers##61401 |goto Revendreth/0 61.0,39.4
+|only if havequest(61401)
+step
+use the Contract: Venthyr Volunteers##176138
+Add Venthyr Volunteers to your Ember Court Security Options |q 59518 |future
+|only if completedq(61401) and not completedq(59518)
+step
+talk Chelra the Bladewall##172502
+accept Ember Court: Stoneborn Reserves##61402 |goto Revendreth/0 26.6,29.2
+|only if questactive(61402)
+stickystart "Fill_the_Anima_Canister"
+step
+click Stoneborn Glaive##355971+
+|tip They look like glaive weapons on the ground around this area.
+collect 12 Stoneborn Glaive##181500 |q 61402/2 |goto 29.8,25.9
+|only if havequest(61402)
+step
+label "Fill_the_Anima_Canister"
+Kill enemies around this area
+Fill the Anima Canister |q 61402/1 |goto 29.8,25.9
+|only if havequest(61402)
+step
+talk Chelra the Bladewall##172502
+turnin Ember Court: Maldraxxus Army##61402 |goto Revendreth/0 26.6,29.2
+|only if havequest(61402)
+step
+use the Contract: Stoneborn Reserves##176139
+Add the Stoneborn Reserves to your Ember Court Security Options |q 59515 |future
+|only if completedq(61402) and not completedq(59515)
+step
+talk Emeni##172964
+accept Ember Court: Maldraxxus Army##61403 |goto Maldraxxus/0 54.2,69.2
+|only if questactive(61403)
+stickystart "Slay_Sethak"
+step
+click The Legend of Emeni, the Kinslayer##358362
+Release Emeni's Projection |q 61403/1 |goto Vol'dun/0 52.0,28.3
+|only if havequest(61403)
+step
+kill Commander Revok##174206 |q 61403/2 |goto 52.0,25.8
+|only if havequest(61403)
+step
+kill Skycaller Jorthok##174205 |q 61403/3 |goto 55.6,24.6
+|only if havequest(61403)
+step
+kill Fangcaller Srillik the Twelfth##174207 |q 61403/4 |goto 48.6,26.2
+|only if havequest(61403)
+step
+label "Slay_Sethak"
+Kill enemies around this area
+Slay #100# Sethak |q 61403/4 |goto 48.6,26.2
+|only if havequest(61403)
+step
+talk Emeni##172964
+turnin Ember Court: Maldraxxus Army##61403 |goto Maldraxxus/0 54.2,69.2
+|only if havequest(61403)
+step
+use the Contract: Maldraxxian Army##176140
+Add the Maldraxxian Army to your Ember Court Security Options |q 59512 |future
+|only if completedq(61403) and not completedq(59512)
+stickystart "Guest_RSVPs"
+step
+label "Select_the_Security"
+talk Watchmaster Boromod##165496
+|tip Stoneborn Reserves grant a Danger shift towards Safe and a Decadence shift towards Decadent.
+|tip Venthyr Volunteers grant a Danger shift towards Dangerous and a Excitement shift towards Exciting.
+Select the Security |q 60339/4 |goto Revendreth/0 32.01,41.58
+|only if havequest(60339) or completedq(60339)
+step
+label "Guest_RSVPs"
+_You have RSVPs for the following guests:_
+|tip Keep their preferences in mind and choose amenities that compliment their preferences.
+Sika |only if completedq(59424)
+|tip Sika prefers Cleanliness on the Clean side. |only if completedq(59424)
+Plague Deviser Marileth |only if completedq(59421)
+|tip Plague Deviser Marileth prefers Cleanliness on the Messy side. |only if completedq(59421)
+Choofa |only if completedq(59406)
+|tip Choofa prefers Excitement on the Exciting side. |only if completedq(59406)
+Cryptkeeper Kassir |only if completedq(59409)
+|tip Cryptkeeper Kassir prefers Formality on the Formal side. |only if completedq(59409)
+Kleia and Pelagos |only if completedq(59418)
+|tip Kleia and Pelagos prefer Decadence on the Humble side. |only if completedq(59418)
+Grandmaster Vole |only if completedq(59415)
+|tip Grandmaster Vole prefers Danger on the Dangerous side. |only if completedq(59415)
+Droman Aliothe |only if completedq(59412)
+|tip Droman Aliothe prefers Excitement on the Exciting side. |only if completedq(59412)
+Stonehead |only if completedq(59619)
+|tip Stonehead prefers Formality on the Casual side. |only if completedq(59619)
+Polemarch Adrestes |only if completedq(59400)
+|tip Polemarch Adrestes prefers Cleanliness on the Clean side and Formality on the Formal side. |only if completedq(59400)
+Alexandros Mograine |only if completedq(59394)
+|tip Alexandros Mograine prefers Danger on the Safe side and Decadence on the Humble side. |only if completedq(59394)
+Hunt-Captain Korayn |only if completedq(59397)
+|tip Hunt-Captain Korayn prefers Danger on the Dangerous side and Formality on the Formal side. |only if completedq(59397)
+Rendle and Cudgelface |only if completedq(59403)
+|tip Rendle and Cudgelface prefer Cleanliness on the Messy side and Excitement on the Relaxing side. |only if completedq(59403)
+Mikanikos |only if completedq(59388)
+|tip Mikanikos prefers Cleanliness on the Clean side, Danger on the Safe side, and Decadence on the Humble side. |only if completedq(59388)
+Baroness Vashj |only if completedq(59382)
+|tip Baroness Vashj prefers Danger on the Dangerous side, Decadence on the Decadent side, and Excitement on the Exciting side. |only if completedq(59382)
+Lady Moonberry |only if completedq(59385)
+|tip Lady Moonberry prefers Cleanliness on the Messy side, Excitement on the Exciting side, and Formality on the Casual side. |only if completedq(59385)
+The Countess |only if completedq(59391)
+|tip The Countess prefers Decadence on the Decadent side, Excitement on the Relaxing side, and Formality on the Formal side. |only if completedq(59391)
+Click Here to Proceed |confirm |notinsticky
+|only if haveanyquest(61526,61525,60339)
+step
+talk Temel##164966
+|tip You have sixty seconds to prepare before the party officially begins.
+|tip The party will last for exactly eight minutes. |only if not completedq(61498)
+|tip The party will last for exactly ten minutes. |only if completedq(61498)
+|tip During that time, you will need to do your best to make your chosen guests happy throughout the party.
+|tip Open your map and quickly scan for staff members and bonus objectives which appear as gold stars.
+|tip Immediately talk to staff members before the party begins and assign them tasks based upon your guest list.
+|tip When the guests arrive, quickly work to complete any available bonus objectives, serve refreshements, and participate in the entertainment.
+|tip There is a lot of randomness and a lot to take in.
+|tip Start by focusing on one or two guests in a run until you become comfortable with the mechanics and area.
+Open the Ember Court |q 61526/4 |goto 27.93,43.05 |only if havequest(61526) or completedq(61526)
+Open the Ember Court |q 61525/5 |goto 27.93,43.05 |only if havequest(61525) or completedq(61525)
+Open the Ember Court |q 60339/6 |goto 27.93,43.05 |only if havequest(60339) or completedq(60339)
+step
+Guests Will Arrive Shortly |scenariogoal 1/47869 |goto Ember Court/0 35.86,47.35
+|tip You have sixty seconds to prepare before the party officially begins.
+|tip The party will last for exactly eight minutes. |only if not completedq(61498)
+|tip The party will last for exactly ten minutes. |only if completedq(61498)
+|tip During that time, you will need to do your best to make your chosen guests happy throughout the party.
+|tip Open your map and quickly scan for staff members and bonus objectives which appear as gold stars.
+|tip Immediately talk to staff members before the party begins and assign them tasks based upon your guest list.
+|tip When the guests arrive, quickly work to complete any available bonus objectives, serve refreshements, and participate in the entertainment.
+|tip There is a lot of randomness and a lot to take in.
+|tip Start by focusing on one or two guests in a run until you become comfortable with the mechanics and area.
+|only if not readyanyq(61526,61525,60339) or completedanyq(61526,61525,60339)
+step
+Participate in Court Events that Match your Guests' Preferences |scenariogoal 2/47948 |goto 40.52,46.20
+|tip The party will last for exactly eight minutes. |only if not completedq(61498)
+|tip The party will last for exactly ten minutes. |only if completedq(61498)
+|tip During that this, you will need to do your best to make your chosen guests happy throughout the party.
+|tip Open your map and quickly scan for staff members and bonus objectives which appear as gold stars.
+|tip Immediately talk to staff members and assign them tasks based upon your guest list.
+|tip When the guests arrive, quickly work to complete any available bonus objectives, serve refreshements, and participate in the entertainment.
+|tip There is a lot of randomness and a lot to take in.
+|tip Start by focusing on one or two guests in a run until you become comfortable with the mechanics and area.
+|only if not readyanyq(61526,61525,60339) or completedanyq(61526,61525,60339)
+step
+Claim the Tribute |scenariogoal 3/47926 |goto 47.57,41.15
+|tip Open the chests from each of your guests.
+|only if not readyanyq(61526,61525,60339) or completedanyq(61526,61525,60339)
+step
+talk Prince Renathal##164965
+|tip He walks around this area.
+|tip He appears on your minimap as a yellow dot.
+Tell him _"I'm ready to leave."_
+Speak with Prince Renathal to leave |scenarioend |goto 46.95,41.51
+|only if not completedanyq(61526,61525,60339)
+step
+Complete the Ember Court |q 61526/5 |only if havequest(61526) or completedq(61526)
+Complete the Ember Court |q 61525/6 |only if havequest(61525) or completedq(61525)
+Complete the Ember Court |q 60339/7 |only if havequest(60339) or completedq(60339)
+step
+talk Temel##164966
+turnin The Ember Court##61526 |goto Revendreth/0 27.93,43.05 |only if havequest(61526) or completedq(61526)
+turnin The Ember Court##61525 |goto Revendreth/0 27.93,43.05 |only if havequest(61525) or completedq(61525)
+turnin The Ember Court##60339 |goto Revendreth/0 27.93,43.05 |only if havequest(60339) or completedq(60339)
+step
+talk Picky Stefan##165490
+accept Small Bites##61898 |goto 28.97,44.28
+|only if rep("The Ember Court") >= Friendly and not completedq(61898)
+step
+click Soggy Kelpcheese##357332
+|tip Floating in the water.
+collect 1 Soggy Kelpcheese##182357 |q 61898/3 |goto Bastion/0 37.07,32.22
+|only if havequest(61898)
+step
+click Aged Windcheese##357333
+collect 1 Aged Windcheese##182356 |q 61898/2 |goto 43.23,47.78
+|only if havequest(61898)
+step
+click Forgotten Sweetcheese##357334
+|tip Up on the top cliff.
+collect 1 Forgotten Sweetcheese##182355 |q 61898/1 |goto 32.91,68.05
+|only if havequest(61898)
+step
+Enter the building |goto Maldraxxus/0 58.84,38.20 < 15 |walk
+click Abandoned Jar##357341+
+|tip They look like large stone jars around inside the building.
+collect 1 Sourbread Yeast Starter##182365 |q 61898/4 |goto 59.75,38.18
+|only if havequest(61898)
+step
+talk Temel##164966
+turnin Small Bites##61898 |goto Revendreth/0 27.93,43.05
+|only if havequest(61898)
+step
+use Stock: Appetizers##181532
+Add Appetizers to your Ember Court |q 61498 |future
+|only if completedq(61898) and not completedq(61498)
+step
+talk Hips##165494
+accept Anima Tastings##61899 |goto Revendreth/0 30.67,41.81
+|only if rep("The Ember Court") >= Honored and not completedq(61899)
+step
+click Fresh Revendreth Anima##357338
+collect 1 Fresh Revendreth Anima##182361 |q 61899/4 |goto 76.8,64.8
+|only if havequest(61899)
+step
+click Fresh Maldraxxus Anima##357337
+collect 1 Fresh Maldraxxus Anima##182359 |q 61899/3 |goto Maldraxxus/0 50.6,46.5
+|only if havequest(61899)
+step
+click Fresh Bastion Anima##357335
+collect 1 Fresh Bastion Anima##182358 |q 61899/2 |goto Bastion/0 52.9,18.7
+|only if havequest(61899)
+step
+click Fresh Ardenweald Anima##357336
+collect 1 Fresh Ardenweald Anima##182360 |q 61899/1 |goto Ardenweald/0 52.9,62.3
+|only if havequest(61899)
+step
+talk Temel##164966
+turnin Anima Tastings##61899 |goto Revendreth/0 27.93,43.05
+|only if havequest(61899)
+step
+use Stock: Anima Samples##181533
+Add Anima Samples to your Ember Court |q 61499 |future
+|only if completedq(61899) and not completedq(61499)
+step
+talk Boot the Beaut##165493
+accept Comfy Chairs##61900 |goto Revendreth/0 29.79,45.39
+|only if rep("The Ember Court") >= Revered and not completedq(61900)
+step
+kill Goldenpaw Vulpin##168436+
+collect 30 Soft Vulpin Fur##182354 |q 61900/1 |goto Bastion/0 59.4,85.2
+|only if havequest(61900)
+step
+Kill Drust enemies around this area
+collect 30 Reclaimed Lumber##182362 |q 61900/2 |goto  Ardenweald/0 36.6,66.6
+|only if havequest(61900)
+step
+talk Temel##164966
+turnin Comfy Chairs##61900 |goto Revendreth/0 27.93,43.05
+|only if havequest(61900)
+step
+use the Stock: Comfy Chairs##181535
+Add Comfy Chairs to your Ember Court |q 61500 |future
+|only of completedq(61900) and not completedq(61500)
+step
+talk Hips##165494
+Restock: Band Shirts |condition true |only if questpossible(62073) |next "Restock_Band_Shirts" |or
+Restock: Fashion Accessories |condition true |only if questpossible(62078) |next "Restock_Fashion_Accessories" |or
+Restock: Fragrant Flowers |condition true |only if questpossible(62070) |next "Restock_Fragrant_Flowers" |or
+Restock: Free Press |condition true |only if questpossible(62076) |next "Restock_Free_Press" |or
+Restock: Sinstones |condition true |only if questpossible(62069) |next "Restock_Sinstones" |or
+|tip Check for Entertainment Restock Quests.
+Click Here if No Entertainment Restock Quest is Available |confirm |goto 30.67,41.81 |next "Refreshment_Restock_Quests" |or
+stickystart "Collect_Soul_Dust"
+stickystart "Collect_Shrouded_Cloth"
+step
+label "Restock_Band_Shirts"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62073 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Soul_Dust"
+collect 5 Soul Dust##172230 |q 62073 |future
+|tip Disenchant them from Uncommon (green) Shadowlands items with Enchanting or purchase them from the auction house.
+step
+label "Collect_Shrouded_Cloth"
+collect 10 Shrouded Cloth##173202 |q 62073 |future
+|tip Farm them from Humanoid mobs in Shadowlands zones or purchase them from the auction house.
+|tip Use the "Shrouded Cloth" farming guide to accomplish this.
+step
+talk Hips##165494
+accept Restock: Band Shirts##62073 |goto 30.67,41.81 |next "Refreshment_Restock_Quests"
+stickystart "Collect_Masterful_Laestrite_Choker"
+step
+label "Restock_Fashion_Accessories"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62078 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Masterful_Laestrite_Choker"
+collect 1 Masterful Laestrite Choker##173141 |q 62078 |future
+|tip Craft it with Jewelcrafting or purchase it from the Auction House.
+step
+talk Hips##165494
+accept Restock: Fashion Accessories##62078 |goto 30.67,41.81 |next "Refreshment_Restock_Quests"
+stickystart "Collect_Vigil's_Torch"
+step
+label "Restock_Fragrant_Flowers"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62070 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Vigil's_Torch"
+collect 10 Vigil's Torch##170554 |q 62070 |future
+|tip Farm them with Herbalism or purchase them from the Auction House.
+|tip Use the "Vigil's Torch" farming guide to accomplish this.
+step
+talk Hips##165494
+accept Restock: Fragrant Flowers##62070 |goto 30.67,41.81 |next "Refreshment_Restock_Quests"
+stickystart "Collect_Dark_Parchment"
+stickystart "Collect_Luminous_Ink"
+step
+label "Restock_Free_Press"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62076 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Dark_Parchment"
+talk Wicklick##158667
+buy 10 Dark Parchment##175886 |goto 31.83,47.70 |q 62076 |future
+step
+label "Collect_Luminous_Ink"
+collect 1 Luminous Ink##173059 |q 62076 |future
+|tip Create it with Inscription or purchase it from the auction house.
+step
+talk Hips##165494
+accept Restock: Free Press##62076 |goto 30.67,41.81 |next "Refreshment_Restock_Quests"
+stickystart "Collect_Sinstone_Fragments"
+step
+label "Restock_Sinstones"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62069 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Sinstone_Fragments"
+Collect #50# Sinstone Fragments |condition curcount(1816) >= 50 |q 62069 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+talk Hips##165494
+accept Restock: Sinstones##62069 |goto 30.67,41.81
+step
+label "Refreshment_Restock_Quests"
+talk Picky Stefan##165490
+Restock: Exploratory Meals |condition true |only if questpossible(62094) |next "Restock_Exploratory_Meals" |or
+Restock: Fine Cutlery |condition true |only if questpossible(62084) |next "Restock_Fine_Cutlery" |or
+Restock: Herbal Tea |condition true |only if questpossible(62080) |next "Restock_Herbal_Tea" |or
+Restock: Imported Dinnerware |condition true |only if questpossible(62087) |next "Restock_Imported_Dinnerware" |or
+Restock: Medical Supplies |condition true |only if questpossible(62083) |next "Restock_Medical_Supplies" |or
+Restock: Personal Stash |condition true |only if questpossible(62082) |next "Restock_Personal_Stash" |or
+|tip Check for Refreshment Restock Quests.
+Click Here if No Refreshment Restock Quest is Available |confirm |goto 28.97,44.28 |next "Decoration_Restock_Quests" |or
+stickystart "Collect_Aerated_Water"
+stickystart "Collect_Potion_of_Spectral_Stamina"
+step
+label "Restock_Exploratory_Meals"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62094 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Aerated_Water"
+talk Artisan Ta'bone##173369
+buy 20 Aerated Water##173060 |goto Oribos/0 56.79,75.61 |q 62094 |future
+step
+label "Collect_Potion_of_Spectral_Stamina"
+collect 1 Potion of Spectral Stamina##171274 |q 62094 |future
+|tip Create it with Alchemy or purchase it from the auction house.
+step
+talk Picky Stefan##165490
+accept Restock: Exploratory Meals##62094 |goto Revendreth/0 28.97,44.28 |next "Decoration_Restock_Quests"
+stickystart "Collect_Laestrite_Ore"
+step
+label "Restock_Fine_Cutlery"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62084 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Laestrite_Ore"
+collect 10 Laestrite Ore##171828 |q 62084 |future
+|tip Farm them with Mining or purchase them from the Auction House.
+|tip Use the "Mining" farming guide to accomplish this.
+step
+talk Picky Stefan##165490
+accept Restock: Fine Cutlery##62084 |goto 28.97,44.28 |next "Decoration_Restock_Quests"
+stickystart "Collect_Marrowroot"
+stickystart "Collect_Widowbloom"
+step
+label "Restock_Herbal_Tea"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62080 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Marrowroot"
+collect 5 Marrowroot##168589 |q 62080 |future
+|tip Farm them with Herbalism or purchase them from the Auction House.
+|tip Use the "Marrowroot" farming guide to accomplish this.
+step
+label "Collect_Widowbloom"
+collect 5 Widowbloom##168583 |q 62080 |future
+|tip Farm them with Herbalism or purchase them from the Auction House.
+|tip Use the "Widowbloom" farming guide to accomplish this.
+step
+talk Picky Stefan##165490
+accept Restock: Herbal Tea##62080 |goto 28.97,44.28 |next "Decoration_Restock_Quests"
+stickystart "Collect_Phaedrum_Ore"
+stickystart "Collect_Twilight_Bark"
+step
+label "Restock_Imported_Dinnerware"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62087 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Phaedrum_Ore"
+collect 1 Phaedrum Ore##171831 |q 62087 |future
+|tip Farm it with Mining or purchase it from the Auction House.
+|tip Use the "Phaedrum Ore" farming guide to accomplish this.
+step
+label "Collect_Twilight_Bark"
+collect 5 Twilight Bark##177061 |q 62087 |future
+|tip Farm them with Mining or purchase them from the Auction House.
+|tip They have a chance to drop from Phaedrum deposits.
+step
+talk Picky Stefan##165490
+accept Restock: Imported Dinnerware##62087 |goto 28.97,44.28 |next "Decoration_Restock_Quests"
+stickystart "Collect_Spiritual_Anti_Venom"
+step
+label "Restock_Medical_Supplies"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62083 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Spiritual_Anti_Venom"
+collect 10 Spiritual Anti-Venom##171301 |q 62083 |future
+|tip Create them with Alchemy or purchase them from the auction house.
+step
+talk Picky Stefan##165490
+accept Restock: Medical Supplies##62083 |goto 28.97,44.28 |next "Decoration_Restock_Quests"
+stickystart "Collect_Banana_Beef_Pudding"
+stickystart "Collect_Pickled_Meat_Smoothie"
+stickystart "Collect_Steak_a_la_Mode"
+step
+label "Restock_Personal_Stash"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62082 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+step
+label "Collect_Banana_Beef_Pudding"
+collect 1 Banana Beef Pudding##172069 |q 62082 |future
+|tip Create it with Cooking or purchase it from the auction house.
+step
+label "Collect_Pickled_Meat_Smoothie"
+collect 1 Pickled Meat Smoothie##172068 |q 62082 |future
+|tip Create it with Cooking or purchase it from the auction house.
+step
+label "Collect_Steak_a_la_Mode"
+collect 1 Steak a la Mode##172051 |q 62082 |future
+|tip Create it with Cooking or purchase it from the auction house.
+step
+talk Picky Stefan##165490
+accept Restock: Personal Stash##62082 |goto 28.97,44.28
+step
+label "Decoration_Restock_Quests"
+talk Boot the Beaut##165493
+Restock: Dredger Pool |condition true |only if questpossible(62066) |next "Restock_Dredger_Pool" |or
+Restock: Fire Damage |condition true |only if questpossible(61916) |next "Restock_Fire_Damage" |or
+Restock: My Favorite Table |condition true |only if questpossible(62065) |next "Restock_My_Favorite_Table" |or
+Restock: Statues |condition true |only if questpossible(62067) |next "Restock_Statues" |or
+Restock: Stolen Rugs |condition true |only if questpossible(62062) |next "Restock_Stolen_Rugs" |or
+|tip Check for Decoration Restock Quests.
+Click Here if No Decoration Restock Quest is Available |confirm |goto 29.79,45.39 |next "Security_Restock_Quests" |or
+|only if completedq(61493)
+stickystart "Collect_Potion_of_Soul_Purity"
+step
+label "Restock_Dredger_Pool"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62066 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61493)
+step
+label "Collect_Potion_of_Soul_Purity"
+collect 10 Potion of Soul Purity##171263 |q 62066 |future
+|tip Create them Alchemy or purchase them from the auction house.
+|only if completedq(61493)
+step
+talk Boot the Beaut##165493
+accept Restock: Dredger Pool##62066 |goto 29.79,45.39 |next "Security_Restock_Quests"
+|only if completedq(61493)
+stickystart "Collect_Shrouded_Cloth_61916"
+step
+label "Restock_Fire_Damage"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 61916 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61493)
+step
+label "Collect_Shrouded_Cloth_61916"
+collect 20 Shrouded Cloth##173202 |q 61916 |future
+|tip Farm them from Humanoid mobs in Shadowlands zones or purchase them from the auction house.
+|tip Use the "Shrouded Cloth" farming guide to accomplish this.
+|only if completedq(61493)
+step
+talk Boot the Beaut##165493
+accept Restock: Fire Damage##61916 |goto 29.79,45.39 |next "Security_Restock_Quests"
+|only if completedq(61493)
+stickystart "Collect_Twilight_Bark_62065"
+step
+label "Restock_My_Favorite_Table"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62065 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61493)
+step
+label "Collect_Twilight_Bark_62065"
+collect 10 Twilight Bark##177061 |q 62065 |future
+|tip Farm them with Mining or purchase them from the Auction House.
+|tip They have a chance to drop from Phaedrum deposits.
+|only if completedq(61493)
+step
+talk Boot the Beaut##165493
+accept Restock: My Favorite Table##62065 |goto 29.79,45.39 |next "Security_Restock_Quests"
+|only if completedq(61493)
+stickystart "Collect_Porous_Stone"
+step
+label "Restock_Statues"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62067 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61493)
+step
+label "Collect_Porous_Stone"
+collect 60 Porous Stone##171840 |q 62067 |future
+|tip Farm them with Mining or purchase them from the Auction House.
+|tip They have a chance to drop from all common mineral deposits.
+|only if completedq(61493)
+step
+talk Boot the Beaut##165493
+accept Restock: Statues##62067 |goto 29.79,45.39 |next "Security_Restock_Quests"
+|only if completedq(61493)
+stickystart "Collect_Shrouded_Cloth_62062"
+stickystart "Collect_Porous_Stone_62067"
+step
+label "Restock_Stolen_Rugs"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62062 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61493)
+step
+label "Collect_Shrouded_Cloth_62062"
+collect 10 Shrouded Cloth##173202 |q 62062 |future
+|tip Farm them from Humanoid mobs in Shadowlands zones or purchase them from the auction house.
+|tip Use the "Shrouded Cloth" farming guide to accomplish this.
+|only if completedq(61493)
+step
+label "Collect_Porous_Stone_62067"
+collect 20 Porous Stone##171840 |q 62062 |future
+|tip Farm them with Mining or purchase them from the Auction House.
+|tip They have a chance to drop from all common mineral deposits.
+|only if completedq(61493)
+step
+talk Boot the Beaut##165493
+accept Restock: Stolen Rugs##62062 |goto 29.79,45.39
+|only if completedq(61493)
+step
+label "Security_Restock_Quests"
+talk Watchmaster Boromod##165496
+Restock: Enchantments |condition true |only if questpossible(62094) |next "Restock_Enchantments" |or
+Restock: Medic's Tent |condition true |only if questpossible(62084) |next "Restock_Medic's_Tent" |or
+Restock: Stoneborn Reserves |condition true |only if questpossible(62080) |next "Restock_Stoneborn_Reserves" |or
+Restock: Strategic Codices |condition true |only if questpossible(62087) |next "Restock_Strategic_Codices" |or
+Restock: Surveillance Equipment |condition true |only if questpossible(62083) |next "Restock_Surveillance_Equipment" |or
+|tip Check for Security Restock Quests.
+Click Here if No Security Restock Quest is Available |confirm |goto 32.01,41.58 |next "Guide_Complete" |or
+|only if completedq(61494)
+stickystart "Collect_Enchant_Bracers_Shaded_Hearthing"
+step
+label "Restock_Enchantments"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62106 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61494)
+step
+label "Collect_Enchant_Bracers_Shaded_Hearthing"
+collect 1 Enchant Bracers - Shaded Hearthing##172416 |q 62106 |future
+|tip Create it Enchanting or purchase it from the auction house.
+|only if completedq(61494)
+step
+talk Watchmaster Boromod##165496
+accept Restock: Enchantments##62106 |goto 32.01,41.58 |next "Guide_Complete"
+|only if completedq(61494)
+stickystart "Collect_Shrouded_Cloth_Bandage"
+stickystart "Collect_Spiritual_Healing_Potion"
+step
+label "Restock_Medic's_Tent"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62095 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61494)
+step
+label "Collect_Shrouded_Cloth_Bandage"
+collect 10 Shrouded Cloth Bandage##173192 |q 62095 |future
+|tip Create them with Tailoring or purchase them from the auction house.
+|only if completedq(61494)
+step
+label "Collect_Spiritual_Healing_Potion"
+collect 1 Spiritual Healing Potion##171267 |q 62095 |future
+|tip Create it with Alchemy or purchase it from the auction house.
+|only if completedq(61494)
+step
+talk Watchmaster Boromod##165496
+accept Restock: Medic's Tent##62095 |goto 32.01,41.58 |next "Guide_Complete"
+|only if completedq(61494)
+stickystart "Collect_Shaded_Stone"
+step
+label "Restock_Stoneborn_Reserves"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62104 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61494)
+step
+label "Collect_Shaded_Stone"
+collect 10 Shaded Stone##171841 |q 62104 |future
+|tip Farm them with Mining or purchase them from the Auction House.
+|tip They have a chance to drop from common mineral deposits.
+|only if completedq(61494)
+step
+talk Watchmaster Boromod##165496
+accept Restock: Stoneborn Reserves##62104 |goto 32.01,41.58 |next "Guide_Complete"
+|only if completedq(61494)
+stickystart "Collect_Potion_of_the_Psychopomp's_Speed"
+step
+label "Restock_Strategic_Codices"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62108 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61494)
+step
+label "Collect_Potion_of_the_Psychopomp's_Speed"
+collect 1 Potion of the Psychopomp's Speed##184090 |q 62108 |future
+|tip Create it with Alchemy or purchase it from the Auction House.
+|only if completedq(61494)
+step
+talk Watchmaster Boromod##1654964
+accept Restock: Strategic Codices##62108 |goto 32.01,41.58 |next "Guide_Complete"
+|only if completedq(61494)
+stickystart "Collect_Potion_of_the_Hidden_Spirit"
+stickystart "Collect_Potion_of_Shaded_Sight"
+step
+label "Restock_Surveillance_Equipment"
+Collect #20# Infused Rubies |condition curcount(1820) >= 20 |q 62109 |future
+|tip Collect them by killing rare mobs, completing covenant callings, looting treasures, and running dungeons.
+|only if completedq(61494)
+step
+label "Collect_Potion_of_the_Hidden_Spirit"
+collect 5 Potion of the Hidden Spirit##171266 |q 62109 |future
+|tip Create them with Alchemy or purchase them from the Auction House.
+|only if completedq(61494)
+step
+label "Collect_Potion_of_Shaded_Sight"
+collect 5 Potion of Shaded Sight##171264 |q 62109 |future
+|tip Create them with Alchemy or purchase them from the Auction House.
+|only if completedq(61494)
+step
+talk Watchmaster Boromod##1654964
+accept Restock: Surveillance Equipment##62109 |goto 32.01,41.58
+|only if completedq(61494)
+step
+label "Guide_Complete"
+You have completed The Ember Court
+|tip This guide will reset weekly when it becomes available again.
+Click Here After the Weekly Reset |confirm |next "Unlock_The_Ember_Court"
+]])
+ZGV.BETAEND()
 ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Torghast\\Torghast Questline",{
 author="support@zygorguides.com",
 description="\nThis guide will assist you in completing the Torghast questline.",
@@ -21036,48 +34381,55 @@ Leave Arkoban Hall |goto Torghast/0 37.23,47.20 < 10 |noway |c |q 61099
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Arkoban Hall##61099 |goto Oribos/0 39.92,68.62
-accept Explore Torghast##62932 |goto Oribos/0 39.92,68.62
+accept Explore Torghast##62932 |goto 39.92,68.62
 step
 talk Ve'nari##162804
 Tell her _"This was carried by one of the Jailer's more powerful guards. Do you know what it does?"_
 Speak with Ve'nari |q 60267/1 |goto The Maw/0 46.91,41.69
 step
 click Domination Lock
-turnin Prison of the Forgotten##60267 |goto 15.96,62.97
+turnin Prison of the Forgotten##60267 |goto Torghast/0 15.96,62.97
 step
 Enter Torghast |goto Torghast/0 16.29,47.08 < 10 |c |q 62932
 step
-Use a Portal to Torghast |goto Torghast/0 55.32,29.56
-|tip Walk into any of the swirling portals.
+Enter Skoldus Hall |goto 49.57,26.34 |only if torghast("Skoldus Hall")
+Enter the Fracture Chambers |goto 55.35,24.49 |only if torghast("Fracture Chambers")
+Enter The Soulforges |goto 61.26,26.23 |only if torghast("The Soulforges")
+Enter Coldheart Interstitia |goto 69.41,38.41 |only if torghast("Coldheart Interstitia")
+Enter Mort'regar |goto 70.60,47.29 |only if torghast("Mort'regar")
+Enter The Upper Reaches |goto 69.40,55.95 |only if torghast("The Upper Reaches")
+|tip Walk into either of the swirling portals.
 |tip Enter the instance with the popup that displays.
-Enter Torghast |goto Torghast/0 49.69,26.66 > 10000 |noway |c |q 62932
+Enter Torghast |goto 49.69,26.66 > 10000 |noway |c |q 62932
 step
 _Inside Torghast:_
 Kill the final boss
 |tip It is on floor 6.
 collect Soul-Touched Key##184198 |n
-Find Information |q 62932/1
+Find the Information |q 62932/1
 step
 _Inside Torghast:_
-Leave Torghast |goto Torghast/0 37.23,47.20 < 10 |noway |c |q 62932
+Leave Torghast |goto 37.23,47.20 < 10 |noway |c |q 62932
 |tip Walk into the swirling portal nearby.
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Explore Torghast##62932 |goto Oribos/0 39.92,68.62
 step
-Enter Torghast |goto Torghast/0 16.29,47.08 < 10 |c |q 62935 |future
-step
-_Inside Torghast:_
-|tip You will eventually automatically accept this quest when you enter Torghast.
-|tip This quest is time gated.
-accept Remnants of Hope##62935 |goto Torghast/0 16.29,47.08
+talk Highlord Bolvar Fordragon##164079
+accept Remnants of Hope##62935 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 Enter Torghast |goto Torghast/0 16.29,47.08 < 10000 |c |q 62935
 step
-Use a Portal to Torghast |goto Torghast/0 55.32,29.56
-|tip Walk into any of the swirling portals.
+Enter Skoldus Hall |goto 49.57,26.34 |only if torghast("Skoldus Hall")
+Enter the Fracture Chambers |goto 55.35,24.49 |only if torghast("Fracture Chambers")
+Enter The Soulforges |goto 61.26,26.23 |only if torghast("The Soulforges")
+Enter Coldheart Interstitia |goto 69.41,38.41 |only if torghast("Coldheart Interstitia")
+Enter Mort'regar |goto 70.60,47.29 |only if torghast("Mort'regar")
+Enter The Upper Reaches |goto 69.40,55.95 |only if torghast("The Upper Reaches")
+|tip Walk into either of the swirling portals.
 |tip Enter the instance with the popup that displays.
-Enter Torghast |goto Torghast/0 49.69,26.66 > 10000 |noway |c |q 62935
+Enter Torghast |goto 49.69,26.66 > 10000 |noway |c |q 62935
 step
 _Inside Torghast:_
 clicknpc Bound Soul Remnant##157561+
@@ -21089,24 +34441,26 @@ _Inside Torghast:_
 |tip Reach floor 6 and kill the boss.
 |tip Walk into the swirling portal nearby.
 |tip You can also exit back to Torghast at the start of any floor.
-Leave the Fractured Chambers |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 62935
+Leave the Torghast |goto 16.29,47.08 < 10000 |noway |c |q 62935
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Remnants of Hope##62935 |goto Oribos/0 39.92,68.62
 step
-Enter Torghast |goto Torghast/0 16.29,47.08 < 10000 |c |q 62938 |future
-step
-_Inside Torghast:_
-|tip You will eventually automatically accept this quest when you enter Torghast.
-|tip This quest is time gated.
-accept Information for a Price##62938 |goto Torghast/0 16.29,47.08
+talk Highlord Bolvar Fordragon##164079
+accept Information for a Price##62938 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 Enter Torghast |goto Torghast/0 16.29,47.08 < 10000 |c |q 62938
 step
-Use a Portal to Torghast |goto Torghast/0 55.32,29.56
-|tip Walk into any of the swirling portals.
+Enter Skoldus Hall |goto 49.57,26.34 |only if torghast("Skoldus Hall")
+Enter the Fracture Chambers |goto 55.35,24.49 |only if torghast("Fracture Chambers")
+Enter The Soulforges |goto 61.26,26.23 |only if torghast("The Soulforges")
+Enter Coldheart Interstitia |goto 69.41,38.41 |only if torghast("Coldheart Interstitia")
+Enter Mort'regar |goto 70.60,47.29 |only if torghast("Mort'regar")
+Enter The Upper Reaches |goto 69.40,55.95 |only if torghast("The Upper Reaches")
+|tip Walk into either of the swirling portals.
 |tip Enter the instance with the popup that displays.
-Enter Torghast |goto Torghast/0 49.69,26.66 > 10000 |noway |c |q 62938
+Enter Torghast |goto 49.69,26.66 > 10000 |noway |c |q 62938
 step
 _Inside Torghast:_
 talk Broker Ve'ken##152594
@@ -21123,11 +34477,14 @@ step
 _Inside Torghast:_
 |tip Kill the boss on floor 6.
 |tip Walk into the swirling portal nearby.
-Leave the Fractured Chambers |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 62938
+Leave the Torghast |goto 16.29,47.08 < 10000 |noway |c |q 62938
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Information for a Price##62938 |goto Oribos/0 39.92,68.62
-accept Torment Chamber: Jaina##60139 |goto Oribos/0 39.92,68.62
+step
+talk Highlord Bolvar Fordragon##164079
+accept Torment Chamber: Jaina##60139 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 click Wayfinder
 Choose _<Use the [Attuned Shard] to begin your search for Jaina Proudmoore.>_
@@ -21141,22 +34498,26 @@ Rescue Lady Jaina Proudmoore |q 60139/2
 step
 _Inside Torment Chamber: Jaina:_
 |tip Walk into the swirling portal nearby, after rescuing Jaina.
-Leave Torghast with Jaina |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 60139
+Leave Torghast with Jaina |goto 16.29,47.08 < 10000 |noway |c |q 60139
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Torment Chamber: Jaina##60139 |goto Oribos/0 39.92,68.62
 step
-_Inside Torghast:_
-|tip You will eventually automatically accept this quest when you enter Torghast.
-|tip This quest is time gated.
-accept Finding a Witness##62966 |goto Torghast/0 16.29,47.08
+talk Highlord Bolvar Fordragon##164079
+accept Finding a Witness##62966 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 Enter Torghast |goto Torghast/0 16.29,47.08 < 10000 |c |q 62966
 step
-Use a Portal to Torghast |goto Torghast/0 55.32,29.56
-|tip Walk into any of the swirling portals.
+Enter Skoldus Hall |goto 49.57,26.34 |only if torghast("Skoldus Hall")
+Enter the Fracture Chambers |goto 55.35,24.49 |only if torghast("Fracture Chambers")
+Enter The Soulforges |goto 61.26,26.23 |only if torghast("The Soulforges")
+Enter Coldheart Interstitia |goto 69.41,38.41 |only if torghast("Coldheart Interstitia")
+Enter Mort'regar |goto 70.60,47.29 |only if torghast("Mort'regar")
+Enter The Upper Reaches |goto 69.40,55.95 |only if torghast("The Upper Reaches")
+|tip Walk into either of the swirling portals.
 |tip Enter the instance with the popup that displays.
-Enter Torghast |goto Torghast/0 49.69,26.66 > 10000 |noway |c |q 62966
+Enter Torghast |goto 49.69,26.66 > 10000 |noway |c |q 62966
 step
 _Inside Torghast:_
 talk Captive Dredger##175542
@@ -21168,36 +34529,43 @@ _Inside Torghast:_
 |tip Kill the boss on floor 6.
 |tip Walk into the swirling portal nearby.
 |tip You can also exit back to Torghast at the start of any floor.
-Leave Skoldus Hall |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 62966
+Leave Torghast |goto 16.29,47.08 < 10000 |noway |c |q 62966
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Finding a Witness##62966 |goto Oribos/0 39.92,68.62
 step
-_Inside Torghast:_
-|tip You will eventually automatically accept this quest when you enter Torghast.
-|tip This quest is time gated.
-accept Lest the Trail Go Cold##62969 |goto Torghast/0 16.29,47.08
+talk Highlord Bolvar Fordragon##164079
+accept Lest the Trail Go Cold##62969 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 Enter Torghast |goto Torghast/0 16.29,47.08 < 10000 |c |q 62969
 step
-Enter the Portal |goto Torghast/0 69.41,38.41
-|tip Walk into the swirling portal.
-|tip Choose any layer, it doesn't matter.
-Enter Coldheart Interstitia |goto Torghast/0 69.41,38.41 > 10000 |noway |c |q 62969
+You cannot complete this quest this week |only if default
+|tip You will need to wait until next week for either Coldheart Interstitia, Mort'regar, or The Upper Reaches to spawn. |only if default
+Enter Coldheart Interstitia |goto 69.41,38.41 |only if torghast("Coldheart Interstitia")
+Enter Mort'regar |goto 70.60,47.29 |only if torghast("Mort'regar")
+Enter The Upper Reaches |goto 69.40,55.95 |only if torghast("The Upper Reaches")
+|tip Walk into the swirling portal. |only if torghast("Coldheart Interstitia") or torghast("Mort'regar") or torghast("The Upper Reaches")
+|tip Only Coldheart Interstitia, Mort'regar, or The Upper Reaches count for this quest. |only if torghast("Coldheart Interstitia") or torghast("Mort'regar") or torghast("The Upper Reaches")
+|tip Enter the instance with the popup that displays. |only if torghast("Coldheart Interstitia") or torghast("Mort'regar") or torghast("The Upper Reaches")
+Enter Torghast |goto 49.69,26.66 > 10000 |noway |c |q 62969
 step
-_Inside Coldheart Interstitia:_
+_Inside Torghast:_
 |tip Kill the boss on floor 6.
 |tip The boss is random.
 collect Burnt Totem##184242 |n
 Find a Clue to Thrall's Location |q 62969/1
 step
-_Inside Coldheart Interstitia:_
+_Inside Torghast:_
 |tip Walk into the swirling portal nearby.
-Leave Coldheart Interstitia |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 62969
+Leave Torghast |goto 16.29,47.08 < 10000 |noway |c |q 62969
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Lest the Trail Go Cold##62969 |goto Oribos/0 39.92,68.62
-accept Torment Chamber: Thrall##60146 |goto Oribos/0 39.92,68.62
+step
+talk Highlord Bolvar Fordragon##164079
+accept Torment Chamber: Thrall##60146 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 click Wayfinder
 Choose _<Use the [Attuned Shard] to begin your search for Thrall.>_
@@ -21216,21 +34584,21 @@ Rescue Thrall |q 60146/3
 step
 _Inside Torment Chamber: Thrall:_
 |tip Walk into the swirling portal nearby, after rescuing Thrall.
-Leave Torghast with Thrall |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 60146
+Leave Torghast with Thrall |goto 16.29,47.08 < 10000 |noway |c |q 60146
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Torment Chamber: Thrall##60146 |goto Oribos/0 39.92,68.62
 step
 talk Highlord Bolvar Fordragon##164079
-|tip This quest is time gated.
 accept Signs of the Lion##62836 |goto 39.92,68.62
+|tip This quest will appear on the next weekly reset.
 step
 Enter Torghast |goto Torghast/0 16.29,47.08 < 10000 |c |q 62836
 step
-Enter the Portal |goto Torghast/0 55.38,69.82
+Enter the Twisting Corridors |goto 55.30,69.82
 |tip Walk into the swirling portal.
-|tip Choose any layer, it doesn't matter.
-Enter the Twisting Corridors |goto Torghast/0 55.38,69.82 > 10000 |noway |c |q 62836
+|tip Enter the instance with the popup that displays.
+Enter Torghast |goto 49.69,26.66 > 10000 |noway |c |q 62836
 step
 _Inside the Twisting Corridors:_
 |tip Kill the boss on floor 6.
@@ -21241,22 +34609,24 @@ step
 _Inside the Twisting Corridors:_
 |tip Kill the boss on floor 12.
 |tip The boss is random.
+|tip You may also leave Torghast and enter again, killing the boss on floor 6 for credit.
 collect Lion Emblem##184277 |n
 Find the Second Clue |q 62836/2
 step
 _Inside the Twisting Corridors:_
 |tip Kill the boss on floor 18.
 |tip The boss is random.
+|tip You may also leave Torghast and enter again, killing the boss on floor 6 for credit.
 collect Length of Light-Infused Chain##184276 |n
 Find the Third Clue |q 62836/3
 step
 _Inside the Twisting Corridors:_
 |tip Walk into the swirling portal nearby, after killing the boss on floor 18.
-Leave the Twisting Corridors |goto Torghast/0 16.29,47.08 < 10000 |noway |c |q 62836
+Leave the Twisting Corridors |goto 16.29,47.08 < 10000 |noway |c |q 62836
 step
 talk Highlord Bolvar Fordragon##164079
 turnin Signs of the Lion##62836 |goto Oribos/0 39.92,68.62
-accept The Captive King##61730 |goto Oribos/0 39.92,68.62
+accept The Captive King##61730 |goto 39.92,68.62
 step
 click Helm of Domination
 Use the Helm of Domination to Peer into Torghast |q 61730/1 |goto 39.50,69.27
@@ -21401,4 +34771,104 @@ Collect #1250# Soul Ash |q 62700/1
 step
 talk Runecarver##164937
 turnin Ashes of the Tower##62700 |goto 50.72,54.13
+]])
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Shadowlands (50-60)\\Shadowlands Flight Paths",{
+author="support@zygorguides.com",
+description="\nThis guide will walk you through unlocking all available flight paths in Shadowlands.",
+},[[
+step
+talk Pathscribe Roh-Avonavi##162666
+fpath Oribos |goto Oribos/1 60.83,68.60
+step
+talk Cassius##159421
+fpath Elysian Hold |goto Elysian Hold/0 50.94,49.03
+|only if covenant() ==  Kyrian
+step
+talk Navarros##159423
+fpath Hero's Rest |goto Bastion/0 51.37,46.80 |region heros_rest
+step
+talk Klassia##159125
+fpath Sagehaven |goto 44.07,32.45
+step
+talk Adrina##175457
+fpath Terrace of the Collectors |goto 35.80,21.07
+step
+talk Rheus##159127
+fpath Aspirant's Rest |goto 48.10,74.25
+step
+talk Wing Guard Alamar##157540
+fpath Theater of Pain |goto Maldraxxus/0 49.91,53.40
+step
+talk Wing Guard Buurkin##157514
+fpath Bleak Redoubt |goto 52.47,67.65
+|only if covenant() ==  Necrolord
+step
+talk Vradira Livid##157515
+fpath Plague Watch |goto 58.14,72.45
+step
+talk Felsen Wingclip##157516
+fpath Renounced Bastille |goto 67.93,45.84
+step
+talk Fly-eyed Eliera##157517
+fpath Keres' Rest |goto 53.82,30.69
+step
+talk Flight Master Nudolva##157518
+fpath Spider's Watch |goto 37.51,29.22
+step
+talk Wing Guard Aela##157519
+fpath The Spearhead |goto 39.03,55.24
+step
+talk Lanra##165164
+fpath Tirna Vaal |goto Ardenweald/0 63.46,37.56
+step
+talk Na'lor##165166
+fpath Hibernal Hollow |goto Ardenweald/0 60.35,53.49
+step
+talk V'kerra##167247
+fpath Claw's Edge |goto Ardenweald/0 51.30,71.31
+step
+talk Derwynnthlmn##167255
+fpath Refugee Camp |goto Ardenweald/0 49.35,51.82
+|only if not covenant() == NightFae
+step
+talk Dwyl'ir##167243
+fpath Glitterfall Basin |goto Ardenweald/0 51.42,34.52
+step
+talk Tishereenelee##167265
+fpath Root-Home |goto Ardenweald/0 35.14,51.71
+step
+talk Ceridwyn##165701
+fpath Heart of the Forest |goto Ardenweald/0 46.26,50.81
+|only if covenant() == NightFae
+step
+talk Courier Gevoraal##158526
+fpath Pridefall Hamlet |goto Revendreth/0 70.35,81.16
+step
+talk Courier Rokalai##156295
+fpath Darkhaven |goto Revendreth/0 60.50,60.62
+step
+talk Courier Rehkaash##158417
+fpath Halls of Atonement |goto Revendreth/0 71.58,40.06
+step
+talk Courier Tarehaar##158517
+fpath Old Gate |goto Revendreth/0 61.22,38.79
+step
+talk Courier Skraal##158564
+fpath Menagerie of the Master |goto Revendreth/0 54.22,25.68
+step
+talk Courier Rabatur##156196
+fpath Wanecrypt Hill |goto Revendreth/0 47.88,69.40
+step
+talk Courier Chip##160202
+fpath Charred Ramparts |goto Revendreth/0 38.95,49.33
+step
+talk Courier Shaal##158416
+fpath Sanctuary of the Mad |goto Revendreth/0 30.56,48.88
+step
+talk Courier Dreadcarrier##158533
+fpath Dominance Keep |goto Revendreth/0 25.96,28.88
+step
+talk Courier Snaggle##162702
+fpath Sinfall |goto Sinfall/0 67.31,21.42
+|only if covenant() == Venthyr
 ]])

@@ -3,6 +3,8 @@ local name,ZGV = ...
 ZGV.Skins = {}
 local Skins = ZGV.Skins
 
+local CHAIN=ZGV.ChainCall
+local SkinData = ZGV.UI.SkinData
 
 -- Skeleton classes for the skins to use
 
@@ -59,6 +61,44 @@ end
 
 function ZGV.Skins:GetSkin(id)
 	return self.skins[id or self.defaultSkin]
+end
+
+function ZGV.Skins:AddStyleToBlizzardScrollBar(scrollbar)
+	--[[
+	scrollbar.thumb_mid = CHAIN(scrollbar:CreateTexture())
+		:SetDrawLayer("ARTWORK",1)
+		:SetPoint("TOPLEFT",scrollbar.ThumbTexture)
+		:SetPoint("BOTTOMRIGHT",scrollbar.ThumbTexture)
+		:SetTexture(SkinData("ScrollBarTexture"))
+		:SetTexCoord(0,1,1/4,2/4)
+		:SetVertexColor(unpack(SkinData("ScrollBarColor")))
+		:SetWidth(scrollbar.ThumbTexture:GetWidth())
+	.__END
+	--]]
+	scrollbar.thumb_top = CHAIN(scrollbar:CreateTexture())
+		:SetDrawLayer("ARTWORK",1)
+		:SetPoint("TOP",scrollbar.ThumbTexture)
+		:SetSize(11,SkinData("ScrollBarDecorHeight"))
+		:SetTexture(SkinData("ScrollBarTexture"))
+		:SetTexCoord(0,1,0,1/4)
+		:SetVertexColor(unpack(SkinData("ScrollBarColor")))
+		:SetWidth(scrollbar.ThumbTexture:GetWidth())
+	.__END
+	scrollbar.thumb_bottom = CHAIN(scrollbar:CreateTexture())
+		:SetDrawLayer("ARTWORK",1)
+		:SetPoint("BOTTOM",scrollbar.ThumbTexture)
+		:SetSize(11,SkinData("ScrollBarDecorHeight"))
+		:SetTexture(SkinData("ScrollBarTexture"))
+		:SetTexCoord(0,1,2/4,3/4)
+		:SetVertexColor(unpack(SkinData("ScrollBarColor")))
+		:SetWidth(scrollbar.ThumbTexture:GetWidth())
+	.__END
+	scrollbar.ThumbTexture:SetAlpha(0)
+	for i,v in ipairs({scrollbar:GetRegions()}) do
+		if v.GetName and v:GetName()=="BACKGROUND" then v:SetAlpha(0) end
+	end
+	ZGV.F.AssignButtonTexture(scrollbar.ScrollUpButton,(SkinData("ScrollBarArrowsTexture")),1,2)
+	ZGV.F.AssignButtonTexture(scrollbar.ScrollDownButton,(SkinData("ScrollBarArrowsTexture")),2,2)
 end
 
 

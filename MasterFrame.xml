@@ -4,6 +4,7 @@
 		<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="0" /></Anchor></Anchors>
 		<Size x="40" y="40" />
 		<Scripts>
+			<OnLoad function="ZygorGuidesViewerFrameMaster_OnLoad" />
 			<OnUpdate function="ZygorGuidesViewerFrameMaster_OnUpdate" />
 		</Scripts>
 	</Frame>

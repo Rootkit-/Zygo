@@ -434,8 +434,6 @@ end
 -- returns:
 --	button - frame - pack of objects that make one slot
 local function make_button(object)
-	local tabs_update_handler = nil
-
 	local button = CHAIN(CreateFrame("Button",nil,GearFinder.MainFrame))
 		:SetFrameLevel(GearFinder.MainFrame:GetFrameLevel()+2)
 		:SetSize(240,40)
@@ -508,7 +506,6 @@ local function make_button(object)
 		:SetSize(SkinData("TabsHeight"),SkinData("TabsHeight"))
 		:SetPoint("RIGHT")
 		:Hide()
-		:SetScript("OnUpdate",tabs_update_handler) 
 		:SetScript("OnEnter",function() 
 			button.loadguide:Show()
 			GameTooltip:SetOwner(button, "ANCHOR_TOP")
@@ -571,8 +568,6 @@ end
 -- no returns
 function GearFinder:CreateMainFrame()
 	if self.MainFrame then return end
-
-	local tabs_update_handler = nil
 
 	self.MainFrame = CHAIN(ui:Create("Frame",UIParent,"ZygorGearFinder"))
 		:SetWidth(700)
@@ -691,7 +686,6 @@ function GearFinder:CreateMainFrame()
 		:SetBackdropColor(0,0,0,1)
 		:SetBackdropBorderColor(0,0,0,0)
 		:SetSize(SkinData("TabsHeight"),SkinData("TabsHeight"))
-		:SetScript("OnUpdate",tabs_update_handler) 
 		:SetScript("OnEnter",function() 
 			GameTooltip:SetOwner(MF.AddButton, "ANCHOR_TOP")
 			GameTooltip:SetText(ZGV.L['frame_selectguide'])

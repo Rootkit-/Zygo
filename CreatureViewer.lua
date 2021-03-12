@@ -812,7 +812,7 @@ function CV:AlignFrame()
 -- 	if ZGV.Frame.Border:GetAlpha()>0.01 then
 -- 		CV.Frame:SetPoint("TOPRIGHT",ZGV.Frame,"TOPLEFT")
 -- 	else
--- 		CV.Frame:SetPoint("TOPRIGHT",ZGV.Frame.Border.Guides,"TOPLEFT",4,-22)
+-- 		CV.Frame:SetPoint("TOPRIGHT",ZGV.Frame.Border.Toolbar,"TOPLEFT",4,-22)
 -- 	end
 end
 

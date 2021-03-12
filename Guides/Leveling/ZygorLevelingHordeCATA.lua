@@ -39315,7 +39315,7 @@ talk Bouldercrag the Rockshaper##29801
 |tip Inside the building.
 turnin The Iron Colossus##13007 |goto 31.42,38.07
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (30-50)\\Mount Hyjal (30-50)",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (10-50)\\Mount Hyjal (30-50)",{
 author="support@zygorguides.com",
 image=ZGV.DIR.."\\Guides\\Images\\Hyjal",
 next="Leveling Guides\\Cataclysm (30-50)\\Deepholm (30-50)",
@@ -40588,7 +40588,7 @@ step
 talk Farseer Krogar##45244
 turnin The Battle Is Won, The War Goes On##27399 |goto Orgrimmar/1 50.47,38.38
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (30-50)\\Vashj'ir (30-50)",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (10-50)\\Vashj'ir (30-50)",{
 author="support@zygorguides.com",
 image=ZGV.DIR.."\\Guides\\Images\\Vashjir",
 next="Leveling Guides\\Cataclysm (30-50)\\Deepholm (30-50)",
@@ -42145,7 +42145,7 @@ step
 talk Legionnaire Nazgrim##44540
 turnin Defending the Rift##26194 |goto 69.76,34.41
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (30-50)\\Deepholm (30-50)",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (10-50)\\Deepholm (30-50)",{
 author="support@zygorguides.com",
 image=ZGV.DIR.."\\Guides\\Images\\Deepholm",
 next="Leveling Guides\\Cataclysm (30-50)\\Uldum (30-50)",
@@ -43215,7 +43215,7 @@ step
 talk Therazane##42465
 turnin The Stone Throne##26709 |goto 56.39,12.09
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (30-50)\\Uldum (30-50)",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (10-50)\\Uldum (30-50)",{
 author="support@zygorguides.com",
 image=ZGV.DIR.."\\Guides\\Images\\Uldum",
 achieveid={4961},
@@ -44328,7 +44328,7 @@ step
 talk Brann Bronzebeard##49351
 turnin The Coffer of Promise##28633 |goto 44.85,67.32
 ]])
-ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (30-50)\\Twilight Highlands (30-50)",{
+ZygorGuidesViewer:RegisterGuide("Leveling Guides\\Cataclysm (10-50)\\Twilight Highlands (30-50)",{
 author="support@zygorguides.com",
 image=ZGV.DIR.."\\Guides\\Images\\TwilightHighlands",
 condition_suggested=function() return level >= 30 and level <= 50 and not completedq(27788) end,
